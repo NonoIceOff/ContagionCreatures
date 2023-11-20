@@ -8,3 +8,4 @@ https://godotengine.org/download/macos/
 ## 2. git clone le projet
 
 ## 3. Ouvrir le projet sur Godot.
+Ouvrir avec le fichier project.godot
