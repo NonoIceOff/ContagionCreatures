@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://ihnhjahgl336"]
+
+[ext_resource type="Texture2D" uid="uid://lfyqc00oiht6" path="res://pixil-frame-0_3.png" id="2_6it30"]
+[ext_resource type="FontFile" uid="uid://16ty7fy5b820" path="res://8-BIT_WONDER.TTF" id="2_keafy"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_byotb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgn60"]
+texture = SubResource("CompressedTexture2D_byotb")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cq04l"]
+texture = ExtResource("2_6it30")
+texture_region_size = Vector2i(160, 160)
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x5af7"]
+sources/1 = SubResource("TileSetAtlasSource_wgn60")
+sources/2 = SubResource("TileSetAtlasSource_cq04l")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
+bg_color = Color(0.654902, 0.298039, 0.14902, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
+bg_color = Color(0.717647, 0.203922, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7pwu"]
+bg_color = Color(0.717647, 0.203922, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvldv"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.294118, 0.580392, 0.643137, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_x5af7")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 65538, 1, -65527, 65538, 1, -65518, 65538, 1, -65509, 65538, 1, -65500, 65538, 1, -65491, 65538, 1)
+
+[node name="Pixil-frame-0(3)" type="Sprite2D" parent="."]
+position = Vector2(958, 453)
+scale = Vector2(1.26561, 1.26075)
+texture = ExtResource("2_6it30")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 771.0
+offset_top = 796.0
+offset_right = 1113.0
+offset_bottom = 912.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "PLAY !"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1022.0
+offset_top = 258.0
+offset_right = 1468.0
+offset_bottom = 380.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvldv")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 34.0
+offset_right = 408.0
+offset_bottom = 86.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 35
+text = "Salut c'est emmanuel"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_left = 430.0
+offset_top = 592.0
+offset_right = 1510.0
+offset_bottom = 712.0
+theme_override_fonts/font = ExtResource("2_keafy")
+theme_override_font_sizes/font_size = 60
+text = "CONTAGION CREATURES"
+horizontal_alignment = 1
+vertical_alignment = 1

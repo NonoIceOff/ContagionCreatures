@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://16ty7fy5b820"
-path="res://.godot/imported/8-BIT_WONDER.TTF-a6739a4222ff6b67a3bc408774608a4b.fontdata"
+uid="uid://dwlaoeqs2oqod"
+path="res://.godot/imported/8-BIT_WONDER.TTF-49f7fdd72786b7c26690d75b8619295c.fontdata"
 
 [deps]
 
-source_file="res://8-BIT_WONDER.TTF"
-dest_files=["res://.godot/imported/8-BIT_WONDER.TTF-a6739a4222ff6b67a3bc408774608a4b.fontdata"]
+source_file="res://Font/8-BIT_WONDER.TTF"
+dest_files=["res://.godot/imported/8-BIT_WONDER.TTF-49f7fdd72786b7c26690d75b8619295c.fontdata"]
 
 [params]
 

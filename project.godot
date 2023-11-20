@@ -23,7 +23,7 @@ window/stretch/mode="canvas_items"
 
 [gui]
 
-theme/custom_font="res://8-BIT_WONDER.TTF"
+theme/custom_font="res://Font/8-BIT_WONDER.TTF"
 
 [rendering]
 
