@@ -1,0 +1,238 @@
+[gd_scene load_steps=11 format=3 uid="uid://ihnhjahgl336"]
+
+[ext_resource type="Texture2D" uid="uid://lfyqc00oiht6" path="res://pixil-frame-0 (3).png" id="2_6it30"]
+[ext_resource type="FontFile" uid="uid://16ty7fy5b820" path="res://8-BIT_WONDER.TTF" id="2_keafy"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_byotb"]
+load_path = "res://.godot/imported/pixil-frame-0.png-ad73aed19b00fd55eeaf2db0cae8f8ff.s3tc.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgn60"]
+texture = SubResource("CompressedTexture2D_byotb")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cq04l"]
+texture = ExtResource("2_6it30")
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+18:7/0 = 0
+19:7/0 = 0
+19:6/0 = 0
+19:8/0 = 0
+19:9/0 = 0
+19:10/0 = 0
+19:11/0 = 0
+19:12/0 = 0
+19:13/0 = 0
+19:14/0 = 0
+19:15/0 = 0
+19:16/0 = 0
+19:17/0 = 0
+19:18/0 = 0
+19:19/0 = 0
+18:19/0 = 0
+17:19/0 = 0
+16:19/0 = 0
+15:19/0 = 0
+14:19/0 = 0
+13:19/0 = 0
+12:19/0 = 0
+11:19/0 = 0
+10:19/0 = 0
+10:18/0 = 0
+10:17/0 = 0
+10:16/0 = 0
+10:15/0 = 0
+10:14/0 = 0
+10:13/0 = 0
+10:12/0 = 0
+10:11/0 = 0
+10:10/0 = 0
+10:9/0 = 0
+10:8/0 = 0
+10:7/0 = 0
+10:6/0 = 0
+11:7/0 = 0
+11:8/0 = 0
+11:9/0 = 0
+11:10/0 = 0
+11:11/0 = 0
+11:12/0 = 0
+11:13/0 = 0
+11:14/0 = 0
+11:15/0 = 0
+11:16/0 = 0
+11:17/0 = 0
+11:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+18:17/0 = 0
+18:16/0 = 0
+18:15/0 = 0
+18:14/0 = 0
+18:13/0 = 0
+18:12/0 = 0
+18:11/0 = 0
+18:10/0 = 0
+18:9/0 = 0
+18:8/0 = 0
+17:7/0 = 0
+16:7/0 = 0
+15:7/0 = 0
+14:7/0 = 0
+13:7/0 = 0
+13:8/0 = 0
+13:9/0 = 0
+12:9/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+17:8/0 = 0
+16:8/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+16:9/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+12:7/0 = 0
+12:8/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+17:10/0 = 0
+17:9/0 = 0
+15:11/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+17:14/0 = 0
+17:15/0 = 0
+16:15/0 = 0
+16:16/0 = 0
+15:16/0 = 0
+15:15/0 = 0
+16:17/0 = 0
+17:16/0 = 0
+17:17/0 = 0
+15:17/0 = 0
+15:14/0 = 0
+16:14/0 = 0
+15:13/0 = 0
+14:14/0 = 0
+14:13/0 = 0
+13:13/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+12:13/0 = 0
+12:12/0 = 0
+12:11/0 = 0
+13:14/0 = 0
+14:15/0 = 0
+13:15/0 = 0
+12:15/0 = 0
+12:14/0 = 0
+14:16/0 = 0
+13:16/0 = 0
+12:16/0 = 0
+14:17/0 = 0
+13:17/0 = 0
+12:17/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x5af7"]
+sources/1 = SubResource("TileSetAtlasSource_wgn60")
+sources/2 = SubResource("TileSetAtlasSource_cq04l")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
+bg_color = Color(0.654902, 0.298039, 0.14902, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
+bg_color = Color(0.717647, 0.203922, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7pwu"]
+bg_color = Color(0.717647, 0.203922, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvldv"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.294118, 0.580392, 0.643137, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_x5af7")
+format = 2
+
+[node name="Pixil-frame-0(3)" type="Sprite2D" parent="."]
+position = Vector2(958, 453)
+scale = Vector2(1.26561, 1.26075)
+texture = ExtResource("2_6it30")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 771.0
+offset_top = 796.0
+offset_right = 1113.0
+offset_bottom = 912.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "PLAY !"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1022.0
+offset_top = 258.0
+offset_right = 1468.0
+offset_bottom = 380.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvldv")
+
+[node name="Label" type="Label" parent="Panel"]
+offset_left = 48.0
+offset_top = 34.0
+offset_right = 408.0
+offset_bottom = 86.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 35
+text = "Salut c'est emmanuel"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_left = 430.0
+offset_top = 592.0
+offset_right = 1510.0
+offset_bottom = 712.0
+theme_override_fonts/font = ExtResource("2_keafy")
+theme_override_font_sizes/font_size = 60
+text = "CONTAGION CREATURES"
+horizontal_alignment = 1
+vertical_alignment = 1
