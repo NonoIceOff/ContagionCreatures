@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=3 format=3 uid="uid://bppgfsdgr1rg"]
+
+[ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 
 [sub_resource type="TileSet" id="TileSet_gl17i"]
 
@@ -16,3 +18,7 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array()
+
+[node name="Player_1" parent="." instance=ExtResource("1_1k8th")]
+position = Vector2(958, 521)
+scale = Vector2(0.311768, 0.311768)

@@ -27,4 +27,4 @@ theme/custom_font="res://Font/8-BIT_WONDER.TTF"
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.521569, 1, 1, 1)

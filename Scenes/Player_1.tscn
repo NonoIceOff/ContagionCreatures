@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgeiuvmq46mhr"]
+
+[ext_resource type="Script" path="res://Scenes/CubeTest.gd" id="1_67o7g"]
+[ext_resource type="Texture2D" uid="uid://hmskm5a45okh" path="res://Textures/CUBE_TEST.png" id="1_e4j43"]
+
+[node name="Player_1" type="Sprite2D"]
+position = Vector2(877, 569)
+scale = Vector2(0.310547, 0.310547)
+texture = ExtResource("1_e4j43")
+script = ExtResource("1_67o7g")
