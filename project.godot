@@ -21,6 +21,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/LPCAnimatedSprite/plugin.cfg")
+
 [gui]
 
 theme/custom_font="res://Font/8-BIT_WONDER.TTF"

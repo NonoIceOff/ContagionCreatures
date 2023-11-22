@@ -1,12 +1,17 @@
 extends CharacterBody2D
+#@export var SpriteSheets:Array[LPCSpriteSheet]
+#@export var DefaultAnimation:LPCAnimation = LPCAnimation.IDLE_DOWN
 var speed = 7
 var dir = Vector2()
 const FLOOR_NORMAL = Vector2(0,-1)
-var left = [Vector2(80 , 16), Vector2(48 , 16), Vector2(64 , 16)]
-var right = [Vector2(80 , 32), Vector2(48 , 32), Vector2(64 , 32)]
-var up = [Vector2(80 , 48), Vector2(48 , 48), Vector2(64 , 48)]
-var down = [Vector2(80 , 0), Vector2(48 , 0), Vector2(64 , 0)]
+var offset_x = 0
+var offset_y = 0
+var left = [Vector2(80 + offset_x , 16 + offset_y), Vector2(48 + offset_x , 16 + offset_y), Vector2(64 + offset_x , 16 + offset_y)]
+var right = [Vector2(80 +  offset_x, 32 +  offset_y), Vector2(48 +  offset_y , 32 +  offset_x), Vector2(64 +  offset_x , 32 + offset_y)]
+var up = [Vector2(80 +  offset_x , 48 +  offset_y), Vector2(48 +  offset_x , 48 +  offset_y), Vector2(64  +  offset_x, 48 +  offset_y)]
+var down = [Vector2(80 +  offset_x , 0 +  offset_y), Vector2(48 +  offset_x , 0 +  offset_y), Vector2(64 +  offset_x , 0 +  offset_y)]
 var i = 0
+
 
 func _ready():
 	pass 
@@ -14,7 +19,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	
+	#if Input.is_action_just_pressed("ui_up"):
+	#	position.y += -speed
+	#	get_node("01-generic").region_rect = Rect2(up[2][1],up[2][1],16,16)
 	if Input.is_action_pressed("ui_up"):
 		i += 1
 		if i > 20:

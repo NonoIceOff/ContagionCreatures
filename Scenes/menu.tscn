@@ -68,16 +68,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wvldv")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = -105.0
+offset_left = -115.0
 offset_top = 22.0
-offset_right = 565.0
+offset_right = 555.0
 offset_bottom = 107.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_j62ra")
 theme_override_font_sizes/font_size = 35
-text = "Salut c'est 
-Emmanuel"
+text = "You Want a
+ Mojito?"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="."]
