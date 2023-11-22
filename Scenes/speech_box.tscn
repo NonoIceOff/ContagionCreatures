@@ -48,6 +48,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rc3om")
 
 [node name="Name" type="Label" parent="TextsBox"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 56.0
 offset_top = -40.0
 offset_right = 576.0
@@ -102,8 +103,8 @@ offset_right = 1240.0
 offset_bottom = -26.0
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Choix 1
-Choix 2"
+text = "OUI
+NON"
 horizontal_alignment = 2
 
 [node name="Choices" type="Label" parent="TextsBox"]
