@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlj82x8ysevhm"]
+[gd_scene load_steps=10 format=3 uid="uid://dlj82x8ysevhm"]
 
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_j62ra"]
+[ext_resource type="Script" path="res://Scenes/PlayButton.gd" id="2_soydd"]
+[ext_resource type="AudioStream" uid="uid://clrkni5n75i8l" path="res://Sounds/coinc.mp3" id="4_4gslj"]
+[ext_resource type="Script" path="res://Scenes/Titre.gd" id="4_qccqg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)
@@ -37,17 +40,17 @@ corner_radius_bottom_right = 40
 
 [node name="Node2D" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1914.0
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
 offset_bottom = 1078.0
 color = Color(0, 0, 0, 1)
 
-[node name="Pixil-frame-0(3)" type="Sprite2D" parent="."]
+[node name="Duck" type="Sprite2D" parent="."]
 position = Vector2(949, 556)
 scale = Vector2(1.26561, 1.26075)
 texture = ExtResource("1_rwphk")
 
-[node name="Button" type="Button" parent="."]
+[node name="Play" type="Button" parent="."]
 offset_left = 771.0
 offset_top = 796.0
 offset_right = 1113.0
@@ -58,36 +61,55 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 text = "PLAY !"
+script = ExtResource("2_soydd")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Bubble" type="Panel" parent="."]
 offset_left = 1024.0
-offset_top = 339.0
+offset_top = 387.0
 offset_right = 1466.0
-offset_bottom = 461.0
+offset_bottom = 509.0
+scale = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_wvldv")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Texte" type="Label" parent="Bubble"]
 layout_mode = 0
-offset_left = -115.0
-offset_top = 22.0
-offset_right = 555.0
-offset_bottom = 107.0
+offset_top = -6.0
+offset_right = 448.0
+offset_bottom = 122.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_j62ra")
 theme_override_font_sizes/font_size = 35
-text = "You Want a
- Mojito?"
+text = "DO YOU WANT
+A MOJIRO?"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Titre" type="Label" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 40)
-offset_left = 430.0
-offset_top = 592.0
-offset_right = 1510.0
-offset_bottom = 712.0
+offset_top = 128.0
+offset_right = 1920.0
+offset_bottom = 256.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_j62ra")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 64
 text = "CONTAGION CREATURES"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("4_qccqg")
+
+[node name="TitreTriche" type="Label" parent="Titre"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("2_j62ra")
+theme_override_font_sizes/font_size = 64
+text = "CONTAGION CREATURES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4gslj")
+
+[connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
