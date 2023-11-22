@@ -1,0 +1,122 @@
+[gd_scene load_steps=4 format=3 uid="uid://bygxx7a6c4m0f"]
+
+[ext_resource type="Script" path="res://Scenes/speech_box.gd" id="1_uc22q"]
+[ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="2_a0xcg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc3om"]
+bg_color = Color(0, 0, 0.231373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="SpeechBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uc22q")
+
+[node name="IconSpeecher" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 896.0
+offset_right = 256.0
+offset_bottom = 1024.0
+
+[node name="Sprite2D" type="Sprite2D" parent="IconSpeecher"]
+texture_filter = 1
+position = Vector2(64, 64)
+scale = Vector2(8, 8)
+texture = ExtResource("2_a0xcg")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="TextsBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 896.0
+offset_right = 1792.0
+offset_bottom = 1024.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rc3om")
+
+[node name="Name" type="Label" parent="TextsBox"]
+texture_filter = 1
+offset_left = 56.0
+offset_top = -40.0
+offset_right = 576.0
+offset_bottom = -21.0
+scale = Vector2(1.8, 1.8)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "erza"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 2
+
+[node name="Label" type="RichTextLabel" parent="TextsBox"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 57.0
+offset_top = 16.0
+offset_right = 995.0
+offset_bottom = 85.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+bbcode_enabled = true
+text = "Le Lorem Ipsum est simplement du faux texte employe dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte "
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+
+[node name="Next" type="Label" parent="TextsBox"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 1344.0
+offset_top = -40.0
+offset_right = 1415.0
+offset_bottom = -21.0
+scale = Vector2(1.8, 1.8)
+text = "[e]"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 2
+
+[node name="ChoicesTexts" type="Label" parent="TextsBox"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 872.0
+offset_top = -64.0
+offset_right = 1240.0
+offset_bottom = -26.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Choix 1
+Choix 2"
+horizontal_alignment = 2
+
+[node name="Choices" type="Label" parent="TextsBox"]
+self_modulate = Color(0.34902, 0, 1, 1)
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 1432.0
+offset_top = -64.0
+offset_right = 1440.0
+offset_bottom = -45.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.235294, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "I"
