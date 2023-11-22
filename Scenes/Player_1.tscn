@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgeiuvmq46mhr"]
+[gd_scene load_steps=4 format=3 uid="uid://cgeiuvmq46mhr"]
 
+[ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="1_6dufj"]
 [ext_resource type="Script" path="res://Scenes/CubeTest.gd" id="1_67o7g"]
-[ext_resource type="Texture2D" uid="uid://hmskm5a45okh" path="res://Textures/CUBE_TEST.png" id="1_e4j43"]
 
-[node name="Player_1" type="Sprite2D"]
-position = Vector2(877, 569)
-scale = Vector2(0.310547, 0.310547)
-texture = ExtResource("1_e4j43")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rs54"]
+size = Vector2(128, 160)
+
+[node name="Player_One" type="CharacterBody2D"]
 script = ExtResource("1_67o7g")
+
+[node name="01-generic" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(960, 480)
+scale = Vector2(5, 5)
+texture = ExtResource("1_6dufj")
+centered = false
+offset = Vector2(2.08165e-12, 2.08165e-12)
+region_enabled = true
+region_rect = Rect2(-15, 2.08165e-12, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01-generic"]
+position = Vector2(8.49982, 8)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_3rs54")
+
+[node name="2" type="Camera2D" parent="."]
+position = Vector2(1003, 520)
+offset = Vector2(2.08165e-12, 2.08165e-12)
+zoom = Vector2(2, 2)
