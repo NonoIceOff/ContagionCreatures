@@ -9,9 +9,13 @@ func _physics_process(delta):
 func _process(delta):
 	if float(get_modulate()[3]) <= 0.1:
 		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
-		print("aaaa")
 
 func _on_pressed():
 	get_node("../Sounds").stream = load("res://Sounds/coinc.mp3")
 	get_node("../Sounds").playing = true
 	menu_fade_out = true
+	load_next_scene()
+	
+
+func load_next_scene():
+	SceneLoader.load_scene("res://Scenes/main_map.tscn")

@@ -32,7 +32,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	print(left)
 	if Input.is_action_pressed("ui_up"):
 		i += 1
 		direction = 0
