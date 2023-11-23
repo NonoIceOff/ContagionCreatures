@@ -127,5 +127,11 @@ vertical_alignment = 1
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4gslj")
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 608.0
+offset_top = 720.0
+offset_right = 1304.0
+offset_bottom = 760.0
+
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
 [connection signal="pressed" from="Settings" to="Settings" method="_on_pressed"]
