@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgeiuvmq46mhr"]
 
-[ext_resource type="Texture2D" path="res://Textures/01-generic.png" id="1_6dufj"]
+[ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="1_6dufj"]
 [ext_resource type="Script" path="res://Scenes/CubeTest.gd" id="1_67o7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rs54"]
