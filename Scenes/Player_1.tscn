@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgeiuvmq46mhr"]
 
-[ext_resource type="Texture2D" path="res://Textures/01-generic.png" id="1_6dufj"]
-[ext_resource type="Script" path="res://Scenes/CubeTest.gd" id="1_67o7g"]
+[ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="1_6dufj"]
+[ext_resource type="Script" path="res://Scenes/Player_1_Settings.gd" id="1_i81h4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rs54"]
-size = Vector2(128, 160)
+size = Vector2(128, 80)
 
 [node name="Player_One" type="CharacterBody2D"]
-script = ExtResource("1_67o7g")
+script = ExtResource("1_i81h4")
 
 [node name="01-generic" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(-32, -32)
+position = Vector2(-34, -32)
 scale = Vector2(4, 4)
 texture = ExtResource("1_6dufj")
 centered = false
@@ -21,7 +21,7 @@ region_enabled = true
 region_rect = Rect2(64, 112, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(2.1684e-19, 16)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_3rs54")
 

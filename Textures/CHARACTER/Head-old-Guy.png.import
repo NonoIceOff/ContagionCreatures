@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x0pm3sj1jbdg"
-path="res://.godot/imported/Tile_Set3.png-ba2d9b64506694c5c143fa5dbc40bc8b.ctex"
+uid="uid://udm3hk6dr2pb"
+path="res://.godot/imported/Head-old-Guy.png-39f183dc298600c110f0133301af7651.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tile_Set3.png"
-dest_files=["res://.godot/imported/Tile_Set3.png-ba2d9b64506694c5c143fa5dbc40bc8b.ctex"]
+source_file="res://Textures/CHARACTER/Head-old-Guy.png"
+dest_files=["res://.godot/imported/Head-old-Guy.png-39f183dc298600c110f0133301af7651.ctex"]
 
 [params]
 

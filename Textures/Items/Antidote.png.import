@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://saq078rfrw47"
-path="res://.godot/imported/Antidote.png-c8fbd6506d57456a3981c3913ab713ae.ctex"
+path="res://.godot/imported/Antidote.png-91867b0793bbad5172e3e854309f07e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Antidote.png"
-dest_files=["res://.godot/imported/Antidote.png-c8fbd6506d57456a3981c3913ab713ae.ctex"]
+source_file="res://Textures/Items/Antidote.png"
+dest_files=["res://.godot/imported/Antidote.png-91867b0793bbad5172e3e854309f07e3.ctex"]
 
 [params]
 
