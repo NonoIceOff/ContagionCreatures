@@ -1,0 +1,136 @@
+[gd_scene load_steps=13 format=3 uid="uid://dc4gs8m4imtji"]
+
+[ext_resource type="Script" path="res://Scenes/ControlsButton.gd" id="1_cfn84"]
+[ext_resource type="Script" path="res://Scenes/AppearenceButton.gd" id="2_5wkqo"]
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="3_rtdht"]
+[ext_resource type="Script" path="res://Scenes/Titre.gd" id="4_ggfiq"]
+[ext_resource type="Script" path="res://Scenes/Ok.gd" id="4_xqw71"]
+[ext_resource type="AudioStream" uid="uid://clrkni5n75i8l" path="res://Sounds/coinc.mp3" id="5_vs5pu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
+bg_color = Color(0.654902, 0.298039, 0.160784, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
+bg_color = Color(0.654902, 0.298039, 0.14902, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7pwu"]
+bg_color = Color(0.717647, 0.203922, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui7us"]
+bg_color = Color(0.654902, 0.298039, 0.160784, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm8en"]
+bg_color = Color(0.654902, 0.298039, 0.14902, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jyc4"]
+bg_color = Color(0.717647, 0.203922, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1078.0
+color = Color(0, 0, 0, 1)
+
+[node name="Controls" type="Button" parent="."]
+offset_left = 640.0
+offset_top = 448.0
+offset_right = 1277.0
+offset_bottom = 564.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "CONTROLES"
+script = ExtResource("1_cfn84")
+
+[node name="Appearence" type="Button" parent="."]
+offset_left = 640.0
+offset_top = 640.0
+offset_right = 1277.0
+offset_bottom = 756.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "APPARENCE"
+script = ExtResource("2_5wkqo")
+
+[node name="Titre" type="Label" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_top = 128.0
+offset_right = 1920.0
+offset_bottom = 256.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_rtdht")
+theme_override_font_sizes/font_size = 64
+text = "PARAMETRES"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_ggfiq")
+
+[node name="TitreTriche" type="Label" parent="Titre"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("3_rtdht")
+theme_override_font_sizes/font_size = 64
+text = "PARAMETRES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vs5pu")
+
+[node name="Ok" type="Button" parent="."]
+offset_left = 640.0
+offset_top = 896.0
+offset_right = 1277.0
+offset_bottom = 1012.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dm8en")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jyc4")
+text = "REVENIR AU MENU"
+script = ExtResource("4_xqw71")
+
+[connection signal="pressed" from="Controls" to="Controls" method="_on_pressed"]
+[connection signal="pressed" from="Appearence" to="Appearence" method="_on_pressed"]
+[connection signal="pressed" from="Ok" to="Ok" method="_on_pressed"]

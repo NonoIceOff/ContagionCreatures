@@ -1,7 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bygxx7a6c4m0f"]
+[gd_scene load_steps=5 format=3 uid="uid://bygxx7a6c4m0f"]
 
 [ext_resource type="Script" path="res://Scenes/speech_box.gd" id="1_uc22q"]
 [ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="2_a0xcg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r2v4"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc3om"]
 bg_color = Color(0, 0, 0.231373, 1)
@@ -15,6 +25,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [node name="SpeechBox" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,11 +35,13 @@ grow_vertical = 2
 script = ExtResource("1_uc22q")
 
 [node name="IconSpeecher" type="Panel" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 128.0
+offset_left = 160.0
 offset_top = 896.0
-offset_right = 256.0
+offset_right = 288.0
 offset_bottom = 1024.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5r2v4")
 
 [node name="Sprite2D" type="Sprite2D" parent="IconSpeecher"]
 texture_filter = 1
@@ -39,15 +52,17 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="TextsBox" type="Panel" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 320.0
+offset_left = 288.0
 offset_top = 896.0
-offset_right = 1792.0
+offset_right = 1760.0
 offset_bottom = 1024.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rc3om")
 
 [node name="Name" type="Label" parent="TextsBox"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 56.0
 offset_top = -40.0
 offset_right = 576.0
@@ -56,7 +71,7 @@ scale = Vector2(1.8, 1.8)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-text = "erza"
+text = "ezra"
 vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 2
@@ -96,14 +111,15 @@ text_overrun_behavior = 2
 [node name="ChoicesTexts" type="Label" parent="TextsBox"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 872.0
-offset_top = -64.0
-offset_right = 1240.0
-offset_bottom = -26.0
-scale = Vector2(1.5, 1.5)
+offset_left = 664.0
+offset_top = -80.0
+offset_right = 1032.0
+offset_bottom = -42.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0.694118, 0.694118, 0.694118, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Choix 1
-Choix 2"
+text = "je vais t aider
+NON LAISSE MOI TRANQUILLE"
 horizontal_alignment = 2
 
 [node name="Choices" type="Label" parent="TextsBox"]
@@ -111,11 +127,11 @@ self_modulate = Color(0.34902, 0, 1, 1)
 show_behind_parent = true
 texture_filter = 1
 layout_mode = 0
-offset_left = 1432.0
-offset_top = -64.0
-offset_right = 1440.0
-offset_bottom = -45.0
-scale = Vector2(1.5, 1.5)
+offset_left = 1408.0
+offset_top = -80.0
+offset_right = 1416.0
+offset_bottom = -61.0
+scale = Vector2(2, 2)
 theme_override_colors/font_shadow_color = Color(0, 0, 0.235294, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1

@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlj82x8ysevhm"]
+[gd_scene load_steps=11 format=3 uid="uid://dlj82x8ysevhm"]
 
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_j62ra"]
 [ext_resource type="Script" path="res://Scenes/PlayButton.gd" id="2_soydd"]
+[ext_resource type="Script" path="res://Scenes/SettingsButton.gd" id="3_4a2ih"]
 [ext_resource type="AudioStream" uid="uid://clrkni5n75i8l" path="res://Sounds/coinc.mp3" id="4_4gslj"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="4_qccqg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
-bg_color = Color(0.654902, 0.298039, 0.14902, 1)
+bg_color = Color(0.654902, 0.298039, 0.160784, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
@@ -51,17 +52,30 @@ scale = Vector2(1.26561, 1.26075)
 texture = ExtResource("1_rwphk")
 
 [node name="Play" type="Button" parent="."]
-offset_left = 771.0
-offset_top = 796.0
-offset_right = 1113.0
-offset_bottom = 912.0
+offset_left = 640.0
+offset_top = 768.0
+offset_right = 1277.0
+offset_bottom = 884.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "PLAY !"
+text = "JOUER !"
 script = ExtResource("2_soydd")
+
+[node name="Settings" type="Button" parent="."]
+offset_left = 744.0
+offset_top = 936.0
+offset_right = 1168.0
+offset_bottom = 1016.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "PARAMETRES"
+script = ExtResource("3_4a2ih")
 
 [node name="Bubble" type="Panel" parent="."]
 offset_left = 1024.0
@@ -114,3 +128,4 @@ vertical_alignment = 1
 stream = ExtResource("4_4gslj")
 
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
+[connection signal="pressed" from="Settings" to="Settings" method="_on_pressed"]
