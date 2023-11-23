@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://chexdykbhiy02"]
+
+[ext_resource type="Texture2D" uid="uid://clgqemhxy5iu3" path="res://Textures/Inventaire/tan_inlay.png" id="1_qvc7f"]
+
+[node name="Inv_UI_slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = -1
+anchor_right = 0.0598958
+anchor_bottom = 0.100926
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.59091, 2.45455)
+texture = ExtResource("1_qvc7f")
+centered = false
