@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dybmipi48rk27"]
+[gd_scene load_steps=11 format=3 uid="uid://dybmipi48rk27"]
 
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_d0nrk"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="3_tdnu6"]
 [ext_resource type="AudioStream" uid="uid://clrkni5n75i8l" path="res://Sounds/coinc.mp3" id="4_wy643"]
 [ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="5_8sb3t"]
 [ext_resource type="Script" path="res://Scenes/Ok.gd" id="5_80yua"]
+[ext_resource type="Script" path="res://Scenes/PersoActuel.gd" id="6_6ldjd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui7us"]
 bg_color = Color(0.654902, 0.298039, 0.160784, 1)
@@ -30,6 +31,19 @@ corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypyhf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
 
 [node name="Node2D" type="Node2D"]
 
@@ -93,13 +107,14 @@ text = "votre personnage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Perso9" type="Sprite2D" parent="."]
+[node name="PersoActuel" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(288, 544)
 scale = Vector2(20, 20)
 texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
+script = ExtResource("6_6ldjd")
 
 [node name="Panel2" type="Panel" parent="."]
 offset_left = 704.0
@@ -125,6 +140,15 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
+[node name="ButtonPerso1" type="Button" parent="Perso1"]
+texture_filter = 1
+offset_left = -8.7
+offset_top = -9.2
+offset_right = 10.3
+offset_bottom = 9.8
+theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
+flat = true
+
 [node name="Perso2" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1216, 432)
@@ -132,6 +156,15 @@ scale = Vector2(10, 10)
 texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(64, 0, 16, 16)
+
+[node name="ButtonPerso2" type="Button" parent="Perso2"]
+texture_filter = 1
+offset_left = -8.7
+offset_top = -9.2
+offset_right = 10.3
+offset_bottom = 9.8
+theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
+flat = true
 
 [node name="Perso3" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -141,6 +174,15 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(112, 0, 16, 16)
 
+[node name="ButtonPerso3" type="Button" parent="Perso3"]
+texture_filter = 1
+offset_left = -8.7
+offset_top = -9.2
+offset_right = 10.3
+offset_bottom = 9.8
+theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
+flat = true
+
 [node name="Perso4" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1600, 432)
@@ -148,6 +190,15 @@ scale = Vector2(10, 10)
 texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(160, 0, 16, 16)
+
+[node name="ButtonPerso4" type="Button" parent="Perso4"]
+texture_filter = 1
+offset_left = -8.7
+offset_top = -9.2
+offset_right = 10.3
+offset_bottom = 9.8
+theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
+flat = true
 
 [node name="Perso5" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -157,6 +208,15 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(16, 64, 16, 16)
 
+[node name="ButtonPerso5" type="Button" parent="Perso5"]
+texture_filter = 1
+offset_left = -8.7
+offset_top = -9.2
+offset_right = 10.3
+offset_bottom = 9.8
+theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
+flat = true
+
 [node name="Perso6" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1216, 624)
@@ -164,6 +224,15 @@ scale = Vector2(10, 10)
 texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(64, 64, 16, 16)
+
+[node name="ButtonPerso6" type="Button" parent="Perso6"]
+texture_filter = 1
+offset_left = -8.7
+offset_top = -9.2
+offset_right = 10.3
+offset_bottom = 9.8
+theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
+flat = true
 
 [node name="Perso7" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -173,6 +242,15 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(112, 64, 16, 16)
 
+[node name="ButtonPerso7" type="Button" parent="Perso7"]
+texture_filter = 1
+offset_left = -8.7
+offset_top = -9.2
+offset_right = 10.3
+offset_bottom = 9.8
+theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
+flat = true
+
 [node name="Perso8" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1600, 624)
@@ -181,4 +259,21 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(160, 64, 16, 16)
 
+[node name="ButtonPerso8" type="Button" parent="Perso8"]
+texture_filter = 1
+offset_left = -8.7
+offset_top = -9.2
+offset_right = 10.3
+offset_bottom = 9.8
+theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
+flat = true
+
 [connection signal="pressed" from="Ok" to="Ok" method="_on_pressed"]
+[connection signal="pressed" from="Perso1/ButtonPerso1" to="PersoActuel" method="_on_button_perso_1_pressed"]
+[connection signal="pressed" from="Perso2/ButtonPerso2" to="PersoActuel" method="_on_button_perso_2_pressed"]
+[connection signal="pressed" from="Perso3/ButtonPerso3" to="PersoActuel" method="_on_button_perso_3_pressed"]
+[connection signal="pressed" from="Perso4/ButtonPerso4" to="PersoActuel" method="_on_button_perso_4_pressed"]
+[connection signal="pressed" from="Perso5/ButtonPerso5" to="PersoActuel" method="_on_button_perso_5_pressed"]
+[connection signal="pressed" from="Perso6/ButtonPerso6" to="PersoActuel" method="_on_button_perso_6_pressed"]
+[connection signal="pressed" from="Perso7/ButtonPerso7" to="PersoActuel" method="_on_button_perso_7_pressed"]
+[connection signal="pressed" from="Perso8/ButtonPerso8" to="PersoActuel" method="_on_button_perso_8_pressed"]
