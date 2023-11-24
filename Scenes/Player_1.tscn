@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="4_0rm42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rs54"]
-size = Vector2(128, 160)
+size = Vector2(100, 80)
 
 [node name="Player_One" type="CharacterBody2D"]
 script = ExtResource("1_67o7g")
@@ -23,7 +23,12 @@ region_enabled = true
 region_rect = Rect2(64, 112, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(4, 16)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_3rs54")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(4, 16)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_3rs54")
 
@@ -41,9 +46,10 @@ texture_filter = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -266.0
-offset_top = -179.0
-offset_right = 251.0
-offset_bottom = 203.0
+offset_left = -64.0
+offset_top = -48.0
+offset_right = 453.0
+offset_bottom = 334.0
 grow_horizontal = 1
 grow_vertical = 1
+scale = Vector2(0.25, 0.25)
