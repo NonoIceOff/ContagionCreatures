@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=11 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Texture2D" uid="uid://8nsvs3b7eg6q" path="res://Textures/set.png" id="1_g5c0r"]
 [ext_resource type="Texture2D" uid="uid://suuoymtcqbc2" path="res://Textures/Tile-Set-245.png" id="2_0ndki"]
 [ext_resource type="Texture2D" uid="uid://br7qx5e0li4kn" path="res://Textures/Old_guy_who_lost_is_crampté.png" id="3_4tu3v"]
-[ext_resource type="Texture2D" uid="uid://bpcjdxlddfgsd" path="res://Textures/Head-old-Guy.png" id="3_qwawc"]
+[ext_resource type="Texture2D" path="res://Textures/Head-old-Guy.png" id="3_qwawc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6wdn3"]
 texture = ExtResource("1_g5c0r")
@@ -33494,6 +33494,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6wdn3")
 sources/5 = SubResource("TileSetAtlasSource_bkwqp")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_orxwx"]
+radius = 110.164
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qsd3"]
 size = Vector2(46, 40)
 
@@ -33577,6 +33580,13 @@ layer_10/y_sort_enabled = false
 layer_10/y_sort_origin = 0
 layer_10/z_index = 6
 layer_10/tile_data = PackedInt32Array()
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1422, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_orxwx")
+debug_color = Color(0.807843, 0.00392157, 0.996078, 0.419608)
 
 [node name="OldGuyWhoLostIsCrampté2" type="Sprite2D" parent="."]
 z_index = 6

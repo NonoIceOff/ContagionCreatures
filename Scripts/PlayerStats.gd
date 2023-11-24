@@ -1,7 +1,7 @@
 extends Node
 
 ## Skins
-var character = 1
+var character = 0
 var skin = -1
 
 ## Stats

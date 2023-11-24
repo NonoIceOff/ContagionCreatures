@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv33vxrhul0da"]
+[gd_scene load_steps=9 format=3 uid="uid://cv33vxrhul0da"]
 
 [ext_resource type="Script" path="res://Scenes/Ok.gd" id="1_j3ftm"]
+[ext_resource type="Script" path="res://Scenes/controls.gd" id="1_nskhi"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_wbdo4"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="2_tuees"]
 [ext_resource type="AudioStream" uid="uid://clrkni5n75i8l" path="res://Sounds/coinc.mp3" id="3_bm1pe"]
@@ -30,7 +31,8 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[node name="Node2D2" type="Node2D"]
+[node name="ControlsMenu" type="Node2D"]
+script = ExtResource("1_nskhi")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1920.0
@@ -104,7 +106,7 @@ offset_left = 744.0
 offset_right = 1000.0
 offset_bottom = 64.0
 focus_mode = 0
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
@@ -124,7 +126,7 @@ offset_left = 744.0
 offset_right = 1000.0
 offset_bottom = 64.0
 focus_mode = 0
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
@@ -144,13 +146,13 @@ offset_left = 744.0
 offset_right = 1000.0
 offset_bottom = 64.0
 focus_mode = 0
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 text = "left"
 
-[node name="Left2" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="Right" type="Label" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 38
@@ -158,20 +160,20 @@ text = "aller a droite"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="LeftButton" type="Button" parent="ScrollContainer/VBoxContainer/Left2"]
+[node name="RightButton" type="Button" parent="ScrollContainer/VBoxContainer/Right"]
 layout_mode = 0
 offset_left = 744.0
 offset_right = 1000.0
 offset_bottom = 64.0
 focus_mode = 0
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 text = "right"
 
 [connection signal="pressed" from="Ok" to="Ok" method="_on_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Up/UpButton" to="ScrollContainer/VBoxContainer/Up/UpButton" method="_on_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Down/DownButton" to="ScrollContainer/VBoxContainer/Down/DownButton" method="_on_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Left/LeftButton" to="ScrollContainer/VBoxContainer/Left/LeftButton" method="_on_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Left2/LeftButton" to="ScrollContainer/VBoxContainer/Left2/LeftButton" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Up/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Down/DownButton" to="." method="_on_down_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Left/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Right/RightButton" to="." method="_on_right_button_pressed"]
