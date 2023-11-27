@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6s6oe4jy4x8g"]
+
+[ext_resource type="Texture2D" uid="uid://pnturgqkcrwq" path="res://Textures/pixil-frame-0 (4).png" id="1_73l7j"]
+[ext_resource type="Texture2D" uid="uid://saq078rfrw47" path="res://Textures/Antidote.png" id="2_lgi5i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eri03"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1090.0
+offset_right = 1922.0
+offset_bottom = 1085.0
+color = Color(0, 0, 0, 0.345098)
+
+[node name="Case_Choose_Items" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1.24899e-12, 287.4)
+scale = Vector2(24, 24)
+texture = ExtResource("1_73l7j")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -113.0
+offset_top = 274.0
+offset_right = 9.0
+offset_bottom = 297.0
+scale = Vector2(1.17, 1.17)
+text = "ANTIDOTE :"
+label_settings = SubResource("LabelSettings_eri03")
+
+[node name="Antidote" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(85, 290)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_lgi5i")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -123.0
+offset_top = 212.0
+offset_right = 186.0
+offset_bottom = 398.0
+scale = Vector2(0.8, 0.8)
+focus_mode = 0
+mouse_default_cursor_shape = 2
+flat = true

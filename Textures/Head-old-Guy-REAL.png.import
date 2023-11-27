@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://saq078rfrw47"
-path="res://.godot/imported/Antidote.png-91867b0793bbad5172e3e854309f07e3.ctex"
+uid="uid://blo1a6breprsw"
+path="res://.godot/imported/Head-old-Guy-REAL.png-c6a8929d9ee5aa8d4f8bc03cd5a9248c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Antidote.png"
-dest_files=["res://.godot/imported/Antidote.png-91867b0793bbad5172e3e854309f07e3.ctex"]
+source_file="res://Textures/Head-old-Guy-REAL.png"
+dest_files=["res://.godot/imported/Head-old-Guy-REAL.png-c6a8929d9ee5aa8d4f8bc03cd5a9248c.ctex"]
 
 [params]
 

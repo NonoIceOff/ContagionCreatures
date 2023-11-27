@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br7qx5e0li4kn"
-path="res://.godot/imported/Old_guy_who_lost_is_crampté.png-d624d439dba5c0e441fff426f15efa4d.ctex"
+uid="uid://cefopnknlth3j"
+path="res://.godot/imported/BARRE-PV-Combat.png-550e5101e89074b13645a0d6391aec77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/CHARACTER/Old_guy_who_lost_is_crampté.png"
-dest_files=["res://.godot/imported/Old_guy_who_lost_is_crampté.png-d624d439dba5c0e441fff426f15efa4d.ctex"]
+source_file="res://Textures/BARRE-PV-Combat.png"
+dest_files=["res://.godot/imported/BARRE-PV-Combat.png-550e5101e89074b13645a0d6391aec77.ctex"]
 
 [params]
 

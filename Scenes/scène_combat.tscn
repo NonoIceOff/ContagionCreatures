@@ -1,0 +1,308 @@
+[gd_scene load_steps=17 format=3 uid="uid://msxj475utt5u"]
+
+[ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
+[ext_resource type="Texture2D" uid="uid://ckpe2pm4ddggs" path="res://Textures/Old_guy_who_lost_is_crampté_REAL.png" id="2_4a4lr"]
+[ext_resource type="Texture2D" uid="uid://hmskm5a45okh" path="res://Textures/CUBE_TEST.png" id="3_mp40x"]
+[ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]
+[ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="5_4uere"]
+[ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="6_8tkdv"]
+[ext_resource type="Script" path="res://Scenes/Button_Combat.gd" id="7_52kou"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6neb"]
+bg_color = Color(0.619608, 0.423529, 0.972549, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
+bg_color = Color(0.619608, 0.423529, 0.972549, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i1hw"]
+bg_color = Color(0.470588, 0.180392, 0.839216, 1)
+border_width_left = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij5us"]
+bg_color = Color(0.227451, 0.321569, 0.988235, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t287m"]
+bg_color = Color(0.227451, 0.321569, 0.988235, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.996078, 0.996078, 0.996078, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8md2"]
+bg_color = Color(0.12549, 0.0705882, 0.780392, 1)
+border_width_left = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opluy"]
+bg_color = Color(0.905882, 0.211765, 0.156863, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxu5s"]
+bg_color = Color(0.905882, 0.211765, 0.156863, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yse28"]
+bg_color = Color(0.619608, 0.113725, 0.0784314, 1)
+border_width_left = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Scène Combat" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="Background-pixel2" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(1.56062, 1.40104)
+texture = ExtResource("1_psdp5")
+centered = false
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(950, 831)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("2_4a4lr")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+
+[node name="CUBE CORROMPU" type="Sprite2D" parent="CharacterBody2D2"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1111, 711)
+scale = Vector2(0.517187, 0.517187)
+texture = ExtResource("3_mp40x")
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+
+[node name="Player-1Tile-set" type="Sprite2D" parent="CharacterBody2D3"]
+position = Vector2(947, 1038)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_1fplo")
+region_enabled = true
+region_rect = Rect2(25, 680, 220, 220)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pseudo" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1127.0
+offset_top = 945.0
+offset_right = 1375.0
+offset_bottom = 966.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "RichardKeur2Lion "
+vertical_alignment = 1
+
+[node name="PV" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 975.0
+offset_top = 1005.0
+offset_right = 1223.0
+offset_bottom = 1028.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(0.380392, 0.776471, 0.164706, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "PV :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NIV" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1129.0
+offset_top = 877.0
+offset_right = 1198.0
+offset_bottom = 917.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "NIV :  "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NIV2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1236.0
+offset_top = 871.0
+offset_right = 1286.0
+offset_bottom = 916.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 1201.0
+offset_top = 983.0
+offset_right = 1259.0
+offset_bottom = 999.0
+scale = Vector2(5, 5)
+value = 50.0
+texture_under = ExtResource("5_4uere")
+texture_progress = ExtResource("6_8tkdv")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 493.0
+offset_top = 625.0
+offset_right = 1290.0
+offset_bottom = 895.0
+
+[node name="Pseudo" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 11.0
+offset_right = 272.0
+offset_bottom = 38.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Jack"
+vertical_alignment = 1
+
+[node name="PV" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = -127.0
+offset_top = 77.0
+offset_right = 121.0
+offset_bottom = 100.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(0.380392, 0.776471, 0.164706, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "PV :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NIV" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -53.0
+offset_right = 92.0
+offset_bottom = -13.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "NIV :  "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NIV2" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = -54.0
+offset_right = 181.0
+offset_bottom = -15.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control2"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 107.0
+offset_top = 57.0
+offset_right = 165.0
+offset_bottom = 73.0
+scale = Vector2(5, 5)
+value = 50.0
+texture_under = ExtResource("5_4uere")
+texture_progress = ExtResource("6_8tkdv")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 822.0
+offset_top = -5.0
+offset_right = 1132.0
+offset_bottom = 105.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_f6neb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d2ui4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2i1hw")
+text = "Items"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 1210.0
+offset_top = -5.0
+offset_right = 1520.0
+offset_bottom = 105.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij5us")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t287m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n8md2")
+text = "FUIR"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 434.0
+offset_top = -5.0
+offset_right = 744.0
+offset_bottom = 105.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_opluy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wxu5s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yse28")
+text = "COMBAT"
+script = ExtResource("7_52kou")
+
+[connection signal="pressed" from="Button" to="Button3" method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="Button3" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="Button3" method="_on_pressed"]

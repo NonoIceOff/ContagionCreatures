@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq0aqk1uj7y8r"
-path="res://.godot/imported/Tile_Set.png-e42300ff454b0e427bbb80e391b817d0.ctex"
+uid="uid://ggjf5m4idrje"
+path="res://.godot/imported/ARC.png-d308ac31953d3afa8249b1ce262eb17d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tile_Set/Tile_Set.png"
-dest_files=["res://.godot/imported/Tile_Set.png-e42300ff454b0e427bbb80e391b817d0.ctex"]
+source_file="res://Textures/ARC.png"
+dest_files=["res://.godot/imported/ARC.png-d308ac31953d3afa8249b1ce262eb17d.ctex"]
 
 [params]
 

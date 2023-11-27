@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://bahp2kk1egeij"]
+
+[ext_resource type="Texture2D" uid="uid://pnturgqkcrwq" path="res://Textures/pixil-frame-0 (4).png" id="1_77grx"]
+[ext_resource type="Texture2D" uid="uid://ggjf5m4idrje" path="res://Textures/ARC.png" id="2_i2wr2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ksap"]
+line_spacing = 20.0
+font_color = Color(0, 0, 0, 1)
+
+[node name="All-Case1" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -762.0
+offset_top = -10.0
+offset_right = 1926.0
+offset_bottom = 1088.0
+color = Color(0, 0, 0, 0.345098)
+
+[node name="Case-Choose_ATT" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(2.08165e-12, 292)
+scale = Vector2(23, 23)
+texture = ExtResource("1_77grx")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -112.0
+offset_top = 249.001
+offset_right = 61.0
+offset_bottom = 359.001
+scale = Vector2(0.8, 0.8)
+text = "Arc basique : 
+ATQ : 11"
+label_settings = SubResource("LabelSettings_1ksap")
+vertical_alignment = 1
+
+[node name="Arc" type="Sprite2D" parent="."]
+position = Vector2(80, 290.001)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_i2wr2")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -109.0
+offset_top = 227.0
+offset_right = -87.0
+offset_bottom = 240.0
+scale = Vector2(10, 10)
+focus_mode = 0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+flat = true

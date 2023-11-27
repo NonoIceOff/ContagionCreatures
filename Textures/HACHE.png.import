@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brda333pa6hjs"
-path="res://.godot/imported/Tile_Set2.png-9358f0747122b65cd63b545265b3407b.ctex"
+uid="uid://bvwa3dre3yh5c"
+path="res://.godot/imported/HACHE.png-6000fba191bf6f86cabe111c0a29b0ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tile_Set/Tile_Set2.png"
-dest_files=["res://.godot/imported/Tile_Set2.png-9358f0747122b65cd63b545265b3407b.ctex"]
+source_file="res://Textures/HACHE.png"
+dest_files=["res://.godot/imported/HACHE.png-6000fba191bf6f86cabe111c0a29b0ef.ctex"]
 
 [params]
 
