@@ -82,7 +82,7 @@
 
 extends CharacterBody2D
 
-var speed = 420
+var speed = 320
 
 
 const FLOOR_NORMAL = Vector2(0,-1)
