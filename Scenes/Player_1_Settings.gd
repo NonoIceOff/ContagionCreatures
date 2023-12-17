@@ -123,7 +123,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("haut") or Input.is_action_pressed("ui_up"):
 		i += 1
 		direction = 0
 		if i > 29:
@@ -132,7 +132,7 @@ func _physics_process(delta):
 		velocity.y = -speed
 		move_and_slide()
 		get_node("01-generic2").region_rect = Rect2(up[i/10][0],up[i/10][1],180, 180)
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("bas") or Input.is_action_pressed("ui_down"):
 		i += 1
 		direction = 1
 		if i > 29:
@@ -141,7 +141,7 @@ func _physics_process(delta):
 		velocity.y = speed
 		move_and_slide()
 		get_node("01-generic2").region_rect = Rect2(down[i/10][0],down[i/10][1],180, 180)
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("droite") or Input.is_action_pressed("ui_right"):
 		i += 1
 		direction = 2
 		if i > 29:
@@ -150,7 +150,7 @@ func _physics_process(delta):
 		velocity.x = speed
 		move_and_slide()
 		get_node("01-generic2").region_rect = Rect2(right[i/10][0],right[i/10][1],180, 180)
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("gauche") or Input.is_action_pressed("ui_left"):
 		i += 1
 		direction = 3
 		if i > 29:
