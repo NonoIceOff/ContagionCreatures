@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lodfyogirg2p"
-path="res://.godot/imported/Tile-Set4.png-d5258bd6d35bf215a41e97e76a8ee64d.ctex"
+uid="uid://knm4frun7pwf"
+path="res://.godot/imported/Barre-PV-Combat2.png-cfac747220c9b878e787dd0f72a7586a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tile-Set4.png"
-dest_files=["res://.godot/imported/Tile-Set4.png-d5258bd6d35bf215a41e97e76a8ee64d.ctex"]
+source_file="res://Textures/Barre-PV-Combat2.png"
+dest_files=["res://.godot/imported/Barre-PV-Combat2.png-cfac747220c9b878e787dd0f72a7586a.ctex"]
 
 [params]
 

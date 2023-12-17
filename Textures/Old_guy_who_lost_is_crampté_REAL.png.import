@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lodfyogirg2p"
-path="res://.godot/imported/Tile-Set4.png-d5258bd6d35bf215a41e97e76a8ee64d.ctex"
+uid="uid://ckpe2pm4ddggs"
+path="res://.godot/imported/Old_guy_who_lost_is_crampté_REAL.png-36987ca762cc49f64e03fc3943d17652.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tile-Set4.png"
-dest_files=["res://.godot/imported/Tile-Set4.png-d5258bd6d35bf215a41e97e76a8ee64d.ctex"]
+source_file="res://Textures/Old_guy_who_lost_is_crampté_REAL.png"
+dest_files=["res://.godot/imported/Old_guy_who_lost_is_crampté_REAL.png-36987ca762cc49f64e03fc3943d17652.ctex"]
 
 [params]
 

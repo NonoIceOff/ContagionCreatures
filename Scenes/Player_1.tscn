@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgeiuvmq46mhr"]
+[gd_scene load_steps=7 format=3 uid="uid://cgeiuvmq46mhr"]
 
 [ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="1_6dufj"]
-[ext_resource type="Script" path="res://Scenes/CubeTest.gd" id="1_67o7g"]
+[ext_resource type="Script" path="res://Scenes/Player_1_Settings.gd" id="1_ny7x7"]
+[ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="3_hfae0"]
 [ext_resource type="Script" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="4_0rm42"]
 
@@ -9,9 +10,10 @@
 size = Vector2(100, 80)
 
 [node name="Player_One" type="CharacterBody2D"]
-script = ExtResource("1_67o7g")
+script = ExtResource("1_ny7x7")
 
 [node name="01-generic" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(-32, -32)
@@ -22,13 +24,23 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 region_enabled = true
 region_rect = Rect2(64, 112, 16, 16)
 
+[node name="01-generic2" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_hfae0")
+centered = false
+offset = Vector2(2.08165e-12, 2.08165e-12)
+region_enabled = true
+region_rect = Rect2(42, 701, 180, 180)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 16)
+position = Vector2(28, 33)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_3rs54")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(4, 16)
+position = Vector2(28, 33)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_3rs54")
 
@@ -41,6 +53,7 @@ zoom = Vector2(1.5, 1.5)
 script = ExtResource("3_hy4pn")
 
 [node name="Inv_UI" parent="." instance=ExtResource("4_0rm42")]
+visible = false
 z_index = 1234
 texture_filter = 1
 anchors_preset = 0
