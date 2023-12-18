@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://cuvepu5toqc02"]
+[gd_scene load_steps=19 format=3 uid="uid://cuvepu5toqc02"]
 
+[ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
-[ext_resource type="Texture2D" uid="uid://ckpe2pm4ddggs" path="res://Textures/Old_guy_who_lost_is_crampté_REAL.png" id="2_4a4lr"]
-[ext_resource type="Texture2D" uid="uid://hmskm5a45okh" path="res://Textures/CUBE_TEST.png" id="3_mp40x"]
+[ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="2_dxowc"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="5_4uere"]
+[ext_resource type="Script" path="res://Scenes/Enemy-Stat.gd" id="5_78kiw"]
+[ext_resource type="Texture2D" uid="uid://dhimjcb6s8u1t" path="res://Textures/Animals/EAGLE_.png" id="5_con6l"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="6_8tkdv"]
 [ext_resource type="Script" path="res://Scenes/Button_Combat.gd" id="7_52kou"]
 
@@ -89,191 +91,207 @@ border_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="Scène Combat" type="Node2D"]
+[node name="SceneCombat" type="Node2D"]
+script = ExtResource("1_hd4pf")
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2
 
-[node name="Background-pixel2" type="Sprite2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
-scale = Vector2(1.56062, 1.40104)
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1_psdp5")
-centered = false
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="ContainerMob" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 464.001
+offset_top = 617.001
+offset_right = 672.001
+offset_bottom = 733.001
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
 
-[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Pseudo" type="Label" parent="ContainerMob"]
+layout_mode = 2
+offset_left = 1113.0
+offset_top = -399.001
+offset_right = 1321.0
+offset_bottom = -380.001
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Manteau Rouge
+"
+vertical_alignment = 1
+
+[node name="PV" type="Label" parent="ContainerMob"]
+layout_mode = 2
+offset_left = 995.999
+offset_top = -308.001
+offset_right = 1204.0
+offset_bottom = -285.001
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(0.380392, 0.776471, 0.164706, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "PV :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NIV" type="Label" parent="ContainerMob"]
+layout_mode = 2
+offset_left = 1117.0
+offset_top = -353.0
+offset_right = 1194.0
+offset_bottom = -330.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "NIV :  "
+vertical_alignment = 1
+
+[node name="NIV2" type="Label" parent="ContainerMob"]
+visible = false
+layout_mode = 2
+offset_left = 124.999
+offset_top = 88.999
+offset_right = 332.999
+offset_bottom = 107.999
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ContainerMob"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(950, 831)
-scale = Vector2(7.5, 7.5)
-texture = ExtResource("2_4a4lr")
+layout_mode = 2
+offset_left = 1210.0
+offset_top = -305.001
+offset_right = 1266.0
+offset_bottom = -294.001
+scale = Vector2(4, 4)
+value = 50.0
+texture_under = ExtResource("6_8tkdv")
+texture_progress = ExtResource("5_4uere")
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+[node name="Mob" type="CharacterBody2D" parent="ContainerMob"]
+position = Vector2(-477, -619)
 
-[node name="CUBE CORROMPU" type="Sprite2D" parent="CharacterBody2D2"]
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="ContainerMob/Mob"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(1111, 711)
-scale = Vector2(0.517187, 0.517187)
-texture = ExtResource("3_mp40x")
-
-[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
-
-[node name="Player-1Tile-set" type="Sprite2D" parent="CharacterBody2D3"]
-position = Vector2(947, 1038)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("4_1fplo")
+position = Vector2(941.999, 806.999)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_dxowc")
 region_enabled = true
-region_rect = Rect2(25, 680, 220, 220)
+region_rect = Rect2(66, 1760, 30, 32)
+script = ExtResource("5_78kiw")
 
-[node name="Control" type="Control" parent="."]
+[node name="Creatures" type="CharacterBody2D" parent="ContainerMob"]
+position = Vector2(-477, -619)
+
+[node name="CUBE CORROMPU" type="Sprite2D" parent="ContainerMob/Creatures"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1102, 788.999)
+scale = Vector2(6, 6)
+texture = ExtResource("5_con6l")
+
+[node name="ContainerPLAYER" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -124.0
+offset_top = -58.0
+offset_right = 124.0
+offset_bottom = 58.0
 
-[node name="Pseudo" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 1127.0
-offset_top = 945.0
-offset_right = 1375.0
-offset_bottom = 966.0
+[node name="Pseudo" type="Label" parent="ContainerPLAYER"]
+layout_mode = 2
+offset_left = 152.0
+offset_top = 273.0
+offset_right = 400.0
+offset_bottom = 292.0
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "RichardKeur2Lion "
 vertical_alignment = 1
 
-[node name="PV" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 975.0
-offset_top = 1005.0
-offset_right = 1223.0
-offset_bottom = 1028.0
+[node name="PV" type="Label" parent="ContainerPLAYER"]
+layout_mode = 2
+offset_left = 155.0
+offset_top = 367.0
+offset_right = 212.0
+offset_bottom = 390.0
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(0.380392, 0.776471, 0.164706, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "PV :"
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NIV" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 1129.0
-offset_top = 877.0
-offset_right = 1198.0
-offset_bottom = 917.0
+[node name="NIV" type="Label" parent="ContainerPLAYER"]
+layout_mode = 2
+offset_left = 154.0
+offset_top = 320.0
+offset_right = 223.0
+offset_bottom = 343.0
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "NIV :  "
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NIV2" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 1236.0
-offset_top = 871.0
-offset_right = 1286.0
-offset_bottom = 916.0
-scale = Vector2(1.5, 1.5)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "12"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
-texture_filter = 1
-texture_repeat = 1
-layout_mode = 0
-offset_left = 1201.0
-offset_top = 983.0
-offset_right = 1259.0
-offset_bottom = 999.0
-scale = Vector2(5, 5)
-value = 50.0
-texture_under = ExtResource("5_4uere")
-texture_progress = ExtResource("6_8tkdv")
-
-[node name="Control2" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 493.0
-offset_top = 625.0
-offset_right = 1290.0
-offset_bottom = 895.0
-
-[node name="Pseudo" type="Label" parent="Control2"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 11.0
-offset_right = 272.0
-offset_bottom = 38.0
-scale = Vector2(1.5, 1.5)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Jack"
-vertical_alignment = 1
-
-[node name="PV" type="Label" parent="Control2"]
-layout_mode = 0
-offset_left = -127.0
+[node name="NIV2" type="Label" parent="ContainerPLAYER"]
+visible = false
+layout_mode = 2
 offset_top = 77.0
-offset_right = 121.0
-offset_bottom = 100.0
-scale = Vector2(1.5, 1.5)
-theme_override_colors/font_color = Color(0.380392, 0.776471, 0.164706, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "PV :"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NIV" type="Label" parent="Control2"]
-layout_mode = 0
-offset_left = 23.0
-offset_top = -53.0
-offset_right = 92.0
-offset_bottom = -13.0
-scale = Vector2(1.5, 1.5)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "NIV :  "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NIV2" type="Label" parent="Control2"]
-layout_mode = 0
-offset_left = 132.0
-offset_top = -54.0
-offset_right = 181.0
-offset_bottom = -15.0
-scale = Vector2(1.5, 1.5)
+offset_right = 248.0
+offset_bottom = 96.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "12"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Control2"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ContainerPLAYER"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 0
-offset_left = 107.0
-offset_top = 57.0
-offset_right = 165.0
-offset_bottom = 73.0
-scale = Vector2(5, 5)
+layout_mode = 2
+offset_left = 250.0
+offset_top = 370.0
+offset_right = 309.0
+offset_bottom = 379.0
+scale = Vector2(4, 4)
 value = 50.0
-texture_under = ExtResource("5_4uere")
-texture_progress = ExtResource("6_8tkdv")
+texture_under = ExtResource("6_8tkdv")
+texture_progress = ExtResource("5_4uere")
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="ContainerPLAYER"]
+position = Vector2(124, 58)
+
+[node name="Player-1Tile-set" type="Sprite2D" parent="ContainerPLAYER/CharacterBody2D3"]
+position = Vector2(933, 1035)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_1fplo")
+region_enabled = true
+region_rect = Rect2(25, 680, 220, 220)
 
 [node name="Button" type="Button" parent="."]
 offset_left = 822.0
 offset_top = -5.0
 offset_right = 1132.0
 offset_bottom = 105.0
+rotation = 0.00115545
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_f6neb")
