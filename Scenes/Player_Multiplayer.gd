@@ -30,8 +30,8 @@ func _enter_tree():
 	else:
 		get_node("Camera2D").enabled = false
 	if str(name) == "1":
-		var player_list_label = get_node("../CanvasLayer/PlayerListLabel")
-		player_list_label.text += "\n[b]Joueur " + str(pseudo) + "[/b]"
+		var player_list_label = get_node("../CanvasLayer/Stats/PlayerListLabel")
+		player_list_label.text += "\n[font_size=16]Joueur " + str(pseudo) + "[/font_size]\n"
 		added_to_list = true
 
 
@@ -41,14 +41,13 @@ func _ready():
 @rpc("any_peer")
 func add_to_list(player_name):
 	print("Received RPC to add", player_name, "to the list.")
-	var player_list_label = get_node("../CanvasLayer/PlayerListLabel")
-	
-	player_list_label.text += "\n[b]Joueur " + str(player_name) + "[/b]"
+	var player_list_label = get_node("../CanvasLayer/Stats/PlayerListLabel")
+	player_list_label.text += "[font_size=16]Joueur " + str(player_name) + "[/font_size]\n"
 	print("Added", player_name, "to the list.")
 	print(multiplayer.get_unique_id())
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_multiplayer_authority():
 		get_node("Name").text = str(pseudo)
 		
