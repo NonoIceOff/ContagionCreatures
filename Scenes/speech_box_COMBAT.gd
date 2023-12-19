@@ -1,21 +1,6 @@
 extends Control
 
-var texts = {
-	0: {
-		"text": "a",
-		"has_choices": false,
-		"text_choices": ["Oui", "Non"],
-		"has_suite": true,
-		"choices_jump_to": [0, 0]
-	},
-	1: {
-		"text": "bloublou",
-		"has_choices": false,
-		"text_choices": ["Oui", "Non"],
-		"has_suite": false,
-		"choices_jump_to": [0, 0]
-	}
-}
+var texts = {}
 
 var actual_text = 0
 var choice = 0
@@ -54,10 +39,13 @@ func _process(delta):
 		get_node("TextsBox/ChoicesTexts").visible = false
 
 	if Input.is_action_just_pressed("ui_interact"):
-		if not texts[actual_text]["has_choices"]:
-			handle_next_text()
-		else:
-			handle_choice()
+		if texts.size() > actual_text:
+			if not texts[actual_text]["has_choices"]:
+				get_node("TextsBox/Label").visible_ratio = 0
+				visible = true
+				handle_next_text()
+			else:
+				handle_choice()
 
 	if Input.is_action_just_pressed("ui_down") and choice < 1:
 		get_node("TextsBox/Choices").position.y += 38
@@ -68,11 +56,16 @@ func _process(delta):
 
 func handle_next_text():
 	actual_text += 1
-	if actual_text < texts.size():
-		if texts[actual_text]["has_suite"]:
+	visible = true
+	if texts.size() > actual_text-1:
+		if texts.size() != actual_text:
 			display_text()
 		else:
 			visible = false
+			if get_node("/root/SceneCombat").turn == 0:
+				get_node("/root/SceneCombat").turn = 1
+			elif get_node("/root/SceneCombat").turn == 2:
+				get_node("/root/SceneCombat").turn = 0
 	else:
 		visible = false
 

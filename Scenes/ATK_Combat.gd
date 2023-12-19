@@ -1,8 +1,6 @@
 extends Node2D
 
-
-
-var ArrowAttack = 6
+var ArrowAttack = 11
 
 
 func button_Attaque():
@@ -10,12 +8,35 @@ func button_Attaque():
 	#await get_tree().create_timer(1).timeout
 	take_damage(ArrowAttack)
 	print("Attaque!")
-	
-	
+
+#{}
+
+var attacks = {
+	1: {
+		"name":"Arc",
+		"value":11,
+		"texture":"res://Textures/Items/ARC.png"
+	},
+	2: {
+		"name":"Epee",
+		"value":17,
+		"texture":"res://Textures/Items/EPEE.png"
+	},
+	3: {
+		"name":"Hache",
+		"value":20,
+		"texture":"res://Textures/Items/HACHE.png"
+	},
+	4: {
+		"name":"Poele",
+		"value":23,
+		"texture":"res://Textures/Items/POELE.png"
+	},
+}
 	
 var texts = {
 	0: {
-		"text": "Vous avez inflige "+str(ArrowAttack)+" degats au mechant !",
+		"text": "Vous avez inflige ... degats au mechant !",
 		"has_choices": false,
 		"text_choices": ["Oui", "Non"],
 		"has_suite": true,
@@ -29,11 +50,53 @@ var texts = {
 		"choices_jump_to": [0, 0]
 	},
 }
-	
-func take_damage(damage):
-	texts[1]["text"] = "C'est à "+get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" d'attaquer maintenant "
+
+func _ready():
+	var i = 0
+	for key in attacks:
+		i += 1
+		var button = Button.new()
+		button.name = str(key)
+		button.position = Vector2(80+300*i,256)
+		button.custom_minimum_size = Vector2(280,80)
+		add_child(button)
+		
+		var title = Label.new()
+		title.name = "Title"
+		title.text = attacks[key]["name"]
+		title.custom_minimum_size = Vector2(280,64)
+		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		button.add_child(title)
+		
+		var value = Label.new()
+		value.name = "Value"
+		value.text = "ATK "+str(attacks[key]["value"])
+		value.position.y = 46
+		value.custom_minimum_size = Vector2(280,16)
+		value.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		value.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		button.add_child(value)
+		
+		var sprite = Sprite2D.new()
+		sprite.name = "Sprite"
+		sprite.texture = load(attacks[key]["texture"])
+		sprite.scale = Vector2(0.25,0.25)
+		sprite.position = Vector2(32,36)
+		button.add_child(sprite)
+
+func _process(delta):
+	for key in attacks:
+		if get_node_or_null(str(key)) != null:
+			if get_node(str(key)).button_pressed == true:
+				take_damage(attacks[key])
+				queue_free()
+
+func take_damage(attack):
+	texts[0]["text"] = "Vous utilisez "+str(attack["name"])+" et vous infligez "+str(attack["value"])+" degats a "+get_node("/root/SceneCombat/ContainerMob/Pseudo").text+"."
+	texts[1]["text"] = "C'est a "+get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" d'attaquer maintenant "
 	get_node("/root/SceneCombat").spawn_dialogue(texts)
-	get_node("/root/SceneCombat").pv_enemy -= ArrowAttack
+	get_node("/root/SceneCombat").pv_enemy -= attack["value"]
 	
 	
 

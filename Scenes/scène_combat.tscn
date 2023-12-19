@@ -128,8 +128,7 @@ offset_bottom = -380.001
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Manteau Rouge
-"
+text = "Manteau Rouge"
 vertical_alignment = 1
 
 [node name="PV" type="Label" parent="ContainerMob"]
@@ -180,7 +179,7 @@ offset_top = -305.001
 offset_right = 1266.0
 offset_bottom = -294.001
 scale = Vector2(4, 4)
-value = 50.0
+value = 100.0
 texture_under = ExtResource("6_8tkdv")
 texture_progress = ExtResource("5_4uere")
 
@@ -224,7 +223,7 @@ offset_bottom = 292.0
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "RichardKeur2Lion "
+text = "RichardKeur2Lion"
 vertical_alignment = 1
 
 [node name="PV" type="Label" parent="ContainerPLAYER"]
@@ -272,7 +271,7 @@ offset_top = 370.0
 offset_right = 309.0
 offset_bottom = 379.0
 scale = Vector2(4, 4)
-value = 50.0
+value = 100.0
 texture_under = ExtResource("6_8tkdv")
 texture_progress = ExtResource("5_4uere")
 

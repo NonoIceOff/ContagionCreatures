@@ -3,7 +3,8 @@ extends Button
 
 func _on_pressed():
 	var scene_source = preload("res://Scenes/scene_Choose_ATT.tscn")
-	var scene_instance = scene_source.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) 
+	var scene_instance = scene_source.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	scene_instance.position = Vector2(-434,4)
 	add_child(scene_instance)
 
 
