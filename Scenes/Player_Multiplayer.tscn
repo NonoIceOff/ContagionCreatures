@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0k4nacwxxui8"]
+[gd_scene load_steps=12 format=3 uid="uid://d0k4nacwxxui8"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Multiplayer.gd" id="1_1eb4v"]
 [ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="2_qqcse"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="3_fxwlk"]
 [ext_resource type="Script" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="4_pvajf"]
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="5_bl0e1"]
+[ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="6_nwixm"]
+[ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="7_hgdyn"]
+[ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="8_160o8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rs54"]
 size = Vector2(100, 80)
@@ -13,15 +16,27 @@ size = Vector2(100, 80)
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
-properties/0/watch = false
+properties/0/watch = true
 properties/1/path = NodePath("01-generic2:region_rect")
 properties/1/spawn = true
 properties/1/sync = true
-properties/1/watch = false
+properties/1/watch = true
 properties/2/path = NodePath("Name:text")
 properties/2/spawn = true
 properties/2/sync = true
-properties/2/watch = false
+properties/2/watch = true
+properties/3/path = NodePath("HUD/Name:text")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = true
+properties/4/path = NodePath("HUD/Coins/Label:text")
+properties/4/spawn = true
+properties/4/sync = true
+properties/4/watch = true
+properties/5/path = NodePath("HUD/Vie:value")
+properties/5/spawn = true
+properties/5/sync = true
+properties/5/watch = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb62g"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -90,8 +105,40 @@ scale = Vector2(0.25, 0.25)
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_25t2o")
 
-[node name="Name" type="Label" parent="."]
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Coins" type="Sprite2D" parent="HUD"]
+texture_filter = 1
+position = Vector2(-38, -31.3333)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_160o8")
+
+[node name="Label" type="Label" parent="HUD/Coins"]
+offset_left = 12.0
+offset_top = -7.0
+offset_right = 52.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 12
+text = "0"
+
+[node name="Vie" type="TextureProgressBar" parent="HUD"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -28.0
+offset_top = -56.6667
+offset_right = 28.0
+offset_bottom = -48.6667
+value = 50.0
+texture_under = ExtResource("6_nwixm")
+texture_progress = ExtResource("7_hgdyn")
+
+[node name="Name" type="Label" parent="HUD"]
 z_index = 100
+layout_mode = 0
 offset_left = -43.0
 offset_top = -47.6667
 offset_right = 128.0

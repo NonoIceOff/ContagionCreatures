@@ -1,10 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://by12wgmsbu4mv"]
+[gd_scene load_steps=22 format=3 uid="uid://by12wgmsbu4mv"]
 
 [ext_resource type="Script" path="res://Scenes/multiplayer_map.gd" id="1_s6imd"]
 [ext_resource type="Texture2D" uid="uid://8nsvs3b7eg6q" path="res://Textures/set.png" id="1_xcjj2"]
 [ext_resource type="Texture2D" uid="uid://suuoymtcqbc2" path="res://Textures/Tile-Set-245.png" id="2_tq8yy"]
 [ext_resource type="Texture2D" uid="uid://ckpe2pm4ddggs" path="res://Textures/Old_guy_who_lost_is_crampté_REAL.png" id="3_l1lwh"]
 [ext_resource type="Texture2D" uid="uid://blo1a6breprsw" path="res://Textures/Head-old-Guy-REAL.png" id="5_fbvip"]
+[ext_resource type="PackedScene" uid="uid://cl3q0uaedj6aq" path="res://Scenes/regen_zone.tscn" id="6_hw0xb"]
+[ext_resource type="StyleBox" uid="uid://c585g431q14ue" path="res://Thème/button_normal.tres" id="7_843da"]
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="8_1gx4e"]
+[ext_resource type="StyleBox" uid="uid://bibiwmbse6bsf" path="res://Thème/button_hover.tres" id="8_1qki2"]
+[ext_resource type="StyleBox" uid="uid://dbawkfil8hb6o" path="res://Thème/button_pressed.tres" id="9_fcq30"]
+[ext_resource type="Script" path="res://Scenes/Titre.gd" id="9_gogn7"]
+[ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="12_1ajfc"]
+[ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="13_c12uj"]
+[ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="14_u1waa"]
+[ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="15_qpnil"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6wdn3"]
 texture = ExtResource("1_xcjj2")
@@ -33543,6 +33553,9 @@ sources/5 = SubResource("TileSetAtlasSource_bkwqp")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qsd3"]
 size = Vector2(46, 45)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egqw6"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rw7vh"]
 properties/0/path = NodePath("CanvasLayer/PlayerListLabel:text")
 properties/0/spawn = true
@@ -33676,9 +33689,13 @@ position = Vector2(1422, 303)
 scale = Vector2(3.7, 3.7)
 texture = ExtResource("5_fbvip")
 
+[node name="SaveZone" parent="." instance=ExtResource("6_hw0xb")]
+position = Vector2(200, 100)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MultiplayerSettings" type="Control" parent="CanvasLayer"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -33688,89 +33705,126 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_egqw6")
+
+[node name="Titre" type="Label" parent="CanvasLayer/MultiplayerSettings"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_top = 128.0
+offset_right = 1920.0
+offset_bottom = 256.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("8_1gx4e")
+theme_override_font_sizes/font_size = 64
+text = "MULTIJOUEUR"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_gogn7")
+
+[node name="TitreTriche" type="Label" parent="CanvasLayer/MultiplayerSettings/Titre"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("8_1gx4e")
+theme_override_font_sizes/font_size = 64
+text = "MULTIJOUEUR"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Pseudo" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 16.0
-offset_right = 1160.0
-offset_bottom = 56.0
+offset_left = 427.0
+offset_top = 257.0
+offset_right = 955.0
+offset_bottom = 297.0
 theme_override_font_sizes/font_size = 32
-placeholder_text = "PSEUDO (pseudo si blanc)"
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/focus = ExtResource("8_1qki2")
+placeholder_text = "PSEUDO"
 
 [node name="IpAddress" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 65.0
-offset_right = 1160.0
-offset_bottom = 105.0
+offset_left = 997.0
+offset_top = 257.0
+offset_right = 1525.0
+offset_bottom = 297.0
 theme_override_font_sizes/font_size = 32
-placeholder_text = "ADRESSE IP (localhost si blanc)"
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/focus = ExtResource("8_1qki2")
+placeholder_text = "ADRESSE IP"
 
 [node name="JoinGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 112.0
-offset_right = 640.0
-offset_bottom = 152.0
+offset_left = 997.0
+offset_top = 311.0
+offset_right = 1525.0
+offset_bottom = 351.0
 theme_override_font_sizes/font_size = 32
-text = "REJOINDRE UNE PARTIE"
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+disabled = true
+text = "REJOINDRE SERVEUR"
 
 [node name="HostGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 160.0
-offset_right = 640.0
-offset_bottom = 200.0
+offset_left = 427.0
+offset_top = 311.0
+offset_right = 955.0
+offset_bottom = 351.0
 theme_override_font_sizes/font_size = 32
-text = "CREER UNE PARTIE"
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+disabled = true
+text = "CREER SERVEUR"
 
 [node name="GlobalServer" type="Panel" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 128.0
-offset_top = 256.0
-offset_right = 1216.0
-offset_bottom = 512.0
+layout_mode = 1
+offset_left = 320.0
+offset_top = 447.0
+offset_right = 1600.0
+offset_bottom = 543.0
 
 [node name="Title" type="Label" parent="CanvasLayer/MultiplayerSettings/GlobalServer"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 888.0
-offset_bottom = 91.0
-theme_override_font_sizes/font_size = 64
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 48
 text = "serveur global"
-
-[node name="Label" type="Label" parent="CanvasLayer/MultiplayerSettings/GlobalServer"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 106.0
-offset_right = 280.0
-offset_bottom = 141.0
-theme_override_font_sizes/font_size = 32
-text = "0 joueur"
 
 [node name="JoinGlobalServer" type="Button" parent="CanvasLayer/MultiplayerSettings/GlobalServer"]
 layout_mode = 0
-offset_left = 504.0
-offset_top = 160.0
-offset_right = 1056.0
-offset_bottom = 232.0
-theme_override_font_sizes/font_size = 64
+offset_left = 832.0
+offset_top = 21.0
+offset_right = 1248.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
 text = "rejoindre"
 
 [node name="Stats" type="Control" parent="CanvasLayer"]
-visible = false
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PlayerListLabel" type="RichTextLabel" parent="CanvasLayer/Stats"]
-offset_left = 64.0
-offset_top = 65.0
-offset_right = 768.0
-offset_bottom = 632.0
+layout_mode = 0
+offset_left = 8.0
+offset_top = 856.0
+offset_right = 712.0
+offset_bottom = 951.0
 mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -33789,10 +33843,11 @@ text = "[rainbow freq=0.05][b]JOUEURS : [/b][/rainbow]"
 scroll_active = false
 
 [node name="ServerInfo" type="RichTextLabel" parent="CanvasLayer/Stats"]
-offset_left = 64.0
-offset_top = 512.0
-offset_right = 768.0
-offset_bottom = 1079.0
+layout_mode = 0
+offset_left = 8.0
+offset_top = 952.0
+offset_right = 712.0
+offset_bottom = 1072.0
 mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -33809,6 +33864,32 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[rainbow freq=0.05][b]INFO DU SERVEUR :[/b][/rainbow]"
 scroll_active = false
+
+[node name="Vie" type="TextureProgressBar" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 80.0
+offset_bottom = 32.0
+scale = Vector2(4, 4)
+value = 50.0
+texture_under = ExtResource("13_c12uj")
+texture_progress = ExtResource("14_u1waa")
+
+[node name="Coins" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(48, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("15_qpnil")
+
+[node name="Label" type="Label" parent="CanvasLayer/Stats/Coins"]
+offset_left = 12.0
+offset_top = -7.0
+offset_right = 52.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 12
+text = "0"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Player_Multiplayer.tscn")

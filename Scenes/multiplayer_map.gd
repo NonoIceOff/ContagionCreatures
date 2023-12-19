@@ -14,6 +14,18 @@ func _ready():
 	stats.hide()
 	
 func _process(_delta):
+	if get_node("CanvasLayer/MultiplayerSettings/Pseudo").text != "":
+		get_node("CanvasLayer/MultiplayerSettings/HostGame").disabled = false
+		get_node("CanvasLayer/MultiplayerSettings/GlobalServer/JoinGlobalServer").disabled = false
+		if get_node("CanvasLayer/MultiplayerSettings/IpAddress").text != "":
+			get_node("CanvasLayer/MultiplayerSettings/JoinGame").disabled = false
+		else:
+			get_node("CanvasLayer/MultiplayerSettings/JoinGame").disabled = true
+	else:
+		get_node("CanvasLayer/MultiplayerSettings/HostGame").disabled = true
+		get_node("CanvasLayer/MultiplayerSettings/JoinGame").disabled = true
+		get_node("CanvasLayer/MultiplayerSettings/GlobalServer/JoinGlobalServer").disabled = true
+		
 	var server_address = IP.get_local_addresses()[-1]
 	get_node("CanvasLayer/Stats/ServerInfo").text = "[rainbow freq=0.05][b]INFO DU SERVEUR :[/b][/rainbow]\n[font_size=16]Serveur de " + str(server_address) + "\nJoueurs: " + str(multiplayer.get_peers().size() + 1) + "[/font_size]"
 		

@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 var speed = 320
 
+var vie = 100
+var coins = 0
+
 
 const FLOOR_NORMAL = Vector2(0,-1)
 var ray : RayCast2D
@@ -24,7 +27,7 @@ var direction = 0
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
-	get_node("Name").text = str(pseudo)
+	get_node("HUD/Name").text = str(pseudo)
 	if is_multiplayer_authority() and not added_to_list:
 		get_node("Camera2D").enabled = true
 	else:
@@ -36,7 +39,16 @@ func _enter_tree():
 
 
 func _ready(): 
-	ray = $RayCast2D
+	if not is_multiplayer_authority(): return
+	get_node("HUD").visible = false
+	
+func _process(delta):
+	if not is_multiplayer_authority(): return
+	coins += 1
+	get_node("HUD/Coins/Label").text = str(coins)
+	get_node("HUD/Vie").value = vie
+	get_node("../CanvasLayer/Stats/Coins/Label").text = str(coins)
+	get_node("../CanvasLayer/Stats/Vie").value = vie
 
 @rpc("any_peer")
 func add_to_list(player_name):
@@ -49,7 +61,7 @@ func add_to_list(player_name):
 
 func _physics_process(_delta):
 	if is_multiplayer_authority():
-		get_node("Name").text = str(pseudo)
+		get_node("HUD/Name").text = str(pseudo)
 		
 		if Input.is_action_pressed("haut") or Input.is_action_pressed("ui_up"):
 			i += 1
