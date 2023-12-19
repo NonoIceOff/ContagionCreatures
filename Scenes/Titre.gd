@@ -8,3 +8,7 @@ func _physics_process(delta):
 		hue += 0.01
 	else:
 		hue = 0.0
+
+
+func _on_reprendre_pressed():
+	pass # Replace with function body.
