@@ -33863,11 +33863,11 @@ scale = Vector2(2.95313, 2.90625)
 texture = ExtResource("6_fyqrk")
 
 [node name="Interact" type="Label" parent="InteractArea"]
-offset_left = -60.0
-offset_top = -13.0
-offset_right = -33.0
-offset_bottom = 10.0
-text = "[E]"
+offset_left = -76.0
+offset_top = -16.0
+offset_right = -37.0
+offset_bottom = 7.0
+text = "[ E ]"
 label_settings = SubResource("LabelSettings_6l38j")
 horizontal_alignment = 1
 vertical_alignment = 1
