@@ -106,17 +106,6 @@ var down = [Vector2(254 +  offset_x , 7 +  offset_y), Vector2(36 +  offset_x , 7
 var i = 0
 var direction = 0
 
-
-
-
-
-
-
-
-
-
-func _ready(): 
-	ray = $RayCast2D
 	
 	
 
