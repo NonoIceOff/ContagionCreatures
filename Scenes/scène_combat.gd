@@ -6,6 +6,8 @@ var pv_player = 100
 var pv_enemy = 100
 var turn = 0 # 0 = ton tour ; 1 = le tour du méchant
 
+
+
 var attack_index = 0
 var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
 var attack_values = [11,23,2,20]
@@ -55,8 +57,6 @@ func _process(delta):
 	rng.randomize()
 	get_node("ContainerMob/TextureProgressBar").value = pv_enemy
 	get_node("ContainerPLAYER/TextureProgressBar").value = pv_player
-	print("ENEMY "+str(pv_enemy))
-	print("PLAYER "+str(pv_player))
 	
 	if get_node_or_null("SpeechBox") != null:
 		if get_node("SpeechBox").actual_text == 1:
@@ -68,11 +68,18 @@ func _process(delta):
 				win()
 				turn = -1
 				pv_enemy = -1000
-				
+	
 	if turn == 1:
 		enemy_turns()
 		turn = 2
-	
+			
+		
+func boost_Attaque():
+	pass	
+
+
+func boost_Defense():
+	pass
 
 func enemy_turns():
 	if get_node_or_null("SpeechBox") != null:
@@ -82,13 +89,18 @@ func enemy_turns():
 		texts_enemy[1]["text"] = "C'est a vous ("+get_node("/root/SceneCombat/ContainerPLAYER/Pseudo").text+") d'attaquer maintenant "
 		get_node("/root/SceneCombat").spawn_dialogue(texts_enemy)
 		pv_player -= attack_values[attack_index]
-
+		get_node("/root/SceneCombat/AnimationPlayer").play("Damage_Player") 
+		get_node("/root/SceneCombat/AnimationPlayer").play("shake") 
+		await get_node("/root/SceneCombat/AnimationPlayer").animation_finished
+		
 func win():
 	if get_node_or_null("SpeechBox") != null:
 		get_node("SpeechBox").queue_free()
 		texts_end[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" chute !"
 		texts_end[1]["text"] = "Vous remportez le combat et 0 xp !"
 		get_node("/root/SceneCombat").spawn_dialogue(texts_end)
+		get_node("/root/SceneCombat/AnimationPlayer").play("Enemy_Death")
+		
 		
 func loose():
 	if get_node_or_null("SpeechBox") != null:
@@ -96,3 +108,4 @@ func loose():
 		texts_end[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" remporte son combat..."
 		texts_end[1]["text"] = "Vous perdez le combat et repartez bredouille..."
 		get_node("/root/SceneCombat").spawn_dialogue(texts_end)
+		get_node("/root/SceneCombat/AnimationPlayer").play("Player_Death")

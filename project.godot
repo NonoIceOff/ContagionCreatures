@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerStats="*res://Scripts/PlayerStats.gd"
 SceneLoader="*res://Scripts/scene_loader.gd"
+Global="*res://Global.gd"
 
 [display]
 

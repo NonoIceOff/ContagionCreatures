@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cuvepu5toqc02"]
+[gd_scene load_steps=26 format=3 uid="uid://cuvepu5toqc02"]
 
 [ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
@@ -90,6 +90,160 @@ border_width_bottom = 10
 border_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_7y6a2"]
+resource_name = "Damage_Enemy"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerMob/Mob/OldGuyWhoLostIsCramptéReal:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kkly6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerMob/Mob/OldGuyWhoLostIsCramptéReal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ContainerPLAYER/CharacterBody2D3/Player-1Tile-set:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ContainerMob/Mob/OldGuyWhoLostIsCramptéReal:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ContainerPLAYER/CharacterBody2D3/Player-1Tile-set:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gd1ce"]
+resource_name = "Damage_Player"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerPLAYER/CharacterBody2D3/Player-1Tile-set:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cupx5"]
+resource_name = "shake"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-24, -17), Vector2(32, 19), Vector2(31, -22), Vector2(-34, 20), Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_sy467"]
+resource_name = "Enemy_Death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerMob/Mob/OldGuyWhoLostIsCramptéReal:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.842994, 1.4748]
+}
+
+[sub_resource type="Animation" id="Animation_of105"]
+resource_name = "Player_Death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerPLAYER/CharacterBody2D3/Player-1Tile-set:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.842994, 1.4748]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fhsy"]
+_data = {
+"Damage_Enemy": SubResource("Animation_7y6a2"),
+"Damage_Player": SubResource("Animation_gd1ce"),
+"Enemy_Death": SubResource("Animation_sy467"),
+"Player_Death": SubResource("Animation_of105"),
+"RESET": SubResource("Animation_kkly6"),
+"shake": SubResource("Animation_cupx5")
+}
 
 [node name="SceneCombat" type="Node2D"]
 script = ExtResource("1_hd4pf")
@@ -189,7 +343,7 @@ position = Vector2(-477, -619)
 [node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="ContainerMob/Mob"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(941.999, 806.999)
+position = Vector2(942.999, 806.999)
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_dxowc")
 region_enabled = true
@@ -322,6 +476,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wxu5s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yse28")
 text = "COMBAT"
 script = ExtResource("7_52kou")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2fhsy")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [connection signal="pressed" from="Button" to="Button3" method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="Button3" method="_on_button_2_pressed"]

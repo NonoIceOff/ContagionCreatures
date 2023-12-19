@@ -2,4 +2,4 @@ extends Sprite2D
 
 
 func take_damage(damage):
-	pass
+		get_node("/root/SceneCombat/AnimationPlayer").play("enemy_damaged") 

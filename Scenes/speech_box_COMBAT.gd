@@ -66,6 +66,9 @@ func handle_next_text():
 				get_node("/root/SceneCombat").turn = 1
 			elif get_node("/root/SceneCombat").turn == 2:
 				get_node("/root/SceneCombat").turn = 0
+				get_node("/root/SceneCombat/Button").disabled = false
+				get_node("/root/SceneCombat/Button2").disabled = false
+				get_node("/root/SceneCombat/Button3").disabled = false
 	else:
 		visible = false
 
