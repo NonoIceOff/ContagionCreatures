@@ -6,8 +6,8 @@ func _ready():
 	messages_container = get_node("ScrollContainer/VBoxContainer")
 
 func _on_send_pressed():
-	send_message(get_node("MessageEdit").text,"pseudodetest")
-	rpc("send_message", get_node("MessageEdit").text, "pseudotest")
+	send_message(get_node("MessageEdit").text,PlayerStats.pseudo)
+	rpc("send_message", get_node("MessageEdit").text, PlayerStats.pseudo)
 	get_node("MessageEdit").text = ""
 
 @rpc("any_peer")
@@ -30,3 +30,12 @@ func send_message(message,pseudo):
 	container.add_child(message_text)
 	
 	get_node("ScrollContainer").scroll_vertical = 99999999
+	
+	
+func _input(event):
+	if is_multiplayer_authority():
+		if Input.is_action_just_pressed("chat"):
+			if visible == true:
+				visible = false
+			elif visible == false:
+				visible = true
