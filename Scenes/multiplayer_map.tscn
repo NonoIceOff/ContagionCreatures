@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://by12wgmsbu4mv"]
+[gd_scene load_steps=23 format=3 uid="uid://by12wgmsbu4mv"]
 
 [ext_resource type="Script" path="res://Scenes/multiplayer_map.gd" id="1_s6imd"]
 [ext_resource type="Texture2D" uid="uid://8nsvs3b7eg6q" path="res://Textures/set.png" id="1_xcjj2"]
@@ -12,6 +12,7 @@
 [ext_resource type="StyleBox" uid="uid://dbawkfil8hb6o" path="res://Thème/button_pressed.tres" id="9_fcq30"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="9_gogn7"]
 [ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="12_1ajfc"]
+[ext_resource type="Script" path="res://Scenes/Chat.gd" id="13_aifik"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="13_c12uj"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="14_u1waa"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="15_qpnil"]
@@ -33819,12 +33820,73 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PlayerListLabel" type="RichTextLabel" parent="CanvasLayer/Stats"]
+[node name="Chat" type="Control" parent="CanvasLayer/Stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_aifik")
+
+[node name="MessageEdit" type="LineEdit" parent="CanvasLayer/Stats/Chat"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 1040.0
+offset_right = 360.0
+offset_bottom = 1064.0
+placeholder_text = "votre message"
+
+[node name="Send" type="Button" parent="CanvasLayer/Stats/Chat"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 1040.0
+offset_right = 504.0
+offset_bottom = 1064.0
+focus_mode = 0
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+text = "ENVOYER"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Stats/Chat"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 648.0
+offset_right = 512.0
+offset_bottom = 1024.0
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Stats/Chat/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 24
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Stats/Chat/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(480, 32)
+layout_mode = 2
+
+[node name="Pseudo" type="Label" parent="CanvasLayer/Stats/Chat/ScrollContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_top = -16.0
+offset_right = 96.0
+offset_bottom = 3.0
+text = "pseudo"
+
+[node name="Message" type="RichTextLabel" parent="CanvasLayer/Stats/Chat/ScrollContainer/VBoxContainer/Panel"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 856.0
-offset_right = 712.0
-offset_bottom = 951.0
+offset_top = 3.0
+offset_right = 480.0
+offset_bottom = 32.0
+bbcode_enabled = true
+text = "[color=gray]message de test omg"
+
+[node name="PlayerListLabel" type="RichTextLabel" parent="CanvasLayer/Stats"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 256.0
+offset_right = 736.0
+offset_bottom = 808.0
 mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -33844,10 +33906,10 @@ scroll_active = false
 
 [node name="ServerInfo" type="RichTextLabel" parent="CanvasLayer/Stats"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 952.0
-offset_right = 712.0
-offset_bottom = 1072.0
+offset_left = 40.0
+offset_top = 128.0
+offset_right = 744.0
+offset_bottom = 248.0
 mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -33901,4 +33963,5 @@ replication_config = SubResource("SceneReplicationConfig_rw7vh")
 [connection signal="pressed" from="CanvasLayer/MultiplayerSettings/JoinGame" to="." method="_on_join_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/MultiplayerSettings/HostGame" to="." method="_on_host_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/MultiplayerSettings/GlobalServer/JoinGlobalServer" to="." method="_on_join_global_server_pressed"]
+[connection signal="pressed" from="CanvasLayer/Stats/Chat/Send" to="CanvasLayer/Stats/Chat" method="_on_send_pressed"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
