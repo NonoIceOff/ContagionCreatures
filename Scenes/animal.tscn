@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ugyv3wsgciiw"]
+
+[ext_resource type="Script" path="res://Animal_follow.gd" id="1_nc1w6"]
+[ext_resource type="Texture2D" uid="uid://dklqcsx2x2pm2" path="res://Textures/Animals/CHICKEN.png" id="2_jsm3g"]
+
+[node name="Animal" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_nc1w6")
+
+[node name="Chicken" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_jsm3g")

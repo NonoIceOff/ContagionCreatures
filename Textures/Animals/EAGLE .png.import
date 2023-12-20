@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf1kqq5v63ewj"
-path="res://.godot/imported/EAGLE.png-f4fb4dbaaff7c590952fae41e3367335.ctex"
+uid="uid://bi5arnvq0e5ay"
+path="res://.godot/imported/EAGLE .png-34553587a2ca1c41d78b73b4289d19b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Animals/EAGLE.png"
-dest_files=["res://.godot/imported/EAGLE.png-f4fb4dbaaff7c590952fae41e3367335.ctex"]
+source_file="res://Textures/Animals/EAGLE .png"
+dest_files=["res://.godot/imported/EAGLE .png-34553587a2ca1c41d78b73b4289d19b7.ctex"]
 
 [params]
 
