@@ -74,12 +74,7 @@ func _process(delta):
 		turn = 2
 			
 		
-func boost_Attaque():
-	pass	
 
-
-func boost_Defense():
-	pass
 
 func enemy_turns():
 	if get_node_or_null("SpeechBox") != null:

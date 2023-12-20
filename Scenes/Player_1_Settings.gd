@@ -11,11 +11,11 @@ var ray : RayCast2D
 var offset_x = 0
 var offset_y = 0
 
-var idle = [ Vector2(42  +  offset_x, 701 +  offset_y),Vector2(36 +  offset_x , 7 +  offset_y),Vector2(36 +  offset_x , 475 + offset_y),  Vector2(42 + offset_x , 245 + offset_y)]
-var left = [Vector2(254 + offset_x , 246 + offset_y), Vector2(36 + offset_x , 245 + offset_y) ,Vector2(705 + offset_x , 246 + offset_y)]#, Vector2(705 +  offset_x , 245 +  offset_y)]
-var right = [Vector2(254 +  offset_x, 475 +  offset_y), Vector2(36 +  offset_x , 475 + offset_y), Vector2(716 +  offset_x , 479 +  offset_y)]#, Vector2(716 +  offset_x , 475 +  offset_y)]
-var up = [Vector2(259 +  offset_x , 701 +  offset_y),Vector2(42  +  offset_x, 701 +  offset_y), Vector2(716 +  offset_x , 701 +  offset_y)]#, Vector2(716 +  offset_x , 701 +  offset_y)]
-var down = [Vector2(254 +  offset_x , 7 +  offset_y), Vector2(36 +  offset_x , 7 +  offset_y), Vector2(705 +  offset_x , 7 +  offset_y)]#, Vector2(705 +  offset_x , 7 +  offset_y)]
+var idle = [ Vector2(29  +  offset_x, 382 +  offset_y),Vector2(29 +  offset_x , 20 +  offset_y),Vector2(29 +  offset_x , 263 + offset_y),  Vector2(29 + offset_x , 143 + offset_y)]
+var left = [Vector2(147 + offset_x , 143 + offset_y), Vector2(29 + offset_x , 143 + offset_y) ,Vector2(383 + offset_x , 143 + offset_y)]
+var right = [Vector2(147 +  offset_x, 263 +  offset_y), Vector2(29 +  offset_x , 263 + offset_y), Vector2(383 +  offset_x , 263 +  offset_y)]
+var up = [Vector2(147 +  offset_x , 382 +  offset_y),Vector2(29  +  offset_x, 382 +  offset_y), Vector2(383 +  offset_x , 382 +  offset_y)]
+var down = [Vector2(147 +  offset_x , 20 +  offset_y), Vector2(29 +  offset_x , 20 +  offset_y), Vector2(383 +  offset_x , 20 +  offset_y)]
 
 var i = 0
 var direction = 0
@@ -38,7 +38,7 @@ func _physics_process(delta):
 		velocity.x = 0	
 		velocity.y = -speed
 		move_and_slide()
-		get_node("01-generic2").region_rect = Rect2(up[i/10][0],up[i/10][1],180, 180)
+		get_node("01-generic2").region_rect = Rect2(up[i/10][0],up[i/10][1],100, 98)
 	elif Input.is_action_pressed("bas") or Input.is_action_pressed("ui_down"):
 		i += 1
 		direction = 1
@@ -47,7 +47,7 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.y = speed
 		move_and_slide()
-		get_node("01-generic2").region_rect = Rect2(down[i/10][0],down[i/10][1],180, 180)
+		get_node("01-generic2").region_rect = Rect2(down[i/10][0],down[i/10][1],100, 98)
 	elif Input.is_action_pressed("droite") or Input.is_action_pressed("ui_right"):
 		i += 1
 		direction = 2
@@ -56,7 +56,7 @@ func _physics_process(delta):
 		velocity.y = 0
 		velocity.x = speed
 		move_and_slide()
-		get_node("01-generic2").region_rect = Rect2(right[i/10][0],right[i/10][1],180, 180)
+		get_node("01-generic2").region_rect = Rect2(right[i/10][0],right[i/10][1],100, 98)
 	elif Input.is_action_pressed("gauche") or Input.is_action_pressed("ui_left"):
 		i += 1
 		direction = 3
@@ -65,9 +65,9 @@ func _physics_process(delta):
 		velocity.y = 0
 		velocity.x = -speed
 		move_and_slide()
-		get_node("01-generic2").region_rect = Rect2(left[i/10][0],left[i/10][1],180, 180)
+		get_node("01-generic2").region_rect = Rect2(left[i/10][0],left[i/10][1],100, 98)
 	else :
-		get_node("01-generic2").region_rect = Rect2(idle[direction][0],idle[direction][1],180, 180)
+		get_node("01-generic2").region_rect = Rect2(idle[direction][0],idle[direction][1],100, 98)
 	
 	
 	
