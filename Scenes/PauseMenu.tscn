@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://l8al11qi4ihv"]
+[gd_scene load_steps=9 format=3 uid="uid://dmcya0m8ga65q"]
 
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_8w1aj"]
 [ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="1_b5pbl"]
