@@ -103,3 +103,7 @@ func boost(i):
 
 
 
+
+
+func _Exit():
+	queue_free()
