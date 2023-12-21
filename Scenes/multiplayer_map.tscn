@@ -33698,130 +33698,6 @@ position = Vector2(200, 100)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MultiplayerSettings" type="Control" parent="CanvasLayer"]
-texture_filter = 1
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Panel" type="Panel" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_egqw6")
-
-[node name="Titre" type="Label" parent="CanvasLayer/MultiplayerSettings"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 0
-offset_top = 128.0
-offset_right = 1920.0
-offset_bottom = 256.0
-theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("8_1gx4e")
-theme_override_font_sizes/font_size = 64
-text = "MULTIJOUEUR"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("9_gogn7")
-
-[node name="TitreTriche" type="Label" parent="CanvasLayer/MultiplayerSettings/Titre"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("8_1gx4e")
-theme_override_font_sizes/font_size = 64
-text = "MULTIJOUEUR"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 316.0
-offset_right = 1568.0
-offset_bottom = 340.0
-
-[node name="Pseudo" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 337.0
-offset_right = 955.0
-offset_bottom = 377.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/focus = ExtResource("8_1qki2")
-placeholder_text = "PSEUDO"
-
-[node name="IpAddress" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 997.0
-offset_top = 337.0
-offset_right = 1525.0
-offset_bottom = 377.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/focus = ExtResource("8_1qki2")
-placeholder_text = "ADRESSE IP"
-
-[node name="JoinGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 424.0
-offset_top = 391.0
-offset_right = 1525.0
-offset_bottom = 431.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/hover = ExtResource("8_1qki2")
-theme_override_styles/pressed = ExtResource("9_fcq30")
-theme_override_styles/disabled = ExtResource("12_1ajfc")
-disabled = true
-text = "REJOINDRE SERVEUR"
-
-[node name="HostGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 280.0
-offset_right = 1525.0
-offset_bottom = 320.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/hover = ExtResource("8_1qki2")
-theme_override_styles/pressed = ExtResource("9_fcq30")
-theme_override_styles/disabled = ExtResource("12_1ajfc")
-text = "CREER SERVEUR"
-
-[node name="GlobalServer" type="Panel" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 1
-offset_left = 320.0
-offset_top = 824.0
-offset_right = 1600.0
-offset_bottom = 920.0
-
-[node name="Title" type="Label" parent="CanvasLayer/MultiplayerSettings/GlobalServer"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 888.0
-offset_bottom = 75.0
-theme_override_font_sizes/font_size = 48
-text = "serveur global"
-
-[node name="JoinGlobalServer" type="Button" parent="CanvasLayer/MultiplayerSettings/GlobalServer"]
-layout_mode = 0
-offset_left = 832.0
-offset_top = 21.0
-offset_right = 1248.0
-offset_bottom = 77.0
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/hover = ExtResource("8_1qki2")
-theme_override_styles/pressed = ExtResource("9_fcq30")
-theme_override_styles/disabled = ExtResource("12_1ajfc")
-text = "rejoindre"
-
 [node name="Stats" type="Control" parent="CanvasLayer"]
 texture_filter = 1
 layout_mode = 3
@@ -33901,6 +33777,124 @@ offset_bottom = 8.0
 theme_override_font_sizes/font_size = 12
 text = "0"
 
+[node name="MultiplayerSettings" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_egqw6")
+
+[node name="Titre" type="Label" parent="CanvasLayer/MultiplayerSettings"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_top = 128.0
+offset_right = 1920.0
+offset_bottom = 256.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("8_1gx4e")
+theme_override_font_sizes/font_size = 64
+text = "MULTIJOUEUR"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_gogn7")
+
+[node name="TitreTriche" type="Label" parent="CanvasLayer/MultiplayerSettings/Titre"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("8_1gx4e")
+theme_override_font_sizes/font_size = 64
+text = "MULTIJOUEUR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 280.0
+offset_right = 1525.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+text = "CREER SERVEUR"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 336.0
+offset_right = 1568.0
+offset_bottom = 360.0
+
+[node name="Pseudo" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 376.0
+offset_right = 955.0
+offset_bottom = 416.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/focus = ExtResource("8_1qki2")
+placeholder_text = "PSEUDO"
+
+[node name="IpAddress" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 376.0
+offset_right = 1525.0
+offset_bottom = 416.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/focus = ExtResource("8_1qki2")
+placeholder_text = "ADRESSE IP"
+
+[node name="JoinGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 430.0
+offset_right = 1525.0
+offset_bottom = 470.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+disabled = true
+text = "REJOINDRE SERVEUR"
+
+[node name="RefreshServerList" type="Button" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 1008.0
+offset_right = 1528.0
+offset_bottom = 1048.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+text = "RECHARGER LA LISTE"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 496.0
+offset_right = 1600.0
+offset_bottom = 1008.0
+
+[node name="ServerList" type="VBoxContainer" parent="CanvasLayer/MultiplayerSettings/ScrollContainer"]
+layout_mode = 2
+
 [node name="Chat" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -33952,6 +33946,7 @@ offset_bottom = 40.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Error"]
 modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
 offset_left = 256.0
 offset_top = 256.0
 offset_right = 1664.0
@@ -33972,6 +33967,7 @@ bbcode_enabled = true
 text = "[center][wave amp=50.0 freq=5.0 connected=1]ERREUR[/wave]"
 
 [node name="Errorok" type="Button" parent="CanvasLayer/Error/Panel"]
+layout_mode = 0
 offset_left = 320.0
 offset_top = 456.0
 offset_right = 1088.0
@@ -33990,9 +33986,9 @@ spawn_path = NodePath("..")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_rw7vh")
 
-[connection signal="pressed" from="CanvasLayer/MultiplayerSettings/JoinGame" to="." method="_on_join_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/MultiplayerSettings/HostGame" to="." method="_on_host_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/MultiplayerSettings/GlobalServer/JoinGlobalServer" to="." method="_on_join_global_server_pressed"]
+[connection signal="pressed" from="CanvasLayer/MultiplayerSettings/JoinGame" to="." method="_on_join_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/MultiplayerSettings/RefreshServerList" to="." method="_on_refresh_server_list_pressed"]
 [connection signal="pressed" from="CanvasLayer/Chat/Send" to="CanvasLayer/Chat" method="_on_send_pressed"]
 [connection signal="pressed" from="CanvasLayer/Error/Panel/Errorok" to="." method="_on_errorok_pressed"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

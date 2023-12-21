@@ -115,11 +115,11 @@ func _physics_process(_delta):
 	elif hoster == 1:
 		if Input.is_action_pressed("haut") or Input.is_action_pressed("ui_up"):
 			get_node("Camera2D").position.y -= 4*zoom_multiplier
-		if Input.is_action_pressed("down") or Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("bas") or Input.is_action_pressed("ui_down"):
 			get_node("Camera2D").position.y += 4*zoom_multiplier
-		if Input.is_action_pressed("left") or Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("gauche") or Input.is_action_pressed("ui_left"):
 			get_node("Camera2D").position.x -= 4*zoom_multiplier
-		if Input.is_action_pressed("right") or Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("droite") or Input.is_action_pressed("ui_right"):
 			get_node("Camera2D").position.x += 4*zoom_multiplier
 			
 func _input(event):
