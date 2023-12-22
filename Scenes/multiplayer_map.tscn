@@ -33873,6 +33873,7 @@ disabled = true
 text = "REJOINDRE SERVEUR"
 
 [node name="RefreshServerList" type="Button" parent="CanvasLayer/MultiplayerSettings"]
+visible = false
 layout_mode = 0
 offset_left = 427.0
 offset_top = 1008.0

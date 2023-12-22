@@ -29,7 +29,7 @@ func _ready():
 	enet_peer.connect("peer_disconnected", Callable(self, "_on_peer_disconnected"))
 	enet_peer.connect("peer_connected", Callable(self, "_on_peer_connected"))
 	
-	refresh_server_list()
+	#refresh_server_list()
 
 func refresh_server_list():
 	var result = get_node("CanvasLayer/MultiplayerSettings/ScrollContainer/ServerList")
@@ -90,7 +90,7 @@ func spawn_server(i):
 func if_server_exists(i):
 	#get_node("CanvasLayer/MultiplayerSettings/IpAddress").text = str("10.57.32.114")
 	if address_entry.text != "":
-		enet_peer.create_client(str("10.57.32.114"), PORT)
+		enet_peer.create_client(server_list[i]["ip"], PORT)
 		multiplayer.multiplayer_peer = enet_peer
 
 
@@ -112,7 +112,7 @@ func _process(_delta):
 	else:
 		get_node("CanvasLayer/MultiplayerSettings/JoinGame").disabled = true
 		
-	var server_address = IP.get_local_addresses()[3]
+	var server_address = IP.get_local_addresses()[5]
 	get_node("CanvasLayer/Stats/ServerInfo").text = "[rainbow freq=0.05][b]INFO DU SERVEUR :[/b][/rainbow]\n[font_size=16]Ip du serveur: [font=res://Font/Inter-Medium.ttf]" + str(server_address) + "[/font]\nJoueurs: [font=res://Font/Inter-Medium.ttf]" + str(multiplayer.get_peers().size() + 1) + "[/font][/font_size]"
 	
 	for i in server_list:
@@ -121,7 +121,6 @@ func _process(_delta):
 				main_menu.hide()
 				stats.hide()
 				chat.show()
-
 				enet_peer.create_client(server_list[i]["ip"], PORT)
 				multiplayer.multiplayer_peer = enet_peer
 				if enet_peer.get_connection_status() == 0:
@@ -179,7 +178,6 @@ func _on_host_game_pressed():
 	multiplayer.peer_disconnected.connect(remove_player)
 	multiplayer.peer_connected.connect(add_player)
 	add_player(multiplayer.get_unique_id(),"serveur")
-	print(stats.visible)
 
 
 func _on_join_global_server_pressed():
@@ -199,7 +197,6 @@ func _on_peer_connected(id):
 	if testing == 1:
 		is_connected_testing = true
 		multiplayer.multiplayer_peer = null
-		enet_peer = ENetMultiplayerPeer.new()
 
 
 func _on_errorok_pressed():
