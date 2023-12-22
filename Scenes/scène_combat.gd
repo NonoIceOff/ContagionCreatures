@@ -47,6 +47,10 @@ var texts_end = {
 	},
 }
 
+func _ready():
+	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
+	await get_tree().create_timer(0.05).timeout
+
 func spawn_dialogue(custom_texts):
 	var dialogue = speechbox.instantiate()
 	dialogue.position = Vector2(0,-380)
