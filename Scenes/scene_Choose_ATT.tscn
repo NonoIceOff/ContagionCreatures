@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcdv8bafc05hd"]
+[gd_scene load_steps=5 format=3 uid="uid://dcdv8bafc05hd"]
 
 [ext_resource type="Script" path="res://Scenes/ATK_Combat.gd" id="1_vi82x"]
+[ext_resource type="Texture2D" uid="uid://dp5pxuyx1t8of" path="res://Textures/Cross_Close.png" id="2_20sba"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xx6yp"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_miolq"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="All-Case1" type="Node2D"]
 script = ExtResource("1_vi82x")
@@ -13,3 +38,20 @@ color = Color(0, 0, 0, 0.345098)
 [node name="Button" type="Button" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 1591.0
+offset_top = 129.0
+offset_right = 1691.0
+offset_bottom = 229.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_xx6yp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_miolq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Button2"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(47, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("2_20sba")
+
+[connection signal="pressed" from="Button2" to="." method="_Exit"]
