@@ -1,8 +1,5 @@
 extends Node2D
 
-var antidote 
-
-
 func button_Item():
 	queue_free()
 
@@ -89,6 +86,12 @@ func take_damage(item):
 			
 	if item["type"][0] == "atk":
 		boost(item["type"][1])
+
+	if item["type"][0] == "def":
+		boost(item["type"][1])
+		
+	if item["type"][0] == "antidote":
+		use_antidote()
 			
 	get_node("/root/SceneCombat").spawn_dialogue(texts)
 	get_node("/root/SceneCombat").pv_enemy -= item["value"]
@@ -101,7 +104,8 @@ func boost(i):
 		Global.attacks[key]["value"] *= i
 		Global.attacks[key]["boost"] += int(i*100-100)
 
-
+func use_antidote():
+	texts[0]["text"] = "Vous utilisez l'antidote, en esperant que cela marche"
 
 
 
