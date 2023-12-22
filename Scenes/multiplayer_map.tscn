@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://by12wgmsbu4mv"]
+[gd_scene load_steps=24 format=3 uid="uid://by12wgmsbu4mv"]
 
 [ext_resource type="Script" path="res://Scenes/multiplayer_map.gd" id="1_s6imd"]
 [ext_resource type="Texture2D" uid="uid://8nsvs3b7eg6q" path="res://Textures/set.png" id="1_xcjj2"]
@@ -12,6 +12,7 @@
 [ext_resource type="StyleBox" uid="uid://dbawkfil8hb6o" path="res://Thème/button_pressed.tres" id="9_fcq30"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="9_gogn7"]
 [ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="12_1ajfc"]
+[ext_resource type="Script" path="res://Scenes/Chat.gd" id="13_aifik"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="13_c12uj"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="14_u1waa"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="15_qpnil"]
@@ -33556,6 +33557,9 @@ size = Vector2(46, 45)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egqw6"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kikdn"]
+bg_color = Color(0.368627, 0, 0, 1)
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rw7vh"]
 properties/0/path = NodePath("CanvasLayer/PlayerListLabel:text")
 properties/0/spawn = true
@@ -33694,124 +33698,6 @@ position = Vector2(200, 100)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MultiplayerSettings" type="Control" parent="CanvasLayer"]
-texture_filter = 1
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Panel" type="Panel" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_egqw6")
-
-[node name="Titre" type="Label" parent="CanvasLayer/MultiplayerSettings"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 0
-offset_top = 128.0
-offset_right = 1920.0
-offset_bottom = 256.0
-theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("8_1gx4e")
-theme_override_font_sizes/font_size = 64
-text = "MULTIJOUEUR"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("9_gogn7")
-
-[node name="TitreTriche" type="Label" parent="CanvasLayer/MultiplayerSettings/Titre"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("8_1gx4e")
-theme_override_font_sizes/font_size = 64
-text = "MULTIJOUEUR"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Pseudo" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 257.0
-offset_right = 955.0
-offset_bottom = 297.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/focus = ExtResource("8_1qki2")
-placeholder_text = "PSEUDO"
-
-[node name="IpAddress" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 997.0
-offset_top = 257.0
-offset_right = 1525.0
-offset_bottom = 297.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/focus = ExtResource("8_1qki2")
-placeholder_text = "ADRESSE IP"
-
-[node name="JoinGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 997.0
-offset_top = 311.0
-offset_right = 1525.0
-offset_bottom = 351.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/hover = ExtResource("8_1qki2")
-theme_override_styles/pressed = ExtResource("9_fcq30")
-theme_override_styles/disabled = ExtResource("12_1ajfc")
-disabled = true
-text = "REJOINDRE SERVEUR"
-
-[node name="HostGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 311.0
-offset_right = 955.0
-offset_bottom = 351.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/hover = ExtResource("8_1qki2")
-theme_override_styles/pressed = ExtResource("9_fcq30")
-theme_override_styles/disabled = ExtResource("12_1ajfc")
-disabled = true
-text = "CREER SERVEUR"
-
-[node name="GlobalServer" type="Panel" parent="CanvasLayer/MultiplayerSettings"]
-layout_mode = 1
-offset_left = 320.0
-offset_top = 447.0
-offset_right = 1600.0
-offset_bottom = 543.0
-
-[node name="Title" type="Label" parent="CanvasLayer/MultiplayerSettings/GlobalServer"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 888.0
-offset_bottom = 75.0
-theme_override_font_sizes/font_size = 48
-text = "serveur global"
-
-[node name="JoinGlobalServer" type="Button" parent="CanvasLayer/MultiplayerSettings/GlobalServer"]
-layout_mode = 0
-offset_left = 832.0
-offset_top = 21.0
-offset_right = 1248.0
-offset_bottom = 77.0
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("7_843da")
-theme_override_styles/hover = ExtResource("8_1qki2")
-theme_override_styles/pressed = ExtResource("9_fcq30")
-theme_override_styles/disabled = ExtResource("12_1ajfc")
-text = "rejoindre"
-
 [node name="Stats" type="Control" parent="CanvasLayer"]
 texture_filter = 1
 layout_mode = 3
@@ -33821,10 +33707,10 @@ offset_bottom = 40.0
 
 [node name="PlayerListLabel" type="RichTextLabel" parent="CanvasLayer/Stats"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 856.0
-offset_right = 712.0
-offset_bottom = 951.0
+offset_left = 32.0
+offset_top = 256.0
+offset_right = 736.0
+offset_bottom = 808.0
 mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -33844,10 +33730,10 @@ scroll_active = false
 
 [node name="ServerInfo" type="RichTextLabel" parent="CanvasLayer/Stats"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 952.0
-offset_right = 712.0
-offset_bottom = 1072.0
+offset_left = 40.0
+offset_top = 128.0
+offset_right = 744.0
+offset_bottom = 248.0
 mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -33891,6 +33777,209 @@ offset_bottom = 8.0
 theme_override_font_sizes/font_size = 12
 text = "0"
 
+[node name="MultiplayerSettings" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_egqw6")
+
+[node name="Titre" type="Label" parent="CanvasLayer/MultiplayerSettings"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_top = 128.0
+offset_right = 1920.0
+offset_bottom = 256.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("8_1gx4e")
+theme_override_font_sizes/font_size = 64
+text = "MULTIJOUEUR"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_gogn7")
+
+[node name="TitreTriche" type="Label" parent="CanvasLayer/MultiplayerSettings/Titre"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("8_1gx4e")
+theme_override_font_sizes/font_size = 64
+text = "MULTIJOUEUR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 280.0
+offset_right = 1525.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+text = "CREER SERVEUR"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 336.0
+offset_right = 1568.0
+offset_bottom = 360.0
+
+[node name="Pseudo" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 376.0
+offset_right = 955.0
+offset_bottom = 416.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/focus = ExtResource("8_1qki2")
+placeholder_text = "PSEUDO"
+
+[node name="IpAddress" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 376.0
+offset_right = 1525.0
+offset_bottom = 416.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/focus = ExtResource("8_1qki2")
+placeholder_text = "ADRESSE IP"
+
+[node name="JoinGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 430.0
+offset_right = 1525.0
+offset_bottom = 470.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+disabled = true
+text = "REJOINDRE SERVEUR"
+
+[node name="RefreshServerList" type="Button" parent="CanvasLayer/MultiplayerSettings"]
+visible = false
+layout_mode = 0
+offset_left = 427.0
+offset_top = 1008.0
+offset_right = 1528.0
+offset_bottom = 1048.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+text = "RECHARGER LA LISTE"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 496.0
+offset_right = 1600.0
+offset_bottom = 1008.0
+
+[node name="ServerList" type="VBoxContainer" parent="CanvasLayer/MultiplayerSettings/ScrollContainer"]
+layout_mode = 2
+
+[node name="Chat" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_aifik")
+
+[node name="MessageEdit" type="LineEdit" parent="CanvasLayer/Chat"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 1040.0
+offset_right = 360.0
+offset_bottom = 1064.0
+placeholder_text = "Votre message..."
+
+[node name="Send" type="Button" parent="CanvasLayer/Chat"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 1040.0
+offset_right = 504.0
+offset_bottom = 1064.0
+focus_mode = 0
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+text = "ENVOYER"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Chat"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 648.0
+offset_right = 512.0
+offset_bottom = 1024.0
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Chat/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 24
+
+[node name="Error" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Error"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 1664.0
+offset_bottom = 824.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kikdn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Error/Panel"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 1408.0
+offset_bottom = 448.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
+text = "[center][wave amp=50.0 freq=5.0 connected=1]ERREUR[/wave]"
+
+[node name="Errorok" type="Button" parent="CanvasLayer/Error/Panel"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 456.0
+offset_right = 1088.0
+offset_bottom = 516.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_843da")
+theme_override_styles/hover = ExtResource("8_1qki2")
+theme_override_styles/pressed = ExtResource("9_fcq30")
+theme_override_styles/disabled = ExtResource("12_1ajfc")
+text = "c'est bon pour moi"
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Player_Multiplayer.tscn")
 spawn_path = NodePath("..")
@@ -33898,7 +33987,9 @@ spawn_path = NodePath("..")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_rw7vh")
 
-[connection signal="pressed" from="CanvasLayer/MultiplayerSettings/JoinGame" to="." method="_on_join_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/MultiplayerSettings/HostGame" to="." method="_on_host_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/MultiplayerSettings/GlobalServer/JoinGlobalServer" to="." method="_on_join_global_server_pressed"]
+[connection signal="pressed" from="CanvasLayer/MultiplayerSettings/JoinGame" to="." method="_on_join_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/MultiplayerSettings/RefreshServerList" to="." method="_on_refresh_server_list_pressed"]
+[connection signal="pressed" from="CanvasLayer/Chat/Send" to="CanvasLayer/Chat" method="_on_send_pressed"]
+[connection signal="pressed" from="CanvasLayer/Error/Panel/Errorok" to="." method="_on_errorok_pressed"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
