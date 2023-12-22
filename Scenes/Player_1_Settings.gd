@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 250
+var speed = 320
 
 
 const FLOOR_NORMAL = Vector2(0,-1)
@@ -8,10 +8,6 @@ var ray : RayCast2D
 signal interact_pressed
 
 const TILE_SIZE = 16
-
-
-
-
 
 var offset_x = 0
 var offset_y = 0
@@ -25,13 +21,8 @@ var down = [Vector2(147 +  offset_x , 20 +  offset_y), Vector2(29 +  offset_x , 
 var i = 0
 var direction = 0
 
-
-
-
-func _ready(): 
-	ray = $RayCast2D
 	
-
+	
 
 
 func _physics_process(delta):
@@ -74,9 +65,7 @@ func _physics_process(delta):
 		get_node("01-generic2").region_rect = Rect2(left[i/10][0],left[i/10][1],100, 98)
 	else :
 		get_node("01-generic2").region_rect = Rect2(idle[direction][0],idle[direction][1],100, 98)
-
-
-#func _process(delta):
-	#if Input.is_action_just_pressed("ui_interact"):
-		#emit_signal("interact_pressed")
-		
+	
+	
+	
+	

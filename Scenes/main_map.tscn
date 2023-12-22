@@ -1,18 +1,29 @@
-[gd_scene load_steps=16 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=21 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
 [ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="1_rsrte"]
 [ext_resource type="PackedScene" uid="uid://clft6l0mv78bv" path="res://Scenes/animal.tscn" id="3_46rw2"]
 [ext_resource type="Texture2D" uid="uid://ckpe2pm4ddggs" path="res://Textures/Old_guy_who_lost_is_crampté_REAL.png" id="3_r3b5t"]
+[ext_resource type="Script" path="res://Scenes/InteractArea.gd" id="4_yqkqc"]
 [ext_resource type="Texture2D" uid="uid://blo1a6breprsw" path="res://Textures/Head-old-Guy-REAL.png" id="5_f74um"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="6_7grfu"]
 [ext_resource type="Script" path="res://Scenes/Detected_player.gd" id="7_5catn"]
+[ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="7_ch8cw"]
 [ext_resource type="Texture2D" uid="uid://dygmeeyh8svxo" path="res://Textures/headMOB.png" id="7_m7315"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="8_fbofd"]
+[ext_resource type="PackedScene" uid="uid://dxt5b5tantpyy" path="res://Scenes/PauseMenu.tscn" id="9_roibj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qsd3"]
 size = Vector2(46, 45)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rep1"]
+radius = 85.21
+
+[sub_resource type="LabelSettings" id="LabelSettings_78oor"]
+font_size = 36
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dwij"]
 size = Vector2(20, 18.5)
@@ -131,31 +142,49 @@ layer_13/tile_data = PackedInt32Array(1703994, 3997701, 5, 1769530, 3997701, 6, 
 
 [node name="Animal" parent="." instance=ExtResource("3_46rw2")]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="InteractArea" type="Area2D" parent="."]
+position = Vector2(1448, 291)
+script = ExtResource("4_yqkqc")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="InteractArea"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(1422, 300)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea/CharacterBody2D"]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_1qsd3")
 
-[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="CharacterBody2D"]
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="InteractArea/CharacterBody2D"]
 z_index = -1
 position = Vector2(0, 3)
 scale = Vector2(3.7, 3.7)
 texture = ExtResource("3_r3b5t")
 
-[node name="Head-old-guy-real" type="Sprite2D" parent="CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
+[node name="Head-old-guy-real" type="Sprite2D" parent="InteractArea/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
 z_index = 10
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("5_f74um")
 
-[node name="Player_One" parent="." instance=ExtResource("1_1k8th")]
-z_index = 5
-position = Vector2(1424, 448)
-scale = Vector2(1.5, 1.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_8rep1")
+
+[node name="Trigger" type="Sprite2D" parent="InteractArea"]
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("7_ch8cw")
+
+[node name="Interact" type="Label" parent="InteractArea"]
+offset_left = -83.0
+offset_top = -18.0
+offset_right = 25.0
+offset_bottom = 32.0
+scale = Vector2(0.4, 0.6)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_78oor")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="MobPNJ" type="CharacterBody2D" parent="."]
 
@@ -221,6 +250,18 @@ label_settings = SubResource("LabelSettings_rqygx")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("8_fbofd")]
+
+[node name="Player_One" parent="." instance=ExtResource("1_1k8th")]
+z_index = 5
+position = Vector2(1424, 448)
+scale = Vector2(1.5, 1.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player_One"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player_One/Camera2D"]
+
+[node name="PauseMenu" parent="Player_One/Camera2D/CanvasLayer" instance=ExtResource("9_roibj")]
+visible = false
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_Zone_Entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_Zone_Exit"]

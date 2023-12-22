@@ -112,7 +112,7 @@ func _process(_delta):
 	else:
 		get_node("CanvasLayer/MultiplayerSettings/JoinGame").disabled = true
 		
-	var server_address = IP.get_local_addresses()[5]
+	var server_address = IP.get_local_addresses()[3]
 	get_node("CanvasLayer/Stats/ServerInfo").text = "[rainbow freq=0.05][b]INFO DU SERVEUR :[/b][/rainbow]\n[font_size=16]Ip du serveur: [font=res://Font/Inter-Medium.ttf]" + str(server_address) + "[/font]\nJoueurs: [font=res://Font/Inter-Medium.ttf]" + str(multiplayer.get_peers().size() + 1) + "[/font][/font_size]"
 	
 	for i in server_list:

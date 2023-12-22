@@ -1,5 +1,8 @@
 extends Node
 
+var interact = false
+var trigger = true
+
 var items = {
 	1: {
 		"name":"Antidote",

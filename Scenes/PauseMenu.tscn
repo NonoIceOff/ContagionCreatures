@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxt5b5tantpyy"]
+
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_8w1aj"]
+[ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="1_b5pbl"]
+[ext_resource type="Script" path="res://Scenes/Titre.gd" id="2_bw7xx"]
+[ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="6_2265r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sld6"]
+bg_color = Color(0.654902, 0.298039, 0.160784, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kl7q8"]
+bg_color = Color(0.654902, 0.298039, 0.14902, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gy2gr"]
+bg_color = Color(0.717647, 0.203922, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtbag"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.294118, 0.580392, 0.643137, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+
+[node name="PauseMenu" type="Node2D"]
+script = ExtResource("1_b5pbl")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1078.0
+rotation = -0.000253658
+color = Color(0, 0, 0, 0.623529)
+metadata/_edit_use_anchors_ = true
+
+[node name="Titre" type="Label" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_left = 0.0324683
+offset_top = 128.0
+offset_right = 1920.03
+offset_bottom = 256.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_8w1aj")
+theme_override_font_sizes/font_size = 64
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_bw7xx")
+
+[node name="TitreTriche" type="Label" parent="Titre"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("1_8w1aj")
+theme_override_font_sizes/font_size = 64
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reprendre" type="Button" parent="."]
+offset_left = 640.0
+offset_top = 400.0
+offset_right = 1277.0
+offset_bottom = 516.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_8w1aj")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2sld6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kl7q8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
+text = "REPRENDRE"
+
+[node name="Paramètres" type="Button" parent="."]
+offset_left = 640.0
+offset_top = 600.0
+offset_right = 1277.0
+offset_bottom = 716.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_8w1aj")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2sld6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kl7q8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
+text = "PARAMETRES"
+
+[node name="Quitter" type="Button" parent="."]
+offset_left = 640.0
+offset_top = 800.0
+offset_right = 1277.0
+offset_bottom = 916.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_8w1aj")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2sld6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kl7q8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
+text = "QUITTER"
+
+[node name="Duck" type="Sprite2D" parent="."]
+position = Vector2(1357.4, 282.188)
+scale = Vector2(1.26561, 1.26075)
+texture = ExtResource("6_2265r")
+
+[node name="Bubble" type="Panel" parent="."]
+offset_left = 1432.4
+offset_top = 113.187
+offset_right = 1874.4
+offset_bottom = 235.188
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_gtbag")
+
+[node name="Texte" type="Label" parent="Bubble"]
+layout_mode = 0
+offset_top = -6.0
+offset_right = 448.0
+offset_bottom = 122.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_8w1aj")
+theme_override_font_sizes/font_size = 35
+text = "DO YOU WANT
+A MOJIRO?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Reprendre" to="." method="_on_reprendre_pressed"]
+[connection signal="pressed" from="Paramètres" to="." method="_on_paramètres_pressed"]
+[connection signal="pressed" from="Quitter" to="." method="_on_quitter_pressed"]
