@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cv33vxrhul0da"]
 
-[ext_resource type="Script" path="res://Scenes/Ok.gd" id="1_j3ftm"]
+[ext_resource type="Script" path="res://Scenes/ok.gd" id="1_j3ftm"]
 [ext_resource type="Script" path="res://Scenes/controls.gd" id="1_nskhi"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_wbdo4"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="2_tuees"]

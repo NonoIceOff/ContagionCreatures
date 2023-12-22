@@ -4,7 +4,6 @@ extends Node2D
 @onready var global_vars = get_node("/root/Global")
 var paused = false
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("échap"):
