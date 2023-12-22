@@ -100,3 +100,7 @@ func take_damage(attack):
 	
 
 
+
+
+func _Exit():
+	queue_free()
