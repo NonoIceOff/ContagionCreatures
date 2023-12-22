@@ -57,6 +57,7 @@ scale = Vector2(1.5, 1.5)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("4_x4j5m")]
+mouse_filter = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("5_so67a")

@@ -207,14 +207,14 @@ position = Vector2(288, 1242)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_6dwij")
 
-[node name="AreaEnnemy1" type="Area2D" parent="MobPNJ"]
+[node name="Area2D" type="Area2D" parent="MobPNJ"]
 position = Vector2(288.001, 1242)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MobPNJ/AreaEnnemy1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobPNJ/Area2D"]
 position = Vector2(-0.00100708, 0)
 shape = SubResource("RectangleShape2D_5epny")
 
-[node name="Label_E_ennemy" type="Label" parent="MobPNJ/AreaEnnemy1"]
+[node name="Label" type="Label" parent="MobPNJ/Area2D"]
 visible = false
 texture_filter = 1
 texture_repeat = 1
@@ -224,18 +224,17 @@ offset_right = 79.999
 offset_bottom = -23.0
 text = "[ E ]"
 
-[node name="AreaHome" type="Area2D" parent="MobPNJ"]
+[node name="Area2D" type="Area2D" parent="."]
 position = Vector2(1628, 278)
 scale = Vector2(2, 2)
 script = ExtResource("7_5catn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MobPNJ/AreaHome"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = 2
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_36crv")
 
-[node name="Label_E_Home" type="Label" parent="MobPNJ/AreaHome"]
-visible = false
+[node name="Label_E" type="Label" parent="Area2D"]
 z_index = 7
 texture_filter = 1
 texture_repeat = 1
@@ -251,7 +250,6 @@ label_settings = SubResource("LabelSettings_rqygx")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("8_fbofd")]
-mouse_filter = 2
 
 [node name="Player_One" parent="." instance=ExtResource("1_1k8th")]
 z_index = 5
@@ -265,7 +263,5 @@ scale = Vector2(1.5, 1.5)
 [node name="PauseMenu" parent="Player_One/Camera2D/CanvasLayer" instance=ExtResource("9_roibj")]
 visible = false
 
-[connection signal="body_entered" from="MobPNJ/AreaEnnemy1" to="." method="_on_area_ennemy_1_body_entered"]
-[connection signal="body_exited" from="MobPNJ/AreaEnnemy1" to="." method="_on_area_ennemy_1_body_exited"]
-[connection signal="body_entered" from="MobPNJ/AreaHome" to="MobPNJ/AreaHome" method="_Zone_Entered"]
-[connection signal="body_exited" from="MobPNJ/AreaHome" to="MobPNJ/AreaHome" method="_Zone_Exit"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_Zone_Entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_Zone_Exit"]
