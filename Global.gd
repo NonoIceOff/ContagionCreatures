@@ -2,6 +2,41 @@ extends Node
 
 var interact = false
 var trigger = true
+var is_infected = true
+var can_desinfected = false
+var canUse_antidote = true
+
+var animals_player = {
+	
+	1: {
+		"name":"GentleDuck",
+		"infected": false,
+		"type":"[Écho,Relique,Prisme,Essence,Totem]",
+		"effets":"+6% d'ATK et DEF pour le player si l'arme est du même type",
+		"texture":"res://Textures/DonaldDuck.png"
+	},
+	2: {
+		"name":"Deagle",
+		"infected": false,
+		"type":"[Écho,Relique,Prisme,Essence,Totem]",
+		"effets":"+10% de DEF pour le player si l'arme est du même type",
+		"texture":"res://Textures/Animals/EAGLE_.png"
+	},
+	3: {
+		"name":"Froggy",
+		"infected": false,
+		"type":"[Écho,Relique,Prisme,Essence,Totem]",
+		"effets":"+3% d'ATK pour le player si l'arme est du même type",
+		"texture":"res://Textures/Animals/FROG.png"
+	},
+	4: {
+		"name":"Leonard",
+		"infected": false,
+		"type":"[Écho,Relique,Prisme,Essence,Totem]",
+		"effets":"+20 pv à chaque tours pour le player si l'arme est du même type",
+		"texture":"res://Textures/Animals/DRAGON.png"
+	},
+}
 
 var items = {
 	1: {

@@ -91,7 +91,7 @@ func take_damage(item):
 		boost(item["type"][1])
 		
 	if item["type"][0] == "antidote":
-		use_antidote()
+		infected()
 			
 	get_node("/root/SceneCombat").spawn_dialogue(texts)
 	get_node("/root/SceneCombat").pv_enemy -= item["value"]
@@ -104,10 +104,46 @@ func boost(i):
 		Global.attacks[key]["value"] *= i
 		Global.attacks[key]["boost"] += int(i*100-100)
 
+
+
+func infected():
+	Global.can_desinfected = false
+	Global.is_infected = true
+	if get_node("/root/SceneCombat").pv_enemy < 20 and Global.is_infected:
+		Global.can_desinfected = true
+		Global.canUse_antidote = true
+		use_antidote()
+		
+
+		
+
 func use_antidote():
-	texts[0]["text"] = "Vous utilisez l'antidote, en esperant que cela marche"
-
-
+	var chance = randi_range(0,100)
+	var animal_infected = get_node("/root/SceneCombat/ContainerMob/Creatures/Animal_infected")
+	var animal_disinfected = get_node("/root/SceneCombat/ContainerMob/Creatures/Animal_disinfected")
+	var button_disabled = get_node("/root/SceneCombat/Node2D/1")
+	if get_node_or_null("/root/SceneCombat/ContainerMob/Creatures/Animal_infected") != null:
+		if chance < 80:
+			
+			print("jejejej")
+			button_disabled.disabled = true
+			
+			animal_disinfected.visible = false
+			animal_infected.visible = true
+			
+			animal_infected.queue_free()
+			texts[0]["text"] = "Vous utilisez l'antidote!"
+			
+			
+			Global.canUse_antidote = false
+			Global.is_infected = false
+			
+			animal_disinfected.visible = true
+			animal_infected.visible = false
+			
+		else:
+			animal_infected.visible = true
+			animal_disinfected.visible = false
 
 func _Exit():
 	queue_free()
