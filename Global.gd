@@ -60,3 +60,13 @@ var attacks = {
 		"texture":"res://Textures/Items/POELE.png"
 	},
 }
+
+var quests = {
+	0: {
+		"title":"Parchemin perdu",
+		"long_description":"Vous pénétrez dans la modeste demeure du vieux sage, un érudit respecté de tous dans le royaume. Sa longue barbe blanche et ses yeux sages vous fixent avec bienveillance alors qu'il vous confie une quête d'une importance capitale.
+			\nAinsi, votre aventure débute. Vous partez à la recherche de ce parchemin, bravant des dangers inconnus, explorant des contrées reculées et affrontant des créatures mythiques. La destinée du royaume dépend de votre réussite. Que la chance accompagne vos pas, brave aventurier !",
+		"description":"Allez voir le vieux, il vous demandera de chercher un parchemin sacre.",
+		"pin_position":Vector2(1448,291)
+	}
+}
