@@ -70,3 +70,57 @@ var quests = {
 		"pin_position":Vector2(1448,291)
 	}
 }
+
+func save():
+	var save_file = ConfigFile.new()
+	
+	save_file.set_value("Values", "items", items)
+	save_file.set_value("Values", "attacks", attacks)
+	save_file.set_value("Quests", "infos", quests)
+	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
+		save_file.set_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
+		save_file.set_value("Quests", "radar_enabled", true)
+	else:
+		save_file.set_value("Quests", "radar_position", Vector2(0,0))
+		save_file.set_value("Quests", "radar_enabled", false)
+	save_file.set_value("Player", "pseudo", PlayerStats.pseudo)
+	save_file.set_value("Player", "health", PlayerStats.health)
+	save_file.set_value("Player", "skin", PlayerStats.skin)
+	save_file.set_value("Player", "level", PlayerStats.level)
+	save_file.set_value("Player", "monnaie", PlayerStats.monnaie)
+	if get_node_or_null("/root/main_map/Player_One") != null:
+		save_file.set_value("Player", "position", get_node("/root/main_map/Player_One").position)
+	else:
+		var load_file = ConfigFile.new()
+		load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
+		save_file.set_value("Player", "position", load_file.get_value("Player", "position"))
+	save_file.set_value("Animals", "id_affected", PlayerStats.animal_id)
+	save_file.set_value("Animals", "health", PlayerStats.animal_health)
+	save_file.set_value("Animals", "level", PlayerStats.animal_level)
+
+	save_file.save_encrypted_pass("user://save.txt", "gentle_duck")
+	
+func load():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
+	items = load_file.get_value("Quests", "infos", items)
+	attacks = load_file.get_value("Values", "attacks", attacks)
+	quests = load_file.get_value("Quests", "infos", quests)
+	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
+		get_node("/root/main_map/CanvasLayer/Minimap").pin = load_file.get_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
+		load_file.get_value("Quests", "radar_enabled", true)
+	PlayerStats.pseudo = load_file.get_value("Player", "pseudo", PlayerStats.pseudo)
+	PlayerStats.health = load_file.get_value("Player", "health", PlayerStats.health)
+	PlayerStats.skin = load_file.get_value("Player", "skin", PlayerStats.skin)
+	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
+	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
+	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", get_node("/root/main_map/Player_One").position)
+	PlayerStats.animal_id = load_file.get_value("Animals", "id_affected", PlayerStats.animal_id)
+	PlayerStats.animal_health = load_file.get_value("Animals", "health", PlayerStats.animal_health)
+	PlayerStats.animal_level = load_file.get_value("Animals", "level", PlayerStats.animal_level)
+
+
+func load_position():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
+	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", get_node("/root/main_map/Player_One").position)
