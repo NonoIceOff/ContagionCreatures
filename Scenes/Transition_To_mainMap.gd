@@ -24,6 +24,7 @@ func _on_body_exited(body):
 func _process(delta):
 	if entered == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"):
+			Global.save()
 			Key = true
 			get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 			print("pou")

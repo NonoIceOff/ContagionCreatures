@@ -24,6 +24,7 @@ func _Zone_Exit(body):
 func _process(delta):
 	if entered == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"): #and $Collision_Home.is_in_group("Player_One"):
+			Global.save()
 			Key = true
 			get_node("/root/main_map/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 			print("pou")
