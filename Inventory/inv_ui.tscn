@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://3dl6hqqqel25"]
+[gd_scene load_steps=3 format=3 uid="uid://3dl6hqqqel25"]
 
 [ext_resource type="Script" path="res://Inventory/Inv_UI.gd" id="1_6vqhs"]
-[ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="2_s4l3w"]
-[ext_resource type="PackedScene" uid="uid://chexdykbhiy02" path="res://Inventory/inv_ui_slot.tscn" id="3_bew74"]
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_16ut7"]
 
 [node name="Inv_UI" type="Control"]
 layout_mode = 3
@@ -14,58 +13,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6vqhs")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_right = 527.0
-offset_bottom = 383.0
-texture = ExtResource("2_s4l3w")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
-layout_mode = 1
-offset_left = 9.0
-offset_top = 6.0
-offset_right = 527.0
-offset_bottom = 382.0
-theme_override_constants/h_separation = 115
-theme_override_constants/v_separation = 115
-columns = 4
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 1016.0
+color = Color(0, 0, 0, 0.392157)
 
-[node name="Inv_UI_slot1" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
+[node name="Titre" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_top = 64.0
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_16ut7")
+theme_override_font_sizes/font_size = 32
+text = "INVENTAIRE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Inv_UI_slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot7" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot10" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot11" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
-
-[node name="Inv_UI_slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("3_bew74")]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0

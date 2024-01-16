@@ -5,11 +5,14 @@ extends Node2D
 var paused = false
 var Key = false
 var entered_Ennemy = false
+var item_scene = preload("res://Scenes/item.tscn")
 
 func _ready():
 	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
 	get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = false
+	
+	spawn_item(Vector2(0,0),"item",1)
 	
 
 
@@ -58,4 +61,14 @@ func NPCInteract():
 			var scene_source = preload("res://Scenes/speech_box.tscn")
 			var scene_instance = scene_source.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) 
 			add_child(scene_instance)
-		
+
+func spawn_item(pos,type,id):
+	var item_instance = item_scene.instantiate()
+	item_instance.position = pos
+	item_instance.id = id
+	if type == "item":
+		item_instance.get_node("Texture").texture = load(Global.items[id]["texture"])
+	if type == "attack":
+		item_instance.get_node("Texture").texture = load(Global.attacks[id]["texture"])
+	add_child(item_instance)
+	
