@@ -85,7 +85,7 @@ func enemy_turns():
 		attack_index = rng.randi_range(0,attack_names.size()-1)
 		get_node("SpeechBox").queue_free()
 		texts_enemy[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" utilise "+str(attack_names[attack_index])+" et vous inflige "+str(attack_values[attack_index])+" degats."
-		texts_enemy[1]["text"] = "C'est a vous ("+get_node("/root/SceneCombat/ContainerPLAYER/Pseudo").text+") d'attaquer maintenant "
+		texts_enemy[1]["text"] = "C'est a vous "+get_node("/root/SceneCombat/ContainerPLAYER/Pseudo").text+" d'attaquer maintenant "
 		get_node("/root/SceneCombat").spawn_dialogue(texts_enemy)
 		pv_player -= attack_values[attack_index]
 		get_node("/root/SceneCombat/AnimationPlayer").play("Damage_Player") 
@@ -101,6 +101,7 @@ func win():
 		get_node("/root/SceneCombat/AnimationPlayer").play("Enemy_Death")
 		
 		
+		
 func loose():
 	if get_node_or_null("SpeechBox") != null:
 		get_node("SpeechBox").queue_free()
@@ -108,3 +109,5 @@ func loose():
 		texts_end[1]["text"] = "Vous perdez le combat et repartez bredouille..."
 		get_node("/root/SceneCombat").spawn_dialogue(texts_end)
 		get_node("/root/SceneCombat/AnimationPlayer").play("Player_Death")
+		
+		

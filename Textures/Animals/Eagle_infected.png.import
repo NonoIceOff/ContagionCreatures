@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bym20beqjnbde"
-path="res://.godot/imported/pixil-frame-0(1).png-d82680445e6c08a37aeb332b48454a3f.ctex"
+path="res://.godot/imported/Eagle_infected.png-eb334ab8c926fe0dcb24d21a5c39e83a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Animals/pixil-frame-0(1).png"
-dest_files=["res://.godot/imported/pixil-frame-0(1).png-d82680445e6c08a37aeb332b48454a3f.ctex"]
+source_file="res://Textures/Animals/Eagle_infected.png"
+dest_files=["res://.godot/imported/Eagle_infected.png-eb334ab8c926fe0dcb24d21a5c39e83a.ctex"]
 
 [params]
 

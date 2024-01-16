@@ -28,6 +28,7 @@ var texts = {
 }
 
 func _ready():
+	
 	var i = 0
 	for key in Global.items:
 		i += 1
@@ -62,6 +63,8 @@ func _ready():
 		sprite.scale = Vector2(0.25,0.25)
 		sprite.position = Vector2(135,-30)
 		button.add_child(sprite)
+	boost_type()
+	
 
 func _process(delta):
 	for key in Global.items:
@@ -103,6 +106,21 @@ func boost(i):
 	for key in Global.attacks:
 		Global.attacks[key]["value"] *= i
 		Global.attacks[key]["boost"] += int(i*100-100)
+		
+func boost_type():
+	print(PlayerStats.animal_id)
+	if PlayerStats.animal_id != -1:
+		for key in Global.animals_player:
+			for keys in Global.attacks:
+				if Global.animals_player[key]["type"] == Global.attacks[keys]["type"]: 
+						var boost_animal = Global.attacks[keys]["value"] * 2
+						print(boost_animal)
+						Global.attacks[keys]["value"] += boost_animal
+			
+
+
+
+
 
 
 
@@ -113,9 +131,6 @@ func infected():
 		Global.can_desinfected = true
 		Global.canUse_antidote = true
 		use_antidote()
-		
-
-		
 
 func use_antidote():
 	var chance = randi_range(0,100)
@@ -133,7 +148,6 @@ func use_antidote():
 			
 			animal_infected.queue_free()
 			texts[0]["text"] = "Vous utilisez l'antidote!"
-			
 			
 			Global.canUse_antidote = false
 			Global.is_infected = false

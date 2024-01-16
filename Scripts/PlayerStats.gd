@@ -11,6 +11,6 @@ var level = 1
 var pseudo = ""
 
 ## Animal affecté
-var id = 0
+var animal_id = 0
 var animal_health = 100
 var animal_level = 1

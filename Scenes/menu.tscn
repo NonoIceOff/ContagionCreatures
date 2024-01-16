@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dlj82x8ysevhm"]
 
-[ext_resource type="Texture2D" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
+[ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_j62ra"]
 [ext_resource type="Script" path="res://Scenes/PlayButton.gd" id="2_soydd"]
 [ext_resource type="Script" path="res://Scenes/SettingsButton.gd" id="3_4a2ih"]

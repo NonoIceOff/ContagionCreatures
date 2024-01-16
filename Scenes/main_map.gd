@@ -22,7 +22,7 @@ func _process(_delta):
 			get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 			print("pou")
 			await get_tree().create_timer(2).timeout
-			get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
+			
 			print("rrr")
 			Key = false
 
