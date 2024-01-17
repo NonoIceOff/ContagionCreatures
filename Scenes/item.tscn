@@ -68,6 +68,7 @@ _data = {
 radius = 16.0
 
 [node name="Item" type="Node2D"]
+z_index = 5
 script = ExtResource("1_be5xl")
 
 [node name="Texture" type="Sprite2D" parent="."]

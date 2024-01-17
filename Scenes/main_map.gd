@@ -66,6 +66,7 @@ func spawn_item(pos,type,id):
 	var item_instance = item_scene.instantiate()
 	item_instance.position = pos
 	item_instance.id = id
+	item_instance.type = type
 	if type == "item":
 		item_instance.get_node("Texture").texture = load(Global.items[id]["texture"])
 	if type == "attack":

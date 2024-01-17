@@ -3,6 +3,14 @@ extends Node
 var interact = false
 var trigger = true
 
+var grid_size = 31
+var step_delay = 0
+var allow_loops = false
+var letters_to_show = []
+var show_labels = false
+
+signal fringe_changed
+
 var items = {
 	1: {
 		"name":"Antidote",
