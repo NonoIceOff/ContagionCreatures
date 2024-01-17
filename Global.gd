@@ -8,9 +8,18 @@ var canUse_antidote = true
 var type_id = 0
 
 
-func _ready():
-	type_id = randi_range(0,5)
 
+
+func _ready():
+	for key in animals_player:
+		var animal_types = animals_player[0]["type"]
+		var random_type_index = randi_range(0, animal_types.size() - 3)
+		var random_type = animal_types[random_type_index]
+		var type_animal = random_type
+		print("Type choisi aléatoirement:", type_animal)
+		
+
+		
 
 var animals_player = {
 	

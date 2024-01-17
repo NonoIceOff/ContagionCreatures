@@ -29,6 +29,7 @@ var texts = {
 
 func _ready():
 	
+	
 	var i = 0
 	for key in Global.items:
 		i += 1
@@ -112,11 +113,12 @@ func boost_type():
 	if PlayerStats.animal_id != -1:
 		for key in Global.animals_player:
 			for keys in Global.attacks:
-				if Global.animals_player[key]["type"] == Global.attacks[keys]["type"]: 
+				if Global.animals_player[key]["type"] == Global.attacks[keys]["type"]:
 						var boost_animal = Global.attacks[keys]["value"] * 2
-						print(boost_animal)
 						Global.attacks[keys]["value"] += boost_animal
-			
+						#print(Global.animals_player[key]["name"])
+						#print(boost_animal)
+				
 
 
 
