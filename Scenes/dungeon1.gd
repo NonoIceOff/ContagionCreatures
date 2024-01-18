@@ -3,12 +3,37 @@ extends Node2D
 var hud_enabled = true
 const maze = preload("res://Maze/tile_map.tscn")
 var item_scene = preload("res://Scenes/item.tscn")
-
 var item_types = ["item","attack"]
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+var intro_var = true
+
+func intro():
+	var visible_text = 0
+	var intro_state = 0
+	get_node("CanvasLayer/DungeonTitle").visible = true
+	get_node("Player_One/2").zoom = Vector2(.4,.4)
+	get_node("Player_One/2").position = -get_node("Player_One").position+Vector2(700,350)
+	for i in 100:
+		visible_text += 0.05
+		get_node("Player_One/2").zoom += Vector2(.001,.001)
+		get_node("CanvasLayer/DungeonTitle").modulate.a = visible_text
+		await get_tree().create_timer(0.1).timeout
+	intro_state = 1
+	for i in 50:
+		visible_text -= 0.1
+		get_node("CanvasLayer/DungeonTitle").modulate.a = visible_text
+		await get_tree().create_timer(0.1).timeout
+	intro_var = false
+	
 	get_node("Player_One/2").zoom = Vector2(2,2)
+	get_node("Player_One/PointLight2D").texture_scale = 5
+	get_node("Player_One/PointLight2D").visible = true
+	get_node("Player_One/2").position = Vector2(30,35)
+	
+	
+func _ready() -> void:
+	intro()
+	
 	for x in range(0,64,16):
 		for y in range(0,64,16):
 			var random_type = randi_range(0,item_types.size()-1)
@@ -27,6 +52,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if get_node("Player_One/PointLight2D").texture_scale > 1 and intro_var == false:
+		get_node("Player_One/PointLight2D").texture_scale -= 0.1
 	if Input.is_action_just_pressed("show_hud"):
 		hud_enabled = not hud_enabled
 		$"CanvasLayer".set_visible(hud_enabled)
