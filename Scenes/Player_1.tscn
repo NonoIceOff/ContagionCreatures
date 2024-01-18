@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="4_0rm42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rs54"]
-size = Vector2(100, 80)
+size = Vector2(90, 77.5)
 
 [node name="Player_One" type="CharacterBody2D" groups=["Player_One"]]
 script = ExtResource("1_ny7x7")
@@ -26,7 +26,8 @@ scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_3rs54")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(30, 35)
+visible = false
+position = Vector2(31, 35.5)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_3rs54")
 

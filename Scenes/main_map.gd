@@ -54,8 +54,18 @@ func _on_area_ennemy_1_body_exited(body):
 func NPCInteract():
 	while Global.interact == true :
 		if Input.is_action_just_pressed("ui_interact"):
-			print("test")
 			var scene_source = preload("res://Scenes/speech_box.tscn")
 			var scene_instance = scene_source.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) 
 			add_child(scene_instance)
 		
+
+
+func _on_entered_transition_map(body):
+	var entered_area = false
+	if body.is_in_group("Player_One"):
+		entered_area = true
+		get_node("/root/main_map/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://Scenes/map2.tscn")
+		
+	
