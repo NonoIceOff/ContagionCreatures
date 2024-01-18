@@ -28,8 +28,10 @@ func _process(delta):
 			Key = true
 			if get_node_or_null("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer") != null:
 				get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
-			if get_node_or_null("/root/dungeon1/CanvasLayer/Transition/AnimationPlayer") != null:
-				get_node("/root/dungeon1/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+			if get_node_or_null("/root/Dungeon1/CanvasLayer/Transition/AnimationPlayer") != null:
+				get_node("/root/Dungeon1/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+			if get_node_or_null("/root/DungeonEnigme/CanvasLayer/Transition/AnimationPlayer") != null:
+				get_node("/root/DungeonEnigme/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 			print("pou")
 			await get_tree().create_timer(2).timeout
 			get_tree().change_scene_to_file("res://Scenes/main_map.tscn")

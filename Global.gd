@@ -2,6 +2,7 @@ extends Node
 
 var interact = false
 var trigger = true
+var brazero_numbers = 0
 
 var grid_size = 31
 var step_delay = 0
