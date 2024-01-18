@@ -10,14 +10,14 @@ func _ready():
 
 
 func _on_body_entered(body):
-	entered = true
 	if body.is_in_group("Player_One"):
+		entered = true
 		get_node("Label_E").visible = true
 
 
 func _on_body_exited(body):
-	entered = false
 	if body.is_in_group("Player_One"):
+		entered = false
 		get_node("Label_E").visible = false
 
 
@@ -26,7 +26,10 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_interact"):
 			Global.save()
 			Key = true
-			get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+			if get_node_or_null("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer") != null:
+				get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+			if get_node_or_null("/root/dungeon1/CanvasLayer/Transition/AnimationPlayer") != null:
+				get_node("/root/dungeon1/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 			print("pou")
 			await get_tree().create_timer(2).timeout
 			get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
