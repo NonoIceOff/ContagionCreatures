@@ -26,7 +26,6 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_interact"):
 			Key = true
 			get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
-			
 			await get_tree().create_timer(2).timeout
 			get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 			
