@@ -2,7 +2,14 @@ extends Node
 
 var interact = false
 var trigger = true
+var is_infected = true
+var can_desinfected = false
+var canUse_antidote = true
+var type_id = 0
+var type_animal = 1
 var brazero_numbers = 0
+var paused = false
+var can_move = true
 
 var grid_size = 31
 var step_delay = 0
@@ -12,6 +19,76 @@ var show_labels = false
 
 signal fringe_changed
 
+func _ready():
+	for key in animals_player:
+		var animal_types = animals_player[0]["type"]
+		var random_type_index = randi_range(0, animal_types.size() - 3)
+		var random_type = animal_types[random_type_index]
+		var type_animal = random_type
+		print("Type choisi aléatoirement:", type_animal)
+		
+var animals_player = {
+	
+	0: {
+		"name":"GentleDuck",
+		"infected": false,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"effets":[ 1.06 , " % ATK "], #+6% d'ATK et DEF pour le player si l'arme est du même type
+		"textureP":"res://Textures/DonaldDuck.png"
+	},
+	1: {
+		"name":"Deagle",
+		"infected": false,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"effets":[ 1.1 , " % DEF"], #+10% de DEF pour le player si l'arme est du même type
+		"textureP":"res://Textures/Animals/EAGLE_.png",
+	},
+	2: {
+		"name":"Froggy",
+		"infected": false,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"effets":[ 1.03 ,"% ATK"], #d'ATK pour le player si l'arme est du même type
+		"textureP":"res://Textures/Animals/FROG.png",
+	},
+	3: {
+		"name":"Leonard",
+		"infected": false,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"effets":[  1.2 , "pv"],  # +20 PV à chaque tours pour le player si l'arme est du même type
+		"textureP":"res://Textures/Animals/DRAGON.png",
+	},
+}
+var animals_enemy = {
+	
+	1: {
+		"name":"GentleDuck",
+		"infected": true,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"effets":[ 1.06 , " % atk "], #+6% d'ATK et DEF pour le player si l'arme est du même type
+		"textureE":"res://Textures/DonaldDuck.png",
+	},
+	2: {
+		"name":"Deagle",
+		"infected": true,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"effets":[ 1.1, " % def"], #+10% de DEF pour le player si l'arme est du même type
+		"textureE":"res://Textures/Animals/Eagle_infected.png",
+	},
+	3: {
+		"name":"Froggy",
+		"infected": true,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"effets":[ 1.03 ,"% atk"], # +3% d'ATK pour le player si l'arme est du même type
+		"textureE":"res://Textures/Animals/FROG.png",
+	},
+	4: {
+		"name":"Leonard",
+		"infected": true,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"effets":[ 1.2, "regen"],  # +20 PV à chaque tours pour le player si l'arme est du même type
+		"textureE":"res://Textures/Animals/DRAGON.png",
+	},
+}
 var items = {
 	1: {
 		"name":"Antidote",
@@ -51,6 +128,7 @@ var attacks = {
 	1: {
 		"name":"Arc",
 		"value":11,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
 		"boost":0,
 		"texture":"res://Textures/Items/ARC.png",
 		"quantity":0
@@ -58,6 +136,7 @@ var attacks = {
 	2: {
 		"name":"Epee",
 		"value":17,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
 		"boost":0,
 		"texture":"res://Textures/Items/EPEE.png",
 		"quantity":5
@@ -65,6 +144,7 @@ var attacks = {
 	3: {
 		"name":"Hache",
 		"value":20,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
 		"boost":0,
 		"texture":"res://Textures/Items/HACHE.png",
 		"quantity":0
@@ -72,6 +152,7 @@ var attacks = {
 	4: {
 		"name":"Poele",
 		"value":23,
+		"type":['Écho','Relique','Prisme','Essence','Totem'],
 		"boost":0,
 		"texture":"res://Textures/Items/POELE.png",
 		"quantity":0

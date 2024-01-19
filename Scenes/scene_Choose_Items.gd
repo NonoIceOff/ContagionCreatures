@@ -28,6 +28,8 @@ var texts = {
 }
 
 func _ready():
+	
+	
 	var i = 0
 	for key in Global.items:
 		i += 1
@@ -62,6 +64,8 @@ func _ready():
 		sprite.scale = Vector2(0.25,0.25)
 		sprite.position = Vector2(135,-30)
 		button.add_child(sprite)
+	boost_type()
+	
 
 func _process(delta):
 	for key in Global.items:
@@ -91,7 +95,7 @@ func take_damage(item):
 		boost(item["type"][1])
 		
 	if item["type"][0] == "antidote":
-		use_antidote()
+		infected()
 			
 	get_node("/root/SceneCombat").spawn_dialogue(texts)
 	get_node("/root/SceneCombat").pv_enemy -= item["value"]
@@ -103,11 +107,59 @@ func boost(i):
 	for key in Global.attacks:
 		Global.attacks[key]["value"] *= i
 		Global.attacks[key]["boost"] += int(i*100-100)
+		
+func boost_type():
+	print(PlayerStats.animal_id)
+	if PlayerStats.animal_id != -1:
+		for key in Global.animals_player:
+			for keys in Global.attacks:
+				if Global.animals_player[key]["type"] == Global.attacks[keys]["type"]:
+						var boost_animal = Global.attacks[keys]["value"] * 2
+						Global.attacks[keys]["value"] += boost_animal
+						#print(Global.animals_player[key]["name"])
+						#print(boost_animal)
+				
+
+
+
+
+
+
+
+func infected():
+	Global.can_desinfected = false
+	Global.is_infected = true
+	if get_node("/root/SceneCombat").pv_enemy < 20 and Global.is_infected:
+		Global.can_desinfected = true
+		Global.canUse_antidote = true
+		use_antidote()
 
 func use_antidote():
-	texts[0]["text"] = "Vous utilisez l'antidote, en esperant que cela marche"
-
-
+	var chance = randi_range(0,100)
+	var animal_infected = get_node("/root/SceneCombat/ContainerMob/Creatures/Animal_infected")
+	var animal_disinfected = get_node("/root/SceneCombat/ContainerMob/Creatures/Animal_disinfected")
+	var button_disabled = get_node("/root/SceneCombat/Node2D/1")
+	if get_node_or_null("/root/SceneCombat/ContainerMob/Creatures/Animal_infected") != null:
+		if chance < 80:
+			
+			print("jejejej")
+			button_disabled.disabled = true
+			
+			animal_disinfected.visible = false
+			animal_infected.visible = true
+			
+			animal_infected.queue_free()
+			texts[0]["text"] = "Vous utilisez l'antidote!"
+			
+			Global.canUse_antidote = false
+			Global.is_infected = false
+			
+			animal_disinfected.visible = true
+			animal_infected.visible = false
+			
+		else:
+			animal_infected.visible = true
+			animal_disinfected.visible = false
 
 func _Exit():
 	queue_free()

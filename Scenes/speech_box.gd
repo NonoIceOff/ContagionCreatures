@@ -56,14 +56,19 @@ func update_choices():
 func _process(delta):
 	if get_node("TextsBox/Label").visible_ratio == 1:
 		if actual_text < texts.size():
-			if not texts[actual_text]["has_choices"]:
-				get_node("TextsBox/Next").visible = true
+			if not texts[actual_text]["has_choices"] && Input.is_action_just_pressed("ui_down"):
+				get_node("TextsBox/Next1").visible = false
+				get_node("TextsBox/Next2").visible = true
+			elif not texts[actual_text]["has_choices"] && Input.is_action_just_pressed("ui_up"):
+				get_node("TextsBox/Next1").visible = true
+				get_node("TextsBox/Next2").visible = false
 			else:
 				get_node("TextsBox/Choices").visible = true
 				get_node("TextsBox/ChoicesTexts").visible = true
 	else:
 		get_node("TextsBox/Label").visible_ratio += 0.01
-		get_node("TextsBox/Next").visible = false
+		get_node("TextsBox/Next1").visible = false
+		get_node("TextsBox/Next2").visible = false
 		get_node("TextsBox/Choices").visible = false
 		get_node("TextsBox/ChoicesTexts").visible = false
 
@@ -87,8 +92,10 @@ func handle_next_text():
 			display_text()
 		else:
 			visible = false
+			queue_free()
 	else:
 		visible = false
+		queue_free()
 
 func handle_choice():
 	if choice == 0:

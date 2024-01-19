@@ -93,13 +93,28 @@ scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[node name="Next" type="Label" parent="TextsBox"]
+[node name="Next1" type="Label" parent="TextsBox"]
 visible = false
 texture_filter = 1
 layout_mode = 0
-offset_left = 1344.0
+offset_left = 1406.0
+offset_top = -80.0
+offset_right = 1477.0
+offset_bottom = -61.0
+scale = Vector2(1.8, 1.8)
+text = "[e]"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 2
+
+[node name="Next2" type="Label" parent="TextsBox"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 1405.0
 offset_top = -40.0
-offset_right = 1415.0
+offset_right = 1476.0
 offset_bottom = -21.0
 scale = Vector2(1.8, 1.8)
 text = "[e]"
@@ -118,7 +133,7 @@ offset_bottom = -42.0
 scale = Vector2(2, 2)
 theme_override_colors/font_color = Color(0.694118, 0.694118, 0.694118, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "je vais t aider
+text = "je vais t' aider
 NON LAISSE MOI TRANQUILLE"
 horizontal_alignment = 2
 

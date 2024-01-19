@@ -80,7 +80,7 @@ vertical_alignment = 1
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wy643")
 
-[node name="Ok" type="Button" parent="."]
+[node name="Valider" type="Button" parent="."]
 offset_left = 640.0
 offset_top = 896.0
 offset_right = 1277.0
@@ -90,7 +90,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dm8en")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jyc4")
-text = "REVENIR AU MENU"
+text = "VALIDER"
 script = ExtResource("5_80yua")
 
 [node name="Panel" type="Panel" parent="."]
@@ -268,7 +268,7 @@ offset_bottom = 9.8
 theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
 flat = true
 
-[connection signal="pressed" from="Ok" to="Ok" method="_on_pressed"]
+[connection signal="pressed" from="Valider" to="Valider" method="_on_pressed"]
 [connection signal="pressed" from="Perso1/ButtonPerso1" to="PersoActuel" method="_on_button_perso_1_pressed"]
 [connection signal="pressed" from="Perso2/ButtonPerso2" to="PersoActuel" method="_on_button_perso_2_pressed"]
 [connection signal="pressed" from="Perso3/ButtonPerso3" to="PersoActuel" method="_on_button_perso_3_pressed"]

@@ -99,11 +99,24 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_kl7q8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
 text = "PARAMETRES"
 
-[node name="Quitter" type="Button" parent="."]
+[node name="Menu principal" type="Button" parent="."]
 offset_left = 640.0
 offset_top = 800.0
 offset_right = 1277.0
 offset_bottom = 916.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_8w1aj")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2sld6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kl7q8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
+text = "MENU PRINCIPAL"
+
+[node name="Quitter" type="Button" parent="."]
+offset_left = 1577.0
+offset_top = 956.0
+offset_right = 1861.0
+offset_bottom = 1035.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_8w1aj")
 theme_override_font_sizes/font_size = 35
@@ -141,4 +154,5 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="Reprendre" to="." method="_on_reprendre_pressed"]
 [connection signal="pressed" from="Paramètres" to="." method="_on_paramètres_pressed"]
+[connection signal="pressed" from="Menu principal" to="." method="_on_menu_principal_pressed"]
 [connection signal="pressed" from="Quitter" to="." method="_on_quitter_pressed"]

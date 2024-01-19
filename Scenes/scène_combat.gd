@@ -50,6 +50,61 @@ var texts_end = {
 func _ready():
 	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
+	
+	var i = 0
+	for key in Global.animals_player:
+		
+		var button = Button.new()
+		button.name = str(key)
+		button.text = "Type :"+str(Global.type_animal)
+		button.position = Vector2(660,890)
+		button.custom_minimum_size = Vector2(40,40)
+		button.connect("pressed", Callable(self, "_info_animal"))
+		add_child(button)
+		
+		var sprite = Sprite2D.new()
+		sprite.name = "Sprite"
+		sprite.texture = load("res://Textures/Info.png")
+		sprite.scale = Vector2(2,2)
+		sprite.position = Vector2(20,20)
+		button.add_child(sprite)
+			
+		#var value = Label.new()
+		#value.name = "Value"
+		#value.text = "Effets :"+str(Global.animals_player[key]["effets"])
+		#value.text = "Type :"+(Global.random_type)
+		#value.position.y = 46
+		#value.custom_minimum_size = Vector2(280,16)
+		#value.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		#value.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		#value.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		#button.add_child(value)
+		
+
+
+func _info_animal(button):
+	for key in Global.animals_player:
+		var label_info = Label.new()
+		label_info.name = "name"
+		label_info.text = "Effets :"+str(Global.animals_player[key]["effets"])
+		label_info.text = "Type :"+(Global.random_type)
+		label_info.text = "Info sur l'animal"
+		label_info.position.y = 46
+		label_info.custom_minimum_size = Vector2(280,16)
+		label_info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label_info.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		label_info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.add_child(label_info)
+		
+		var close_button = Button.new()
+		close_button.texture = load("res://Textures/Cross_Close.png")
+		close_button.scale = Vector2(1.7,1.7)
+		close_button.position = Vector2(20,20)
+		close_button.connect("pressed", Callable(self, "_close_info_animal"),)
+		label_info.add_child(close_button)
+		
+func _close_info_animal(label_info):
+	label_info.queue_free()
 
 func spawn_dialogue(custom_texts):
 	var dialogue = speechbox.instantiate()
@@ -84,7 +139,7 @@ func enemy_turns():
 	if get_node_or_null("SpeechBox") != null:
 		attack_index = rng.randi_range(0,attack_names.size()-1)
 		get_node("SpeechBox").queue_free()
-		texts_enemy[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" utilise "+str(attack_names[attack_index])+" et vous inflige "+str(attack_values[attack_index])+" degats."
+		texts_enemy[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" utilise "+str(attack_names[attack_index])+" et vous inflige"+str(attack_values[attack_index])+" degats."
 		texts_enemy[1]["text"] = "C'est a vous ("+get_node("/root/SceneCombat/ContainerPLAYER/Pseudo").text+") d'attaquer maintenant "
 		get_node("/root/SceneCombat").spawn_dialogue(texts_enemy)
 		pv_player -= attack_values[attack_index]
@@ -99,6 +154,9 @@ func win():
 		texts_end[1]["text"] = "Vous remportez le combat et 0 xp !"
 		get_node("/root/SceneCombat").spawn_dialogue(texts_end)
 		get_node("/root/SceneCombat/AnimationPlayer").play("Enemy_Death")
+		get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 		
 		
 func loose():
@@ -108,3 +166,7 @@ func loose():
 		texts_end[1]["text"] = "Vous perdez le combat et repartez bredouille..."
 		get_node("/root/SceneCombat").spawn_dialogue(texts_end)
 		get_node("/root/SceneCombat/AnimationPlayer").play("Player_Death")
+		get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
+	

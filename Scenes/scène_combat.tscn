@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cuvepu5toqc02"]
+[gd_scene load_steps=29 format=3 uid="uid://cuvepu5toqc02"]
 
 [ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dhimjcb6s8u1t" path="res://Textures/Animals/EAGLE_.png" id="5_con6l"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="6_8tkdv"]
 [ext_resource type="Script" path="res://Scenes/Button_Combat.gd" id="7_52kou"]
+[ext_resource type="Texture2D" uid="uid://bym20beqjnbde" path="res://Textures/Animals/Eagle_infected.png" id="7_g3pfl"]
+[ext_resource type="Texture2D" uid="uid://k8osxe2tlhju" path="res://Textures/Animals/eagle_Player.png" id="9_7ruhl"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6neb"]
@@ -354,12 +356,27 @@ script = ExtResource("5_78kiw")
 [node name="Creatures" type="CharacterBody2D" parent="ContainerMob"]
 position = Vector2(-477, -619)
 
-[node name="CUBE CORROMPU" type="Sprite2D" parent="ContainerMob/Creatures"]
+[node name="Animal_infected" type="Sprite2D" parent="ContainerMob/Creatures"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(1102, 788.999)
-scale = Vector2(6, 6)
+position = Vector2(1102, 820.999)
+scale = Vector2(5, 5)
+texture = ExtResource("7_g3pfl")
+
+[node name="Animal_disinfected" type="Sprite2D" parent="ContainerMob/Creatures"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1102, 820)
+scale = Vector2(5.5, 5.5)
 texture = ExtResource("5_con6l")
+
+[node name="Animal_player" type="Sprite2D" parent="ContainerMob/Creatures"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(773.999, 994.999)
+scale = Vector2(5.1, 5.1)
+texture = ExtResource("9_7ruhl")
 
 [node name="ContainerPLAYER" type="Control" parent="."]
 layout_mode = 3
@@ -489,6 +506,8 @@ anchor_mode = 0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("10_43je6")]
+offset_top = -3.0
+offset_bottom = -3.0
 mouse_filter = 2
 
 [connection signal="pressed" from="Button" to="Button3" method="_on_button_pressed"]

@@ -39,7 +39,7 @@ offset_right = 1920.0
 offset_bottom = 1078.0
 color = Color(0, 0, 0, 1)
 
-[node name="Ok" type="Button" parent="."]
+[node name="Valider" type="Button" parent="."]
 offset_left = 640.0
 offset_top = 896.0
 offset_right = 1277.0
@@ -49,7 +49,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "valider"
+text = "VALIDER"
 script = ExtResource("1_j3ftm")
 
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
@@ -96,7 +96,7 @@ theme_override_constants/separation = 32
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 38
-text = "aller en haut"
+text = "Aller en haut"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -116,7 +116,7 @@ text = "up"
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 38
-text = "aller en bas"
+text = "Aller en bas"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -136,7 +136,7 @@ text = "down"
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 38
-text = "aller a gauche"
+text = "Aller a gauche"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -156,7 +156,7 @@ text = "left"
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 38
-text = "aller a droite"
+text = "Aller a droite"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -172,7 +172,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 text = "right"
 
-[connection signal="pressed" from="Ok" to="Ok" method="_on_pressed"]
+[connection signal="pressed" from="Valider" to="Valider" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Up/UpButton" to="." method="_on_up_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Down/DownButton" to="." method="_on_down_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Left/LeftButton" to="." method="_on_left_button_pressed"]
