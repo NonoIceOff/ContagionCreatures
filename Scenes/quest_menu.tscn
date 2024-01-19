@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="2_ce80x"]
 
 [node name="QuestMenu" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,7 @@ color = Color(0, 0, 0, 0.392157)
 
 [node name="Titre" type="Label" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
 offset_top = 64.0
 offset_right = 1920.0
 offset_bottom = 128.0
@@ -54,6 +56,7 @@ clip_text = true
 text_overrun_behavior = 4
 
 [node name="DescriptionQuete" type="Label" parent="QuestInfos"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 104.0
 offset_right = 736.0
