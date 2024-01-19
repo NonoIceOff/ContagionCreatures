@@ -1,5 +1,6 @@
 extends Control
 
+var is_open = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,8 +41,23 @@ func _ready():
 		get_node("ScrollContainer/VBoxContainer").add_child(panel)
 
 
+func open():
+	visible = true
+	is_open = true
+	
+
+func close():
+	visible = false
+	is_open = false
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("q"):
+		if is_open:
+			close()
+		else:
+			open()
+	
 	for i in Global.quests.size():
 		if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button") != null:
 			if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button").button_pressed == true:
