@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cs1t5u15aehqw"]
+[gd_scene load_steps=10 format=3 uid="uid://f5a07lcyt5rh"]
 
-[ext_resource type="Script" path="res://Scenes/Minimap.gd" id="1_jkw46"]
-[ext_resource type="Shader" path="res://Scenes/minimap.gdshader" id="2_4f6k4"]
-[ext_resource type="Texture2D" uid="uid://choldy7fvdm7e" path="res://Textures/radar_mask.png" id="3_b850q"]
-[ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="4_iuyil"]
-[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="5_drc3f"]
+[ext_resource type="Shader" path="res://Scenes/minimap.gdshader" id="1_44b0t"]
+[ext_resource type="Script" path="res://Scenes/Full_screen_map.gd" id="1_vnder"]
+[ext_resource type="Texture2D" uid="uid://choldy7fvdm7e" path="res://Textures/radar_mask.png" id="2_vqgc8"]
+[ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="3_7viap"]
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_fninw"]
 
 [sub_resource type="Animation" id="Animation_2pobh"]
 length = 0.001
@@ -91,16 +91,23 @@ _data = {
 "pin": SubResource("Animation_fnqu0")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktrgp"]
-shader = ExtResource("2_4f6k4")
-shader_parameter/mask_texture = ExtResource("3_b850q")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_we4hq"]
+shader = ExtResource("1_44b0t")
+shader_parameter/mask_texture = ExtResource("2_vqgc8")
 
-[node name="Minimap" type="Control"]
+[node name="Full_Screen_map" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_jkw46")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1000.0
+offset_top = -455.0
+offset_right = -1000.0
+offset_bottom = -391.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.1
+script = ExtResource("1_vnder")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -110,33 +117,39 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+texture_filter = 1
 layout_mode = 0
-offset_left = 29.0
-offset_top = 29.0
-offset_right = 215.0
-offset_bottom = 215.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_ktrgp")
+material = SubResource("ShaderMaterial_we4hq")
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 212.0
-offset_bottom = 212.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 disable_3d = true
 handle_input_locally = false
-vrs_texture = ExtResource("3_b850q")
-size = Vector2i(180, 180)
+vrs_texture = ExtResource("2_vqgc8")
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+use_parent_material = true
+scale = Vector2(0.1, 0.1)
+enabled = false
+zoom = Vector2(0.623, 0.623)
 
 [node name="TileMap" type="TileMap" parent="SubViewportContainer/SubViewport"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(-1, 0)
-scale = Vector2(4, 4)
-tile_set = ExtResource("4_iuyil")
+position = Vector2(616, 400)
+tile_set = ExtResource("3_7viap")
 format = 2
 layer_0/name = "Z 0"
 layer_0/tile_data = PackedInt32Array(786450, 1245189, 2, 786451, 1310725, 2, 786452, 1376261, 2, 720902, 1245189, 2, 720903, 1310725, 2, 720904, 1376261, 2, 65546, 1245189, 2, 65547, 1310725, 2, 65548, 1376261, 2, 196614, 1245189, 2, 196615, 1310725, 2, 196616, 1376261, 2, 655383, 1245189, 2, 655384, 1310725, 2, 655385, 1376261, 2, 458755, 1245189, 2, 458756, 1310725, 2, 458757, 1376261, 2, -65520, 1441797, 2, -65533, 1441797, 2, -65532, 1507333, 2, -65531, 1572869, 2, -65518, 1572869, 2, -65519, 1507333, 2, 29, 1441797, 2, 30, 1507333, 2, 31, 1572869, 2, -65512, 1245189, 2, -65511, 1310725, 2, -65510, 1376261, 2, 1114124, 1441797, 2, 1114125, 1507333, 2, 1114126, 1572869, 2, 1048603, 1441797, 2, 1048604, 1507333, 2, 1048605, 1572869, 2, 1048609, 1245189, 2, 1048610, 1310725, 2, 1048611, 1376261, 2, -1048561, 589829, 137, -983025, 589829, 138, -1048562, 589829, 137, -983026, 589829, 138, -1179634, 589829, 137, -1114098, 589829, 138, -1179633, 589829, 137, -1114097, 589829, 138)
@@ -232,11 +245,8 @@ layer_13/y_sort_origin = 0
 layer_13/z_index = 10
 layer_13/tile_data = PackedInt32Array(1703994, 3997701, 5, 1769530, 3997701, 6, 1638459, 4063237, 4, 1703995, 4063237, 5, 1638460, 4128773, 4, 1703996, 4128773, 5, 1638461, 4194309, 4, 1703997, 4194309, 5, 1769533, 4194309, 6, 1114169, 3997701, 5, 1179705, 3997701, 6, 1048634, 4063237, 4, 1114170, 4063237, 5, 1048635, 4128773, 4, 1114171, 4128773, 5, 1048636, 4194309, 4, 1114172, 4194309, 5, 1179708, 4194309, 6, 458809, 3997701, 5, 524345, 3997701, 6, 393274, 4063237, 4, 458810, 4063237, 5, 393275, 4128773, 4, 458811, 4128773, 5, 393276, 4194309, 4, 458812, 4194309, 5, 524348, 4194309, 6, 65593, 3997701, 5, 131129, 3997701, 6, 58, 4063237, 4, 65594, 4063237, 5, 59, 4128773, 4, 65595, 4128773, 5, 60, 4194309, 4, 65596, 4194309, 5, 131132, 4194309, 6, -1114131, 3997701, 5, -1048595, 3997701, 6, -1179666, 4063237, 4, -1114130, 4063237, 5, -1179665, 4128773, 4, -1114129, 4128773, 5, -1179664, 4194309, 4, -1114128, 4194309, 5, -1048592, 4194309, 6, -917503, 3997701, 5, -851967, 3997701, 6, -983038, 4063237, 4, -917502, 4063237, 5, -983037, 4128773, 4, -917501, 4128773, 5, -983036, 4194309, 4, -917500, 4194309, 5, -851964, 4194309, 6, -983028, 3997701, 5, -917492, 3997701, 6, -1048563, 4063237, 4, -983027, 4063237, 5, -1048562, 4128773, 4, -983026, 4128773, 5, -1048561, 4194309, 4, -983025, 4194309, 5, -917489, 4194309, 6, -1114082, 3997701, 5, -1048546, 3997701, 6, -1179617, 4063237, 4, -1114081, 4063237, 5, -1179616, 4128773, 4, -1114080, 4128773, 5, -1179615, 4194309, 4, -1114079, 4194309, 5, -1048543, 4194309, 6, -917468, 3997701, 5, -851932, 3997701, 6, -983003, 4063237, 4, -917467, 4063237, 5, -983002, 4128773, 4, -917466, 4128773, 5, -983001, 4194309, 4, -917465, 4194309, 5, -851929, 4194309, 6, 1245245, 3997701, 5, 1310781, 3997701, 6, 1179710, 4063237, 4, 1245246, 4063237, 5, 1179711, 4128773, 4, 1245247, 4128773, 5, 1179712, 4194309, 4, 1245248, 4194309, 5, 1310784, 4194309, 6, 2097195, 3997701, 5, 2162731, 3997701, 6, 2031660, 4063237, 4, 2097196, 4063237, 5, 2031661, 4128773, 4, 2097197, 4128773, 5, 2031662, 4194309, 4, 2097198, 4194309, 5, 2162734, 4194309, 6, 2097184, 3997701, 5, 2162720, 3997701, 6, 2031649, 4063237, 4, 2097185, 4063237, 5, 2031650, 4128773, 4, 2097186, 4128773, 5, 2031651, 4194309, 4, 2097187, 4194309, 5, 2162723, 4194309, 6, 2228228, 3997701, 5, 2293764, 3997701, 6, 2162693, 4063237, 4, 2228229, 4063237, 5, 2162694, 4128773, 4, 2228230, 4128773, 5, 2162695, 4194309, 4, 2228231, 4194309, 5, 2293767, 4194309, 6, 1834993, 3997701, 5, 1900529, 3997701, 6, 1769458, 4063237, 4, 1834994, 4063237, 5, 1769459, 4128773, 4, 1834995, 4128773, 5, 1769460, 4194309, 4, 1834996, 4194309, 5, 1900532, 4194309, 6, -851912, 5111813, 56, -327624, 5111813, 59, -720915, 4128773, 5, -786450, 4194309, 4, -720914, 4194309, 5, -720917, 3997701, 5, -655381, 3997701, 6, -786452, 4063237, 4, -720916, 4063237, 5, -786451, 4128773, 4, -655378, 4194309, 6, -786445, 5111813, 56, -13, 5111813, 61)
 
-[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
-use_parent_material = true
-zoom = Vector2(0.1, 0.1)
-
 [node name="PlayerPoint" type="ColorRect" parent="."]
+visible = false
 z_index = 10
 layout_mode = 0
 offset_left = 118.0
@@ -245,6 +255,7 @@ offset_right = 128.0
 offset_bottom = 128.0
 
 [node name="PinPoint" type="ColorRect" parent="."]
+visible = false
 z_index = 10
 layout_mode = 0
 offset_left = 104.0
@@ -254,26 +265,29 @@ offset_bottom = 74.0
 color = Color(1, 1, 0, 1)
 
 [node name="Back" type="ColorRect" parent="PinPoint"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = -1
 layout_mode = 0
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 13.0
-offset_bottom = 13.0
+offset_left = -0.7
+offset_top = -0.7
+offset_right = 15.3
+offset_bottom = 15.3
+scale = Vector2(0.7, 0.7)
 color = Color(1, 0.811765, 0.0980392, 1)
 
 [node name="Position" type="Label" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 0
-offset_left = 29.0
-offset_top = 216.0
-offset_right = 215.0
-offset_bottom = 235.0
+offset_left = 413.0
+offset_top = 7.0
+offset_right = 620.0
+offset_bottom = 37.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
-theme_override_fonts/font = ExtResource("5_drc3f")
+theme_override_fonts/font = ExtResource("4_fninw")
 text = "x 0y 0"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -7,6 +7,7 @@ var Key = false
 var entered_Ennemy = false
 var item_scene = preload("res://Scenes/item.tscn")
 var interacted = false
+var scene_load = false
 
 func _ready():
 	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
@@ -15,30 +16,46 @@ func _ready():
 	$InteractArea/Trigger.visible = true
 	$InteractArea/Interact.visible = Global.interact
 	spawn_item(Vector2(0,0),"item",1)
-	
 
 
 func _process(_delta):
+	
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
+		
 	if $InteractArea/Interact.visible == true:
 		if Input.is_action_just_pressed("ui_interact"):
 			interacted = true
 			var scene_source = preload("res://Scenes/speech_box.tscn")
 			var scene_instance = scene_source.instantiate()
 			get_node("CanvasLayer2").add_child(scene_instance)
-			interacted = false			
+			interacted = false	
+
 	if entered_Ennemy == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"): #and $MobPNJ/AreaEnnemy1/Collision_Ennemy.is_in_group("Player_One"):
 			Key = true
 			get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
-			print("pou")
 			await get_tree().create_timer(2).timeout
 			get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
-			print("rrr")
 			Key = false
 
+	if Input.is_action_just_pressed("M"):
+		if scene_load == false:
+			print("cc")
+			var load_scene = preload("res://Scenes/Full_screen_map.tscn")
+			var load_instance = load_scene.instantiate()
+			load_instance.position = Vector2(0,0)
+			get_node("CanvasLayer/Minimap").visible = false
+			get_node("CanvasLayer").add_child(load_instance)
+			
+			scene_load = true
 
+		elif scene_load == true:
+			get_node("CanvasLayer/Full_Screen_map").queue_free()
+			get_node("CanvasLayer/Minimap").visible = true
+			scene_load = false
+	
+	
 func PauseMenu ():
 	if Global.paused == true:
 		pause_menu.show()
