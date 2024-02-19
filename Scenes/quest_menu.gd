@@ -11,13 +11,17 @@ func _ready():
 		
 		var title = Label.new()
 		title.text = Global.quests[i]["title"]
+		title.name = "Title"
 		title.scale = Vector2(3,3)
 		title.position = Vector2(16,8)
 		title.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		panel.add_child(title)
 		
+		
+		
 		var description = Label.new()
-		description.text = Global.quests[i]["description"]
+		description.name = "Description"
+		description.text = Global.quests[i]["descriptions"][Global.quests[i]["stade"]]
 		description.custom_minimum_size  = Vector2(800,100)
 		description.scale = Vector2(1,1)
 		description.position = Vector2(32,54)
@@ -35,6 +39,18 @@ func _ready():
 		button.focus_mode = Control.FOCUS_NONE
 		button.custom_minimum_size  = Vector2(832,128)
 		panel.add_child(button)
+		
+		var titlet = Label.new()
+		titlet.text = "Termine"
+		titlet.name = "Titlet"
+		titlet.scale = Vector2(3,3)
+		titlet.position = Vector2(232,0)
+		titlet.rotation = 0.25
+		titlet.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		titlet.visible = false
+		titlet.set("theme_override_colors/font_outline_color", Color(1,0.5,0))
+		titlet.set("theme_override_constants/outline_size", 10)
+		panel.add_child(titlet)
 		
 		
 		
@@ -59,9 +75,24 @@ func _process(delta):
 			open()
 	
 	for i in Global.quests.size():
-		if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button") != null:
+		
+		if i != Global.current_quest_id:
+			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)).self_modulate = Color(0,0,0)
+		else:
+			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)).self_modulate = Color(1,1,0,1)
+			
+		if Global.quests[i]["finished"] == true:
+			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)).self_modulate = Color(0,0,0,0.5)
+			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Title").self_modulate = Color(0,0,0,0.5)
+			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Description").self_modulate = Color(0,0,0,0.5)
+			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Titlet").visible = true
+			
+		if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button") != null and Global.quests[i]["finished"] == false:
 			if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button").button_pressed == true:
+				Global.current_quest_id = i
 				get_node("QuestInfos/TitreQuete").text = Global.quests[i]["title"]
 				get_node("QuestInfos/DescriptionQuete").text = Global.quests[i]["long_description"]
+				get_node("ScrollContainer/VBoxContainer/Panel"+str(i)).self_modulate = Color(1,1,0,1)
 				if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
-					get_node("/root/main_map/CanvasLayer/Minimap").pin = Global.quests[i]["pin_position"]
+					get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = true
+					get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])

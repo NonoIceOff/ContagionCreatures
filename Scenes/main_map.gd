@@ -7,8 +7,10 @@ var Key = false
 var entered_Ennemy = false
 var item_scene = preload("res://Scenes/item.tscn")
 var interacted = false
+var quest_id = 0
 
 func _ready():
+	get_node("CanvasLayer/CPUParticles2D").visible = false
 	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
 	get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = false
@@ -19,13 +21,137 @@ func _ready():
 
 
 func _process(_delta):
+	if Global.current_quest_id > -1:
+		get_node("CanvasLayer/CPUParticles2D/QuestTextBar").text = "[center][rainbow freq=0.05]"+Global.quests[Global.current_quest_id]["title"]+" [/rainbow] [color=black]| [color=white][i]"+Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]]
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
 	if $InteractArea/Interact.visible == true:
-		if Input.is_action_just_pressed("ui_interact"):
+		if Input.is_action_just_pressed("ui_interact") and get_node_or_null("CanvasLayer2/SpeechBox") == null:
 			interacted = true
 			var scene_source = preload("res://Scenes/speech_box.tscn")
 			var scene_instance = scene_source.instantiate()
+			if quest_id == 0:
+				var text_quest_0 = {
+					0: {
+						"text": "Bonjour jeune aventurier ! J'ai perdu quelque chose... pourrais-tu m'aider contre [tornado radius=5.0 freq=1.0 connected=1][rainbow freq=0.1 sat=0.8 val=0.8]une recompense[/rainbow][/tornado] ?",
+						"has_choices": true,
+						"text_choices": ["Oui", "Non"],
+						"has_suite": false,
+						"choices_jump_to": [1, 3]
+					},
+					1: {
+						"text": "Super ! Eh bien j’ai perdu mes [wave amp=50 freq=2][color=yellow]CRAMPTES[/color][/wave].\nElles sont très importantes à mes yeux. Sans elles, je ne peux plus me déplacer normalement...",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": true,
+						"choices_jump_to": [2, 0]
+					},
+					2: {
+						"text": "[shake rate=20.0 level=20 connected=1][color=purple]Le grand méchant[/color][/shake] me les a volées, ils doivent certainement être dans un coin non éloigné de la map.",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": true,
+						"choices_jump_to": [3, 0]
+					},
+					3: {
+						"text": "Oh... reviens me voir plus tard !",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": false,
+						"choices_jump_to": [0, 0]
+					}
+				}
+				scene_instance.texts = text_quest_0
+				
+			if quest_id == 1 and Global.quests[1]["stade"] == 0:
+				Global.quests[1]["stade"] = 1
+				var text_quest_1 = {
+					0: {
+						"text": "Salut mon pote, alors pret a ecouter mes blagues de fou ? Attention tu risques de perdre ton cerveau !",
+						"has_choices": true,
+						"text_choices": ["Je veux ecouter pitie", "Non c'est de la merde"],
+						"has_suite": false,
+						"choices_jump_to": [1, 6]
+					},
+					1: {
+						"text": "Super ! C'est parti ! Alors... Voyons voir...",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": true,
+						"choices_jump_to": [2, 0]
+					},
+					2: {
+						"text": "La femme : 'Docteur j’ai la diarrhée mentale'",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": true,
+						"choices_jump_to": [3, 0]
+					},
+					3: {
+						"text": "Docteur : 'C’est-à-dire ?'",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": true,
+						"choices_jump_to": [4, 0]
+					},
+					4: {
+						"text": "La Femme : 'À chaque fois que j’ai une idée, c’est de la merde !'",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": true,
+						"choices_jump_to": [5, 0]
+					},
+					5: {
+						"text": "Alors c'etait excellent .",
+						"has_choices": true,
+						"text_choices": ["Oui de la dinguerie pure","Nul a chier"],
+						"has_suite": true,
+						"choices_jump_to": [7, 8]
+					},
+					6: {
+						"text": "Punaise il veux pas se detendre un peu le roblochon...",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": false,
+						"choices_jump_to": [0, 0]
+					},
+					7: {
+						"text": "MERCIIIIIIIIIIIIII TIENS EN RECOMPENSE !",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": false,
+						"choices_jump_to": [0, 0]
+					},
+					8: {
+						"text": "COMMENT CA T'AIMES PAS ? RESSAISIS-TOI UN PEU RIGOLE !",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": false,
+						"choices_jump_to": [0, 0]
+					}
+				}
+				scene_instance.texts = text_quest_1
+				
+			if quest_id == 1 and Global.quests[1]["stade"] == 2:
+				var text_quest_1_2 = {
+					0: {
+						"text": "Bravo tu m'as trouve, tu est trop fort ! Tu as rit a la blague hillarante et tu est trop fort au cache-cache.",
+						"has_choices": false,
+						"text_choices": ["Oui", "Non"],
+						"has_suite": true,
+						"choices_jump_to": [1, 0]
+					},
+					1: {
+						"text": "Je vais te donner ce N-KEY, a toi de trouver a quoi elle sert ! Qui sait, elle cache un enorme secret...",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": true,
+						"choices_jump_to": [0, 0]
+					}
+				}
+				scene_instance.texts = text_quest_1_2
+				
+				
 			get_node("CanvasLayer2").add_child(scene_instance)
 			interacted = false			
 	if entered_Ennemy == true and Key == false:
@@ -67,8 +193,6 @@ func _on_interact_area_entered(body):
 	if body.is_in_group("Player_One"):
 		$InteractArea/Interact.visible = true
 
-
-
 func _on_interact_area_exited(body):
 	if body.is_in_group("Player_One"):
 		$InteractArea/Interact.visible = false
@@ -97,9 +221,22 @@ func _on_entered_transition_map(body):
 func _on_interact_area_body_entered(body):
 	if body.is_in_group("Player_One"):
 		print("aaa")
+		quest_id = 0
 		$InteractArea/Interact.visible = true
 
 
 func _on_interact_area_body_exited(body):
+	if body.is_in_group("Player_One"):
+		$InteractArea/Interact.visible = false
+
+
+func _on_bagird_body_entered(body):
+	if body.is_in_group("Player_One"):
+		print("aaa")
+		quest_id = 1
+		$InteractArea/Interact.visible = true
+
+
+func _on_bagird_body_exited(body):
 	if body.is_in_group("Player_One"):
 		$InteractArea/Interact.visible = false

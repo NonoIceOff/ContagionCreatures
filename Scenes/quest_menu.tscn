@@ -51,7 +51,7 @@ offset_top = 16.0
 offset_right = 760.0
 offset_bottom = 51.0
 theme_override_font_sizes/font_size = 32
-text = "TITRE DE LA QUETE"
+text = "AUCUNE QUETE SELECTIONEE"
 clip_text = true
 text_overrun_behavior = 4
 
@@ -63,11 +63,7 @@ offset_right = 736.0
 offset_bottom = 824.0
 theme_override_fonts/font = ExtResource("2_ce80x")
 theme_override_font_sizes/font_size = 24
-text = "Altera sententia est, quae definit amicitiam paribus officiis ac voluntatibus. Hoc quidem est nimis exigue et exiliter ad calculos vocare amicitiam, ut par sit ratio acceptorum et datorum. Divitior mihi et affluentior videtur esse vera amicitia nec observare restricte, ne plus reddat quam acceperit; neque enim verendum est, ne quid excidat, aut ne quid in terram defluat, aut ne plus aequo quid in amicitiam congeratur.
-
-Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam inductus est ut appellant Christiani diaconus, cuius prolatae litterae scriptae Graeco sermone ad Tyrii textrini praepositum celerari speciem perurgebant quam autem non indicabant denique etiam idem ad usque discrimen vitae vexatus nihil fateri conpulsus est.
-
-Et Epigonus quidem amictu tenus philosophus, ut apparuit, prece frustra temptata, sulcatis lateribus mortisque metu admoto turpi confessione cogitatorum socium, quae nulla erant, fuisse firmavit cum nec vidisset quicquam nec audisset penitus expers forensium rerum; Eusebius vero obiecta fidentius negans, suspensus in eodem gradu constantiae stetit latrocinium illud esse, non iudicium clamans."
+text = "Vous n'avez sélectionné aucune quête. Veuillez en choisir une parmi ceux disponibles à votre gauche."
 autowrap_mode = 3
 clip_text = true
 text_overrun_behavior = 4

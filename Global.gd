@@ -17,6 +17,12 @@ var allow_loops = false
 var letters_to_show = []
 var show_labels = false
 
+var tutorial = true
+var tutorial_stade = 0
+var tutorial_validate = false
+
+var current_quest_id = -1
+
 signal fringe_changed
 
 func _ready():
@@ -26,7 +32,11 @@ func _ready():
 		var random_type = animal_types[random_type_index]
 		var type_animal = random_type
 		print("Type choisi aléatoirement:", type_animal)
-		
+
+func _process(delta):
+	if tutorial == false:
+		tutorial_stade = -1
+
 var animals_player = {
 	
 	0: {
@@ -122,6 +132,14 @@ var items = {
 		"texture":"res://Textures/Apple.png",
 		"quantity":0
 	},
+	5: {
+		"name":"N-KEY",
+		"value":0,
+		"type":["key",1],
+		"effets":"Active une porte",
+		"texture":"res://Textures/Animals/CHICKEN.png",
+		"quantity":0
+	},
 }
 
 var attacks = {
@@ -164,13 +182,41 @@ var quests = {
 		"title":"Parchemin perdu",
 		"long_description":"Vous pénétrez dans la modeste demeure du vieux sage, un érudit respecté de tous dans le royaume. Sa longue barbe blanche et ses yeux sages vous fixent avec bienveillance alors qu'il vous confie une quête d'une importance capitale.
 			\nAinsi, votre aventure débute. Vous partez à la recherche de ce parchemin, bravant des dangers inconnus, explorant des contrées reculées et affrontant des créatures mythiques. La destinée du royaume dépend de votre réussite. Que la chance accompagne vos pas, brave aventurier !",
-		"description":"Allez voir le vieux, il vous demandera de chercher un parchemin sacre.",
-		"pin_position":Vector2(1448,291)
+		"descriptions":
+			["Allez voir le vieux, il vous demandera de chercher un parchemin sacre."],
+		"pin_positions":[Vector2(1448,291)],
+		"stade":0,
+		"finished":true,
+	},
+	1: {
+		"title":"Bagird le rigolo",
+		"long_description":"Vous devez aller voir Monsieur Bagird, il vous demandera d'écouter à sa parole, vous devrez répondre à cela.",
+		"descriptions":
+			["Allez voir Monsieur Bagird qui se trouve sur la place du village, il a une belle bito.",
+			"Allez voir Monsieur Bagird et rigolez à sa blague.",
+			"Allez voir Monsieur Bagird qui se trouve à côté du pont Richard, pour continuer sa conversation...",
+			"Mosieur Bagird le rigolo vous a donné le N-KEY, mais vous devez trouver à quoi elle sert et où se trouve !"],
+		"mini_descriptions":
+			["Allez voir Bagird","Rigolez a la blague de Bagird","Allez rejoindre Bagird vers le pont Richard","Cherchez l'endroit d'utilisation du N-KEY"],
+		"pin_positions":[Vector2(980,-680),Vector2(980,-680),Vector2(764,932),Vector2(764,932)],
+		"stade":0,
+		"finished":false,
 	}
 }
 
+func finished_stade_quest(quest_id=current_quest_id):
+	if quest_id > -1:
+		if quests[quest_id]["descriptions"].size() > quests[quest_id]["stade"]:
+			quests[quest_id]["stade"] += 1
+		else:
+			quests[quest_id]["finished"] = true
+
 func save():
 	var save_file = ConfigFile.new()
+	
+	save_file.set_value("Tuto", "Stade", tutorial_stade)
+	save_file.set_value("Tuto", "Type", tutorial)
+	save_file.set_value("Tuto", "Validate", tutorial_validate)
 	
 	save_file.set_value("Values", "items", items)
 	save_file.set_value("Values", "attacks", attacks)
@@ -201,6 +247,11 @@ func save():
 func load():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
+	
+	tutorial_stade = load_file.get_value("Tuto", "Stade", tutorial_stade)
+	tutorial = load_file.get_value("Tuto", "Type", tutorial)
+	tutorial_validate = load_file.get_value("Tuto", "Validate", tutorial_validate)
+	
 	items = load_file.get_value("Quests", "infos", items)
 	attacks = load_file.get_value("Values", "attacks", attacks)
 	quests = load_file.get_value("Quests", "infos", quests)

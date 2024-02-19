@@ -54,17 +54,31 @@ func update_choices():
 
 
 func _process(delta):
-	if get_node("TextsBox/Label").visible_ratio == 1:
-		if actual_text < texts.size():
-			if not texts[actual_text]["has_choices"] && Input.is_action_just_pressed("ui_down"):
-				get_node("TextsBox/Next1").visible = false
-				get_node("TextsBox/Next2").visible = true
-			elif not texts[actual_text]["has_choices"] && Input.is_action_just_pressed("ui_up"):
-				get_node("TextsBox/Next1").visible = true
-				get_node("TextsBox/Next2").visible = false
-			else:
-				get_node("TextsBox/Choices").visible = true
-				get_node("TextsBox/ChoicesTexts").visible = true
+	## Intéraction avec les quêtes
+	if Global.current_quest_id == 1 and Global.quests[1]["stade"] == 1 and actual_text == 7:
+		Global.quests[1]["stade"] = 2
+		get_node("/root/main_map/Bagird").position = Vector2(764,932)
+		get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[1]["pin_positions"][Global.quests[1]["stade"]])
+		
+	if Global.current_quest_id == 1 and Global.quests[1]["stade"] == 2 and actual_text == 1:
+		Global.quests[1]["stade"] = 3
+		get_node("/root/main_map").spawn_item(get_node("/root/main_map/Player_One").position+Vector2(64,64),"item",5)
+		get_node("/root/main_map/Bagird").position = Vector2(764,932)
+		get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[1]["pin_positions"][Global.quests[1]["stade"]])
+			
+	if get_node("TextsBox/Label").visible_ratio == 1 and actual_text < texts.size() and texts[actual_text]["has_choices"] == true:
+		
+		
+		if Input.is_action_just_pressed("ui_down"):
+			get_node("TextsBox/Next1").visible = false
+			get_node("TextsBox/Next2").visible = true
+		elif Input.is_action_just_pressed("ui_up"):
+			get_node("TextsBox/Next1").visible = true
+			get_node("TextsBox/Next2").visible = false
+		else:
+			get_node("TextsBox/Choices").visible = true
+			get_node("TextsBox/ChoicesTexts").visible = true
+			
 	else:
 		get_node("TextsBox/Label").visible_ratio += 0.01
 		get_node("TextsBox/Next1").visible = false

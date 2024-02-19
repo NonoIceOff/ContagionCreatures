@@ -93,6 +93,19 @@ scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
+[node name="Next" type="Label" parent="TextsBox"]
+texture_filter = 1
+offset_left = 1480.0
+offset_top = 40.0
+offset_right = 1516.0
+offset_bottom = 59.0
+scale = Vector2(2, 2)
+text = "[e]"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 2
+
 [node name="Next1" type="Label" parent="TextsBox"]
 visible = false
 texture_filter = 1
