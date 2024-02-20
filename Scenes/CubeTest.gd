@@ -2,11 +2,8 @@ extends CharacterBody2D
 
 var speed = 450
 
-
 const FLOOR_NORMAL = Vector2(0,-1)
 var ray : RayCast2D
-
-
 
 var offset_x = 0
 var offset_y = 64
@@ -21,19 +18,9 @@ var i = 0
 var direction = 0
 
 
-
-
-
-
-
-
-
-
 func _ready(): 
 	ray = $RayCast2D
 	
-	
-
 
 func _physics_process(delta):
 	
@@ -75,7 +62,3 @@ func _physics_process(delta):
 		get_node("01-generic").region_rect = Rect2(left[i/10][0],left[i/10][1],16,16)
 	else :
 		get_node("01-generic").region_rect = Rect2(idle[direction][0],idle[direction][1],16,16)
-	
-	
-	
-	

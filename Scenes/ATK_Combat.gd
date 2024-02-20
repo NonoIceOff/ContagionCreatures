@@ -4,6 +4,8 @@ var ArrowAttack = 11
 
 
 func button_Attaque():
+	#Cette fonction est appelée lorsqu'un bouton d'attaque est pressé
+	#et affiche un message indiquant que l'attaque a été réalisée.
 	queue_free()
 	#await get_tree().create_timer(1).timeout
 	take_damage(ArrowAttack)
@@ -85,6 +87,8 @@ func _process(delta):
 				queue_free()
 
 func take_damage(attack):
+	#Cette fonction prend en paramètre les données d'une attaque, désactive les boutons d'attaque,
+	#met à jour le texte des dialogues, diminue les points de vie de l'ennemi, déclenche une animation de dommages sur l'ennemi.
 	get_node("/root/SceneCombat/Button").disabled = true
 	get_node("/root/SceneCombat/Button2").disabled = true
 	get_node("/root/SceneCombat/Button3").disabled = true
@@ -94,9 +98,15 @@ func take_damage(attack):
 	get_node("/root/SceneCombat").pv_enemy -= attack["value"]
 	get_node("/root/SceneCombat/AnimationPlayer").play("Damage_Enemy") 
 	await get_node("/root/SceneCombat/AnimationPlayer").animation_finished
+<<<<<<< Updated upstream
 	
 	
 	
 	
 
 
+=======
+
+func _Exit():
+	queue_free()
+>>>>>>> Stashed changes

@@ -10,7 +10,6 @@ func _process(delta):
 	region_rect = Rect2(idle[perso_id][0],idle[perso_id][1],16,16)
 
 
-
 func _on_button_perso_1_pressed():
 	PlayerStats.character = 0
 

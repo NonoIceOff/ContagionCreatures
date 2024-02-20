@@ -6,8 +6,6 @@ var pv_player = 100
 var pv_enemy = 100
 var turn = 0 # 0 = ton tour ; 1 = le tour du méchant
 
-
-
 var attack_index = 0
 var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
 var attack_values = [11,23,2,20]
@@ -31,6 +29,7 @@ var texts_enemy = {
 }
 
 var texts_end = {
+	#Textes pour la fin du combat
 	0: {
 		"text": "qui perd ?",
 		"has_choices": false,
@@ -58,6 +57,7 @@ func _process(delta):
 	get_node("ContainerMob/TextureProgressBar").value = pv_enemy
 	get_node("ContainerPLAYER/TextureProgressBar").value = pv_player
 	
+	#Vérification de l'état du combat
 	if get_node_or_null("SpeechBox") != null:
 		if get_node("SpeechBox").actual_text == 1:
 			if pv_player <= 0 and pv_player > -1000:
@@ -77,6 +77,7 @@ func _process(delta):
 
 
 func enemy_turns():
+	#Tour de l'ennemi
 	if get_node_or_null("SpeechBox") != null:
 		attack_index = rng.randi_range(0,attack_names.size()-1)
 		get_node("SpeechBox").queue_free()
@@ -89,6 +90,7 @@ func enemy_turns():
 		await get_node("/root/SceneCombat/AnimationPlayer").animation_finished
 		
 func win():
+	#Gestion de la victoire du joueur
 	if get_node_or_null("SpeechBox") != null:
 		get_node("SpeechBox").queue_free()
 		texts_end[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" chute !"
@@ -98,9 +100,16 @@ func win():
 		
 		
 func loose():
+	#Gestion de la défaite du joueur
 	if get_node_or_null("SpeechBox") != null:
 		get_node("SpeechBox").queue_free()
 		texts_end[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" remporte son combat..."
 		texts_end[1]["text"] = "Vous perdez le combat et repartez bredouille..."
 		get_node("/root/SceneCombat").spawn_dialogue(texts_end)
 		get_node("/root/SceneCombat/AnimationPlayer").play("Player_Death")
+<<<<<<< Updated upstream
+=======
+		get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
+>>>>>>> Stashed changes

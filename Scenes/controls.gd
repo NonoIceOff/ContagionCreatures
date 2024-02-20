@@ -7,6 +7,7 @@ func _ready():
 	show_keys()
 	
 func show_keys():
+	#Affiche les touches associées aux actions dans les boutons correspondants.
 	var action_events = InputMap.action_get_events("ui_up")[0]
 	var KeyCode = action_events.keycode
 	var KeyString = OS.get_keycode_string(KeyCode)
@@ -32,6 +33,7 @@ func show_keys():
 	get_node("ScrollContainer/VBoxContainer/Right/RightButton").text = KeyString
 
 func _input(event):
+	#Gère les événements de changement de touche associée à une action.
 	if event is InputEventKey:
 		if change_key_state == 1:
 			if change_key == "ui_up":
