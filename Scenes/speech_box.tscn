@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bygxx7a6c4m0f"]
+[gd_scene load_steps=6 format=3 uid="uid://bygxx7a6c4m0f"]
 
 [ext_resource type="Script" path="res://Scenes/speech_box.gd" id="1_uc22q"]
 [ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="2_a0xcg"]
+[ext_resource type="AudioStream" uid="uid://cemminjheexhv" path="res://Sounds/Lens - Bobby Richards.mp3" id="3_a541l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r2v4"]
 bg_color = Color(0.8, 0.8, 0.8, 1)
@@ -145,8 +146,11 @@ offset_top = -80.0
 offset_right = 1032.0
 offset_bottom = -42.0
 scale = Vector2(2, 2)
-theme_override_colors/font_color = Color(0.694118, 0.694118, 0.694118, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 10
 text = "je vais t' aider
 NON LAISSE MOI TRANQUILLE"
 horizontal_alignment = 2
@@ -165,3 +169,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0.235294, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 text = "I"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_a541l")
+autoplay = true

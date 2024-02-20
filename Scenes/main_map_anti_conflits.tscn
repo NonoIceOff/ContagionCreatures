@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c6eat4i1d5sl1"]
+[gd_scene load_steps=33 format=3 uid="uid://c6eat4i1d5sl1"]
 
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_33fsg"]
 [ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="2_fa0yf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d00cubkujysav" path="res://Textures/Inventaire/grey.png" id="5_xpvwc"]
 [ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="6_n4ph5"]
 [ext_resource type="Texture2D" uid="uid://ckpe2pm4ddggs" path="res://Textures/Old_guy_who_lost_is_crampté_REAL.png" id="7_lgjdr"]
+[ext_resource type="Texture2D" uid="uid://b6qrnndoprfy7" path="res://Textures/Items/nkey.png" id="7_qy2h3"]
 [ext_resource type="Texture2D" uid="uid://blo1a6breprsw" path="res://Textures/Head-old-Guy-REAL.png" id="8_o3ybd"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="9_1igwc"]
 [ext_resource type="Texture2D" uid="uid://dygmeeyh8svxo" path="res://Textures/headMOB.png" id="10_pxuq1"]
@@ -171,6 +172,7 @@ position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_1qsd3")
 
 [node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="InversedDungeon/CharacterBody2D"]
+visible = false
 z_index = -1
 position = Vector2(0, 3)
 scale = Vector2(3.7, 3.7)
@@ -185,6 +187,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_xpvwc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InversedDungeon"]
+position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_8rep1")
 
 [node name="Trigger" type="Sprite2D" parent="InversedDungeon"]
@@ -195,11 +198,12 @@ scale = Vector2(2.9, 2.9)
 texture = ExtResource("6_n4ph5")
 
 [node name="Interact" type="Label" parent="InversedDungeon"]
+visible = false
 z_index = 100
-offset_left = -83.0
-offset_top = -18.0
-offset_right = 25.0
-offset_bottom = 32.0
+offset_left = -26.0
+offset_top = -61.0
+offset_right = 82.0
+offset_bottom = -11.0
 scale = Vector2(0.5, 0.5)
 text = "[ E ]"
 label_settings = SubResource("LabelSettings_78oor")
@@ -207,15 +211,32 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="Sprite2D" type="Sprite2D" parent="InversedDungeon/Interact"]
+position = Vector2(40, -22)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_qy2h3")
+
+[node name="Label" type="Label" parent="InversedDungeon/Interact/Sprite2D"]
+texture_filter = 1
+offset_left = 128.0
+offset_top = -64.0
+offset_right = 168.0
+offset_bottom = -45.0
+scale = Vector2(7, 7)
+theme_override_colors/font_outline_color = Color(0.0235294, 1, 0, 1)
+theme_override_constants/outline_size = 5
+text = "1"
+
 [node name="DungeonPNG" type="Label" parent="InversedDungeon"]
-z_index = 11
 texture_filter = 1
 texture_repeat = 1
-offset_left = -21.0
-offset_top = -24.0
-offset_right = 189.0
-offset_bottom = 176.0
-scale = Vector2(0.2, 0.2)
+offset_left = -29.0
+offset_top = -16.0
+offset_right = 91.0
+offset_bottom = 32.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0.976471, 0, 1, 1)
+theme_override_constants/outline_size = 10
 text = "INVERSED
 DUNGEON"
 horizontal_alignment = 1
@@ -255,11 +276,11 @@ texture = ExtResource("6_n4ph5")
 
 [node name="Interact" type="Label" parent="Bagird"]
 visible = false
-offset_left = -83.0
-offset_top = -18.0
-offset_right = 25.0
-offset_bottom = 32.0
-scale = Vector2(0.4, 0.6)
+offset_left = -24.0
+offset_top = -70.0
+offset_right = 84.0
+offset_bottom = -20.0
+scale = Vector2(0.5, 0.5)
 text = "[ E ]"
 label_settings = SubResource("LabelSettings_78oor")
 horizontal_alignment = 1
@@ -293,16 +314,18 @@ texture = ExtResource("8_o3ybd")
 shape = SubResource("CircleShape2D_8rep1")
 
 [node name="Trigger" type="Sprite2D" parent="InteractArea"]
+visible = false
 position = Vector2(0, -73)
 scale = Vector2(2.9, 2.9)
 texture = ExtResource("6_n4ph5")
 
 [node name="Interact" type="Label" parent="InteractArea"]
-offset_left = -83.0
-offset_top = -18.0
-offset_right = 25.0
-offset_bottom = 32.0
-scale = Vector2(0.4, 0.6)
+visible = false
+offset_left = -27.0
+offset_top = -67.0
+offset_right = 81.0
+offset_bottom = -17.0
+scale = Vector2(0.5, 0.5)
 text = "[ E ]"
 label_settings = SubResource("LabelSettings_78oor")
 horizontal_alignment = 1
@@ -420,6 +443,27 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[center]Quest Text bar"
 
+[node name="Cinematic" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Cinematic"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Cinematic"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1016.0
+offset_right = 1919.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Stats" type="Control" parent="CanvasLayer2"]
@@ -476,8 +520,11 @@ scale = Vector2(4, 4)
 position = Vector2(-0.25, -14.5)
 shape = SubResource("RectangleShape2D_oh80b")
 
-[connection signal="body_entered" from="InversedDungeon" to="." method="_on_bagird_body_entered"]
-[connection signal="body_exited" from="InversedDungeon" to="." method="_on_bagird_body_exited"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+
+[connection signal="body_entered" from="InversedDungeon" to="." method="_on_inversed_dungeon_body_entered"]
+[connection signal="body_exited" from="InversedDungeon" to="." method="_on_inversed_dungeon_body_exited"]
 [connection signal="body_entered" from="Bagird" to="." method="_on_bagird_body_entered"]
 [connection signal="body_exited" from="Bagird" to="." method="_on_bagird_body_exited"]
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]

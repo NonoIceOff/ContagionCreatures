@@ -68,6 +68,8 @@ func close():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Global.current_quest_id > -1:
+		get_node("ScrollContainer/VBoxContainer/Panel"+str(Global.current_quest_id)+"/Description").text = Global.quests[Global.current_quest_id]["descriptions"][Global.quests[Global.current_quest_id]["stade"]]
 	if Input.is_action_just_pressed("q"):
 		if is_open:
 			close()
@@ -89,12 +91,7 @@ func _process(delta):
 			
 		if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button") != null and Global.quests[i]["finished"] == false:
 			if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button").button_pressed == true:
-				Global.current_quest_id = i
+				Global.set_quest(i)
 				get_node("QuestInfos/TitreQuete").text = Global.quests[i]["title"]
 				get_node("QuestInfos/DescriptionQuete").text = Global.quests[i]["long_description"]
 				get_node("ScrollContainer/VBoxContainer/Panel"+str(i)).self_modulate = Color(1,1,0,1)
-				if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
-					if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
-						get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = true
-					
-					get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])

@@ -25,6 +25,14 @@ var current_quest_id = -1
 
 signal fringe_changed
 
+func set_quest(i):
+	Global.current_quest_id = 1
+	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
+		if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
+			get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = true
+		
+		get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
+
 func _ready():
 	for key in animals_player:
 		var animal_types = animals_player[0]["type"]
@@ -198,7 +206,7 @@ var quests = {
 			"Mosieur Bagird le rigolo vous a donné le N-KEY, mais vous devez trouver à quoi elle sert et où se trouve !"],
 		"mini_descriptions":
 			["Allez voir Bagird","Rigolez a la blague de Bagird","Allez rejoindre Bagird vers le pont Richard","Cherchez l'endroit d'utilisation du N-KEY"],
-		"pin_positions":[Vector2(980,-680),Vector2(980,-680),Vector2(764,932),Vector2(764,932)],
+		"pin_positions":[Vector2(980,-680),Vector2(980,-680),Vector2(764,932),Vector2(-500,-740)],
 		"stade":0,
 		"finished":false,
 	}

@@ -9,6 +9,8 @@ var item_scene = preload("res://Scenes/item.tscn")
 var interacted = false
 var quest_id = 0
 
+var zoomed = false
+
 func _ready():
 	if get_node_or_null("CanvasLayer/CPUParticles2D") != null:
 		get_node("CanvasLayer/CPUParticles2D").visible = false
@@ -19,6 +21,33 @@ func _ready():
 	$InteractArea/Interact.visible = Global.interact
 	spawn_item(Vector2(0,0),"item",1)
 	
+	
+func zoom_dialogue():
+	if zoomed == false:
+		zoomed = true
+		if get_node_or_null("CanvasLayer/Minimap") != null:
+			get_node("CanvasLayer/Minimap").visible = false
+		if get_node_or_null("CanvasLayer2/Stats") != null:
+			get_node("CanvasLayer2/Stats").visible = false
+		get_node("CanvasLayer/Cinematic").modulate = Color(0,0,0,0)
+		get_node("CanvasLayer/Cinematic").visible = true
+		for i in 10:
+			await get_tree().create_timer(0.001).timeout 
+			get_node("Player_One/2").zoom *= 1.05
+			get_node("CanvasLayer/Cinematic").modulate.a += 0.1
+		
+func unzoom_dialogue():
+	if zoomed == true:
+		zoomed = false
+		if get_node_or_null("CanvasLayer/Minimap") != null:
+			get_node("CanvasLayer/Minimap").visible = true
+		if get_node_or_null("CanvasLayer2/Stats") != null:
+			get_node("CanvasLayer2/Stats").visible = true
+		for i in 10:
+			await get_tree().create_timer(0.001).timeout 
+			get_node("Player_One/2").zoom /= 1.05
+			get_node("CanvasLayer/Cinematic").modulate.a -= 0.1
+		get_node("CanvasLayer/Cinematic").visible = false
 
 
 func _process(_delta):
@@ -26,11 +55,13 @@ func _process(_delta):
 		get_node("CanvasLayer/CPUParticles2D/QuestTextBar").text = "[center][rainbow freq=0.05]"+Global.quests[Global.current_quest_id]["title"]+" [/rainbow] [color=black]| [color=white][i]"+Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]]
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
-	if $InteractArea/Interact.visible == true:
-		if Input.is_action_just_pressed("ui_interact") and get_node_or_null("CanvasLayer2/SpeechBox") == null:
-			interacted = true
-			var scene_source = preload("res://Scenes/speech_box.tscn")
-			var scene_instance = scene_source.instantiate()
+	
+	if Input.is_action_just_pressed("ui_interact") and get_node_or_null("CanvasLayer2/SpeechBox") == null:
+		interacted = true
+		var scene_source = preload("res://Scenes/speech_box.tscn")
+		var scene_instance = scene_source.instantiate()
+		
+		if $InteractArea/Interact.visible == true:
 			if quest_id == 0:
 				var text_quest_0 = {
 					0: {
@@ -63,9 +94,19 @@ func _process(_delta):
 					}
 				}
 				scene_instance.texts = text_quest_0
+				scene_instance.icon = load("res://Textures/Old_guy_who_lost_is_crampté_REAL.png")
+				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
+				scene_instance.name_icon = "Hector"
+				get_node("CanvasLayer2").add_child(scene_instance)
+				zoom_dialogue()
+				interacted = false
 				
+		if get_node("Bagird/Interact").visible == true:
 			if quest_id == 1 and Global.quests[1]["stade"] == 0:
+				Global.set_quest(1)
 				Global.quests[1]["stade"] = 1
+				get_node("AudioStreamPlayer2D").stream = load("res://Sounds/bagrid_shlack.mp3")
+				get_node("AudioStreamPlayer2D").playing = true
 				var text_quest_1 = {
 					0: {
 						"text": "Salut mon pote, alors pret a ecouter mes blagues de fou ? Attention tu risques de perdre ton cerveau !",
@@ -132,8 +173,17 @@ func _process(_delta):
 					}
 				}
 				scene_instance.texts = text_quest_1
+				scene_instance.icon = load("res://Textures/PNJ/Bagird/bagird_full.png")
+				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
+				scene_instance.name_icon = "Bagird"
+				get_node("CanvasLayer2").add_child(scene_instance)
+				zoom_dialogue()
+				interacted = false
 				
 			if quest_id == 1 and Global.quests[1]["stade"] == 2:
+				Global.set_quest(1)
+				get_node("AudioStreamPlayer2D").stream = load("res://Sounds/bagrid_rire.mp3")
+				get_node("AudioStreamPlayer2D").playing = true
 				var text_quest_1_2 = {
 					0: {
 						"text": "Bravo tu m'as trouve, tu est trop fort ! Tu as rit a la blague hillarante et tu est trop fort au cache-cache.",
@@ -151,18 +201,28 @@ func _process(_delta):
 					}
 				}
 				scene_instance.texts = text_quest_1_2
+				scene_instance.icon = load("res://Textures/PNJ/Bagird/bagird_full.png")
+				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
+				scene_instance.name_icon = "Bagird"
+				get_node("CanvasLayer2").add_child(scene_instance)
+				zoom_dialogue()
+				interacted = false
+		
+		if get_node("InversedDungeon/Interact").visible == true:
+			if quest_id == 2 and Global.items[5]["quantity"] > 0:
 				
-				
-			get_node("CanvasLayer2").add_child(scene_instance)
-			interacted = false			
+				Global.items[5]["quantity"] -= 1
+				quest_id = 0
+
+				print("Donjon inversé")
+				interacted = false
+			
 	if entered_Ennemy == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"): #and $MobPNJ/AreaEnnemy1/Collision_Ennemy.is_in_group("Player_One"):
 			Key = true
 			get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
-			print("pou")
 			await get_tree().create_timer(2).timeout
 			get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
-			print("rrr")
 			Key = false
 
 
@@ -239,3 +299,14 @@ func _on_bagird_body_entered(body):
 func _on_bagird_body_exited(body):
 	if body.is_in_group("Player_One"):
 		get_node("Bagird/Interact").visible = false
+
+
+func _on_inversed_dungeon_body_entered(body):
+	if body.is_in_group("Player_One"):
+		quest_id = 2
+		get_node("InversedDungeon/Interact").visible = true
+
+
+func _on_inversed_dungeon_body_exited(body):
+	if body.is_in_group("Player_One"):
+		get_node("InversedDungeon/Interact").visible = false

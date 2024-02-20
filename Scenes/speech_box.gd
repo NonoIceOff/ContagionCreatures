@@ -1,5 +1,8 @@
 extends Control
 
+var icon = load("res://Textures/Apple.png")
+var name_icon = "Erza"
+
 var texts = {
 	0: {
 		"text": "Bonjour jeune aventurier ! J'ai perdu quelque chose... pourrais-tu m'aider contre [tornado radius=5.0 freq=1.0 connected=1][rainbow freq=0.1 sat=0.8 val=0.8]une recompense[/rainbow][/tornado] ?",
@@ -36,6 +39,8 @@ var choice = 0
 
 func _ready():
 	display_text()
+	get_node("TextsBox/Name").text = name_icon
+	get_node("IconSpeecher/Sprite2D").texture = icon
 
 func display_text():
 	get_node("TextsBox/Label").text = texts[actual_text]["text"]
@@ -62,10 +67,13 @@ func _process(delta):
 		
 	if Global.current_quest_id == 1 and Global.quests[1]["stade"] == 2 and actual_text == 1:
 		Global.quests[1]["stade"] = 3
+		get_node("/root/main_map/AudioStreamPlayer2D").stream = load("res://Sounds/bagrid_bourre.mp3")
+		get_node("/root/main_map/AudioStreamPlayer2D").playing = true
 		get_node("/root/main_map").spawn_item(get_node("/root/main_map/Player_One").position+Vector2(64,64),"item",5)
-		get_node("/root/main_map/Bagird").position = Vector2(764,932)
+		get_node("/root/main_map/Bagird").position = Vector2(-500,-740)
 		get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[1]["pin_positions"][Global.quests[1]["stade"]])
-			
+		
+
 	if get_node("TextsBox/Label").visible_ratio == 1 and actual_text < texts.size() and texts[actual_text]["has_choices"] == true:
 		
 		
@@ -106,9 +114,11 @@ func handle_next_text():
 			display_text()
 		else:
 			visible = false
+			get_node("/root/main_map").unzoom_dialogue()
 			queue_free()
 	else:
 		visible = false
+		get_node("/root/main_map").unzoom_dialogue()
 		queue_free()
 
 func handle_choice():
