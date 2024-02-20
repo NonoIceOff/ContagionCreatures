@@ -5,6 +5,8 @@ var speed = 320
 var vie = 100
 var coins = 0
 
+var zoom_multiplier = 1
+
 
 const FLOOR_NORMAL = Vector2(0,-1)
 var ray : RayCast2D
@@ -12,6 +14,8 @@ var ray : RayCast2D
 var added_to_list = false
 
 var pseudo = "pseudo"
+
+var hoster = 0
 
 var offset_x = 0
 var offset_y = 0
@@ -41,9 +45,15 @@ func _enter_tree():
 func _ready(): 
 	if not is_multiplayer_authority(): return
 	get_node("HUD").visible = false
+		
 	
 func _process(delta):
 	if not is_multiplayer_authority(): return
+	if multiplayer.get_peers().size() == 0 and hoster == 0:
+		hoster = 1
+		get_node("/root/multiplayer_map/CanvasLayer/Stats").visible = false
+		visible = false
+	PlayerStats.pseudo = pseudo
 	coins += 1
 	get_node("HUD/Coins/Label").text = str(coins)
 	get_node("HUD/Vie").value = vie
@@ -60,7 +70,7 @@ func add_to_list(player_name):
 
 
 func _physics_process(_delta):
-	if is_multiplayer_authority():
+	if is_multiplayer_authority() and hoster == 0:
 		get_node("HUD/Name").text = str(pseudo)
 		
 		if Input.is_action_pressed("haut") or Input.is_action_pressed("ui_up"):
@@ -101,3 +111,25 @@ func _physics_process(_delta):
 			get_node("01-generic2").region_rect = Rect2(left[i/10][0],left[i/10][1],180, 180)
 		else :
 			get_node("01-generic2").region_rect = Rect2(idle[direction][0],idle[direction][1],180, 180)
+			
+	elif hoster == 1:
+		if Input.is_action_pressed("haut") or Input.is_action_pressed("ui_up"):
+			get_node("Camera2D").position.y -= 4*zoom_multiplier
+		if Input.is_action_pressed("bas") or Input.is_action_pressed("ui_down"):
+			get_node("Camera2D").position.y += 4*zoom_multiplier
+		if Input.is_action_pressed("gauche") or Input.is_action_pressed("ui_left"):
+			get_node("Camera2D").position.x -= 4*zoom_multiplier
+		if Input.is_action_pressed("droite") or Input.is_action_pressed("ui_right"):
+			get_node("Camera2D").position.x += 4*zoom_multiplier
+			
+func _input(event):
+	if event is InputEventMouseButton and hoster == 1:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			get_node("Camera2D").zoom *= 1.01
+			if zoom_multiplier > 0.1:
+				zoom_multiplier -= 0.01
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			get_node("Camera2D").zoom /= 1.01
+			if zoom_multiplier < 10:
+				zoom_multiplier += 0.01
+			

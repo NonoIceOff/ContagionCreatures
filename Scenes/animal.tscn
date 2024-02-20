@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=3 format=3 uid="uid://ugyv3wsgciiw"]
+=======
+[gd_scene load_steps=3 format=3 uid="uid://clft6l0mv78bv"]
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 
 [ext_resource type="Script" path="res://Animal_follow.gd" id="1_nc1w6"]
 [ext_resource type="Texture2D" uid="uid://dklqcsx2x2pm2" path="res://Textures/Animals/CHICKEN.png" id="2_jsm3g"]

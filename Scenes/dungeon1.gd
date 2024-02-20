@@ -33,7 +33,11 @@ func intro():
 	
 func _ready() -> void:
 	intro()
+<<<<<<< HEAD
 	## Génération aléatoire des objets dans le labyrinthe
+=======
+	
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	for x in range(0,64,16):
 		for y in range(0,64,16):
 			var random_type = randi_range(0,item_types.size()-1)
@@ -86,7 +90,10 @@ func _on_show_labels_toggled(button_pressed: bool) -> void:
 	$CanvasLayer/spots_visited_column.set_visible(button_pressed)
 	
 func spawn_item(pos,type,id):
+<<<<<<< HEAD
 	## Fonction pour générer un objet à une position donnée
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	var item_instance = item_scene.instantiate()
 	item_instance.position = pos
 	item_instance.id = id

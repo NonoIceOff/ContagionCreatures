@@ -1,5 +1,9 @@
 extends Area2D
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 var entered = false
 var Key = false
 var pos_replace = Vector2()

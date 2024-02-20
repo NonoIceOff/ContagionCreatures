@@ -37,3 +37,14 @@ func _process(delta):
 			get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 			print("rrr")
 			Key = false
+<<<<<<< HEAD
+=======
+
+
+
+	
+
+
+
+	
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd

@@ -105,8 +105,15 @@ func take_damage(attack):
 	
 
 
+<<<<<<< HEAD
 =======
 
 func _Exit():
 	queue_free()
 >>>>>>> Stashed changes
+=======
+
+
+func _Exit():
+	queue_free()
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd

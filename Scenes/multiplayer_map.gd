@@ -5,12 +5,14 @@ extends Node2D
 @onready var pseudo_entry = $CanvasLayer/MultiplayerSettings/Pseudo
 @onready var player_list_label = $CanvasLayer/Stats/PlayerListLabel
 @onready var stats = $CanvasLayer/Stats
+@onready var chat = $CanvasLayer/Chat
 
 #Préchargement du modèle de joueur et définition du port de connexion
 const Player = preload("res://Scenes/Player_Multiplayer.tscn")
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 #Variables de test et de statut de connexion
@@ -18,6 +20,11 @@ var testing = 0
 var is_connected_testing = false
 
 #Liste des serveurs disponibles
+=======
+var testing = 0
+var is_connected_testing = false
+
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 var server_list = {
 	0:{
 		"name":"Serveur de Nonoice",
@@ -27,16 +34,28 @@ var server_list = {
 	}
 }
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 func _ready():
 	stats.hide()
+	chat.hide()
+	enet_peer.connect("peer_disconnected", Callable(self, "_on_peer_disconnected"))
+	enet_peer.connect("peer_connected", Callable(self, "_on_peer_connected"))
 	
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 	#refresh_server_list()
 
 func refresh_server_list():
 	#Fonction pour actualiser la liste des serveurs disponibles
+=======
+	#refresh_server_list()
+
+func refresh_server_list():
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	var result = get_node("CanvasLayer/MultiplayerSettings/ScrollContainer/ServerList")
 	for j in result.get_children():
 		j.queue_free()
@@ -93,7 +112,10 @@ func spawn_server(i):
 		
 
 func if_server_exists(i):
+<<<<<<< HEAD
 	#Fonction pour vérifier l'existence d'un serveur
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	#get_node("CanvasLayer/MultiplayerSettings/IpAddress").text = str("10.57.32.114")
 	if address_entry.text != "":
 		enet_peer.create_client(server_list[i]["ip"], PORT)
@@ -107,23 +129,39 @@ func if_server_exists(i):
 		print("Ouvert")
 		return true
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 func _process(_delta):
+	stats.show()
+	
 	if get_node("CanvasLayer/MultiplayerSettings/Pseudo").text != "":
-		get_node("CanvasLayer/MultiplayerSettings/HostGame").disabled = false
-		get_node("CanvasLayer/MultiplayerSettings/GlobalServer/JoinGlobalServer").disabled = false
 		if get_node("CanvasLayer/MultiplayerSettings/IpAddress").text != "":
 			get_node("CanvasLayer/MultiplayerSettings/JoinGame").disabled = false
 		else:
 			get_node("CanvasLayer/MultiplayerSettings/JoinGame").disabled = true
 	else:
-		get_node("CanvasLayer/MultiplayerSettings/HostGame").disabled = true
 		get_node("CanvasLayer/MultiplayerSettings/JoinGame").disabled = true
-		get_node("CanvasLayer/MultiplayerSettings/GlobalServer/JoinGlobalServer").disabled = true
 		
-	var server_address = IP.get_local_addresses()[-1]
-	get_node("CanvasLayer/Stats/ServerInfo").text = "[rainbow freq=0.05][b]INFO DU SERVEUR :[/b][/rainbow]\n[font_size=16]Serveur de " + str(server_address) + "\nJoueurs: " + str(multiplayer.get_peers().size() + 1) + "[/font_size]"
-		
+	var server_address = IP.get_local_addresses()[3]
+	get_node("CanvasLayer/Stats/ServerInfo").text = "[rainbow freq=0.05][b]INFO DU SERVEUR :[/b][/rainbow]\n[font_size=16]Ip du serveur: [font=res://Font/Inter-Medium.ttf]" + str(server_address) + "[/font]\nJoueurs: [font=res://Font/Inter-Medium.ttf]" + str(multiplayer.get_peers().size() + 1) + "[/font][/font_size]"
+	
+	for i in server_list:
+		if get_node_or_null("CanvasLayer/MultiplayerSettings/ScrollContainer/ServerList/"+str(i)) != null:
+			if get_node("CanvasLayer/MultiplayerSettings/ScrollContainer/ServerList/"+str(i)+"/Button").button_pressed == true:
+				main_menu.hide()
+				stats.hide()
+				chat.show()
+				enet_peer.create_client(server_list[i]["ip"], PORT)
+				multiplayer.multiplayer_peer = enet_peer
+				if enet_peer.get_connection_status() == 0:
+					stats.hide()
+					chat.hide()
+					main_menu.show()
+					get_node("CanvasLayer/Error/Panel/RichTextLabel").text = "[center][b][wave amp=50.0 freq=5.0 connected=1]ERREUR[/wave][/b]\n\n[i][font_size=32]Serveur non existant, veuillez mettre la bonne IP[/font_size]"
+					get_node("CanvasLayer/Error").visible = true
+	
 func add_player(peer_id,pseudo="pseudo"):
 	#Fonctions pour ajouter et supprimer des joueurs
 	var player = Player.instantiate()
@@ -132,7 +170,7 @@ func add_player(peer_id,pseudo="pseudo"):
 	player.position = Vector2(250, 250)
 	add_child(player)
 
-func remove_player(peer_id,pseudo="pseudo"):
+func remove_player(peer_id,pseudo="pseuo"):
 	var player = get_node_or_null(str(peer_id))
 	if player:
 		player.queue_free()
@@ -144,26 +182,59 @@ func _on_multiplayer_spawner_spawned(player):
 		player.added_to_list = true
 
 func _on_join_game_pressed():
-	main_menu.hide()
-	stats.show()
+	if address_entry.text != "localhost":
+		main_menu.hide()
+		stats.hide()
+		chat.show()
 
-	enet_peer.create_client(address_entry.text, PORT)
-	multiplayer.multiplayer_peer = enet_peer
+		enet_peer.create_client(address_entry.text, PORT)
+		multiplayer.multiplayer_peer = enet_peer
+		if enet_peer.get_connection_status() == 0:
+			stats.hide()
+			chat.hide()
+			main_menu.show()
+			get_node("CanvasLayer/Error/Panel/RichTextLabel").text = "[center][b][wave amp=50.0 freq=5.0 connected=1]ERREUR[/wave][/b]\n\n[i][font_size=32]Serveur non existant, veuillez mettre la bonne IP[/font_size]"
+			get_node("CanvasLayer/Error").visible = true
+		print(enet_peer.get_connection_status())
+	else:
+		get_node("CanvasLayer/Error/Panel/RichTextLabel").text = "[center][b][wave amp=50.0 freq=5.0 connected=1]ERREUR[/wave][/b]\n\n[i][font_size=32]Impossible de se connecter a localhost pour le moment.[/font_size]"
+		get_node("CanvasLayer/Error").visible = true
+		
 
 func _on_host_game_pressed():
 	main_menu.hide()
 	stats.show()
+	chat.show()
 
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
-	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
-	add_player(multiplayer.get_unique_id(),pseudo_entry.text)
+	multiplayer.peer_connected.connect(add_player)
+	add_player(multiplayer.get_unique_id(),"serveur")
 
 
 func _on_join_global_server_pressed():
-	main_menu.hide()
-	stats.show()
+	pass
 
-	enet_peer.create_client("localhost", 9999)
-	multiplayer.multiplayer_peer = enet_peer
+func _on_peer_disconnected(id):
+	print("Déconnecté du serveur. ID du pair déconnecté :", id)
+	stats.hide()
+	chat.hide()
+	main_menu.show()
+	get_node("CanvasLayer/Error/Panel/RichTextLabel").text = "[center][b][wave amp=50.0 freq=5.0 connected=1]ERREUR[/wave][/b]\n\n[i][font_size=32]Deconnecte du serveur ( serveur ferme )[/font_size]"
+	get_node("CanvasLayer/Error").visible = true
+	
+func _on_peer_connected(id):
+	print("Connecté du serveur. ID du pair connecté :", id)
+	print("connected : "+str(is_connected_testing))
+	if testing == 1:
+		is_connected_testing = true
+		multiplayer.multiplayer_peer = null
+
+
+func _on_errorok_pressed():
+	get_node("CanvasLayer/Error").visible = false
+
+
+func _on_refresh_server_list_pressed():
+	refresh_server_list()

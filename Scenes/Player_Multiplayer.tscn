@@ -75,6 +75,7 @@ scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_3rs54")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1.90735e-06, 3.8147e-06)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_3rs54")

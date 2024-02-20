@@ -7,7 +7,10 @@ var Key = false
 var entered_Ennemy = false
 var item_scene = preload("res://Scenes/item.tscn")
 var interacted = false
+<<<<<<< HEAD
 var scene_load = false
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 
 func _ready():
 	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
@@ -16,6 +19,7 @@ func _ready():
 	$InteractArea/Trigger.visible = true
 	$InteractArea/Interact.visible = Global.interact
 	spawn_item(Vector2(0,0),"item",1)
+<<<<<<< HEAD
 
 
 func _process(_delta):
@@ -23,18 +27,31 @@ func _process(_delta):
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
 		
+=======
+	
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed("échap"):
+		PauseMenu()
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	if $InteractArea/Interact.visible == true:
 		if Input.is_action_just_pressed("ui_interact"):
 			interacted = true
 			var scene_source = preload("res://Scenes/speech_box.tscn")
 			var scene_instance = scene_source.instantiate()
 			get_node("CanvasLayer2").add_child(scene_instance)
+<<<<<<< HEAD
 			interacted = false	
 
+=======
+			interacted = false			
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	if entered_Ennemy == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"): #and $MobPNJ/AreaEnnemy1/Collision_Ennemy.is_in_group("Player_One"):
 			Key = true
 			get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+<<<<<<< HEAD
 			await get_tree().create_timer(2).timeout
 			get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
 			Key = false
@@ -56,6 +73,15 @@ func _process(_delta):
 			scene_load = false
 	
 	
+=======
+			print("pou")
+			await get_tree().create_timer(2).timeout
+			get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
+			print("rrr")
+			Key = false
+
+
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 func PauseMenu ():
 	if Global.paused == true:
 		pause_menu.show()
@@ -70,20 +96,29 @@ func PauseMenu ():
 	
 
 func _on_area_ennemy_1_body_entered(body):
+<<<<<<< HEAD
 	#Fonction appelée lorsqu'un corps sort de la zone d'ennemi.
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	if body.is_in_group("Player_One"):
 		entered_Ennemy = true
 		get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = true
 
 
 func _on_area_ennemy_1_body_exited(body):
+<<<<<<< HEAD
 	#Fonction appelée lorsqu'un corps entre dans la zone d'interaction.
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	if body.is_in_group("Player_One"):
 		entered_Ennemy = false
 		get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = false
 
 func _on_interact_area_entered(body):
+<<<<<<< HEAD
 	#Fonction appelée lorsqu'un corps sort de la zone d'interaction.
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	if body.is_in_group("Player_One"):
 		$InteractArea/Interact.visible = true
 
@@ -94,7 +129,10 @@ func _on_interact_area_exited(body):
 		$InteractArea/Interact.visible = false
 
 func spawn_item(pos,type,id):
+<<<<<<< HEAD
 	#Fonction pour créer et placer un objet dans le jeu.
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	var item_instance = item_scene.instantiate()
 	item_instance.position = pos
 	item_instance.id = id
@@ -106,7 +144,10 @@ func spawn_item(pos,type,id):
 	add_child(item_instance)
 	
 func _on_entered_transition_map(body):
+<<<<<<< HEAD
 	#Fonction appelée lorsqu'un corps entre dans la zone de transition de la carte.
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	var entered_area = false
 	if body.is_in_group("Player_One"):
 		entered_area = true
@@ -117,13 +158,19 @@ func _on_entered_transition_map(body):
 
 
 func _on_interact_area_body_entered(body):
+<<<<<<< HEAD
 	#Fonction appelée lorsqu'un corps entre dans la zone d'interaction du corps.
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	if body.is_in_group("Player_One"):
 		print("aaa")
 		$InteractArea/Interact.visible = true
 
 
 func _on_interact_area_body_exited(body):
+<<<<<<< HEAD
 	#Fonction appelée lorsqu'un corps sort de la zone d'interaction du corps.
+=======
+>>>>>>> 7106966d40a904464f65641079c7f09d727ec6cd
 	if body.is_in_group("Player_One"):
 		$InteractArea/Interact.visible = false
