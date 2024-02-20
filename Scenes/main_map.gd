@@ -10,7 +10,8 @@ var interacted = false
 var quest_id = 0
 
 func _ready():
-	get_node("CanvasLayer/CPUParticles2D").visible = false
+	if get_node_or_null("CanvasLayer/CPUParticles2D") != null:
+		get_node("CanvasLayer/CPUParticles2D").visible = false
 	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
 	get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = false
@@ -21,7 +22,7 @@ func _ready():
 
 
 func _process(_delta):
-	if Global.current_quest_id > -1:
+	if Global.current_quest_id > -1 and get_node_or_null("CanvasLayer/CPUParticles2D") != null:
 		get_node("CanvasLayer/CPUParticles2D/QuestTextBar").text = "[center][rainbow freq=0.05]"+Global.quests[Global.current_quest_id]["title"]+" [/rainbow] [color=black]| [color=white][i]"+Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]]
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
@@ -220,7 +221,6 @@ func _on_entered_transition_map(body):
 
 func _on_interact_area_body_entered(body):
 	if body.is_in_group("Player_One"):
-		print("aaa")
 		quest_id = 0
 		$InteractArea/Interact.visible = true
 
@@ -232,11 +232,10 @@ func _on_interact_area_body_exited(body):
 
 func _on_bagird_body_entered(body):
 	if body.is_in_group("Player_One"):
-		print("aaa")
 		quest_id = 1
-		$InteractArea/Interact.visible = true
+		get_node("Bagird/Interact").visible = true
 
 
 func _on_bagird_body_exited(body):
 	if body.is_in_group("Player_One"):
-		$InteractArea/Interact.visible = false
+		get_node("Bagird/Interact").visible = false

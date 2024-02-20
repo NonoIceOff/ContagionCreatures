@@ -94,5 +94,7 @@ func _process(delta):
 				get_node("QuestInfos/DescriptionQuete").text = Global.quests[i]["long_description"]
 				get_node("ScrollContainer/VBoxContainer/Panel"+str(i)).self_modulate = Color(1,1,0,1)
 				if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
-					get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = true
+					if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
+						get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = true
+					
 					get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])

@@ -137,7 +137,7 @@ var items = {
 		"value":0,
 		"type":["key",1],
 		"effets":"Active une porte",
-		"texture":"res://Textures/Animals/CHICKEN.png",
+		"texture":"res://Textures/Items/nkey.png",
 		"quantity":0
 	},
 }

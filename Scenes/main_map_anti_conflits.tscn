@@ -1,22 +1,27 @@
-[gd_scene load_steps=26 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=32 format=3 uid="uid://c6eat4i1d5sl1"]
 
-[ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
-[ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
-[ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="1_rsrte"]
-[ext_resource type="PackedScene" uid="uid://clft6l0mv78bv" path="res://Scenes/animal.tscn" id="3_46rw2"]
-[ext_resource type="Texture2D" uid="uid://ckpe2pm4ddggs" path="res://Textures/Old_guy_who_lost_is_crampté_REAL.png" id="3_r3b5t"]
-[ext_resource type="Texture2D" uid="uid://blo1a6breprsw" path="res://Textures/Head-old-Guy-REAL.png" id="5_f74um"]
-[ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="6_7grfu"]
-[ext_resource type="Script" path="res://Scenes/Detected_player.gd" id="7_5catn"]
-[ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="7_ch8cw"]
-[ext_resource type="Texture2D" uid="uid://dygmeeyh8svxo" path="res://Textures/headMOB.png" id="7_m7315"]
-[ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="8_fbofd"]
-[ext_resource type="PackedScene" uid="uid://dxt5b5tantpyy" path="res://Scenes/PauseMenu.tscn" id="9_roibj"]
-[ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="12_mcu04"]
-[ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="13_vbc12"]
-[ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="14_rfmay"]
-[ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="15_166nn"]
-[ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="16_61bay"]
+[ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_33fsg"]
+[ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="2_fa0yf"]
+[ext_resource type="PackedScene" uid="uid://clft6l0mv78bv" path="res://Scenes/animal.tscn" id="3_raicc"]
+[ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="4_lo3qj"]
+[ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="4_vo6xk"]
+[ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="5_sw0j1"]
+[ext_resource type="Texture2D" uid="uid://d00cubkujysav" path="res://Textures/Inventaire/grey.png" id="5_xpvwc"]
+[ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="6_n4ph5"]
+[ext_resource type="Texture2D" uid="uid://ckpe2pm4ddggs" path="res://Textures/Old_guy_who_lost_is_crampté_REAL.png" id="7_lgjdr"]
+[ext_resource type="Texture2D" uid="uid://blo1a6breprsw" path="res://Textures/Head-old-Guy-REAL.png" id="8_o3ybd"]
+[ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="9_1igwc"]
+[ext_resource type="Texture2D" uid="uid://dygmeeyh8svxo" path="res://Textures/headMOB.png" id="10_pxuq1"]
+[ext_resource type="Script" path="res://Scenes/Detected_player.gd" id="11_wbhr0"]
+[ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="12_h07u8"]
+[ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="13_qaotw"]
+[ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="14_pp5av"]
+[ext_resource type="Texture2D" uid="uid://dl74uka4kf7xd" path="res://Textures/Gemme_bleu.png" id="15_0iw4j"]
+[ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="16_5v6dr"]
+[ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="17_ydjdk"]
+[ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="18_db4rf"]
+[ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="19_hcdjk"]
+[ext_resource type="PackedScene" uid="uid://dxt5b5tantpyy" path="res://Scenes/PauseMenu.tscn" id="20_v44x1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qsd3"]
 size = Vector2(46, 45)
@@ -40,18 +45,23 @@ size = Vector2(30.5, 32)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqygx"]
 
+[sub_resource type="Curve" id="Curve_8ytm3"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh80b"]
 size = Vector2(38, 13)
 
 [node name="main_map" type="Node2D"]
-script = ExtResource("1_ba8wf")
+script = ExtResource("1_33fsg")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(-1, 0)
 scale = Vector2(4, 4)
-tile_set = ExtResource("1_rsrte")
+tile_set = ExtResource("2_fa0yf")
 format = 2
 layer_0/name = "Z 0"
 layer_0/tile_data = PackedInt32Array(786450, 1245189, 2, 786451, 1310725, 2, 786452, 1376261, 2, 720902, 1245189, 2, 720903, 1310725, 2, 720904, 1376261, 2, 65546, 1245189, 2, 65547, 1310725, 2, 65548, 1376261, 2, 196614, 1245189, 2, 196615, 1310725, 2, 196616, 1376261, 2, 655383, 1245189, 2, 655384, 1310725, 2, 655385, 1376261, 2, 458755, 1245189, 2, 458756, 1310725, 2, 458757, 1376261, 2, -65520, 1441797, 2, -65533, 1441797, 2, -65532, 1507333, 2, -65531, 1572869, 2, -65518, 1572869, 2, -65519, 1507333, 2, 29, 1441797, 2, 30, 1507333, 2, 31, 1572869, 2, -65512, 1245189, 2, -65511, 1310725, 2, -65510, 1376261, 2, 1114124, 1441797, 2, 1114125, 1507333, 2, 1114126, 1572869, 2, 1048603, 1441797, 2, 1048604, 1507333, 2, 1048605, 1572869, 2, 1048609, 1245189, 2, 1048610, 1310725, 2, 1048611, 1376261, 2, -1048561, 589829, 137, -983025, 589829, 138, -1048562, 589829, 137, -983026, 589829, 138, -1179634, 589829, 137, -1114098, 589829, 138, -1179633, 589829, 137, -1114097, 589829, 138)
@@ -147,7 +157,114 @@ layer_13/y_sort_origin = 0
 layer_13/z_index = 10
 layer_13/tile_data = PackedInt32Array(1703994, 3997701, 5, 1769530, 3997701, 6, 1638459, 4063237, 4, 1703995, 4063237, 5, 1638460, 4128773, 4, 1703996, 4128773, 5, 1638461, 4194309, 4, 1703997, 4194309, 5, 1769533, 4194309, 6, 1114169, 3997701, 5, 1179705, 3997701, 6, 1048634, 4063237, 4, 1114170, 4063237, 5, 1048635, 4128773, 4, 1114171, 4128773, 5, 1048636, 4194309, 4, 1114172, 4194309, 5, 1179708, 4194309, 6, 458809, 3997701, 5, 524345, 3997701, 6, 393274, 4063237, 4, 458810, 4063237, 5, 393275, 4128773, 4, 458811, 4128773, 5, 393276, 4194309, 4, 458812, 4194309, 5, 524348, 4194309, 6, 65593, 3997701, 5, 131129, 3997701, 6, 58, 4063237, 4, 65594, 4063237, 5, 59, 4128773, 4, 65595, 4128773, 5, 60, 4194309, 4, 65596, 4194309, 5, 131132, 4194309, 6, -1114131, 3997701, 5, -1048595, 3997701, 6, -1179666, 4063237, 4, -1114130, 4063237, 5, -1179665, 4128773, 4, -1114129, 4128773, 5, -1179664, 4194309, 4, -1114128, 4194309, 5, -1048592, 4194309, 6, -917503, 3997701, 5, -851967, 3997701, 6, -983038, 4063237, 4, -917502, 4063237, 5, -983037, 4128773, 4, -917501, 4128773, 5, -983036, 4194309, 4, -917500, 4194309, 5, -851964, 4194309, 6, -983028, 3997701, 5, -917492, 3997701, 6, -1048563, 4063237, 4, -983027, 4063237, 5, -1048562, 4128773, 4, -983026, 4128773, 5, -1048561, 4194309, 4, -983025, 4194309, 5, -917489, 4194309, 6, -1114082, 3997701, 5, -1048546, 3997701, 6, -1179617, 4063237, 4, -1114081, 4063237, 5, -1179616, 4128773, 4, -1114080, 4128773, 5, -1179615, 4194309, 4, -1114079, 4194309, 5, -1048543, 4194309, 6, -917468, 3997701, 5, -851932, 3997701, 6, -983003, 4063237, 4, -917467, 4063237, 5, -983002, 4128773, 4, -917466, 4128773, 5, -983001, 4194309, 4, -917465, 4194309, 5, -851929, 4194309, 6, 1245245, 3997701, 5, 1310781, 3997701, 6, 1179710, 4063237, 4, 1245246, 4063237, 5, 1179711, 4128773, 4, 1245247, 4128773, 5, 1179712, 4194309, 4, 1245248, 4194309, 5, 1310784, 4194309, 6, 2097195, 3997701, 5, 2162731, 3997701, 6, 2031660, 4063237, 4, 2097196, 4063237, 5, 2031661, 4128773, 4, 2097197, 4128773, 5, 2031662, 4194309, 4, 2097198, 4194309, 5, 2162734, 4194309, 6, 2097184, 3997701, 5, 2162720, 3997701, 6, 2031649, 4063237, 4, 2097185, 4063237, 5, 2031650, 4128773, 4, 2097186, 4128773, 5, 2031651, 4194309, 4, 2097187, 4194309, 5, 2162723, 4194309, 6, 2228228, 3997701, 5, 2293764, 3997701, 6, 2162693, 4063237, 4, 2228229, 4063237, 5, 2162694, 4128773, 4, 2228230, 4128773, 5, 2162695, 4194309, 4, 2228231, 4194309, 5, 2293767, 4194309, 6, 1834993, 3997701, 5, 1900529, 3997701, 6, 1769458, 4063237, 4, 1834994, 4063237, 5, 1769459, 4128773, 4, 1834995, 4128773, 5, 1769460, 4194309, 4, 1834996, 4194309, 5, 1900532, 4194309, 6, -851912, 5111813, 56, -327624, 5111813, 59, -720915, 4128773, 5, -786450, 4194309, 4, -720914, 4194309, 5, -720917, 3997701, 5, -655381, 3997701, 6, -786452, 4063237, 4, -720916, 4063237, 5, -786451, 4128773, 4, -655378, 4194309, 6, -786445, 5111813, 56, -13, 5111813, 61)
 
-[node name="Animal" parent="." instance=ExtResource("3_46rw2")]
+[node name="Animal" parent="." instance=ExtResource("3_raicc")]
+
+[node name="InversedDungeon" type="Area2D" parent="."]
+position = Vector2(-755, -736)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="InversedDungeon"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InversedDungeon/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_1qsd3")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="InversedDungeon/CharacterBody2D"]
+z_index = -1
+position = Vector2(0, 3)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("4_vo6xk")
+
+[node name="Head-old-guy-real" type="Sprite2D" parent="InversedDungeon/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
+z_index = 10
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -1.62158)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_xpvwc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InversedDungeon"]
+shape = SubResource("CircleShape2D_8rep1")
+
+[node name="Trigger" type="Sprite2D" parent="InversedDungeon"]
+visible = false
+z_index = 100
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("6_n4ph5")
+
+[node name="Interact" type="Label" parent="InversedDungeon"]
+z_index = 100
+offset_left = -83.0
+offset_top = -18.0
+offset_right = 25.0
+offset_bottom = 32.0
+scale = Vector2(0.5, 0.5)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_78oor")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="DungeonPNG" type="Label" parent="InversedDungeon"]
+z_index = 11
+texture_filter = 1
+texture_repeat = 1
+offset_left = -21.0
+offset_top = -24.0
+offset_right = 189.0
+offset_bottom = 176.0
+scale = Vector2(0.2, 0.2)
+text = "INVERSED
+DUNGEON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bagird" type="Area2D" parent="."]
+position = Vector2(1000, -680)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Bagird"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bagird/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_1qsd3")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Bagird/CharacterBody2D"]
+z_index = -1
+position = Vector2(0, 3)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("4_lo3qj")
+
+[node name="Head-old-guy-real" type="Sprite2D" parent="Bagird/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
+z_index = 10
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("5_sw0j1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bagird"]
+shape = SubResource("CircleShape2D_8rep1")
+
+[node name="Trigger" type="Sprite2D" parent="Bagird"]
+visible = false
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("6_n4ph5")
+
+[node name="Interact" type="Label" parent="Bagird"]
+visible = false
+offset_left = -83.0
+offset_top = -18.0
+offset_right = 25.0
+offset_bottom = 32.0
+scale = Vector2(0.4, 0.6)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_78oor")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="InteractArea" type="Area2D" parent="."]
 position = Vector2(1448, 291)
@@ -164,13 +281,13 @@ shape = SubResource("RectangleShape2D_1qsd3")
 z_index = -1
 position = Vector2(0, 3)
 scale = Vector2(3.7, 3.7)
-texture = ExtResource("3_r3b5t")
+texture = ExtResource("7_lgjdr")
 
 [node name="Head-old-guy-real" type="Sprite2D" parent="InteractArea/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
 z_index = 10
 texture_filter = 1
 texture_repeat = 1
-texture = ExtResource("5_f74um")
+texture = ExtResource("8_o3ybd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 shape = SubResource("CircleShape2D_8rep1")
@@ -178,7 +295,7 @@ shape = SubResource("CircleShape2D_8rep1")
 [node name="Trigger" type="Sprite2D" parent="InteractArea"]
 position = Vector2(0, -73)
 scale = Vector2(2.9, 2.9)
-texture = ExtResource("7_ch8cw")
+texture = ExtResource("6_n4ph5")
 
 [node name="Interact" type="Label" parent="InteractArea"]
 offset_left = -83.0
@@ -200,13 +317,13 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(288, 1238)
 scale = Vector2(2.4, 2.4)
-texture = ExtResource("6_7grfu")
+texture = ExtResource("9_1igwc")
 region_enabled = true
 region_rect = Rect2(66, 1760, 30, 32)
 
 [node name="HeadMOB" type="Sprite2D" parent="MobPNJ/Ennemy"]
 z_index = 10
-texture = ExtResource("7_m7315")
+texture = ExtResource("10_pxuq1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobPNJ"]
 position = Vector2(288, 1242)
@@ -233,7 +350,7 @@ text = "[ E ]"
 [node name="AreaHome" type="Area2D" parent="MobPNJ"]
 position = Vector2(1628, 278)
 scale = Vector2(2, 2)
-script = ExtResource("7_5catn")
+script = ExtResource("11_wbhr0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobPNJ/AreaHome"]
 z_index = 2
@@ -256,16 +373,52 @@ label_settings = SubResource("LabelSettings_rqygx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Transition" parent="CanvasLayer" instance=ExtResource("8_fbofd")]
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("12_h07u8")]
 mouse_filter = 2
 
-[node name="Minimap" parent="CanvasLayer" instance=ExtResource("12_mcu04")]
+[node name="Minimap" parent="CanvasLayer" instance=ExtResource("13_qaotw")]
 offset_left = 1664.0
 offset_top = 816.0
 offset_right = 1704.0
 offset_bottom = 856.0
 
-[node name="QuestMenu" parent="CanvasLayer" instance=ExtResource("13_vbc12")]
+[node name="QuestMenu" parent="CanvasLayer" instance=ExtResource("14_pp5av")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(944, 0)
+amount = 50
+draw_order = 1
+texture = ExtResource("15_0iw4j")
+emission_shape = 3
+emission_rect_extents = Vector2(256, 16)
+gravity = Vector2(0, 100)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_8ytm3")
+
+[node name="QuestTextBar" type="RichTextLabel" parent="CanvasLayer/CPUParticles2D"]
+offset_left = -688.0
+offset_top = 24.0
+offset_right = 720.0
+offset_bottom = 56.0
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 25
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[center]Quest Text bar"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -285,14 +438,14 @@ offset_right = 80.0
 offset_bottom = 32.0
 scale = Vector2(4, 4)
 value = 50.0
-texture_under = ExtResource("14_rfmay")
-texture_progress = ExtResource("15_166nn")
+texture_under = ExtResource("16_5v6dr")
+texture_progress = ExtResource("17_ydjdk")
 
 [node name="Coins" type="Sprite2D" parent="CanvasLayer2/Stats"]
 texture_filter = 1
 position = Vector2(48, 80)
 scale = Vector2(2, 2)
-texture = ExtResource("16_61bay")
+texture = ExtResource("18_db4rf")
 
 [node name="Label" type="Label" parent="CanvasLayer2/Stats/Coins"]
 offset_left = 12.0
@@ -302,7 +455,7 @@ offset_bottom = 8.0
 theme_override_font_sizes/font_size = 12
 text = "0"
 
-[node name="Player_One" parent="." instance=ExtResource("1_1k8th")]
+[node name="Player_One" parent="." instance=ExtResource("19_hcdjk")]
 z_index = 5
 position = Vector2(1424, 448)
 scale = Vector2(1.5, 1.5)
@@ -311,7 +464,7 @@ scale = Vector2(1.5, 1.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player_One/Camera2D"]
 
-[node name="PauseMenu" parent="Player_One/Camera2D/CanvasLayer" instance=ExtResource("9_roibj")]
+[node name="PauseMenu" parent="Player_One/Camera2D/CanvasLayer" instance=ExtResource("20_v44x1")]
 visible = false
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -323,6 +476,10 @@ scale = Vector2(4, 4)
 position = Vector2(-0.25, -14.5)
 shape = SubResource("RectangleShape2D_oh80b")
 
+[connection signal="body_entered" from="InversedDungeon" to="." method="_on_bagird_body_entered"]
+[connection signal="body_exited" from="InversedDungeon" to="." method="_on_bagird_body_exited"]
+[connection signal="body_entered" from="Bagird" to="." method="_on_bagird_body_entered"]
+[connection signal="body_exited" from="Bagird" to="." method="_on_bagird_body_exited"]
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
 [connection signal="body_entered" from="MobPNJ/AreaEnnemy1" to="." method="_on_area_ennemy_1_body_entered"]
