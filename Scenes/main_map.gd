@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @onready var pause_menu = $Player_One/Camera2D/CanvasLayer/PauseMenu
 @onready var global_vars = get_node("/root/Global")
 var paused = false

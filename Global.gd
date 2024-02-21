@@ -16,6 +16,7 @@ var step_delay = 0
 var allow_loops = false
 var letters_to_show = []
 var show_labels = false
+var saved_point_position: Vector2 = Vector2.ZERO 
 
 signal fringe_changed
 
@@ -168,6 +169,8 @@ var quests = {
 		"pin_position":Vector2(1448,291)
 	}
 }
+
+
 
 func save():
 	var save_file = ConfigFile.new()

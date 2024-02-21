@@ -7,6 +7,7 @@ var pin
 
 func _ready():
 	pin = get_node("/root/main_map/MobPNJ/Ennemy").position
+
 	
 func _physics_process(delta):
 	get_node("AnimationPlayer").current_animation = "pin"
@@ -31,4 +32,8 @@ func _physics_process(delta):
 
 func change_pin(position):
 	pin = position
+	
+func showPoint_miniMap():
+	Global.saved_point_position
+	
 	

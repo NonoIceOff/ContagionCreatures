@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdtqahj32v2le"]
+[gd_scene load_steps=10 format=3 uid="uid://ko0f38o03f6f"]
 
 [ext_resource type="Shader" path="res://Scenes/minimap.gdshader" id="1_44b0t"]
 [ext_resource type="Script" path="res://Scenes/Full_screen_map.gd" id="1_vnder"]
@@ -256,10 +256,10 @@ offset_bottom = 514.0
 [node name="PinPoint" type="ColorRect" parent="."]
 z_index = 10
 layout_mode = 0
-offset_left = 1041.0
-offset_top = 577.0
-offset_right = 1051.0
-offset_bottom = 587.0
+offset_left = 684.0
+offset_top = 702.0
+offset_right = 694.0
+offset_bottom = 712.0
 color = Color(1, 1, 0, 1)
 
 [node name="Back" type="ColorRect" parent="PinPoint"]
