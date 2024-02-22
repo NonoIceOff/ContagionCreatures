@@ -59,19 +59,49 @@ func update_choices():
 
 
 func _process(delta):
+	
 	## Intéraction avec les quêtes
 	if Global.current_quest_id == 1 and Global.quests[1]["stade"] == 1 and actual_text == 7:
 		Global.quests[1]["stade"] = 2
 		get_node("/root/main_map/Bagird").position = Vector2(764,932)
 		get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[1]["pin_positions"][Global.quests[1]["stade"]])
 		
-	if Global.current_quest_id == 1 and Global.quests[1]["stade"] == 2 and actual_text == 1:
+	elif Global.current_quest_id == 1 and Global.quests[1]["stade"] == 2 and actual_text == 1:
 		Global.quests[1]["stade"] = 3
 		get_node("/root/main_map/AudioStreamPlayer2D").stream = load("res://Sounds/bagrid_bourre.mp3")
 		get_node("/root/main_map/AudioStreamPlayer2D").playing = true
 		get_node("/root/main_map").spawn_item(get_node("/root/main_map/Player_One").position+Vector2(64,64),"item",5)
 		get_node("/root/main_map/Bagird").position = Vector2(-500,-740)
 		get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[1]["pin_positions"][Global.quests[1]["stade"]])
+	
+	elif Global.current_quest_id == 0 and Global.quests[0]["stade"] == 0 and actual_text == 3: # QUETE DE LAYTON
+		Global.quests[0]["stade"] = 1
+		get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[0]["pin_positions"][Global.quests[0]["stade"]])
+	
+	elif Global.current_quest_id == 0 and Global.quests[0]["stade"] == 1 and actual_text == 2: # QUETE DE LAYTON
+		Global.quests[0]["stade"] = 2
+		if get_node_or_null("CanvasLayer/Transition/AnimationPlayer") != null:
+			get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+		Global.save()
+		await get_tree().create_timer(2).timeout
+		actual_text = 0
+		get_tree().change_scene_to_file("res://Scenes/loytan_enigme_1.tscn")
+	
+	elif Global.current_quest_id == 0 and Global.quests[0]["stade"] == 2 and actual_text == 1:
+		Global.quests[0]["stade"] = 3
+		get_node("/root/main_map/AudioStreamPlayer2D").stream = load("res://Sounds/bagrid_bourre.mp3")
+		get_node("/root/main_map/AudioStreamPlayer2D").playing = true
+		get_node("/root/main_map").spawn_item(get_node("/root/main_map/Player_One").position+Vector2(64,64),"item",6)
+		get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[0]["pin_positions"][Global.quests[0]["stade"]])
+		actual_text = 0
+		
+	elif Global.current_quest_id == 0 and Global.quests[0]["stade"] == 3 and actual_text == 2:
+		Global.current_quest_id = -1
+		if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
+			get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = false
+		Global.quest_finished(0)
+		Global.quests[0]["finished"] = true
+		actual_text = 0
 		
 
 	if get_node("TextsBox/Label").visible_ratio == 1 and actual_text < texts.size() and texts[actual_text]["has_choices"] == true:

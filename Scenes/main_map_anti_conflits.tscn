@@ -1,10 +1,12 @@
-[gd_scene load_steps=33 format=3 uid="uid://c6eat4i1d5sl1"]
+[gd_scene load_steps=35 format=3 uid="uid://c6eat4i1d5sl1"]
 
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_33fsg"]
 [ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="2_fa0yf"]
 [ext_resource type="PackedScene" uid="uid://clft6l0mv78bv" path="res://Scenes/animal.tscn" id="3_raicc"]
+[ext_resource type="Texture2D" uid="uid://des7hyfw82tql" path="res://Textures/PNJ/Loytan/loytan_full.png" id="4_6lelb"]
 [ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="4_lo3qj"]
 [ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="4_vo6xk"]
+[ext_resource type="Texture2D" uid="uid://cqsj1ecoh183k" path="res://Textures/PNJ/Loytan/tete_loytan.png" id="5_kiqpc"]
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="5_sw0j1"]
 [ext_resource type="Texture2D" uid="uid://d00cubkujysav" path="res://Textures/Inventaire/grey.png" id="5_xpvwc"]
 [ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="6_n4ph5"]
@@ -159,6 +161,51 @@ layer_13/z_index = 10
 layer_13/tile_data = PackedInt32Array(1703994, 3997701, 5, 1769530, 3997701, 6, 1638459, 4063237, 4, 1703995, 4063237, 5, 1638460, 4128773, 4, 1703996, 4128773, 5, 1638461, 4194309, 4, 1703997, 4194309, 5, 1769533, 4194309, 6, 1114169, 3997701, 5, 1179705, 3997701, 6, 1048634, 4063237, 4, 1114170, 4063237, 5, 1048635, 4128773, 4, 1114171, 4128773, 5, 1048636, 4194309, 4, 1114172, 4194309, 5, 1179708, 4194309, 6, 458809, 3997701, 5, 524345, 3997701, 6, 393274, 4063237, 4, 458810, 4063237, 5, 393275, 4128773, 4, 458811, 4128773, 5, 393276, 4194309, 4, 458812, 4194309, 5, 524348, 4194309, 6, 65593, 3997701, 5, 131129, 3997701, 6, 58, 4063237, 4, 65594, 4063237, 5, 59, 4128773, 4, 65595, 4128773, 5, 60, 4194309, 4, 65596, 4194309, 5, 131132, 4194309, 6, -1114131, 3997701, 5, -1048595, 3997701, 6, -1179666, 4063237, 4, -1114130, 4063237, 5, -1179665, 4128773, 4, -1114129, 4128773, 5, -1179664, 4194309, 4, -1114128, 4194309, 5, -1048592, 4194309, 6, -917503, 3997701, 5, -851967, 3997701, 6, -983038, 4063237, 4, -917502, 4063237, 5, -983037, 4128773, 4, -917501, 4128773, 5, -983036, 4194309, 4, -917500, 4194309, 5, -851964, 4194309, 6, -983028, 3997701, 5, -917492, 3997701, 6, -1048563, 4063237, 4, -983027, 4063237, 5, -1048562, 4128773, 4, -983026, 4128773, 5, -1048561, 4194309, 4, -983025, 4194309, 5, -917489, 4194309, 6, -1114082, 3997701, 5, -1048546, 3997701, 6, -1179617, 4063237, 4, -1114081, 4063237, 5, -1179616, 4128773, 4, -1114080, 4128773, 5, -1179615, 4194309, 4, -1114079, 4194309, 5, -1048543, 4194309, 6, -917468, 3997701, 5, -851932, 3997701, 6, -983003, 4063237, 4, -917467, 4063237, 5, -983002, 4128773, 4, -917466, 4128773, 5, -983001, 4194309, 4, -917465, 4194309, 5, -851929, 4194309, 6, 1245245, 3997701, 5, 1310781, 3997701, 6, 1179710, 4063237, 4, 1245246, 4063237, 5, 1179711, 4128773, 4, 1245247, 4128773, 5, 1179712, 4194309, 4, 1245248, 4194309, 5, 1310784, 4194309, 6, 2097195, 3997701, 5, 2162731, 3997701, 6, 2031660, 4063237, 4, 2097196, 4063237, 5, 2031661, 4128773, 4, 2097197, 4128773, 5, 2031662, 4194309, 4, 2097198, 4194309, 5, 2162734, 4194309, 6, 2097184, 3997701, 5, 2162720, 3997701, 6, 2031649, 4063237, 4, 2097185, 4063237, 5, 2031650, 4128773, 4, 2097186, 4128773, 5, 2031651, 4194309, 4, 2097187, 4194309, 5, 2162723, 4194309, 6, 2228228, 3997701, 5, 2293764, 3997701, 6, 2162693, 4063237, 4, 2228229, 4063237, 5, 2162694, 4128773, 4, 2228230, 4128773, 5, 2162695, 4194309, 4, 2228231, 4194309, 5, 2293767, 4194309, 6, 1834993, 3997701, 5, 1900529, 3997701, 6, 1769458, 4063237, 4, 1834994, 4063237, 5, 1769459, 4128773, 4, 1834995, 4128773, 5, 1769460, 4194309, 4, 1834996, 4194309, 5, 1900532, 4194309, 6, -851912, 5111813, 56, -327624, 5111813, 59, -720915, 4128773, 5, -786450, 4194309, 4, -720914, 4194309, 5, -720917, 3997701, 5, -655381, 3997701, 6, -786452, 4063237, 4, -720916, 4063237, 5, -786451, 4128773, 4, -655378, 4194309, 6, -786445, 5111813, 56, -13, 5111813, 61)
 
 [node name="Animal" parent="." instance=ExtResource("3_raicc")]
+
+[node name="Loytan" type="Area2D" parent="."]
+position = Vector2(3128, -664)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Loytan"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Loytan/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_1qsd3")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Loytan/CharacterBody2D"]
+z_index = -1
+position = Vector2(0, 3)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("4_6lelb")
+
+[node name="Head-old-guy-real" type="Sprite2D" parent="Loytan/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
+z_index = 10
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("5_kiqpc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Loytan"]
+shape = SubResource("CircleShape2D_8rep1")
+
+[node name="Trigger" type="Sprite2D" parent="Loytan"]
+visible = false
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("6_n4ph5")
+
+[node name="Interact" type="Label" parent="Loytan"]
+visible = false
+offset_left = -24.0
+offset_top = -70.0
+offset_right = 84.0
+offset_bottom = -20.0
+scale = Vector2(0.5, 0.5)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_78oor")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="InversedDungeon" type="Area2D" parent="."]
 position = Vector2(-755, -736)
@@ -397,6 +444,7 @@ label_settings = SubResource("LabelSettings_rqygx")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("12_h07u8")]
+visible = false
 mouse_filter = 2
 
 [node name="Minimap" parent="CanvasLayer" instance=ExtResource("13_qaotw")]
@@ -464,6 +512,31 @@ offset_right = 1919.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
+[node name="TerminatedQuest" type="Label" parent="CanvasLayer"]
+visible = false
+offset_top = -57.0
+offset_right = 1920.0
+offset_bottom = 1023.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.188235, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "quete terminee"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/TerminatedQuest"]
+offset_top = 144.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0.960784, 0.952941, 0.984314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 32
+text = "nom de la quete"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Stats" type="Control" parent="CanvasLayer2"]
@@ -523,6 +596,8 @@ shape = SubResource("RectangleShape2D_oh80b")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
 
+[connection signal="body_entered" from="Loytan" to="." method="_on_loytan_body_entered"]
+[connection signal="body_exited" from="Loytan" to="." method="_on_loytan_body_exited"]
 [connection signal="body_entered" from="InversedDungeon" to="." method="_on_inversed_dungeon_body_entered"]
 [connection signal="body_exited" from="InversedDungeon" to="." method="_on_inversed_dungeon_body_exited"]
 [connection signal="body_entered" from="Bagird" to="." method="_on_bagird_body_entered"]
