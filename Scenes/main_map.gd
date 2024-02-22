@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @onready var pause_menu = $Player_One/Camera2D/CanvasLayer/PauseMenu
 @onready var global_vars = get_node("/root/Global")
 var paused = false
@@ -17,6 +18,7 @@ func _ready():
 		get_node("CanvasLayer/CPUParticles2D").visible = false
 	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
+	get_node("SoundEffectFx").play()
 	get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = false
 	$InteractArea/Trigger.visible = true
 	$InteractArea/Interact.visible = Global.interact

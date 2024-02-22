@@ -17,8 +17,8 @@ func _on_leave_to_map_1_body_entered(body):
 	entered = false
 	if body.is_in_group("Player_One"):
 		entered = true
-		get_node("/root/main_map/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
-		await get_tree().create_timer(2).timeout
+		get_node("CanvasLayer2/Transition/AnimationPlayer").play("screen_to_transition")
+		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 
 

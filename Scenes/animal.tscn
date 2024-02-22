@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://clft6l0mv78bv"]
+[gd_scene load_steps=4 format=3 uid="uid://clft6l0mv78bv"]
 
 [ext_resource type="Script" path="res://Animal_follow.gd" id="1_nc1w6"]
 [ext_resource type="Texture2D" uid="uid://dklqcsx2x2pm2" path="res://Textures/Animals/CHICKEN.png" id="2_jsm3g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxhpy"]
+radius = 35.0223
 
 [node name="Animal" type="Node2D"]
 
@@ -11,3 +14,7 @@ script = ExtResource("1_nc1w6")
 [node name="Chicken" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_jsm3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Chicken"]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_qxhpy")

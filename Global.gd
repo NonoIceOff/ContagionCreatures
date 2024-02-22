@@ -16,6 +16,7 @@ var step_delay = 0
 var allow_loops = false
 var letters_to_show = []
 var show_labels = false
+var saved_point_position: Vector2 = Vector2.ZERO 
 
 var tutorial = true
 var tutorial_stade = 0
@@ -252,12 +253,14 @@ var quests = {
 	}
 }
 
+
 func finished_stade_quest(quest_id=current_quest_id):
 	if quest_id > -1:
 		if quests[quest_id]["descriptions"].size() > quests[quest_id]["stade"]:
 			quests[quest_id]["stade"] += 1
 		else:
 			quests[quest_id]["finished"] = true
+
 
 func save():
 	var save_file = ConfigFile.new()

@@ -5,8 +5,10 @@ extends Control
 #Point jaune dans la miniMap
 var pin
 
+
 func _ready():
 	pin = get_node("/root/main_map/MobPNJ/Ennemy").position
+	#showPoint_miniMap()
 	
 func _physics_process(delta):
 	get_node("AnimationPlayer").current_animation = "pin"
@@ -30,4 +32,20 @@ func _physics_process(delta):
 
 func change_pin(position):
 	pin = position
+	
+	
+	
+	
+#func draw_point(position: Vector2):
+	#Global.point_sprite.color = Color(1,1,0)
+	#Global.point_sprite.size = Vector2i(11.0, 11.0)
+	#Global.point_sprite.position = position.round()
+	#add_child(Global.point_sprite)
+	
+	
+#func showPoint_miniMap():
+	#if Global.saved_point_position != Vector2.ZERO:
+		#print("aaaaaaaaaaaah")
+		#draw_point(Global.saved_point_position)
+	
 	
