@@ -1,14 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://dll6t0qviglyv"]
+[gd_scene load_steps=19 format=3 uid="uid://c53cxaiwte76h"]
 
-[ext_resource type="Script" path="res://Scenes/loytan_enigme_1.gd" id="1_c85vk"]
-[ext_resource type="AudioStream" uid="uid://b5h7wmfebxmvh" path="res://Sounds/enigma_debut.mp3" id="2_73yks"]
-[ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="3_7t2tp"]
-[ext_resource type="Texture2D" uid="uid://cjdtiadalwaun" path="res://Textures/enigma_back.png" id="3_xtil1"]
-[ext_resource type="StyleBox" uid="uid://c585g431q14ue" path="res://Thème/button_normal.tres" id="4_hcsig"]
-[ext_resource type="StyleBox" uid="uid://bibiwmbse6bsf" path="res://Thème/button_hover.tres" id="4_huppo"]
-[ext_resource type="StyleBox" uid="uid://dbawkfil8hb6o" path="res://Thème/button_pressed.tres" id="7_jvrct"]
-[ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="8_6qqgj"]
-[ext_resource type="Texture2D" uid="uid://des7hyfw82tql" path="res://Textures/PNJ/Loytan/loytan_full.png" id="9_7fteo"]
+[ext_resource type="Script" path="res://Scenes/loytan_enigme_1.gd" id="1_6rq4p"]
+[ext_resource type="AudioStream" uid="uid://b5h7wmfebxmvh" path="res://Sounds/enigma_debut.mp3" id="2_lgi74"]
+[ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="3_q3m58"]
+[ext_resource type="Texture2D" uid="uid://cjdtiadalwaun" path="res://Textures/enigma_back.png" id="4_0yscg"]
+[ext_resource type="StyleBox" uid="uid://bibiwmbse6bsf" path="res://Thème/button_hover.tres" id="5_bxxqh"]
+[ext_resource type="StyleBox" uid="uid://c585g431q14ue" path="res://Thème/button_normal.tres" id="6_7yx0d"]
+[ext_resource type="StyleBox" uid="uid://dbawkfil8hb6o" path="res://Thème/button_pressed.tres" id="7_y2vla"]
+[ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="8_bpjf8"]
+[ext_resource type="Texture2D" uid="uid://des7hyfw82tql" path="res://Textures/PNJ/Loytan/loytan_full.png" id="9_slflw"]
 
 [sub_resource type="Animation" id="Animation_lqvf3"]
 length = 0.001
@@ -86,6 +86,21 @@ _data = {
 "validate": SubResource("Animation_4g8bq")
 }
 
+[sub_resource type="Animation" id="Animation_vd7td"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Validate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ges6v"]
 resource_name = "validate"
 loop_mode = 2
@@ -102,21 +117,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_vd7td"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Validate:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_laa26"]
 _data = {
 "RESET": SubResource("Animation_vd7td"),
@@ -124,13 +124,12 @@ _data = {
 }
 
 [node name="LoytanEnigme1" type="Node2D"]
-script = ExtResource("1_c85vk")
+script = ExtResource("1_6rq4p")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_73yks")
+stream = ExtResource("2_lgi74")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 
@@ -140,7 +139,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 128
-text = "ENIGME 01"
+text = "ENIGME 02"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -162,13 +161,13 @@ vertical_alignment = 1
 texture_filter = 1
 position = Vector2(-56, 40)
 scale = Vector2(4, 4)
-texture = ExtResource("3_7t2tp")
+texture = ExtResource("3_q3m58")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 offset_right = 1920.0
 offset_bottom = 1088.0
-texture = ExtResource("3_xtil1")
+texture = ExtResource("4_0yscg")
 
 [node name="Panel" type="Panel" parent="TextureRect"]
 layout_mode = 0
@@ -176,7 +175,7 @@ offset_left = 128.0
 offset_top = 112.0
 offset_right = 1792.0
 offset_bottom = 272.0
-theme_override_styles/panel = ExtResource("4_huppo")
+theme_override_styles/panel = ExtResource("5_bxxqh")
 
 [node name="Label" type="Label" parent="TextureRect/Panel"]
 texture_filter = 1
@@ -208,7 +207,7 @@ vertical_alignment = 1
 texture_filter = 1
 position = Vector2(-56, 40)
 scale = Vector2(4, 4)
-texture = ExtResource("3_7t2tp")
+texture = ExtResource("3_q3m58")
 
 [node name="1" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(320, 320)
@@ -219,10 +218,10 @@ offset_right = 352.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
-theme_override_styles/hover = ExtResource("4_huppo")
-theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
 text = "LUNDI"
 
 [node name="2" type="Button" parent="TextureRect"]
@@ -234,10 +233,10 @@ offset_right = 736.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
-theme_override_styles/hover = ExtResource("4_huppo")
-theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
 text = "mardi"
 
 [node name="3" type="Button" parent="TextureRect"]
@@ -249,10 +248,10 @@ offset_right = 1120.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
-theme_override_styles/hover = ExtResource("4_huppo")
-theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
 text = "mercredi"
 
 [node name="4" type="Button" parent="TextureRect"]
@@ -264,10 +263,10 @@ offset_right = 1504.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
-theme_override_styles/hover = ExtResource("4_huppo")
-theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
 text = "jeudi"
 
 [node name="5" type="Button" parent="TextureRect"]
@@ -279,10 +278,10 @@ offset_right = 1888.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
-theme_override_styles/hover = ExtResource("4_huppo")
-theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
 text = "vendredi"
 
 [node name="6" type="Button" parent="TextureRect"]
@@ -294,10 +293,10 @@ offset_right = 930.0
 offset_bottom = 1075.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
-theme_override_styles/hover = ExtResource("4_huppo")
-theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
 text = "samedi"
 
 [node name="7" type="Button" parent="TextureRect"]
@@ -309,10 +308,10 @@ offset_right = 1314.0
 offset_bottom = 1075.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
-theme_override_styles/hover = ExtResource("4_huppo")
-theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
 text = "dimanche"
 
 [node name="ResultWin" type="Control" parent="."]
@@ -327,12 +326,12 @@ self_modulate = Color(0.372549, 0.372549, 0.372549, 1)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
-texture = ExtResource("3_xtil1")
+texture = ExtResource("4_0yscg")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ResultWin"]
 texture_filter = 1
 position = Vector2(960, 540)
-texture = ExtResource("9_7fteo")
+texture = ExtResource("9_slflw")
 emission_shape = 3
 emission_rect_extents = Vector2(960, 540)
 direction = Vector2(0, 0)
@@ -369,7 +368,7 @@ offset_left = 128.0
 offset_top = 112.0
 offset_right = 1792.0
 offset_bottom = 272.0
-theme_override_styles/panel = ExtResource("4_huppo")
+theme_override_styles/panel = ExtResource("5_bxxqh")
 
 [node name="Label" type="Label" parent="ResultWin/Panel"]
 texture_filter = 1
@@ -422,12 +421,12 @@ self_modulate = Color(0.372549, 0.372549, 0.372549, 1)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
-texture = ExtResource("3_xtil1")
+texture = ExtResource("4_0yscg")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ResultLoose"]
 texture_filter = 1
 position = Vector2(960, 540)
-texture = ExtResource("9_7fteo")
+texture = ExtResource("9_slflw")
 emission_shape = 3
 emission_rect_extents = Vector2(960, 540)
 direction = Vector2(0, 0)
@@ -465,7 +464,7 @@ offset_left = 128.0
 offset_top = 112.0
 offset_right = 1792.0
 offset_bottom = 272.0
-theme_override_styles/panel = ExtResource("4_huppo")
+theme_override_styles/panel = ExtResource("5_bxxqh")
 
 [node name="Label" type="Label" parent="ResultLoose/Panel"]
 texture_filter = 1
@@ -508,6 +507,7 @@ libraries = {
 }
 
 [node name="ResultLooseMax" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -518,12 +518,12 @@ self_modulate = Color(0.372549, 0.372549, 0.372549, 1)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
-texture = ExtResource("3_xtil1")
+texture = ExtResource("4_0yscg")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ResultLooseMax"]
 texture_filter = 1
 position = Vector2(960, 540)
-texture = ExtResource("9_7fteo")
+texture = ExtResource("9_slflw")
 emission_shape = 3
 emission_rect_extents = Vector2(960, 540)
 direction = Vector2(0, 0)
@@ -560,7 +560,7 @@ offset_left = 128.0
 offset_top = 112.0
 offset_right = 1792.0
 offset_bottom = 272.0
-theme_override_styles/panel = ExtResource("4_huppo")
+theme_override_styles/panel = ExtResource("5_bxxqh")
 
 [node name="Label" type="Label" parent="ResultLooseMax/Panel"]
 texture_filter = 1

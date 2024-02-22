@@ -476,7 +476,8 @@ hue_variation_curve = SubResource("Curve_8ytm3")
 offset_left = -688.0
 offset_top = 24.0
 offset_right = 720.0
-offset_bottom = 56.0
+offset_bottom = 66.0
+mouse_force_pass_scroll_events = false
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
@@ -490,6 +491,7 @@ theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[center]Quest Text bar"
+scroll_active = false
 
 [node name="Cinematic" type="Control" parent="CanvasLayer"]
 visible = false
@@ -526,6 +528,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Name" type="Label" parent="CanvasLayer/TerminatedQuest"]
+layout_mode = 0
 offset_top = 144.0
 offset_right = 1920.0
 offset_bottom = 1080.0

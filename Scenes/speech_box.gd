@@ -83,7 +83,6 @@ func _process(delta):
 		if get_node_or_null("CanvasLayer/Transition/AnimationPlayer") != null:
 			get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 		Global.save()
-		await get_tree().create_timer(2).timeout
 		actual_text = 0
 		get_tree().change_scene_to_file("res://Scenes/loytan_enigme_1.tscn")
 	
@@ -102,6 +101,14 @@ func _process(delta):
 		Global.quest_finished(0)
 		Global.quests[0]["finished"] = true
 		actual_text = 0
+		
+	elif Global.current_quest_id == 0 and Global.quests[0]["stade"] == 4 and actual_text == 2: # QUETE DE LAYTON
+		Global.quests[0]["stade"] = 5
+		if get_node_or_null("CanvasLayer/Transition/AnimationPlayer") != null:
+			get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+		Global.save()
+		actual_text = 0
+		get_tree().change_scene_to_file("res://Scenes/loytan_enigme_2.tscn")
 		
 
 	if get_node("TextsBox/Label").visible_ratio == 1 and actual_text < texts.size() and texts[actual_text]["has_choices"] == true:

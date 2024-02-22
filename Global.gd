@@ -32,7 +32,8 @@ func quest_finished(i):
 		get_node("/root/main_map/CanvasLayer/TerminatedQuest").visible = true
 		get_node("/root/main_map/CanvasLayer/TerminatedQuest/Name").text = Global.quests[i]["title"]
 		await get_tree().create_timer(5).timeout 
-		get_node("/root/main_map/CanvasLayer/TerminatedQuest").visible = false
+		if get_node_or_null("/root/main_map/CanvasLayer/TerminatedQuest") != null:
+			get_node("/root/main_map/CanvasLayer/TerminatedQuest").visible = false
 
 func set_quest(i):
 	if i == -1:
@@ -215,10 +216,12 @@ var quests = {
 			["Allez voir Hector, il vous demandera de chercher un parchemin sacre.",
 			"Allez voir Loytan, il a quelque chose pour faire avancer cette dite tragédie...",
 			"Allez voir Loytan, pour dire que vous avez réussi votre énigme",
-			"Allez voir Hector, pour lui remettre ses cramptes"],
+			"Allez voir Hector, pour lui remettre ses cramptes",
+			"Allez voir Loytan, pour faire une nouvelle enigme",
+			"Allez voir Loytan, pour dire que vous avez réussi votre énigme"],
 		"mini_descriptions":
-			["Allez voir Hector","Allez voir Loytan","Allez parler a Layton","Rendez les cramptes a Hector"],
-		"pin_positions":[Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664),Vector2(1448,291)],
+			["Allez voir Hector","Allez voir Loytan","Allez parler a Layton","Rendez les cramptes a Hector","Demandez a Layton une nouvelle enigme","Allez parler a Layton"],
+		"pin_positions":[Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664),Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664)],
 		"stade":0,
 		"finished":false,
 	},
@@ -233,6 +236,17 @@ var quests = {
 		"mini_descriptions":
 			["Allez voir Bagird","Rigolez a la blague de Bagird","Allez rejoindre Bagird vers le pont Richard","Cherchez l'endroit d'utilisation du N-KEY"],
 		"pin_positions":[Vector2(980,-680),Vector2(980,-680),Vector2(764,932),Vector2(-500,-740)],
+		"stade":0,
+		"finished":false,
+	},
+	2: {
+		"title":"Tous les donjons",
+		"long_description":"Terminez tous les donjons du jeu",
+		"descriptions":
+			["Terminez tous les donjons du jeu"],
+		"mini_descriptions":
+			["Terminez tous les donjons du jeu"],
+		"pin_positions":[Vector2(0,0)],
 		"stade":0,
 		"finished":false,
 	}

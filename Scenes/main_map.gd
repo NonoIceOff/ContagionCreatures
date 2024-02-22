@@ -53,7 +53,9 @@ func unzoom_dialogue():
 func _process(_delta):
 	if get_node_or_null("CanvasLayer2/Stats/Coins/Label") != null:
 		get_node_or_null("CanvasLayer2/Stats/Coins/Label").text = str(PlayerStats.monnaie)
+	print(Global.current_quest_id)
 	if Global.current_quest_id > -1 and get_node_or_null("CanvasLayer/CPUParticles2D") != null:
+		get_node("CanvasLayer/CPUParticles2D").visible = true
 		get_node("CanvasLayer/CPUParticles2D/QuestTextBar").text = "[center][rainbow freq=0.05]"+Global.quests[Global.current_quest_id]["title"]+" [/rainbow] [color=black]| [color=white][i]"+Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]]
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
@@ -147,7 +149,6 @@ func _process(_delta):
 				zoom_dialogue()
 				interacted = false
 				
-		if get_node_or_null("Loytan/Interact") != null and get_node("Loytan/Interact").visible == true:
 			if quest_id == 0 and Global.quests[0]["stade"] == 2:
 				Global.set_quest(0)
 				var text_quest_0_3 = {
@@ -167,6 +168,39 @@ func _process(_delta):
 					}
 				}
 				scene_instance.texts = text_quest_0_3
+				scene_instance.icon = load("res://Textures/PNJ/Loytan/loytan_full.png")
+				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
+				scene_instance.name_icon = "Loytan"
+				get_node("CanvasLayer2").add_child(scene_instance)
+				zoom_dialogue()
+				interacted = false
+
+			if quest_id == 0 and Global.quests[0]["stade"] == 4:
+				Global.set_quest(0)
+				var text_quest_0_4 = {
+					0: {
+						"text": "Tu n'as pas reussi l'enigme, je vais devoir t'en passer une autre...",
+						"has_choices": false,
+						"text_choices": ["Oui", "Non"],
+						"has_suite": true,
+						"choices_jump_to": [1, 0]
+					},
+					1: {
+						"text": "J'espere que celle-ci va te plaire !",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": true,
+						"choices_jump_to": [2, 0]
+					},
+					2: {
+						"text": "",
+						"has_choices": false,
+						"text_choices": [],
+						"has_suite": true,
+						"choices_jump_to": [0, 0]
+					}
+				}
+				scene_instance.texts = text_quest_0_4
 				scene_instance.icon = load("res://Textures/PNJ/Loytan/loytan_full.png")
 				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
 				scene_instance.name_icon = "Loytan"
@@ -320,6 +354,9 @@ func _process(_delta):
 				
 				Global.items[5]["quantity"] -= 1
 				quest_id = 0
+				
+				Global.quest_finished(1)
+				Global.quests[1]["finished"] = true
 
 				get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 				await get_tree().create_timer(2).timeout
