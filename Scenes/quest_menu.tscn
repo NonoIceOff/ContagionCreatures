@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://diqbutm2ry0bg"]
+[gd_scene load_steps=6 format=3 uid="uid://diqbutm2ry0bg"]
 
 [ext_resource type="Script" path="res://Scenes/quest_menu.gd" id="1_3tl8b"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_lolt6"]
 [ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="2_ce80x"]
+[ext_resource type="Texture2D" uid="uid://bsiquv2s4ogsy" path="res://Textures/Inventaire/yellow.png" id="2_iftv8"]
+
+[sub_resource type="FontVariation" id="FontVariation_ookii"]
+base_font = ExtResource("2_ce80x")
 
 [node name="QuestMenu" type="Control"]
 visible = false
+z_index = 1000
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,12 +19,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3tl8b")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.294118)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1072.0
+texture = ExtResource("2_iftv8")
+stretch_mode = 1
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 1856.0
-offset_bottom = 1016.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.392157)
 
 [node name="Titre" type="Label" parent="."]
@@ -51,28 +62,23 @@ offset_top = 16.0
 offset_right = 760.0
 offset_bottom = 51.0
 theme_override_font_sizes/font_size = 32
-text = "TITRE DE LA QUETE"
+text = "AUCUNE QUETE SELECTIONEE"
 clip_text = true
 text_overrun_behavior = 4
 
-[node name="DescriptionQuete" type="Label" parent="QuestInfos"]
+[node name="DescriptionQuete" type="RichTextLabel" parent="QuestInfos"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 104.0
 offset_right = 736.0
 offset_bottom = 824.0
-theme_override_fonts/font = ExtResource("2_ce80x")
-theme_override_font_sizes/font_size = 24
-text = "Altera sententia est, quae definit amicitiam paribus officiis ac voluntatibus. Hoc quidem est nimis exigue et exiliter ad calculos vocare amicitiam, ut par sit ratio acceptorum et datorum. Divitior mihi et affluentior videtur esse vera amicitia nec observare restricte, ne plus reddat quam acceperit; neque enim verendum est, ne quid excidat, aut ne quid in terram defluat, aut ne plus aequo quid in amicitiam congeratur.
-
-Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam inductus est ut appellant Christiani diaconus, cuius prolatae litterae scriptae Graeco sermone ad Tyrii textrini praepositum celerari speciem perurgebant quam autem non indicabant denique etiam idem ad usque discrimen vitae vexatus nihil fateri conpulsus est.
-
-Et Epigonus quidem amictu tenus philosophus, ut apparuit, prece frustra temptata, sulcatis lateribus mortisque metu admoto turpi confessione cogitatorum socium, quae nulla erant, fuisse firmavit cum nec vidisset quicquam nec audisset penitus expers forensium rerum; Eusebius vero obiecta fidentius negans, suspensus in eodem gradu constantiae stetit latrocinium illud esse, non iudicium clamans."
-autowrap_mode = 3
-clip_text = true
-text_overrun_behavior = 4
+theme_override_fonts/normal_font = SubResource("FontVariation_ookii")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Vous n'avez sélectionné aucune quête. Veuillez en choisir une parmi ceux disponibles à votre gauche."
 
 [node name="CheckButton" type="CheckButton" parent="QuestInfos"]
+visible = false
 layout_mode = 0
 offset_left = 488.0
 offset_top = 64.0

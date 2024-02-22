@@ -1,0 +1,613 @@
+[gd_scene load_steps=19 format=3 uid="uid://c53cxaiwte76h"]
+
+[ext_resource type="Script" path="res://Scenes/loytan_enigme_1.gd" id="1_6rq4p"]
+[ext_resource type="AudioStream" uid="uid://b5h7wmfebxmvh" path="res://Sounds/enigma_debut.mp3" id="2_lgi74"]
+[ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="3_q3m58"]
+[ext_resource type="Texture2D" uid="uid://cjdtiadalwaun" path="res://Textures/enigma_back.png" id="4_0yscg"]
+[ext_resource type="StyleBox" uid="uid://bibiwmbse6bsf" path="res://Thème/button_hover.tres" id="5_bxxqh"]
+[ext_resource type="StyleBox" uid="uid://c585g431q14ue" path="res://Thème/button_normal.tres" id="6_7yx0d"]
+[ext_resource type="StyleBox" uid="uid://dbawkfil8hb6o" path="res://Thème/button_pressed.tres" id="7_y2vla"]
+[ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="8_bpjf8"]
+[ext_resource type="Texture2D" uid="uid://des7hyfw82tql" path="res://Textures/PNJ/Loytan/loytan_full.png" id="9_slflw"]
+
+[sub_resource type="Animation" id="Animation_lqvf3"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Validate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0q1ba"]
+resource_name = "validate"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Validate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1eob"]
+_data = {
+"RESET": SubResource("Animation_lqvf3"),
+"validate": SubResource("Animation_0q1ba")
+}
+
+[sub_resource type="Animation" id="Animation_32bcw"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Validate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4g8bq"]
+resource_name = "validate"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Validate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nlyct"]
+_data = {
+"RESET": SubResource("Animation_32bcw"),
+"validate": SubResource("Animation_4g8bq")
+}
+
+[sub_resource type="Animation" id="Animation_vd7td"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Validate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ges6v"]
+resource_name = "validate"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Validate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_laa26"]
+_data = {
+"RESET": SubResource("Animation_vd7td"),
+"validate": SubResource("Animation_ges6v")
+}
+
+[node name="LoytanEnigme1" type="Node2D"]
+script = ExtResource("1_6rq4p")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_lgi74")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "ENIGME 02"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coins" type="Label" parent="ColorRect"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 960.0
+offset_top = 672.0
+offset_right = 2080.0
+offset_bottom = 739.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/Coins"]
+texture_filter = 1
+position = Vector2(-56, 40)
+scale = Vector2(4, 4)
+texture = ExtResource("3_q3m58")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1088.0
+texture = ExtResource("4_0yscg")
+
+[node name="Panel" type="Panel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 112.0
+offset_right = 1792.0
+offset_bottom = 272.0
+theme_override_styles/panel = ExtResource("5_bxxqh")
+
+[node name="Label" type="Label" parent="TextureRect/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1664.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 32
+text = "Si sept jours apres 70 jours etait un dimanche, sept jours avant 70 jours. A partir d'aujourd'hui correspond a quel jour de la semaine ?"
+autowrap_mode = 3
+
+[node name="Coins" type="Label" parent="TextureRect"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 56.0
+offset_top = 8.0
+offset_right = 1176.0
+offset_bottom = 75.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="TextureRect/Coins"]
+texture_filter = 1
+position = Vector2(-56, 40)
+scale = Vector2(4, 4)
+texture = ExtResource("3_q3m58")
+
+[node name="1" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 416.0
+offset_right = 352.0
+offset_bottom = 736.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
+text = "LUNDI"
+
+[node name="2" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 0
+offset_left = 416.0
+offset_top = 416.0
+offset_right = 736.0
+offset_bottom = 736.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
+text = "mardi"
+
+[node name="3" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 0
+offset_left = 800.0
+offset_top = 416.0
+offset_right = 1120.0
+offset_bottom = 736.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
+text = "mercredi"
+
+[node name="4" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 0
+offset_left = 1184.0
+offset_top = 416.0
+offset_right = 1504.0
+offset_bottom = 736.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
+text = "jeudi"
+
+[node name="5" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 0
+offset_left = 1568.0
+offset_top = 416.0
+offset_right = 1888.0
+offset_bottom = 736.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
+text = "vendredi"
+
+[node name="6" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 0
+offset_left = 610.0
+offset_top = 755.0
+offset_right = 930.0
+offset_bottom = 1075.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
+text = "samedi"
+
+[node name="7" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 0
+offset_left = 994.0
+offset_top = 755.0
+offset_right = 1314.0
+offset_bottom = 1075.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_7yx0d")
+theme_override_styles/hover = ExtResource("5_bxxqh")
+theme_override_styles/pressed = ExtResource("7_y2vla")
+theme_override_styles/disabled = ExtResource("8_bpjf8")
+text = "dimanche"
+
+[node name="ResultWin" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="ResultWin"]
+self_modulate = Color(0.372549, 0.372549, 0.372549, 1)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+texture = ExtResource("4_0yscg")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ResultWin"]
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("9_slflw")
+emission_shape = 3
+emission_rect_extents = Vector2(960, 540)
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.02
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+
+[node name="ColorRect" type="ColorRect" parent="ResultWin"]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+
+[node name="TextResult" type="Label" parent="ResultWin/ColorRect"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "c'est gagne"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="ResultWin"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 112.0
+offset_right = 1792.0
+offset_bottom = 272.0
+theme_override_styles/panel = ExtResource("5_bxxqh")
+
+[node name="Label" type="Label" parent="ResultWin/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1664.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 32
+text = "Si sept jours apres 70 jours etait un dimanche, sept jours avant 70 jours. A partir d'aujourd'hui correspond a quel jour de la semaine ?"
+autowrap_mode = 3
+
+[node name="Response" type="Label" parent="ResultWin/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 232.0
+offset_right = 1656.0
+offset_bottom = 467.0
+theme_override_font_sizes/font_size = 32
+text = "La reponse ? C'est encore dimanche. Il s’agit d’un casse-tete qui deconcerte encore et encore les gens et montre a quel point une formulation elaboree peut vous faire courir autour de vous alors qu’en realite, la solution du casse-tete est tres simple."
+autowrap_mode = 3
+
+[node name="Validate" type="Label" parent="ResultWin"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_top = 944.0
+offset_right = 1920.0
+offset_bottom = 979.0
+theme_override_font_sizes/font_size = 32
+text = "APPUYEZ SUR UNE TOUCHE POUR SORTIR"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ResultWin"]
+libraries = {
+"": SubResource("AnimationLibrary_g1eob")
+}
+
+[node name="ResultLoose" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="ResultLoose"]
+self_modulate = Color(0.372549, 0.372549, 0.372549, 1)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+texture = ExtResource("4_0yscg")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ResultLoose"]
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("9_slflw")
+emission_shape = 3
+emission_rect_extents = Vector2(960, 540)
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.02
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+
+[node name="ColorRect" type="ColorRect" parent="ResultLoose"]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+
+[node name="TextResult" type="Label" parent="ResultLoose/ColorRect"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "incorrect"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="ResultLoose"]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 112.0
+offset_right = 1792.0
+offset_bottom = 272.0
+theme_override_styles/panel = ExtResource("5_bxxqh")
+
+[node name="Label" type="Label" parent="ResultLoose/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1664.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 32
+text = "Si sept jours apres 70 jours etait un dimanche, sept jours avant 70 jours. A partir d'aujourd'hui correspond a quel jour de la semaine ?"
+autowrap_mode = 3
+
+[node name="Response" type="Label" parent="ResultLoose/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 232.0
+offset_right = 1656.0
+offset_bottom = 467.0
+theme_override_font_sizes/font_size = 32
+text = "MALHEUREUSEMENT c'est la mauvaise reponse, reflechissez bien et lisez bien la question. faites bien attention a la formulation de cette derniere. rappellez-vous qu'une semaine contient 7 jours."
+autowrap_mode = 3
+
+[node name="Validate" type="Label" parent="ResultLoose"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 0
+offset_top = 944.0
+offset_right = 1920.0
+offset_bottom = 979.0
+theme_override_font_sizes/font_size = 32
+text = "APPUYEZ SUR UNE TOUCHE POUR SORTIR"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ResultLoose"]
+libraries = {
+"": SubResource("AnimationLibrary_nlyct")
+}
+
+[node name="ResultLooseMax" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="ResultLooseMax"]
+self_modulate = Color(0.372549, 0.372549, 0.372549, 1)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+texture = ExtResource("4_0yscg")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ResultLooseMax"]
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("9_slflw")
+emission_shape = 3
+emission_rect_extents = Vector2(960, 540)
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.02
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+
+[node name="ColorRect" type="ColorRect" parent="ResultLooseMax"]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+
+[node name="TextResult" type="Label" parent="ResultLooseMax/ColorRect"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "c'est perdu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="ResultLooseMax"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 112.0
+offset_right = 1792.0
+offset_bottom = 272.0
+theme_override_styles/panel = ExtResource("5_bxxqh")
+
+[node name="Label" type="Label" parent="ResultLooseMax/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1664.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 32
+text = "Si sept jours apres 70 jours etait un dimanche, sept jours avant 70 jours. A partir d'aujourd'hui correspond a quel jour de la semaine ?"
+autowrap_mode = 3
+
+[node name="Response" type="Label" parent="ResultLooseMax/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 232.0
+offset_right = 1656.0
+offset_bottom = 467.0
+theme_override_font_sizes/font_size = 32
+text = "MALHEUREUSEMENT c'est la mauvaise reponse, reflechissez bien et lisez bien la question. faites bien attention a la formulation de cette derniere. rappellez-vous qu'une semaine contient 7 jours.
+
+Vous n'avez plus assez d'essais pour continuer cet enigme..."
+autowrap_mode = 3
+
+[node name="Validate" type="Label" parent="ResultLooseMax"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 0
+offset_top = 944.0
+offset_right = 1920.0
+offset_bottom = 979.0
+theme_override_font_sizes/font_size = 32
+text = "APPUYEZ SUR UNE TOUCHE POUR SORTIR"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ResultLooseMax"]
+libraries = {
+"": SubResource("AnimationLibrary_laa26")
+}
+
+[connection signal="pressed" from="TextureRect/1" to="." method="_on_1_pressed"]
+[connection signal="pressed" from="TextureRect/2" to="." method="_on_2_pressed"]
+[connection signal="pressed" from="TextureRect/3" to="." method="_on_3_pressed"]
+[connection signal="pressed" from="TextureRect/4" to="." method="_on_4_pressed"]
+[connection signal="pressed" from="TextureRect/5" to="." method="_on_5_pressed"]
+[connection signal="pressed" from="TextureRect/6" to="." method="_on_6_pressed"]
+[connection signal="pressed" from="TextureRect/7" to="." method="_on_7_pressed"]

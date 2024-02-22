@@ -18,7 +18,35 @@ var letters_to_show = []
 var show_labels = false
 var saved_point_position: Vector2 = Vector2.ZERO 
 
+var tutorial = true
+var tutorial_stade = 0
+var tutorial_validate = false
+
+var current_quest_id = -1
+
 signal fringe_changed
+
+func quest_finished(i):
+	if get_node_or_null("/root/main_map/CanvasLayer/TerminatedQuest") != null:
+		get_node("/root/main_map/AudioStreamPlayer2D").stream = load("res://Sounds/victory.mp3")
+		get_node("/root/main_map/AudioStreamPlayer2D").playing = true
+		get_node("/root/main_map/CanvasLayer/TerminatedQuest").visible = true
+		get_node("/root/main_map/CanvasLayer/TerminatedQuest/Name").text = Global.quests[i]["title"]
+		await get_tree().create_timer(5).timeout 
+		if get_node_or_null("/root/main_map/CanvasLayer/TerminatedQuest") != null:
+			get_node("/root/main_map/CanvasLayer/TerminatedQuest").visible = false
+
+func set_quest(i):
+	if i == -1:
+		if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
+			get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = false
+	else:
+		Global.current_quest_id = i
+		if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
+			if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
+				get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = true
+			
+			get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
 
 func _ready():
 	for key in animals_player:
@@ -27,7 +55,11 @@ func _ready():
 		var random_type = animal_types[random_type_index]
 		var type_animal = random_type
 		print("Type choisi aléatoirement:", type_animal)
-		
+
+func _process(delta):
+	if tutorial == false:
+		tutorial_stade = -1
+
 var animals_player = {
 	
 	0: {
@@ -123,6 +155,22 @@ var items = {
 		"texture":"res://Textures/Apple.png",
 		"quantity":0
 	},
+	5: {
+		"name":"N-KEY",
+		"value":0,
+		"type":["key",1],
+		"effets":"Active une porte",
+		"texture":"res://Textures/Items/nkey.png",
+		"quantity":0
+	},
+	6: {
+		"name":"Crampte",
+		"value":0,
+		"type":["atk",2],
+		"effets":"200% d'ATK",
+		"texture":"res://Textures/Items/crapte.png",
+		"quantity":0
+	},
 }
 
 var attacks = {
@@ -165,19 +213,66 @@ var quests = {
 		"title":"Parchemin perdu",
 		"long_description":"Vous pénétrez dans la modeste demeure du vieux sage, un érudit respecté de tous dans le royaume. Sa longue barbe blanche et ses yeux sages vous fixent avec bienveillance alors qu'il vous confie une quête d'une importance capitale.
 			\nAinsi, votre aventure débute. Vous partez à la recherche de ce parchemin, bravant des dangers inconnus, explorant des contrées reculées et affrontant des créatures mythiques. La destinée du royaume dépend de votre réussite. Que la chance accompagne vos pas, brave aventurier !",
-		"description":"Allez voir le vieux, il vous demandera de chercher un parchemin sacre.",
-		"pin_position":Vector2(1448,291)
+		"descriptions":
+			["Allez voir Hector, il vous demandera de chercher un parchemin sacre.",
+			"Allez voir Loytan, il a quelque chose pour faire avancer cette dite tragédie...",
+			"Allez voir Loytan, pour dire que vous avez réussi votre énigme",
+			"Allez voir Hector, pour lui remettre ses cramptes",
+			"Allez voir Loytan, pour faire une nouvelle enigme",
+			"Allez voir Loytan, pour dire que vous avez réussi votre énigme"],
+		"mini_descriptions":
+			["Allez voir Hector","Allez voir Loytan","Allez parler a Layton","Rendez les cramptes a Hector","Demandez a Layton une nouvelle enigme","Allez parler a Layton"],
+		"pin_positions":[Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664),Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664)],
+		"stade":0,
+		"finished":false,
+	},
+	1: {
+		"title":"Bagird le rigolo",
+		"long_description":"Vous devez aller voir Monsieur Bagird, il vous demandera d'écouter à sa parole, vous devrez répondre à cela.",
+		"descriptions":
+			["Allez voir Monsieur Bagird qui se trouve sur la place du village, il a une belle bito.",
+			"Allez voir Monsieur Bagird et rigolez à sa blague.",
+			"Allez voir Monsieur Bagird qui se trouve à côté du pont Richard, pour continuer sa conversation...",
+			"Mosieur Bagird le rigolo vous a donné le N-KEY, mais vous devez trouver à quoi elle sert et où se trouve !"],
+		"mini_descriptions":
+			["Allez voir Bagird","Rigolez a la blague de Bagird","Allez rejoindre Bagird vers le pont Richard","Cherchez l'endroit d'utilisation du N-KEY"],
+		"pin_positions":[Vector2(980,-680),Vector2(980,-680),Vector2(764,932),Vector2(-500,-740)],
+		"stade":0,
+		"finished":false,
+	},
+	2: {
+		"title":"Tous les donjons",
+		"long_description":"Terminez tous les donjons du jeu",
+		"descriptions":
+			["Terminez tous les donjons du jeu"],
+		"mini_descriptions":
+			["Terminez tous les donjons du jeu"],
+		"pin_positions":[Vector2(0,0)],
+		"stade":0,
+		"finished":false,
 	}
 }
 
+
+func finished_stade_quest(quest_id=current_quest_id):
+	if quest_id > -1:
+		if quests[quest_id]["descriptions"].size() > quests[quest_id]["stade"]:
+			quests[quest_id]["stade"] += 1
+		else:
+			quests[quest_id]["finished"] = true
 
 
 func save():
 	var save_file = ConfigFile.new()
 	
+	save_file.set_value("Tuto", "Stade", tutorial_stade)
+	save_file.set_value("Tuto", "Type", tutorial)
+	save_file.set_value("Tuto", "Validate", tutorial_validate)
+	
 	save_file.set_value("Values", "items", items)
 	save_file.set_value("Values", "attacks", attacks)
 	save_file.set_value("Quests", "infos", quests)
+	save_file.set_value("Quests", "current", current_quest_id)
 	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
 		save_file.set_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
 		save_file.set_value("Quests", "radar_enabled", true)
@@ -204,9 +299,15 @@ func save():
 func load():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
-	items = load_file.get_value("Quests", "infos", items)
+	
+	tutorial_stade = load_file.get_value("Tuto", "Stade", tutorial_stade)
+	tutorial = load_file.get_value("Tuto", "Type", tutorial)
+	tutorial_validate = load_file.get_value("Tuto", "Validate", tutorial_validate)
+	
+	items = load_file.get_value("Values", "items", items)
 	attacks = load_file.get_value("Values", "attacks", attacks)
 	quests = load_file.get_value("Quests", "infos", quests)
+	current_quest_id = load_file.get_value("Quests", "current", current_quest_id)
 	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
 		get_node("/root/main_map/CanvasLayer/Minimap").pin = load_file.get_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
 		load_file.get_value("Quests", "radar_enabled", true)
@@ -215,7 +316,7 @@ func load():
 	PlayerStats.skin = load_file.get_value("Player", "skin", PlayerStats.skin)
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
 	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
-	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", get_node("/root/main_map/Player_One").position)
+	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", Vector2(0,0))
 	PlayerStats.animal_id = load_file.get_value("Animals", "id_affected", PlayerStats.animal_id)
 	PlayerStats.animal_health = load_file.get_value("Animals", "health", PlayerStats.animal_health)
 	PlayerStats.animal_level = load_file.get_value("Animals", "level", PlayerStats.animal_level)
