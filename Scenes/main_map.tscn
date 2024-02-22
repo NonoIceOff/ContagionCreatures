@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=39 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
@@ -13,11 +13,19 @@
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="8_fbofd"]
 [ext_resource type="PackedScene" uid="uid://dxt5b5tantpyy" path="res://Scenes/PauseMenu.tscn" id="9_roibj"]
 [ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="12_mcu04"]
+[ext_resource type="Texture2D" uid="uid://dl74uka4kf7xd" path="res://Textures/Gemme_bleu.png" id="13_aweja"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="13_vbc12"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="14_rfmay"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="15_166nn"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="16_61bay"]
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="18_w4w46"]
+[ext_resource type="Texture2D" uid="uid://des7hyfw82tql" path="res://Textures/PNJ/Loytan/loytan_full.png" id="19_tc64p"]
+[ext_resource type="Texture2D" uid="uid://cqsj1ecoh183k" path="res://Textures/PNJ/Loytan/tete_loytan.png" id="20_12piq"]
+[ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="21_m1aw1"]
+[ext_resource type="Texture2D" uid="uid://d00cubkujysav" path="res://Textures/Inventaire/grey.png" id="22_ku8d1"]
+[ext_resource type="Texture2D" uid="uid://b6qrnndoprfy7" path="res://Textures/Items/nkey.png" id="23_sq4xb"]
+[ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="24_e0f8h"]
+[ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="25_2w24m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qsd3"]
 size = Vector2(46, 45)
@@ -41,8 +49,24 @@ size = Vector2(30.5, 32)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqygx"]
 
+[sub_resource type="Curve" id="Curve_qti3j"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh80b"]
 size = Vector2(38, 16.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_184fj"]
+size = Vector2(46, 45)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kocle"]
+radius = 85.21
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qct3"]
+font_size = 36
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="main_map" type="Node2D"]
 script = ExtResource("1_ba8wf")
@@ -268,6 +292,91 @@ offset_bottom = 856.0
 
 [node name="QuestMenu" parent="CanvasLayer" instance=ExtResource("13_vbc12")]
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(944, 0)
+amount = 50
+draw_order = 1
+texture = ExtResource("13_aweja")
+emission_shape = 3
+emission_rect_extents = Vector2(256, 16)
+gravity = Vector2(0, 100)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_qti3j")
+
+[node name="QuestTextBar" type="RichTextLabel" parent="CanvasLayer/CPUParticles2D"]
+offset_left = -688.0
+offset_top = 24.0
+offset_right = 720.0
+offset_bottom = 66.0
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 25
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[center]Quest Text bar"
+scroll_active = false
+
+[node name="Cinematic" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Cinematic"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Cinematic"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1016.0
+offset_right = 1919.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="TerminatedQuest" type="Label" parent="CanvasLayer"]
+visible = false
+offset_top = -57.0
+offset_right = 1920.0
+offset_bottom = 1023.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.188235, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "quete terminee"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/TerminatedQuest"]
+layout_mode = 0
+offset_top = 144.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0.960784, 0.952941, 0.984314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 32
+text = "nom de la quete"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Stats" type="Control" parent="CanvasLayer2"]
@@ -327,6 +436,178 @@ shape = SubResource("RectangleShape2D_oh80b")
 [node name="SoundEffectFx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_w4w46")
 volume_db = -15.0
+
+[node name="Loytan" type="Area2D" parent="."]
+position = Vector2(3128, -664)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Loytan"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Loytan/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_184fj")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Loytan/CharacterBody2D"]
+z_index = -1
+position = Vector2(0, 3)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("19_tc64p")
+
+[node name="Head-old-guy-real" type="Sprite2D" parent="Loytan/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
+z_index = 10
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("20_12piq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Loytan"]
+shape = SubResource("CircleShape2D_kocle")
+
+[node name="Trigger" type="Sprite2D" parent="Loytan"]
+visible = false
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("7_ch8cw")
+
+[node name="Interact" type="Label" parent="Loytan"]
+visible = false
+offset_left = -24.0
+offset_top = -70.0
+offset_right = 84.0
+offset_bottom = -20.0
+scale = Vector2(0.5, 0.5)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_3qct3")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="InversedDungeon" type="Area2D" parent="."]
+position = Vector2(-755, -736)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="InversedDungeon"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InversedDungeon/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_184fj")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="InversedDungeon/CharacterBody2D"]
+visible = false
+z_index = -1
+position = Vector2(0, 3)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("21_m1aw1")
+
+[node name="Head-old-guy-real" type="Sprite2D" parent="InversedDungeon/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
+z_index = 10
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -1.62158)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("22_ku8d1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InversedDungeon"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_kocle")
+
+[node name="Trigger" type="Sprite2D" parent="InversedDungeon"]
+visible = false
+z_index = 100
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("7_ch8cw")
+
+[node name="Interact" type="Label" parent="InversedDungeon"]
+visible = false
+z_index = 100
+offset_left = -26.0
+offset_top = -61.0
+offset_right = 82.0
+offset_bottom = -11.0
+scale = Vector2(0.5, 0.5)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_3qct3")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InversedDungeon/Interact"]
+position = Vector2(40, -22)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("23_sq4xb")
+
+[node name="Label" type="Label" parent="InversedDungeon/Interact/Sprite2D"]
+texture_filter = 1
+offset_left = 128.0
+offset_top = -64.0
+offset_right = 168.0
+offset_bottom = -45.0
+scale = Vector2(7, 7)
+theme_override_colors/font_outline_color = Color(0.0235294, 1, 0, 1)
+theme_override_constants/outline_size = 5
+text = "1"
+
+[node name="DungeonPNG" type="Label" parent="InversedDungeon"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -29.0
+offset_top = -16.0
+offset_right = 91.0
+offset_bottom = 32.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0.976471, 0, 1, 1)
+theme_override_constants/outline_size = 10
+text = "INVERSED
+DUNGEON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bagird" type="Area2D" parent="."]
+position = Vector2(1000, -680)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Bagird"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bagird/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_184fj")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Bagird/CharacterBody2D"]
+z_index = -1
+position = Vector2(0, 3)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("24_e0f8h")
+
+[node name="Head-old-guy-real" type="Sprite2D" parent="Bagird/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
+z_index = 10
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("25_2w24m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bagird"]
+shape = SubResource("CircleShape2D_kocle")
+
+[node name="Trigger" type="Sprite2D" parent="Bagird"]
+visible = false
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("7_ch8cw")
+
+[node name="Interact" type="Label" parent="Bagird"]
+visible = false
+offset_left = -24.0
+offset_top = -70.0
+offset_right = 84.0
+offset_bottom = -20.0
+scale = Vector2(0.5, 0.5)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_3qct3")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
