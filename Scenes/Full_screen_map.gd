@@ -5,8 +5,8 @@ extends Control
 #Point jaune dans la miniMap
 var pin
 var points_stock: Array = []
-var point_sprite = ColorRect.new() 
 var point_placed = false
+var point_sprite = ColorRect.new() 
 
 func _ready():
 	pin = get_node("/root/main_map/MobPNJ/Ennemy").position
@@ -46,7 +46,9 @@ func _input(event: InputEvent):
 		draw_point(mouse_pos)
 		point_placed = true
 		points_stock.append(mouse_pos)
+		change_pin(mouse_pos)
 		saved_point(mouse_pos)
+		
 
 
 func draw_point(position: Vector2):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=27 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="14_rfmay"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="15_166nn"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="16_61bay"]
+[ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="18_w4w46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qsd3"]
 size = Vector2(46, 45)
@@ -41,7 +42,7 @@ size = Vector2(30.5, 32)
 [sub_resource type="LabelSettings" id="LabelSettings_rqygx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh80b"]
-size = Vector2(38, 13)
+size = Vector2(38, 16.25)
 
 [node name="main_map" type="Node2D"]
 script = ExtResource("1_ba8wf")
@@ -320,8 +321,12 @@ position = Vector2(1281, -868)
 scale = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.25, -14.5)
+position = Vector2(-0.25, -11.875)
 shape = SubResource("RectangleShape2D_oh80b")
+
+[node name="SoundEffectFx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_w4w46")
+volume_db = -15.0
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

@@ -13,6 +13,7 @@ var scene_load = false
 func _ready():
 	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
+	get_node("SoundEffectFx").play()
 	get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = false
 	$InteractArea/Trigger.visible = true
 	$InteractArea/Interact.visible = Global.interact
