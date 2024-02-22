@@ -11,7 +11,6 @@ func _ready():
 func _physics_process(delta):
 	get_node("AnimationPlayer").current_animation = "pin"
 	camera.position = owner.find_child("Player_One").position
-	pin = get_node("/root/main_map/MobPNJ/Ennemy").position
 	var point_pos = pin - camera.position
 	get_node("PinPoint").position = point_pos *0.1 + get_node("PlayerPoint").position
 	
