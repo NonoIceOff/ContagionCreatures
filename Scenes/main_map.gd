@@ -8,8 +8,9 @@ var entered_Ennemy = false
 var item_scene = preload("res://Scenes/item.tscn")
 var interacted = false
 var quest_id = 0
-
 var zoomed = false
+var scene_load = false
+
 
 func _ready():
 	if get_node_or_null("CanvasLayer/CPUParticles2D") != null:
@@ -363,6 +364,7 @@ func _process(_delta):
 				get_tree().change_scene_to_file("res://Scenes/dungeon_inversed.tscn")
 				interacted = false
 			
+
 	if entered_Ennemy == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"): #and $MobPNJ/AreaEnnemy1/Collision_Ennemy.is_in_group("Player_One"):
 			Key = true
@@ -371,7 +373,23 @@ func _process(_delta):
 			get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
 			Key = false
 
+	if Input.is_action_just_pressed("M"):
+		if scene_load == false:
+			print("cc")
+			var load_scene = preload("res://Scenes/Full_screen_map.tscn")
+			var load_instance = load_scene.instantiate()
+			load_instance.position = Vector2(0,0)
+			get_node("CanvasLayer/Minimap").visible = false
+			get_node("CanvasLayer").add_child(load_instance)
+			
+			scene_load = true
 
+		elif scene_load == true:
+			get_node("CanvasLayer/Full_Screen_map").queue_free()
+			get_node("CanvasLayer/Minimap").visible = true
+			scene_load = false
+	
+	
 func PauseMenu ():
 	if Global.paused == true:
 		pause_menu.show()
