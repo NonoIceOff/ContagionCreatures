@@ -609,6 +609,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
 [connection signal="body_entered" from="MobPNJ/AreaEnnemy1" to="." method="_on_area_ennemy_1_body_entered"]
@@ -616,3 +618,9 @@ uppercase = true
 [connection signal="body_entered" from="MobPNJ/AreaHome" to="MobPNJ/AreaHome" method="_Zone_Entered"]
 [connection signal="body_exited" from="MobPNJ/AreaHome" to="MobPNJ/AreaHome" method="_Zone_Exit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_entered_transition_map"]
+[connection signal="body_entered" from="Loytan" to="." method="_on_loytan_body_entered"]
+[connection signal="body_exited" from="Loytan" to="." method="_on_loytan_body_exited"]
+[connection signal="body_entered" from="InversedDungeon" to="." method="_on_inversed_dungeon_body_entered"]
+[connection signal="body_exited" from="InversedDungeon" to="." method="_on_inversed_dungeon_body_exited"]
+[connection signal="body_entered" from="Bagird" to="." method="_on_bagird_body_entered"]
+[connection signal="body_exited" from="Bagird" to="." method="_on_bagird_body_exited"]

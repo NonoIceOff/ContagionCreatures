@@ -1,10 +1,13 @@
 extends Node2D
 
-var earn = 30
+var earn = 100
 var looser = false
 var looser_max = false
 var looser_i = 0
 var winner = false
+
+var timer_sec = 30
+var timer_tick = 60
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,7 +46,16 @@ func launch():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	timer_tick -= 1
+	if timer_tick <= 0:
+		timer_tick = 60
+		timer_sec -= 1
+	get_node("TextureRect/Timer/Sprite2D").rotation += 0.01
+	get_node("TextureRect/Timer").text = str(timer_sec)
+	if timer_sec <= 0:
+		loose(0)
+		timer_sec = 30
+		timer_tick = 999999999999
 
 func _on_1_pressed():
 	loose(1)
@@ -145,15 +157,17 @@ func _input(event):
 				winner = false
 				PlayerStats.monnaie += earn
 				Global.save()
-				get_tree().change_scene_to_file("res://Scenes/main_map_anti_conflits.tscn")
+				get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 			elif looser == true:
 				earn -= 100/7
-				get_node("TextureRect/"+str(looser_i)).disabled = true
+				if looser_i > 0:
+					get_node("TextureRect/"+str(looser_i)).disabled = true
 				launch()
 				looser = false
+				timer_tick = 60
 			elif looser_max == true:
 				Global.current_quest_id = 0
 				Global.quests[0]["stade"] = 4
 				Global.save()
-				get_tree().change_scene_to_file("res://Scenes/main_map_anti_conflits.tscn")
+				get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 				looser_max = false

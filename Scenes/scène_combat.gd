@@ -119,11 +119,11 @@ func _process(delta):
 	
 	if get_node_or_null("SpeechBox") != null:
 		if get_node("SpeechBox").actual_text == 1:
-			if pv_player <= 0 and pv_player > -1000:
+			if pv_player <= 0 and pv_player > -1000000000000:
 				loose()
 				turn = -1
 				pv_player = -1000
-			elif pv_enemy <= 0 and pv_enemy > -1000:
+			elif pv_enemy <= 0 and pv_enemy > -1000000000000:
 				win()
 				turn = -1
 				pv_enemy = -1000
