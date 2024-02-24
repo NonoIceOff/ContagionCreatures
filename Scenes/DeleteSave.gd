@@ -3,4 +3,4 @@ extends Button
 
 
 func _on_pressed():
-	pass # Replace with function body.
+	DirAccess.remove_absolute("user://save.txt")

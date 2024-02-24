@@ -128,7 +128,7 @@ var items = {
 		"value":0,
 		"type":["antidote"],
 		"effets":"Possibilite de recuperer l'animal ennemi. A utiliser si l'ennemi est bas en PV",
-		"texture":"res://Textures/Potion_verte.png",
+		"texture":"res://Textures/Items/Potion_verte.png",
 		"quantity":0
 	},
 	2: {
@@ -136,7 +136,7 @@ var items = {
 		"value":0,
 		"type":["def",1.15],
 		"effets":"15% de DEF",
-		"texture":"res://Textures/Gemme_bleu.png",
+		"texture":"res://Textures/Items/Gemme_bleu.png",
 		"quantity":0
 	},
 	3: {
@@ -152,7 +152,7 @@ var items = {
 		"value":0,
 		"type":["regen",5],
 		"effets":"5 PV",
-		"texture":"res://Textures/Apple.png",
+		"texture":"res://Textures/Items/Apple.png",
 		"quantity":0
 	},
 	5: {

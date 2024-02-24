@@ -14,7 +14,7 @@ func draw_inventory():
 		get_node("CanvasLayer/VBoxContainer"+str(i%colonnes)).add_child(color)
 		
 		var sprite = Sprite2D.new()
-		sprite.scale = Vector2(0.2,0.2)
+		sprite.scale = Vector2(2,2)
 		sprite.position = Vector2(32,32)
 		color.add_child(sprite)
 		

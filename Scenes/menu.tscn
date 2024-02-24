@@ -178,6 +178,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 text = "supprimer la save"
 script = ExtResource("8_5568m")
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 416.0
+offset_bottom = 59.0
+text = "version du 23 fevrier 2024"
+
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
 [connection signal="pressed" from="PlayMulti" to="PlayMulti" method="_on_pressed"]
 [connection signal="pressed" from="Settings" to="Settings" method="_on_pressed"]
