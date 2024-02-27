@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4ftj14ld58if"]
+
+[ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
+[ext_resource type="Script" path="res://Scenes/ui.gd" id="1_p3l0n"]
+[ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="2_8ox0t"]
+[ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
+[ext_resource type="Texture2D" uid="uid://dl74uka4kf7xd" path="res://Textures/Gemme_bleu.png" id="4_jwspb"]
+[ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
+[ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="6_reotg"]
+[ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="7_i5pcq"]
+
+[sub_resource type="Curve" id="Curve_qti3j"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_p3l0n")
+
+[node name="Transition" parent="." instance=ExtResource("1_88tsw")]
+mouse_filter = 2
+
+[node name="Minimap" parent="." instance=ExtResource("2_8ox0t")]
+offset_left = 1664.0
+offset_top = 816.0
+offset_right = 1704.0
+offset_bottom = 856.0
+
+[node name="QuestMenu" parent="." instance=ExtResource("3_850rj")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(944, 0)
+amount = 50
+draw_order = 1
+texture = ExtResource("4_jwspb")
+emission_shape = 3
+emission_rect_extents = Vector2(256, 16)
+gravity = Vector2(0, 100)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_qti3j")
+
+[node name="QuestTextBar" type="RichTextLabel" parent="CPUParticles2D"]
+offset_left = -688.0
+offset_top = 24.0
+offset_right = 720.0
+offset_bottom = 66.0
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 25
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[center]Quest Text bar"
+scroll_active = false
+
+[node name="Cinematic" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Cinematic"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Cinematic"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1016.0
+offset_right = 1919.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="TerminatedQuest" type="Label" parent="."]
+visible = false
+offset_top = -57.0
+offset_right = 1920.0
+offset_bottom = 1023.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.188235, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "quete terminee"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="TerminatedQuest"]
+layout_mode = 0
+offset_top = 144.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0.960784, 0.952941, 0.984314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 32
+text = "nom de la quete"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Vie" type="TextureProgressBar" parent="Stats"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 80.0
+offset_bottom = 32.0
+scale = Vector2(4, 4)
+value = 50.0
+texture_under = ExtResource("5_26lyu")
+texture_progress = ExtResource("6_reotg")
+
+[node name="Coins" type="Sprite2D" parent="Stats"]
+texture_filter = 1
+position = Vector2(48, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("7_i5pcq")
+
+[node name="Label" type="Label" parent="Stats/Coins"]
+offset_left = 12.0
+offset_top = -7.0
+offset_right = 52.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 12
+text = "0"

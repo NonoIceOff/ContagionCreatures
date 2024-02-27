@@ -26,7 +26,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_interact"): #and $Collision_Home.is_in_group("Player_One"):
 			Global.save()
 			Key = true
-			get_node("/root/main_map/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+			get_node("/root/main_map/ui/Transition/AnimationPlayer").play("screen_to_transition")
 			print("pou")
 			await get_tree().create_timer(3).timeout
 			get_tree().change_scene_to_file("res://Scenes/home_of_hector.tscn")

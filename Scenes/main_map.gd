@@ -14,9 +14,9 @@ var scene_load = false
 
 
 func _ready():
-	if get_node_or_null("CanvasLayer/CPUParticles2D") != null:
-		get_node("CanvasLayer/CPUParticles2D").visible = false
-	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
+	if get_node_or_null("ui/CPUParticles2D") != null:
+		get_node("ui/CPUParticles2D").visible = false
+	get_node("ui/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
 	get_node("SoundEffectFx").play()
 	get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = false
@@ -28,51 +28,48 @@ func _ready():
 func zoom_dialogue():
 	if zoomed == false:
 		zoomed = true
-		if get_node_or_null("CanvasLayer/Minimap") != null:
-			get_node("CanvasLayer/Minimap").visible = false
-		if get_node_or_null("CanvasLayer2/Stats") != null:
-			get_node("CanvasLayer2/Stats").visible = false
-		get_node("CanvasLayer/Cinematic").modulate = Color(0,0,0,0)
-		get_node("CanvasLayer/Cinematic").visible = true
+		if get_node_or_null("ui/Minimap") != null:
+			get_node("ui/Minimap").visible = false
+		if get_node_or_null("ui/Stats") != null:
+			get_node("ui/Stats").visible = false
+		get_node("ui/Cinematic").modulate = Color(0,0,0,0)
+		get_node("ui/Cinematic").visible = true
 		for i in 10:
 			await get_tree().create_timer(0.001).timeout 
 			get_node("Player_One/2").zoom *= 1.05
-			get_node("CanvasLayer/Cinematic").modulate.a += 0.1
+			get_node("ui/Cinematic").modulate.a += 0.1
 		
 func unzoom_dialogue():
 	if zoomed == true:
 		zoomed = false
-		if get_node_or_null("CanvasLayer/Minimap") != null:
-			get_node("CanvasLayer/Minimap").visible = true
-		if get_node_or_null("CanvasLayer2/Stats") != null:
-			get_node("CanvasLayer2/Stats").visible = true
+		if get_node_or_null("ui/Minimap") != null:
+			get_node("ui/Minimap").visible = true
+		if get_node_or_null("ui/Stats") != null:
+			get_node("ui/Stats").visible = true
 		for i in 10:
 			await get_tree().create_timer(0.001).timeout 
 			get_node("Player_One/2").zoom /= 1.05
-			get_node("CanvasLayer/Cinematic").modulate.a -= 0.1
-		get_node("CanvasLayer/Cinematic").visible = false
+			get_node("ui/Cinematic").modulate.a -= 0.1
+		get_node("ui/Cinematic").visible = false
 
 
 func _process(_delta):
-	if get_node_or_null("CanvasLayer2/Stats/Coins/Label") != null:
-		get_node_or_null("CanvasLayer2/Stats/Coins/Label").text = str(PlayerStats.monnaie)
-	print(Global.current_quest_id)
-	if Global.current_quest_id > -1 and get_node_or_null("CanvasLayer/CPUParticles2D") != null:
-		get_node("CanvasLayer/CPUParticles2D").visible = true
-		get_node("CanvasLayer/CPUParticles2D/QuestTextBar").text = "[center][rainbow freq=0.05]"+Global.quests[Global.current_quest_id]["title"]+" [/rainbow] [color=black]| [color=white][i]"+Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]]
+	if get_node_or_null("ui/Stats/Coins/Label") != null:
+		get_node_or_null("ui/Stats/Coins/Label").text = str(PlayerStats.monnaie)
+	if Global.current_quest_id > -1 and get_node_or_null("ui/CPUParticles2D") != null:
+		get_node("ui/CPUParticles2D").visible = true
+		get_node("ui/CPUParticles2D/QuestTextBar").text = "[center][rainbow freq=0.05]"+Global.quests[Global.current_quest_id]["title"]+" [/rainbow] [color=black]| [color=white][i]"+Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]]
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
 	
-	if Input.is_action_just_pressed("ui_interact") and get_node_or_null("CanvasLayer2/SpeechBox") == null:
+	if Input.is_action_just_pressed("ui_interact") and get_node_or_null("ui/SpeechBox") == null:
 		interacted = true
 		var scene_source = preload("res://Scenes/speech_box.tscn")
 		var scene_instance = scene_source.instantiate()
 		
 		if get_node_or_null("InteractArea/Interact") != null and $InteractArea/Interact.visible == true:
 			if quest_id == 0 and Global.quests[0]["stade"] == 0:
-				print("ok 0")
 				Global.set_quest(0)
-				print(Global.current_quest_id)
 				var text_quest_0 = {
 					0: {
 						"text": "Bonjour jeune aventurier ! J'ai perdu quelque chose... pourrais-tu m'aider contre [tornado radius=5.0 freq=1.0 connected=1][rainbow freq=0.1 sat=0.8 val=0.8]une recompense[/rainbow][/tornado] ?",
@@ -114,7 +111,7 @@ func _process(_delta):
 				scene_instance.icon = load("res://Textures/Old_guy_who_lost_is_crampté_REAL.png")
 				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
 				scene_instance.name_icon = "Hector"
-				get_node("CanvasLayer2").add_child(scene_instance)
+				get_node("ui").add_child(scene_instance)
 				zoom_dialogue()
 				interacted = false
 				
@@ -148,7 +145,7 @@ func _process(_delta):
 				scene_instance.icon = load("res://Textures/PNJ/Loytan/loytan_full.png")
 				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
 				scene_instance.name_icon = "Loytan"
-				get_node("CanvasLayer2").add_child(scene_instance)
+				get_node("ui").add_child(scene_instance)
 				zoom_dialogue()
 				interacted = false
 				
@@ -174,7 +171,7 @@ func _process(_delta):
 				scene_instance.icon = load("res://Textures/PNJ/Loytan/loytan_full.png")
 				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
 				scene_instance.name_icon = "Loytan"
-				get_node("CanvasLayer2").add_child(scene_instance)
+				get_node("ui").add_child(scene_instance)
 				zoom_dialogue()
 				interacted = false
 
@@ -207,7 +204,7 @@ func _process(_delta):
 				scene_instance.icon = load("res://Textures/PNJ/Loytan/loytan_full.png")
 				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
 				scene_instance.name_icon = "Loytan"
-				get_node("CanvasLayer2").add_child(scene_instance)
+				get_node("ui").add_child(scene_instance)
 				zoom_dialogue()
 				interacted = false
 				
@@ -241,7 +238,7 @@ func _process(_delta):
 				scene_instance.icon = load("res://Textures/Old_guy_who_lost_is_crampté_REAL.png")
 				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
 				scene_instance.name_icon = "Hector"
-				get_node("CanvasLayer2").add_child(scene_instance)
+				get_node("ui").add_child(scene_instance)
 				zoom_dialogue()
 				interacted = false
 				
@@ -320,7 +317,7 @@ func _process(_delta):
 				scene_instance.icon = load("res://Textures/PNJ/Bagird/bagird_full.png")
 				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
 				scene_instance.name_icon = "Bagird"
-				get_node("CanvasLayer2").add_child(scene_instance)
+				get_node("ui").add_child(scene_instance)
 				zoom_dialogue()
 				interacted = false
 				
@@ -348,7 +345,7 @@ func _process(_delta):
 				scene_instance.icon = load("res://Textures/PNJ/Bagird/bagird_full.png")
 				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
 				scene_instance.name_icon = "Bagird"
-				get_node("CanvasLayer2").add_child(scene_instance)
+				get_node("ui").add_child(scene_instance)
 				zoom_dialogue()
 				interacted = false
 		
@@ -361,7 +358,7 @@ func _process(_delta):
 				Global.quest_finished(1)
 				Global.quests[1]["finished"] = true
 
-				get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+				get_node("ui/Transition/AnimationPlayer").play("screen_to_transition")
 				await get_tree().create_timer(2).timeout
 				get_tree().change_scene_to_file("res://Scenes/dungeon_inversed.tscn")
 				interacted = false
@@ -370,25 +367,24 @@ func _process(_delta):
 	if entered_Ennemy == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"): #and $MobPNJ/AreaEnnemy1/Collision_Ennemy.is_in_group("Player_One"):
 			Key = true
-			get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+			get_node("ui/Transition/AnimationPlayer").play("screen_to_transition")
 			await get_tree().create_timer(2).timeout
 			get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
 			Key = false
 
 	if Input.is_action_just_pressed("M"):
 		if scene_load == false:
-			print("cc")
 			var load_scene = preload("res://Scenes/Full_screen_map.tscn")
 			var load_instance = load_scene.instantiate()
 			load_instance.position = Vector2(0,0)
-			get_node("CanvasLayer/Minimap").visible = false
-			get_node("CanvasLayer").add_child(load_instance)
+			get_node("ui/Minimap").visible = false
+			get_node("ui").add_child(load_instance)
 			
 			scene_load = true
 
 		elif scene_load == true:
-			get_node("CanvasLayer/Full_Screen_map").queue_free()
-			get_node("CanvasLayer/Minimap").visible = true
+			get_node("ui/Full_Screen_map").queue_free()
+			get_node("ui/Minimap").visible = true
 			scene_load = false
 	
 	
@@ -439,7 +435,7 @@ func _on_entered_transition_map(body):
 	var entered_area = false
 	if body.is_in_group("Player_One"):
 		entered_area = true
-		get_node("/root/main_map/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+		get_node("/root/main_map/ui/Transition/AnimationPlayer").play("screen_to_transition")
 		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://Scenes/map2.tscn")
 	

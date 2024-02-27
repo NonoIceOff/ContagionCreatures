@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlj82x8ysevhm"]
+[gd_scene load_steps=19 format=3 uid="uid://dlj82x8ysevhm"]
 
+[ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_buk1w"]
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
+[ext_resource type="Texture2D" uid="uid://w5m4hlt7dhrk" path="res://logo.png" id="2_2tqwl"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_j62ra"]
 [ext_resource type="Script" path="res://Scenes/PlayButton.gd" id="2_soydd"]
 [ext_resource type="Script" path="res://Scenes/SettingsButton.gd" id="3_4a2ih"]
@@ -8,16 +10,24 @@
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="4_qccqg"]
 [ext_resource type="Script" path="res://Scenes/PlayMulti.gd" id="4_xyknk"]
 [ext_resource type="Script" path="res://Scenes/DeleteSave.gd" id="8_5568m"]
+[ext_resource type="Texture2D" uid="uid://dklxwvoawyyh7" path="res://Textures/PATREON_SYMBOL_1_WHITE_RGB.png" id="9_7fxk5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvldv"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.294118, 0.580392, 0.643137, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
-bg_color = Color(0.654902, 0.298039, 0.160784, 1)
+bg_color = Color(0.654902, 0.380392, 0.160784, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
-bg_color = Color(0.654902, 0.298039, 0.14902, 1)
+bg_color = Color(0.654902, 0.380392, 0.160784, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -28,46 +38,129 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7pwu"]
-bg_color = Color(0.717647, 0.203922, 0, 1)
+bg_color = Color(0.717647, 0.419608, 0, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvldv"]
-bg_color = Color(1, 1, 1, 1)
-border_color = Color(0.294118, 0.580392, 0.643137, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsl8i"]
+bg_color = Color(0.654902, 0, 0, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dkss"]
+bg_color = Color(0.654902, 0, 0.14902, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlqyn"]
+bg_color = Color(0.717647, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
 
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+offset_right = 1920.0
+offset_bottom = 1072.0
+texture = ExtResource("1_buk1w")
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1072.0
+color = Color(0, 0, 0, 0.196078)
+
 [node name="Duck" type="Sprite2D" parent="."]
-position = Vector2(949, 556)
+position = Vector2(1496, 336)
 scale = Vector2(1.26561, 1.26075)
 texture = ExtResource("1_rwphk")
 
+[node name="Bubble" type="Panel" parent="Duck"]
+offset_left = 31.6053
+offset_top = -133.254
+offset_right = 473.605
+offset_bottom = -11.254
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvldv")
+
+[node name="Texte" type="Label" parent="Duck/Bubble"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 448.0
+offset_bottom = 128.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_j62ra")
+theme_override_font_sizes/font_size = 35
+text = "DO YOU WANT
+A MOJItO?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(496, 280)
+texture = ExtResource("2_2tqwl")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 80)
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+
+[node name="Titre" type="Label" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_top = 128.0
+offset_right = 1024.0
+offset_bottom = 448.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 50
+theme_override_fonts/font = ExtResource("2_j62ra")
+theme_override_font_sizes/font_size = 64
+text = "CONTAGION CREATURES"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("4_qccqg")
+
 [node name="Play" type="Button" parent="."]
-offset_left = 560.0
-offset_top = 747.0
-offset_right = 1352.0
-offset_bottom = 811.0
+offset_left = 112.0
+offset_top = 448.0
+offset_right = 896.0
+offset_bottom = 512.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_j62ra")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "JOUER EN SOLO"
+text = "solo"
 script = ExtResource("2_soydd")
 
 [node name="PlayMulti" type="Button" parent="."]
-offset_left = 562.0
-offset_top = 827.0
-offset_right = 1353.0
-offset_bottom = 892.0
+offset_left = 112.0
+offset_top = 544.0
+offset_right = 896.0
+offset_bottom = 609.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_j62ra")
 theme_override_font_sizes/font_size = 35
@@ -75,7 +168,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 disabled = true
-text = "JOUER EN MULTIJOUEUR"
+text = "multijoueur"
 script = ExtResource("4_xyknk")
 
 [node name="Label" type="Label" parent="PlayMulti"]
@@ -92,10 +185,10 @@ theme_override_font_sizes/font_size = 24
 text = "work in progress"
 
 [node name="Settings" type="Button" parent="."]
-offset_left = 744.0
-offset_top = 936.0
-offset_right = 1168.0
-offset_bottom = 1016.0
+offset_left = 304.0
+offset_top = 872.0
+offset_right = 728.0
+offset_bottom = 952.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
@@ -104,88 +197,67 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 text = "PARAMETRES"
 script = ExtResource("3_4a2ih")
 
-[node name="Bubble" type="Panel" parent="."]
-offset_left = 1024.0
-offset_top = 387.0
-offset_right = 1466.0
-offset_bottom = 509.0
-scale = Vector2(0.5, 0.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_wvldv")
-
-[node name="Texte" type="Label" parent="Bubble"]
-layout_mode = 0
-offset_top = -6.0
-offset_right = 448.0
-offset_bottom = 122.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_j62ra")
-theme_override_font_sizes/font_size = 35
-text = "DO YOU WANT
-A MOJIRO?"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Titre" type="Label" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-offset_top = 128.0
-offset_right = 1920.0
-offset_bottom = 256.0
-theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_j62ra")
-theme_override_font_sizes/font_size = 64
-text = "CONTAGION CREATURES"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("4_qccqg")
-
-[node name="TitreTriche" type="Label" parent="Titre"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("2_j62ra")
-theme_override_font_sizes/font_size = 64
-text = "CONTAGION CREATURES"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4gslj")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 1520.0
-offset_top = 992.0
-offset_right = 1915.0
-offset_bottom = 1028.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 24
-text = "un gros probleme ?"
-
 [node name="DeleteSave" type="Button" parent="."]
-offset_left = 1512.0
-offset_top = 1032.0
-offset_right = 1912.0
-offset_bottom = 1068.0
+offset_left = 1280.0
+offset_top = 536.0
+offset_right = 1664.0
+offset_bottom = 576.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_lsl8i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7dkss")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wlqyn")
+text = "supprimer la save"
+script = ExtResource("8_5568m")
+
+[node name="Label" type="Label" parent="DeleteSave"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 392.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 16
+text = "un gros probleme ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1536.0
+offset_top = 1040.0
+offset_right = 1904.0
+offset_bottom = 1059.0
+text = "version du 23 fevrier 2024"
+
+[node name="Patreon" type="Button" parent="."]
+offset_left = 1280.0
+offset_top = 664.0
+offset_right = 1664.0
+offset_bottom = 704.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "supprimer la save"
+text = "se connecter"
+icon = ExtResource("9_7fxk5")
+expand_icon = true
 script = ExtResource("8_5568m")
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 48.0
-offset_top = 40.0
+[node name="Label" type="Label" parent="Patreon"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 48.0
 offset_right = 416.0
-offset_bottom = 59.0
-text = "version du 23 fevrier 2024"
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 16
+text = "debloquer des fonctionnalites"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
 [connection signal="pressed" from="PlayMulti" to="PlayMulti" method="_on_pressed"]
 [connection signal="pressed" from="Settings" to="Settings" method="_on_pressed"]
 [connection signal="pressed" from="DeleteSave" to="DeleteSave" method="_on_pressed"]
+[connection signal="pressed" from="Patreon" to="Patreon" method="_on_pressed"]
