@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/AppearenceButton.gd" id="2_5wkqo"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="3_rtdht"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="4_ggfiq"]
-[ext_resource type="AudioStream" uid="uid://clrkni5n75i8l" path="res://Sounds/coinc.mp3" id="5_vs5pu"]
+[ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="5_vs5pu"]
 [ext_resource type="Script" path="res://Scenes/Retour.gd" id="6_mdffj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]

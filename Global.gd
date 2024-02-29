@@ -24,17 +24,22 @@ var tutorial_validate = false
 
 var current_quest_id = -1
 
+var patreon_code = ""
+var patreon_active = false
+var patreon_time = 0.0
+
+
 signal fringe_changed
 
 func quest_finished(i):
-	if get_node_or_null("/root/main_map/CanvasLayer/TerminatedQuest") != null:
+	if get_node_or_null("/root/main_map/ui/TerminatedQuest") != null:
 		get_node("/root/main_map/AudioStreamPlayer2D").stream = load("res://Sounds/victory.mp3")
 		get_node("/root/main_map/AudioStreamPlayer2D").playing = true
-		get_node("/root/main_map/CanvasLayer/TerminatedQuest").visible = true
-		get_node("/root/main_map/CanvasLayer/TerminatedQuest/Name").text = Global.quests[i]["title"]
+		get_node("/root/main_map/ui/TerminatedQuest").visible = true
+		get_node("/root/main_map/ui/TerminatedQuest/Name").text = Global.quests[i]["title"]
 		await get_tree().create_timer(5).timeout 
-		if get_node_or_null("/root/main_map/CanvasLayer/TerminatedQuest") != null:
-			get_node("/root/main_map/CanvasLayer/TerminatedQuest").visible = false
+		if get_node_or_null("/root/main_map/ui/TerminatedQuest") != null:
+			get_node("/root/main_map/ui/TerminatedQuest").visible = false
 
 func set_quest(i):
 	if i == -1:
@@ -49,6 +54,7 @@ func set_quest(i):
 			get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
 
 func _ready():
+	
 	for key in animals_player:
 		var animal_types = animals_player[0]["type"]
 		var random_type_index = randi_range(0, animal_types.size() - 3)
@@ -225,6 +231,7 @@ var quests = {
 		"pin_positions":[Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664),Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664)],
 		"stade":0,
 		"finished":false,
+		"members_only":false,
 	},
 	1: {
 		"title":"Bagird le rigolo",
@@ -239,6 +246,7 @@ var quests = {
 		"pin_positions":[Vector2(980,-680),Vector2(980,-680),Vector2(764,932),Vector2(-500,-740)],
 		"stade":0,
 		"finished":false,
+		"members_only":true,
 	},
 	2: {
 		"title":"Tous les donjons",
@@ -250,6 +258,7 @@ var quests = {
 		"pin_positions":[Vector2(0,0)],
 		"stade":0,
 		"finished":false,
+		"members_only":false,
 	}
 }
 
@@ -326,3 +335,16 @@ func load_position():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
 	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", get_node("/root/main_map/Player_One").position)
+
+func save_patreon():
+	var save_file = ConfigFile.new()
+	save_file.set_value("Patreon", "Active", Global.patreon_active)
+	save_file.set_value("Patreon", "Time", Global.patreon_time)
+	save_file.save_encrypted_pass("user://code.txt", "gentle_duck")
+	
+func load_patreon():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://code.txt", "gentle_duck")
+	Global.patreon_active = load_file.get_value("Patreon", "Active", Global.patreon_active)
+	Global.patreon_time = load_file.get_value("Patreon", "Time", Global.patreon_time)
+	print(Time.get_datetime_string_from_unix_time(Global.patreon_time))

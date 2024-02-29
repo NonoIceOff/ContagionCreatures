@@ -27,6 +27,7 @@ func _ready():
 	
 func zoom_dialogue():
 	if zoomed == false:
+		get_node("SoundEffectFx").stream_paused = true
 		zoomed = true
 		if get_node_or_null("ui/Minimap") != null:
 			get_node("ui/Minimap").visible = false
@@ -41,6 +42,7 @@ func zoom_dialogue():
 		
 func unzoom_dialogue():
 	if zoomed == true:
+		get_node("SoundEffectFx").stream_paused = false
 		zoomed = false
 		if get_node_or_null("ui/Minimap") != null:
 			get_node("ui/Minimap").visible = true
