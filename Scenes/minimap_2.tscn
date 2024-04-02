@@ -112,6 +112,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 29.0
 offset_top = 29.0
 offset_right = 215.0
@@ -119,6 +120,7 @@ offset_bottom = 215.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_6cl2x")
+layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 212.0
@@ -238,6 +240,7 @@ zoom = Vector2(0.1, 0.1)
 
 [node name="PlayerPoint" type="ColorRect" parent="."]
 z_index = 10
+layout_mode = 0
 offset_left = 118.0
 offset_top = 118.0
 offset_right = 128.0
@@ -245,6 +248,7 @@ offset_bottom = 128.0
 
 [node name="PinPoint" type="ColorRect" parent="."]
 z_index = 10
+layout_mode = 0
 offset_left = 104.0
 offset_top = 64.0
 offset_right = 114.0
@@ -263,6 +267,7 @@ color = Color(1, 0.811765, 0.0980392, 1)
 
 [node name="Position" type="Label" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 29.0
 offset_top = 216.0
 offset_right = 215.0

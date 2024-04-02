@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf76na2js016h"]
+[gd_scene load_steps=12 format=3 uid="uid://bf76na2js016h"]
 
 [ext_resource type="Script" path="res://Scenes/map2.gd" id="1_k2jl6"]
-[ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://main_map_2.tres" id="2_kn7bg"]
+[ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="1_usnn1"]
+[ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="2_7hp1i"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="3_5vi83"]
-[ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="4_e723n"]
+[ext_resource type="PackedScene" uid="uid://dq07bruwx0jev" path="res://Scenes/minimap_2.tscn" id="4_xdrtn"]
+[ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="5_k26p6"]
+[ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="7_floul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fe716"]
 size = Vector2(173, 59)
@@ -24,7 +27,7 @@ script = ExtResource("1_k2jl6")
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(4, 4)
-tile_set = ExtResource("2_kn7bg")
+tile_set = ExtResource("1_usnn1")
 format = 2
 layer_0/name = "-141"
 layer_0/z_index = -141
@@ -121,6 +124,15 @@ layer_13/y_sort_origin = 0
 layer_13/z_index = 0
 layer_13/tile_data = PackedInt32Array(2555896, 4128773, 122, 2555897, 4128773, 122, 2555898, 4128773, 122, 2555899, 4128773, 122, 2555900, 4128773, 122, 2555901, 4128773, 122, 2555902, 4128773, 122, 2555903, 4128773, 122, 2490368, 4128773, 122, 2490369, 4128773, 122, 2490370, 4128773, 122, 2490371, 4128773, 122, 2490372, 4128773, 122, 2490373, 4128773, 122, 2490374, 4128773, 122, 2490375, 4128773, 122, 2490376, 4128773, 122, 2490377, 4128773, 122, 2490378, 4128773, 122, 2490379, 4259845, 122, 2490360, 4128773, 120, 2490361, 4128773, 120, 2490362, 4128773, 120, 2490363, 4128773, 120, 2490364, 4128773, 120, 2490365, 4128773, 120, 2490366, 4128773, 120, 2490367, 4128773, 120, 2424832, 4128773, 120, 2424833, 4128773, 120, 2424834, 4128773, 120, 2424835, 4128773, 120, 2424836, 4128773, 120, 2424837, 4128773, 120, 2424838, 4128773, 120, 2424839, 4128773, 120, 2424840, 4128773, 120, 2424841, 4128773, 120, 2424842, 4128773, 120, 2424843, 4128773, 120, 2490380, 4390917, 122, 2424844, 4390917, 122, 2949102, 4128773, 122, 2949103, 4194309, 122, 2949104, 4259845, 122, 2949105, 4325381, 122, 2949106, 4128773, 122, 2949107, 4194309, 122, 2949108, 4259845, 122, 2949109, 4325381, 122, 2949110, 4128773, 122, 2949111, 4390917, 122, 2883575, 4390917, 121, 2949101, 4063237, 122, 2883565, 4063237, 121, 2228205, 3997701, 120, 2293741, 3997701, 120, 2359277, 3997701, 120, 2424813, 3997701, 120, 2490349, 3997701, 120, 2555885, 3997701, 120, 2621421, 3997701, 120, 2686957, 3997701, 120, 2752493, 3997701, 120, 2818029, 3997701, 120, 983041, 3997701, 120, 1048577, 3997701, 120, 1114113, 3997701, 120, 1179649, 3997701, 120, 1245185, 3997701, 120, 1310721, 3997701, 120, 1376257, 3997701, 120, 1441793, 3997701, 120, 1507329, 3997701, 120, 1572865, 3997701, 120, 1638401, 3997701, 120, 1703937, 3997701, 120, 1769473, 3997701, 120, 1835009, 3997701, 120, 1900545, 3997701, 120, 1966081, 3997701, 120, 2031617, 3997701, 120, 2097153, 3997701, 120, 851969, 3997701, 120, 917505, 3997701, 120, 983042, 4194309, 120, 1048578, 4194309, 120, 1114114, 4194309, 120, 1179650, 4194309, 120, 1245186, 4194309, 120, 1310722, 4194309, 120, 1376258, 4194309, 120, 1441794, 4194309, 120, 1507330, 4194309, 120, 1572866, 4194309, 120, 1638402, 4194309, 120, 1703938, 4194309, 120, 1769474, 4194309, 120, 1835010, 4194309, 120, 1900546, 4194309, 120, 1966082, 4194309, 120, 2031618, 4194309, 120, 2097154, 4194309, 120, 851970, 4194309, 120, 917506, 4194309, 120, 851952, 4063237, 121, 589807, 2686981, 137, 655343, 2686981, 137, 720879, 2686981, 137, 786415, 2686981, 137, 851951, 2686981, 137, 524272, 2752517, 137, 589808, 2752517, 137, 655344, 2752517, 137, 720880, 2752517, 137, 786416, 2752517, 137)
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Transition" parent="CanvasLayer2" instance=ExtResource("2_7hp1i")]
+mouse_filter = 2
+
+[node name="minimap2" parent="CanvasLayer2" instance=ExtResource("4_xdrtn")]
+
+[node name="QuestMenu" parent="CanvasLayer2" instance=ExtResource("5_k26p6")]
+
 [node name="Player_One" parent="." instance=ExtResource("3_5vi83")]
 z_index = 5
 position = Vector2(-1315, 5260)
@@ -157,7 +169,9 @@ position = Vector2(-781.25, 1039)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_kpa8b")
 
-[node name="ui" parent="." instance=ExtResource("4_e723n")]
+[node name="SoundEffectFx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_floul")
+volume_db = -15.0
 
 [connection signal="body_entered" from="Leave_to_Map1" to="." method="_on_leave_to_map_1_body_entered"]
 [connection signal="body_entered" from="Enter_home_Map2" to="." method="_on_enter_home_map_2_body_entered"]
