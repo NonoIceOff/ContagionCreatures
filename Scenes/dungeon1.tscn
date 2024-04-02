@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://p838sug386nh" path="res://Textures/light_mask.png" id="4_gsk56"]
 [ext_resource type="Script" path="res://Scenes/Transition_To_mainMap.gd" id="5_2xtxa"]
 [ext_resource type="Texture2D" uid="uid://c18q56cdgsav5" path="res://Textures/WHATTT.png" id="6_md5wr"]
-[ext_resource type="AudioStream" uid="uid://b3nbcoplainu4" path="res://Sounds/dungeon_ambiance.mp3" id="9_r0ofs"]
+[ext_resource type="AudioStream" uid="uid://bfw628o70egcf" path="res://Sounds/dungeon_sound.mp3" id="9_r0ofs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4vl6"]
 size = Vector2(24, 13.3334)

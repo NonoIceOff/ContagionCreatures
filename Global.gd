@@ -28,6 +28,9 @@ var patreon_code = ""
 var patreon_active = false
 var patreon_time = 0.0
 
+var tuto_active = true
+var tuto_status = 0
+
 
 signal fringe_changed
 

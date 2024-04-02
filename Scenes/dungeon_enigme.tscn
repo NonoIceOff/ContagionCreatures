@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="5_kcaed"]
 [ext_resource type="Texture2D" uid="uid://c18q56cdgsav5" path="res://Textures/WHATTT.png" id="6_sfjpb"]
 [ext_resource type="Script" path="res://Scenes/Transition_To_mainMap.gd" id="8_dcgnd"]
-[ext_resource type="AudioStream" uid="uid://b3nbcoplainu4" path="res://Sounds/dungeon_ambiance.mp3" id="9_5assc"]
-[ext_resource type="AudioStream" uid="uid://i14r6rsxaor2" path="res://Sounds/flame_sound.mp3" id="9_7g1t8"]
+[ext_resource type="AudioStream" uid="uid://bfw628o70egcf" path="res://Sounds/dungeon_sound.mp3" id="9_5assc"]
+[ext_resource type="AudioStream" uid="uid://chi02efau43ep" path="res://Sounds/flame_sound.mp3" id="9_7g1t8"]
 [ext_resource type="Script" path="res://Scenes/Brazeros.gd" id="9_ed2xt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4vl6"]

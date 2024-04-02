@@ -55,7 +55,25 @@ func unzoom_dialogue():
 		get_node("ui/Cinematic").visible = false
 
 
-func _process(_delta):
+func _process(delta):
+	if Global.tuto_active == true and Global.tuto_status == 0: ## INITIALISATION DU TUTO
+		get_node("Player_One/2").enabled = false
+		get_node("Path2D/PathFollow2D/Camera2D").enabled = true
+		Global.tuto_status = 1
+		get_node("AudioStreamPlayer2D").stream = load("res://Sounds/music_debut.mp3")
+		get_node("AudioStreamPlayer2D").playing = true
+		get_node("SoundEffectFx").volume_db = -80
+		get_node("ui").visible = false
+		
+	if Global.tuto_active == true and Global.tuto_status == 1: ## INTRODUCTION DU TUTO
+		get_node("Path2D/PathFollow2D").progress += 280*delta
+		if get_node("AudioStreamPlayer2D").playing == false: ## SI L'INTRO EST TERMINEE
+			get_node("ui").visible = true
+			get_node("Player_One/2").enabled = true
+			get_node("Path2D/PathFollow2D/Camera2D").enabled = false
+			get_node("SoundEffectFx").volume_db = -10
+			
+		
 	if get_node_or_null("ui/Stats/Coins/Label") != null:
 		get_node_or_null("ui/Stats/Coins/Label").text = str(PlayerStats.monnaie)
 	if Global.current_quest_id > -1 and get_node_or_null("ui/CPUParticles2D") != null:
