@@ -53,32 +53,41 @@ func _ready():
 	
 	var i = 0
 	for key in Global.animals_player:
+		var label_info = Label.new()
+		var button
+		label_info.name = "name"
+		label_info.text = "Effets :"+str(Global.animals_player[key]["effets"])
+		label_info.text = "Type :"+str(Global.animals_player[key]["type"])
+		label_info.text = "Info sur l'animal"
+		label_info.position.y = 46
+		label_info.custom_minimum_size = Vector2(280,16)
+		label_info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label_info.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		label_info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		add_child(label_info)
 		
-		var button = Button.new()
-		button.name = str(key)
-		button.text = "Type :"+str(Global.type_animal)
-		button.position = Vector2(660,890)
-		button.custom_minimum_size = Vector2(40,40)
-		button.connect("pressed", Callable(self, "_info_animal"))
-		add_child(button)
+		var close_button = Button.new()
+		close_button.texture = load("res://Textures/Cross_Close.png")
+		close_button.scale = Vector2(1.7,1.7)
+		close_button.position = Vector2(20,20)
+		close_button.connect("pressed", Callable(self, "_close_info_animal"))
+		add_child(close_button)
 		
-		var sprite = Sprite2D.new()
-		sprite.name = "Sprite"
-		sprite.texture = load("res://Textures/Info.png")
-		sprite.scale = Vector2(2,2)
-		sprite.position = Vector2(20,20)
-		button.add_child(sprite)
-			
-		#var value = Label.new()
-		#value.name = "Value"
-		#value.text = "Effets :"+str(Global.animals_player[key]["effets"])
-		#value.text = "Type :"+(Global.random_type)
-		#value.position.y = 46
-		#value.custom_minimum_size = Vector2(280,16)
-		#value.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		#value.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		#value.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		#button.add_child(value)
+	#for key in Global.animals_player:
+		
+		#var button = Button.new()
+		#button.name = str(key)
+		#button.position = Vector2(660,890)
+		#button.custom_minimum_size = Vector2(70,70)
+		#button.connect("pressed", _info_animal)
+		#add_child(button)
+		
+		#var sprite = Sprite2D.new()
+		#sprite.name = "Sprite"
+		#sprite.texture = load("res://Textures/Info.png")
+		#sprite.scale = Vector2(2,2)
+		#sprite.position = Vector2(35,35)
+		#button.add_child(sprite)
 		
 
 
@@ -102,7 +111,8 @@ func _info_animal(button):
 		close_button.position = Vector2(20,20)
 		close_button.connect("pressed", Callable(self, "_close_info_animal"),)
 		label_info.add_child(close_button)
-		
+
+
 func _close_info_animal(label_info):
 	label_info.queue_free()
 

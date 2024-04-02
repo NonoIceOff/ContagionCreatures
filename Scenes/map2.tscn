@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bf76na2js016h"]
+[gd_scene load_steps=12 format=3 uid="uid://bf76na2js016h"]
 
 [ext_resource type="Script" path="res://Scenes/map2.gd" id="1_k2jl6"]
 [ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="1_usnn1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="3_5vi83"]
 [ext_resource type="PackedScene" uid="uid://dq07bruwx0jev" path="res://Scenes/minimap_2.tscn" id="4_xdrtn"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="5_k26p6"]
+[ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="7_floul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fe716"]
 size = Vector2(173, 59)
@@ -168,6 +169,10 @@ scale = Vector2(4, 4)
 position = Vector2(-781.25, 1039)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_kpa8b")
+
+[node name="SoundEffectFx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_floul")
+volume_db = -15.0
 
 [connection signal="body_entered" from="Leave_to_Map1" to="." method="_on_leave_to_map_1_body_entered"]
 [connection signal="body_entered" from="Enter_home_Map2" to="." method="_on_enter_home_map_2_body_entered"]
