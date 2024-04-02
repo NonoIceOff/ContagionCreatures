@@ -1,6 +1,5 @@
-[gd_scene load_steps=26 format=3 uid="uid://dlj82x8ysevhm"]
+[gd_scene load_steps=20 format=3 uid="uid://dlj82x8ysevhm"]
 
-[ext_resource type="Script" path="res://Scenes/menu.gd" id="1_3sngr"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_buk1w"]
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
 [ext_resource type="Texture2D" uid="uid://w5m4hlt7dhrk" path="res://logo.png" id="2_2tqwl"]
@@ -12,12 +11,7 @@
 [ext_resource type="Script" path="res://Scenes/PlayMulti.gd" id="4_xyknk"]
 [ext_resource type="Script" path="res://Scenes/DeleteSave.gd" id="8_5568m"]
 [ext_resource type="Texture2D" uid="uid://dklxwvoawyyh7" path="res://Textures/PATREON_SYMBOL_1_WHITE_RGB.png" id="9_7fxk5"]
-[ext_resource type="Texture2D" uid="uid://cifcf4dj616pl" path="res://Textures/Items/cadenas.png" id="9_l064a"]
 [ext_resource type="Script" path="res://Scenes/Patreon.gd" id="12_ai8ip"]
-[ext_resource type="StyleBox" uid="uid://c585g431q14ue" path="res://Thème/button_normal.tres" id="13_1y7pi"]
-[ext_resource type="Script" path="res://Scenes/CodePatreon.gd" id="13_rs15m"]
-[ext_resource type="StyleBox" uid="uid://bibiwmbse6bsf" path="res://Thème/button_hover.tres" id="14_ohk08"]
-[ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="15_pnm5u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvldv"]
 bg_color = Color(1, 1, 1, 1)
@@ -76,14 +70,13 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[node name="Menu" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_3sngr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
 offset_right = 1920.0
-offset_bottom = 1088.0
+offset_bottom = 1072.0
 texture = ExtResource("1_buk1w")
 stretch_mode = 6
 
@@ -177,27 +170,20 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 disabled = true
 text = "multijoueur"
-expand_icon = true
 script = ExtResource("4_xyknk")
 
 [node name="Label" type="Label" parent="PlayMulti"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 65.0
-offset_right = 784.0
-offset_bottom = 92.0
+offset_left = 222.0
+offset_top = 53.0
+offset_right = 582.0
+offset_bottom = 80.0
+rotation = -0.174533
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 24
-text = "MEMBRES PATREONSSEULEMENT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Icon" type="Sprite2D" parent="PlayMulti"]
-position = Vector2(40, 32)
-scale = Vector2(2, 2)
-texture = ExtResource("9_l064a")
+text = "work in progress"
 
 [node name="Settings" type="Button" parent="."]
 offset_left = 304.0
@@ -256,122 +242,25 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "code patreon"
+text = "se connecter"
 icon = ExtResource("9_7fxk5")
 expand_icon = true
 script = ExtResource("12_ai8ip")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="Patreon"]
-
-[node name="PatreonCode" type="Label" parent="Patreon"]
+[node name="Label" type="Label" parent="Patreon"]
 layout_mode = 0
-offset_left = -192.0
+offset_left = -32.0
 offset_top = 48.0
-offset_right = 576.0
-offset_bottom = 112.0
+offset_right = 416.0
+offset_bottom = 67.0
 theme_override_font_sizes/font_size = 16
 text = "debloquer des fonctionnalites"
 horizontal_alignment = 1
 
-[node name="CodePatreon" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("13_rs15m")
-
-[node name="ColorRect" type="ColorRect" parent="CodePatreon"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 1856.0
-offset_bottom = 1024.0
-color = Color(0, 0, 0, 0.784314)
-
-[node name="Titre" type="Label" parent="CodePatreon"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 0
-offset_top = 128.0
-offset_right = 1920.0
-offset_bottom = 256.0
-theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_j62ra")
-theme_override_font_sizes/font_size = 64
-text = "code patreon"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("4_qccqg")
-
-[node name="TitreTriche" type="Label" parent="CodePatreon/Titre"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("2_j62ra")
-theme_override_font_sizes/font_size = 64
-text = "code patreon"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LineEdit" type="LineEdit" parent="CodePatreon"]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 576.0
-offset_right = 1536.0
-offset_bottom = 648.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("13_1y7pi")
-theme_override_styles/focus = ExtResource("14_ohk08")
-theme_override_styles/read_only = ExtResource("15_pnm5u")
-placeholder_text = "ENTREZ LE CODE PATREON"
-alignment = 1
-
-[node name="ConfirmCode" type="Button" parent="CodePatreon"]
-layout_mode = 0
-offset_left = 664.0
-offset_top = 888.0
-offset_right = 1264.0
-offset_bottom = 960.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "CONFIRMER LE CODE"
-expand_icon = true
-
-[node name="Label" type="Label" parent="CodePatreon"]
-layout_mode = 0
-offset_left = 376.0
-offset_top = 664.0
-offset_right = 1528.0
-offset_bottom = 691.0
-theme_override_font_sizes/font_size = 24
-text = "CODE INVALIDE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Quit" type="Button" parent="CodePatreon"]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 88.0
-offset_right = 304.0
-offset_bottom = 136.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "RETOUR"
-expand_icon = true
+[node name="HTTPRequest" type="HTTPRequest" parent="Patreon"]
 
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
 [connection signal="pressed" from="PlayMulti" to="PlayMulti" method="_on_pressed"]
 [connection signal="pressed" from="Settings" to="Settings" method="_on_pressed"]
 [connection signal="pressed" from="DeleteSave" to="DeleteSave" method="_on_pressed"]
 [connection signal="pressed" from="Patreon" to="Patreon" method="_on_pressed"]
-[connection signal="text_changed" from="CodePatreon/LineEdit" to="CodePatreon" method="_on_line_edit_text_changed"]
-[connection signal="pressed" from="CodePatreon/ConfirmCode" to="CodePatreon" method="_on_confirm_code_pressed"]
-[connection signal="pressed" from="CodePatreon/Quit" to="CodePatreon" method="_on_quit_pressed"]
