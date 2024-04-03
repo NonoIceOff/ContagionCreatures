@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dlj82x8ysevhm"]
+[gd_scene load_steps=31 format=3 uid="uid://dlj82x8ysevhm"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_3sngr"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_buk1w"]
@@ -18,6 +18,11 @@
 [ext_resource type="Script" path="res://Scenes/CodePatreon.gd" id="13_rs15m"]
 [ext_resource type="StyleBox" uid="uid://bibiwmbse6bsf" path="res://Thème/button_hover.tres" id="14_ohk08"]
 [ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="15_pnm5u"]
+[ext_resource type="Texture2D" uid="uid://d1g423653v4tm" path="res://Textures/discord.png" id="19_hhkdv"]
+[ext_resource type="Script" path="res://Scenes/PatreonRez.gd" id="19_x6wxm"]
+[ext_resource type="Script" path="res://Scenes/DiscordRez.gd" id="21_nx528"]
+[ext_resource type="Texture2D" uid="uid://crj8d71jcq7lc" path="res://Textures/instagram.png" id="22_4l4g4"]
+[ext_resource type="Script" path="res://Scenes/InstagramRez.gd" id="22_dautx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvldv"]
 bg_color = Color(1, 1, 1, 1)
@@ -240,11 +245,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 1536.0
+offset_left = 1584.0
 offset_top = 1040.0
 offset_right = 1904.0
 offset_bottom = 1059.0
-text = "version du 23 fevrier 2024"
+text = "version du 5 avril 2024"
 
 [node name="Patreon" type="Button" parent="."]
 offset_left = 1280.0
@@ -272,6 +277,58 @@ offset_bottom = 112.0
 theme_override_font_sizes/font_size = 16
 text = "debloquer des fonctionnalites"
 horizontal_alignment = 1
+
+[node name="Reseaux" type="Label" parent="."]
+offset_left = 1368.0
+offset_top = 832.0
+offset_right = 1576.0
+offset_bottom = 856.0
+text = "reseaux du jeu"
+
+[node name="Patreon" type="Button" parent="Reseaux"]
+offset_left = -32.0
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "patreon"
+icon = ExtResource("9_7fxk5")
+expand_icon = true
+script = ExtResource("19_x6wxm")
+
+[node name="Discord" type="Button" parent="Reseaux"]
+offset_left = -32.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 120.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "discord"
+icon = ExtResource("19_hhkdv")
+expand_icon = true
+script = ExtResource("21_nx528")
+
+[node name="Instagram" type="Button" parent="Reseaux"]
+offset_left = -32.0
+offset_top = 128.0
+offset_right = 240.0
+offset_bottom = 168.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "instagram"
+icon = ExtResource("22_4l4g4")
+expand_icon = true
+script = ExtResource("22_dautx")
 
 [node name="CodePatreon" type="Control" parent="."]
 visible = false
@@ -372,6 +429,9 @@ expand_icon = true
 [connection signal="pressed" from="Settings" to="Settings" method="_on_pressed"]
 [connection signal="pressed" from="DeleteSave" to="DeleteSave" method="_on_pressed"]
 [connection signal="pressed" from="Patreon" to="Patreon" method="_on_pressed"]
+[connection signal="pressed" from="Reseaux/Patreon" to="Reseaux/Patreon" method="_on_pressed"]
+[connection signal="pressed" from="Reseaux/Discord" to="Reseaux/Discord" method="_on_pressed"]
+[connection signal="pressed" from="Reseaux/Instagram" to="Reseaux/Instagram" method="_on_pressed"]
 [connection signal="text_changed" from="CodePatreon/LineEdit" to="CodePatreon" method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="CodePatreon/ConfirmCode" to="CodePatreon" method="_on_confirm_code_pressed"]
 [connection signal="pressed" from="CodePatreon/Quit" to="CodePatreon" method="_on_quit_pressed"]
