@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="20_kqwfl"]
 [ext_resource type="Texture2D" uid="uid://hmskm5a45okh" path="res://Textures/CUBE_TEST.png" id="21_u34l4"]
 [ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="21_utjko"]
-[ext_resource type="Texture2D" uid="uid://cxqxfpw2do58x" path="res://Textures/Inventaire/brown_pressed.png" id="21_vwtf0"]
+[ext_resource type="Texture2D" uid="uid://du7qy04pnxkca" path="res://Textures/Inventaire/blue_pressed.png" id="22_5ef7t"]
 
 [sub_resource type="Curve2D" id="Curve2D_2rtf7"]
 _data = {
@@ -637,13 +637,10 @@ uppercase = true
 max_distance = 200000.0
 
 [node name="StartCinematic" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="StartCinematic"]
-visible = false
 position = Vector2(960, 540)
-amount = 50
-texture = ExtResource("21_vwtf0")
+texture = ExtResource("22_5ef7t")
 emission_shape = 3
 emission_rect_extents = Vector2(1280, 720)
 direction = Vector2(0, -1)

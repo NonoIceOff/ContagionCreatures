@@ -7,6 +7,7 @@ var paused = false
 var Key = false
 var entered_Ennemy = false
 var item_scene = preload("res://Scenes/item.tscn")
+var pianoscene = preload("res://Scenes/piano.tscn")
 var interacted = false
 var quest_id = 0
 var zoomed = false
@@ -14,6 +15,7 @@ var scene_load = false
 
 
 func _ready():
+	Global.current_map = "main_map"
 	if get_node_or_null("ui/CPUParticles2D") != null:
 		get_node("ui/CPUParticles2D").visible = false
 	get_node("ui/Transition/AnimationPlayer").play("transition_to_screen")
@@ -57,8 +59,13 @@ func unzoom_dialogue():
 
 func _process(delta):
 	if Global.tuto_active == true and Global.tuto_status == 0: ## INITIALISATION DU TUTO
-		get_node("Player_One/2").enabled = false
+		get_node("StartCinematic").visible = true
+		get_node("StartCinematic/RichTextLabel").visible_ratio = 0
 		get_node("Path2D/PathFollow2D/Camera2D").enabled = true
+		get_node("Player_One/2").enabled = false
+		get_node("StartCinematic/CPUParticles2D").visible = false
+		get_node("StartCinematic/Ennemy").visible = false
+		
 		Global.tuto_status = 1
 		get_node("AudioStreamPlayer2D").stream = load("res://Sounds/music_debut.mp3")
 		get_node("AudioStreamPlayer2D").playing = true
@@ -66,19 +73,53 @@ func _process(delta):
 		get_node("ui").visible = false
 		
 	if Global.tuto_active == true and Global.tuto_status == 1: ## INTRODUCTION DU TUTO
-		get_node("Path2D/PathFollow2D").progress += 280*delta
-		if get_node("AudioStreamPlayer2D").playing == false: ## SI L'INTRO EST TERMINEE
+		get_node("Path2D/PathFollow2D").progress += 175*delta
+		
+		if get_node("StartCinematic/StopCinematic").self_modulate.a < 1-delta:
+			get_node("StartCinematic/StopCinematic").self_modulate.a += 0.25*delta
+		get_node("StartCinematic/RichTextLabel").visible_ratio += 0.2*delta
+		if get_node("Path2D/PathFollow2D").progress_ratio >= 0 and get_node("Path2D/PathFollow2D").progress_ratio < 0+delta:
+			get_node("StartCinematic/RichTextLabel").visible_ratio = 0
+			get_node("StartCinematic/RichTextLabel").text = "[center]"+Global.start_cinematic[0]
+		if get_node("Path2D/PathFollow2D").progress_ratio >= 0.15 and get_node("Path2D/PathFollow2D").progress_ratio < 0.15+delta:
+			get_node("StartCinematic/RichTextLabel").visible_ratio = 0
+			get_node("StartCinematic/RichTextLabel").text = "[center]"+Global.start_cinematic[1]
+		if get_node("Path2D/PathFollow2D").progress_ratio >= 0.30 and get_node("Path2D/PathFollow2D").progress_ratio < 0.30+delta:
+			get_node("StartCinematic/RichTextLabel").visible_ratio = 0
+			get_node("AudioStreamPlayer2D").stream = load("res://Sounds/start_cinematic_dark_music.mp3")
+			get_node("AudioStreamPlayer2D").playing = true
+			get_node("Path2D/PathFollow2D/Camera2D/AnimationPlayer").current_animation = "camera_shake"
+			get_node("StartCinematic/AnimationPlayer").current_animation = "new_animation"
+			get_node("StartCinematic/CPUParticles2D").visible = true
+			get_node("StartCinematic/Ennemy").visible = true
+			get_node("StartCinematic/RichTextLabel").text = "[center]"+Global.start_cinematic[2]
+		if get_node("Path2D/PathFollow2D").progress_ratio >= 0.45 and get_node("Path2D/PathFollow2D").progress_ratio < 0.45+delta:
+			get_node("StartCinematic/RichTextLabel").visible_ratio = 0
+			get_node("StartCinematic/RichTextLabel").text = "[center]"+Global.start_cinematic[3]
+		if get_node("Path2D/PathFollow2D").progress_ratio >= 0.60 and get_node("Path2D/PathFollow2D").progress_ratio < 0.60+delta:
+			get_node("StartCinematic/RichTextLabel").visible_ratio = 0
+			get_node("StartCinematic/RichTextLabel").text = "[center]"+Global.start_cinematic[4]
+		if get_node("Path2D/PathFollow2D").progress_ratio >= 0.75 and get_node("Path2D/PathFollow2D").progress_ratio < 0.75+delta:
+			get_node("StartCinematic/RichTextLabel").visible_ratio = 0
+			get_node("StartCinematic/RichTextLabel").text = "[center]"+Global.start_cinematic[5]
+			
+			
+		if get_node("AudioStreamPlayer2D").playing == false or get_node("Path2D/PathFollow2D").progress_ratio >= 1-delta: ## SI L'INTRO EST TERMINEE
 			get_node("ui").visible = true
 			get_node("Player_One/2").enabled = true
 			get_node("Path2D/PathFollow2D/Camera2D").enabled = false
 			get_node("SoundEffectFx").volume_db = -10
+			get_node("AudioStreamPlayer2D").playing = false
+			Global.tuto_status = 2
+			get_node("StartCinematic").visible = false
+			get_node("Path2D/PathFollow2D/Camera2D/AnimationPlayer").current_animation = "[STOP]"
+			get_node("StartCinematic/AnimationPlayer").current_animation = "[STOP]"
+			get_node("StartCinematic/CPUParticles2D").visible = false
 			
 		
 	if get_node_or_null("ui/Stats/Coins/Label") != null:
 		get_node_or_null("ui/Stats/Coins/Label").text = str(PlayerStats.monnaie)
-	if Global.current_quest_id > -1 and get_node_or_null("ui/CPUParticles2D") != null:
-		get_node("ui/CPUParticles2D").visible = true
-		get_node("ui/CPUParticles2D/QuestTextBar").text = "[center][rainbow freq=0.05]"+Global.quests[Global.current_quest_id]["title"]+" [/rainbow] [color=black]| [color=white][i]"+Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]]
+	
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
 	
@@ -86,6 +127,11 @@ func _process(delta):
 		interacted = true
 		var scene_source = preload("res://Scenes/speech_box.tscn")
 		var scene_instance = scene_source.instantiate()
+		
+		if get_node_or_null("Piano2/Interact") != null and get_node("Piano2/Interact").visible == true:
+			var instance = pianoscene.instantiate()
+			instance.piano_id = 1
+			get_node("ui").add_child(instance)
 		
 		if get_node_or_null("InteractArea/Interact") != null and $InteractArea/Interact.visible == true:
 			if quest_id == 0 and Global.quests[0]["stade"] == 0:
@@ -503,3 +549,27 @@ func _on_loytan_body_entered(body):
 func _on_loytan_body_exited(body):
 	if body.is_in_group("Player_One"):
 		get_node("Loytan/Interact").visible = false
+
+
+func _on_piano_2_body_entered(body):
+	if body.is_in_group("Player_One"):
+		get_node("Piano2/Interact").visible = true
+
+
+func _on_piano_2_body_exited(body):
+	if body.is_in_group("Player_One"):
+		get_node("Piano2/Interact").visible = false
+
+
+func _on_stop_cinematic_pressed():
+	get_node("ui").visible = true
+	get_node("Player_One/2").enabled = true
+	get_node("Path2D/PathFollow2D/Camera2D").enabled = false
+	get_node("SoundEffectFx").volume_db = -10
+	get_node("AudioStreamPlayer2D").playing = false
+	Global.tuto_status = 2
+	get_node("StartCinematic").visible = false
+	get_node("Path2D/PathFollow2D/Camera2D/AnimationPlayer").current_animation = "[STOP]"
+	get_node("StartCinematic/AnimationPlayer").current_animation = "[STOP]"
+	get_node("StartCinematic/CPUParticles2D").visible = false
+	get_node("StartCinematic/Ennemy").visible = false

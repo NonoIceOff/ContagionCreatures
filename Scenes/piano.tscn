@@ -32,6 +32,7 @@ offset_bottom = 649.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="1"]
 stream = ExtResource("3_edhqj")
+max_distance = 2e+08
 
 [node name="2" type="Button" parent="."]
 offset_left = 610.0
@@ -41,6 +42,7 @@ offset_bottom = 576.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="2"]
 stream = ExtResource("4_7e6x6")
+max_distance = 2e+08
 
 [node name="3" type="Button" parent="."]
 offset_left = 680.0
@@ -50,6 +52,7 @@ offset_bottom = 649.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="3"]
 stream = ExtResource("5_tj6o0")
+max_distance = 2e+08
 
 [node name="4" type="Button" parent="."]
 offset_left = 750.0
@@ -59,6 +62,7 @@ offset_bottom = 576.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="4"]
 stream = ExtResource("6_ncsgp")
+max_distance = 2e+08
 
 [node name="5" type="Button" parent="."]
 offset_left = 820.0
@@ -68,6 +72,7 @@ offset_bottom = 649.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="5"]
 stream = ExtResource("7_xgk5x")
+max_distance = 2e+08
 
 [node name="6" type="Button" parent="."]
 offset_left = 890.0
@@ -77,6 +82,7 @@ offset_bottom = 576.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="6"]
 stream = ExtResource("8_c6aob")
+max_distance = 2e+08
 
 [node name="7" type="Button" parent="."]
 offset_left = 960.0
@@ -86,6 +92,7 @@ offset_bottom = 649.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="7"]
 stream = ExtResource("9_agwyb")
+max_distance = 2e+08
 
 [node name="8" type="Button" parent="."]
 offset_left = 1030.0
@@ -95,6 +102,7 @@ offset_bottom = 649.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="8"]
 stream = ExtResource("10_dhop4")
+max_distance = 2e+08
 
 [node name="9" type="Button" parent="."]
 offset_left = 1100.0
@@ -104,6 +112,7 @@ offset_bottom = 576.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="9"]
 stream = ExtResource("11_e3qfn")
+max_distance = 2e+08
 
 [node name="10" type="Button" parent="."]
 offset_left = 1170.0
@@ -113,6 +122,7 @@ offset_bottom = 649.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="10"]
 stream = ExtResource("12_q8j27")
+max_distance = 2e+08
 
 [node name="11" type="Button" parent="."]
 offset_left = 1240.0
@@ -122,6 +132,7 @@ offset_bottom = 576.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="11"]
 stream = ExtResource("13_0x3wp")
+max_distance = 2e+08
 
 [node name="12" type="Button" parent="."]
 offset_left = 1310.0
@@ -131,6 +142,7 @@ offset_bottom = 649.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="12"]
 stream = ExtResource("14_i7437")
+max_distance = 2e+08
 
 [node name="Quit" type="Button" parent="."]
 offset_left = 1368.0

@@ -31,30 +31,47 @@ var patreon_time = 0.0
 var tuto_active = true
 var tuto_status = 0
 
+var pianos = [0,0,0,0]
+var current_map = "main_map"
+
+var start_cinematic = {
+	0: "Il etait une fois dans un monde paisible...",
+	1: "Tout le royaume vivait a son rythme, les villageois s'epanouissaient...",
+	2: "[shake rate=20.0 level=20 connected=1][color=purple]Jusqu'au jour ou tout a basculé !",
+	3: "[shake rate=20.0 level=20 connected=1][color=purple]Le grand mechant s'en est prit a tout le royaume !!!!!!!",
+	4: "[shake rate=20.0 level=20 connected=1][color=purple]Il a capture tous les animaux a l'aide de sa corruption.",
+	5: "[shake rate=20.0 level=20 connected=1][color=purple]Vous seuls pouvez les sauver grace aux quetes, donjons, et duels.",
+}
+
 
 signal fringe_changed
 
 func quest_finished(i):
-	if get_node_or_null("/root/main_map/ui/TerminatedQuest") != null:
-		get_node("/root/main_map/AudioStreamPlayer2D").stream = load("res://Sounds/victory.mp3")
-		get_node("/root/main_map/AudioStreamPlayer2D").playing = true
-		get_node("/root/main_map/ui/TerminatedQuest").visible = true
-		get_node("/root/main_map/ui/TerminatedQuest/Name").text = Global.quests[i]["title"]
+	if get_node_or_null("/root/"+current_map+"/SoundEffectFx") != null:
+		get_node("/root/main_map/SoundEffectFx").playing = false
+	if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:
+		get_node("/root/"+current_map+"/AudioStreamPlayer2D").stream = load("res://Sounds/victory.mp3")
+		get_node("/root/"+current_map+"/AudioStreamPlayer2D").playing = true
+		get_node("/root/"+current_map+"/ui/TerminatedQuest").visible = true
+		get_node("/root/"+current_map+"/ui/TerminatedQuest/Name").text = Global.quests[i]["title"]
 		await get_tree().create_timer(5).timeout 
-		if get_node_or_null("/root/main_map/ui/TerminatedQuest") != null:
-			get_node("/root/main_map/ui/TerminatedQuest").visible = false
+		if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:
+			get_node("/root/"+current_map+"/ui/TerminatedQuest").visible = false
+	if get_node_or_null("/root/main_map/SoundEffectFx") != null:
+		get_node("/root/main_map/SoundEffectFx").playing = true
+	quests[i]["finished"] = true
 
 func set_quest(i):
 	if i == -1:
-		if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
-			get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = false
+		if get_node_or_null("/root/"+current_map+"/ui/CPUParticles2D") != null:
+			get_node("/root/"+current_map+"/ui/CPUParticles2D").visible = false
 	else:
 		Global.current_quest_id = i
-		if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
-			if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
-				get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = true
+		if get_node_or_null("/root/"+current_map+"/ui/Minimap") != null:
+			if get_node_or_null("/root/"+current_map+"/ui/CPUParticles2D") != null:
+				get_node("/root/"+current_map+"/ui/CPUParticles2D").visible = true
 			
-			get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
+			get_node("/root/"+current_map+"/ui/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
 
 func _ready():
 	
@@ -240,7 +257,7 @@ var quests = {
 		"title":"Bagird le rigolo",
 		"long_description":"Vous devez aller voir Monsieur Bagird, il vous demandera d'écouter à sa parole, vous devrez répondre à cela.",
 		"descriptions":
-			["Allez voir Monsieur Bagird qui se trouve sur la place du village, il a une belle bito.",
+			["Allez voir Monsieur Bagird qui se trouve sur la place du village, il a une belle prestance.",
 			"Allez voir Monsieur Bagird et rigolez à sa blague.",
 			"Allez voir Monsieur Bagird qui se trouve à côté du pont Richard, pour continuer sa conversation...",
 			"Mosieur Bagird le rigolo vous a donné le N-KEY, mais vous devez trouver à quoi elle sert et où se trouve !"],
@@ -262,6 +279,18 @@ var quests = {
 		"stade":0,
 		"finished":false,
 		"members_only":false,
+	},
+	3: {
+		"title":"Jouer du piano",
+		"long_description":"Jouez au moins une note sur tous les pianos du jeu. Vous devez les trouver",
+		"descriptions":
+			["Il vous reste 4 pianos à trouver","Il vous reste 3 pianos à trouver","Il vous reste 2 pianos à trouver","Il vous reste 1 piano à trouver"],
+		"mini_descriptions":
+			["Jouez une note sur tous les pianos (0/4)","Jouez une note sur tous les pianos (1/4)","Jouez une note sur tous les pianos (2/4)","Jouez une note sur tous les pianos (3/4)"],
+		"pin_positions":[Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(0,0)],
+		"stade":0,
+		"finished":false,
+		"members_only":true,
 	}
 }
 

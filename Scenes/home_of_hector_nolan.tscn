@@ -87,31 +87,32 @@ text = "[ E ]"
 
 [node name="ui" parent="." instance=ExtResource("5_ktqbn")]
 
-[node name="InteractArea" type="Area2D" parent="."]
+[node name="Piano1" type="Area2D" parent="."]
 position = Vector2(1213, 291)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="InteractArea"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Piano1"]
 texture_filter = 1
 texture_repeat = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea/CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano1/CharacterBody2D"]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_txp8h")
 
-[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="InteractArea/CharacterBody2D"]
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Piano1/CharacterBody2D"]
 scale = Vector2(6, 6)
 texture = ExtResource("6_6h20b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano1"]
 shape = SubResource("CircleShape2D_ub04m")
 
-[node name="Trigger" type="Sprite2D" parent="InteractArea"]
+[node name="Trigger" type="Sprite2D" parent="Piano1"]
 visible = false
 position = Vector2(0, -73)
 scale = Vector2(2.9, 2.9)
 texture = ExtResource("7_v1x4b")
 
-[node name="Interact" type="Label" parent="InteractArea"]
+[node name="Interact" type="Label" parent="Piano1"]
+visible = false
 offset_left = -18.0
 offset_top = -62.0
 offset_right = 90.0
@@ -125,5 +126,5 @@ uppercase = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
-[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
-[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
+[connection signal="body_entered" from="Piano1" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="Piano1" to="." method="_on_interact_area_body_exited"]
