@@ -3,12 +3,7 @@ extends Node2D
 func button_Item():
 	queue_free()
 
-
 	print("Here we go!!")
-
-#{}
-
-
 	
 var texts = {
 	0: {

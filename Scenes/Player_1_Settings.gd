@@ -66,17 +66,3 @@ func _physics_process(delta):
 			
 		else :
 			get_node("01-generic2").region_rect = Rect2(idle[direction][0],idle[direction][1],100, 98)
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
