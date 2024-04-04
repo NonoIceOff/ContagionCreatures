@@ -6,11 +6,8 @@ var pv_player = 100
 var pv_enemy = 100
 var turn = 0 # 0 = ton tour ; 1 = le tour du méchant
 
+var defense_player = 0
 
-
-var attack_index = 0
-var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
-var attack_values = [11,23,2,20]
 
 var buttonP : Button
 var buttonE : Button
@@ -291,15 +288,17 @@ func _process(delta):
 
 func enemy_turns():
 	if get_node_or_null("SpeechBox") != null:
-		attack_index = rng.randi_range(0,attack_names.size()-1)
+		Global.attack_index = rng.randi_range(0,Global.attack_names.size()-1)
 		get_node("SpeechBox").queue_free()
-		texts_enemy[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" utilise "+str(attack_names[attack_index])+" et vous inflige "+str(attack_values[attack_index])+" degats."
+		texts_enemy[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" utilise "+str(Global.attack_names[Global.attack_index])+" et vous inflige "+str(Global.attack_values[Global.attack_index])+" degats."
 		texts_enemy[1]["text"] = "C'est a vous ("+get_node("/root/SceneCombat/ContainerPLAYER/Pseudo").text+") d'attaquer maintenant "
 		get_node("/root/SceneCombat").spawn_dialogue(texts_enemy)
-		pv_player -= attack_values[attack_index]
+		pv_player -= Global.enemy_attack
 		get_node("/root/SceneCombat/AnimationPlayer").play("Damage_Player") 
 		get_node("/root/SceneCombat/AnimationPlayer").play("shake")
 		await get_node("/root/SceneCombat/AnimationPlayer").animation_finished
+		print(pv_player)
+		print(pv_enemy)
 		
 func win():
 	if get_node_or_null("SpeechBox") != null:

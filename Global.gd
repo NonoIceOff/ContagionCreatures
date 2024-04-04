@@ -11,6 +11,13 @@ var brazero_numbers = 0
 var paused = false
 var can_move = true
 
+var attack_index = 0
+var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
+var attack_values = [11,23,2,20]
+var enemy_attack = attack_values[attack_index]
+
+
+
 var grid_size = 31
 var step_delay = 0
 var allow_loops = false
@@ -58,12 +65,12 @@ func set_quest(i):
 			get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
 
 func _ready():
-	
-	for key in animals_player:
-		var animal_types = animals_player[PlayerStats.animal_id]["type"]
-		var random_type_index = randi_range(0, animal_types.size() - 10)
-		var random_type = animal_types[random_type_index]
-		var type_animal = random_type
+	pass
+	#for key in animals_player:
+		#var animal_types = animals_player[PlayerStats.animal_id]["type"]
+		#var random_type_index = randi_range(0, animal_types.size() - 10)
+		#var random_type = animal_types[random_type_index]
+		#var type_animal = random_type
 		#print( animals_player[key]["name"] ," Type choisi aléatoirement:", type_animal)
 
 func _process(delta):
@@ -71,6 +78,25 @@ func _process(delta):
 		tutorial_stade = -1
 		
 		
+var all_type = {
+	
+	0: {
+		"name": "Echo"
+	},
+	1: {
+		"name": "Relique"
+	},
+	2: {
+		"name": "Prisme"
+	},
+	3: {
+		"name": "Essence"
+	},
+	4: {
+		"name": "Totem"
+	},
+}
+
 var actual_animal = {
 	
 	0: {
@@ -105,7 +131,7 @@ var animals_player = {
 	0: {
 		"name":"GentleDuck",
 		"infected": false,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Prisme'],
 		"boost":[ 1.08 , 1.06 , "atk/def"], #+8% d'ATK et 6% DEF pour le joueur et * 2 si arme du meme type
 		"effets":["+6% d'attaque et +6% de defense pour le joueur et *2 si"],
 		"textureA":"res://Textures/pixil-frame-0_3.png"
@@ -113,7 +139,7 @@ var animals_player = {
 	1: {
 		"name":"Deagle",
 		"infected": false,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Relique'],
 		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
 		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et *2 si"],		
 		"textureA":"res://Textures/Animals/EAGLE_.png",
@@ -121,7 +147,7 @@ var animals_player = {
 	2: {
 		"name":"Froggy",
 		"infected": false,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Essence'],
 		"boost":[ 1.03 ,"atk"], #d'ATK pour le player et plus 5% de plus si l'arme est du meme type
 		"effets":["+ 3% d'attaque à chaque tours pour le joueur et *2 si"],
 		"textureA":"res://Textures/Animals/FROG.png",
@@ -129,7 +155,7 @@ var animals_player = {
 	3: {
 		"name":"Leonard",
 		"infected": false,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Totem'],
 		"boost":[  1.2 , "regen"],  # +20 PV à chaque tours pour le joueur et plus 5% de plus si l'arme est du meme type
 		"effets":["+ 20 PV à chaque tours pour le joueur et *2 "],								
 		"textureA":"res://Textures/Animals/DRAGON.png",
@@ -137,7 +163,7 @@ var animals_player = {
 	4: {
 		"name":"Douglas",
 		"infected": false,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Écho'],
 		"boost":[  0.9 , "DEF"],  # +9 de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
 		"effets":["+9% de defense en plus pour l'utilisateur et 5%"],						
 		"textureA": "res://Textures/Animals/CHICKEN.png",		
@@ -191,7 +217,7 @@ var animals_enemy = {
 	},
 }
 var items = {
-	1: {
+	0: {
 		"name":"Antidote",
 		"value":0,
 		"type":["antidote"],
@@ -199,7 +225,7 @@ var items = {
 		"texture":"res://Textures/Items/Potion_verte.png",
 		"quantity":0
 	},
-	2: {
+	1: {
 		"name":"Gemme Bleue",
 		"value":0,
 		"type":[1.15, "def"],
@@ -207,7 +233,7 @@ var items = {
 		"texture":"res://Textures/Items/Gemme_bleu.png",
 		"quantity":0
 	},
-	3: {
+	2: {
 		"name":"Crepe",
 		"value":0,
 		"type":[1.1, "atk"],
@@ -215,7 +241,7 @@ var items = {
 		"texture":"res://Textures/Items/Crepes.png",
 		"quantity":0
 	},
-	4: {
+	3: {
 		"name":"Pomme",
 		"value":0,
 		"type":[5, "regen"],
@@ -223,7 +249,7 @@ var items = {
 		"texture":"res://Textures/Items/Apple.png",
 		"quantity":0
 	},
-	5: {
+	4: {
 		"name":"N-KEY",
 		"value":0,
 		"type":[1, "key"],
@@ -231,7 +257,7 @@ var items = {
 		"texture":"res://Textures/Items/nkey.png",
 		"quantity":0
 	},
-	6: {
+	5: {
 		"name":"Crampte",
 		"value":0,
 		"type":[2, "atk"],
@@ -242,34 +268,34 @@ var items = {
 }
 
 var attacks = {
-	1: {
+	0: {
 		"name":"Arc",
 		"value":11,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Relique'],
 		"boost":0,
 		"texture":"res://Textures/Items/ARC.png",
 		"quantity":0
 	},
-	2: {
+	1: {
 		"name":"Epee",
 		"value":17,
 		"type":['Totem'],
 		"boost":0,
 		"texture":"res://Textures/Items/EPEE.png",
-		"quantity":5
+		"quantity":0
 	},
-	3: {
+	2: {
 		"name":"Hache",
 		"value":20,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Écho'],
 		"boost":0,
 		"texture":"res://Textures/Items/HACHE.png",
 		"quantity":0
 	},
-	4: {
+	3: {
 		"name":"Poele",
 		"value":23,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Prisme'],
 		"boost":0,
 		"texture":"res://Textures/Items/POELE.png",
 		"quantity":0
