@@ -83,11 +83,11 @@ func take_damage(item):
 		else:
 			texts[0]["text"] = "Vous ne pouvez pas utiliser "+str(item["name"])+" car vous avez deja suffisemment de vie."
 			
-	if item["type"][0] == "atk":
-		boost(item["type"][1])
+	if item["type"][1] == "atk":
+		boost(item["type"][0])
 
-	if item["type"][0] == "def":
-		boost(item["type"][1])
+	if item["type"][1] == "def":
+		boost(item["type"][0])
 		
 	if item["type"][0] == "antidote":
 		infected()
