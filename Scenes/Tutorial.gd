@@ -2,32 +2,32 @@ extends CanvasLayer
 
 var tutorials = {
 	2: {
-		"title":"Deplacez vous avec Z Q S D",
+		"title":"TUTORIAL_MOVEMENT",
 		"icon":"res://Textures/Tuto/movement.png",
 		"progress":0
 	},
 	3: {
-		"title":"Interagissez avec quelque chose",
+		"title":"TUTORIAL_INTERACTION",
 		"icon":"res://Textures/Tuto/interaction.png",
 		"progress":0
 	},
 	4: {
-		"title":"Enclenchez un combat",
+		"title":"TUTORIAL_COMBAT",
 		"icon":"res://Textures/Tuto/combat.png",
 		"progress":0
 	},
 	5: {
-		"title":"Gagnez un combat",
+		"title":"TUTORIAL_TROPHY",
 		"icon":"res://Textures/Tuto/trophy.png",
 		"progress":0
 	},
 	6: {
-		"title":"Ouvrez le menu des quetes [TAB]",
+		"title":"TUTORIAL_QUEST_MENU",
 		"icon":"res://Textures/Tuto/quest.png",
 		"progress":0
 	},
 	7: {
-		"title":"Completez au moins une quete",
+		"title":"TUTORIAL_COMPLETED_QUEST",
 		"icon":"res://Textures/Tuto/quest_completed.png",
 		"progress":0
 	},

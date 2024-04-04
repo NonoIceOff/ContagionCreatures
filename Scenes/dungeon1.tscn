@@ -121,13 +121,11 @@ offset_bottom = 1080.0
 
 [node name="DungeonTitle" type="Label" parent="CanvasLayer"]
 offset_left = 472.0
-offset_top = 456.0
+offset_top = 384.0
 offset_right = 1464.0
-offset_bottom = 538.0
+offset_bottom = 632.0
 theme_override_font_sizes/font_size = 32
-text = "Toi qui penetres ce donjon,
-sors victorieux des chemins perdus
-pour obtenir tous les tresors"
+text = "DUNGEON_1_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -173,11 +171,11 @@ scale = Vector2(0.9, 0.9)
 text = "[ E ]"
 
 [node name="Label" type="Label" parent="."]
-offset_left = -56.0
-offset_top = -248.0
-offset_right = 125.0
-offset_bottom = -222.0
-text = "Bon courage !"
+offset_left = -136.0
+offset_top = -264.0
+offset_right = 198.0
+offset_bottom = -200.0
+text = "DUNGEON_GOOD_LUCK"
 horizontal_alignment = 1
 vertical_alignment = 1
 

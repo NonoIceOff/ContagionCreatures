@@ -63,7 +63,7 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[center]PAS DE QUETE"
+text = "[center]NO_QUEST"
 scroll_active = false
 
 [node name="Cinematic" type="Control" parent="."]

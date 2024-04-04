@@ -32,6 +32,7 @@ func intro():
 	
 	
 func _ready() -> void:
+	Global.load_localisation()
 	intro()
 	
 	for x in range(0,64,16):

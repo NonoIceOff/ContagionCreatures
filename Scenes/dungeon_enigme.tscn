@@ -72,13 +72,11 @@ mouse_filter = 2
 
 [node name="DungeonTitle" type="Label" parent="CanvasLayer"]
 offset_left = 472.0
-offset_top = 456.0
+offset_top = 384.0
 offset_right = 1464.0
-offset_bottom = 538.0
+offset_bottom = 640.0
 theme_override_font_sizes/font_size = 32
-text = "Toi qui penetres ce donjon,
-pour pouvoir recuperer le tresor
-tu devras elucider cet enigme"
+text = "DUNGEON_2_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -117,11 +115,11 @@ scale = Vector2(0.9, 0.9)
 text = "[ E ]"
 
 [node name="Label" type="Label" parent="."]
-offset_left = -56.0
-offset_top = -248.0
-offset_right = 125.0
-offset_bottom = -222.0
-text = "Bon courage !"
+offset_left = -128.0
+offset_top = -280.0
+offset_right = 198.0
+offset_bottom = -192.0
+text = "DUNGEON_GOOD_LUCK"
 horizontal_alignment = 1
 vertical_alignment = 1
 

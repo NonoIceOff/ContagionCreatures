@@ -68,15 +68,13 @@ mouse_filter = 2
 
 [node name="DungeonTitle" type="Label" parent="CanvasLayer"]
 offset_left = 472.0
-offset_top = 456.0
+offset_top = 384.0
 offset_right = 1464.0
-offset_bottom = 538.0
+offset_bottom = 576.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-text = "Gbv dhv crargerf pr qbawba,
-cbhe cbhibve fbegve qr pr obheovre
-gh qrienf znepure gbhg qebvg"
+text = "DUNGEON_3_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -119,7 +117,7 @@ offset_left = -56.0
 offset_top = -248.0
 offset_right = 125.0
 offset_bottom = -222.0
-text = "Bon courage !"
+text = "DUNGEON_GOOD_LUCK"
 horizontal_alignment = 1
 vertical_alignment = 1
 

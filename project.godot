@@ -105,6 +105,10 @@ leftClick={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.fr.translation", "res://translations.jp.translation", "res://translations.de.translation", "res://translations.es.translation", "res://translations.it.translation")
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
