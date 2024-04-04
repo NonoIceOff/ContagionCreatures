@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4jfp7imlkl0w"]
+
+[ext_resource type="Script" path="res://Scenes/Credit_of_the_game.gd" id="1_sl7ei"]
+
+[node name="Credit_of_the_game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sl7ei")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 16.0
+text = "REMERCIEMENT
+
+Les developpeurs :
+
+- NOLANN
+- MATHIEU
+- GWENDAL
+- ILONA"
