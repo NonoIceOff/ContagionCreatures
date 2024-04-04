@@ -286,6 +286,7 @@ offset_bottom = 856.0
 text = "reseaux du jeu"
 
 [node name="Patreon" type="Button" parent="Reseaux"]
+layout_mode = 0
 offset_left = -32.0
 offset_top = 32.0
 offset_right = 240.0
@@ -301,6 +302,7 @@ expand_icon = true
 script = ExtResource("19_x6wxm")
 
 [node name="Discord" type="Button" parent="Reseaux"]
+layout_mode = 0
 offset_left = -32.0
 offset_top = 80.0
 offset_right = 240.0
@@ -316,6 +318,7 @@ expand_icon = true
 script = ExtResource("21_nx528")
 
 [node name="Instagram" type="Button" parent="Reseaux"]
+layout_mode = 0
 offset_left = -32.0
 offset_top = 128.0
 offset_right = 240.0

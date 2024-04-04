@@ -58,7 +58,7 @@ func unzoom_dialogue():
 
 
 func _process(delta):
-	if Global.tuto_active == true and Global.tuto_status == 0: ## INITIALISATION DU TUTO
+	if Global.tutorial == true and Global.tutorial_stade == 0: ## INITIALISATION DU TUTO
 		get_node("StartCinematic").visible = true
 		get_node("StartCinematic/RichTextLabel").visible_ratio = 0
 		get_node("Path2D/PathFollow2D/Camera2D").enabled = true
@@ -66,13 +66,13 @@ func _process(delta):
 		get_node("StartCinematic/CPUParticles2D").visible = false
 		get_node("StartCinematic/Ennemy").visible = false
 		
-		Global.tuto_status = 1
+		Global.tutorial_stade = 1
 		get_node("AudioStreamPlayer2D").stream = load("res://Sounds/music_debut.mp3")
 		get_node("AudioStreamPlayer2D").playing = true
 		get_node("SoundEffectFx").volume_db = -80
 		get_node("ui").visible = false
 		
-	if Global.tuto_active == true and Global.tuto_status == 1: ## INTRODUCTION DU TUTO
+	if Global.tutorial == true and Global.tutorial_stade == 1: ## INTRODUCTION DU TUTO
 		get_node("Path2D/PathFollow2D").progress += 175*delta
 		
 		if get_node("StartCinematic/StopCinematic").self_modulate.a < 1-delta:
@@ -110,7 +110,7 @@ func _process(delta):
 			get_node("Path2D/PathFollow2D/Camera2D").enabled = false
 			get_node("SoundEffectFx").volume_db = -10
 			get_node("AudioStreamPlayer2D").playing = false
-			Global.tuto_status = 2
+			Global.tutorial_stade = 2
 			get_node("StartCinematic").visible = false
 			get_node("Path2D/PathFollow2D/Camera2D/AnimationPlayer").current_animation = "[STOP]"
 			get_node("StartCinematic/AnimationPlayer").current_animation = "[STOP]"
@@ -432,6 +432,7 @@ func _process(delta):
 
 	if entered_Ennemy == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"): #and $MobPNJ/AreaEnnemy1/Collision_Ennemy.is_in_group("Player_One"):
+			Tutorial.get_node(".").tutorials[4]["progress"] += 100
 			Key = true
 			get_node("ui/Transition/AnimationPlayer").play("screen_to_transition")
 			await get_tree().create_timer(2).timeout
@@ -567,7 +568,7 @@ func _on_stop_cinematic_pressed():
 	get_node("Path2D/PathFollow2D/Camera2D").enabled = false
 	get_node("SoundEffectFx").volume_db = -10
 	get_node("AudioStreamPlayer2D").playing = false
-	Global.tuto_status = 2
+	Global.tutorial_stade = 2
 	get_node("StartCinematic").visible = false
 	get_node("Path2D/PathFollow2D/Camera2D/AnimationPlayer").current_animation = "[STOP]"
 	get_node("StartCinematic/AnimationPlayer").current_animation = "[STOP]"

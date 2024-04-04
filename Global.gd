@@ -19,7 +19,7 @@ var show_labels = false
 var saved_point_position: Vector2 = Vector2.ZERO 
 
 var tutorial = true
-var tutorial_stade = 0
+var tutorial_stade = 6
 var tutorial_validate = false
 
 var current_quest_id = -1
@@ -27,9 +27,6 @@ var current_quest_id = -1
 var patreon_code = ""
 var patreon_active = false
 var patreon_time = 0.0
-
-var tuto_active = true
-var tuto_status = 0
 
 var pianos = [0,0,0,0]
 var current_map = "main_map"
@@ -47,6 +44,7 @@ var start_cinematic = {
 signal fringe_changed
 
 func quest_finished(i):
+	Tutorial.get_node(".").tutorials[7]["progress"] += 100
 	if get_node_or_null("/root/"+current_map+"/SoundEffectFx") != null:
 		get_node("/root/main_map/SoundEffectFx").playing = false
 	if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:

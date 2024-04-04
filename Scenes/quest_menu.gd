@@ -91,6 +91,7 @@ func _process(delta):
 			close()
 		else:
 			open()
+			Tutorial.get_node(".").tutorials[6]["progress"] += 100
 	
 	for i in Global.quests.size():
 		
