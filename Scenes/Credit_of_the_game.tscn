@@ -71,8 +71,9 @@ label_settings = SubResource("LabelSettings_x36am")
 horizontal_alignment = 1
 script = SubResource("GDScript_ax0pc")
 
-[node name="Return_menu" type="Button" parent="."]
-layout_mode = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Return_menu" type="Button" parent="CanvasLayer"]
 offset_left = 1835.0
 offset_top = 14.0
 offset_right = 1898.0
@@ -81,4 +82,4 @@ theme_override_font_sizes/font_size = 28
 text = "X"
 script = ExtResource("2_4wso2")
 
-[connection signal="pressed" from="Return_menu" to="Return_menu" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Return_menu" to="CanvasLayer/Return_menu" method="_on_pressed"]
