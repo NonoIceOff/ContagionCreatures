@@ -1,5 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dlj82x8ysevhm"]
-
+[gd_scene load_steps=33 format=3 uid="uid://dlj82x8ysevhm"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_3sngr"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_buk1w"]
@@ -96,17 +95,17 @@ script = ExtResource("1_3sngr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
-offset_left = -146.0
-offset_top = 197.0
-offset_right = 1774.0
-offset_bottom = 1285.0
+offset_top = -9.0
+offset_right = 1920.0
+offset_bottom = 1079.0
 texture = ExtResource("1_buk1w")
 stretch_mode = 6
 
 [node name="ColorRect" type="ColorRect" parent="TextureRect"]
 layout_mode = 0
+offset_top = 14.0
 offset_right = 1024.0
-offset_bottom = 1072.0
+offset_bottom = 1086.0
 color = Color(0, 0, 0, 0.196078)
 
 [node name="Duck" type="Sprite2D" parent="."]
@@ -177,7 +176,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "solo"
+text = "SOLO"
 script = ExtResource("2_soydd")
 
 [node name="PlayMulti" type="Button" parent="."]
@@ -192,7 +191,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 disabled = true
-text = "multijoueur"
+text = "MULTIPLAYER"
 expand_icon = true
 script = ExtResource("4_xyknk")
 
@@ -206,7 +205,7 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 24
-text = "MEMBRES PATREONSSEULEMENT"
+text = "PATREON_ONLY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -225,7 +224,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "PARAMETRES"
+text = "SETTINGS"
 script = ExtResource("3_4a2ih")
 
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
@@ -252,7 +251,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_lsl8i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7dkss")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wlqyn")
-text = "supprimer la save"
+text = "DELETE_SAVE"
 script = ExtResource("8_5568m")
 
 [node name="Label" type="Label" parent="DeleteSave"]
@@ -262,7 +261,7 @@ offset_top = 40.0
 offset_right = 392.0
 offset_bottom = 66.0
 theme_override_font_sizes/font_size = 16
-text = "un gros probleme ?"
+text = "TEXT_BIG_PROBLEM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -283,7 +282,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "code patreon"
+text = "PATREON_CODE"
 icon = ExtResource("9_7fxk5")
 expand_icon = true
 script = ExtResource("12_ai8ip")
@@ -297,7 +296,7 @@ offset_top = 48.0
 offset_right = 576.0
 offset_bottom = 112.0
 theme_override_font_sizes/font_size = 16
-text = "debloquer des fonctionnalites"
+text = "TEXT_UNLOCK_FEATURES"
 horizontal_alignment = 1
 
 [node name="Reseaux" type="Label" parent="."]
@@ -305,7 +304,7 @@ offset_left = 1368.0
 offset_top = 832.0
 offset_right = 1576.0
 offset_bottom = 856.0
-text = "reseaux du jeu"
+text = "TEXT_SOCIAL_MEDIAS"
 
 [node name="Patreon" type="Button" parent="Reseaux"]
 layout_mode = 0
@@ -318,7 +317,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "patreon"
+text = "PATREON"
 icon = ExtResource("9_7fxk5")
 expand_icon = true
 script = ExtResource("19_x6wxm")
@@ -334,7 +333,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "discord"
+text = "DISCORD"
 icon = ExtResource("19_hhkdv")
 expand_icon = true
 script = ExtResource("21_nx528")
@@ -350,7 +349,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "instagram"
+text = "INSTAGRAM"
 icon = ExtResource("22_4l4g4")
 expand_icon = true
 script = ExtResource("22_dautx")

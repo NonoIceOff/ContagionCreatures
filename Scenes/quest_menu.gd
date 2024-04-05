@@ -41,7 +41,7 @@ func _ready():
 		panel.add_child(button)
 		
 		var titlet = Label.new()
-		titlet.text = "Termine"
+		titlet.text = "QUEST_FINISHED"
 		titlet.name = "Titlet"
 		titlet.scale = Vector2(3,3)
 		titlet.position = Vector2(232,0)
@@ -53,7 +53,7 @@ func _ready():
 		panel.add_child(titlet)
 		
 		var titlepa = Label.new()
-		titlepa.text = "Membres Patreon Seulement"
+		titlepa.text = "PATREON_ONLY"
 		titlepa.name = "Titlet"
 		titlepa.scale = Vector2(2,2)
 		titlepa.position = Vector2(16,0)

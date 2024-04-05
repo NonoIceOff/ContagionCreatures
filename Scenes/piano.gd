@@ -2,6 +2,10 @@ extends Node2D
 
 var piano_id = 0
 
+func _ready():
+	if get_node_or_null("../../SoundEffectFx") != null:
+		get_node("../../SoundEffectFx").volume_db = -80
+
 func add_note_in_quest():
 	if Global.pianos[piano_id] == 0:
 		Global.set_quest(3)
@@ -75,4 +79,6 @@ func _on_12_pressed():
 
 
 func _on_quit_pressed():
+	if get_node_or_null("../../SoundEffectFx") != null:
+		get_node("../../SoundEffectFx").volume_db = -10
 	queue_free()
