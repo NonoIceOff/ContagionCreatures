@@ -1,0 +1,525 @@
+[gd_scene load_steps=30 format=3 uid="uid://c34oshw2xvodd"]
+
+[ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_6pn6b"]
+[ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="2_jy52u"]
+[ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="3_3ydyo"]
+[ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="4_q5cyn"]
+[ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="5_lgdv1"]
+[ext_resource type="Script" path="res://Scenes/Enemy-Stat.gd" id="6_svks0"]
+[ext_resource type="Texture2D" uid="uid://bym20beqjnbde" path="res://Textures/Animals/Eagle_infected.png" id="7_pam1k"]
+[ext_resource type="Texture2D" uid="uid://dhimjcb6s8u1t" path="res://Textures/Animals/EAGLE_.png" id="8_fgx3w"]
+[ext_resource type="Texture2D" uid="uid://k8osxe2tlhju" path="res://Textures/Animals/eagle_Player.png" id="9_o488q"]
+[ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="10_npm81"]
+[ext_resource type="Script" path="res://Scenes/Button_Combat.gd" id="11_44lmf"]
+[ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="12_5gi6q"]
+[ext_resource type="AudioStream" uid="uid://tw0xq780vpwe" path="res://Sounds/combat_music.mp3" id="13_4y006"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6neb"]
+bg_color = Color(0.619608, 0.423529, 0.972549, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
+bg_color = Color(0.619608, 0.423529, 0.972549, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i1hw"]
+bg_color = Color(0.470588, 0.180392, 0.839216, 1)
+border_width_left = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij5us"]
+bg_color = Color(0.227451, 0.321569, 0.988235, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t287m"]
+bg_color = Color(0.227451, 0.321569, 0.988235, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.996078, 0.996078, 0.996078, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8md2"]
+bg_color = Color(0.12549, 0.0705882, 0.780392, 1)
+border_width_left = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opluy"]
+bg_color = Color(0.905882, 0.211765, 0.156863, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxu5s"]
+bg_color = Color(0.905882, 0.211765, 0.156863, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yse28"]
+bg_color = Color(0.619608, 0.113725, 0.0784314, 1)
+border_width_left = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_7y6a2"]
+resource_name = "Damage_Enemy"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerMob/Mob/OldGuyWhoLostIsCramptéReal:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gd1ce"]
+resource_name = "Damage_Player"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerPLAYER/CharacterBody2D3/Player-1Tile-set:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sy467"]
+resource_name = "Enemy_Death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerMob/Mob/OldGuyWhoLostIsCramptéReal:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.842994, 1.4748]
+}
+
+[sub_resource type="Animation" id="Animation_of105"]
+resource_name = "Player_Death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerPLAYER/CharacterBody2D3/Player-1Tile-set:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.842994, 1.4748]
+}
+
+[sub_resource type="Animation" id="Animation_kkly6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerMob/Mob/OldGuyWhoLostIsCramptéReal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ContainerPLAYER/CharacterBody2D3/Player-1Tile-set:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ContainerMob/Mob/OldGuyWhoLostIsCramptéReal:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ContainerPLAYER/CharacterBody2D3/Player-1Tile-set:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cupx5"]
+resource_name = "shake"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-24, -17), Vector2(32, 19), Vector2(31, -22), Vector2(-34, 20), Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fhsy"]
+_data = {
+"Damage_Enemy": SubResource("Animation_7y6a2"),
+"Damage_Player": SubResource("Animation_gd1ce"),
+"Enemy_Death": SubResource("Animation_sy467"),
+"Player_Death": SubResource("Animation_of105"),
+"RESET": SubResource("Animation_kkly6"),
+"shake": SubResource("Animation_cupx5")
+}
+
+[node name="SceneCombat" type="Node2D"]
+script = ExtResource("1_6pn6b")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_jy52u")
+
+[node name="ContainerMob" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 464.001
+offset_top = 617.001
+offset_right = 672.001
+offset_bottom = 733.001
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+
+[node name="Pseudo" type="Label" parent="ContainerMob"]
+layout_mode = 2
+offset_left = 1113.0
+offset_top = -399.001
+offset_right = 1321.0
+offset_bottom = -380.001
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Manteau Rouge"
+vertical_alignment = 1
+
+[node name="PV" type="Label" parent="ContainerMob"]
+layout_mode = 2
+offset_left = 995.999
+offset_top = -308.001
+offset_right = 1204.0
+offset_bottom = -285.001
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(0.380392, 0.776471, 0.164706, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "PV :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NIV" type="Label" parent="ContainerMob"]
+layout_mode = 2
+offset_left = 1117.0
+offset_top = -353.0
+offset_right = 1194.0
+offset_bottom = -330.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "NIV :  "
+vertical_alignment = 1
+
+[node name="NIV2" type="Label" parent="ContainerMob"]
+visible = false
+layout_mode = 2
+offset_left = 124.999
+offset_top = 88.999
+offset_right = 332.999
+offset_bottom = 107.999
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ContainerMob"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+offset_left = 1210.0
+offset_top = -305.001
+offset_right = 1266.0
+offset_bottom = -294.001
+scale = Vector2(4, 4)
+value = 100.0
+texture_under = ExtResource("3_3ydyo")
+texture_progress = ExtResource("4_q5cyn")
+
+[node name="Mob" type="CharacterBody2D" parent="ContainerMob"]
+position = Vector2(-477, -619)
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="ContainerMob/Mob"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(942.999, 806.999)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("5_lgdv1")
+region_enabled = true
+region_rect = Rect2(66, 1760, 30, 32)
+script = ExtResource("6_svks0")
+
+[node name="Creatures" type="CharacterBody2D" parent="ContainerMob"]
+position = Vector2(-477, -619)
+
+[node name="Animal_infected" type="Sprite2D" parent="ContainerMob/Creatures"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1102, 820.999)
+scale = Vector2(5, 5)
+texture = ExtResource("7_pam1k")
+
+[node name="Animal_disinfected" type="Sprite2D" parent="ContainerMob/Creatures"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1102, 820)
+scale = Vector2(5.5, 5.5)
+texture = ExtResource("8_fgx3w")
+
+[node name="Animal_player" type="Sprite2D" parent="ContainerMob/Creatures"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(773.999, 994.999)
+scale = Vector2(5.1, 5.1)
+texture = ExtResource("9_o488q")
+
+[node name="ContainerPLAYER" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -124.0
+offset_top = -58.0
+offset_right = 124.0
+offset_bottom = 58.0
+
+[node name="Pseudo" type="Label" parent="ContainerPLAYER"]
+layout_mode = 2
+offset_left = 152.0
+offset_top = 273.0
+offset_right = 400.0
+offset_bottom = 292.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "RichardKeur2Lion"
+vertical_alignment = 1
+
+[node name="PV" type="Label" parent="ContainerPLAYER"]
+layout_mode = 2
+offset_left = 155.0
+offset_top = 367.0
+offset_right = 212.0
+offset_bottom = 390.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(0.380392, 0.776471, 0.164706, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "PV :"
+vertical_alignment = 1
+
+[node name="NIV" type="Label" parent="ContainerPLAYER"]
+layout_mode = 2
+offset_left = 154.0
+offset_top = 320.0
+offset_right = 223.0
+offset_bottom = 343.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "NIV :  "
+vertical_alignment = 1
+
+[node name="NIV2" type="Label" parent="ContainerPLAYER"]
+visible = false
+layout_mode = 2
+offset_top = 77.0
+offset_right = 248.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ContainerPLAYER"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+offset_left = 250.0
+offset_top = 370.0
+offset_right = 309.0
+offset_bottom = 379.0
+scale = Vector2(4, 4)
+value = 100.0
+texture_under = ExtResource("3_3ydyo")
+texture_progress = ExtResource("4_q5cyn")
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="ContainerPLAYER"]
+position = Vector2(124, 58)
+
+[node name="Player-1Tile-set" type="Sprite2D" parent="ContainerPLAYER/CharacterBody2D3"]
+position = Vector2(933, 1035)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("10_npm81")
+region_enabled = true
+region_rect = Rect2(25, 680, 220, 220)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 822.0
+offset_top = -5.0
+offset_right = 1132.0
+offset_bottom = 105.0
+rotation = 0.00115545
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_f6neb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d2ui4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2i1hw")
+text = "Items"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 1210.0
+offset_top = -5.0
+offset_right = 1520.0
+offset_bottom = 105.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij5us")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t287m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n8md2")
+text = "FUIR"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 434.0
+offset_top = -5.0
+offset_right = 744.0
+offset_bottom = 105.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_opluy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wxu5s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yse28")
+text = "COMBAT"
+script = ExtResource("11_44lmf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2fhsy")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("12_5gi6q")]
+offset_top = -3.0
+offset_bottom = -3.0
+mouse_filter = 2
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+max_distance = 2e+09
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_4y006")
+autoplay = true
+max_distance = 2e+09
+
+[connection signal="pressed" from="Button" to="Button3" method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="Button3" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="Button3" method="_on_pressed"]

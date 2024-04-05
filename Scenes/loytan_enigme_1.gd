@@ -12,6 +12,7 @@ var timer_tick = 60
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.load_localisation()
 	launch()
 	
 

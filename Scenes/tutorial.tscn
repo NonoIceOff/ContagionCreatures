@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://c01fx5dwyh475"]
+
+[ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="1_k4aiy"]
+[ext_resource type="Script" path="res://Scenes/Tutorial.gd" id="1_uxkps"]
+
+[node name="tutorial" type="CanvasLayer"]
+script = ExtResource("1_uxkps")
+
+[node name="Container" type="ColorRect" parent="."]
+z_index = 100
+offset_left = 1536.0
+offset_top = 24.0
+offset_right = 1896.0
+offset_bottom = 80.0
+
+[node name="Label" type="Label" parent="Container"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.151
+anchor_right = 0.151
+offset_left = -0.360004
+offset_top = 4.0
+offset_right = 297.64
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "tuto test"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Icon" type="Sprite2D" parent="Container"]
+texture_filter = 1
+position = Vector2(29, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("1_k4aiy")
+
+[node name="ProgressBar" type="ProgressBar" parent="Container"]
+z_index = -1
+texture_filter = 1
+layout_mode = 0
+offset_top = 52.0
+offset_right = 360.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 12
+value = 50.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+max_distance = 2e+09

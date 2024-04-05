@@ -1,20 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpjigwu8bnhys"]
+[gd_scene load_steps=14 format=3 uid="uid://bpjigwu8bnhys"]
 
 [ext_resource type="Script" path="res://Scenes/ControlsButton.gd" id="1_hof3q"]
 [ext_resource type="Script" path="res://Scenes/AppearenceButton.gd" id="2_l2sb8"]
+[ext_resource type="Script" path="res://Scenes/Languages.gd" id="2_xel24"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="3_5er0g"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="4_afwsr"]
-[ext_resource type="AudioStream" uid="uid://clrkni5n75i8l" path="res://Sounds/coinc.mp3" id="5_k23y0"]
+[ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="5_k23y0"]
 [ext_resource type="Script" path="res://Scenes/PauseOk.gd" id="6_ge3rk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2ue8"]
 bg_color = Color(0.654902, 0.298039, 0.160784, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8bsk"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)
 border_width_left = 5
 border_width_top = 5
@@ -25,7 +26,7 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7pwu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t00v6"]
 bg_color = Color(0.717647, 0.203922, 0, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
@@ -66,28 +67,41 @@ color = Color(0, 0, 0, 1)
 
 [node name="Controls" type="Button" parent="."]
 offset_left = 640.0
-offset_top = 448.0
+offset_top = 384.0
 offset_right = 1277.0
-offset_bottom = 564.0
+offset_bottom = 464.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "CONTROLES"
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w8bsk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t00v6")
+text = "CONTROLS"
 script = ExtResource("1_hof3q")
+
+[node name="Languages" type="Button" parent="."]
+offset_left = 632.0
+offset_top = 512.0
+offset_right = 1269.0
+offset_bottom = 592.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w8bsk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t00v6")
+text = "LANGUAGES"
+script = ExtResource("2_xel24")
 
 [node name="Appearence" type="Button" parent="."]
 offset_left = 640.0
 offset_top = 640.0
 offset_right = 1277.0
-offset_bottom = 756.0
+offset_bottom = 720.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "APPARENCE"
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w8bsk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t00v6")
+text = "APPEARANCE"
 script = ExtResource("2_l2sb8")
 
 [node name="Titre" type="Label" parent="."]
@@ -99,7 +113,7 @@ theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_5er0g")
 theme_override_font_sizes/font_size = 64
-text = "PARAMETRES"
+text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_afwsr")
@@ -111,7 +125,7 @@ offset_right = 1920.0
 offset_bottom = 128.0
 theme_override_fonts/font = ExtResource("3_5er0g")
 theme_override_font_sizes/font_size = 64
-text = "PARAMETRES"
+text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -133,5 +147,9 @@ text = "RETOUR
 script = ExtResource("6_ge3rk")
 
 [connection signal="pressed" from="Controls" to="Controls" method="_on_pressed"]
+[connection signal="pressed" from="Languages" to="Languages" method="_on_pressed"]
 [connection signal="pressed" from="Appearence" to="Appearence" method="_on_pressed"]
+[connection signal="pressed" from="PauseOk" to="Controls" method="_on_pause_ok_pressed"]
+[connection signal="pressed" from="PauseOk" to="Languages" method="_on_pause_ok_pressed"]
+[connection signal="pressed" from="PauseOk" to="Appearence" method="_on_pause_ok_pressed"]
 [connection signal="pressed" from="PauseOk" to="PauseOk" method="_on_pressed"]

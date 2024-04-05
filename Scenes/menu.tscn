@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dlj82x8ysevhm"]
+[gd_scene load_steps=33 format=3 uid="uid://dlj82x8ysevhm"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_3sngr"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_buk1w"]
@@ -14,10 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://dklxwvoawyyh7" path="res://Textures/PATREON_SYMBOL_1_WHITE_RGB.png" id="9_7fxk5"]
 [ext_resource type="Texture2D" uid="uid://cifcf4dj616pl" path="res://Textures/Items/cadenas.png" id="9_l064a"]
 [ext_resource type="Script" path="res://Scenes/Patreon.gd" id="12_ai8ip"]
+[ext_resource type="Script" path="res://Scenes/Settings_Credits.gd" id="12_yb7yn"]
 [ext_resource type="StyleBox" uid="uid://c585g431q14ue" path="res://Thème/button_normal.tres" id="13_1y7pi"]
 [ext_resource type="Script" path="res://Scenes/CodePatreon.gd" id="13_rs15m"]
 [ext_resource type="StyleBox" uid="uid://bibiwmbse6bsf" path="res://Thème/button_hover.tres" id="14_ohk08"]
 [ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="15_pnm5u"]
+[ext_resource type="Texture2D" uid="uid://d1g423653v4tm" path="res://Textures/discord.png" id="19_hhkdv"]
+[ext_resource type="Script" path="res://Scenes/PatreonRez.gd" id="19_x6wxm"]
+[ext_resource type="Script" path="res://Scenes/DiscordRez.gd" id="21_nx528"]
+[ext_resource type="Texture2D" uid="uid://crj8d71jcq7lc" path="res://Textures/instagram.png" id="22_4l4g4"]
+[ext_resource type="Script" path="res://Scenes/InstagramRez.gd" id="22_dautx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvldv"]
 bg_color = Color(1, 1, 1, 1)
@@ -46,6 +52,13 @@ corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7pwu"]
 bg_color = Color(0.717647, 0.419608, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnwub"]
+bg_color = Color(0.654902, 0.380392, 0.160784, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
@@ -82,15 +95,17 @@ script = ExtResource("1_3sngr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
+offset_top = -9.0
 offset_right = 1920.0
-offset_bottom = 1088.0
+offset_bottom = 1079.0
 texture = ExtResource("1_buk1w")
 stretch_mode = 6
 
 [node name="ColorRect" type="ColorRect" parent="TextureRect"]
 layout_mode = 0
+offset_top = 14.0
 offset_right = 1024.0
-offset_bottom = 1072.0
+offset_bottom = 1086.0
 color = Color(0, 0, 0, 0.196078)
 
 [node name="Duck" type="Sprite2D" parent="."]
@@ -161,7 +176,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "solo"
+text = "SOLO"
 script = ExtResource("2_soydd")
 
 [node name="PlayMulti" type="Button" parent="."]
@@ -176,7 +191,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 disabled = true
-text = "multijoueur"
+text = "MULTIPLAYER"
 expand_icon = true
 script = ExtResource("4_xyknk")
 
@@ -190,7 +205,7 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 24
-text = "MEMBRES PATREONSSEULEMENT"
+text = "PATREON_ONLY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -209,11 +224,22 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "PARAMETRES"
+text = "SETTINGS"
 script = ExtResource("3_4a2ih")
 
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4gslj")
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 414.0
+offset_top = 987.0
+offset_right = 639.0
+offset_bottom = 1028.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_gnwub")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "CREDITS"
+script = ExtResource("12_yb7yn")
 
 [node name="DeleteSave" type="Button" parent="."]
 offset_left = 1280.0
@@ -225,7 +251,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_lsl8i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7dkss")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wlqyn")
-text = "supprimer la save"
+text = "DELETE_SAVE"
 script = ExtResource("8_5568m")
 
 [node name="Label" type="Label" parent="DeleteSave"]
@@ -235,16 +261,16 @@ offset_top = 40.0
 offset_right = 392.0
 offset_bottom = 66.0
 theme_override_font_sizes/font_size = 16
-text = "un gros probleme ?"
+text = "TEXT_BIG_PROBLEM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 1536.0
+offset_left = 1584.0
 offset_top = 1040.0
 offset_right = 1904.0
 offset_bottom = 1059.0
-text = "version du 23 fevrier 2024"
+text = "version du 5 avril 2024"
 
 [node name="Patreon" type="Button" parent="."]
 offset_left = 1280.0
@@ -256,7 +282,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "code patreon"
+text = "PATREON_CODE"
 icon = ExtResource("9_7fxk5")
 expand_icon = true
 script = ExtResource("12_ai8ip")
@@ -270,8 +296,63 @@ offset_top = 48.0
 offset_right = 576.0
 offset_bottom = 112.0
 theme_override_font_sizes/font_size = 16
-text = "debloquer des fonctionnalites"
+text = "TEXT_UNLOCK_FEATURES"
 horizontal_alignment = 1
+
+[node name="Reseaux" type="Label" parent="."]
+offset_left = 1368.0
+offset_top = 832.0
+offset_right = 1576.0
+offset_bottom = 856.0
+text = "TEXT_SOCIAL_MEDIAS"
+
+[node name="Patreon" type="Button" parent="Reseaux"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "PATREON"
+icon = ExtResource("9_7fxk5")
+expand_icon = true
+script = ExtResource("19_x6wxm")
+
+[node name="Discord" type="Button" parent="Reseaux"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 120.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "DISCORD"
+icon = ExtResource("19_hhkdv")
+expand_icon = true
+script = ExtResource("21_nx528")
+
+[node name="Instagram" type="Button" parent="Reseaux"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 128.0
+offset_right = 240.0
+offset_bottom = 168.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "INSTAGRAM"
+icon = ExtResource("22_4l4g4")
+expand_icon = true
+script = ExtResource("22_dautx")
 
 [node name="CodePatreon" type="Control" parent="."]
 visible = false
@@ -370,8 +451,12 @@ expand_icon = true
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
 [connection signal="pressed" from="PlayMulti" to="PlayMulti" method="_on_pressed"]
 [connection signal="pressed" from="Settings" to="Settings" method="_on_pressed"]
+[connection signal="pressed" from="Credits" to="Credits" method="_on_pressed"]
 [connection signal="pressed" from="DeleteSave" to="DeleteSave" method="_on_pressed"]
 [connection signal="pressed" from="Patreon" to="Patreon" method="_on_pressed"]
+[connection signal="pressed" from="Reseaux/Patreon" to="Reseaux/Patreon" method="_on_pressed"]
+[connection signal="pressed" from="Reseaux/Discord" to="Reseaux/Discord" method="_on_pressed"]
+[connection signal="pressed" from="Reseaux/Instagram" to="Reseaux/Instagram" method="_on_pressed"]
 [connection signal="text_changed" from="CodePatreon/LineEdit" to="CodePatreon" method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="CodePatreon/ConfirmCode" to="CodePatreon" method="_on_confirm_code_pressed"]
 [connection signal="pressed" from="CodePatreon/Quit" to="CodePatreon" method="_on_quit_pressed"]

@@ -3,6 +3,8 @@ extends Node
 ## Skins
 var skin = 0
 
+var character = 0
+
 ## Stats
 var health = 100
 var monnaie = 0

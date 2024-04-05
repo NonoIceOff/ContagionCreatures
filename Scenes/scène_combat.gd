@@ -345,18 +345,25 @@ func enemy_turns():
 		get_node("/root/SceneCombat").spawn_dialogue(texts_enemy)
 		pv_player -= Global.enemy_attack
 		get_node("/root/SceneCombat/AnimationPlayer").play("Damage_Player") 
-		get_node("/root/SceneCombat/AnimationPlayer").play("shake")
+		get_node("/root/SceneCombat/AnimationPlayer").play("shake") 
+		if get_node_or_null("Sounds") != null:
+			get_node("Sounds").stream = load("res://Sounds/hurt.mp3")
+			get_node("Sounds").playing = true
 		await get_node("/root/SceneCombat/AnimationPlayer").animation_finished
 		print(pv_player)
 		print(pv_enemy)
 		
 func win():
 	if get_node_or_null("SpeechBox") != null:
+		Tutorial.get_node(".").tutorials[5]["progress"] += 100
 		get_node("SpeechBox").queue_free()
 		texts_end[0]["text"] = get_node("/root/SceneCombat/ContainerMob/Pseudo").text+" chute !"
 		texts_end[1]["text"] = "Vous remportez le combat et 0 xp !"
 		get_node("/root/SceneCombat").spawn_dialogue(texts_end)
 		get_node("/root/SceneCombat/AnimationPlayer").play("Enemy_Death")
+		if get_node_or_null("Sounds") != null:
+			get_node("Sounds").stream = load("res://Sounds/explosion.mp3")
+			get_node("Sounds").playing = true
 		get_node("/root/SceneCombat/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
@@ -369,7 +376,10 @@ func loose():
 		texts_end[1]["text"] = "Vous perdez le combat et repartez bredouille..."
 		get_node("/root/SceneCombat").spawn_dialogue(texts_end)
 		get_node("/root/SceneCombat/AnimationPlayer").play("Player_Death")
-		get_node("/root/SceneCombat/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+		if get_node_or_null("Sounds") != null:
+			get_node("Sounds").stream = load("res://Sounds/explosion.mp3")
+			get_node("Sounds").playing = true
+		get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 	
