@@ -21,14 +21,14 @@ func _process(delta):
 		
 
 
-func _on_interact_area_body_entered(body):
+
+func _on_piano_1_body_entered(body):
 	if body.is_in_group("Player_One"):
 		get_node("Piano1/Interact").visible = true
 		piano_in = true
 
 
-
-func _on_interact_area_body_exited(body):
+func _on_piano_1_body_exited(body):
 	if body.is_in_group("Player_One"):
 		get_node("Piano1/Interact").visible = false
 		piano_in = false

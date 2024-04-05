@@ -379,7 +379,7 @@ func loose():
 		if get_node_or_null("Sounds") != null:
 			get_node("Sounds").stream = load("res://Sounds/explosion.mp3")
 			get_node("Sounds").playing = true
-		get_node("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
+		get_node("/root/SceneCombat/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 	

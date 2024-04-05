@@ -1,13 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://cinc84vpc2a4s"]
+[gd_scene load_steps=12 format=3 uid="uid://cinc84vpc2a4s"]
 
 [ext_resource type="Script" path="res://Scenes/home_of_hector.gd" id="1_7yy64"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="2_3hxkl"]
 [ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://main_map_2.tres" id="2_svkma"]
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="5_676qs"]
 [ext_resource type="Script" path="res://Scenes/Transition_To_mainMap.gd" id="5_so67a"]
+[ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="6_6ytuu"]
+[ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="7_cm1j3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4vl6"]
 size = Vector2(24, 13.3334)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_na2ne"]
+size = Vector2(46, 45)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lko8x"]
+radius = 85.21
+
+[sub_resource type="LabelSettings" id="LabelSettings_lv0uq"]
+font_size = 36
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HomeOfHector" type="Node2D"]
 script = ExtResource("1_7yy64")
@@ -74,5 +87,44 @@ text = "[ E ]"
 
 [node name="ui" parent="." instance=ExtResource("5_676qs")]
 
+[node name="Piano1" type="Area2D" parent="."]
+position = Vector2(1213, 291)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Piano1"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano1/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_na2ne")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Piano1/CharacterBody2D"]
+scale = Vector2(6, 6)
+texture = ExtResource("6_6ytuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano1"]
+shape = SubResource("CircleShape2D_lko8x")
+
+[node name="Trigger" type="Sprite2D" parent="Piano1"]
+visible = false
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("7_cm1j3")
+
+[node name="Interact" type="Label" parent="Piano1"]
+visible = false
+offset_left = -18.0
+offset_top = -62.0
+offset_right = 90.0
+offset_bottom = -12.0
+scale = Vector2(0.4, 0.6)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_lv0uq")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Piano1" to="." method="_on_piano_1_body_entered"]
+[connection signal="body_exited" from="Piano1" to="." method="_on_piano_1_body_exited"]

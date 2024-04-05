@@ -57,7 +57,7 @@ signal fringe_changed
 func quest_finished(i):
 	Tutorial.get_node(".").tutorials[7]["progress"] += 100
 	if get_node_or_null("/root/"+current_map+"/SoundEffectFx") != null:
-		get_node("/root/main_map/SoundEffectFx").playing = false
+		get_node("/root/"+current_map+"/SoundEffectFx").playing = false
 	if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:
 		get_node("/root/"+current_map+"/AudioStreamPlayer2D").stream = load("res://Sounds/victory.mp3")
 		get_node("/root/"+current_map+"/AudioStreamPlayer2D").playing = true
@@ -282,7 +282,7 @@ var items = {
 		"effets":"200% d'ATK",
 		"texture":"res://Textures/Items/crapte.png",
 		"quantity":0
-	},
+	}
 }
 
 var attacks = {
@@ -377,7 +377,7 @@ var quests = {
 		"title":"QUEST_3_TITLE",
 		"long_description":"QUEST_3_LONG_DESCRIPTION",
 		"descriptions":
-			["QUEST_3_DESCRIPTION0","QUEST_3_DESCRIPTION1","QUEST_3_DESCRIPTION2","QUEST32_DESCRIPTION3"],
+			["QUEST_3_DESCRIPTION0","QUEST_3_DESCRIPTION1","QUEST_3_DESCRIPTION2","QUEST3_DESCRIPTION3"],
 		"mini_descriptions":
 			["QUEST_3_MINI_DESCRIPTION0","QUEST_3_MINI_DESCRIPTION1","QUEST_3_MINI_DESCRIPTION2","QUEST_3_MINI_DESCRIPTION3"],
 		"pin_positions":[Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(0,0)],

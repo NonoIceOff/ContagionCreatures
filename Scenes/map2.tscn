@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf76na2js016h"]
+[gd_scene load_steps=17 format=3 uid="uid://bf76na2js016h"]
 
 [ext_resource type="Script" path="res://Scenes/map2.gd" id="1_k2jl6"]
 [ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="1_usnn1"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dq07bruwx0jev" path="res://Scenes/minimap_2.tscn" id="4_xdrtn"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="5_k26p6"]
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="7_floul"]
+[ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="8_bdn72"]
+[ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="9_jwhck"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fe716"]
 size = Vector2(173, 59)
@@ -19,6 +21,17 @@ size = Vector2(64, 69)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpa8b"]
 size = Vector2(7.75, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh377"]
+size = Vector2(46, 45)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o80w8"]
+radius = 85.21
+
+[sub_resource type="LabelSettings" id="LabelSettings_nn6hn"]
+font_size = 36
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="map2" type="Node2D"]
 script = ExtResource("1_k2jl6")
@@ -173,6 +186,86 @@ shape = SubResource("RectangleShape2D_kpa8b")
 stream = ExtResource("7_floul")
 volume_db = -15.0
 
+[node name="Piano3" type="Area2D" parent="."]
+position = Vector2(-3250, 3802)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Piano3"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano3/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_fh377")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Piano3/CharacterBody2D"]
+scale = Vector2(6, 6)
+texture = ExtResource("8_bdn72")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano3"]
+shape = SubResource("CircleShape2D_o80w8")
+
+[node name="Trigger" type="Sprite2D" parent="Piano3"]
+visible = false
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("9_jwhck")
+
+[node name="Interact" type="Label" parent="Piano3"]
+visible = false
+z_index = 10
+offset_left = -18.0
+offset_top = -62.0
+offset_right = 90.0
+offset_bottom = -12.0
+scale = Vector2(0.4, 0.6)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_nn6hn")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Piano4" type="Area2D" parent="."]
+position = Vector2(2000, 2457)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Piano4"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano4/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_fh377")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Piano4/CharacterBody2D"]
+scale = Vector2(6, 6)
+texture = ExtResource("8_bdn72")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano4"]
+shape = SubResource("CircleShape2D_o80w8")
+
+[node name="Trigger" type="Sprite2D" parent="Piano4"]
+visible = false
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("9_jwhck")
+
+[node name="Interact" type="Label" parent="Piano4"]
+visible = false
+z_index = 10
+offset_left = -18.0
+offset_top = -62.0
+offset_right = 90.0
+offset_bottom = -12.0
+scale = Vector2(0.4, 0.6)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_nn6hn")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [connection signal="body_entered" from="Leave_to_Map1" to="." method="_on_leave_to_map_1_body_entered"]
 [connection signal="body_entered" from="Enter_home_Map2" to="." method="_on_enter_home_map_2_body_entered"]
 [connection signal="body_entered" from="Enter_Donjon" to="." method="_on_enter_donjon_body_entered"]
+[connection signal="body_entered" from="Piano3" to="." method="_on_piano_3_body_entered"]
+[connection signal="body_exited" from="Piano3" to="." method="_on_piano_3_body_exited"]
+[connection signal="body_entered" from="Piano4" to="." method="_on_piano_4_body_entered"]
+[connection signal="body_exited" from="Piano4" to="." method="_on_piano_4_body_exited"]

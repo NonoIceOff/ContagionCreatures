@@ -496,10 +496,10 @@ func _on_interact_area_exited(body):
 func spawn_item(pos,type,id):
 	var item_instance = item_scene.instantiate()
 	item_instance.position = pos
-	item_instance.id = id
+	item_instance.id = id-1
 	item_instance.type = type
 	if type == "item":
-		item_instance.get_node("Texture").texture = load(Global.items[id]["texture"])
+		item_instance.get_node("Texture").texture = load(Global.items[5]["texture"])
 	if type == "attack":
 		item_instance.get_node("Texture").texture = load(Global.attacks[id]["texture"])
 	add_child(item_instance)

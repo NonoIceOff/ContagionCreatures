@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=46 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
@@ -15,11 +15,58 @@
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="18_w4w46"]
 [ext_resource type="Texture2D" uid="uid://des7hyfw82tql" path="res://Textures/PNJ/Loytan/loytan_full.png" id="19_tc64p"]
 [ext_resource type="Texture2D" uid="uid://cqsj1ecoh183k" path="res://Textures/PNJ/Loytan/tete_loytan.png" id="20_12piq"]
+[ext_resource type="Texture2D" uid="uid://cxqxfpw2do58x" path="res://Textures/Inventaire/brown_pressed.png" id="21_7ffd6"]
 [ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="21_m1aw1"]
+[ext_resource type="Texture2D" uid="uid://hmskm5a45okh" path="res://Textures/CUBE_TEST.png" id="22_3xw00"]
 [ext_resource type="Texture2D" uid="uid://d00cubkujysav" path="res://Textures/Inventaire/grey.png" id="22_ku8d1"]
-[ext_resource type="Texture2D" path="res://Textures/Items/nkey.png" id="23_sq4xb"]
+[ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="23_o04f3"]
+[ext_resource type="Texture2D" uid="uid://b6qrnndoprfy7" path="res://Textures/Items/nkey.png" id="23_sq4xb"]
 [ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="24_e0f8h"]
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="25_2w24m"]
+
+[sub_resource type="Curve2D" id="Curve2D_iabi8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -364, -484, 0, 0, 0, 0, -340, 516, 0, 0, 0, 0, -324, 692, 0, 0, 0, 0, -220, 716, 0, 0, 0, 0, -124, 652, 0, 0, 0, 0, -116, 508, 0, 0, 0, 0, -52, 476, 0, 0, 0, 0, 28, 444, 0, 0, 0, 0, 332, 420, 0, 0, 0, 0, 612, 420, 0, 0, 0, 0, 844, 420, 0, 0, 0, 0, 964, 388, 0, 0, 0, 0, 1068, 324, 0, 0, 0, 0, 1124, 212, 0, 0, 0, 0, 1260, -12, 0, 0, 0, 0, 1324, -212, 0, 0, 0, 0, 1332, -356, 0, 0, 0, 0, 1284, -444, 0, 0, 0, 0, 1148, -500, 0, 0, 0, 0, 1028, -460, 0, 0, 0, 0, 940, -404, 0, 0, 0, 0, 908, -316, 0, 0, 0, 0, 956, -204, 0, 0, 0, 0, 1028, -108, 0, 0, 0, 0, 1148, -76, 0, 0, 0, 0, 1492, -124, 0, 0, 0, 0, 1764, -260, 0, 0, 0, 0, 1764, -588, 0, 0, 0, 0, 1788, -708, 0, 0, 0, 0, 1852, -788, 0, 0, 0, 0, 1948, -860, 0, 0, 0, 0, 2036, -916, 0, 0, 0, 0, 2244, -972, 0, 0, 0, 0, 2460, -1004, 0, 0, 0, 0, 2596, -1044, 0, 0, 0, 0, 2644, -1100, 0, 0, 0, 0, 2628, -1148, 0, 0, 0, 0, 2580, -1164, 0, 0, 0, 0, 236, -1148)
+}
+point_count = 39
+
+[sub_resource type="Animation" id="Animation_k33xm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hg4wj"]
+resource_name = "camera_shake"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-64, 64), Vector2(64, 64), Vector2(64, -64), Vector2(-64, -64), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3u8m7"]
+_data = {
+"RESET": SubResource("Animation_k33xm"),
+"camera_shake": SubResource("Animation_hg4wj")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qsd3"]
 size = Vector2(46, 45)
@@ -53,6 +100,107 @@ size = Vector2(46, 45)
 radius = 85.21
 
 [sub_resource type="LabelSettings" id="LabelSettings_3qct3"]
+font_size = 36
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_rl2k1"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_8sw8d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ennemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-264, 344)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ennemy:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ennemy:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rfcfc"]
+resource_name = "new_animation"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ennemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.2, 0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-264, 344), Vector2(-288, 336), Vector2(688, 312), Vector2(600, 392), Vector2(952, 1016), Vector2(1576, 768), Vector2(2216, 384)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ennemy:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ennemy:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.0872665]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82t7x"]
+_data = {
+"RESET": SubResource("Animation_8sw8d"),
+"new_animation": SubResource("Animation_rfcfc")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43bhh"]
+size = Vector2(46, 45)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7v7ho"]
+radius = 85.21
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5ffo"]
 font_size = 36
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -162,6 +310,24 @@ layer_13/z_index = 10
 layer_13/tile_data = PackedInt32Array(1703994, 3997701, 5, 1769530, 3997701, 6, 1638459, 4063237, 4, 1703995, 4063237, 5, 1638460, 4128773, 4, 1703996, 4128773, 5, 1638461, 4194309, 4, 1703997, 4194309, 5, 1769533, 4194309, 6, 1114169, 3997701, 5, 1179705, 3997701, 6, 1048634, 4063237, 4, 1114170, 4063237, 5, 1048635, 4128773, 4, 1114171, 4128773, 5, 1048636, 4194309, 4, 1114172, 4194309, 5, 1179708, 4194309, 6, 458809, 3997701, 5, 524345, 3997701, 6, 393274, 4063237, 4, 458810, 4063237, 5, 393275, 4128773, 4, 458811, 4128773, 5, 393276, 4194309, 4, 458812, 4194309, 5, 524348, 4194309, 6, 65593, 3997701, 5, 131129, 3997701, 6, 58, 4063237, 4, 65594, 4063237, 5, 59, 4128773, 4, 65595, 4128773, 5, 60, 4194309, 4, 65596, 4194309, 5, 131132, 4194309, 6, -1114131, 3997701, 5, -1048595, 3997701, 6, -1179666, 4063237, 4, -1114130, 4063237, 5, -1179665, 4128773, 4, -1114129, 4128773, 5, -1179664, 4194309, 4, -1114128, 4194309, 5, -1048592, 4194309, 6, -917503, 3997701, 5, -851967, 3997701, 6, -983038, 4063237, 4, -917502, 4063237, 5, -983037, 4128773, 4, -917501, 4128773, 5, -983036, 4194309, 4, -917500, 4194309, 5, -851964, 4194309, 6, -983028, 3997701, 5, -917492, 3997701, 6, -1048563, 4063237, 4, -983027, 4063237, 5, -1048562, 4128773, 4, -983026, 4128773, 5, -1048561, 4194309, 4, -983025, 4194309, 5, -917489, 4194309, 6, -1114082, 3997701, 5, -1048546, 3997701, 6, -1179617, 4063237, 4, -1114081, 4063237, 5, -1179616, 4128773, 4, -1114080, 4128773, 5, -1179615, 4194309, 4, -1114079, 4194309, 5, -1048543, 4194309, 6, -917468, 3997701, 5, -851932, 3997701, 6, -983003, 4063237, 4, -917467, 4063237, 5, -983002, 4128773, 4, -917466, 4128773, 5, -983001, 4194309, 4, -917465, 4194309, 5, -851929, 4194309, 6, 1245245, 3997701, 5, 1310781, 3997701, 6, 1179710, 4063237, 4, 1245246, 4063237, 5, 1179711, 4128773, 4, 1245247, 4128773, 5, 1179712, 4194309, 4, 1245248, 4194309, 5, 1310784, 4194309, 6, 2097195, 3997701, 5, 2162731, 3997701, 6, 2031660, 4063237, 4, 2097196, 4063237, 5, 2031661, 4128773, 4, 2097197, 4128773, 5, 2031662, 4194309, 4, 2097198, 4194309, 5, 2162734, 4194309, 6, 2097184, 3997701, 5, 2162720, 3997701, 6, 2031649, 4063237, 4, 2097185, 4063237, 5, 2031650, 4128773, 4, 2097186, 4128773, 5, 2031651, 4194309, 4, 2097187, 4194309, 5, 2162723, 4194309, 6, 2228228, 3997701, 5, 2293764, 3997701, 6, 2162693, 4063237, 4, 2228229, 4063237, 5, 2162694, 4128773, 4, 2228230, 4128773, 5, 2162695, 4194309, 4, 2228231, 4194309, 5, 2293767, 4194309, 6, 1834993, 3997701, 5, 1900529, 3997701, 6, 1769458, 4063237, 4, 1834994, 4063237, 5, 1769459, 4128773, 4, 1834995, 4128773, 5, 1769460, 4194309, 4, 1834996, 4194309, 5, 1900532, 4194309, 6, -851912, 5111813, 56, -327624, 5111813, 59, -720915, 4128773, 5, -786450, 4194309, 4, -720914, 4194309, 5, -720917, 3997701, 5, -655381, 3997701, 6, -786452, 4063237, 4, -720916, 4063237, 5, -786451, 4128773, 4, -655378, 4194309, 6, -786445, 5111813, 56, -13, 5111813, 61)
 
 [node name="Animal" parent="." instance=ExtResource("3_46rw2")]
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(500, 500)
+curve = SubResource("Curve2D_iabi8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-364, -484)
+rotation = 1.5468
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
+rotation = -0.244979
+enabled = false
+zoom = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_3u8m7")
+}
 
 [node name="InteractArea" type="Area2D" parent="."]
 position = Vector2(1448, 291)
@@ -470,6 +636,111 @@ uppercase = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_distance = 200000.0
 
+[node name="StartCinematic" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StartCinematic"]
+visible = false
+position = Vector2(960, 540)
+amount = 50
+texture = ExtResource("21_7ffd6")
+emission_shape = 3
+emission_rect_extents = Vector2(1280, 720)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -980)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 1.1
+hue_variation_min = -0.25
+hue_variation_max = 0.25
+hue_variation_curve = SubResource("Curve_rl2k1")
+
+[node name="Ennemy" type="Sprite2D" parent="StartCinematic"]
+position = Vector2(-264, 344)
+texture = ExtResource("22_3xw00")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StartCinematic"]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.119
+anchor_right = 0.067
+anchor_bottom = 0.119
+offset_left = 0.360001
+offset_top = 0.479996
+offset_right = 1663.36
+offset_bottom = 831.48
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+
+[node name="StopCinematic" type="Button" parent="StartCinematic"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -344.0
+offset_top = -72.0
+offset_right = -24.0
+offset_bottom = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "sauter la cinematique"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartCinematic"]
+libraries = {
+"": SubResource("AnimationLibrary_82t7x")
+}
+
+[node name="Piano2" type="Area2D" parent="."]
+position = Vector2(105, -758)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Piano2"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano2/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_43bhh")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Piano2/CharacterBody2D"]
+scale = Vector2(6, 6)
+texture = ExtResource("23_o04f3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano2"]
+shape = SubResource("CircleShape2D_7v7ho")
+
+[node name="Trigger" type="Sprite2D" parent="Piano2"]
+visible = false
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("7_ch8cw")
+
+[node name="Interact" type="Label" parent="Piano2"]
+visible = false
+z_index = 10
+offset_left = -18.0
+offset_top = -62.0
+offset_right = 90.0
+offset_bottom = -12.0
+scale = Vector2(0.4, 0.6)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_n5ffo")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
 [connection signal="body_entered" from="MobPNJ/AreaEnnemy1" to="." method="_on_area_ennemy_1_body_entered"]
@@ -483,3 +754,6 @@ max_distance = 200000.0
 [connection signal="body_exited" from="InversedDungeon" to="." method="_on_inversed_dungeon_body_exited"]
 [connection signal="body_entered" from="Bagird" to="." method="_on_bagird_body_entered"]
 [connection signal="body_exited" from="Bagird" to="." method="_on_bagird_body_exited"]
+[connection signal="pressed" from="StartCinematic/StopCinematic" to="." method="_on_stop_cinematic_pressed"]
+[connection signal="body_entered" from="Piano2" to="." method="_on_piano_2_body_entered"]
+[connection signal="body_exited" from="Piano2" to="." method="_on_piano_2_body_exited"]
