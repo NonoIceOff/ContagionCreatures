@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dc4gs8m4imtji"]
+[gd_scene load_steps=14 format=3 uid="uid://dc4gs8m4imtji"]
 
 [ext_resource type="Script" path="res://Scenes/ControlsButton.gd" id="1_cfn84"]
 [ext_resource type="Script" path="res://Scenes/AppearenceButton.gd" id="2_5wkqo"]
+[ext_resource type="Script" path="res://Scenes/Languages.gd" id="2_xlfvj"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="3_rtdht"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="4_ggfiq"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="5_vs5pu"]
@@ -66,28 +67,41 @@ color = Color(0, 0, 0, 1)
 
 [node name="Controls" type="Button" parent="."]
 offset_left = 640.0
-offset_top = 448.0
+offset_top = 384.0
 offset_right = 1277.0
-offset_bottom = 564.0
+offset_bottom = 464.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "CONTROLES"
+text = "CONTROLS"
 script = ExtResource("1_cfn84")
+
+[node name="Languages" type="Button" parent="."]
+offset_left = 632.0
+offset_top = 512.0
+offset_right = 1269.0
+offset_bottom = 592.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+text = "LANGUAGES"
+script = ExtResource("2_xlfvj")
 
 [node name="Appearence" type="Button" parent="."]
 offset_left = 640.0
 offset_top = 640.0
 offset_right = 1277.0
-offset_bottom = 756.0
+offset_bottom = 720.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-text = "APPARENCE"
+text = "APPEARANCE"
 script = ExtResource("2_5wkqo")
 
 [node name="Titre" type="Label" parent="."]
@@ -99,7 +113,7 @@ theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_rtdht")
 theme_override_font_sizes/font_size = 64
-text = "PARAMETRES"
+text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_ggfiq")
@@ -111,7 +125,7 @@ offset_right = 1920.0
 offset_bottom = 128.0
 theme_override_fonts/font = ExtResource("3_rtdht")
 theme_override_font_sizes/font_size = 64
-text = "PARAMETRES"
+text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -128,9 +142,10 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dm8en")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jyc4")
-text = "RETOUR"
+text = "BACK"
 script = ExtResource("6_mdffj")
 
 [connection signal="pressed" from="Controls" to="Controls" method="_on_pressed"]
+[connection signal="pressed" from="Languages" to="Languages" method="_on_pressed"]
 [connection signal="pressed" from="Appearence" to="Appearence" method="_on_pressed"]
 [connection signal="pressed" from="Retour" to="Retour" method="_on_retour_pressed"]

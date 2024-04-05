@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_d0nrk"]
 [ext_resource type="Script" path="res://Scenes/Titre.gd" id="3_tdnu6"]
-[ext_resource type="AudioStream" uid="uid://clrkni5n75i8l" path="res://Sounds/coinc.mp3" id="4_wy643"]
+[ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="4_wy643"]
 [ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="5_8sb3t"]
 [ext_resource type="Script" path="res://Scenes/Ok.gd" id="5_80yua"]
 [ext_resource type="Script" path="res://Scenes/PersoActuel.gd" id="6_6ldjd"]
@@ -61,7 +61,7 @@ theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_d0nrk")
 theme_override_font_sizes/font_size = 64
-text = "APPARENCE"
+text = "APPEARANCE"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_tdnu6")
@@ -73,7 +73,7 @@ offset_right = 1920.0
 offset_bottom = 128.0
 theme_override_fonts/font = ExtResource("2_d0nrk")
 theme_override_font_sizes/font_size = 64
-text = "APPARENCE"
+text = "APPEARANCE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -90,7 +90,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dm8en")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jyc4")
-text = "VALIDER"
+text = "VALIDATE"
 script = ExtResource("5_80yua")
 
 [node name="Panel" type="Panel" parent="."]
@@ -103,7 +103,7 @@ offset_top = 256.0
 offset_right = 576.0
 offset_bottom = 323.0
 theme_override_font_sizes/font_size = 32
-text = "votre personnage"
+text = "YOUR_CHARACTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -128,7 +128,7 @@ offset_top = 256.0
 offset_right = 1920.0
 offset_bottom = 315.0
 theme_override_font_sizes/font_size = 32
-text = "choississez votre personnage"
+text = "CHOOSE_YOUR_CHARACTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 

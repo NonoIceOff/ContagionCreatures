@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://crh50t7ckfxol"]
 
 [ext_resource type="Script" path="res://Scenes/dungeon_inversed.gd" id="1_d3qf0"]
-[ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="2_doyk2"]
+[ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://main_map_2.tres" id="2_gp8cl"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="3_64hv4"]
 [ext_resource type="Texture2D" uid="uid://dd068qtnnburx" path="res://Textures/unlight_mask.png" id="4_f76xm"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="5_adgva"]
 [ext_resource type="Texture2D" uid="uid://b8yagtt5i3n0k" path="res://Textures/WHATTTInversed.png" id="6_k47gl"]
 [ext_resource type="Script" path="res://Scenes/Transition_To_mainMap.gd" id="7_eve5m"]
-[ext_resource type="AudioStream" uid="uid://cmaweyispx177" path="res://Sounds/dungeon_ambiance_reversed.mp3" id="8_txfda"]
+[ext_resource type="AudioStream" uid="uid://cjg2eqjrp0uxs" path="res://Sounds/reversed_dungeon_sound.mp3" id="8_txfda"]
 [ext_resource type="AudioStream" uid="uid://chi02efau43ep" path="res://Sounds/flame_sound.mp3" id="9_hn3aw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4vl6"]
@@ -27,7 +27,7 @@ offset_bottom = 40.0
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(4, 4)
-tile_set = ExtResource("2_doyk2")
+tile_set = ExtResource("2_gp8cl")
 format = 2
 layer_0/name = "0"
 layer_0/z_index = -10
@@ -68,15 +68,13 @@ mouse_filter = 2
 
 [node name="DungeonTitle" type="Label" parent="CanvasLayer"]
 offset_left = 472.0
-offset_top = 456.0
+offset_top = 384.0
 offset_right = 1464.0
-offset_bottom = 538.0
+offset_bottom = 576.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-text = "Gbv dhv crargerf pr qbawba,
-cbhe cbhibve fbegve qr pr obheovre
-gh qrienf znepure gbhg qebvg"
+text = "DUNGEON_3_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -119,7 +117,7 @@ offset_left = -56.0
 offset_top = -248.0
 offset_right = 125.0
 offset_bottom = -222.0
-text = "Bon courage !"
+text = "DUNGEON_GOOD_LUCK"
 horizontal_alignment = 1
 vertical_alignment = 1
 

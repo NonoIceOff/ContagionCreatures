@@ -1,0 +1,166 @@
+[gd_scene load_steps=15 format=3 uid="uid://dn8wpvqpuvf5b"]
+
+[ext_resource type="Script" path="res://Scenes/piano.gd" id="1_5vfeh"]
+[ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="1_6ttn3"]
+[ext_resource type="AudioStream" uid="uid://dqijn6om5me0v" path="res://Sounds/piano/1.mp3" id="3_edhqj"]
+[ext_resource type="AudioStream" uid="uid://cxasda45twyq5" path="res://Sounds/piano/2.mp3" id="4_7e6x6"]
+[ext_resource type="AudioStream" uid="uid://baisxwxpmd6c6" path="res://Sounds/piano/3.mp3" id="5_tj6o0"]
+[ext_resource type="AudioStream" uid="uid://vrhnyfjpf7j3" path="res://Sounds/piano/4.mp3" id="6_ncsgp"]
+[ext_resource type="AudioStream" uid="uid://wvryl1mliwsp" path="res://Sounds/piano/5.mp3" id="7_xgk5x"]
+[ext_resource type="AudioStream" uid="uid://ra3ay3duc4q5" path="res://Sounds/piano/6.mp3" id="8_c6aob"]
+[ext_resource type="AudioStream" uid="uid://fkp3e2tmgftb" path="res://Sounds/piano/7.mp3" id="9_agwyb"]
+[ext_resource type="AudioStream" uid="uid://c7c4471eaaqlr" path="res://Sounds/piano/8.mp3" id="10_dhop4"]
+[ext_resource type="AudioStream" uid="uid://dva3kxw7iyjxy" path="res://Sounds/piano/9.mp3" id="11_e3qfn"]
+[ext_resource type="AudioStream" uid="uid://bhvmphm502u7j" path="res://Sounds/piano/10.mp3" id="12_q8j27"]
+[ext_resource type="AudioStream" uid="uid://brrt8nxig8xgv" path="res://Sounds/piano/11.mp3" id="13_0x3wp"]
+[ext_resource type="AudioStream" uid="uid://fpwnhrdvwprp" path="res://Sounds/piano/12.mp3" id="14_i7437"]
+
+[node name="piano" type="Node2D"]
+script = ExtResource("1_5vfeh")
+
+[node name="Piano" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(960, 544)
+scale = Vector2(70, 70)
+texture = ExtResource("1_6ttn3")
+
+[node name="1" type="Button" parent="."]
+offset_left = 540.0
+offset_top = 439.0
+offset_right = 610.0
+offset_bottom = 649.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="1"]
+stream = ExtResource("3_edhqj")
+max_distance = 2e+08
+
+[node name="2" type="Button" parent="."]
+offset_left = 610.0
+offset_top = 439.0
+offset_right = 680.0
+offset_bottom = 576.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="2"]
+stream = ExtResource("4_7e6x6")
+max_distance = 2e+08
+
+[node name="3" type="Button" parent="."]
+offset_left = 680.0
+offset_top = 439.0
+offset_right = 750.0
+offset_bottom = 649.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="3"]
+stream = ExtResource("5_tj6o0")
+max_distance = 2e+08
+
+[node name="4" type="Button" parent="."]
+offset_left = 750.0
+offset_top = 439.0
+offset_right = 820.0
+offset_bottom = 576.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="4"]
+stream = ExtResource("6_ncsgp")
+max_distance = 2e+08
+
+[node name="5" type="Button" parent="."]
+offset_left = 820.0
+offset_top = 439.0
+offset_right = 890.0
+offset_bottom = 649.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="5"]
+stream = ExtResource("7_xgk5x")
+max_distance = 2e+08
+
+[node name="6" type="Button" parent="."]
+offset_left = 890.0
+offset_top = 439.0
+offset_right = 960.0
+offset_bottom = 576.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="6"]
+stream = ExtResource("8_c6aob")
+max_distance = 2e+08
+
+[node name="7" type="Button" parent="."]
+offset_left = 960.0
+offset_top = 439.0
+offset_right = 1030.0
+offset_bottom = 649.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="7"]
+stream = ExtResource("9_agwyb")
+max_distance = 2e+08
+
+[node name="8" type="Button" parent="."]
+offset_left = 1030.0
+offset_top = 439.0
+offset_right = 1100.0
+offset_bottom = 649.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="8"]
+stream = ExtResource("10_dhop4")
+max_distance = 2e+08
+
+[node name="9" type="Button" parent="."]
+offset_left = 1100.0
+offset_top = 439.0
+offset_right = 1170.0
+offset_bottom = 576.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="9"]
+stream = ExtResource("11_e3qfn")
+max_distance = 2e+08
+
+[node name="10" type="Button" parent="."]
+offset_left = 1170.0
+offset_top = 439.0
+offset_right = 1240.0
+offset_bottom = 649.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="10"]
+stream = ExtResource("12_q8j27")
+max_distance = 2e+08
+
+[node name="11" type="Button" parent="."]
+offset_left = 1240.0
+offset_top = 439.0
+offset_right = 1310.0
+offset_bottom = 576.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="11"]
+stream = ExtResource("13_0x3wp")
+max_distance = 2e+08
+
+[node name="12" type="Button" parent="."]
+offset_left = 1310.0
+offset_top = 439.0
+offset_right = 1380.0
+offset_bottom = 649.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="12"]
+stream = ExtResource("14_i7437")
+max_distance = 2e+08
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 1368.0
+offset_top = 256.0
+offset_right = 1536.0
+offset_bottom = 320.0
+text = "Quitter"
+
+[connection signal="pressed" from="1" to="." method="_on__pressed"]
+[connection signal="pressed" from="2" to="." method="_on_2_pressed"]
+[connection signal="pressed" from="3" to="." method="_on_3_pressed"]
+[connection signal="pressed" from="4" to="." method="_on_4_pressed"]
+[connection signal="pressed" from="5" to="." method="_on_5_pressed"]
+[connection signal="pressed" from="6" to="." method="_on_6_pressed"]
+[connection signal="pressed" from="7" to="." method="_on_7_pressed"]
+[connection signal="pressed" from="8" to="." method="_on_8_pressed"]
+[connection signal="pressed" from="9" to="." method="_on_9_pressed"]
+[connection signal="pressed" from="10" to="." method="_on_10_pressed"]
+[connection signal="pressed" from="11" to="." method="_on_11_pressed"]
+[connection signal="pressed" from="12" to="." method="_on_12_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

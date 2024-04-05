@@ -141,7 +141,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 128
-text = "ENIGME 01"
+text = "ENIGMA_1_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -186,7 +186,7 @@ offset_top = 8.0
 offset_right = 1664.0
 offset_bottom = 149.0
 theme_override_font_sizes/font_size = 32
-text = "Si sept jours apres 70 jours etait un dimanche, sept jours avant 70 jours. A partir d'aujourd'hui correspond a quel jour de la semaine ?"
+text = "ENIGMA_1_SUBJECT"
 autowrap_mode = 3
 
 [node name="Coins" type="Label" parent="TextureRect"]
@@ -223,7 +223,8 @@ theme_override_styles/normal = ExtResource("4_hcsig")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
 theme_override_styles/disabled = ExtResource("8_6qqgj")
-text = "LUNDI"
+text = "ENIGMA_1_RESPONSE1"
+text_overrun_behavior = 1
 
 [node name="2" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(320, 320)
@@ -238,7 +239,8 @@ theme_override_styles/normal = ExtResource("4_hcsig")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
 theme_override_styles/disabled = ExtResource("8_6qqgj")
-text = "mardi"
+text = "ENIGMA_1_RESPONSE2"
+text_overrun_behavior = 1
 
 [node name="3" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(320, 320)
@@ -253,7 +255,8 @@ theme_override_styles/normal = ExtResource("4_hcsig")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
 theme_override_styles/disabled = ExtResource("8_6qqgj")
-text = "mercredi"
+text = "ENIGMA_1_RESPONSE3"
+text_overrun_behavior = 1
 
 [node name="4" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(320, 320)
@@ -268,7 +271,8 @@ theme_override_styles/normal = ExtResource("4_hcsig")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
 theme_override_styles/disabled = ExtResource("8_6qqgj")
-text = "jeudi"
+text = "ENIGMA_1_RESPONSE4"
+text_overrun_behavior = 1
 
 [node name="5" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(320, 320)
@@ -283,7 +287,8 @@ theme_override_styles/normal = ExtResource("4_hcsig")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
 theme_override_styles/disabled = ExtResource("8_6qqgj")
-text = "vendredi"
+text = "ENIGMA_1_RESPONSE5"
+text_overrun_behavior = 1
 
 [node name="6" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(320, 320)
@@ -298,7 +303,8 @@ theme_override_styles/normal = ExtResource("4_hcsig")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
 theme_override_styles/disabled = ExtResource("8_6qqgj")
-text = "samedi"
+text = "ENIGMA_1_RESPONSE6"
+text_overrun_behavior = 1
 
 [node name="7" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(320, 320)
@@ -313,7 +319,8 @@ theme_override_styles/normal = ExtResource("4_hcsig")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
 theme_override_styles/disabled = ExtResource("8_6qqgj")
-text = "dimanche"
+text = "ENIGMA_1_RESPONSE7"
+text_overrun_behavior = 1
 
 [node name="Timer" type="Label" parent="TextureRect"]
 layout_mode = 0
@@ -377,7 +384,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 128
-text = "c'est gagne"
+text = "ENIGMA_CORRECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -397,7 +404,7 @@ offset_top = 8.0
 offset_right = 1664.0
 offset_bottom = 149.0
 theme_override_font_sizes/font_size = 32
-text = "Si sept jours apres 70 jours etait un dimanche, sept jours avant 70 jours. A partir d'aujourd'hui correspond a quel jour de la semaine ?"
+text = "ENIGMA_1_SUBJECT"
 autowrap_mode = 3
 
 [node name="Response" type="Label" parent="ResultWin/Panel"]
@@ -407,7 +414,7 @@ offset_top = 232.0
 offset_right = 1656.0
 offset_bottom = 467.0
 theme_override_font_sizes/font_size = 32
-text = "La reponse ? C'est encore dimanche. Il s’agit d’un casse-tete qui deconcerte encore et encore les gens et montre a quel point une formulation elaboree peut vous faire courir autour de vous alors qu’en realite, la solution du casse-tete est tres simple."
+text = "ENIGMA_1_WIN_DESCRIPTION"
 autowrap_mode = 3
 
 [node name="Validate" type="Label" parent="ResultWin"]
@@ -418,7 +425,7 @@ offset_top = 944.0
 offset_right = 1920.0
 offset_bottom = 979.0
 theme_override_font_sizes/font_size = 32
-text = "APPUYEZ SUR UNE TOUCHE POUR SORTIR"
+text = "ENIGMA_QUIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -472,12 +479,11 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 128
-text = "incorrect"
+text = "ENIGMA_INCORRECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="ResultLoose"]
-visible = false
 layout_mode = 0
 offset_left = 128.0
 offset_top = 112.0
@@ -493,7 +499,7 @@ offset_top = 8.0
 offset_right = 1664.0
 offset_bottom = 149.0
 theme_override_font_sizes/font_size = 32
-text = "Si sept jours apres 70 jours etait un dimanche, sept jours avant 70 jours. A partir d'aujourd'hui correspond a quel jour de la semaine ?"
+text = "ENIGMA_1_SUBJECT"
 autowrap_mode = 3
 
 [node name="Response" type="Label" parent="ResultLoose/Panel"]
@@ -503,7 +509,7 @@ offset_top = 232.0
 offset_right = 1656.0
 offset_bottom = 467.0
 theme_override_font_sizes/font_size = 32
-text = "MALHEUREUSEMENT c'est la mauvaise reponse, reflechissez bien et lisez bien la question. faites bien attention a la formulation de cette derniere. rappellez-vous qu'une semaine contient 7 jours."
+text = "ENIGMA_1_LOOSE_DESCRIPTION"
 autowrap_mode = 3
 
 [node name="Validate" type="Label" parent="ResultLoose"]
@@ -515,7 +521,7 @@ offset_top = 944.0
 offset_right = 1920.0
 offset_bottom = 979.0
 theme_override_font_sizes/font_size = 32
-text = "APPUYEZ SUR UNE TOUCHE POUR SORTIR"
+text = "ENIGMA_QUIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -569,7 +575,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 128
-text = "c'est perdu"
+text = "ENIGMA_LOOSE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -589,7 +595,7 @@ offset_top = 8.0
 offset_right = 1664.0
 offset_bottom = 149.0
 theme_override_font_sizes/font_size = 32
-text = "Si sept jours apres 70 jours etait un dimanche, sept jours avant 70 jours. A partir d'aujourd'hui correspond a quel jour de la semaine ?"
+text = "ENIGMA_1_SUBJECT"
 autowrap_mode = 3
 
 [node name="Response" type="Label" parent="ResultLooseMax/Panel"]
@@ -599,9 +605,7 @@ offset_top = 232.0
 offset_right = 1656.0
 offset_bottom = 467.0
 theme_override_font_sizes/font_size = 32
-text = "MALHEUREUSEMENT c'est la mauvaise reponse, reflechissez bien et lisez bien la question. faites bien attention a la formulation de cette derniere. rappellez-vous qu'une semaine contient 7 jours.
-
-Vous n'avez plus assez d'essais pour continuer cet enigme..."
+text = "ENIGMA_1_LOOSEMAX_DESCRIPTION"
 autowrap_mode = 3
 
 [node name="Validate" type="Label" parent="ResultLooseMax"]
@@ -613,7 +617,7 @@ offset_top = 944.0
 offset_right = 1920.0
 offset_bottom = 979.0
 theme_override_font_sizes/font_size = 32
-text = "APPUYEZ SUR UNE TOUCHE POUR SORTIR"
+text = "ENIGMA_QUIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
