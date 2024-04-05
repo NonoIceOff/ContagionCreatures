@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4jfp7imlkl0w"]
+
+[ext_resource type="Script" path="res://Scenes/Credit_of_the_game.gd" id="1_sl7ei"]
+[ext_resource type="Script" path="res://Scenes/Settings_return_menu.gd" id="2_4wso2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glpnr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x36am"]
+
+[sub_resource type="GDScript" id="GDScript_ax0pc"]
+script/source = "extends Label
+
+func _ready():
+	fit_to_screen()
+
+func fit_to_screen():
+	size = get_viewport_rect().size
+"
+
+[node name="Credit_of_the_game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sl7ei")
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 0
+offset_right = 2036.0
+offset_bottom = 1076.0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_glpnr")
+text = "REMERCIEMENT
+
+
+
+Les developpeurs :
+
+
+- NOLANN
+- MATHIEU
+- GWENDAL
+- ILONA
+
+
+
+Conformité aux licences :
+
+
+
+
+Ce jeu utilise Godot Engine, disponible sous la licence suivante :
+
+Copyright (c) 2014-présent Contributeurs au moteur Godot. Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+L'autorisation est par les présentes accordée, à titre gratuit, à toute personne obtenant une copie de ce logiciel et des fichiers 
+de 
+documentation 
+associés (le \"Logiciel\"), d'utiliser le Logiciel sans restriction, y compris, sans limitation, les droits d'utilisation, de copie, 
+de modification, de fusion, de publication, de distribution, de sous-licence et/ou de vente de copies du Logiciel, et d'autoriser les 
+personnes 
+à qui le Logiciel est fourni à le faire, sous réserve des conditions suivantes :
+
+L'avis de droit d'auteur ci-dessus et cet avis d'autorisation doivent être inclus dans toutes les copies ou parties substantielles 
+du logiciel.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
+LIABLE FOR
+ ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+label_settings = SubResource("LabelSettings_x36am")
+horizontal_alignment = 1
+script = SubResource("GDScript_ax0pc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Return_menu" type="Button" parent="CanvasLayer"]
+offset_left = 1835.0
+offset_top = 14.0
+offset_right = 1898.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 28
+text = "X"
+script = ExtResource("2_4wso2")
+
+[connection signal="pressed" from="CanvasLayer/Return_menu" to="CanvasLayer/Return_menu" method="_on_pressed"]
