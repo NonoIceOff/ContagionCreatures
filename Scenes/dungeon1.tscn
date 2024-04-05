@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://p838sug386nh" path="res://Textures/light_mask.png" id="4_gsk56"]
 [ext_resource type="Script" path="res://Scenes/Transition_To_mainMap.gd" id="5_2xtxa"]
 [ext_resource type="Texture2D" uid="uid://c18q56cdgsav5" path="res://Textures/WHATTT.png" id="6_md5wr"]
-[ext_resource type="AudioStream" uid="uid://b3nbcoplainu4" path="res://Sounds/dungeon_ambiance.mp3" id="9_r0ofs"]
+[ext_resource type="AudioStream" uid="uid://bfw628o70egcf" path="res://Sounds/dungeon_sound.mp3" id="9_r0ofs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4vl6"]
 size = Vector2(24, 13.3334)
@@ -121,13 +121,11 @@ offset_bottom = 1080.0
 
 [node name="DungeonTitle" type="Label" parent="CanvasLayer"]
 offset_left = 472.0
-offset_top = 456.0
+offset_top = 384.0
 offset_right = 1464.0
-offset_bottom = 538.0
+offset_bottom = 632.0
 theme_override_font_sizes/font_size = 32
-text = "Toi qui penetres ce donjon,
-sors victorieux des chemins perdus
-pour obtenir tous les tresors"
+text = "DUNGEON_1_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -173,11 +171,11 @@ scale = Vector2(0.9, 0.9)
 text = "[ E ]"
 
 [node name="Label" type="Label" parent="."]
-offset_left = -56.0
-offset_top = -248.0
-offset_right = 125.0
-offset_bottom = -222.0
-text = "Bon courage !"
+offset_left = -136.0
+offset_top = -264.0
+offset_right = 198.0
+offset_bottom = -200.0
+text = "DUNGEON_GOOD_LUCK"
 horizontal_alignment = 1
 vertical_alignment = 1
 

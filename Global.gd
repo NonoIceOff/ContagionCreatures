@@ -28,30 +28,48 @@ var patreon_code = ""
 var patreon_active = false
 var patreon_time = 0.0
 
+var pianos = [0,0,0,0]
+var current_map = "main_map"
+
+var start_cinematic = {
+	0: "START_CINEMATIC_TEXT_0",
+	1: "START_CINEMATIC_TEXT_1",
+	2: "START_CINEMATIC_TEXT_2",
+	3: "START_CINEMATIC_TEXT_3",
+	4: "START_CINEMATIC_TEXT_4",
+	5: "START_CINEMATIC_TEXT_5",
+}
+
 
 signal fringe_changed
 
 func quest_finished(i):
-	if get_node_or_null("/root/main_map/ui/TerminatedQuest") != null:
-		get_node("/root/main_map/AudioStreamPlayer2D").stream = load("res://Sounds/victory.mp3")
-		get_node("/root/main_map/AudioStreamPlayer2D").playing = true
-		get_node("/root/main_map/ui/TerminatedQuest").visible = true
-		get_node("/root/main_map/ui/TerminatedQuest/Name").text = Global.quests[i]["title"]
+	Tutorial.get_node(".").tutorials[7]["progress"] += 100
+	if get_node_or_null("/root/"+current_map+"/SoundEffectFx") != null:
+		get_node("/root/main_map/SoundEffectFx").playing = false
+	if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:
+		get_node("/root/"+current_map+"/AudioStreamPlayer2D").stream = load("res://Sounds/victory.mp3")
+		get_node("/root/"+current_map+"/AudioStreamPlayer2D").playing = true
+		get_node("/root/"+current_map+"/ui/TerminatedQuest").visible = true
+		get_node("/root/"+current_map+"/ui/TerminatedQuest/Name").text = Global.quests[i]["title"]
 		await get_tree().create_timer(5).timeout 
-		if get_node_or_null("/root/main_map/ui/TerminatedQuest") != null:
-			get_node("/root/main_map/ui/TerminatedQuest").visible = false
+		if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:
+			get_node("/root/"+current_map+"/ui/TerminatedQuest").visible = false
+	if get_node_or_null("/root/main_map/SoundEffectFx") != null:
+		get_node("/root/main_map/SoundEffectFx").playing = true
+	quests[i]["finished"] = true
 
 func set_quest(i):
 	if i == -1:
-		if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
-			get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = false
+		if get_node_or_null("/root/"+current_map+"/ui/CPUParticles2D") != null:
+			get_node("/root/"+current_map+"/ui/CPUParticles2D").visible = false
 	else:
 		Global.current_quest_id = i
-		if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
-			if get_node_or_null("/root/main_map/CanvasLayer/CPUParticles2D") != null:
-				get_node("/root/main_map/CanvasLayer/CPUParticles2D").visible = true
+		if get_node_or_null("/root/"+current_map+"/ui/Minimap") != null:
+			if get_node_or_null("/root/"+current_map+"/ui/CPUParticles2D") != null:
+				get_node("/root/"+current_map+"/ui/CPUParticles2D").visible = true
 			
-			get_node("/root/main_map/CanvasLayer/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
+			get_node("/root/"+current_map+"/ui/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
 
 func _ready():
 	
@@ -130,7 +148,7 @@ var animals_enemy = {
 }
 var items = {
 	1: {
-		"name":"Antidote",
+		"name":"ANTIDOTE",
 		"value":0,
 		"type":["antidote"],
 		"effets":"Possibilite de recuperer l'animal ennemi. A utiliser si l'ennemi est bas en PV",
@@ -138,7 +156,7 @@ var items = {
 		"quantity":0
 	},
 	2: {
-		"name":"Gemme Bleue",
+		"name":"BLUE_GEM",
 		"value":0,
 		"type":["def",1.15],
 		"effets":"15% de DEF",
@@ -146,7 +164,7 @@ var items = {
 		"quantity":0
 	},
 	3: {
-		"name":"Crepe",
+		"name":"CREPE",
 		"value":0,
 		"type":["atk",1.1],
 		"effets":"10% d'ATK",
@@ -154,7 +172,7 @@ var items = {
 		"quantity":0
 	},
 	4: {
-		"name":"Pomme",
+		"name":"APPLE",
 		"value":0,
 		"type":["regen",5],
 		"effets":"5 PV",
@@ -170,7 +188,7 @@ var items = {
 		"quantity":0
 	},
 	6: {
-		"name":"Crampte",
+		"name":"CRAMPTE",
 		"value":0,
 		"type":["atk",2],
 		"effets":"200% d'ATK",
@@ -181,7 +199,7 @@ var items = {
 
 var attacks = {
 	1: {
-		"name":"Arc",
+		"name":"BOW",
 		"value":11,
 		"type":['Écho','Relique','Prisme','Essence','Totem'],
 		"boost":0,
@@ -189,7 +207,7 @@ var attacks = {
 		"quantity":0
 	},
 	2: {
-		"name":"Epee",
+		"name":"SWORD",
 		"value":17,
 		"type":['Écho','Relique','Prisme','Essence','Totem'],
 		"boost":0,
@@ -197,7 +215,7 @@ var attacks = {
 		"quantity":5
 	},
 	3: {
-		"name":"Hache",
+		"name":"AXE",
 		"value":20,
 		"type":['Écho','Relique','Prisme','Essence','Totem'],
 		"boost":0,
@@ -205,7 +223,7 @@ var attacks = {
 		"quantity":0
 	},
 	4: {
-		"name":"Poele",
+		"name":"STOVE",
 		"value":23,
 		"type":['Écho','Relique','Prisme','Essence','Totem'],
 		"boost":0,
@@ -216,52 +234,62 @@ var attacks = {
 
 var quests = {
 	0: {
-		"title":"Parchemin perdu",
-		"long_description":"Vous pénétrez dans la modeste demeure du vieux sage, un érudit respecté de tous dans le royaume. Sa longue barbe blanche et ses yeux sages vous fixent avec bienveillance alors qu'il vous confie une quête d'une importance capitale.
-			\nAinsi, votre aventure débute. Vous partez à la recherche de ce parchemin, bravant des dangers inconnus, explorant des contrées reculées et affrontant des créatures mythiques. La destinée du royaume dépend de votre réussite. Que la chance accompagne vos pas, brave aventurier !",
+		"title":"QUEST_0_TITLE",
+		"long_description":"QUEST_0_LONG_DESCRIPTION",
 		"descriptions":
-			["Allez voir Hector, il vous demandera de chercher un parchemin sacre.",
-			"Allez voir Loytan, il a quelque chose pour faire avancer cette dite tragédie...",
-			"Allez voir Loytan, pour dire que vous avez réussi votre énigme",
-			"Allez voir Hector, pour lui remettre ses cramptes",
-			"Allez voir Loytan, pour faire une nouvelle enigme",
-			"Allez voir Loytan, pour dire que vous avez réussi votre énigme"],
+			["QUEST_0_DESCRIPTION0",
+			"QUEST_0_DESCRIPTION1",
+			"QUEST_0_DESCRIPTION2",
+			"QUEST_0_DESCRIPTION3",
+			"QUEST_0_DESCRIPTION4",
+			"QUEST_0_DESCRIPTION5"],
 		"mini_descriptions":
-			["Allez voir Hector","Allez voir Loytan","Allez parler a Layton","Rendez les cramptes a Hector","Demandez a Layton une nouvelle enigme","Allez parler a Layton"],
+			["QUEST_0_MINI_DESCRIPTION0","QUEST_0_MINI_DESCRIPTION1","QUEST_0_MINI_DESCRIPTION2","QUEST_0_MINI_DESCRIPTION3","QUEST_0_MINI_DESCRIPTION4","QUEST_0_MINI_DESCRIPTION5"],
 		"pin_positions":[Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664),Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664)],
 		"stade":0,
 		"finished":false,
 		"members_only":false,
 	},
 	1: {
-		"title":"Bagird le rigolo",
-		"long_description":"Vous devez aller voir Monsieur Bagird, il vous demandera d'écouter à sa parole, vous devrez répondre à cela.",
+		"title":"QUEST_1_TITLE",
+		"long_description":"QUEST_1_LONG_DESCRIPTION",
 		"descriptions":
-			["Allez voir Monsieur Bagird qui se trouve sur la place du village, il a une belle bito.",
-			"Allez voir Monsieur Bagird et rigolez à sa blague.",
-			"Allez voir Monsieur Bagird qui se trouve à côté du pont Richard, pour continuer sa conversation...",
-			"Mosieur Bagird le rigolo vous a donné le N-KEY, mais vous devez trouver à quoi elle sert et où se trouve !"],
+			["QUEST_1_DESCRIPTION0",
+			"QUEST_1_DESCRIPTION1",
+			"QUEST_1_DESCRIPTION2",
+			"QUEST_1_DESCRIPTION3"],
 		"mini_descriptions":
-			["Allez voir Bagird","Rigolez a la blague de Bagird","Allez rejoindre Bagird vers le pont Richard","Cherchez l'endroit d'utilisation du N-KEY"],
+			["QUEST_1_MINI_DESCRIPTION0","QUEST_1_MINI_DESCRIPTION1","QUEST_1_MINI_DESCRIPTION2","QUEST_1_MINI_DESCRIPTION3"],
 		"pin_positions":[Vector2(980,-680),Vector2(980,-680),Vector2(764,932),Vector2(-500,-740)],
 		"stade":0,
 		"finished":false,
 		"members_only":true,
 	},
 	2: {
-		"title":"Tous les donjons",
-		"long_description":"Terminez tous les donjons du jeu",
+		"title":"QUEST_2_TITLE",
+		"long_description":"QUEST_2_LONG_DESCRIPTION",
 		"descriptions":
-			["Terminez tous les donjons du jeu"],
+			["QUEST_2_DESCRIPTION0"],
 		"mini_descriptions":
-			["Terminez tous les donjons du jeu"],
+			["QUEST_2_MINI_DESCRIPTION0"],
 		"pin_positions":[Vector2(0,0)],
 		"stade":0,
 		"finished":false,
 		"members_only":false,
+	},
+	3: {
+		"title":"QUEST_3_TITLE",
+		"long_description":"QUEST_3_LONG_DESCRIPTION",
+		"descriptions":
+			["QUEST_3_DESCRIPTION0","QUEST_3_DESCRIPTION1","QUEST_3_DESCRIPTION2","QUEST32_DESCRIPTION3"],
+		"mini_descriptions":
+			["QUEST_3_MINI_DESCRIPTION0","QUEST_3_MINI_DESCRIPTION1","QUEST_3_MINI_DESCRIPTION2","QUEST_3_MINI_DESCRIPTION3"],
+		"pin_positions":[Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(0,0)],
+		"stade":0,
+		"finished":false,
+		"members_only":true,
 	}
 }
-
 
 func finished_stade_quest(quest_id=current_quest_id):
 	if quest_id > -1:
@@ -273,6 +301,7 @@ func finished_stade_quest(quest_id=current_quest_id):
 
 func save():
 	var save_file = ConfigFile.new()
+
 	
 	save_file.set_value("Tuto", "Stade", tutorial_stade)
 	save_file.set_value("Tuto", "Type", tutorial)
@@ -308,6 +337,7 @@ func save():
 func load():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
+
 	
 	tutorial_stade = load_file.get_value("Tuto", "Stade", tutorial_stade)
 	tutorial = load_file.get_value("Tuto", "Type", tutorial)
@@ -330,7 +360,17 @@ func load():
 	PlayerStats.animal_health = load_file.get_value("Animals", "health", PlayerStats.animal_health)
 	PlayerStats.animal_level = load_file.get_value("Animals", "level", PlayerStats.animal_level)
 
+func load_localisation():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://languages.txt", "gentle_duck")
+	TranslationServer.set_locale(load_file.get_value("Languages","Current",TranslationServer.get_locale()))
+	
 
+func save_localisation():
+	var save_file = ConfigFile.new()
+	save_file.set_value("Languages","Current",TranslationServer.get_locale())
+	save_file.save_encrypted_pass("user://languages.txt", "gentle_duck")
+	
 func load_position():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")

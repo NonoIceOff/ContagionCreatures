@@ -91,6 +91,7 @@ func _process(delta):
 			close()
 		else:
 			open()
+			Tutorial.get_node(".").tutorials[6]["progress"] += 100
 	
 	for i in Global.quests.size():
 		
@@ -105,9 +106,12 @@ func _process(delta):
 			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Description").self_modulate = Color(0,0,0,0.5)
 			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Titlet").visible = true
 			
-		if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button") != null and Global.quests[i]["finished"] == false and Global.quests[i]["members_only"] == false:
+		if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button") != null and Global.quests[i]["finished"] == false and (Global.quests[i]["members_only"] == false or Global.patreon_active == true):
 			if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button").button_pressed == true:
 				Global.set_quest(i)
+				get_node("AudioStreamPlayer").stream = load("res://Sounds/click.mp3")
+				get_node("AudioStreamPlayer").playing = true
 				get_node("QuestInfos/TitreQuete").text = Global.quests[i]["title"]
-				get_node("QuestInfos/DescriptionQuete").text = Global.quests[i]["long_description"]+"\n\n[color=orange][i]"+Global.quests[i]["mini_descriptions"][Global.quests[i]["stade"]]+"[/i][/color]"
+				get_node("QuestInfos/DescriptionQuete").text = tr(Global.quests[i]["long_description"])+"\n\n[color=orange][i]"+tr(Global.quests[i]["mini_descriptions"][Global.quests[i]["stade"]])+"[/i][/color]"
+				#+"\n\n[color=orange][i]"+Global.quests[i]["mini_descriptions"][Global.quests[i]["stade"]]+"[/i][/color]"
 				get_node("ScrollContainer/VBoxContainer/Panel"+str(i)).self_modulate = Color(1,1,0,1)

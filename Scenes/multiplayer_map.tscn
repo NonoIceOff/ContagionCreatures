@@ -273,7 +273,7 @@ theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("8_1gx4e")
 theme_override_font_sizes/font_size = 64
-text = "MULTIJOUEUR"
+text = "MULTIPLAYER"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("9_gogn7")
@@ -285,7 +285,7 @@ offset_right = 1920.0
 offset_bottom = 128.0
 theme_override_fonts/font = ExtResource("8_1gx4e")
 theme_override_font_sizes/font_size = 64
-text = "MULTIJOUEUR"
+text = "MULTIPLAYER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -300,7 +300,7 @@ theme_override_styles/normal = ExtResource("7_843da")
 theme_override_styles/hover = ExtResource("8_1qki2")
 theme_override_styles/pressed = ExtResource("9_fcq30")
 theme_override_styles/disabled = ExtResource("12_1ajfc")
-text = "CREER SERVEUR"
+text = "CREATE_SERVER"
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/MultiplayerSettings"]
 layout_mode = 0
@@ -318,7 +318,7 @@ offset_bottom = 416.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("7_843da")
 theme_override_styles/focus = ExtResource("8_1qki2")
-placeholder_text = "PSEUDO"
+placeholder_text = "TEXT_NICKNAME"
 
 [node name="IpAddress" type="LineEdit" parent="CanvasLayer/MultiplayerSettings"]
 layout_mode = 0
@@ -329,7 +329,7 @@ offset_bottom = 416.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("7_843da")
 theme_override_styles/focus = ExtResource("8_1qki2")
-placeholder_text = "ADRESSE IP"
+placeholder_text = "TEXT_IP_ADDRESS"
 
 [node name="JoinGame" type="Button" parent="CanvasLayer/MultiplayerSettings"]
 layout_mode = 0
@@ -343,7 +343,7 @@ theme_override_styles/hover = ExtResource("8_1qki2")
 theme_override_styles/pressed = ExtResource("9_fcq30")
 theme_override_styles/disabled = ExtResource("12_1ajfc")
 disabled = true
-text = "REJOINDRE SERVEUR"
+text = "JOIN_SERVER"
 
 [node name="RefreshServerList" type="Button" parent="CanvasLayer/MultiplayerSettings"]
 visible = false
@@ -382,7 +382,7 @@ offset_left = 24.0
 offset_top = 1040.0
 offset_right = 360.0
 offset_bottom = 1064.0
-placeholder_text = "Votre message..."
+placeholder_text = "YOUR_MESSAGE"
 
 [node name="Send" type="Button" parent="CanvasLayer/Chat"]
 layout_mode = 0
@@ -395,7 +395,7 @@ theme_override_styles/normal = ExtResource("7_843da")
 theme_override_styles/hover = ExtResource("8_1qki2")
 theme_override_styles/pressed = ExtResource("9_fcq30")
 theme_override_styles/disabled = ExtResource("12_1ajfc")
-text = "ENVOYER"
+text = "SEND_MESSAGE"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Chat"]
 layout_mode = 0
