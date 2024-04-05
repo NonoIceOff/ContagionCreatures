@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cqsj1ecoh183k" path="res://Textures/PNJ/Loytan/tete_loytan.png" id="20_12piq"]
 [ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="21_m1aw1"]
 [ext_resource type="Texture2D" uid="uid://d00cubkujysav" path="res://Textures/Inventaire/grey.png" id="22_ku8d1"]
-[ext_resource type="Texture2D" uid="uid://b6qrnndoprfy7" path="res://Textures/Items/nkey.png" id="23_sq4xb"]
+[ext_resource type="Texture2D" path="res://Textures/Items/nkey.png" id="23_sq4xb"]
 [ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="24_e0f8h"]
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="25_2w24m"]
 

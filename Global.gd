@@ -11,6 +11,13 @@ var brazero_numbers = 0
 var paused = false
 var can_move = true
 
+var attack_index = 0
+var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
+var attack_values = [11,23,2,20]
+var enemy_attack = attack_values[attack_index]
+
+
+
 var grid_size = 31
 var step_delay = 0
 var allow_loops = false
@@ -21,6 +28,10 @@ var saved_point_position: Vector2 = Vector2.ZERO
 var tutorial = true
 var tutorial_stade = 0
 var tutorial_validate = false
+
+var button_info_pressed_player = false
+var button_info_pressed_enemy = false
+var close_button_pressed = false
 
 var current_quest_id = -1
 
@@ -72,125 +83,202 @@ func set_quest(i):
 			get_node("/root/"+current_map+"/ui/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
 
 func _ready():
-	
-	for key in animals_player:
-		var animal_types = animals_player[0]["type"]
-		var random_type_index = randi_range(0, animal_types.size() - 3)
-		var random_type = animal_types[random_type_index]
-		var type_animal = random_type
-		print("Type choisi aléatoirement:", type_animal)
+	pass
+	#for key in animals_player:
+		#var animal_types = animals_player[PlayerStats.animal_id]["type"]
+		#var random_type_index = randi_range(0, animal_types.size() - 10)
+		#var random_type = animal_types[random_type_index]
+		#var type_animal = random_type
+		#print( animals_player[key]["name"] ," Type choisi aléatoirement:", type_animal)
 
 func _process(delta):
 	if tutorial == false:
 		tutorial_stade = -1
+		
+		
+var all_type = {
+	
+	0: {
+		"name": "Echo"
+	},
+	1: {
+		"name": "Relique"
+	},
+	2: {
+		"name": "Prisme"
+	},
+	3: {
+		"name": "Essence"
+	},
+	4: {
+		"name": "Totem"
+	},
+}
+
+var actual_animal = {
+	
+	0: {
+		"name":"Deagle",
+		"infected": false,
+		"type":['Totem'],
+		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et * 2 si l'arme "],		
+		"textureA":"res://Textures/Animals/EAGLE_.png",
+		"texture_animal_fight":"res://Textures/Animals/eagle_Player.png",
+	},
+}
+		
+var retrievedAnimals = {
+	
+	0: {
+		
+	},
+	1: {
+		
+	},
+	2: {
+		
+	},
+	3: {
+		
+	},
+}
 
 var animals_player = {
-	
+
 	0: {
 		"name":"GentleDuck",
 		"infected": false,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
-		"effets":[ 1.06 , " % ATK "], #+6% d'ATK et DEF pour le player si l'arme est du même type
-		"textureP":"res://Textures/DonaldDuck.png"
+		"type":['Prisme'],
+		"boost":[ 1.08 , 1.06 , "atk/def"], #+8% d'ATK et 6% DEF pour le joueur et * 2 si arme du meme type
+		"effets":["+6% d'attaque et +6% de defense pour le joueur et *2 si"],
+		"textureA":"res://Textures/pixil-frame-0_3.png"
 	},
 	1: {
 		"name":"Deagle",
 		"infected": false,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
-		"effets":[ 1.1 , " % DEF"], #+10% de DEF pour le player si l'arme est du même type
-		"textureP":"res://Textures/Animals/EAGLE_.png",
+		"type":['Relique'],
+		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et *2 si"],		
+		"textureA":"res://Textures/Animals/EAGLE_.png",
 	},
 	2: {
 		"name":"Froggy",
 		"infected": false,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
-		"effets":[ 1.03 ,"% ATK"], #d'ATK pour le player si l'arme est du même type
-		"textureP":"res://Textures/Animals/FROG.png",
+		"type":['Essence'],
+		"boost":[ 1.03 ,"atk"], #d'ATK pour le player et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 3% d'attaque à chaque tours pour le joueur et *2 si"],
+		"textureA":"res://Textures/Animals/FROG.png",
 	},
 	3: {
 		"name":"Leonard",
 		"infected": false,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
-		"effets":[  1.2 , "pv"],  # +20 PV à chaque tours pour le player si l'arme est du même type
-		"textureP":"res://Textures/Animals/DRAGON.png",
+		"type":['Totem'],
+		"boost":[  1.2 , "regen"],  # +20 PV à chaque tours pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 20 PV à chaque tours pour le joueur et *2 "],								
+		"textureA":"res://Textures/Animals/DRAGON.png",
+	},
+	4: {
+		"name":"Douglas",
+		"infected": false,
+		"type":['Echo'],
+		"boost":[  0.9 , "DEF"],  # +9 de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+9% de defense en plus pour l'utilisateur et 5%"],						
+		"textureA": "res://Textures/Animals/CHICKEN.png",		
 	},
 }
 var animals_enemy = {
-	
+	0: {
+		"name":"Deagle",
+		"infected": true,
+		"type":['Relique'],
+		"boost":[ 1.1, "def"], #+10% de DEF pour le player si l'arme est du même type
+		"effets":["+10% de defense en plus pour l'utilisateur et *2 si l'arme est du meme type"],
+		"textureA":"res://Textures/Animals/EAGLE_.png",
+		"texture_infected":"res://Textures/Animals/Eagle_infected.png"
+	},
 	1: {
 		"name":"GentleDuck",
 		"infected": true,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
-		"effets":[ 1.06 , " % atk "], #+6% d'ATK et DEF pour le player si l'arme est du même type
-		"textureE":"res://Textures/DonaldDuck.png",
+		"type":['Prisme'],
+		"boost":[ 1.06 , "atk"], #+6% d'ATK et DEF pour le joueur si l'arme est du même type
+		"effets":["+6% d'attaque en plus pour l'utilisateur et *2 si l'arme est du meme type"],		
+		"textureA":"res://Textures/pixil-frame-0_3.png",
+		"texture_infected":""
 	},
 	2: {
-		"name":"Deagle",
-		"infected": true,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
-		"effets":[ 1.1, " % def"], #+10% de DEF pour le player si l'arme est du même type
-		"textureE":"res://Textures/Animals/Eagle_infected.png",
-	},
-	3: {
 		"name":"Froggy",
 		"infected": true,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
-		"effets":[ 1.03 ,"% atk"], # +3% d'ATK pour le player si l'arme est du même type
-		"textureE":"res://Textures/Animals/FROG.png",
+		"type":['Essence'],
+		"boost":[ 1.03 ,"atk"], # +3% d'ATK pour le joueur si l'arme est du même type
+		"effets":["+3% d'attaque en plus pour l'utilisateur et *2 si l'arme est du meme type"],
+		"textureA":"res://Textures/Animals/FROG.png",
+		"texture_infected":""
 	},
-	4: {
+	3: {
 		"name":"Leonard",
 		"infected": true,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
-		"effets":[ 1.2, "regen"],  # +20 PV à chaque tours pour le player si l'arme est du même type
-		"textureE":"res://Textures/Animals/DRAGON.png",
+		"type":['Echo'],
+		"boost":[ 1.2, "regen"],  # +20 PV à chaque tours pour le joueur si l'arme est du même type
+		"effets":["L'utilisateur recupere +2O pv en plus à chaque tour et *2 si l'arme est du meme type"],
+		"textureA":"res://Textures/Animals/DRAGON.png",
+		"texture_infected":""
+	},
+	4: {
+		"name":"Douglas",
+		"infected": true,
+		"type":['Relique'],
+		"boost":[  1.09 , "def"], # +9 de DEF pour le joueur pendant tout le combat si l'arme est du même type
+		"effets":["+9% de defense en plus pour l'utilisateur"],  
+		"textureA": "res://Textures/Animals/CHICKEN.png",
+		"texture_infected":""
 	},
 }
 var items = {
-	1: {
+	0: {
 		"name":"ANTIDOTE",
 		"value":0,
-		"type":["antidote"],
-		"effets":"Possibilite de recuperer l'animal ennemi. A utiliser si l'ennemi est bas en PV",
+		"type":[0, "antidote"],
+		"effets":"Possibilite de recuperer l'animal ennemi. A utiliser si l'ennemi est inférieur a 20 PV",
 		"texture":"res://Textures/Items/Potion_verte.png",
 		"quantity":0
 	},
-	2: {
+	1: {
 		"name":"BLUE_GEM",
 		"value":0,
-		"type":["def",1.15],
+		"type":[1.15, "def"],
 		"effets":"15% de DEF",
 		"texture":"res://Textures/Items/Gemme_bleu.png",
 		"quantity":0
 	},
-	3: {
+	2: {
 		"name":"CREPE",
 		"value":0,
-		"type":["atk",1.1],
+		"type":[1.1, "atk"],
 		"effets":"10% d'ATK",
 		"texture":"res://Textures/Items/Crepes.png",
 		"quantity":0
 	},
-	4: {
+	3: {
 		"name":"APPLE",
 		"value":0,
-		"type":["regen",5],
+		"type":[5, "regen"],
 		"effets":"5 PV",
 		"texture":"res://Textures/Items/Apple.png",
 		"quantity":0
 	},
-	5: {
+	4: {
 		"name":"N-KEY",
 		"value":0,
-		"type":["key",1],
+		"type":[1, "key"],
 		"effets":"Active une porte",
 		"texture":"res://Textures/Items/nkey.png",
 		"quantity":0
 	},
-	6: {
+	5: {
 		"name":"CRAMPTE",
 		"value":0,
-		"type":["atk",2],
+		"type":[2, "atk"],
 		"effets":"200% d'ATK",
 		"texture":"res://Textures/Items/crapte.png",
 		"quantity":0
@@ -198,38 +286,46 @@ var items = {
 }
 
 var attacks = {
-	1: {
+	0: {
 		"name":"BOW",
 		"value":11,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Relique'],
 		"boost":0,
 		"texture":"res://Textures/Items/ARC.png",
 		"quantity":0
 	},
-	2: {
+	1: {
 		"name":"SWORD",
 		"value":17,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Totem'],
 		"boost":0,
 		"texture":"res://Textures/Items/EPEE.png",
-		"quantity":5
+		"quantity":0
 	},
-	3: {
+	2: {
 		"name":"AXE",
 		"value":20,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Echo'],
 		"boost":0,
 		"texture":"res://Textures/Items/HACHE.png",
 		"quantity":0
 	},
-	4: {
+	3: {
 		"name":"STOVE",
 		"value":23,
-		"type":['Écho','Relique','Prisme','Essence','Totem'],
+		"type":['Prisme'],
 		"boost":0,
 		"texture":"res://Textures/Items/POELE.png",
 		"quantity":0
 	},
+}
+
+var all_enemys = {
+	
+	0 : {
+		"name":"Manteau Rouge"
+		
+	}
 }
 
 var quests = {
