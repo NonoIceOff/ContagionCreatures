@@ -163,7 +163,7 @@ var animals_player = {
 	4: {
 		"name":"Douglas",
 		"infected": false,
-		"type":['Écho'],
+		"type":['Echo'],
 		"boost":[  0.9 , "DEF"],  # +9 de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
 		"effets":["+9% de defense en plus pour l'utilisateur et 5%"],						
 		"textureA": "res://Textures/Animals/CHICKEN.png",		
@@ -200,7 +200,7 @@ var animals_enemy = {
 	3: {
 		"name":"Leonard",
 		"infected": true,
-		"type":['Écho'],
+		"type":['Echo'],
 		"boost":[ 1.2, "regen"],  # +20 PV à chaque tours pour le joueur si l'arme est du même type
 		"effets":["L'utilisateur recupere +2O pv en plus à chaque tour et *2 si l'arme est du meme type"],
 		"textureA":"res://Textures/Animals/DRAGON.png",
@@ -220,8 +220,8 @@ var items = {
 	0: {
 		"name":"Antidote",
 		"value":0,
-		"type":["antidote"],
-		"effets":"Possibilite de recuperer l'animal ennemi. A utiliser si l'ennemi est bas en PV",
+		"type":[0, "antidote"],
+		"effets":"Possibilite de recuperer l'animal ennemi. A utiliser si l'ennemi est inférieur a 20 PV",
 		"texture":"res://Textures/Items/Potion_verte.png",
 		"quantity":0
 	},
@@ -287,7 +287,7 @@ var attacks = {
 	2: {
 		"name":"Hache",
 		"value":20,
-		"type":['Écho'],
+		"type":['Echo'],
 		"boost":0,
 		"texture":"res://Textures/Items/HACHE.png",
 		"quantity":0
@@ -300,6 +300,14 @@ var attacks = {
 		"texture":"res://Textures/Items/POELE.png",
 		"quantity":0
 	},
+}
+
+var all_enemys = {
+	
+	0 : {
+		"name":"Manteau Rouge"
+		
+	}
 }
 
 var quests = {

@@ -11,6 +11,8 @@ var defense_player = 0
 
 var buttonP : Button
 var buttonE : Button
+var animalP : Sprite2D
+var animalE : Sprite2D
 var background_rect_info : ColorRect
 
 var texts_enemy = {
@@ -51,11 +53,45 @@ func _ready():
 	get_node("CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
 	activate_buttons()
+	
+	
+	var color_rect_player = ColorRect.new()
+	color_rect_player.name = "color_rect"
+	color_rect_player.size = Vector2(100, 30)  
+	color_rect_player.color = Color(0, 1, 0)  
+	color_rect_player.position = Vector2(190, 660)
+	add_child(color_rect_player)
+
+
+	
+	var life_player = Label.new()
+	life_player.name = "life_player"
+	life_player.text = str(pv_player)
+	life_player.scale = Vector2(1.5, 1.5)
+	life_player.position.x = 25
+	color_rect_player.add_child(life_player)
+	
+	var color_rect_enemy = ColorRect.new()
+	color_rect_enemy.name = "color_rect"
+	color_rect_enemy.size = Vector2(100, 30)  
+	color_rect_enemy.color = Color(1, 0, 0)  
+	color_rect_enemy.position = Vector2(1740, 370)
+	add_child(color_rect_enemy)
+
+
+	
+	var life_enemy = Label.new()
+	life_enemy.name = "life_player"
+	life_enemy.text = str(pv_enemy)
+	life_enemy.scale = Vector2(1.5, 1.5)
+	life_enemy.position.x = 25
+	color_rect_enemy.add_child(life_enemy)
+	
 	var i = 0
 	for key in Global.actual_animal:
 		if Global.animals_player[key] == Global.animals_player[PlayerStats.animal_id]:
 			
-			var animalP = Sprite2D.new()
+			animalP = Sprite2D.new()
 			animalP.name = "Sprite"
 			animalP.texture = load(Global.actual_animal[PlayerStats.animal_id]["texture_animal_fight"])
 			animalP.texture_filter =  CanvasItem.TEXTURE_FILTER_NEAREST 
@@ -82,8 +118,11 @@ func _ready():
 		
 	for key in Global.animals_enemy:
 		if Global.animals_enemy[key] == Global.animals_enemy[PlayerStats.animal_id]:
-			var animalE = Sprite2D.new()
-			animalE.name = "Sprite"
+			
+			
+			
+			animalE = Sprite2D.new()
+			animalE.name = "Sprite_animal_enemy"
 			animalE.texture = load(Global.animals_enemy[PlayerStats.animal_id]["texture_infected"])
 			print("Animal enemy: " + str(Global.animals_enemy[PlayerStats.animal_id]["name"]) +" et de type: " + str(Global.animals_enemy[PlayerStats.animal_id]["type"][0]))
 			animalE.texture_filter =  CanvasItem.TEXTURE_FILTER_NEAREST 
@@ -107,6 +146,16 @@ func _ready():
 			sprite.scale = Vector2(2,2)
 			sprite.position = Vector2(35,35)
 			buttonE.add_child(sprite)
+			
+			
+	if PlayerStats.animal_id != -1:
+		for key in Global.actual_animal:
+			for keys in Global.attacks:
+				if Global.actual_animal[key]["type"] == Global.attacks[keys]["type"]:
+						print(Global.actual_animal[key]["type"][0])
+						print(Global.attacks[keys]["type"][0])
+						var boost_animal = Global.attacks[keys]["value"] * 2
+						Global.attacks[keys]["value"] += boost_animal
 
 func _create_and_display_label_player():
 	for key in Global.actual_animal:
@@ -268,6 +317,7 @@ func _process(delta):
 	rng.randomize()
 	get_node("ContainerMob/TextureProgressBar").value = pv_enemy
 	get_node("ContainerPLAYER/TextureProgressBar").value = pv_player
+	
 	
 	if get_node_or_null("SpeechBox") != null:
 		if get_node("SpeechBox").actual_text == 1:
