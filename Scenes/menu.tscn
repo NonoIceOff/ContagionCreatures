@@ -32,13 +32,6 @@ corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
-bg_color = Color(0.654902, 0.380392, 0.160784, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
 bg_color = Color(0.654902, 0.380392, 0.160784, 1)
 border_width_left = 5
@@ -57,15 +50,15 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnwub"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
 bg_color = Color(0.654902, 0.380392, 0.160784, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsl8i"]
-bg_color = Color(0.654902, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnwub"]
+bg_color = Color(0.654902, 0.380392, 0.160784, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
@@ -84,6 +77,13 @@ corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlqyn"]
 bg_color = Color(0.717647, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsl8i"]
+bg_color = Color(0.654902, 0, 0, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
@@ -173,9 +173,9 @@ offset_bottom = 512.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_j62ra")
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "SOLO"
 script = ExtResource("2_soydd")
 
@@ -187,9 +187,9 @@ offset_bottom = 609.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_j62ra")
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 disabled = true
 text = "MULTIPLAYER"
 expand_icon = true
@@ -221,9 +221,9 @@ offset_right = 728.0
 offset_bottom = 952.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "SETTINGS"
 script = ExtResource("3_4a2ih")
 
@@ -235,9 +235,9 @@ offset_left = 414.0
 offset_top = 987.0
 offset_right = 639.0
 offset_bottom = 1028.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_gnwub")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gnwub")
 text = "CREDITS"
 script = ExtResource("12_yb7yn")
 
@@ -248,9 +248,9 @@ offset_right = 1664.0
 offset_bottom = 576.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_lsl8i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7dkss")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wlqyn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lsl8i")
 text = "DELETE_SAVE"
 script = ExtResource("8_5568m")
 
@@ -279,9 +279,9 @@ offset_right = 1664.0
 offset_bottom = 704.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "PATREON_CODE"
 icon = ExtResource("9_7fxk5")
 expand_icon = true
@@ -314,9 +314,9 @@ offset_right = 240.0
 offset_bottom = 72.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "PATREON"
 icon = ExtResource("9_7fxk5")
 expand_icon = true
@@ -330,9 +330,9 @@ offset_right = 240.0
 offset_bottom = 120.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "DISCORD"
 icon = ExtResource("19_hhkdv")
 expand_icon = true
@@ -346,9 +346,9 @@ offset_right = 240.0
 offset_bottom = 168.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "INSTAGRAM"
 icon = ExtResource("22_4l4g4")
 expand_icon = true
@@ -403,9 +403,9 @@ offset_top = 576.0
 offset_right = 1536.0
 offset_bottom = 648.0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("13_1y7pi")
 theme_override_styles/focus = ExtResource("14_ohk08")
 theme_override_styles/read_only = ExtResource("15_pnm5u")
+theme_override_styles/normal = ExtResource("13_1y7pi")
 placeholder_text = "ENTREZ LE CODE PATREON"
 alignment = 1
 
@@ -417,9 +417,9 @@ offset_right = 1264.0
 offset_bottom = 960.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "CONFIRMER LE CODE"
 expand_icon = true
 
@@ -442,9 +442,9 @@ offset_right = 304.0
 offset_bottom = 136.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "RETOUR"
 expand_icon = true
 

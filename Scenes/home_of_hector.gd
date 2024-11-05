@@ -11,8 +11,6 @@ func _ready():
 	
 
 
-
-
 func _process(delta):
 	if Input.is_action_just_pressed("ui_interact") and piano_in == true:
 		var instance = scene.instantiate()

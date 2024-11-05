@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/scene_Choose_Items.gd" id="1_5obou"]
 [ext_resource type="Texture2D" uid="uid://dp5pxuyx1t8of" path="res://Textures/Cross_Close.png" id="2_363pp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rk6mi"]
-bg_color = Color(0.996078, 0.996078, 0.996078, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwfdf"]
+bg_color = Color(0.972549, 0.972549, 0.972549, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -15,8 +15,8 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwfdf"]
-bg_color = Color(0.972549, 0.972549, 0.972549, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rk6mi"]
+bg_color = Color(0.996078, 0.996078, 0.996078, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -50,8 +50,8 @@ offset_left = 1727.0
 offset_top = 70.0
 offset_right = 1827.0
 offset_bottom = 170.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_rk6mi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cwfdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rk6mi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Button2"]
 texture_filter = 1

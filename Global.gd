@@ -84,12 +84,6 @@ func set_quest(i):
 
 func _ready():
 	pass
-	#for key in animals_player:
-		#var animal_types = animals_player[PlayerStats.animal_id]["type"]
-		#var random_type_index = randi_range(0, animal_types.size() - 10)
-		#var random_type = animal_types[random_type_index]
-		#var type_animal = random_type
-		#print( animals_player[key]["name"] ," Type choisi aléatoirement:", type_animal)
 
 func _process(delta):
 	if tutorial == false:
@@ -125,22 +119,6 @@ var actual_animal = {
 		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et * 2 si l'arme "],		
 		"textureA":"res://Textures/Animals/EAGLE_.png",
 		"texture_animal_fight":"res://Textures/Animals/eagle_Player.png",
-	},
-}
-		
-var retrievedAnimals = {
-	
-	0: {
-		
-	},
-	1: {
-		
-	},
-	2: {
-		
-	},
-	3: {
-		
 	},
 }
 
@@ -397,7 +375,6 @@ func finished_stade_quest(quest_id=current_quest_id):
 
 func save():
 	var save_file = ConfigFile.new()
-
 	
 	save_file.set_value("Tuto", "Stade", tutorial_stade)
 	save_file.set_value("Tuto", "Type", tutorial)
@@ -434,7 +411,7 @@ func load():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
 
-	
+
 	tutorial_stade = load_file.get_value("Tuto", "Stade", tutorial_stade)
 	tutorial = load_file.get_value("Tuto", "Type", tutorial)
 	tutorial_validate = load_file.get_value("Tuto", "Validate", tutorial_validate)
