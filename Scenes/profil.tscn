@@ -86,6 +86,7 @@ offset_right = 1480.0
 offset_bottom = 512.0
 
 [node name="EmailField" type="LineEdit" parent="LoginPanel"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 1336.0
@@ -95,6 +96,7 @@ theme_override_font_sizes/font_size = 32
 placeholder_text = "Email"
 
 [node name="PasswordField" type="LineEdit" parent="LoginPanel"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 128.0
 offset_right = 1336.0
@@ -120,6 +122,7 @@ offset_right = 1480.0
 offset_bottom = 848.0
 
 [node name="EmailField" type="LineEdit" parent="RegisterPanel"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 1336.0
@@ -129,6 +132,7 @@ theme_override_font_sizes/font_size = 32
 placeholder_text = "Email"
 
 [node name="PasswordField" type="LineEdit" parent="RegisterPanel"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 128.0
 offset_right = 1336.0
@@ -138,6 +142,7 @@ theme_override_font_sizes/font_size = 32
 placeholder_text = "Mot de passe"
 
 [node name="UsernameField" type="LineEdit" parent="RegisterPanel"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 224.0
 offset_right = 1336.0
@@ -147,6 +152,7 @@ theme_override_font_sizes/font_size = 32
 placeholder_text = "Pseuso"
 
 [node name="ValidateRegister" type="Button" parent="RegisterPanel"]
+layout_mode = 0
 offset_left = 592.0
 offset_top = 200.0
 offset_right = 728.0

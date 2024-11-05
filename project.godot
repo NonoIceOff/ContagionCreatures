@@ -38,7 +38,7 @@ enabled=PackedStringArray("res://addons/LPCAnimatedSprite/plugin.cfg")
 
 [gui]
 
-theme/custom_font="res://Font/8-BIT_WONDER.TTF"
+theme/custom_font="res://Font/Jersey10-Regular.ttf"
 
 [input]
 
