@@ -1,0 +1,188 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbflfw68ef4rh"]
+
+[ext_resource type="Script" path="res://Scenes/profil.gd" id="1_stqfv"]
+[ext_resource type="Texture2D" uid="uid://bv55etaq3hgwq" path="res://Textures/user_profile.png" id="1_t1eos"]
+[ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="3_ufvdp"]
+
+[node name="Profil" type="Node2D"]
+script = ExtResource("1_stqfv")
+
+[node name="Login" type="Button" parent="."]
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 448.0
+offset_bottom = 160.0
+text = "se connecter"
+
+[node name="Register" type="Button" parent="."]
+offset_left = 160.0
+offset_top = 184.0
+offset_right = 448.0
+offset_bottom = 288.0
+text = "s'inscrire"
+
+[node name="Disconnect" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 896.0
+offset_right = 328.0
+offset_bottom = 1000.0
+text = "se deconnecter"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 512.0
+offset_top = 64.0
+offset_right = 1432.0
+offset_bottom = 256.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+texture_filter = 1
+position = Vector2(96, 96)
+scale = Vector2(10, 10)
+texture = ExtResource("1_t1eos")
+
+[node name="username" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 736.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 64
+text = "pas connecte"
+
+[node name="points" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 96.0
+offset_right = 408.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 32
+text = "-"
+
+[node name="money" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 136.0
+offset_right = 408.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 32
+text = "-"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_top = 208.0
+offset_right = 608.0
+offset_bottom = 544.0
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="GetUser" type="HTTPRequest" parent="."]
+
+[node name="LoginPanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 0, 1, 1)
+offset_left = 72.0
+offset_top = 320.0
+offset_right = 1480.0
+offset_bottom = 512.0
+
+[node name="EmailField" type="LineEdit" parent="LoginPanel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1336.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("3_ufvdp")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Email"
+
+[node name="PasswordField" type="LineEdit" parent="LoginPanel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = 1336.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("3_ufvdp")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Mot de passe"
+
+[node name="ValidateLogin" type="Button" parent="LoginPanel"]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 200.0
+offset_right = 728.0
+offset_bottom = 232.0
+text = "VALIDER"
+
+[node name="RegisterPanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(0.391736, 0.722288, 3.85046e-07, 1)
+offset_left = 72.0
+offset_top = 552.0
+offset_right = 1480.0
+offset_bottom = 848.0
+
+[node name="EmailField" type="LineEdit" parent="RegisterPanel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1336.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("3_ufvdp")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Email"
+
+[node name="PasswordField" type="LineEdit" parent="RegisterPanel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = 1336.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("3_ufvdp")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Mot de passe"
+
+[node name="UsernameField" type="LineEdit" parent="RegisterPanel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 224.0
+offset_right = 1336.0
+offset_bottom = 271.0
+theme_override_fonts/font = ExtResource("3_ufvdp")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Pseuso"
+
+[node name="ValidateRegister" type="Button" parent="RegisterPanel"]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 200.0
+offset_right = 728.0
+offset_bottom = 232.0
+text = "VALIDER"
+
+[node name="Waiting" type="RichTextLabel" parent="."]
+visible = false
+offset_top = 552.0
+offset_right = 1920.0
+offset_bottom = 632.0
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[center][wave amp=50.0 freq=5.0 connected=1]En attente...[/wave]"
+
+[node name="BackToMenu" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 240.0
+offset_bottom = 48.0
+text = "Retour au menu"
+
+[connection signal="pressed" from="Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="Register" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="Disconnect" to="." method="_on_disconnect_pressed"]
+[connection signal="request_completed" from="GetUser" to="." method="_on_get_user_request_completed"]
+[connection signal="pressed" from="LoginPanel/ValidateLogin" to="." method="_on_validate_login_pressed"]
+[connection signal="pressed" from="RegisterPanel/ValidateRegister" to="." method="_on_validate_register_pressed"]
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

@@ -1,0 +1,193 @@
+[gd_scene load_steps=13 format=3 uid="uid://0j51u86t664a"]
+
+[ext_resource type="Script" path="res://Scenes/multiplayer/multiplayer.gd" id="1_q8qqa"]
+[ext_resource type="Texture2D" uid="uid://c22ivb1nlbj55" path="res://Textures/background_multiplayer.png" id="2_pfaam"]
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="9_joki0"]
+[ext_resource type="Texture2D" uid="uid://b6q88vvjeclt2" path="res://Textures/elo.png" id="9_puxiw"]
+[ext_resource type="AudioStream" uid="uid://cicyfu0a8k2ma" path="res://Sounds/music/multiplayer_menu.mp3" id="10_3f0fn"]
+[ext_resource type="Script" path="res://Scenes/Titre.gd" id="10_qhqvo"]
+[ext_resource type="StyleBox" uid="uid://c585g431q14ue" path="res://Thème/button_normal.tres" id="11_lhtrc"]
+[ext_resource type="StyleBox" uid="uid://bibiwmbse6bsf" path="res://Thème/button_hover.tres" id="12_xugq1"]
+[ext_resource type="StyleBox" uid="uid://dbawkfil8hb6o" path="res://Thème/button_pressed.tres" id="13_eln2l"]
+[ext_resource type="StyleBox" uid="uid://b56w2nrti7wer" path="res://Thème/button_disabled.tres" id="14_jo3xu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yabh"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kikdn"]
+bg_color = Color(0.368627, 0, 0, 1)
+
+[node name="multiplayer" type="Node2D"]
+script = ExtResource("1_q8qqa")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.392157)
+texture_filter = 3
+texture_repeat = 1
+position = Vector2(960, 540)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_pfaam")
+
+[node name="MultiplayerSettings" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Titre" type="Label" parent="CanvasLayer/MultiplayerSettings"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_top = 128.0
+offset_right = 1920.0
+offset_bottom = 256.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("9_joki0")
+theme_override_font_sizes/font_size = 64
+text = "MULTIPLAYER"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_qhqvo")
+
+[node name="TitreTriche" type="Label" parent="CanvasLayer/MultiplayerSettings/Titre"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("9_joki0")
+theme_override_font_sizes/font_size = 64
+text = "MULTIPLAYER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 1576.0
+offset_top = 960.0
+offset_right = 1848.0
+offset_bottom = 1024.0
+theme_override_styles/disabled_mirrored = ExtResource("14_jo3xu")
+theme_override_styles/disabled = ExtResource("14_jo3xu")
+theme_override_styles/hover_pressed_mirrored = ExtResource("12_xugq1")
+theme_override_styles/hover_pressed = ExtResource("12_xugq1")
+theme_override_styles/hover_mirrored = ExtResource("12_xugq1")
+theme_override_styles/hover = ExtResource("12_xugq1")
+theme_override_styles/pressed_mirrored = ExtResource("13_eln2l")
+theme_override_styles/pressed = ExtResource("13_eln2l")
+theme_override_styles/normal_mirrored = ExtResource("11_lhtrc")
+theme_override_styles/normal = ExtResource("11_lhtrc")
+
+[node name="Play" type="Label" parent="CanvasLayer/MultiplayerSettings/Button"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = -5.0
+offset_right = 16.0
+offset_bottom = 59.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("9_joki0")
+theme_override_font_sizes/font_size = 46
+text = "JOUER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/MultiplayerSettings"]
+layout_mode = 0
+offset_left = 1456.0
+offset_top = 896.0
+offset_right = 1856.0
+offset_bottom = 936.0
+theme_override_constants/h_separation = 32
+theme_override_fonts/font = ExtResource("9_joki0")
+theme_override_font_sizes/font_size = 32
+selected = 0
+item_count = 1
+popup/item_0/text = "1 CONTRE 1"
+
+[node name="Points" type="Panel" parent="CanvasLayer/MultiplayerSettings"]
+modulate = Color(0.803922, 1, 1, 1)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 248.0
+offset_bottom = 104.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7yabh")
+
+[node name="Play" type="Label" parent="CanvasLayer/MultiplayerSettings/Points"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(0.464099, 0.967271, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("9_joki0")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MultiplayerSettings/Points"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(32, 32)
+scale = Vector2(3, 3)
+texture = ExtResource("9_puxiw")
+
+[node name="Error" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Error"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 1664.0
+offset_bottom = 824.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kikdn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Error/Panel"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 1408.0
+offset_bottom = 448.0
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[center][wave amp=50.0 freq=5.0 connected=1]ERREUR[/wave]"
+
+[node name="Errorok" type="Button" parent="CanvasLayer/Error/Panel"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 456.0
+offset_right = 1088.0
+offset_bottom = 516.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/disabled = ExtResource("14_jo3xu")
+theme_override_styles/hover = ExtResource("12_xugq1")
+theme_override_styles/pressed = ExtResource("13_eln2l")
+theme_override_styles/normal = ExtResource("11_lhtrc")
+text = "c'est bon pour moi"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_3f0fn")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="CanvasLayer/Error/Panel/Errorok" to="." method="_on_errorok_pressed"]

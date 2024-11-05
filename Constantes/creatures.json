@@ -1,0 +1,12 @@
+[
+	{
+		"description": "A small, sneaky creature that likes to ambush travelers.",
+		"hp": 30,
+		"id": 1,
+		"is_infected": false,
+		"name": "Goblin",
+		"speed": "1.50",
+		"texture": "goblin_texture.png",
+		"type": "goblin"
+	}
+]

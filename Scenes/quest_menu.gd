@@ -52,22 +52,6 @@ func _ready():
 		titlet.set("theme_override_constants/outline_size", 10)
 		panel.add_child(titlet)
 		
-		var titlepa = Label.new()
-		titlepa.text = "PATREON_ONLY"
-		titlepa.name = "Titlet"
-		titlepa.scale = Vector2(2,2)
-		titlepa.position = Vector2(16,0)
-		titlepa.rotation = 0.1
-		titlepa.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		if Global.quests[i]["members_only"] == true and Global.patreon_active == false:
-			titlepa.visible = true
-		else:
-			titlepa.visible = false
-		titlepa.set("theme_override_colors/font_outline_color", Color(1,1,1))
-		titlepa.set("theme_override_colors/font_color", Color(1,0,0))
-		titlepa.set("theme_override_constants/outline_size", 10)
-		panel.add_child(titlepa)
-		
 		
 		
 		get_node("ScrollContainer/VBoxContainer").add_child(panel)
@@ -106,7 +90,7 @@ func _process(delta):
 			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Description").self_modulate = Color(0,0,0,0.5)
 			get_node("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Titlet").visible = true
 			
-		if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button") != null and Global.quests[i]["finished"] == false and (Global.quests[i]["members_only"] == false or Global.patreon_active == true):
+		if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button") != null and Global.quests[i]["finished"] == false:
 			if get_node_or_null("ScrollContainer/VBoxContainer/Panel"+str(i)+"/Button").button_pressed == true:
 				Global.set_quest(i)
 				get_node("AudioStreamPlayer").stream = load("res://Sounds/click.mp3")
