@@ -1,8 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds8rce2e2bfto"]
+[gd_scene load_steps=3 format=3 uid="uid://ds8rce2e2bfto"]
 
 [ext_resource type="Script" path="res://bdd.gd" id="1_10jud"]
+[ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="2_1xexi"]
 
 [node name="BDD" type="Node2D"]
 script = ExtResource("1_10jud")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Data" type="CodeEdit" parent="."]
+offset_left = 96.0
+offset_top = 64.0
+offset_right = 712.0
+offset_bottom = 1024.0
+theme_override_fonts/font = ExtResource("2_1xexi")
+theme_override_font_sizes/font_size = 16
+placeholder_text = "Données sur les créatures que vous possédez"
+wrap_mode = 1
+autowrap_mode = 2
+indent_use_spaces = true
+indent_automatic = true
+
+[node name="Capture" type="Button" parent="."]
+offset_left = 880.0
+offset_top = 104.0
+offset_right = 1560.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 64
+text = "CAPTURER UNE CREATURE (id 1)"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 768.0
+offset_top = 248.0
+offset_right = 1872.0
+offset_bottom = 1024.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(1000, 348)
+layout_mode = 2
+
+[connection signal="pressed" from="Capture" to="." method="_on_capture_pressed"]

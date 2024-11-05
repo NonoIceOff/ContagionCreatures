@@ -1,112 +1,12 @@
 [
-  {
-	"id": 1,
-	"name": "Goblin",
-	"description": "A small, sneaky creature that likes to ambush travelers.",
-	"texture": "goblin_texture.png",
-	"is_infected": false,
-	"type": "goblin",
-	"hp": 30,
-	"speed": 1.5,
-	"id_user": null
-  },
-  {
-	"id": 2,
-	"name": "Orc",
-	"description": "A strong and brutish creature with a short temper.",
-	"texture": "orc_texture.png",
-	"is_infected": false,
-	"type": "orc",
-	"hp": 80,
-	"speed": 1.0,
-	"id_user": null
-  },
-  {
-	"id": 3,
-	"name": "Zombie",
-	"description": "A slow-moving undead creature with a hunger for flesh.",
-	"texture": "zombie_texture.png",
-	"is_infected": true,
-	"type": "undead",
-	"hp": 50,
-	"speed": 0.8,
-	"id_user": null
-  },
-  {
-	"id": 4,
-	"name": "Dragon",
-	"description": "A fearsome beast with scales and fire breath.",
-	"texture": "dragon_texture.png",
-	"is_infected": false,
-	"type": "dragon",
-	"hp": 300,
-	"speed": 2.0,
-	"id_user": null
-  },
-  {
-	"id": 5,
-	"name": "Vampire",
-	"description": "An elegant yet deadly creature of the night.",
-	"texture": "vampire_texture.png",
-	"is_infected": true,
-	"type": "undead",
-	"hp": 100,
-	"speed": 1.7,
-	"id_user": null
-  },
-  {
-	"id": 6,
-	"name": "Slime",
-	"description": "A gelatinous creature that absorbs whatever it touches.",
-	"texture": "slime_texture.png",
-	"is_infected": false,
-	"type": "slime",
-	"hp": 20,
-	"speed": 0.5,
-	"id_user": null
-  },
-  {
-	"id": 7,
-	"name": "Giant Spider",
-	"description": "A large spider with venomous fangs.",
-	"texture": "spider_texture.png",
-	"is_infected": false,
-	"type": "insect",
-	"hp": 60,
-	"speed": 1.2,
-	"id_user": null
-  },
-  {
-	"id": 8,
-	"name": "Skeleton Warrior",
-	"description": "An undead warrior that wields a sword.",
-	"texture": "skeleton_texture.png",
-	"is_infected": true,
-	"type": "undead",
-	"hp": 45,
-	"speed": 1.1,
-	"id_user": null
-  },
-  {
-	"id": 9,
-	"name": "Werewolf",
-	"description": "A fierce beast that transforms under the full moon.",
-	"texture": "werewolf_texture.png",
-	"is_infected": false,
-	"type": "beast",
-	"hp": 120,
-	"speed": 1.8,
-	"id_user": null
-  },
-  {
-	"id": 10,
-	"name": "Demon",
-	"description": "A malevolent creature from another realm.",
-	"texture": "demon_texture.png",
-	"is_infected": true,
-	"type": "demon",
-	"hp": 200,
-	"speed": 1.4,
-	"id_user": null
-  }
+	{
+		"description": "A small, sneaky creature that likes to ambush travelers.",
+		"hp": 30,
+		"id": 1,
+		"is_infected": false,
+		"name": "Goblin",
+		"speed": "1.50",
+		"texture": "goblin_texture.png",
+		"type": "goblin"
+	}
 ]
