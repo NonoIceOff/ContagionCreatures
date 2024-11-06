@@ -343,4 +343,3 @@ func _on_get_creatures_enemy_request_completed(result: int, response_code: int, 
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	enemy_creatures_data = parse_result
-
