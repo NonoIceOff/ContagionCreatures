@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Credit_of_the_game.gd" id="1_sl7ei"]
 [ext_resource type="Script" path="res://Scenes/Settings_return_menu.gd" id="2_4wso2"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glpnr"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_x36am"]
+[ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="2_idc8o"]
+[ext_resource type="AudioStream" uid="uid://dwgue3u2oyhwy" path="res://Sounds/music/credits.mp3" id="4_7vfbs"]
 
 [sub_resource type="GDScript" id="GDScript_ax0pc"]
 script/source = "extends Label
@@ -24,51 +22,46 @@ script = ExtResource("1_sl7ei")
 
 [node name="Credits" type="Label" parent="."]
 layout_mode = 0
-offset_right = 2036.0
-offset_bottom = 1076.0
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_glpnr")
-text = "REMERCIEMENT
+offset_top = 256.0
+offset_right = 1920.0
+offset_bottom = 3684.0
+theme_override_fonts/font = ExtResource("2_idc8o")
+theme_override_font_sizes/font_size = 64
+text = "REMERCIEMENTS
 
+Développeurs du Projet :
+Nolan
+Mathieu
+Gwendal
+Ilona
+Enzo
 
-
-Les developpeurs :
-
-
-- NOLANN
-- MATHIEU
-- GWENDAL
-- ILONA
-
-
-
-Conformité aux licences :
+Codé dans nos chambres, mais perfectionné dans les locaux de la Coding Factory de Cergy.
 
 
 
 
-Ce jeu utilise Godot Engine, disponible sous la licence suivante :
+Licences et Crédits Techniques :
 
-Copyright (c) 2014-présent Contributeurs au moteur Godot. Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+Moteur de jeu : Ce projet a été conçu avec Godot Engine, logiciel open-source sous la licence suivante :
 
-L'autorisation est par les présentes accordée, à titre gratuit, à toute personne obtenant une copie de ce logiciel et des fichiers 
-de 
-documentation 
-associés (le \"Logiciel\"), d'utiliser le Logiciel sans restriction, y compris, sans limitation, les droits d'utilisation, de copie, 
-de modification, de fusion, de publication, de distribution, de sous-licence et/ou de vente de copies du Logiciel, et d'autoriser les 
-personnes 
-à qui le Logiciel est fourni à le faire, sous réserve des conditions suivantes :
+Copyright (c) 2014-présent : Contributeurs de Godot Engine
+Copyright (c) 2007-2014 : Juan Linietsky, Ariel Manzur
 
-L'avis de droit d'auteur ci-dessus et cet avis d'autorisation doivent être inclus dans toutes les copies ou parties substantielles 
-du logiciel.
+L’utilisation de Godot est permise sous les conditions suivantes : toute personne obtenant une copie de ce logiciel est libre d'utiliser, modifier, et distribuer le logiciel, conformément aux termes suivants :
 
-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
-LIABLE FOR
- ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
-label_settings = SubResource("LabelSettings_x36am")
+Cet avis de droit d'auteur et l'avis d'autorisation doivent être inclus dans toutes les copies substantielles du logiciel.
+
+LE LOGICIEL EST FOURNI \"TEL QUEL\", SANS GARANTIE, expresse ou implicite, y compris mais sans s’y limiter : garantie de qualité marchande, d'aptitude à un usage particulier et de non-contrefaçon. Les auteurs ne peuvent en aucun cas être tenus responsables de dommages ou de réclamations, qu’ils découlent de l'utilisation ou de l'interaction avec le logiciel.
+
+
+
+
+Merci d'avoir joué !
+Félicitations d’être allé(e) jusqu’au bout ! Ce projet est une aventure que nous avons voulue immersive et unique. Restez à l’affût, d’autres surprises pourraient vous attendre dans nos futurs projets !"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 script = SubResource("GDScript_ax0pc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -81,5 +74,11 @@ offset_bottom = 51.0
 theme_override_font_sizes/font_size = 28
 text = "X"
 script = ExtResource("2_4wso2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7vfbs")
+autoplay = true
+max_distance = 200000.0
+parameters/looping = false
 
 [connection signal="pressed" from="CanvasLayer/Return_menu" to="CanvasLayer/Return_menu" method="_on_pressed"]
