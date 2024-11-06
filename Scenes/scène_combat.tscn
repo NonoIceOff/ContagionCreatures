@@ -11,15 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
 [ext_resource type="AudioStream" uid="uid://tw0xq780vpwe" path="res://Sounds/combat_music.mp3" id="10_nitua"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6neb"]
-bg_color = Color(0.619608, 0.423529, 0.972549, 1)
-border_width_left = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 1, 1, 1)
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
 bg_color = Color(0.619608, 0.423529, 0.972549, 1)
 border_width_left = 5
@@ -38,8 +29,8 @@ border_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij5us"]
-bg_color = Color(0.227451, 0.321569, 0.988235, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6neb"]
+bg_color = Color(0.619608, 0.423529, 0.972549, 1)
 border_width_left = 5
 border_width_right = 5
 border_width_bottom = 5
@@ -65,8 +56,8 @@ border_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opluy"]
-bg_color = Color(0.905882, 0.211765, 0.156863, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij5us"]
+bg_color = Color(0.227451, 0.321569, 0.988235, 1)
 border_width_left = 5
 border_width_right = 5
 border_width_bottom = 5
@@ -88,6 +79,15 @@ bg_color = Color(0.619608, 0.113725, 0.0784314, 1)
 border_width_left = 10
 border_width_right = 10
 border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opluy"]
+bg_color = Color(0.905882, 0.211765, 0.156863, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
@@ -412,9 +412,9 @@ offset_bottom = 105.0
 rotation = 0.00115545
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_f6neb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_d2ui4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2i1hw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_f6neb")
 text = "Items"
 
 [node name="Button2" type="Button" parent="."]
@@ -424,9 +424,9 @@ offset_right = 1520.0
 offset_bottom = 105.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_ij5us")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t287m")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_n8md2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij5us")
 text = "FUIR"
 
 [node name="Button3" type="Button" parent="."]
@@ -436,9 +436,9 @@ offset_right = 744.0
 offset_bottom = 105.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_opluy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wxu5s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yse28")
+theme_override_styles/normal = SubResource("StyleBoxFlat_opluy")
 text = "COMBAT"
 script = ExtResource("7_52kou")
 

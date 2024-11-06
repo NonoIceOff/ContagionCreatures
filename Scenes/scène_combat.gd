@@ -364,6 +364,9 @@ func win():
 		if get_node_or_null("Sounds") != null:
 			get_node("Sounds").stream = load("res://Sounds/explosion.mp3")
 			get_node("Sounds").playing = true
+		for key in Global.items:
+			Global.attacks[key]["boost"] = 0
+			print("Reset boost")
 		get_node("/root/SceneCombat/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
@@ -379,6 +382,9 @@ func loose():
 		if get_node_or_null("Sounds") != null:
 			get_node("Sounds").stream = load("res://Sounds/explosion.mp3")
 			get_node("Sounds").playing = true
+		for key in Global.items:
+			Global.attacks[key]["boost"] = 0
+			print("Reset boost")
 		get_node("/root/SceneCombat/CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
