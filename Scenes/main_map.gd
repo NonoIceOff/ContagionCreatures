@@ -5,13 +5,16 @@ extends Node2D
 @onready var global_vars = get_node("/root/Global")
 var paused = false
 var Key = false
-var entered_Ennemy = false
 var item_scene = preload("res://Scenes/item.tscn")
 var pianoscene = preload("res://Scenes/piano.tscn")
 var interacted = false
 var quest_id = 0
 var zoomed = false
 var scene_load = false
+@onready var label_sauvegarde = get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarde")
+@onready var label_sauvegarder = get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarder")
+@onready var area_torche = get_node("areaTorche")
+@onready var area_ennemy = get_node("MobPNJ/AreaEnnemy1")
 
 
 func _ready():
@@ -23,10 +26,33 @@ func _ready():
 	get_node("ui/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
 	get_node("SoundEffectFx").play()
-	get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = false
 	$InteractArea/Trigger.visible = true
 	$InteractArea/Interact.visible = Global.interact
+	area_torche.connect("save_triggered", Callable(self, "_on_save_triggered")) #se connecte au script dans area_saved envoie un signal au script ci-dessous
+	area_torche.connect("saved_triggered", Callable(self, "_on_saved_triggered")) #se connecte au script dans area_saved envoie un signal au script ci-dessous
+	area_torche.connect("saved_outside_area", Callable(self, "_on_saved_outside_area"))
+	area_ennemy.connect("getNode", Callable(self, "_on_search_getNode"))
 	Global.load()
+	
+	
+func _on_search_getNode() -> void:
+	get_node("ui/Transition/AnimationPlayer").play("screen_to_transition")
+	
+func _on_save_triggered() -> void:
+	if label_sauvegarde:
+		get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarder").visible = false
+		label_sauvegarde.visible = true
+		await get_tree().create_timer(5).timeout
+		label_sauvegarde.visible = false
+	else:
+		print("LabelSauvegarde not found at the specified path")
+
+func _on_saved_triggered() -> void:
+	get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarder").visible = true
+	
+	
+func _on_saved_outside_area() -> void:
+	get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarder").visible = false
 	
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -436,14 +462,7 @@ func _process(delta):
 				interacted = false
 			
 
-	if entered_Ennemy == true and Key == false:
-		if Input.is_action_just_pressed("ui_interact"): #and $MobPNJ/AreaEnnemy1/Collision_Ennemy.is_in_group("Player_One"):
-			Tutorial.get_node(".").tutorials[4]["progress"] += 100
-			Key = true
-			get_node("ui/Transition/AnimationPlayer").play("screen_to_transition")
-			await get_tree().create_timer(2).timeout
-			get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
-			Key = false
+	
 
 	if Input.is_action_just_pressed("M"):
 		if scene_load == false:
@@ -473,17 +492,6 @@ func PauseMenu ():
 	
 	Global.paused = !Global.paused
 	
-
-func _on_area_ennemy_1_body_entered(body):
-	if body.is_in_group("Player_One"):
-		entered_Ennemy = true
-		get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = true
-
-
-func _on_area_ennemy_1_body_exited(body):
-	if body.is_in_group("Player_One"):
-		entered_Ennemy = false
-		get_node("MobPNJ/AreaEnnemy1/Label_E_ennemy").visible = false
 
 func _on_interact_area_entered(body):
 	if body.is_in_group("Player_One"):

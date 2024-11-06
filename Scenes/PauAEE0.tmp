@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxt5b5tantpyy"]
+[gd_scene load_steps=9 format=3 uid="uid://dxt5b5tantpyy"]
 
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_8w1aj"]
 [ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="1_b5pbl"]
@@ -36,15 +36,6 @@ border_color = Color(0.294118, 0.580392, 0.643137, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0i80e"]
-bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t8ln"]
 
 [node name="PauseMenu" type="Node2D"]
 script = ExtResource("1_b5pbl")
@@ -179,38 +170,13 @@ title = "Save"
 initial_position = 3
 size = Vector2i(400, 200)
 current_screen = 0
-ok_button_text = "Save"
+visible = true
 dialog_text = "Voulez-vous sauvegarder ?"
 dialog_autowrap = true
 cancel_button_text = "Annuler"
-
-[node name="ProgressPanel" type="Panel" parent="."]
-visible = false
-offset_left = 686.0
-offset_top = 436.0
-offset_right = 1232.0
-offset_bottom = 672.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0i80e")
-
-[node name="ProgressBar" type="ProgressBar" parent="ProgressPanel"]
-offset_left = 86.0
-offset_top = 140.0
-offset_right = 469.0
-offset_bottom = 179.0
-theme_override_styles/background = SubResource("StyleBoxFlat_0t8ln")
-
-[node name="TextSave" type="Label" parent="ProgressPanel"]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 28.0
-offset_right = 275.0
-offset_bottom = 51.0
-scale = Vector2(2, 2)
-text = "Save..."
 
 [connection signal="pressed" from="Reprendre" to="." method="_on_reprendre_pressed"]
 [connection signal="pressed" from="Paramètres" to="." method="_on_paramètres_pressed"]
 [connection signal="pressed" from="Menu principal" to="." method="_on_menu_principal_pressed"]
 [connection signal="pressed" from="Quitter" to="." method="_on_quitter_pressed"]
 [connection signal="pressed" from="Sauvegarde" to="." method="_on_sauvegarde_pressed"]
-[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_sauvegarde_confirmed"]

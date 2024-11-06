@@ -333,6 +333,7 @@ func _on_get_spells_player_request_completed(result: int, response_code: int, he
 	creatures_spells = parse_result
 
 
+
 func _on_get_spells_ennemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
@@ -342,3 +343,4 @@ func _on_get_creatures_enemy_request_completed(result: int, response_code: int, 
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	enemy_creatures_data = parse_result
+

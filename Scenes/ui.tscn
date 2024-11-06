@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="1_p3l0n"]
 [ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="2_8ox0t"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
-[ext_resource type="Texture2D" uid="uid://dl74uka4kf7xd" path="res://Textures/Gemme_bleu.png" id="4_jwspb"]
+[ext_resource type="Texture2D" uid="uid://dlrfnokky7x0k" path="res://Textures/Items/Gemme_bleu.png" id="4_jwspb"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="6_reotg"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="7_i5pcq"]

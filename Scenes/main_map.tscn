@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=49 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/Detected_player.gd" id="7_5catn"]
 [ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="7_ch8cw"]
 [ext_resource type="Texture2D" uid="uid://dygmeeyh8svxo" path="res://Textures/headMOB.png" id="7_m7315"]
+[ext_resource type="Script" path="res://Scripts/areaEnnemy.gd" id="9_aabmy"]
 [ext_resource type="PackedScene" uid="uid://dxt5b5tantpyy" path="res://Scenes/PauseMenu.tscn" id="9_roibj"]
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="10_cbqsb"]
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="18_w4w46"]
@@ -21,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://d00cubkujysav" path="res://Textures/Inventaire/grey.png" id="22_ku8d1"]
 [ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="23_o04f3"]
 [ext_resource type="Texture2D" uid="uid://b6qrnndoprfy7" path="res://Textures/Items/nkey.png" id="23_sq4xb"]
+[ext_resource type="Script" path="res://Scripts/area_saved.gd" id="24_cjwdc"]
 [ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="24_e0f8h"]
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="25_2w24m"]
 
@@ -205,6 +207,9 @@ font_size = 36
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbx24"]
+size = Vector2(41.25, 33)
+
 [node name="main_map" type="Node2D"]
 script = ExtResource("1_ba8wf")
 
@@ -257,6 +262,7 @@ layer_13/z_index = 10
 layer_13/tile_data = PackedInt32Array(1703994, 3997701, 5, 1769530, 3997701, 6, 1638459, 4063237, 4, 1703995, 4063237, 5, 1638460, 4128773, 4, 1703996, 4128773, 5, 1638461, 4194309, 4, 1703997, 4194309, 5, 1769533, 4194309, 6, 1114169, 3997701, 5, 1179705, 3997701, 6, 1048634, 4063237, 4, 1114170, 4063237, 5, 1048635, 4128773, 4, 1114171, 4128773, 5, 1048636, 4194309, 4, 1114172, 4194309, 5, 1179708, 4194309, 6, 458809, 3997701, 5, 524345, 3997701, 6, 393274, 4063237, 4, 458810, 4063237, 5, 393275, 4128773, 4, 458811, 4128773, 5, 393276, 4194309, 4, 458812, 4194309, 5, 524348, 4194309, 6, 65593, 3997701, 5, 131129, 3997701, 6, 58, 4063237, 4, 65594, 4063237, 5, 59, 4128773, 4, 65595, 4128773, 5, 60, 4194309, 4, 65596, 4194309, 5, 131132, 4194309, 6, -1114131, 3997701, 5, -1048595, 3997701, 6, -1179666, 4063237, 4, -1114130, 4063237, 5, -1179665, 4128773, 4, -1114129, 4128773, 5, -1179664, 4194309, 4, -1114128, 4194309, 5, -1048592, 4194309, 6, -917503, 3997701, 5, -851967, 3997701, 6, -983038, 4063237, 4, -917502, 4063237, 5, -983037, 4128773, 4, -917501, 4128773, 5, -983036, 4194309, 4, -917500, 4194309, 5, -851964, 4194309, 6, -983028, 3997701, 5, -917492, 3997701, 6, -1048563, 4063237, 4, -983027, 4063237, 5, -1048562, 4128773, 4, -983026, 4128773, 5, -1048561, 4194309, 4, -983025, 4194309, 5, -917489, 4194309, 6, -1114082, 3997701, 5, -1048546, 3997701, 6, -1179617, 4063237, 4, -1114081, 4063237, 5, -1179616, 4128773, 4, -1114080, 4128773, 5, -1179615, 4194309, 4, -1114079, 4194309, 5, -1048543, 4194309, 6, -917468, 3997701, 5, -851932, 3997701, 6, -983003, 4063237, 4, -917467, 4063237, 5, -983002, 4128773, 4, -917466, 4128773, 5, -983001, 4194309, 4, -917465, 4194309, 5, -851929, 4194309, 6, 1245245, 3997701, 5, 1310781, 3997701, 6, 1179710, 4063237, 4, 1245246, 4063237, 5, 1179711, 4128773, 4, 1245247, 4128773, 5, 1179712, 4194309, 4, 1245248, 4194309, 5, 1310784, 4194309, 6, 2097195, 3997701, 5, 2162731, 3997701, 6, 2031660, 4063237, 4, 2097196, 4063237, 5, 2031661, 4128773, 4, 2097197, 4128773, 5, 2031662, 4194309, 4, 2097198, 4194309, 5, 2162734, 4194309, 6, 2097184, 3997701, 5, 2162720, 3997701, 6, 2031649, 4063237, 4, 2097185, 4063237, 5, 2031650, 4128773, 4, 2097186, 4128773, 5, 2031651, 4194309, 4, 2097187, 4194309, 5, 2162723, 4194309, 6, 2228228, 3997701, 5, 2293764, 3997701, 6, 2162693, 4063237, 4, 2228229, 4063237, 5, 2162694, 4128773, 4, 2228230, 4128773, 5, 2162695, 4194309, 4, 2228231, 4194309, 5, 2293767, 4194309, 6, 1834993, 3997701, 5, 1900529, 3997701, 6, 1769458, 4063237, 4, 1834994, 4063237, 5, 1769459, 4128773, 4, 1834995, 4128773, 5, 1769460, 4194309, 4, 1834996, 4194309, 5, 1900532, 4194309, 6, -851912, 5111813, 56, -327624, 5111813, 59, -720915, 4128773, 5, -786450, 4194309, 4, -720914, 4194309, 5, -720917, 3997701, 5, -655381, 3997701, 6, -786452, 4063237, 4, -720916, 4063237, 5, -786451, 4128773, 4, -655378, 4194309, 6, -786445, 5111813, 56, -13, 5111813, 61)
 
 [node name="Animal" parent="." instance=ExtResource("3_46rw2")]
+visible = false
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(500, 500)
@@ -342,6 +348,7 @@ shape = SubResource("RectangleShape2D_6dwij")
 
 [node name="AreaEnnemy1" type="Area2D" parent="MobPNJ"]
 position = Vector2(288.001, 1242)
+script = ExtResource("9_aabmy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobPNJ/AreaEnnemy1"]
 position = Vector2(-0.00100708, 0)
@@ -394,6 +401,24 @@ scale = Vector2(1.5, 1.5)
 
 [node name="PauseMenu" parent="Player_One/Camera2D/CanvasLayer" instance=ExtResource("9_roibj")]
 visible = false
+
+[node name="LabelSauvegarde" type="Label" parent="Player_One/Camera2D/CanvasLayer"]
+visible = false
+offset_left = 637.0
+offset_top = 1034.0
+offset_right = 973.0
+offset_bottom = 1050.0
+scale = Vector2(2, 2)
+text = "Sauvegarde de la partie"
+
+[node name="LabelSauvegarder" type="Label" parent="Player_One/Camera2D/CanvasLayer"]
+visible = false
+offset_left = 634.0
+offset_top = 1032.0
+offset_right = 994.0
+offset_bottom = 1050.0
+scale = Vector2(2, 2)
+text = "Sauvegarder votre partie"
 
 [node name="Area2D" type="Area2D" parent="."]
 z_index = 5
@@ -688,10 +713,28 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="areaTorche" type="Area2D" parent="."]
+position = Vector2(864, -543)
+scale = Vector2(3, 3)
+script = ExtResource("24_cjwdc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaTorche"]
+shape = SubResource("RectangleShape2D_gbx24")
+
+[node name="LabelETorcheSaved" type="Label" parent="areaTorche"]
+visible = false
+offset_left = 8.66667
+offset_top = -17.3333
+offset_right = 48.6667
+offset_bottom = -1.33333
+scale = Vector2(0.5, 0.5)
+text = "[E]"
+horizontal_alignment = 1
+
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
-[connection signal="body_entered" from="MobPNJ/AreaEnnemy1" to="." method="_on_area_ennemy_1_body_entered"]
-[connection signal="body_exited" from="MobPNJ/AreaEnnemy1" to="." method="_on_area_ennemy_1_body_exited"]
+[connection signal="body_entered" from="MobPNJ/AreaEnnemy1" to="MobPNJ/AreaEnnemy1" method="_on_area_ennemy_entered"]
+[connection signal="body_exited" from="MobPNJ/AreaEnnemy1" to="MobPNJ/AreaEnnemy1" method="_on_area_ennemy_exited"]
 [connection signal="body_entered" from="MobPNJ/AreaHome" to="MobPNJ/AreaHome" method="_Zone_Entered"]
 [connection signal="body_exited" from="MobPNJ/AreaHome" to="MobPNJ/AreaHome" method="_Zone_Exit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_entered_transition_map"]
@@ -704,3 +747,5 @@ uppercase = true
 [connection signal="pressed" from="StartCinematic/StopCinematic" to="." method="_on_stop_cinematic_pressed"]
 [connection signal="body_entered" from="Piano2" to="." method="_on_piano_2_body_entered"]
 [connection signal="body_exited" from="Piano2" to="." method="_on_piano_2_body_exited"]
+[connection signal="body_entered" from="areaTorche" to="areaTorche" method="_on_torchBody_entered"]
+[connection signal="body_exited" from="areaTorche" to="areaTorche" method="_on_torchBody_exited"]
