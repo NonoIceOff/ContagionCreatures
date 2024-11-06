@@ -1,7 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
-
-creatures.json
+Constantes/
+Constantes/creatures.json
 
 # Godot-specific ignores
 .import/
