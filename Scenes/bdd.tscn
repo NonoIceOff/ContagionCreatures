@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds8rce2e2bfto"]
+[gd_scene load_steps=3 format=3 uid="uid://b237pffon12gr"]
 
 [ext_resource type="Script" path="res://bdd.gd" id="1_10jud"]
 [ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="2_1xexi"]

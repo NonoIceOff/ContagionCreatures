@@ -74,6 +74,3 @@ func load_point():
 		draw_point(Global.saved_point_position)
 	else:
 		print("ERROR LOADING")
-
-
-
