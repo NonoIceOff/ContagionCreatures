@@ -1,5 +1,7 @@
 extends Node
 
+var user = {}
+
 var interact = false
 var trigger = true
 var is_infected = true
@@ -34,10 +36,6 @@ var button_info_pressed_enemy = false
 var close_button_pressed = false
 
 var current_quest_id = -1
-
-var patreon_code = ""
-var patreon_active = false
-var patreon_time = 0.0
 
 var pianos = [0,0,0,0]
 var current_map = "main_map"
@@ -444,20 +442,17 @@ func save_localisation():
 	save_file.set_value("Languages","Current",TranslationServer.get_locale())
 	save_file.save_encrypted_pass("user://languages.txt", "gentle_duck")
 	
+func load_user():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://user.txt", "user_key")
+	Global.user = load_file.get_value("User","Data",Global.user)
+	
+func save_user():
+	var save_file = ConfigFile.new()
+	save_file.set_value("User","Data",Global.user)
+	save_file.save_encrypted_pass("user://user.txt", "user_key")
+	
 func load_position():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
 	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", get_node("/root/main_map/Player_One").position)
-
-func save_patreon():
-	var save_file = ConfigFile.new()
-	save_file.set_value("Patreon", "Active", Global.patreon_active)
-	save_file.set_value("Patreon", "Time", Global.patreon_time)
-	save_file.save_encrypted_pass("user://code.txt", "gentle_duck")
-	
-func load_patreon():
-	var load_file = ConfigFile.new()
-	load_file.load_encrypted_pass("user://code.txt", "gentle_duck")
-	Global.patreon_active = load_file.get_value("Patreon", "Active", Global.patreon_active)
-	Global.patreon_time = load_file.get_value("Patreon", "Time", Global.patreon_time)
-	print(Time.get_datetime_string_from_unix_time(Global.patreon_time))
