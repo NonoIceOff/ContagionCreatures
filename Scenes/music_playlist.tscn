@@ -52,6 +52,7 @@ max_distance = 1e+07
 
 [node name="ActualTime" type="Label" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 712.0
 offset_top = 416.0
 offset_right = 765.0
