@@ -10,13 +10,17 @@ var buttonE : Button
 var animalP : Sprite2D
 var animalE : Sprite2D
 var background_rect_info : ColorRect
-@onready var http_request: HTTPRequest = $HTTPRequest
+#@onready var http_request: HTTPRequest = $HTTPRequest
 @onready var player_creature_name = $ContainerPLAYER/Pseudo
 
 @onready var player_progress_bar_hp  = $ContainerPLAYER/TextureProgressBar
 @onready var player_percentage_hp  = $ContainerPLAYER/TextureProgressBar/Percentage
 
-@onready var audio_spell: AudioStreamPlayer = $AudioStreamPlayer
+@onready var spell_1_sound: AudioStreamPlayer = $Spell1_sound
+@onready var spell_2_sound: AudioStreamPlayer = $Spell2_sound
+@onready var spell_3_sound: AudioStreamPlayer = $Spell3_sound
+@onready var spell_4_sound: AudioStreamPlayer = $Spell4_sound
+
 
 @onready var spell_1_button = $Spell1
 @onready var spell_2_button = $Spell2
@@ -314,13 +318,13 @@ func spawn_dialogue(custom_texts):
 func _process(delta):
 	rng.randomize()
 	
-	if Input.is_action_just_pressed("w"):
+	if Input.is_action_just_pressed("spell1"):
 		spell_1_button.emit_signal("pressed")
-	if Input.is_action_just_pressed("x"):
+	if Input.is_action_just_pressed("spell2"):
 		spell_2_button.emit_signal("pressed")
-	if Input.is_action_just_pressed("c"):
+	if Input.is_action_just_pressed("spell3"):
 		spell_3_button.emit_signal("pressed")
-	if Input.is_action_just_pressed("v"):
+	if Input.is_action_just_pressed("spell4"):
 		spell_4_button.emit_signal("pressed")
 	
 
@@ -348,31 +352,37 @@ func _on_get_spells_player_request_completed(result: int, response_code: int, he
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	creatures_spells = parse_result
+	#await get_tree().create_timer(1).timeout
+	#print(creatures_spells)
 
 func _on_get_spells_ennemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	enemy_creatures_spells = parse_result
+	#await get_tree().create_timer(1).timeout
+	#print(enemy_creatures_spells)
 
 func _on_get_creatures_enemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	enemy_creatures_data = parse_result
+	#await get_tree().create_timer(1).timeout
+	#print(enemy_creatures_data)
 
 
 
 func _on_spell_1_pressed() -> void:
 	print("Vous avez utilisé : " + creatures_spells[0].name)
-	audio_spell.play()
+	spell_1_sound.play()
 	
 func _on_spell_2_pressed() -> void:
 	print("Vous avez utilisé : " + creatures_spells[1].name)
-	audio_spell.play()
+	spell_2_sound.play()
 	
 func _on_spell_3_pressed() -> void:
 	print("Vous avez utilisé : " + creatures_spells[2].name)
-	audio_spell.play()
+	spell_3_sound.play()
 
 func _on_spell_4_pressed() -> void:
 	print("Vous avez utilisé : " + creatures_spells[3].name)
-	audio_spell.play()
+	spell_4_sound.play()
