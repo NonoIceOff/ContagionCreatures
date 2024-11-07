@@ -16,6 +16,14 @@ var background_rect_info : ColorRect
 @onready var player_progress_bar_hp  = $ContainerPLAYER/TextureProgressBar
 @onready var player_percentage_hp  = $ContainerPLAYER/TextureProgressBar/Percentage
 
+@onready var audio_spell: AudioStreamPlayer = $AudioStreamPlayer
+
+@onready var spell_1_button = $Spell1
+@onready var spell_2_button = $Spell2
+@onready var spell_3_button = $Spell3
+@onready var spell_4_button = $Spell4
+
+
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var mob_pseudo_label  = $ContainerMob/Pseudo
 @onready var mob_percentage_hp  = $ContainerMob/TextureProgressBar/Percentage
@@ -40,8 +48,7 @@ func _ready():
 	
 	# Obtenir les spells de l'ennemi
 	http_get_enemy_spells.request(API_URL+"/"+str(enemy_mob_id)+"/attacks")
-	
-	
+
 	
 	
 	
@@ -306,6 +313,16 @@ func spawn_dialogue(custom_texts):
 
 func _process(delta):
 	rng.randomize()
+	
+	if Input.is_action_just_pressed("w"):
+		spell_1_button.emit_signal("pressed")
+	if Input.is_action_just_pressed("x"):
+		spell_2_button.emit_signal("pressed")
+	if Input.is_action_just_pressed("c"):
+		spell_3_button.emit_signal("pressed")
+	if Input.is_action_just_pressed("v"):
+		spell_4_button.emit_signal("pressed")
+	
 
 	# Progress bar de HP du joueur
 	if (creatures_data != []):
@@ -332,8 +349,6 @@ func _on_get_spells_player_request_completed(result: int, response_code: int, he
 	var parse_result = JSON.parse_string(response_text)
 	creatures_spells = parse_result
 
-
-
 func _on_get_spells_ennemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
@@ -343,3 +358,21 @@ func _on_get_creatures_enemy_request_completed(result: int, response_code: int, 
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	enemy_creatures_data = parse_result
+
+
+
+func _on_spell_1_pressed() -> void:
+	print("Vous avez utilisé : " + creatures_spells[0].name)
+	audio_spell.play()
+	
+func _on_spell_2_pressed() -> void:
+	print("Vous avez utilisé : " + creatures_spells[1].name)
+	audio_spell.play()
+	
+func _on_spell_3_pressed() -> void:
+	print("Vous avez utilisé : " + creatures_spells[2].name)
+	audio_spell.play()
+
+func _on_spell_4_pressed() -> void:
+	print("Vous avez utilisé : " + creatures_spells[3].name)
+	audio_spell.play()

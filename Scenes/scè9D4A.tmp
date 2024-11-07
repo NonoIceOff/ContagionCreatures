@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cuvepu5toqc02"]
+[gd_scene load_steps=24 format=3 uid="uid://cuvepu5toqc02"]
 
 [ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="10_g78tk"]
 [ext_resource type="AudioStream" uid="uid://tw0xq780vpwe" path="res://Sounds/combat_music.mp3" id="10_nitua"]
-[ext_resource type="AudioStream" uid="uid://cmcnklkn7jgvl" path="res://Sounds/coin_pickup.mp3" id="11_k6gip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
 bg_color = Color(0.619608, 0.423529, 0.972549, 1)
@@ -491,13 +490,6 @@ offset_bottom = 664.0
 
 [node name="GetSpellsEnnemy" type="HTTPRequest" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_k6gip")
-
-[connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
-[connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]
-[connection signal="pressed" from="Spell3" to="." method="_on_spell_3_pressed"]
-[connection signal="pressed" from="Spell4" to="." method="_on_spell_4_pressed"]
 [connection signal="request_completed" from="GetCreaturesEnemy" to="." method="_on_get_creatures_enemy_request_completed"]
 [connection signal="request_completed" from="GetSpellsPlayer" to="." method="_on_get_spells_player_request_completed"]
 [connection signal="request_completed" from="GetSpellsEnnemy" to="." method="_on_get_spells_ennemy_request_completed"]
