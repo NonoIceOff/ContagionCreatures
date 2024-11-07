@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 			Tutorial.get_node(".").tutorials[4]["progress"] += 100
 			emit_signal("getNode")
 			await get_tree().create_timer(2).timeout
-			get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
+			get_tree().change_scene_to_file("res://Scenes/Precombat.tscn")
 			
 
 func _on_area_ennemy_entered(body):
