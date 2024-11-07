@@ -27,6 +27,7 @@ var background_rect_info : ColorRect
 @onready var spell_3_button = $Spell3
 @onready var spell_4_button = $Spell4
 
+@onready var spell_1_icon = $Spell1_icon
 
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var mob_pseudo_label  = $ContainerMob/Pseudo
@@ -36,7 +37,7 @@ var background_rect_info : ColorRect
 @onready var http_get_creatures_spells = $GetSpellsPlayer
 @onready var http_get_enemy_spells = $GetSpellsEnnemy
 
-const API_URL = "https://contagioncreaturesapi.vercel.app/api/creatures"  # Remplacez par votre URL d'API
+const API_URL = "https://contagioncreaturesapi.vercel.app/api"  # Remplacez par votre URL d'API
 const CREATURES_FILE_PATH = "res://Constantes/creatures.json"  # Chemin vers le fichier JSON local
 var creatures_data = []
 var enemy_creatures_data = []
@@ -48,10 +49,10 @@ var enemy_creatures_spells = []
 func _ready():
 	# Obtenir le mob de l'ennemi
 	var enemy_mob_id = randi_range(1,10)
-	http_get_creatures.request(API_URL+"/"+str(enemy_mob_id))
+	http_get_creatures.request(API_URL+"/creatures"+"/"+str(enemy_mob_id))
 	
 	# Obtenir les spells de l'ennemi
-	http_get_enemy_spells.request(API_URL+"/"+str(enemy_mob_id)+"/attacks")
+	http_get_enemy_spells.request(API_URL+"/creatures"+"/"+str(enemy_mob_id)+"/attacks")
 
 	
 	
@@ -62,7 +63,7 @@ func _ready():
 	
 	# Obtenir les spells du joueur
 	print("ok")
-	http_get_creatures_spells.request(API_URL+"/"+str(creatures_data[0].id)+"/attacks")
+	http_get_creatures_spells.request(API_URL+"/creatures"+"/"+str(creatures_data[0].id)+"/attacks")
 	#print(creatures_spells)
 	
 	
@@ -343,6 +344,7 @@ func _process(delta):
 	
 	if (creatures_spells != []):
 		get_node("Spell1").text = creatures_spells[0].name
+		get_node("Spell1_icon").texture = load("res://Textures/"+creatures_spells[0].icon)
 		get_node("Spell2").text = creatures_spells[1].name
 		get_node("Spell3").text = creatures_spells[2].name
 		get_node("Spell4").text = creatures_spells[3].name
