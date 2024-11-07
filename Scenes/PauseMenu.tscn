@@ -193,6 +193,7 @@ offset_bottom = 672.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0i80e")
 
 [node name="ProgressBar" type="ProgressBar" parent="ProgressPanel"]
+layout_mode = 0
 offset_left = 86.0
 offset_top = 140.0
 offset_right = 469.0
