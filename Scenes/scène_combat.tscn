@@ -494,7 +494,6 @@ offset_bottom = 664.0
 [node name="GetSpellsEnnemy" type="HTTPRequest" parent="."]
 
 [node name="Spell1_sound" type="AudioStreamPlayer2D" parent="."]
-max_distance = 1e+09
 
 [node name="Spell2_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_f2f2j")
@@ -506,8 +505,21 @@ stream = ExtResource("13_ggiij")
 stream = ExtResource("14_62ako")
 
 [node name="Spell1_icon" type="Sprite2D" parent="."]
-position = Vector2(1320, 847)
+position = Vector2(1312, 850)
 scale = Vector2(-0.0442489, 0.0465564)
+
+[node name="Spell2_icon" type="Sprite2D" parent="."]
+position = Vector2(1612, 850)
+scale = Vector2(-0.0442489, 0.0465564)
+
+[node name="Spell3_icon" type="Sprite2D" parent="."]
+position = Vector2(1612, 850)
+scale = Vector2(-0.0442489, 0.0465564)
+
+[node name="Spell4_icon" type="Sprite2D" parent="."]
+position = Vector2(1612, 850)
+rotation = -3.14159
+scale = Vector2(0.0442489, -0.0465564)
 
 [connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
 [connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]

@@ -28,6 +28,9 @@ var background_rect_info : ColorRect
 @onready var spell_4_button = $Spell4
 
 @onready var spell_1_icon = $Spell1_icon
+@onready var spell_2_icon = $Spell2_icon
+@onready var spell_3_icon = $Spell3_icon
+@onready var spell_4_icon = $Spell4_icon
 
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var mob_pseudo_label  = $ContainerMob/Pseudo
@@ -346,16 +349,23 @@ func _process(delta):
 				
 		spell_1_button.text = creatures_spells[0].name
 		spell_1_icon.texture = load("res://Textures/" + creatures_spells[0].icon)
-		spell_1_sound.stream = load("res://Sounds/" + creatures_spells[0].sound)
+		if spell_1_sound.stream == null:
+			spell_1_sound.stream = load("res://Sounds/" + creatures_spells[0].sound)
 		
 		spell_2_button.text = creatures_spells[1].name
-		spell_2_sound.stream = load("res://Sounds/" + creatures_spells[1].sound)
+		spell_2_icon.texture = load("res://Textures/" + creatures_spells[1].icon)
+		if spell_2_sound.stream == null:
+			spell_2_sound.stream = load("res://Sounds/" + creatures_spells[1].sound)
 		
 		spell_3_button.text = creatures_spells[2].name
-		spell_3_sound.stream = load("res://Sounds/" + creatures_spells[2].sound)
+		spell_3_icon.texture = load("res://Textures/" + creatures_spells[2].icon)
+		if spell_3_sound.stream == null:
+			spell_3_sound.stream = load("res://Sounds/" + creatures_spells[2].sound)
 		
 		spell_4_button.text = creatures_spells[3].name
-		spell_4_sound.stream = load("res://Sounds/" + creatures_spells[3].sound)
+		spell_4_icon.texture = load("res://Textures/" + creatures_spells[3].icon)
+		if spell_4_sound.stream == null:
+			spell_4_sound.stream = load("res://Sounds/" + creatures_spells[3].sound)
 
 
 func _on_get_spells_player_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
@@ -384,10 +394,6 @@ func _on_get_creatures_enemy_request_completed(result: int, response_code: int, 
 func _on_spell_1_pressed() -> void:
 	print("Vous avez utilisé : " + creatures_spells[0].name)
 	spell_1_sound.play()
-	if spell_1_sound.is_playing():
-		print("Le son est en lecture")
-	else:
-		print("Ce fdp de son ne joue pas")
 	
 func _on_spell_2_pressed() -> void:
 	print("Vous avez utilisé : " + creatures_spells[1].name)
