@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=73 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
@@ -25,7 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/area_saved.gd" id="24_cjwdc"]
 [ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="24_e0f8h"]
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="25_2w24m"]
-[ext_resource type="Texture2D" uid="uid://bi5dw2mqmxvid" path="res://TileSet/TileSetMoulin/tileset_TileSetMoulin.png" id="26_5kf4e"]
+[ext_resource type="Texture2D" uid="uid://cd03f6pu0jwe" path="res://Textures/output/SpriteMoulin.png" id="26_v5sm4"]
 
 [sub_resource type="Curve2D" id="Curve2D_iabi8"]
 _data = {
@@ -210,6 +210,168 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbx24"]
 size = Vector2(41.25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naudy"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(0, 0, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd06m"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(224, 0, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj183"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(448, 0, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b06k"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(672, 0, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1or3u"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(896, 0, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjihq"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(0, 256, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhy5b"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(224, 256, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j2rj"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(448, 256, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqq0x"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(672, 256, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umebu"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(896, 256, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpipm"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(0, 512, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imawr"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(224, 512, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt5hn"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(448, 512, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuee1"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(672, 512, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3x0q"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(896, 512, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkhuq"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(0, 768, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_111ht"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(224, 768, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w6yc"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(448, 768, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3a70"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(672, 768, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pulgj"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(896, 768, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnmb6"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(0, 1024, 224, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_affrh"]
+atlas = ExtResource("26_v5sm4")
+region = Rect2(224, 1024, 224, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h705q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naudy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd06m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj183")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b06k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1or3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjihq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhy5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0j2rj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqq0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umebu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpipm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imawr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt5hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuee1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3x0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkhuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_111ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w6yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3a70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pulgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnmb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_affrh")
+}],
+"loop": true,
+"name": &"moulinTourne",
+"speed": 30.0
+}]
 
 [node name="main_map" type="Node2D"]
 script = ExtResource("1_ba8wf")
@@ -732,10 +894,27 @@ scale = Vector2(0.5, 0.5)
 text = "[E]"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2174, -539)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2174, -542)
 scale = Vector2(2, 2)
-texture = ExtResource("26_5kf4e")
+sprite_frames = SubResource("SpriteFrames_h705q")
+animation = &"moulinTourne"
+frame_progress = 0.0272296
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://Textures/output",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://Textures/output/SpriteMoulin.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ca2845325cebde33fa73e0eb8bdca457"
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

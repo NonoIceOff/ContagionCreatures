@@ -2,6 +2,7 @@ extends Node2D
 
 
 @onready var pause_menu = $Player_One/Camera2D/CanvasLayer/PauseMenu
+@onready var moulin_sprite = $AnimatedSprite2D
 @onready var global_vars = get_node("/root/Global")
 var paused = false
 var Key = false
@@ -18,6 +19,7 @@ var scene_load = false
 
 
 func _ready():
+	moulin_sprite.play()
 	Global.load_localisation()
 	Global.load()
 	Global.current_map = "main_map"
