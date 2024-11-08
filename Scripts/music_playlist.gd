@@ -12,7 +12,17 @@ var musics = [
 	{"title":"Credits", "description":"une description banale", "file":"res://Sounds/music/credits.mp3"},
 	{"title":"Menu Principal", "description":"une description banale", "file":"res://Sounds/music/main_menu.mp3"},
 	{"title":"Menu Multijoueur", "description":"une description banale", "file":"res://Sounds/music/multiplayer_menu.mp3"},
-]
+	{"title":"Donjons 1", "description":"une description banale", "file":"res://Sounds/music/dungeons.ogg"},
+	{"title":"Combat Music", "description":"une description banale", "file":"res://Sounds/combat_music.mp3"},
+	{"title":"Dungeon Sound", "description":"une description banale", "file":"res://Sounds/dungeon_sound.mp3"},
+	{"title":"Lens - Bobby Richards", "description":"une description banale", "file":"res://Sounds/Lens - Bobby Richards.mp3"},
+	{"title":"Music Debut", "description":"une description banale", "file":"res://Sounds/music_debut.mp3"},
+	{"title":"Puzzles 2", "description":"une description banale", "file":"res://Sounds/Puzzles_2.mp3"},
+	{"title":"Reversed Dungeon Sound", "description":"une description banale", "file":"res://Sounds/reversed_dungeon_sound.mp3"},
+	{"title":"Start Cinematic Dark Music", "description":"une description banale", "file":"res://Sounds/start_cinematic_dark_music.mp3"},
+	{"title":"Victory", "description":"une description banale", "file":"res://Sounds/victory.mp3"}
+];
+
 
 # Appelée lors de l'entrée dans la scène
 func _ready() -> void:
