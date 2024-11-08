@@ -6,7 +6,27 @@
 		"is_infected": false,
 		"name": "Goblin",
 		"speed": "1.50",
-		"texture": "goblin_texture.png",
+		"texture": "res://Textures/Animals/FROG.png",
 		"type": "goblin"
+	},
+	{
+		"description": "AA large spider with venomous fangs.",
+		"hp": 60,
+		"id": 7,
+		"is_infected": false,
+		"name": "Giant Spider",
+		"speed": "1.50",
+		"texture": "res://Textures/Animals/FROG.png",
+		"type": "spider"
+	},
+	{
+		"description": "A gelatinous creature that absorbs whatever it touches.",
+		"hp": 20,
+		"id": 6,
+		"is_infected": false,
+		"name": "Slime",
+		"speed": "0.50",
+		"texture": "res://Textures/Animals/FROG.png",
+		"type": "slime"
 	},
 ]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cucsn5iftliuo"
+path="res://.godot/imported/Shield Block.mp3-225a134bdc65378f37db55b74f324539.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Shield Block.mp3"
+dest_files=["res://.godot/imported/Shield Block.mp3-225a134bdc65378f37db55b74f324539.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
