@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cuvepu5toqc02"]
+[gd_scene load_steps=24 format=3 uid="uid://cuvepu5toqc02"]
 
 [ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
@@ -10,9 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="10_g78tk"]
 [ext_resource type="AudioStream" uid="uid://tw0xq780vpwe" path="res://Sounds/combat_music.mp3" id="10_nitua"]
-[ext_resource type="AudioStream" uid="uid://cucsn5iftliuo" path="res://Sounds/Shield Block.mp3" id="12_f2f2j"]
-[ext_resource type="AudioStream" uid="uid://m31hopp2f6ib" path="res://Sounds/Ice Shard.mp3" id="13_ggiij"]
-[ext_resource type="AudioStream" uid="uid://b87m4fatlldq1" path="res://Sounds/Magic Barrier.mp3" id="14_62ako"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
 bg_color = Color(0.619608, 0.423529, 0.972549, 1)
@@ -237,10 +234,10 @@ texture = ExtResource("1_psdp5")
 [node name="ContainerPLAYER" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -80.0
-offset_top = 256.0
-offset_right = 168.0
-offset_bottom = 372.0
+offset_left = -123.0
+offset_top = 259.0
+offset_right = 125.0
+offset_bottom = 375.0
 
 [node name="Pseudo" type="Label" parent="ContainerPLAYER"]
 layout_mode = 2
@@ -419,10 +416,10 @@ anchor_mode = 0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("10_43je6")]
-visible = false
-offset_top = 40.0
-offset_bottom = 40.0
-
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 24.0
+offset_bottom = 32.0
 mouse_filter = 2
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
@@ -444,27 +441,7 @@ theme_override_fonts/font = ExtResource("10_g78tk")
 theme_override_font_sizes/font_size = 48
 text = "Spell 1"
 
-[node name="difficulty1" type="Label" parent="Spell1"]
-layout_mode = 0
-offset_top = 64.0
-offset_right = 280.0
-offset_bottom = 91.0
-theme_override_fonts/font = ExtResource("10_g78tk")
-theme_override_font_sizes/font_size = 24
-text = "Difficulty"
-horizontal_alignment = 1
-
-[node name="type1" type="Label" parent="Spell1"]
-layout_mode = 0
-offset_top = -8.0
-offset_right = 280.0
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("10_g78tk")
-theme_override_font_sizes/font_size = 40
-text = "Mode"
-horizontal_alignment = 1
-
-[node name="Spell3" type="Button" parent="."]
+[node name="Spell2" type="Button" parent="."]
 custom_minimum_size = Vector2(280, 0)
 offset_left = 1280.0
 offset_top = 944.0
@@ -474,29 +451,7 @@ theme_override_fonts/font = ExtResource("10_g78tk")
 theme_override_font_sizes/font_size = 48
 text = "Spell 2"
 
-[node name="difficulty3" type="Label" parent="Spell3"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 64.0
-offset_right = 280.0
-offset_bottom = 91.0
-theme_override_fonts/font = ExtResource("10_g78tk")
-theme_override_font_sizes/font_size = 24
-text = "Difficulty"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="type3" type="Label" parent="Spell3"]
-layout_mode = 0
-offset_top = -8.0
-offset_right = 280.0
-offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("10_g78tk")
-theme_override_font_sizes/font_size = 40
-text = "Mode"
-horizontal_alignment = 1
-
-[node name="Spell2" type="Button" parent="."]
+[node name="Spell3" type="Button" parent="."]
 custom_minimum_size = Vector2(280, 0)
 offset_left = 1577.0
 offset_top = 800.0
@@ -505,27 +460,6 @@ offset_bottom = 895.0
 theme_override_fonts/font = ExtResource("10_g78tk")
 theme_override_font_sizes/font_size = 48
 text = "spell 3"
-
-[node name="difficulty2" type="Label" parent="Spell2"]
-layout_mode = 0
-offset_top = 64.0
-offset_right = 281.0
-offset_bottom = 91.0
-theme_override_fonts/font = ExtResource("10_g78tk")
-theme_override_font_sizes/font_size = 24
-text = "Difficulty"
-horizontal_alignment = 1
-
-[node name="type2" type="Label" parent="Spell2"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -8.0
-offset_right = 278.0
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("10_g78tk")
-theme_override_font_sizes/font_size = 40
-text = "Mode"
-horizontal_alignment = 1
 
 [node name="Spell4" type="Button" parent="."]
 custom_minimum_size = Vector2(280, 0)
@@ -536,27 +470,6 @@ offset_bottom = 1039.0
 theme_override_fonts/font = ExtResource("10_g78tk")
 theme_override_font_sizes/font_size = 48
 text = "spell 4"
-
-[node name="difficulty4" type="Label" parent="Spell4"]
-layout_mode = 0
-offset_top = 64.0
-offset_right = 279.0
-offset_bottom = 91.0
-theme_override_fonts/font = ExtResource("10_g78tk")
-theme_override_font_sizes/font_size = 24
-text = "Difficulty"
-horizontal_alignment = 1
-
-[node name="type4" type="Label" parent="Spell4"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 273.0
-offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("10_g78tk")
-theme_override_font_sizes/font_size = 40
-text = "Mode"
-horizontal_alignment = 1
 
 [node name="ProgressBar_ennemye" type="ProgressBar" parent="."]
 offset_left = 1056.0
@@ -570,51 +483,12 @@ offset_top = 616.0
 offset_right = 832.0
 offset_bottom = 664.0
 
-[node name="ZoneCible" type="ColorRect" parent="ProgressBar_Joueur"]
-layout_mode = 0
-offset_left = 49.0
-offset_right = 95.0
-offset_bottom = 49.0
-color = Color(0.843137, 0.188235, 0.439216, 1)
-
 [node name="GetCreaturesEnemy" type="HTTPRequest" parent="."]
 
 [node name="GetSpellsPlayer" type="HTTPRequest" parent="."]
 
 [node name="GetSpellsEnnemy" type="HTTPRequest" parent="."]
 
-[node name="Spell1_sound" type="AudioStreamPlayer2D" parent="."]
-
-[node name="Spell2_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_f2f2j")
-
-[node name="Spell3_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_ggiij")
-
-[node name="Spell4_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_62ako")
-
-[node name="Spell1_icon" type="Sprite2D" parent="."]
-position = Vector2(1312, 850)
-scale = Vector2(-0.0442489, 0.0465564)
-
-[node name="Spell2_icon" type="Sprite2D" parent="."]
-position = Vector2(1612, 850)
-scale = Vector2(-0.0442489, 0.0465564)
-
-[node name="Spell3_icon" type="Sprite2D" parent="."]
-position = Vector2(1612, 850)
-scale = Vector2(-0.0442489, 0.0465564)
-
-[node name="Spell4_icon" type="Sprite2D" parent="."]
-position = Vector2(1612, 850)
-rotation = -3.14159
-scale = Vector2(0.0442489, -0.0465564)
-
-[connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
-[connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]
-[connection signal="pressed" from="Spell3" to="." method="_on_spell_3_pressed"]
-[connection signal="pressed" from="Spell4" to="." method="_on_spell_4_pressed"]
 [connection signal="request_completed" from="GetCreaturesEnemy" to="." method="_on_get_creatures_enemy_request_completed"]
 [connection signal="request_completed" from="GetSpellsPlayer" to="." method="_on_get_spells_player_request_completed"]
 [connection signal="request_completed" from="GetSpellsEnnemy" to="." method="_on_get_spells_ennemy_request_completed"]
