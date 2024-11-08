@@ -1,12 +1,12 @@
 extends Control
 
-@onready var dialogue_label : RichTextLabel = $Paper/Textes  # Utilisation de @onready pour garantir que le nœud est accessible
-@onready var choices_container : VBoxContainer = $ChoicesContainer  # Utilisation de @onready pour le conteneur de choix
+@onready var dialogue_label : RichTextLabel = $Paper/Textes 
+@onready var choices_container : VBoxContainer = $ChoicesContainer
 
 var dialogues : Array = []
 var current_dialogue : int = 0
 var is_choice_dialogue : bool = false
-var current_choice : Dictionary = {}  # Utiliser un dictionnaire vide par défaut
+var current_choice : Dictionary = {} 
 
 # Fonction pour démarrer le dialogue
 func start_dialogue(dialogue_data: Array):
