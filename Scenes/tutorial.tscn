@@ -7,7 +7,7 @@
 script = ExtResource("1_uxkps")
 
 [node name="Container" type="ColorRect" parent="."]
-z_index = 100
+z_index = 1
 offset_left = 1536.0
 offset_top = 24.0
 offset_right = 1896.0

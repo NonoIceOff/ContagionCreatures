@@ -58,35 +58,6 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij5us"]
 bg_color = Color(0.227451, 0.321569, 0.988235, 1)
-
-border_width_left = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 1, 1, 1)
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxu5s"]
-bg_color = Color(0.905882, 0.211765, 0.156863, 1)
-border_width_left = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 1, 1, 1)
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yse28"]
-bg_color = Color(0.619608, 0.113725, 0.0784314, 1)
-border_width_left = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 1, 1, 1)
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opluy"]
-bg_color = Color(0.905882, 0.211765, 0.156863, 1)
 border_width_left = 5
 border_width_right = 5
 border_width_bottom = 5
@@ -421,7 +392,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_2i1hw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f6neb")
 text = "ITEMS"
 
-
 [node name="Button2" type="Button" parent="."]
 offset_left = 936.0
 offset_right = 1246.0
@@ -430,13 +400,10 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("10_g78tk")
 theme_override_font_sizes/font_size = 64
-
 theme_override_styles/hover = SubResource("StyleBoxFlat_t287m")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_n8md2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ij5us")
 text = "FUIR"
-
-
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -449,10 +416,6 @@ anchor_mode = 0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("10_43je6")]
-offset_left = 24.0
-offset_top = 32.0
-offset_right = 24.0
-offset_bottom = 32.0
 mouse_filter = 2
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
