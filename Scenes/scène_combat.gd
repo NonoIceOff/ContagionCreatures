@@ -1,6 +1,7 @@
 extends Node2D
 
 var speechbox =  preload("res://Scenes/speech_box_COMBAT.tscn")
+var precombat_scene = preload("res://Scenes/Precombat.tscn")
 var rng = RandomNumberGenerator.new()
 var pv_player = 100
 var pv_enemy = 100
@@ -50,6 +51,7 @@ var enemy_creatures_spells = []
 
 
 func _ready():
+
 	# Obtenir le mob de l'ennemi
 	var enemy_mob_id = randi_range(1,10)
 	http_get_creatures.request(API_URL+"/creatures"+"/"+str(enemy_mob_id))
@@ -59,16 +61,14 @@ func _ready():
 
 	
 	
-	
+
+	print("enter in ready of sceneCombat")
 	_load_local_json()
 	activate_buttons()
 	creatures_data = _load_local_json()
-	
-	# Obtenir les spells du joueur
-	print("ok")
+	var precombat_instance = precombat_scene.instantiate()
+	add_child(precombat_instance)
 	http_get_creatures_spells.request(API_URL+"/creatures"+"/"+str(creatures_data[0].id)+"/attacks")
-	#print(creatures_spells)
-	
 	
 
 	
@@ -142,14 +142,11 @@ func _ready():
 						var boost_animal = Global.attacks[keys]["value"] * 2
 						Global.attacks[keys]["value"] += boost_animal
 					
-	
 
 func _load_local_json():
-
-
 	var json_as_text = FileAccess.get_file_as_string(CREATURES_FILE_PATH)
 	var parse_result = JSON.parse_string(json_as_text)
-
+	print(parse_result)
 	if parse_result == null:
 		print("Erreur lors du chargement du fichier JSON local.")
 	else:
@@ -385,6 +382,7 @@ func _on_get_spells_ennemy_request_completed(result: int, response_code: int, he
 func _on_get_creatures_enemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
+	print("ok")
 	enemy_creatures_data = parse_result
 	#await get_tree().create_timer(1).timeout
 	#print(enemy_creatures_data)
