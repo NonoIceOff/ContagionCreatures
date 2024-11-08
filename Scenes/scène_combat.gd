@@ -11,11 +11,27 @@ var buttonE : Button
 var animalP : Sprite2D
 var animalE : Sprite2D
 var background_rect_info : ColorRect
-@onready var http_request: HTTPRequest = $HTTPRequest
+#@onready var http_request: HTTPRequest = $HTTPRequest
 @onready var player_creature_name = $ContainerPLAYER/Pseudo
 
 @onready var player_progress_bar_hp  = $ContainerPLAYER/TextureProgressBar
 @onready var player_percentage_hp  = $ContainerPLAYER/TextureProgressBar/Percentage
+
+@onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
+@onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
+@onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
+@onready var spell_4_sound: AudioStreamPlayer2D = $Spell4_sound
+
+
+@onready var spell_1_button = $Spell1
+@onready var spell_2_button = $Spell2
+@onready var spell_3_button = $Spell3
+@onready var spell_4_button = $Spell4
+
+@onready var spell_1_icon = $Spell1_icon
+@onready var spell_2_icon = $Spell2_icon
+@onready var spell_3_icon = $Spell3_icon
+@onready var spell_4_icon = $Spell4_icon
 
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var mob_pseudo_label  = $ContainerMob/Pseudo
@@ -25,7 +41,7 @@ var background_rect_info : ColorRect
 @onready var http_get_creatures_spells = $GetSpellsPlayer
 @onready var http_get_enemy_spells = $GetSpellsEnnemy
 
-const API_URL = "https://contagioncreaturesapi.vercel.app/api/creatures"  # Remplacez par votre URL d'API
+const API_URL = "https://contagioncreaturesapi.vercel.app/api"  # Remplacez par votre URL d'API
 const CREATURES_FILE_PATH = "res://Constantes/creatures.json"  # Chemin vers le fichier JSON local
 var creatures_data = []
 var enemy_creatures_data = []
@@ -35,17 +51,24 @@ var enemy_creatures_spells = []
 
 
 func _ready():
+
+	# Obtenir le mob de l'ennemi
+	var enemy_mob_id = randi_range(1,10)
+	http_get_creatures.request(API_URL+"/creatures"+"/"+str(enemy_mob_id))
+	
+	# Obtenir les spells de l'ennemi
+	http_get_enemy_spells.request(API_URL+"/creatures"+"/"+str(enemy_mob_id)+"/attacks")
+
+	
+	
+
 	print("enter in ready of sceneCombat")
 	_load_local_json()
 	activate_buttons()
 	creatures_data = _load_local_json()
 	var precombat_instance = precombat_scene.instantiate()
 	add_child(precombat_instance)
-	http_get_creatures_spells.request(API_URL+"/"+str(creatures_data[0].id)+"/attacks")
-	
-	var random = randi_range(1,10)
-	http_get_creatures.request(API_URL+"/"+str(random))
-	
+	http_get_creatures_spells.request(API_URL+"/creatures"+"/"+str(creatures_data[0].id)+"/attacks")
 	
 
 	
@@ -295,6 +318,16 @@ func spawn_dialogue(custom_texts):
 
 func _process(delta):
 	rng.randomize()
+	
+	if Input.is_action_just_pressed("spell1"):
+		spell_1_button.emit_signal("pressed")
+	if Input.is_action_just_pressed("spell2"):
+		spell_2_button.emit_signal("pressed")
+	if Input.is_action_just_pressed("spell3"):
+		spell_3_button.emit_signal("pressed")
+	if Input.is_action_just_pressed("spell4"):
+		spell_4_button.emit_signal("pressed")
+	
 
 	# Progress bar de HP du joueur
 	if (creatures_data != []):
@@ -310,26 +343,64 @@ func _process(delta):
 		mob_pseudo_label.text = enemy_creatures_data.name
 	
 	if (creatures_spells != []):
-		get_node("Spell1").text = creatures_spells[0].name
-		get_node("Spell2").text = creatures_spells[1].name
-		get_node("Spell3").text = creatures_spells[2].name
-		get_node("Spell4").text = creatures_spells[3].name
+				
+		spell_1_button.text = creatures_spells[0].name
+		spell_1_icon.texture = load("res://Textures/" + creatures_spells[0].icon)
+		if spell_1_sound.stream == null:
+			spell_1_sound.stream = load("res://Sounds/" + creatures_spells[0].sound)
+		
+		spell_2_button.text = creatures_spells[1].name
+		spell_2_icon.texture = load("res://Textures/" + creatures_spells[1].icon)
+		if spell_2_sound.stream == null:
+			spell_2_sound.stream = load("res://Sounds/" + creatures_spells[1].sound)
+		
+		spell_3_button.text = creatures_spells[2].name
+		spell_3_icon.texture = load("res://Textures/" + creatures_spells[2].icon)
+		if spell_3_sound.stream == null:
+			spell_3_sound.stream = load("res://Sounds/" + creatures_spells[2].sound)
+		
+		spell_4_button.text = creatures_spells[3].name
+		spell_4_icon.texture = load("res://Textures/" + creatures_spells[3].icon)
+		if spell_4_sound.stream == null:
+			spell_4_sound.stream = load("res://Sounds/" + creatures_spells[3].sound)
 
 
 func _on_get_spells_player_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	creatures_spells = parse_result
-
-
+	#await get_tree().create_timer(1).timeout
+	#print(creatures_spells)
 
 func _on_get_spells_ennemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	enemy_creatures_spells = parse_result
+	#await get_tree().create_timer(1).timeout
+	#print(enemy_creatures_spells)
 
 func _on_get_creatures_enemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	print("ok")
 	enemy_creatures_data = parse_result
+	#await get_tree().create_timer(1).timeout
+	#print(enemy_creatures_data)
+
+
+
+func _on_spell_1_pressed() -> void:
+	print("Vous avez utilisé : " + creatures_spells[0].name)
+	spell_1_sound.play()
+	
+func _on_spell_2_pressed() -> void:
+	print("Vous avez utilisé : " + creatures_spells[1].name)
+	spell_2_sound.play()
+	
+func _on_spell_3_pressed() -> void:
+	print("Vous avez utilisé : " + creatures_spells[2].name)
+	spell_3_sound.play()
+
+func _on_spell_4_pressed() -> void:
+	print("Vous avez utilisé : " + creatures_spells[3].name)
+	spell_4_sound.play()

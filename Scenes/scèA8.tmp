@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cuvepu5toqc02"]
+[gd_scene load_steps=25 format=3 uid="uid://cuvepu5toqc02"]
 
 [ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
@@ -10,9 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="10_g78tk"]
 [ext_resource type="AudioStream" uid="uid://tw0xq780vpwe" path="res://Sounds/combat_music.mp3" id="10_nitua"]
-[ext_resource type="AudioStream" uid="uid://cucsn5iftliuo" path="res://Sounds/Shield Block.mp3" id="12_f2f2j"]
-[ext_resource type="AudioStream" uid="uid://m31hopp2f6ib" path="res://Sounds/Ice Shard.mp3" id="13_ggiij"]
-[ext_resource type="AudioStream" uid="uid://b87m4fatlldq1" path="res://Sounds/Magic Barrier.mp3" id="14_62ako"]
+[ext_resource type="AudioStream" uid="uid://cmcnklkn7jgvl" path="res://Sounds/coin_pickup.mp3" id="11_k6gip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
 bg_color = Color(0.619608, 0.423529, 0.972549, 1)
@@ -419,6 +417,10 @@ anchor_mode = 0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("10_43je6")]
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 24.0
+offset_bottom = 32.0
 mouse_filter = 2
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
@@ -489,33 +491,17 @@ offset_bottom = 664.0
 
 [node name="GetSpellsEnnemy" type="HTTPRequest" parent="."]
 
-[node name="Spell1_sound" type="AudioStreamPlayer2D" parent="."]
+[node name="Spell1_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_k6gip")
 
-[node name="Spell2_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_f2f2j")
+[node name="Spell2_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_k6gip")
 
-[node name="Spell3_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_ggiij")
+[node name="Spell3_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_k6gip")
 
-[node name="Spell4_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_62ako")
-
-[node name="Spell1_icon" type="Sprite2D" parent="."]
-position = Vector2(1312, 850)
-scale = Vector2(-0.0442489, 0.0465564)
-
-[node name="Spell2_icon" type="Sprite2D" parent="."]
-position = Vector2(1612, 850)
-scale = Vector2(-0.0442489, 0.0465564)
-
-[node name="Spell3_icon" type="Sprite2D" parent="."]
-position = Vector2(1612, 850)
-scale = Vector2(-0.0442489, 0.0465564)
-
-[node name="Spell4_icon" type="Sprite2D" parent="."]
-position = Vector2(1612, 850)
-rotation = -3.14159
-scale = Vector2(0.0442489, -0.0465564)
+[node name="Spell4_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_k6gip")
 
 [connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
 [connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]
