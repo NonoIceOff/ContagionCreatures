@@ -1,7 +1,7 @@
 extends Node2D
 
 var speechbox =  preload("res://Scenes/speech_box_COMBAT.tscn")
-#var precombat_scene = preload("res://Scenes/Precombat.tscn")
+var precombat_scene = preload("res://Scenes/Precombat.tscn")
 var rng = RandomNumberGenerator.new()
 var pv_player = 100
 var pv_enemy = 100
@@ -35,14 +35,13 @@ var enemy_creatures_spells = []
 
 
 func _ready():
+	print("enter in ready of sceneCombat")
 	_load_local_json()
 	activate_buttons()
 	creatures_data = _load_local_json()
-	 
-	# Obtenir les spells du joueur
-	print("ok")
+	var precombat_instance = precombat_scene.instantiate()
+	add_child(precombat_instance)
 	http_get_creatures_spells.request(API_URL+"/"+str(creatures_data[0].id)+"/attacks")
-	#print(creatures_spells)
 	
 	
 

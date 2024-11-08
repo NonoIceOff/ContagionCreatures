@@ -71,8 +71,8 @@ func _process(delta):
 
 func _on_precombat_animation_finished(anim_name):
 	animation_transition.play('screen_to_transition')
-	await get_tree().create_timer(4).timeout
-	get_tree().change_scene_to_file("res://Scenes/scène_combat.tscn")
+	await get_tree().create_timer(2).timeout 
+	queue_free()
 
 
 func _on_get_creatures_player_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
