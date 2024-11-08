@@ -422,7 +422,6 @@ anchor_mode = 0
 visible = false
 offset_top = 40.0
 offset_bottom = 40.0
-
 mouse_filter = 2
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
@@ -612,8 +611,8 @@ rotation = -3.14159
 scale = Vector2(0.0442489, -0.0465564)
 
 [connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
-[connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]
 [connection signal="pressed" from="Spell3" to="." method="_on_spell_3_pressed"]
+[connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]
 [connection signal="pressed" from="Spell4" to="." method="_on_spell_4_pressed"]
 [connection signal="request_completed" from="GetCreaturesEnemy" to="." method="_on_get_creatures_enemy_request_completed"]
 [connection signal="request_completed" from="GetSpellsPlayer" to="." method="_on_get_spells_player_request_completed"]

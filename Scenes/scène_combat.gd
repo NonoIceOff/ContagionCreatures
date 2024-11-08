@@ -15,30 +15,16 @@ var buttons_active = true  # Drapeau pour contrôler l'activation des boutons et
 var in_target_zone = false  # Indique si la barre est dans la zone cible
 var space_pressed = false   # Indique si la barre espace a été pressée une fois
 var current_attack_value = 0  # Stocke la valeur de l'attaque actuelle
-
-
+@onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
+@onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
+@onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
+@onready var spell_4_sound: AudioStreamPlayer2D = $Spell4_sound
 
 @onready var player_creature_name = $ContainerPLAYER/Pseudo
 @onready var progress_bar_joueur = $ProgressBar_Joueur
 @onready var zone_cible = $ProgressBar_Joueur/ZoneCible
 @onready var player_progress_bar_hp  = $ContainerPLAYER/TextureProgressBar
 @onready var player_percentage_hp  = $ContainerPLAYER/TextureProgressBar/Percentage
-
-@onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
-@onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
-@onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
-@onready var spell_4_sound: AudioStreamPlayer2D = $Spell4_sound
-
-
-@onready var spell_1_button = $Spell1
-@onready var spell_2_button = $Spell2
-@onready var spell_3_button = $Spell3
-@onready var spell_4_button = $Spell4
-
-@onready var spell_1_icon = $Spell1_icon
-@onready var spell_2_icon = $Spell2_icon
-@onready var spell_3_icon = $Spell3_icon
-@onready var spell_4_icon = $Spell4_icon
 
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var mob_pseudo_label  = $ContainerMob/Pseudo
@@ -48,7 +34,7 @@ var current_attack_value = 0  # Stocke la valeur de l'attaque actuelle
 @onready var http_get_creatures_spells = $GetSpellsPlayer
 @onready var http_get_enemy_spells = $GetSpellsEnnemy
 
-const API_URL = "https://contagioncreaturesapi.vercel.app/api"  # Remplacez par votre URL d'API
+const API_URL = "https://contagioncreaturesapi.vercel.app/api/creatures"  # Remplacez par votre URL d'API
 const CREATURES_FILE_PATH = "res://Constantes/creatures.json"  # Chemin vers le fichier JSON local
 var creatures_data = []
 var enemy_creatures_data = []
@@ -74,6 +60,7 @@ func _ready():
 	http_get_creatures.request(API_URL + "/" + str(enemy_mob_id))
 	http_get_enemy_spells.request(API_URL + "/" + str(enemy_mob_id) + "/attacks")
 
+
 	# Initialiser l'affichage des sorts et masquer la zone cible
 	var zone_cible = $ProgressBar_Joueur/ZoneCible
 	zone_cible.visible = false
@@ -81,16 +68,10 @@ func _ready():
 	# Charger les données locales
 	creatures_data = _load_local_json()
 
-
-
-	
-	
-
 	print("enter in ready of sceneCombat")
 	var precombat_instance = precombat_scene.instantiate()
 	add_child(precombat_instance)
 	
-
 	# Obtenir les sorts du joueur si les données sont disponibles
 	if creatures_data.size() > 0:
 		http_get_creatures_spells.request(API_URL + "/" + str(creatures_data[0].id) + "/attacks")
@@ -294,10 +275,9 @@ func configure_spell_button(button_name: String, spell_data: Dictionary) -> void
 			
 func _load_local_json():
 
-
 	var json_as_text = FileAccess.get_file_as_string(CREATURES_FILE_PATH)
 	var parse_result = JSON.parse_string(json_as_text)
-	print(parse_result)
+
 	if parse_result == null:
 		print("Erreur lors du chargement du fichier JSON local.")
 	else:
@@ -456,16 +436,6 @@ func spawn_dialogue(custom_texts):
 
 func _process(delta):
 	rng.randomize()
-	
-	if Input.is_action_just_pressed("spell1"):
-		spell_1_button.emit_signal("pressed")
-	if Input.is_action_just_pressed("spell2"):
-		spell_2_button.emit_signal("pressed")
-	if Input.is_action_just_pressed("spell3"):
-		spell_3_button.emit_signal("pressed")
-	if Input.is_action_just_pressed("spell4"):
-		spell_4_button.emit_signal("pressed")
-	
 
 func activate_buttons():
 	buttons_active = true
@@ -540,7 +510,6 @@ func _remplir_barre_automatiquement(duree: float) -> void:
 	in_target_zone = false  # Réinitialiser après le remplissage
 	space_pressed = false   # Réinitialiser pour le prochain remplissage
 
-
 # Détecte l'appui sur la barre espace et vérifie si on est dans la zone cible
 func _on_attack_bar_pressed():
 	if space_pressed:
@@ -581,38 +550,12 @@ func _on_get_spells_player_request_completed(result: int, response_code: int, he
 	var parse_result = JSON.parse_string(response_text)
 	creatures_spells = parse_result
 
-	#await get_tree().create_timer(1).timeout
-	#print(creatures_spells)
-
 func _on_get_spells_ennemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
 	enemy_creatures_spells = parse_result
-	#await get_tree().create_timer(1).timeout
-	#print(enemy_creatures_spells)
 
 func _on_get_creatures_enemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
-	print("ok")
 	enemy_creatures_data = parse_result
-	#await get_tree().create_timer(1).timeout
-	#print(enemy_creatures_data)
-
-
-
-func _on_spell_1_pressed() -> void:
-	print("Vous avez utilisé : " + creatures_spells[0].name)
-	spell_1_sound.play()
-	
-func _on_spell_2_pressed() -> void:
-	print("Vous avez utilisé : " + creatures_spells[1].name)
-	spell_2_sound.play()
-	
-func _on_spell_3_pressed() -> void:
-	print("Vous avez utilisé : " + creatures_spells[2].name)
-	spell_3_sound.play()
-
-func _on_spell_4_pressed() -> void:
-	print("Vous avez utilisé : " + creatures_spells[3].name)
-	spell_4_sound.play()
