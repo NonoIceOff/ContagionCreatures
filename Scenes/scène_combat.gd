@@ -43,6 +43,9 @@ func _ready():
 	add_child(precombat_instance)
 	http_get_creatures_spells.request(API_URL+"/"+str(creatures_data[0].id)+"/attacks")
 	
+	var random = randi_range(1,10)
+	http_get_creatures.request(API_URL+"/"+str(random))
+	
 	
 
 	
@@ -328,4 +331,5 @@ func _on_get_spells_ennemy_request_completed(result: int, response_code: int, he
 func _on_get_creatures_enemy_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	var parse_result = JSON.parse_string(response_text)
+	print("ok")
 	enemy_creatures_data = parse_result
