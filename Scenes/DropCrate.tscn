@@ -45,9 +45,6 @@ visible = false
 [node name="RareItem" type="Sprite2D" parent="Items"]
 visible = false
 
-[node name="LegendaryItem" type="Sprite2D" parent="Items"]
-visible = false
-
 [node name="Crates" type="Node2D" parent="."]
 position = Vector2(960, 540)
 
