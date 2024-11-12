@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cd03f6pu0jwe"
-path="res://.godot/imported/SpriteMoulin.png-a8fcef291a98a37a29be42602d6ef141.ctex"
+path="res://.godot/imported/SpriteMoulin.png-7ef5abba2cf44bcc5a0e615812c27d29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/output/SpriteMoulin.png"
-dest_files=["res://.godot/imported/SpriteMoulin.png-a8fcef291a98a37a29be42602d6ef141.ctex"]
+source_file="res://TileSet/TileSetMoulin/output/SpriteMoulin.png"
+dest_files=["res://.godot/imported/SpriteMoulin.png-7ef5abba2cf44bcc5a0e615812c27d29.ctex"]
 
 [params]
 
