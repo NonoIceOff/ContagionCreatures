@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3 uid="uid://cudq4udwc88dm"]
+
+[ext_resource type="Script" path="res://Scripts/drop_crate.gd" id="1_j8lr5"]
+[ext_resource type="SpriteFrames" uid="uid://1x2nw21jwnrk" path="res://DropCrate.tres" id="2_2xte1"]
+[ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="2_vsfdu"]
+[ext_resource type="Texture2D" uid="uid://do32i36l6ciew" path="res://TileSet/TileSetCasePack/RareCasePack/output/Rarecasepack.png" id="3_nns4y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdb3s"]
+atlas = ExtResource("3_nns4y")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejp3r"]
+atlas = ExtResource("3_nns4y")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku3ar"]
+atlas = ExtResource("3_nns4y")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27eb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdb3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejp3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku3ar")
+}],
+"loop": false,
+"name": &"RareOpenCase",
+"speed": 7.0
+}]
+
+[node name="DropCrate" type="Node2D"]
+script = ExtResource("1_j8lr5")
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="CommonItem" type="Sprite2D" parent="Items"]
+visible = false
+
+[node name="CommonItemLabel" type="Label" parent="Items/CommonItem"]
+visible = false
+offset_right = 40.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("2_vsfdu")
+theme_override_font_sizes/font_size = 32
+
+[node name="RareItem" type="Sprite2D" parent="Items"]
+visible = false
+
+[node name="RareItemLabel" type="Label" parent="Items/RareItem"]
+visible = false
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("2_vsfdu")
+theme_override_font_sizes/font_size = 32
+
+[node name="Crates" type="Node2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="CommonCrate" type="AnimatedSprite2D" parent="Crates"]
+visible = false
+texture_filter = 1
+scale = Vector2(15, 15)
+sprite_frames = ExtResource("2_2xte1")
+animation = &"BaseOpenCase"
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://TileSet/TileSetCasePack/BaseCasePack/output",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://TileSet/TileSetCasePack/BaseCasePack/BaseOpenCase.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c86a20a15bbe4d721c26fb3f72915d87"
+
+[node name="RareCrate" type="AnimatedSprite2D" parent="Crates"]
+visible = false
+texture_filter = 1
+scale = Vector2(15, 15)
+sprite_frames = SubResource("SpriteFrames_27eb4")
+animation = &"RareOpenCase"
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://TileSet/TileSetCasePack/RareCasePack/output",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://TileSet/TileSetCasePack/RareCasePack/Rarecasepack.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "d33c50a085cca4db9097c1962fe40e74"

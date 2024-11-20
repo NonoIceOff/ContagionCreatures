@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnj2e50esfuhx"
-path="res://.godot/imported/ARC.png-d308ac31953d3afa8249b1ce262eb17d.ctex"
+uid="uid://c8hsu8g07umwo"
+path="res://.godot/imported/BaseOpenCase.png-00e2cc2848f2c6dfacc4d882420fc9cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ARC.png"
-dest_files=["res://.godot/imported/ARC.png-d308ac31953d3afa8249b1ce262eb17d.ctex"]
+source_file="res://TileSet/TileSetCasePack/BaseCasePack/output/BaseOpenCase.png"
+dest_files=["res://.godot/imported/BaseOpenCase.png-00e2cc2848f2c6dfacc4d882420fc9cc.ctex"]
 
 [params]
 

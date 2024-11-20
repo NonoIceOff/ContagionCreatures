@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnj2e50esfuhx"
-path="res://.godot/imported/ARC.png-d308ac31953d3afa8249b1ce262eb17d.ctex"
+uid="uid://d4kw7dkjtx4xw"
+path="res://.godot/imported/tileset_TileSetTree.png-584f0427dd6914c3545b2a0c572124ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ARC.png"
-dest_files=["res://.godot/imported/ARC.png-d308ac31953d3afa8249b1ce262eb17d.ctex"]
+source_file="res://TileSet/TileSetTree/tileset_TileSetTree.png"
+dest_files=["res://.godot/imported/tileset_TileSetTree.png-584f0427dd6914c3545b2a0c572124ef.ctex"]
 
 [params]
 

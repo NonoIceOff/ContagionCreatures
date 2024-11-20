@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://n602wkhd6ypc"
+path="res://.godot/imported/SpriteMoulin.aseprite-9742af03097e3c000a204aa422394a8e.res"
+
+[deps]
+
+source_file="res://TileSet/TileSetMoulin/output/SpriteMoulin.aseprite"
+dest_files=["res://.godot/imported/SpriteMoulin.aseprite-9742af03097e3c000a204aa422394a8e.res"]
+
+[params]
+
