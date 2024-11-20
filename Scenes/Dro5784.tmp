@@ -42,21 +42,21 @@ script = ExtResource("1_j8lr5")
 [node name="CommonItem" type="Sprite2D" parent="Items"]
 visible = false
 
+[node name="CommonItemLabel" type="Label" parent="Items/CommonItem"]
+visible = false
+offset_right = 40.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("2_vsfdu")
+theme_override_font_sizes/font_size = 32
+
 [node name="RareItem" type="Sprite2D" parent="Items"]
 visible = false
 
-[node name="RareItemLabel" type="Label" parent="Items"]
+[node name="RareItemLabel" type="Label" parent="Items/RareItem"]
 visible = false
 offset_top = 40.0
 offset_right = 40.0
 offset_bottom = 79.0
-theme_override_fonts/font = ExtResource("2_vsfdu")
-theme_override_font_sizes/font_size = 32
-
-[node name="CommonItemLabel" type="Label" parent="Items"]
-visible = false
-offset_right = 40.0
-offset_bottom = 39.0
 theme_override_fonts/font = ExtResource("2_vsfdu")
 theme_override_font_sizes/font_size = 32
 
