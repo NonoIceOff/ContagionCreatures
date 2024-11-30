@@ -557,7 +557,7 @@ label_settings = SubResource("LabelSettings_rqygx")
 [node name="Player_One" parent="." instance=ExtResource("1_1k8th")]
 z_index = 5
 position = Vector2(1424, 448)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.7, 2.7)
 
 [node name="Camera2D" type="Camera2D" parent="Player_One"]
 
@@ -898,7 +898,7 @@ horizontal_alignment = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 20
 texture_filter = 1
-position = Vector2(2175, -744)
+position = Vector2(2299, -1632)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_c61gw")
 animation = &"moulinTourne"

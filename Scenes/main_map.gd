@@ -96,7 +96,7 @@ func _process(delta):
 		get_node("StartCinematic").visible = true
 		get_node("StartCinematic/RichTextLabel").visible_ratio = 0
 		get_node("Path2D/PathFollow2D/Camera2D").enabled = true
-		get_node("Player_One/2").enabled = false
+		get_node("Player_One/player1/2").enabled = false
 		get_node("StartCinematic/CPUParticles2D").visible = false
 		get_node("StartCinematic/Ennemy").visible = false
 		
@@ -580,7 +580,7 @@ func _on_piano_2_body_exited(body):
 
 func _on_stop_cinematic_pressed():
 	get_node("ui").visible = true
-	get_node("Player_One/2").enabled = true
+	get_node("Player_One/player1/2").enabled = true
 	get_node("Path2D/PathFollow2D/Camera2D").enabled = false
 	get_node("SoundEffectFx").volume_db = -10
 	get_node("AudioStreamPlayer2D").playing = false

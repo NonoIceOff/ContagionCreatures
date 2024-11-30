@@ -30,7 +30,7 @@ func _input(event):
 		if !items_revealed:
 			show_next_item()
 		else:
-			reset_items_or_exit()
+			next_scene()
 
 	elif not crate_opened and (event.is_action_pressed("Space") or event.is_action_pressed("leftClick")):
 		if crate_locked_texture.visible and !crate_gold_locked_texture.visible:
@@ -59,7 +59,7 @@ func open_crate_effect():
 func show_first_item():
 	if items_data.size() > 0:
 		common_item_texture.visible = true
-		common_item_texture.position = Vector2(960 - (common_item_texture.texture.get_width() * 2) / 2, 540)  
+		common_item_texture.position = Vector2(980 - (common_item_texture.texture.get_width() * 2) / 2, 540)  
 		common_item_texture.scale = Vector2(2, 2)  
 		
 		common_item_label.visible = true
@@ -73,6 +73,7 @@ func show_first_item():
 		)
 
 		current_item_index = 0
+		animate_item_appearance(common_item_texture, common_item_label, 0)
 
 	if items_data.size() <= 1:
 		items_revealed = true
@@ -81,8 +82,8 @@ func show_first_item():
 func show_second_item():
 	if items_data.size() > 1:
 		rare_item_texture.visible = true
-		rare_item_texture.position = Vector2(960 - (rare_item_texture.texture.get_width() * 2) / 2, 540)  
-		rare_item_texture.scale = Vector2(2, 2) 
+		rare_item_texture.position = Vector2(980 - (rare_item_texture.texture.get_width() * 2) / 2, 540)
+		rare_item_texture.scale = Vector2(2, 2)
 		rare_item_label.visible = true
 		rare_item_label.text = items_data[1].get("name", "Item")
 		print(items_data[1].get("name", "Item"))
@@ -94,6 +95,7 @@ func show_second_item():
 		)
 
 		current_item_index = 1
+		animate_item_appearance(rare_item_texture, rare_item_label, 0)
 
 func show_next_item():
 	if current_item_index == 0 and items_data.size() > 1:
@@ -104,21 +106,22 @@ func show_next_item():
 		common_item_texture.visible = true
 		rare_item_texture.visible = items_data.size() > 1
 
-		common_item_texture.position = Vector2(750 - (common_item_texture.texture.get_width() * 2) / 2, 540)
-		rare_item_texture.position = Vector2(1170 - (rare_item_texture.texture.get_width() * 2) / 2, 540)
+		common_item_texture.position = Vector2(790 - (common_item_texture.texture.get_width() * 2) / 2, 540)
+		rare_item_texture.position = Vector2(1210 - (rare_item_texture.texture.get_width() * 2) / 2, 540)
 
 		common_item_label.position = common_item_texture.position + Vector2(common_item_texture.texture.get_width(), 60)
 		rare_item_label.position = rare_item_texture.position + Vector2(rare_item_texture.texture.get_width(), 60)
 
 		common_item_label.visible = true
 		rare_item_label.visible = items_data.size() > 1
+		
+		animate_reveal_items()
 
 		items_revealed = true
 
 
-func reset_items_or_exit():
-	if items_revealed:
-		queue_free()  
+func next_scene():
+	queue_free()
 
 
 func _on_creature_drops_received(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
@@ -157,3 +160,99 @@ func apply_item_textures():
 		var second_item_texture = load(second_item_texture_path)
 		if second_item_texture:
 			rare_item_texture.texture = second_item_texture
+			
+			
+#_____________________________________ANIMATION_FUNCTION_________________________________________________
+
+func animate_item_appearance(sprite: Sprite2D, label: Label, delay: float) -> void:
+	var tween = get_tree().create_tween()
+
+	# Animation de la texture : Zoom avec rotation
+	sprite.scale = Vector2(0, 0)  # Taille initiale
+	sprite.rotation = -0.5  # Angle initial (léger)
+	sprite.modulate.a = 0  # Transparence initiale
+
+	tween.tween_property(sprite, "scale", Vector2(2, 2), 0.6).set_delay(delay).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(sprite, "rotation", 0, 0.6).set_delay(delay).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite, "modulate:a", 1, 0.6).set_delay(delay).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+	# Animation du label : Apparition avec léger glissement
+	label.position += Vector2(0, 20)  # Position initiale (un peu en bas)
+	label.modulate.a = 0  # Transparence initiale
+
+	tween.tween_property(label, "position", label.position - Vector2(0, 20), 0.6).set_delay(delay).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(label, "modulate:a", 1, 0.6).set_delay(delay).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+func animate_reveal_items():
+	var tween = get_tree().create_tween()
+
+	# Réinitialise les propriétés des items pour l'animation
+	common_item_texture.scale = Vector2(0, 0)
+	rare_item_texture.scale = Vector2(0, 0)
+	common_item_texture.modulate.a = 0
+	rare_item_texture.modulate.a = 0
+	common_item_label.modulate.a = 0
+	rare_item_label.modulate.a = 0
+
+	# Animation de l'item commun
+	tween.tween_property(common_item_texture, "scale", Vector2(2, 2), 0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(common_item_texture, "modulate:a", 1, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(common_item_texture, "position", Vector2(790 - (common_item_texture.texture.get_width() * 2) / 2, 540), 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+
+	# Animation du label commun
+	tween.tween_property(common_item_label, "modulate:a", 1, 0.5).set_delay(0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+	if items_data.size() > 1:
+		# Décalage pour l'item rare
+		tween.tween_property(rare_item_texture, "scale", Vector2(2, 2), 0.5).set_delay(0.3).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+		tween.tween_property(rare_item_texture, "modulate:a", 1, 0.5).set_delay(0.3).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(rare_item_texture, "position", Vector2(1210 - (rare_item_texture.texture.get_width() * 2) / 2, 540), 0.5).set_delay(0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+
+		# Animation du label rare
+		tween.tween_property(rare_item_label, "modulate:a", 1, 0.5).set_delay(0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+
+func animate_transition(current_sprite: Sprite2D, current_label: Label, next_sprite: Sprite2D, next_label: Label) -> void:
+	var tween = get_tree().create_tween()
+
+	# Animation de sortie de l'item courant
+	tween.tween_property(current_sprite, "position", current_sprite.position - Vector2(300, 0), 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(current_sprite, "rotation", 0.5, 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(current_sprite, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_property(current_label, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+	# Animation d'entrée pour l'item suivant
+	next_sprite.position += Vector2(300, 0)  # Déplacement initial
+	next_sprite.scale = Vector2(0.5, 0.5)  # Taille initiale réduite
+	next_sprite.modulate.a = 0  # Opacité initiale
+
+	tween.tween_property(next_sprite, "position", next_sprite.position - Vector2(300, 0), 0.6).set_delay(0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(next_sprite, "scale", Vector2(2, 2), 0.6).set_delay(0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(next_sprite, "modulate:a", 1, 0.6).set_delay(0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+	# Animation du label de l'item suivant
+	next_label.position += Vector2(0, 20)  # Position initiale
+	next_label.modulate.a = 0  # Transparence initiale
+
+	tween.tween_property(next_label, "position", next_label.position - Vector2(0, 20), 0.6).set_delay(0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(next_label, "modulate:a", 1, 0.6).set_delay(0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+func animate_reveal_all():
+	var tween = get_tree().create_tween()
+
+	# Déplace les items côte à côte
+	tween.tween_property(common_item_texture, "position", Vector2(750 - (common_item_texture.texture.get_width() * 2) / 2, 540), 0.6).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(rare_item_texture, "position", Vector2(1170 - (rare_item_texture.texture.get_width() * 2) / 2, 540), 0.6).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_callback(Callable(self, "_shine_effect")).set_delay(0.6)
+
+func _shine_effect():
+	var tween = get_tree().create_tween()
+
+	# Simulation d'un éclat lumineux sur les items
+	common_item_texture.modulate = Color(1.5, 1.5, 1.5, 1)  # Augmente la luminosité
+	rare_item_texture.modulate = Color(1.5, 1.5, 1.5, 1)  # Augmente la luminosité
+
+	tween.tween_property(common_item_texture, "modulate", Color(1, 1, 1, 1), 0.3)
+	tween.tween_property(rare_item_texture, "modulate", Color(1, 1, 1, 1), 0.3)
