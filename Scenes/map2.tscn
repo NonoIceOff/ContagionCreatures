@@ -96,7 +96,7 @@ mouse_filter = 2
 [node name="Player_One" parent="." instance=ExtResource("3_5vi83")]
 z_index = 5
 position = Vector2(-1315, 5260)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.7, 2.7)
 
 [node name="Leave_to_Map1" type="Area2D" parent="."]
 position = Vector2(-1317, 5395)

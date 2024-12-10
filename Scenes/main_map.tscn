@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=49 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
@@ -25,7 +25,6 @@
 [ext_resource type="Script" path="res://Scripts/area_saved.gd" id="24_cjwdc"]
 [ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="24_e0f8h"]
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="25_2w24m"]
-[ext_resource type="Texture2D" uid="uid://cd03f6pu0jwe" path="res://TileSet/TileSetMoulin/output/SpriteMoulin.png" id="26_8jge5"]
 
 [sub_resource type="Curve2D" id="Curve2D_iabi8"]
 _data = {
@@ -211,169 +210,8 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbx24"]
 size = Vector2(41.25, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fih6u"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(0, 0, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a76gi"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(224, 0, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqmbp"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(448, 0, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ksbjd"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(672, 0, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2bckc"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(896, 0, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8idq"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(0, 256, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ugtbn"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(224, 256, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n72nb"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(448, 256, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s262n"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(672, 256, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bx52y"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(896, 256, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jjl8v"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(0, 512, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rsr4p"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(224, 512, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwp0n"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(448, 512, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cio7y"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(672, 512, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2lo5d"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(896, 512, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6bmcw"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(0, 768, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_33b54"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(224, 768, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mhky1"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(448, 768, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yqysm"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(672, 768, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4vo6n"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(896, 768, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ryyns"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(0, 1024, 224, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dt7l6"]
-atlas = ExtResource("26_8jge5")
-region = Rect2(224, 1024, 224, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c61gw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fih6u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a76gi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jqmbp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ksbjd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2bckc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8idq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ugtbn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n72nb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s262n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bx52y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jjl8v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rsr4p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dwp0n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cio7y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2lo5d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6bmcw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_33b54")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mhky1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yqysm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4vo6n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ryyns")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dt7l6")
-}],
-"loop": true,
-"name": &"moulinTourne",
-"speed": 8.0
-}]
-
 [node name="main_map" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_ba8wf")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -557,7 +395,7 @@ label_settings = SubResource("LabelSettings_rqygx")
 [node name="Player_One" parent="." instance=ExtResource("1_1k8th")]
 z_index = 5
 position = Vector2(1424, 448)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.7, 2.7)
 
 [node name="Camera2D" type="Camera2D" parent="Player_One"]
 
@@ -894,28 +732,6 @@ offset_bottom = -1.33333
 scale = Vector2(0.5, 0.5)
 text = "[E]"
 horizontal_alignment = 1
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 20
-texture_filter = 1
-position = Vector2(2175, -744)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_c61gw")
-animation = &"moulinTourne"
-metadata/_aseprite_wizard_interface_config_ = {
-"output_section": true,
-"pending_changes": {}
-}
-metadata/_aseprite_wizard_config_ = {
-"layer": "",
-"o_ex_p": "",
-"o_folder": "res://TileSet/TileSetMoulin/output",
-"o_name": "",
-"only_visible": false,
-"slice": "",
-"source": "res://TileSet/TileSetMoulin/output/SpriteMoulin.aseprite"
-}
-metadata/_aseprite_wizard_source_file_hash_ = "ca2845325cebde33fa73e0eb8bdca457"
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

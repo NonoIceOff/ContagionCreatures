@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=9 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="1_p3l0n"]
-[ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="2_8ox0t"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
 [ext_resource type="Texture2D" uid="uid://dlrfnokky7x0k" path="res://Textures/Items/Gemme_bleu.png" id="4_jwspb"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
@@ -19,12 +18,6 @@ script = ExtResource("1_p3l0n")
 
 [node name="Transition" parent="." instance=ExtResource("1_88tsw")]
 mouse_filter = 2
-
-[node name="Minimap" parent="." instance=ExtResource("2_8ox0t")]
-offset_left = 1664.0
-offset_top = 816.0
-offset_right = 1704.0
-offset_bottom = 856.0
 
 [node name="QuestMenu" parent="." instance=ExtResource("3_850rj")]
 
@@ -51,17 +44,17 @@ offset_top = 24.0
 offset_right = 720.0
 offset_bottom = 66.0
 mouse_force_pass_scroll_events = false
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 25
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
 theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 25
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[center]NO_QUEST"
 scroll_active = false

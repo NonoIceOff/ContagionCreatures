@@ -1,18 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsibyur3csoj7"]
 
-[ext_resource type="Texture2D" uid="uid://d4kw7dkjtx4xw" path="res://TileSet/TileSetTree/tileset_TileSetTree.png" id="1_tfwps"]
+[ext_resource type="Texture2D" uid="uid://b41xh1sha5kwa" path="res://TileSet/TileSetTree/tileset_tree.png" id="1_8xhvc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehpiy"]
 size = Vector2(32, 32)
 
 [node name="Tree" type="StaticBody2D"]
+y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+y_sort_enabled = true
 texture_filter = 1
-texture = ExtResource("1_tfwps")
+texture = ExtResource("1_8xhvc")
 centered = false
 offset = Vector2(0, -16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
 position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_ehpiy")
