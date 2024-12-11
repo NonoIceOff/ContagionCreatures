@@ -15,6 +15,7 @@ var buttons_active = false  # Drapeau pour contrôler l'activation des boutons e
 var in_target_zone = false  # Indique si la barre est dans la zone cible
 var space_pressed = false   # Indique si la barre espace a été pressée une fois
 var current_attack_value = 0  # Stocke la valeur de l'attaque actuelle
+var current_mode = ""
 @onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
 @onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
 @onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
@@ -28,6 +29,8 @@ var combat_started = false  # Indicateur de début de combat
 @onready var zone_cible = $ProgressBar_Joueur/ZoneCible
 @onready var player_progress_bar_hp  = $ContainerPLAYER/TextureProgressBar
 @onready var player_percentage_hp  = $ContainerPLAYER/TextureProgressBar/Percentage
+@onready var player_percentage_shield  = $ContainerPLAYER/TextureProgressBar/Shield
+
 
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var mob_pseudo_label  = $ContainerMob/Pseudo
@@ -510,6 +513,7 @@ func _on_spell_button_pressed(spell_data: Dictionary):
 	set_spell_buttons_enabled(false)  # Désactive les boutons
 	space_pressed = false  # Réinitialise l'état de l'appui sur espace
 	current_attack_value = spell_data.value  # Récupère la valeur de l'attaque actuelle
+	current_mode = spell_data.mode
 	await _remplir_barre_automatiquement(1.0)
 	set_spell_buttons_enabled(true)  # Réactive les boutons
 
@@ -581,24 +585,37 @@ func _on_attack_bar_pressed():
 	# Vérifier si `progress_percentage` se trouve dans la plage de la zone cible
 	if progress_percentage >= zone_start_percentage and progress_percentage <= zone_end_percentage:
 		print("Réussite")
-		apply_damage_to_enemy(current_attack_value, true)
+		apply_damage_to_enemy(current_attack_value, true, current_mode )
 		spell_1_sound.play
 	else:
 		print("Échec")
-		apply_damage_to_enemy(current_attack_value, false)
+		apply_damage_to_enemy(current_attack_value, false, current_mode)
 		spell_2_sound.play
 
-func apply_damage_to_enemy(damage: int, successful: bool) -> void:
-	var final_damage = damage
-	if not successful:
-		final_damage /= 2  # Divise les dégâts par 2 en cas d'échec
+func apply_damage_to_enemy(damage: int, successful: bool, mode: String) -> void:
+	var mode_attck = current_mode
+	print(mode_attck)
 	
-	# Applique les dégâts finaux à la barre de vie de l'ennemi
-	mob_progress_bar_hp.value -= final_damage
-	mob_percentage_hp.text = str(mob_progress_bar_hp.value) + "/" + str(mob_progress_bar_hp.max_value)
+	if mode_attck == "def":
+		var final_shield = damage
+		if not successful:
+			final_shield/= 2
+		var current_value = player_percentage_shield.text.to_int()  # Convertir le texte en entier
+		current_value += final_shield  # Ajouter la valeur
+		player_percentage_shield.text = str(current_value)  # Mettre à jour le texte
+		print("Bouclier de  :", final_shield)
 	
-	# Affiche un message pour indiquer les dégâts infligés
-	print("Dégâts infligés à l'ennemi :", final_damage)
+	if mode_attck == "att":
+		var final_damage = damage
+		if not successful:
+			final_damage /= 2  # Divise les dégâts par 2 en cas d'échec
+		# Applique les dégâts finaux à la barre de vie de l'ennemi
+		mob_progress_bar_hp.value -= final_damage
+		mob_percentage_hp.text = str(mob_progress_bar_hp.value) + "/" + str(mob_progress_bar_hp.max_value)
+		
+		# Affiche un message pour indiquer les dégâts infligés
+		print("Dégâts infligés à l'ennemi :", final_damage)
+		print("attaque")
 
 	
 func _on_get_spells_player_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
