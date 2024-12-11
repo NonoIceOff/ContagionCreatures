@@ -6,6 +6,7 @@ extends Node2D
 @onready var label_home = $TileMap/house/AreaHome/Label_E_Home
 var entered = false
 var Key = false
+var scene_load = false
 
 func _ready() -> void:
 	label_home.visible = false
@@ -15,6 +16,21 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("M"):
+		print("test")
+		if scene_load == false:
+			var load_scene = preload("res://Scenes/Full_screen_map.tscn")
+			var load_instance = load_scene.instantiate()
+			load_instance.position = Vector2(0,0)
+			get_node("ui/Minimap").visible = false
+			get_node("ui").add_child(load_instance)
+			
+			scene_load = true
+
+		elif scene_load == true:
+			get_node("ui/Full_Screen_map").queue_free()
+			get_node("ui/Minimap").visible = true
+			scene_load = false
 
 	if entered == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"):
