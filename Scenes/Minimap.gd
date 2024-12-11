@@ -65,7 +65,7 @@ func _physics_process(delta):
 	
 	get_node("AnimationPlayer").current_animation = "pin"
 	camera.position = player.position
-	var point_pos = pin - camera.position
+	var point_pos = Global.pin - camera.position
 	get_node("PinPoint").position = point_pos *0.1 + get_node("PlayerPoint").position
 	
 	if get_node("PinPoint").position.x < 20:
@@ -84,6 +84,7 @@ func _physics_process(delta):
 
 func change_pin(position):
 	pin = position
+	Global.pin = pin
 
 	
 	

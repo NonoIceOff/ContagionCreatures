@@ -9,7 +9,7 @@ var point_placed = false
 var point_sprite = ColorRect.new() 
 
 func _ready():
-	pin = Vector2(0,0)
+	pin = Global.pin
 	
 	var map_to_display_grass = "../../TileMap/grass"
 	var map_to_display_ground = "../../TileMap/Ground"
@@ -62,19 +62,11 @@ func _physics_process(delta):
 		
 	get_node("CanvasLayer/Position").text = "X: "+str(int(get_node("../../TileMap/Player_One").position.x))+"  |  Y: "+str(int(get_node("../../TileMap/Player_One").position.y))
 	var postest = get_node("SubViewportContainer/SubViewport/Camera2D").offset*2
-	get_node("CanvasLayer/Position2").text = "offset X: "+str(postest.x)+"  |  Y: "+str(postest.y)
 	
 
 func change_pin(position):
 	pin = position
-	
-func _input(event):
-	# Mouse in viewport coordinates.
-	if event is InputEventMouseButton:
-		print("Mouse Click/Unclick at: ", event.position)
-		var test = get_node("SubViewportContainer/SubViewport/Camera2D").offset+event.position*get_node("SubViewportContainer/SubViewport/Camera2D").zoom.x
-		get_node("CanvasLayer/Position3").text = "click X: "+str(test.x)+"  |  Y: "+str(test.y)
-		change_pin(test)
+	Global.pin = pin
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:

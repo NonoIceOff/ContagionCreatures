@@ -18,6 +18,8 @@ var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele s
 var attack_values = [11,23,2,20]
 var enemy_attack = attack_values[attack_index]
 
+var pin = Vector2(0,0)
+
 
 
 var grid_size = 31
