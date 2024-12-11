@@ -1,6 +1,6 @@
+#SCRIPT INUTILE A SUPPRIMER PLUS TARD
+
 extends Area2D
-
-
 var entered = false
 var Key = false
 
