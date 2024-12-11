@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var transition_scene = $ui/Transition/AnimationPlayer
 @onready var soundEffect = $SoundEffectFx
+
 @onready var label_home = $TileMap/house/AreaHome/Label_E_Home
 var entered = false
 var Key = false
@@ -14,6 +15,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+
 	if entered == true and Key == false:
 		if Input.is_action_just_pressed("ui_interact"):
 			Global.save()
