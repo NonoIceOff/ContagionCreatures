@@ -1,17 +1,211 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgeiuvmq46mhr"]
+[gd_scene load_steps=26 format=3 uid="uid://cgeiuvmq46mhr"]
 
 [ext_resource type="Script" path="res://Scenes/Player_1_Settings.gd" id="1_ny7x7"]
 [ext_resource type="Texture2D" uid="uid://dn53eocadrx8q" path="res://Textures/tilesetPERS-removebg.png" id="3_bysaf"]
 [ext_resource type="Script" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="4_0rm42"]
+[ext_resource type="Texture2D" uid="uid://droj4wt6rug7e" path="res://Textures/spritePlayer/output/CharacterGame.png" id="5_tjhtf"]
+[ext_resource type="PackedScene" uid="uid://dxt5b5tantpyy" path="res://Scenes/PauseMenu.tscn" id="6_pyjks"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rs54"]
-size = Vector2(85, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr7xy"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_225of"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyf1b"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxdf4"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvm5m"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c0k1"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46e5x"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g5ig"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuwxr"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypcsr"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atq2k"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoffc"]
+atlas = ExtResource("5_tjhtf")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_deahx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr7xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_225of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr7xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyf1b")
+}],
+"loop": true,
+"name": &"EastWalk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxdf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvm5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxdf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c0k1")
+}],
+"loop": true,
+"name": &"NorthWalk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46e5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g5ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46e5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuwxr")
+}],
+"loop": true,
+"name": &"SouthWalk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypcsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atq2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypcsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoffc")
+}],
+"loop": true,
+"name": &"WestWalk",
+"speed": 6.0
+}]
+
+[sub_resource type="Animation" id="Animation_gbgpv"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 3, 5]
+}
+
+[sub_resource type="Animation" id="Animation_6m5cv"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 6, 8]
+}
+
+[sub_resource type="Animation" id="Animation_cf48i"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ruxu8"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 9, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_556cq"]
+_data = {
+"EastWalk": SubResource("Animation_gbgpv"),
+"NorthWalk": SubResource("Animation_6m5cv"),
+"SouthWalk": SubResource("Animation_cf48i"),
+"WestLook": SubResource("Animation_ruxu8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4feh"]
+size = Vector2(15, 15)
 
 [node name="Player_One" type="CharacterBody2D" groups=["Player_One"]]
 script = ExtResource("1_ny7x7")
 
 [node name="01-generic2" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_bysaf")
@@ -19,22 +213,6 @@ centered = false
 offset = Vector2(2.08165e-12, 2.08165e-12)
 region_enabled = true
 region_rect = Rect2(29, 382, 100, 98)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(30, 35)
-scale = Vector2(0.4, 0.4)
-shape = SubResource("RectangleShape2D_3rs54")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(30, 35)
-scale = Vector2(0.4, 0.4)
-shape = SubResource("RectangleShape2D_3rs54")
-
-[node name="2" type="Camera2D" parent="."]
-position = Vector2(30, 35)
-offset = Vector2(2.08165e-12, 2.08165e-12)
-zoom = Vector2(1.5, 1.5)
 
 [node name="LPCAnimatedSprite2D" type="Node2D" parent="."]
 script = ExtResource("3_hy4pn")
@@ -54,7 +232,47 @@ grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.25, 0.25)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(30, 40)
-scale = Vector2(3, 3)
-target_position = Vector2(2.08165e-12, 9.66)
+[node name="player1" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_deahx")
+animation = &"SouthWalk"
+centered = false
+offset = Vector2(0, -4)
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://Textures/spritePlayer/output",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://Textures/spritePlayer/CharacterGame.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "af05444b34072f04acb82d85cdd69606"
+
+[node name="2" type="Camera2D" parent="player1"]
+position = Vector2(16, 16)
+offset = Vector2(2.08165e-12, 2.08165e-12)
+zoom = Vector2(1.8, 1.8)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="player1/2"]
+
+[node name="PauseMenu" parent="player1/2/CanvasLayer" instance=ExtResource("6_pyjks")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player1"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_556cq")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_d4feh")

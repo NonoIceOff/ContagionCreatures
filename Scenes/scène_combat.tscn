@@ -237,10 +237,10 @@ texture = ExtResource("1_psdp5")
 [node name="ContainerPLAYER" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -123.0
-offset_top = 259.0
-offset_right = 125.0
-offset_bottom = 375.0
+offset_left = -80.0
+offset_top = 256.0
+offset_right = 168.0
+offset_bottom = 372.0
 
 [node name="Pseudo" type="Label" parent="ContainerPLAYER"]
 layout_mode = 2
@@ -419,6 +419,9 @@ anchor_mode = 0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("10_43je6")]
+visible = false
+offset_top = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
@@ -428,7 +431,6 @@ max_distance = 2e+09
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_nitua")
 volume_db = -10.0
-autoplay = true
 max_distance = 2e+09
 
 [node name="Spell1" type="Button" parent="."]
@@ -441,7 +443,27 @@ theme_override_fonts/font = ExtResource("10_g78tk")
 theme_override_font_sizes/font_size = 48
 text = "Spell 1"
 
-[node name="Spell2" type="Button" parent="."]
+[node name="difficulty1" type="Label" parent="Spell1"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+horizontal_alignment = 1
+
+[node name="type1" type="Label" parent="Spell1"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 280.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 40
+text = "Mode"
+horizontal_alignment = 1
+
+[node name="Spell3" type="Button" parent="."]
 custom_minimum_size = Vector2(280, 0)
 offset_left = 1280.0
 offset_top = 944.0
@@ -451,7 +473,29 @@ theme_override_fonts/font = ExtResource("10_g78tk")
 theme_override_font_sizes/font_size = 48
 text = "Spell 2"
 
-[node name="Spell3" type="Button" parent="."]
+[node name="difficulty3" type="Label" parent="Spell3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type3" type="Label" parent="Spell3"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 280.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 40
+text = "Mode"
+horizontal_alignment = 1
+
+[node name="Spell2" type="Button" parent="."]
 custom_minimum_size = Vector2(280, 0)
 offset_left = 1577.0
 offset_top = 800.0
@@ -460,6 +504,27 @@ offset_bottom = 895.0
 theme_override_fonts/font = ExtResource("10_g78tk")
 theme_override_font_sizes/font_size = 48
 text = "spell 3"
+
+[node name="difficulty2" type="Label" parent="Spell2"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 281.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+horizontal_alignment = 1
+
+[node name="type2" type="Label" parent="Spell2"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = 278.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 40
+text = "Mode"
+horizontal_alignment = 1
 
 [node name="Spell4" type="Button" parent="."]
 custom_minimum_size = Vector2(280, 0)
@@ -470,6 +535,27 @@ offset_bottom = 1039.0
 theme_override_fonts/font = ExtResource("10_g78tk")
 theme_override_font_sizes/font_size = 48
 text = "spell 4"
+
+[node name="difficulty4" type="Label" parent="Spell4"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 279.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+horizontal_alignment = 1
+
+[node name="type4" type="Label" parent="Spell4"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 273.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 40
+text = "Mode"
+horizontal_alignment = 1
 
 [node name="ProgressBar_ennemye" type="ProgressBar" parent="."]
 offset_left = 1056.0
@@ -482,6 +568,13 @@ offset_left = 504.0
 offset_top = 616.0
 offset_right = 832.0
 offset_bottom = 664.0
+
+[node name="ZoneCible" type="ColorRect" parent="ProgressBar_Joueur"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
 
 [node name="GetCreaturesEnemy" type="HTTPRequest" parent="."]
 
@@ -518,8 +611,8 @@ rotation = -3.14159
 scale = Vector2(0.0442489, -0.0465564)
 
 [connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
-[connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]
 [connection signal="pressed" from="Spell3" to="." method="_on_spell_3_pressed"]
+[connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]
 [connection signal="pressed" from="Spell4" to="." method="_on_spell_4_pressed"]
 [connection signal="request_completed" from="GetCreaturesEnemy" to="." method="_on_get_creatures_enemy_request_completed"]
 [connection signal="request_completed" from="GetSpellsPlayer" to="." method="_on_get_spells_player_request_completed"]

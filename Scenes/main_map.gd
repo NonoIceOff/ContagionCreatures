@@ -2,6 +2,7 @@ extends Node2D
 
 
 @onready var pause_menu = $Player_One/Camera2D/CanvasLayer/PauseMenu
+@onready var moulin_sprite = $AnimatedSprite2D
 @onready var global_vars = get_node("/root/Global")
 var paused = false
 var Key = false
@@ -94,7 +95,7 @@ func _process(delta):
 		get_node("StartCinematic").visible = true
 		get_node("StartCinematic/RichTextLabel").visible_ratio = 0
 		get_node("Path2D/PathFollow2D/Camera2D").enabled = true
-		get_node("Player_One/2").enabled = false
+		get_node("Player_One/player1/2").enabled = false
 		get_node("StartCinematic/CPUParticles2D").visible = false
 		get_node("StartCinematic/Ennemy").visible = false
 		
@@ -138,7 +139,7 @@ func _process(delta):
 			
 		if get_node("AudioStreamPlayer2D").playing == false or get_node("Path2D/PathFollow2D").progress_ratio >= 1-delta: ## SI L'INTRO EST TERMINEE
 			get_node("ui").visible = true
-			get_node("Player_One/2").enabled = true
+			get_node("Player_One/Camera2D").enabled = true
 			get_node("Path2D/PathFollow2D/Camera2D").enabled = false
 			get_node("SoundEffectFx").volume_db = -10
 			get_node("AudioStreamPlayer2D").playing = false
@@ -152,8 +153,7 @@ func _process(delta):
 	if get_node_or_null("ui/Stats/Coins/Label") != null:
 		get_node_or_null("ui/Stats/Coins/Label").text = str(PlayerStats.monnaie)
 	
-	if Input.is_action_just_pressed("échap"):
-		PauseMenu()
+	
 	
 	if Input.is_action_just_pressed("ui_interact") and get_node_or_null("ui/SpeechBox") == null:
 		interacted = true
@@ -480,17 +480,7 @@ func _process(delta):
 			scene_load = false
 	
 	
-func PauseMenu ():
-	if Global.paused == true:
-		pause_menu.show()
-		Engine.time_scale = 0
-		Global.can_move = false
-	elif Global.paused == false:
-		pause_menu.hide()
-		Engine.time_scale = 1
-		Global.can_move = true
-	
-	Global.paused = !Global.paused
+
 	
 
 func _on_interact_area_entered(body):
@@ -578,7 +568,7 @@ func _on_piano_2_body_exited(body):
 
 func _on_stop_cinematic_pressed():
 	get_node("ui").visible = true
-	get_node("Player_One/2").enabled = true
+	get_node("Player_One/player1/2").enabled = true
 	get_node("Path2D/PathFollow2D/Camera2D").enabled = false
 	get_node("SoundEffectFx").volume_db = -10
 	get_node("AudioStreamPlayer2D").playing = false

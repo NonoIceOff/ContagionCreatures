@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b188na40uy2bf"
+path="res://.godot/imported/Rarecasepack-Sheet.aseprite-66acff07357a758616e2afdb5289f4a5.res"
+
+[deps]
+
+source_file="res://TileSet/TileSetCasePack/RareCasePack/output/Rarecasepack-Sheet.aseprite"
+dest_files=["res://.godot/imported/Rarecasepack-Sheet.aseprite-66acff07357a758616e2afdb5289f4a5.res"]
+
+[params]
+

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnj2e50esfuhx"
-path="res://.godot/imported/ARC.png-be7176b2d3d6c2074669735e67c7644a.ctex"
+uid="uid://cd03f6pu0jwe"
+path="res://.godot/imported/SpriteMoulin.png-7ef5abba2cf44bcc5a0e615812c27d29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/ARC.png"
-dest_files=["res://.godot/imported/ARC.png-be7176b2d3d6c2074669735e67c7644a.ctex"]
+source_file="res://TileSet/TileSetMoulin/output/SpriteMoulin.png"
+dest_files=["res://.godot/imported/SpriteMoulin.png-7ef5abba2cf44bcc5a0e615812c27d29.ctex"]
 
 [params]
 

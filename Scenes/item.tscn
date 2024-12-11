@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dcjkb3fb5ro8e"]
 
-[ext_resource type="Texture2D" uid="uid://cnj2e50esfuhx" path="res://Textures/Items/ARC.png" id="1_5npf8"]
+[ext_resource type="Texture2D" uid="uid://cnj2e50esfuhx" path="res://Textures/ARC.png" id="1_5npf8"]
 [ext_resource type="Script" path="res://Scenes/item.gd" id="1_be5xl"]
 
 [sub_resource type="Animation" id="Animation_xxwru"]
