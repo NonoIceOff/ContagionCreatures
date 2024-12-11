@@ -269,10 +269,23 @@ func _execute_spell_action(button_name: String, spells: Array, index: int):
 		var spell_data = spells[index]
 		# Appelle la fonction de debug pour afficher les informations du sort
 		_debug_spell_info(spell_data)
-		# Appelle la fonction pour remplir la barre
+		
+		# Joue le son associé en fonction du sort utilisé
+		match button_name:
+			"Spell_1":
+				spell_1_sound.play()
+			"Spell_2":
+				spell_2_sound.play()
+			"Spell_3":
+				spell_3_sound.play()
+			"Spell_4":
+				spell_4_sound.play()
+		
+		# Appelle la fonction pour remplir la barre et appliquer les dégâts
 		_on_spell_button_pressed(spell_data)
 	else:
 		print("Erreur : Index de sort invalide pour ", button_name)
+
 
 # Fonction pour connecter le bouton de sort avec une fonction de débogage pour afficher les informations
 # Fonction pour connecter le bouton avec les données de sort
@@ -569,9 +582,11 @@ func _on_attack_bar_pressed():
 	if progress_percentage >= zone_start_percentage and progress_percentage <= zone_end_percentage:
 		print("Réussite")
 		apply_damage_to_enemy(current_attack_value, true)
+		spell_1_sound.play
 	else:
 		print("Échec")
 		apply_damage_to_enemy(current_attack_value, false)
+		spell_2_sound.play
 
 func apply_damage_to_enemy(damage: int, successful: bool) -> void:
 	var final_damage = damage
