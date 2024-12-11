@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="6_8tkdv"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="10_g78tk"]
-[ext_resource type="AudioStream" uid="uid://tw0xq780vpwe" path="res://Sounds/combat_music.mp3" id="10_nitua"]
+[ext_resource type="AudioStream" uid="uid://dgv6kihqgq3qw" path="res://Sounds/music/combat_1.mp3" id="10_mb5p5"]
 [ext_resource type="AudioStream" uid="uid://cucsn5iftliuo" path="res://Sounds/Shield Block.mp3" id="12_f2f2j"]
 [ext_resource type="AudioStream" uid="uid://m31hopp2f6ib" path="res://Sounds/Ice Shard.mp3" id="13_ggiij"]
 [ext_resource type="AudioStream" uid="uid://b87m4fatlldq1" path="res://Sounds/Magic Barrier.mp3" id="14_62ako"]
@@ -429,9 +429,12 @@ autoplay = true
 max_distance = 2e+09
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_nitua")
+stream = ExtResource("10_mb5p5")
 volume_db = -10.0
+autoplay = true
 max_distance = 2e+09
+panning_strength = 0.9
+parameters/looping = true
 
 [node name="Spell1" type="Button" parent="."]
 custom_minimum_size = Vector2(280, 0)

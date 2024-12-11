@@ -11,7 +11,7 @@ var buttonE : Button
 var animalP : Sprite2D
 var animalE : Sprite2D
 var background_rect_info : ColorRect
-var buttons_active = true  # Drapeau pour contrôler l'activation des boutons et des touches
+var buttons_active = false  # Drapeau pour contrôler l'activation des boutons et des touches
 var in_target_zone = false  # Indique si la barre est dans la zone cible
 var space_pressed = false   # Indique si la barre espace a été pressée une fois
 var current_attack_value = 0  # Stocke la valeur de l'attaque actuelle
@@ -19,6 +19,9 @@ var current_attack_value = 0  # Stocke la valeur de l'attaque actuelle
 @onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
 @onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
 @onready var spell_4_sound: AudioStreamPlayer2D = $Spell4_sound
+var combat_started = false  # Indicateur de début de combat
+@onready var start_overlay = ColorRect.new()
+@onready var start_message = Label.new()
 
 @onready var player_creature_name = $ContainerPLAYER/Pseudo
 @onready var progress_bar_joueur = $ProgressBar_Joueur
@@ -70,8 +73,35 @@ func _ready():
 
 	print("enter in ready of sceneCombat")
 	var precombat_instance = precombat_scene.instantiate()
-	add_child(precombat_instance)
+	# add_child(precombat_instance)
 	
+	# Configurer l'overlay de départ
+	start_overlay.color = Color(0, 0, 0, 0.7)  # Gris foncé semi-transparent
+	start_overlay.size = get_viewport_rect().size
+	add_child(start_overlay)
+
+  
+# Configurer le message d'instructions
+	start_message.text = "Pour commencer le combat, appuyez sur Espace"
+	start_message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	start_message.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	start_message.size = Vector2(300, 50)  # Exemple de taille
+	start_message.add_theme_font_override("font", load("res://Font/8-BIT_WONDER.TTF"))
+
+	# Configurer l'ancrage et le point pivot pour centrer correctement
+	start_message.anchor_left = 0.5
+	start_message.anchor_top = 0.5
+	start_message.anchor_right = 0.5
+	start_message.anchor_bottom = 0.5
+	start_message.offset_left = -start_message.size.x / 2
+	start_message.offset_top = -start_message.size.y / 2
+
+	# Ajouter le label centré dans l'overlay
+	start_overlay.add_child(start_message)
+
+
+
+
 	# Obtenir les sorts du joueur si les données sont disponibles
 	if creatures_data.size() > 0:
 		http_get_creatures_spells.request(API_URL + "/" + str(creatures_data[0].id) + "/attacks")
@@ -201,15 +231,22 @@ func _on_get_creatures_spells_request_completed(result: int, response_code: int,
 
 # Modification de `_input` pour vérifier si les boutons sont actifs
 func _input(event):
+	# Vérifie si le joueur appuie sur Espace pour commencer le combat
+	if not combat_started and event.is_action_pressed("ui_select"):
+		start_combat()
+
+	# Si le combat n'a pas commencé, bloque toutes les autres actions
+	if not combat_started:
+		return
 	
-	# Vérifie si la barre espace (attack_barre) est pressée
+	# Gestion de la touche pour la barre d'attaque
 	if event.is_action_pressed("attack_barre") and not space_pressed:
 		_on_attack_bar_pressed()
 		
+	# Si les boutons de sorts sont désactivés, ignore les entrées pour les sorts
 	if not buttons_active:
 		return
-
-			# Vérifie si l'une des touches associées aux sorts est pressée
+	# Vérifie si l'une des touches associées aux sorts est pressée
 	if event.is_action_pressed("Spell_1"):
 		_execute_spell_action("Spell_1", creatures_spells, 0)
 	elif event.is_action_pressed("Spell_2"):
@@ -218,20 +255,37 @@ func _input(event):
 		_execute_spell_action("Spell_3", creatures_spells, 2)
 	elif event.is_action_pressed("Spell_4"):
 		_execute_spell_action("Spell_4", creatures_spells, 3)
-						
-   
 
-
+func start_combat():
+	combat_started = true
+	buttons_active = true  # Active les boutons de sorts après le démarrage du combat
+	start_overlay.hide()  # Masquer l'overlay de démarrage
+	print("Combat commencé")
+	
+	
 # Nouvelle fonction pour exécuter les actions de debug et de remplissage de la barre
 func _execute_spell_action(button_name: String, spells: Array, index: int):
 	if spells.size() > index:
 		var spell_data = spells[index]
 		# Appelle la fonction de debug pour afficher les informations du sort
 		_debug_spell_info(spell_data)
-		# Appelle la fonction pour remplir la barre
+		
+		# Joue le son associé en fonction du sort utilisé
+		match button_name:
+			"Spell_1":
+				spell_1_sound.play()
+			"Spell_2":
+				spell_2_sound.play()
+			"Spell_3":
+				spell_3_sound.play()
+			"Spell_4":
+				spell_4_sound.play()
+		
+		# Appelle la fonction pour remplir la barre et appliquer les dégâts
 		_on_spell_button_pressed(spell_data)
 	else:
 		print("Erreur : Index de sort invalide pour ", button_name)
+
 
 # Fonction pour connecter le bouton de sort avec une fonction de débogage pour afficher les informations
 # Fonction pour connecter le bouton avec les données de sort
@@ -528,9 +582,11 @@ func _on_attack_bar_pressed():
 	if progress_percentage >= zone_start_percentage and progress_percentage <= zone_end_percentage:
 		print("Réussite")
 		apply_damage_to_enemy(current_attack_value, true)
+		spell_1_sound.play
 	else:
 		print("Échec")
 		apply_damage_to_enemy(current_attack_value, false)
+		spell_2_sound.play
 
 func apply_damage_to_enemy(damage: int, successful: bool) -> void:
 	var final_damage = damage
