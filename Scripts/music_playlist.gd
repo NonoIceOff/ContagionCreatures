@@ -9,6 +9,8 @@ extends Control
 
 var musics = [
 	{"title":"Combat 1", "description":"une description banale", "file":"res://Sounds/music/combat_1.mp3"},
+	{"title":"Combat 2", "description":"une description banale", "file":"res://Sounds/music/combat_2.mp3"},
+	{"title":"Combat 3", "description":"une description banale", "file":"res://Sounds/music/combat_3.mp3"},
 	{"title":"Credits", "description":"une description banale", "file":"res://Sounds/music/credits.mp3"},
 	{"title":"Menu Principal", "description":"une description banale", "file":"res://Sounds/music/main_menu.mp3"},
 	{"title":"Menu Multijoueur", "description":"une description banale", "file":"res://Sounds/music/multiplayer_menu.mp3"},
