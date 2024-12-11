@@ -65,7 +65,7 @@ layer_0/tile_data = PackedInt32Array(196614, 4325381, 15, 196615, 4390917, 15, 1
 [node name="Player_One" parent="Control" instance=ExtResource("2_3hxkl")]
 z_index = 5
 position = Vector2(882, 725)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.7, 2.7)
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("5_so67a")

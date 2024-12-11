@@ -1,74 +1,52 @@
 extends CharacterBody2D
 
-var speed = 320
+signal player_entering_door_signal
+signal player_entered_door_signal
 
+@export var speed: float = 200
 
-const FLOOR_NORMAL = Vector2(0,-1)
-var ray : RayCast2D
-signal interact_pressed
+@onready var animated_sprite: AnimatedSprite2D = $player1
+@onready var pause_menu = $"player1/2/CanvasLayer/PauseMenu"
 
-const TILE_SIZE = 16
+func entered_door():
+	emit_signal("player_entered_door_signal")
 
-var offset_x = 0
-var offset_y = 0
-
-var idle = [ Vector2(29  +  offset_x, 382 +  offset_y),Vector2(29 +  offset_x , 20 +  offset_y),Vector2(29 +  offset_x , 263 + offset_y),  Vector2(29 + offset_x , 143 + offset_y)]
-var left = [Vector2(147 + offset_x , 143 + offset_y), Vector2(29 + offset_x , 143 + offset_y) ,Vector2(383 + offset_x , 143 + offset_y)]
-var right = [Vector2(147 +  offset_x, 263 +  offset_y), Vector2(29 +  offset_x , 263 + offset_y), Vector2(383 +  offset_x , 263 +  offset_y)]
-var up = [Vector2(147 +  offset_x , 382 +  offset_y),Vector2(29  +  offset_x, 382 +  offset_y), Vector2(383 +  offset_x , 382 +  offset_y)]
-var down = [Vector2(147 +  offset_x , 20 +  offset_y), Vector2(29 +  offset_x , 20 +  offset_y), Vector2(383 +  offset_x , 20 +  offset_y)]
-
-var i = 0
-var direction = 0
-
+func _physics_process(delta: float) -> void:
+	var input_velocity = Vector2.ZERO
 	
+	if Input.is_action_just_pressed("échap"):
+		PauseMenu()
+
+	if Input.is_action_pressed("droite"):
+		input_velocity.x += 1
+		animated_sprite.play("EastWalk")
+	elif Input.is_action_pressed("gauche"):
+		input_velocity.x -= 1
+		animated_sprite.play("WestWalk")
+	elif Input.is_action_pressed("haut"):
+		input_velocity.y -= 1
+		animated_sprite.play("NorthWalk")
+	elif Input.is_action_pressed("bas"):
+		input_velocity.y += 1
+		animated_sprite.play("SouthWalk")
+	else:
+		animated_sprite.stop()
+
+	if input_velocity.length() > 0:
+		input_velocity = input_velocity.normalized() * speed
+
+	velocity = input_velocity
+
+	move_and_slide()
+
+func PauseMenu ():
+	if Global.paused == true:
+		pause_menu.show()
+		Engine.time_scale = 0
+		Global.can_move = false
+	elif Global.paused == false:
+		pause_menu.hide()
+		Engine.time_scale = 1
+		Global.can_move = true
 	
-
-
-func _physics_process(delta):
-	if Global.can_move == true:
-		if Input.is_action_pressed("ui_interact"):
-			Tutorial.get_node(".").tutorials[3]["progress"] += 100
-		if Input.is_action_pressed("haut"):
-			Tutorial.get_node(".").tutorials[2]["progress"] += 1
-			i += 1
-			direction = 0
-			if i > 29:
-				i = 1
-			velocity.x = 0	
-			velocity.y = -speed
-			move_and_slide()
-			get_node("01-generic2").region_rect = Rect2(up[i/10][0],up[i/10][1],100, 98)
-		elif Input.is_action_pressed("bas"):
-			Tutorial.get_node(".").tutorials[2]["progress"] += 1
-			i += 1
-			direction = 1
-			if i > 29:
-				i = 1
-			velocity.x = 0
-			velocity.y = speed
-			move_and_slide()
-			get_node("01-generic2").region_rect = Rect2(down[i/10][0],down[i/10][1],100, 98)
-		elif Input.is_action_pressed("droite"):
-			Tutorial.get_node(".").tutorials[2]["progress"] += 1
-			i += 1
-			direction = 2
-			if i > 29:
-				i = 1
-			velocity.y = 0
-			velocity.x = speed
-			move_and_slide()
-			get_node("01-generic2").region_rect = Rect2(right[i/10][0],right[i/10][1],100, 98)
-		elif Input.is_action_pressed("gauche"):
-			Tutorial.get_node(".").tutorials[2]["progress"] += 1
-			i += 1
-			direction = 3
-			if i > 29:
-				i = 1
-			velocity.y = 0
-			velocity.x = -speed
-			move_and_slide()
-			get_node("01-generic2").region_rect = Rect2(left[i/10][0],left[i/10][1],100, 98)
-			
-		else :
-			get_node("01-generic2").region_rect = Rect2(idle[direction][0],idle[direction][1],100, 98)
+	Global.paused = !Global.paused

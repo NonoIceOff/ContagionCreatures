@@ -3,7 +3,7 @@ extends Control
 @onready var camera = get_node("SubViewportContainer/SubViewport/Camera2D")
 #Point jaune dans la miniMap
 var pin
-var map
+var map = 4
 var player
 
 func change_map():
@@ -26,11 +26,19 @@ func change_map():
 			get_node("SubViewportContainer/SubViewport/TileMap3").visible = true
 			pin = Vector2(0,0)
 			player = get_node("/root/HomeOfHector/Control/Player_One")
+		4:
+			get_node("SubViewportContainer/SubViewport/TileMap").visible = false
+			get_node("SubViewportContainer/SubViewport/TileMap2").visible = false
+			get_node("SubViewportContainer/SubViewport/TileMap3").visible = false
+			pin = Vector2(0,0)
+			player = get_node("/root/Map3/TileMap/Player_One")
 	
-	#showPoint_miniMap()
+	
 	
 func _physics_process(delta):
 	get_node("AnimationPlayer").current_animation = "pin"
+	print(player)
+	print(map)
 	camera.position = player.position
 	var point_pos = pin - camera.position
 	get_node("PinPoint").position = point_pos *0.1 + get_node("PlayerPoint").position
@@ -51,20 +59,3 @@ func _physics_process(delta):
 
 func change_pin(position):
 	pin = position
-	
-	
-	
-	
-#func draw_point(position: Vector2):
-	#Global.point_sprite.color = Color(1,1,0)
-	#Global.point_sprite.size = Vector2i(11.0, 11.0)
-	#Global.point_sprite.position = position.round()
-	#add_child(Global.point_sprite)
-	
-	
-#func showPoint_miniMap():
-	#if Global.saved_point_position != Vector2.ZERO:
-		#print("aaaaaaaaaaaah")
-		#draw_point(Global.saved_point_position)
-	
-	

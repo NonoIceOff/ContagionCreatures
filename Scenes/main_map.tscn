@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=49 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
@@ -25,7 +25,6 @@
 [ext_resource type="Script" path="res://Scripts/area_saved.gd" id="24_cjwdc"]
 [ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="24_e0f8h"]
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="25_2w24m"]
-[ext_resource type="Texture2D" uid="uid://bi5dw2mqmxvid" path="res://TileSet/TileSetMoulin/tileset_TileSetMoulin.png" id="26_5kf4e"]
 
 [sub_resource type="Curve2D" id="Curve2D_iabi8"]
 _data = {
@@ -212,6 +211,7 @@ outline_color = Color(0, 0, 0, 1)
 size = Vector2(41.25, 33)
 
 [node name="main_map" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_ba8wf")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -325,6 +325,7 @@ label_settings = SubResource("LabelSettings_78oor")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+metadata/_edit_use_anchors_ = true
 
 [node name="MobPNJ" type="CharacterBody2D" parent="."]
 
@@ -394,7 +395,7 @@ label_settings = SubResource("LabelSettings_rqygx")
 [node name="Player_One" parent="." instance=ExtResource("1_1k8th")]
 z_index = 5
 position = Vector2(1424, 448)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.7, 2.7)
 
 [node name="Camera2D" type="Camera2D" parent="Player_One"]
 
@@ -731,11 +732,6 @@ offset_bottom = -1.33333
 scale = Vector2(0.5, 0.5)
 text = "[E]"
 horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2174, -539)
-scale = Vector2(2, 2)
-texture = ExtResource("26_5kf4e")
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

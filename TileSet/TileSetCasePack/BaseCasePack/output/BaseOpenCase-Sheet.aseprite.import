@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://5aawp470geyh"
+path="res://.godot/imported/BaseOpenCase-Sheet.aseprite-f21f3d371fe4403d13b939a6ba315df1.res"
+
+[deps]
+
+source_file="res://TileSet/TileSetCasePack/BaseCasePack/output/BaseOpenCase-Sheet.aseprite"
+dest_files=["res://.godot/imported/BaseOpenCase-Sheet.aseprite-f21f3d371fe4403d13b939a6ba315df1.res"]
+
+[params]
+
