@@ -2,6 +2,7 @@ extends Node2D
 
 
 var scene = preload("res://Scenes/piano.tscn")
+var piano_in = false
 
 @onready var interact_piano = $Piano1/Interact
 @onready var transition_scene = $ui/Transition/AnimationPlayer
