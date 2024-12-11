@@ -1,17 +1,22 @@
 extends Node2D
 
 
-var piano_in = false
 var scene = preload("res://Scenes/piano.tscn")
+
 @onready var interact_piano = $Piano1/Interact
 @onready var transition_scene = $ui/Transition/AnimationPlayer
 @onready var ui_node = $ui
+@onready var control = $Control
 
 func _ready():
 	Global.current_map = "HomeOfHector"
+	transition_scene.play("transition_to_screen")
+
+
 	$ui/Transition/AnimationPlayer.play("transition_to_screen")
+
 	await get_tree().create_timer(0.3).timeout
-	get_node("Control").visible = true
+	control.visible = true
 	
 
 

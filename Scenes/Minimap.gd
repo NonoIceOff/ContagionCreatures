@@ -1,3 +1,4 @@
+
 extends Control
 
 @onready var camera = get_node("SubViewportContainer/SubViewport/Camera2D")
@@ -84,3 +85,20 @@ func _physics_process(delta):
 
 func change_pin(position):
 	pin = position
+
+	
+	
+	
+	
+#func draw_point(position: Vector2):
+	#Global.point_sprite.color = Color(1,1,0)
+	#Global.point_sprite.size = Vector2i(11.0, 11.0)
+	#Global.point_sprite.position = position.round()
+	#add_child(Global.point_sprite)
+	
+	
+#func showPoint_miniMap():
+	#if Global.saved_point_position != Vector2.ZERO:
+		#print("aaaaaaaaaaaah")
+		#draw_point(Global.saved_point_position)
+	
