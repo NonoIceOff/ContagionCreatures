@@ -7,6 +7,7 @@ func _on_add_blue_pressed() -> void:
 	visible = false
 	get_node("../../CanvasLayer/PinBlue").modulate = Color(0.2,0.2,0.2,1)
 	get_node("../../CanvasLayer/PinBlue/CPUParticles2D").visible = false
+	get_node("../../Sound").playing = true
 
 
 func _on_add_red_pressed() -> void:
@@ -16,6 +17,7 @@ func _on_add_red_pressed() -> void:
 	visible = false
 	get_node("../../CanvasLayer/PinRed").modulate = Color(0.2,0.2,0.2,1)
 	get_node("../../CanvasLayer/PinRed/CPUParticles2D").visible = false
+	get_node("../../Sound").playing = true
 
 
 func _on_add_yellow_pressed() -> void:
@@ -25,6 +27,7 @@ func _on_add_yellow_pressed() -> void:
 	visible = false
 	get_node("../../CanvasLayer/PinYellow").modulate = Color(0.2,0.2,0.2,1)
 	get_node("../../CanvasLayer/PinYellow/CPUParticles2D").visible = false
+	get_node("../../Sound").playing = true
 
 
 func _on_add_green_pressed() -> void:
@@ -34,3 +37,4 @@ func _on_add_green_pressed() -> void:
 	visible = false
 	get_node("../../CanvasLayer/PinGreen").modulate = Color(0.2,0.2,0.2,1)
 	get_node("../../CanvasLayer/PinGreen/CPUParticles2D").visible = false
+	get_node("../../Sound").playing = true

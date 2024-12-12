@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ko0f38o03f6f"]
+[gd_scene load_steps=18 format=3 uid="uid://ko0f38o03f6f"]
 
 [ext_resource type="Shader" path="res://Scenes/minimap.gdshader" id="1_44b0t"]
 [ext_resource type="Script" path="res://Scenes/Full_screen_map.gd" id="1_vnder"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cd6cqkc67n7kc" path="res://Textures/Pins/green.png" id="8_omj78"]
 [ext_resource type="Script" path="res://Scenes/add_pin.gd" id="9_mjey4"]
 [ext_resource type="Texture2D" uid="uid://b7i8ualh4y70d" path="res://Textures/icons/right_mouse.png" id="9_va3dc"]
+[ext_resource type="AudioStream" uid="uid://8rqjw6gnc5hh" path="res://Sounds/new_tag.mp3" id="12_gaelq"]
 
 [sub_resource type="Animation" id="Animation_2pobh"]
 length = 0.001
@@ -421,6 +422,10 @@ offset_bottom = 27.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 32
 text = "Epingler un endroit"
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_gaelq")
+max_distance = 9.22337e+18
 
 [connection signal="pressed" from="CanvasLayer/AddPin/AddBlue" to="CanvasLayer/AddPin" method="_on_add_blue_pressed"]
 [connection signal="pressed" from="CanvasLayer/AddPin/AddRed" to="CanvasLayer/AddPin" method="_on_add_red_pressed"]

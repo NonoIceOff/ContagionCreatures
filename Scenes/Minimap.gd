@@ -89,9 +89,6 @@ func _process(delta):
 		pin_node.position.x = clamp(pin_node.position.x, 32, minimap_size.x+32)
 		pin_node.position.y = clamp(pin_node.position.y, 32, minimap_size.y+32)
 
-		# Debugging
-		print("Pin:", pin_name, "| Global:", pin_global, "| Relative:", pin_relative, "| Minimap Pos:", pin_minimap_pos)
-
 	# Mise à jour des coordonnées du joueur
 	get_node("Position").text = "X: " + str(int(player.position.x)) + " | Y: " + str(int(player.position.y))
 
