@@ -61,44 +61,50 @@ func change_map():
 	if get_node_or_null("../../../HomeOfHector") != null:
 		player = get_node("../../Control/Player_One")
 
-func _physics_process(delta):
-	
-	get_node("AnimationPlayer").current_animation = "pin"
+func _process(delta):
 	camera.position = player.position
-	var point_pos = Global.pin - camera.position
-	get_node("PinPoint").position = point_pos *0.1 + get_node("PlayerPoint").position
-	
-	if get_node("PinPoint").position.x < 20:
-		get_node("PinPoint").position.x = 20
-		
-	if get_node("PinPoint").position.y < 20:
-		get_node("PinPoint").position.y = 20
-		
-	if get_node("PinPoint").position.x > 32+180:
-		get_node("PinPoint").position.x = 32+180
-		
-	if get_node("PinPoint").position.y > 32+180:
-		get_node("PinPoint").position.y = 32+180
-		
-	get_node("Position").text = "X: "+str(int(player.position.x))+"  |  Y: "+str(int(player.position.y))
+
+	var minimap_size = Vector2(180, 180) # Taille de la minimap
+	var minimap_center = minimap_size / 2
+	var map_scale = Vector2(0.2, 0.2) # Échelle de la caméra
+
+	# Liste des pins et de leurs positions globales respectives
+	var pins = {
+		"PinBlue": Global.pinb,
+		"PinPoint": Global.pin,
+		"PinRed": Global.pinr,
+		"PinYellow": Global.piny,
+		"PinGreen": Global.ping
+	}
+
+	for pin_name in pins.keys():
+		var pin_global = pins[pin_name]/2
+		var pin_relative = (pin_global - camera.position) * map_scale
+		var pin_minimap_pos = pin_relative + minimap_center
+
+		var pin_node = get_node(pin_name)
+		pin_node.position = pin_minimap_pos
+
+		# Garder les pins dans les limites de la minimap
+		pin_node.position.x = clamp(pin_node.position.x, 32, minimap_size.x+32)
+		pin_node.position.y = clamp(pin_node.position.y, 32, minimap_size.y+32)
+
+		# Debugging
+		print("Pin:", pin_name, "| Global:", pin_global, "| Relative:", pin_relative, "| Minimap Pos:", pin_minimap_pos)
+
+	# Mise à jour des coordonnées du joueur
+	get_node("Position").text = "X: " + str(int(player.position.x)) + " | Y: " + str(int(player.position.y))
+
+
+
+
+
+func clamp_to_minimap(pin_node, minimap_size):
+	pin_node.position.x = clamp(pin_node.position.x, 0, minimap_size.x)
+	pin_node.position.y = clamp(pin_node.position.y, 0, minimap_size.y)
+
 
 func change_pin(position):
 	pin = position
 	Global.pin = pin
-
-	
-	
-	
-	
-#func draw_point(position: Vector2):
-	#Global.point_sprite.color = Color(1,1,0)
-	#Global.point_sprite.size = Vector2i(11.0, 11.0)
-	#Global.point_sprite.position = position.round()
-	#add_child(Global.point_sprite)
-	
-	
-#func showPoint_miniMap():
-	#if Global.saved_point_position != Vector2.ZERO:
-		#print("aaaaaaaaaaaah")
-		#draw_point(Global.saved_point_position)
 	

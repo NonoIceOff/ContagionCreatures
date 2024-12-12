@@ -19,6 +19,11 @@ var attack_values = [11,23,2,20]
 var enemy_attack = attack_values[attack_index]
 
 var pin = Vector2(0,0)
+var pinb = Vector2(0,0)
+var pinr = Vector2(0,0)
+var piny = Vector2(0,0)
+var ping = Vector2(0,0)
+var pin_temp = Vector2(0,0)
 
 
 

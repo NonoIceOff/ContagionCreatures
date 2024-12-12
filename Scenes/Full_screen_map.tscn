@@ -1,13 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://ko0f38o03f6f"]
+[gd_scene load_steps=17 format=3 uid="uid://ko0f38o03f6f"]
 
 [ext_resource type="Shader" path="res://Scenes/minimap.gdshader" id="1_44b0t"]
 [ext_resource type="Script" path="res://Scenes/Full_screen_map.gd" id="1_vnder"]
 [ext_resource type="Texture2D" uid="uid://choldy7fvdm7e" path="res://Textures/radar_mask.png" id="2_vqgc8"]
 [ext_resource type="Script" path="res://Scenes/mapfs.gd" id="4_8op7h"]
+[ext_resource type="Material" uid="uid://cf568renknpt8" path="res://pin_shader.tres" id="5_darb5"]
 [ext_resource type="Texture2D" uid="uid://bw1evxysvpify" path="res://Textures/Pins/blue.png" id="5_xvfxp"]
 [ext_resource type="Texture2D" uid="uid://bako680pmqpsb" path="res://Textures/Pins/red.png" id="6_2mmqw"]
 [ext_resource type="Texture2D" uid="uid://byeatwoc7k5qo" path="res://Textures/Pins/yellow.png" id="7_x1bfy"]
 [ext_resource type="Texture2D" uid="uid://cd6cqkc67n7kc" path="res://Textures/Pins/green.png" id="8_omj78"]
+[ext_resource type="Script" path="res://Scenes/add_pin.gd" id="9_mjey4"]
+[ext_resource type="Texture2D" uid="uid://b7i8ualh4y70d" path="res://Textures/icons/right_mouse.png" id="9_va3dc"]
 
 [sub_resource type="Animation" id="Animation_2pobh"]
 length = 0.001
@@ -98,6 +101,12 @@ _data = {
 shader = ExtResource("1_44b0t")
 shader_parameter/mask_texture = ExtResource("2_vqgc8")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wy5c5"]
+bg_color = Color(0.18, 0.18, 0.18, 1)
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Full_Screen_map" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -176,6 +185,98 @@ offset_bottom = 255.3
 scale = Vector2(0.7, 0.7)
 color = Color(1, 0.811765, 0.0980392, 1)
 
+[node name="PinBlue" type="Sprite2D" parent="SubViewportContainer/SubViewport/Camera2D"]
+visible = false
+z_index = 5
+texture_filter = 1
+material = ExtResource("5_darb5")
+position = Vector2(6000, 256)
+scale = Vector2(50, 50)
+texture = ExtResource("5_xvfxp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewportContainer/SubViewport/Camera2D/PinBlue"]
+self_modulate = Color(1, 1, 1, 0.588235)
+z_index = -1
+position = Vector2(0, -8)
+amount = 10
+texture = ExtResource("5_xvfxp")
+emission_shape = 3
+emission_rect_extents = Vector2(4, 10)
+gravity = Vector2(0, -64)
+damping_max = 10.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_max = 2.0
+
+[node name="PinRed" type="Sprite2D" parent="SubViewportContainer/SubViewport/Camera2D"]
+visible = false
+z_index = 5
+texture_filter = 1
+material = ExtResource("5_darb5")
+position = Vector2(8000, 256)
+scale = Vector2(50, 50)
+texture = ExtResource("6_2mmqw")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewportContainer/SubViewport/Camera2D/PinRed"]
+self_modulate = Color(1, 1, 1, 0.588235)
+z_index = -1
+position = Vector2(0, -8)
+amount = 10
+texture = ExtResource("6_2mmqw")
+emission_shape = 3
+emission_rect_extents = Vector2(4, 10)
+gravity = Vector2(0, -64)
+damping_max = 10.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_max = 2.0
+
+[node name="PinYellow" type="Sprite2D" parent="SubViewportContainer/SubViewport/Camera2D"]
+visible = false
+z_index = 5
+texture_filter = 1
+material = ExtResource("5_darb5")
+position = Vector2(10000, 256)
+scale = Vector2(50, 50)
+texture = ExtResource("7_x1bfy")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewportContainer/SubViewport/Camera2D/PinYellow"]
+self_modulate = Color(1, 1, 1, 0.588235)
+z_index = -1
+position = Vector2(0, -8)
+amount = 10
+texture = ExtResource("7_x1bfy")
+emission_shape = 3
+emission_rect_extents = Vector2(4, 10)
+gravity = Vector2(0, -64)
+damping_max = 10.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_max = 2.0
+
+[node name="PinGreen" type="Sprite2D" parent="SubViewportContainer/SubViewport/Camera2D"]
+visible = false
+z_index = 5
+texture_filter = 1
+material = ExtResource("5_darb5")
+position = Vector2(12000, 256)
+scale = Vector2(50, 50)
+texture = ExtResource("8_omj78")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewportContainer/SubViewport/Camera2D/PinGreen"]
+self_modulate = Color(1, 1, 1, 0.588235)
+z_index = -1
+position = Vector2(0, -8)
+amount = 10
+texture = ExtResource("8_omj78")
+emission_shape = 3
+emission_rect_extents = Vector2(4, 10)
+gravity = Vector2(0, -64)
+damping_max = 10.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_max = 2.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Position" type="Label" parent="CanvasLayer"]
@@ -253,3 +354,75 @@ emission_sphere_radius = 6.0
 gravity = Vector2(0, 64)
 scale_amount_min = 2.0
 scale_amount_max = 2.0
+
+[node name="AddPin" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 32.0
+offset_top = 120.0
+offset_right = 288.0
+offset_bottom = 504.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wy5c5")
+script = ExtResource("9_mjey4")
+
+[node name="AddBlue" type="Button" parent="CanvasLayer/AddPin"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 232.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 32
+text = "AJOUTER BLEU"
+
+[node name="AddRed" type="Button" parent="CanvasLayer/AddPin"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 232.0
+offset_bottom = 123.0
+theme_override_font_sizes/font_size = 32
+text = "AJOUTER ROUGE"
+
+[node name="AddYellow" type="Button" parent="CanvasLayer/AddPin"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 136.0
+offset_right = 232.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 32
+text = "AJOUTER JAUNE"
+
+[node name="AddGreen" type="Button" parent="CanvasLayer/AddPin"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 192.0
+offset_right = 232.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 32
+text = "AJOUTER VERT"
+
+[node name="RightMouse" type="Sprite2D" parent="CanvasLayer"]
+z_index = 1
+texture_filter = 1
+position = Vector2(56, 1032)
+scale = Vector2(3.9375, 4.00001)
+texture = ExtResource("9_va3dc")
+
+[node name="Label" type="Label" parent="CanvasLayer/RightMouse"]
+texture_filter = 1
+offset_left = 8.12698
+offset_top = -7.99998
+offset_right = 221.127
+offset_bottom = 27.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 32
+text = "Epingler un endroit"
+
+[connection signal="pressed" from="CanvasLayer/AddPin/AddBlue" to="CanvasLayer/AddPin" method="_on_add_blue_pressed"]
+[connection signal="pressed" from="CanvasLayer/AddPin/AddRed" to="CanvasLayer/AddPin" method="_on_add_red_pressed"]
+[connection signal="pressed" from="CanvasLayer/AddPin/AddYellow" to="CanvasLayer/AddPin" method="_on_add_yellow_pressed"]
+[connection signal="pressed" from="CanvasLayer/AddPin/AddGreen" to="CanvasLayer/AddPin" method="_on_add_green_pressed"]

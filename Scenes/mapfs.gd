@@ -1,8 +1,10 @@
 extends Node2D
 
+var pin_position
+
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT:
 			# Obtenir la position globale de la souris en pixels
 			var mouse_position = get_global_mouse_position()
 			
@@ -20,5 +22,6 @@ func _input(event):
 			
 			# Exemple d'appel à une méthode personnalisée (change_pin) sur un autre noeud
 			var pin_position = floor(Vector2(tile_position)) * 16 * 3
-			Global.pin = pin_position
-			get_node("../../../../.").change_pin(pin_position)
+			#Global.pin = pin_position
+			Global.pin_temp = pin_position
+			#get_node("../../../../.").change_pin(pin_position)
