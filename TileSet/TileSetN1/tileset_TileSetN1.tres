@@ -255,6 +255,7 @@ texture = ExtResource("1")
 4:11/0 = 0
 4:10/0 = 0
 
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mj4t"]
 resource_name = "bush"
 texture = ExtResource("2_caau5")

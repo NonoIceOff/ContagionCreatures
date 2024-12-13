@@ -9,6 +9,20 @@ var paused = false
 var can_move = true
 var player_postion = Vector2(0,0)
 
+var attack_index = 0
+var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
+var attack_values = [11,23,2,20]
+var enemy_attack = attack_values[attack_index]
+
+var pin = Vector2(0,0)
+var pinb = Vector2(0,0)
+var pinr = Vector2(0,0)
+var piny = Vector2(0,0)
+var ping = Vector2(0,0)
+var pin_temp = Vector2(0,0)
+
+
+
 var grid_size = 31
 var step_delay = 0
 var allow_loops = false
@@ -159,7 +173,13 @@ func save():
 	save_file.set_value("Tuto", "Stade", tutorial_stade)
 	save_file.set_value("Tuto", "Type", tutorial)
 	save_file.set_value("Tuto", "Validate", tutorial_validate)
-
+	save_file.set_value("Tags", "Blue", pinb)
+	save_file.set_value("Tags", "Red", pinr)
+	save_file.set_value("Tags", "Yellow", piny)
+	save_file.set_value("Tags", "Green", ping)
+	
+	save_file.set_value("Values", "items", items)
+	save_file.set_value("Values", "attacks", attacks)
 	save_file.set_value("Quests", "infos", quests)
 	save_file.set_value("Quests", "current", current_quest_id)
 	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
@@ -202,6 +222,13 @@ func load():
 	tutorial_stade = load_file.get_value("Tuto", "Stade", tutorial_stade)
 	tutorial = load_file.get_value("Tuto", "Type", tutorial)
 	tutorial_validate = load_file.get_value("Tuto", "Validate", tutorial_validate)
+	pinb = load_file.get_value("Tags", "Blue", pinb)
+	pinr = load_file.get_value("Tags", "Red", pinr)
+	piny = load_file.get_value("Tags", "Yellow", piny)
+	ping = load_file.get_value("Tags", "Green", ping)
+	
+	items = load_file.get_value("Values", "items", items)
+	attacks = load_file.get_value("Values", "attacks", attacks)
 
 	quests = load_file.get_value("Quests", "infos", quests)
 	current_quest_id = load_file.get_value("Quests", "current", current_quest_id)
@@ -210,7 +237,7 @@ func load():
 	
 	PlayerStats.pseudo = load_file.get_value("Player", "pseudo", PlayerStats.pseudo)
 	PlayerStats.health = load_file.get_value("Player", "health", PlayerStats.health)
-	PlayerStats.skin = load_file.get_value("Player", "skin", PlayerStats.skin)
+	PlayerStats.skin = load_file.get_value("Player", "ski3n", PlayerStats.skin)
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
 	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
 

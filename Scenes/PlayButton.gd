@@ -19,3 +19,5 @@ func _on_pressed():
 
 func load_next_scene():
 	SceneLoader.load_scene("res://Scenes/map3.tscn")
+	get_node("../Sounds").stream = load("res://Sounds/coinc.mp3")
+	get_node("../Sounds").playing = true

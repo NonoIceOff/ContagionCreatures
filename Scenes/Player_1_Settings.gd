@@ -17,20 +17,21 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
 
-	if Input.is_action_pressed("droite"):
-		input_velocity.x += 1
-		animated_sprite.play("EastWalk")
-	elif Input.is_action_pressed("gauche"):
-		input_velocity.x -= 1
-		animated_sprite.play("WestWalk")
-	elif Input.is_action_pressed("haut"):
-		input_velocity.y -= 1
-		animated_sprite.play("NorthWalk")
-	elif Input.is_action_pressed("bas"):
-		input_velocity.y += 1
-		animated_sprite.play("SouthWalk")
-	else:
-		animated_sprite.stop()
+	if get_node_or_null("../../ui/Full_Screen_map") == null:
+		if Input.is_action_pressed("droite"):
+			input_velocity.x += 1
+			animated_sprite.play("EastWalk")
+		elif Input.is_action_pressed("gauche"):
+			input_velocity.x -= 1
+			animated_sprite.play("WestWalk")
+		elif Input.is_action_pressed("haut"):
+			input_velocity.y -= 1
+			animated_sprite.play("NorthWalk")
+		elif Input.is_action_pressed("bas"):
+			input_velocity.y += 1
+			animated_sprite.play("SouthWalk")
+		else:
+			animated_sprite.stop()
 
 	if input_velocity.length() > 0:
 		input_velocity = input_velocity.normalized() * speed

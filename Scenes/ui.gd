@@ -16,7 +16,7 @@ func _ready():
 func _process(delta):
 	if Global.current_quest_id > -1 and get_node_or_null("CPUParticles2D") != null:
 		get_node("CPUParticles2D").visible = true
-		get_node("CPUParticles2D/QuestTextBar").text = "[center][rainbow freq=0.05]"+tr(Global.quests[Global.current_quest_id]["title"])+" [/rainbow] [color=black]| [color=white][i]"+tr(Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]])
+		get_node("CPUParticles2D/QuestTextBar").text = "[right][rainbow freq=0.05]"+tr(Global.quests[Global.current_quest_id]["title"])+" [/rainbow]\n[color=white][i]"+tr(Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]])
 
 
 func advance_time() -> void:
