@@ -1,20 +1,21 @@
 extends Node2D
 
-@onready var main = get_node_or_null("/root/main_map")
+@onready var main_player = $"../../../.."
 @onready var sauvegarde_dialog = $ConfirmationDialog
-@onready var progress_panel = $ProgressPanel  # Change le type en PopupPanel dans la scène
-@onready var progress_bar = $ProgressPanel/ProgressBar  # Barre de progression dans le panneau
+@onready var progress_panel = $ProgressPanel  # Panneau contenant la barre de progression
+@onready var progress_bar = $ProgressPanel/ProgressBar  # Barre de progression
 var timer: Timer
 
 # Durée totale pour remplir la barre (ajustable selon vos besoins)
-var total_progress_duration = 1.0
+var total_progress_duration = 1.0  # En secondes
+var progress_step_duration = 0.1  # Intervalle entre chaque étape de progression (en secondes)
 
 func _ready():
 	sauvegarde_dialog.exclusive = true
-	progress_panel.visible = false  # Cache le panneau de progression au début
+	progress_panel.visible = false
 
 func _on_reprendre_pressed():
-	main.PauseMenu()
+	main_player.PauseMenu()
 
 func _on_paramètres_pressed():
 	get_tree().change_scene_to_file("res://Scenes/settings.tscn")
@@ -24,40 +25,38 @@ func _on_sauvegarde_pressed():
 	sauvegarde_dialog.popup_centered()
 
 func _on_sauvegarde_confirmed():
+	# Sauvegarde des données
 	Global.save()
 	print("Sauvegarde effectuée !")
 
-	# Affiche le panneau de progression
+	# Initialise la barre de progression
 	progress_panel.visible = true
 	progress_bar.value = 0
 
-	# Crée un Timer pour gérer la progression si non existant
+	# Crée ou réinitialise le Timer pour gérer la progression
 	if timer == null:
 		timer = Timer.new()
-		timer.wait_time = total_progress_duration / 10  # Divise la durée totale en étapes pour la progression
-		timer.one_shot = false
-		timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 		add_child(timer)
+		timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 	
+	timer.wait_time = progress_step_duration  # Définit le pas de progression
+	timer.one_shot = false
 	timer.start()
 
 func _on_timer_timeout():
-	progress_bar.value += 10
-	
+	# Augmente la valeur de la ProgressBar
+	progress_bar.value += (progress_step_duration / total_progress_duration) * 100
+	_hide_progress_panel()
 	if progress_bar.value >= 100:
 		timer.stop()
-		timer.disconnect("timeout", Callable(self, "_on_timer_timeout"))
-
-		# Lance un autre Timer pour fermer le panneau après un court délai
-		timer.wait_time = 1.0  # Délai final pour visualiser la progression complète
-		timer.one_shot = true
-		timer.connect("timeout", Callable(self, "_hide_progress_panel"))
-		timer.start()
+		_hide_progress_panel()
 
 func _hide_progress_panel():
-	progress_panel.hide()
-	timer.queue_free()
-	timer = null
+	# Cache le panneau de progression et nettoie le Timer
+	progress_panel.visible = false
+	if timer != null:
+		timer.queue_free()
+		timer = null
 
 func _on_menu_principal_pressed():
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

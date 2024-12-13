@@ -1,18 +1,22 @@
-
-[gd_scene load_steps=13 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=14 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="1_p3l0n"]
+[ext_resource type="Shader" path="res://Scenes/aurores_boréales.gdshader" id="2_1nikb"]
 [ext_resource type="Texture2D" uid="uid://bpihtnygfbdmj" path="res://Textures/Particules/flocon_neige.png" id="2_flbvo"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
-[ext_resource type="Script" path="res://Scenes/aurore_boreales.gd" id="3_xbp8f"]
 [ext_resource type="Texture2D" uid="uid://dlrfnokky7x0k" path="res://Textures/Items/Gemme_bleu.png" id="4_jwspb"]
-[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_imduj"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="6_reotg"]
-[ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="7_e7f4u"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="7_i5pcq"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="8_abm13"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nyqp"]
+shader = ExtResource("2_1nikb")
+shader_parameter/aurora_color = Vector3(0.5, 0.8, 1)
+shader_parameter/time = null
+shader_parameter/speed = 1.0
+shader_parameter/intensity = 0.7
 
 [sub_resource type="Curve" id="Curve_qti3j"]
 min_value = -1.0
@@ -34,22 +38,10 @@ corner_radius_bottom_left = 5
 [node name="ui" type="CanvasLayer"]
 script = ExtResource("1_p3l0n")
 
-[node name="Transition" parent="." instance=ExtResource("1_88tsw")]
-mouse_filter = 2
-
-[node name="Aurore_boreales" type="CPUParticles2D" parent="."]
-position = Vector2(-48, -16)
-emitting = false
-amount = 800
-lifetime = 8.0
-emission_shape = 3
-emission_rect_extents = Vector2(5, 64)
-spread = 20.0
-gravity = Vector2(100, 0)
-scale_amount_min = 50.0
-scale_amount_max = 100.0
-color = Color(0, 1, 0, 0.352941)
-script = ExtResource("3_xbp8f")
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_5nyqp")
+offset_right = 1920.0
+offset_bottom = 1072.0
 
 [node name="Neige" type="CPUParticles2D" parent="."]
 texture_filter = 1
@@ -66,6 +58,9 @@ angle_max = 100.0
 scale_amount_min = 3.0
 scale_amount_max = 3.0
 
+[node name="Transition" parent="." instance=ExtResource("1_88tsw")]
+mouse_filter = 2
+
 [node name="QuestMenu" parent="." instance=ExtResource("3_850rj")]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -73,22 +68,23 @@ self_modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(1760, 0)
 amount = 50
 draw_order = 1
+texture = ExtResource("4_jwspb")
 emission_shape = 3
 emission_rect_extents = Vector2(256, 16)
-gravity = Vector2(-100, 0)
+gravity = Vector2(0, 100)
 angular_velocity_min = -100.0
 angular_velocity_max = 100.0
-scale_amount_min = 8.0
-scale_amount_max = 12.0
-hue_variation_min = -0.1
-hue_variation_max = 0.1
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+hue_variation_min = -1.0
+hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_qti3j")
 
 [node name="QuestTextBar" type="RichTextLabel" parent="CPUParticles2D"]
-offset_left = -1200.0
-offset_top = -24.0
-offset_right = 208.0
-offset_bottom = 118.0
+offset_left = -688.0
+offset_top = 24.0
+offset_right = 720.0
+offset_bottom = 66.0
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
@@ -96,12 +92,13 @@ theme_override_constants/outline_size = 5
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_outline_size = 25
-theme_override_constants/line_separation = 0
-theme_override_fonts/normal_font = ExtResource("4_imduj")
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "[right]NO_QUEST"
+text = "[center]NO_QUEST"
 scroll_active = false
 
 [node name="Cinematic" type="Control" parent="."]
@@ -184,7 +181,6 @@ offset_bottom = 8.0
 theme_override_font_sizes/font_size = 12
 text = "0"
 
-
 [node name="PanelDate" type="Panel" parent="."]
 offset_left = 720.0
 offset_top = 3.0
@@ -194,7 +190,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4wxsk")
 
 [node name="Heure" type="Label" parent="PanelDate"]
 texture_filter = 1
-layout_mode = 0
 offset_left = 272.0
 offset_top = 23.0
 offset_right = 400.0
@@ -221,10 +216,3 @@ scale = Vector2(-0.999993, 0.704403)
 points = PackedVector2Array(240, 16, 240, 82.169, 240, 169)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
-
-[node name="Minimap" parent="." instance=ExtResource("7_e7f4u")]
-offset_left = 1664.0
-offset_top = 824.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-

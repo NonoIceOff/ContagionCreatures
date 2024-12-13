@@ -37,8 +37,8 @@ func _ready():
 	visible = false
 
 func _process(delta):
-	if tutorials.has(Global.tutorial_stade): # Si y'a un tuto
-		if tutorials[Global.tutorial_stade]["progress"] >= 100: # S'il est terminé
+	if tutorials.has(Global.tutorial_stade):
+		if tutorials[Global.tutorial_stade]["progress"] >= 100:
 			visible = false
 			Global.tutorial_stade += 1
 			get_node("AudioStreamPlayer2D").stream = load("res://Sounds/tuto_completed.mp3")

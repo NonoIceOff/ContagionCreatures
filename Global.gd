@@ -4,14 +4,10 @@ var user = {}
 
 var interact = false
 var trigger = true
-var is_infected = true
-var can_desinfected = false
-var canUse_antidote = true
-var type_id = 0
-var type_animal = 1
 var brazero_numbers = 0
 var paused = false
 var can_move = true
+var player_postion = Vector2(0,0)
 
 var attack_index = 0
 var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
@@ -44,8 +40,15 @@ var close_button_pressed = false
 
 var current_quest_id = -1
 
+var current_hour: int = 19
+var current_minute: int = 0
+var current_day: int = 1
+var last_color = Color(1, 1, 1, 1)
+var target_color: Color
+
+
 var pianos = [0,0,0,0]
-var current_map = "main_map"
+var current_map = ""
 
 var start_cinematic = {
 	0: "START_CINEMATIC_TEXT_0",
@@ -56,6 +59,11 @@ var start_cinematic = {
 	5: "START_CINEMATIC_TEXT_5",
 }
 
+var daily_events = {
+"aurora_borealis": {"chance": 95, "active": false},  
+"snowstorm": {"chance": 70, "active": false},
+"clear_sky": {"chance": 0.1, "active": false}
+}
 
 signal fringe_changed
 
@@ -93,223 +101,6 @@ func _ready():
 func _process(delta):
 	if tutorial == false:
 		tutorial_stade = -1
-		
-		
-var all_type = {
-	
-	0: {
-		"name": "Echo"
-	},
-	1: {
-		"name": "Relique"
-	},
-	2: {
-		"name": "Prisme"
-	},
-	3: {
-		"name": "Essence"
-	},
-	4: {
-		"name": "Totem"
-	},
-}
-
-var actual_animal = {
-	
-	0: {
-		"name":"Deagle",
-		"infected": false,
-		"type":['Totem'],
-		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
-		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et * 2 si l'arme "],		
-		"textureA":"res://Textures/Animals/EAGLE_.png",
-		"texture_animal_fight":"res://Textures/Animals/eagle_Player.png",
-	},
-}
-
-var animals_player = {
-
-	0: {
-		"name":"GentleDuck",
-		"infected": false,
-		"type":['Prisme'],
-		"boost":[ 1.08 , 1.06 , "atk/def"], #+8% d'ATK et 6% DEF pour le joueur et * 2 si arme du meme type
-		"effets":["+6% d'attaque et +6% de defense pour le joueur et *2 si"],
-		"textureA":"res://Textures/pixil-frame-0_3.png"
-	},
-	1: {
-		"name":"Deagle",
-		"infected": false,
-		"type":['Relique'],
-		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
-		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et *2 si"],		
-		"textureA":"res://Textures/Animals/EAGLE_.png",
-	},
-	2: {
-		"name":"Froggy",
-		"infected": false,
-		"type":['Essence'],
-		"boost":[ 1.03 ,"atk"], #d'ATK pour le player et plus 5% de plus si l'arme est du meme type
-		"effets":["+ 3% d'attaque à chaque tours pour le joueur et *2 si"],
-		"textureA":"res://Textures/Animals/FROG.png",
-	},
-	3: {
-		"name":"Leonard",
-		"infected": false,
-		"type":['Totem'],
-		"boost":[  1.2 , "regen"],  # +20 PV à chaque tours pour le joueur et plus 5% de plus si l'arme est du meme type
-		"effets":["+ 20 PV à chaque tours pour le joueur et *2 "],								
-		"textureA":"res://Textures/Animals/DRAGON.png",
-	},
-	4: {
-		"name":"Douglas",
-		"infected": false,
-		"type":['Echo'],
-		"boost":[  0.9 , "DEF"],  # +9 de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
-		"effets":["+9% de defense en plus pour l'utilisateur et 5%"],						
-		"textureA": "res://Textures/Animals/CHICKEN.png",		
-	},
-}
-var animals_enemy = {
-	0: {
-		"name":"Deagle",
-		"infected": true,
-		"type":['Relique'],
-		"boost":[ 1.1, "def"], #+10% de DEF pour le player si l'arme est du même type
-		"effets":["+10% de defense en plus pour l'utilisateur et *2 si l'arme est du meme type"],
-		"textureA":"res://Textures/Animals/EAGLE_.png",
-		"texture_infected":"res://Textures/Animals/Eagle_infected.png"
-	},
-	1: {
-		"name":"GentleDuck",
-		"infected": true,
-		"type":['Prisme'],
-		"boost":[ 1.06 , "atk"], #+6% d'ATK et DEF pour le joueur si l'arme est du même type
-		"effets":["+6% d'attaque en plus pour l'utilisateur et *2 si l'arme est du meme type"],		
-		"textureA":"res://Textures/pixil-frame-0_3.png",
-		"texture_infected":""
-	},
-	2: {
-		"name":"Froggy",
-		"infected": true,
-		"type":['Essence'],
-		"boost":[ 1.03 ,"atk"], # +3% d'ATK pour le joueur si l'arme est du même type
-		"effets":["+3% d'attaque en plus pour l'utilisateur et *2 si l'arme est du meme type"],
-		"textureA":"res://Textures/Animals/FROG.png",
-		"texture_infected":""
-	},
-	3: {
-		"name":"Leonard",
-		"infected": true,
-		"type":['Echo'],
-		"boost":[ 1.2, "regen"],  # +20 PV à chaque tours pour le joueur si l'arme est du même type
-		"effets":["L'utilisateur recupere +2O pv en plus à chaque tour et *2 si l'arme est du meme type"],
-		"textureA":"res://Textures/Animals/DRAGON.png",
-		"texture_infected":""
-	},
-	4: {
-		"name":"Douglas",
-		"infected": true,
-		"type":['Relique'],
-		"boost":[  1.09 , "def"], # +9 de DEF pour le joueur pendant tout le combat si l'arme est du même type
-		"effets":["+9% de defense en plus pour l'utilisateur"],  
-		"textureA": "res://Textures/Animals/CHICKEN.png",
-		"texture_infected":""
-	},
-}
-var items = {
-	0: {
-		"name":"ANTIDOTE",
-		"value":0,
-		"type":[0, "antidote"],
-		"effets":"Possibilite de recuperer l'animal ennemi. A utiliser si l'ennemi est inférieur a 20 PV",
-		"texture":"res://Textures/Items/Potion_verte.png",
-		"quantity":0
-	},
-	1: {
-		"name":"BLUE_GEM",
-		"value":0,
-		"type":[1.15, "def"],
-		"effets":"15% de DEF",
-		"texture":"res://Textures/Items/Gemme_bleu.png",
-		"quantity":0
-	},
-	2: {
-		"name":"CREPE",
-		"value":0,
-		"type":[1.1, "atk"],
-		"effets":"10% d'ATK",
-		"texture":"res://Textures/Items/Crepes.png",
-		"quantity":0
-	},
-	3: {
-		"name":"APPLE",
-		"value":0,
-		"type":[5, "regen"],
-		"effets":"5 PV",
-		"texture":"res://Textures/Items/Apple.png",
-		"quantity":0
-	},
-	4: {
-		"name":"N-KEY",
-		"value":0,
-		"type":[1, "key"],
-		"effets":"Active une porte",
-		"texture":"res://Textures/Items/nkey.png",
-		"quantity":0
-	},
-	5: {
-		"name":"CRAMPTE",
-		"value":0,
-		"type":[2, "atk"],
-		"effets":"200% d'ATK",
-		"texture":"res://Textures/Items/crapte.png",
-		"quantity":0
-	}
-}
-
-var attacks = {
-	0: {
-		"name":"BOW",
-		"value":11,
-		"type":['Relique'],
-		"boost":0,
-		"texture":"res://Textures/Items/ARC.png",
-		"quantity":0
-	},
-	1: {
-		"name":"SWORD",
-		"value":17,
-		"type":['Totem'],
-		"boost":0,
-		"texture":"res://Textures/Items/EPEE.png",
-		"quantity":0
-	},
-	2: {
-		"name":"AXE",
-		"value":20,
-		"type":['Echo'],
-		"boost":0,
-		"texture":"res://Textures/Items/HACHE.png",
-		"quantity":0
-	},
-	3: {
-		"name":"STOVE",
-		"value":23,
-		"type":['Prisme'],
-		"boost":0,
-		"texture":"res://Textures/Items/POELE.png",
-		"quantity":0
-	},
-}
-
-var all_enemys = {
-	
-	0 : {
-		"name":"Manteau Rouge"
-		
-	}
-}
 
 var quests = {
 	0: {
@@ -377,14 +168,11 @@ func finished_stade_quest(quest_id=current_quest_id):
 		else:
 			quests[quest_id]["finished"] = true
 
-
 func save():
 	var save_file = ConfigFile.new()
-	
 	save_file.set_value("Tuto", "Stade", tutorial_stade)
 	save_file.set_value("Tuto", "Type", tutorial)
 	save_file.set_value("Tuto", "Validate", tutorial_validate)
-	
 	save_file.set_value("Tags", "Blue", pinb)
 	save_file.set_value("Tags", "Red", pinr)
 	save_file.set_value("Tags", "Yellow", piny)
@@ -398,34 +186,42 @@ func save():
 		save_file.set_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
 		save_file.set_value("Quests", "radar_enabled", true)
 	else:
-		save_file.set_value("Quests", "radar_position", Vector2(0,0))
+		save_file.set_value("Quests", "radar_position", Vector2(0, 0))
 		save_file.set_value("Quests", "radar_enabled", false)
+
+	# Sauvegarde des données du joueur
 	save_file.set_value("Player", "pseudo", PlayerStats.pseudo)
 	save_file.set_value("Player", "health", PlayerStats.health)
 	save_file.set_value("Player", "skin", PlayerStats.skin)
 	save_file.set_value("Player", "level", PlayerStats.level)
 	save_file.set_value("Player", "monnaie", PlayerStats.monnaie)
-	if get_node_or_null("/root/main_map/Player_One") != null:
-		save_file.set_value("Player", "position", get_node("/root/main_map/Player_One").position)
-	else:
-		var load_file = ConfigFile.new()
-		load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
-		save_file.set_value("Player", "position", load_file.get_value("Player", "position"))
-	save_file.set_value("Animals", "id_affected", PlayerStats.animal_id)
-	save_file.set_value("Animals", "health", PlayerStats.animal_health)
-	save_file.set_value("Animals", "level", PlayerStats.animal_level)
 
+	# Vérifier si le joueur est dans la scène actuelle avant de sauvegarder la position
+	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
+	if player_node:
+		save_file.set_value("Player", "position", player_node.position)
+	else:
+		print("Le joueur n'est pas disponible pour la sauvegarde de position.")
+
+	# Sauvegarde de l'heure
+	save_file.set_value("Time", "hour", current_hour)
+	save_file.set_value("Time", "minute", current_minute)
+	save_file.set_value("Time", "day", current_day)
+	save_file.set_value("Time", "color", target_color)
+	print(target_color)
 	save_file.save_encrypted_pass("user://save.txt", "gentle_duck")
-	
+	print("Sauvegarde terminée.")
+
 func load():
 	var load_file = ConfigFile.new()
-	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
-
+	var error = load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
+	if error != OK:
+		print("Erreur de chargement du fichier de sauvegarde :", error)
+		return
 
 	tutorial_stade = load_file.get_value("Tuto", "Stade", tutorial_stade)
 	tutorial = load_file.get_value("Tuto", "Type", tutorial)
 	tutorial_validate = load_file.get_value("Tuto", "Validate", tutorial_validate)
-	
 	pinb = load_file.get_value("Tags", "Blue", pinb)
 	pinr = load_file.get_value("Tags", "Red", pinr)
 	piny = load_file.get_value("Tags", "Yellow", piny)
@@ -433,43 +229,58 @@ func load():
 	
 	items = load_file.get_value("Values", "items", items)
 	attacks = load_file.get_value("Values", "attacks", attacks)
+
 	quests = load_file.get_value("Quests", "infos", quests)
 	current_quest_id = load_file.get_value("Quests", "current", current_quest_id)
 	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
-		get_node("/root/main_map/CanvasLayer/Minimap").pin = load_file.get_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
-		load_file.get_value("Quests", "radar_enabled", true)
+		get_node("/root/main_map/CanvasLayer/Minimap").pin = load_file.get_value("Quests", "radar_position", Vector2(0, 0))
+	
 	PlayerStats.pseudo = load_file.get_value("Player", "pseudo", PlayerStats.pseudo)
 	PlayerStats.health = load_file.get_value("Player", "health", PlayerStats.health)
 	PlayerStats.skin = load_file.get_value("Player", "ski3n", PlayerStats.skin)
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
 	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
-	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", Vector2(0,0))
-	PlayerStats.animal_id = load_file.get_value("Animals", "id_affected", PlayerStats.animal_id)
-	PlayerStats.animal_health = load_file.get_value("Animals", "health", PlayerStats.animal_health)
-	PlayerStats.animal_level = load_file.get_value("Animals", "level", PlayerStats.animal_level)
 
-func load_localisation():
-	var load_file = ConfigFile.new()
-	load_file.load_encrypted_pass("user://languages.txt", "gentle_duck")
-	TranslationServer.set_locale(load_file.get_value("Languages","Current",TranslationServer.get_locale()))
+	# Application de la position sauvegardée
+	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
+	if player_node:
+		player_node.position = load_file.get_value("Player", "position", Vector2(0, 0))
+		print("Position joueur chargée :", player_node.position)
+	else:
+		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")
 	
+	current_hour = load_file.get_value("Time", "hour", current_hour)
+	current_minute = load_file.get_value("Time", "minute", current_minute)
+	current_day = load_file.get_value("Time", "day", current_day)
+	target_color = load_file.get_value("Time", "color", target_color)
+	print("color:"+ str(target_color))
 
-func save_localisation():
-	var save_file = ConfigFile.new()
-	save_file.set_value("Languages","Current",TranslationServer.get_locale())
-	save_file.save_encrypted_pass("user://languages.txt", "gentle_duck")
-	
+func load_position():
+	# Appelle le chargement différé
+	call_deferred("_apply_player_position")
+
 func load_user():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://user.txt", "user_key")
 	Global.user = load_file.get_value("User","Data",Global.user)
 	
-func save_user():
-	var save_file = ConfigFile.new()
-	save_file.set_value("User","Data",Global.user)
-	save_file.save_encrypted_pass("user://user.txt", "user_key")
+func load_localisation():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://languages.txt", "gentle_duck")
+	TranslationServer.set_locale(load_file.get_value("Languages","Current",TranslationServer.get_locale()))
 	
-func load_position():
+func save_localisation():
+	var save_file = ConfigFile.new()
+	save_file.set_value("Languages","Current",TranslationServer.get_locale())
+	save_file.save_encrypted_pass("user://languages.txt", "gentle_duck")
+
+func _apply_player_position():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
-	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", get_node("/root/main_map/Player_One").position)
+
+	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
+	if player_node:
+		player_node.position = load_file.get_value("Player", "position", Vector2(0, 0))
+		print("Position joueur appliquée :", player_node.position)
+	else:
+		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")

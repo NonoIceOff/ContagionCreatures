@@ -11,10 +11,10 @@ var buttonE : Button
 var animalP : Sprite2D
 var animalE : Sprite2D
 var background_rect_info : ColorRect
-var buttons_active = false  # Drapeau pour contrôler l'activation des boutons et des touches
-var in_target_zone = false  # Indique si la barre est dans la zone cible
-var space_pressed = false   # Indique si la barre espace a été pressée une fois
-var current_attack_value = 0  # Stocke la valeur de l'attaque actuelle
+var buttons_active = false
+var in_target_zone = false
+var space_pressed = false
+var current_attack_value = 0
 @onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
 @onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
 @onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
@@ -44,12 +44,11 @@ var enemy_creatures_data = []
 var creatures_spells = []
 var enemy_creatures_spells = []
 
-# Définition des couleurs en fonction du type d'attaque
 var attack_colors = {
-	"fire": Color(1, 0, 0),          # Rouge pour Fire
-	"physical": Color(0.72, 0.53, 0.04),  # Marron clair pour Physical
-	"ice": Color(0, 0.5, 1),         # Bleu pour Ice
-	"magic": Color(0.7, 0.3, 1)      # Violet clair pour Magic
+	"fire": Color(1, 0, 0),
+	"physical": Color(0.72, 0.53, 0.04),
+	"ice": Color(0, 0.5, 1),
+	"magic": Color(0.7, 0.3, 1)
 }
 
 func _ready():
@@ -503,16 +502,12 @@ func activate_buttons():
 	else:
 		print("Les boutons ne sont pas initialisés.")
 
-
-
-
 func _on_spell_button_pressed(spell_data: Dictionary):
-	set_spell_buttons_enabled(false)  # Désactive les boutons
-	space_pressed = false  # Réinitialise l'état de l'appui sur espace
-	current_attack_value = spell_data.value  # Récupère la valeur de l'attaque actuelle
+	set_spell_buttons_enabled(false) 
+	space_pressed = false
+	current_attack_value = spell_data.value
 	await _remplir_barre_automatiquement(1.0)
-	set_spell_buttons_enabled(true)  # Réactive les boutons
-
+	set_spell_buttons_enabled(true)
 
 func set_spell_buttons_enabled(enabled: bool) -> void:
 	buttons_active = enabled  # Met à jour le drapeau pour bloquer/débloquer les touches
@@ -521,8 +516,6 @@ func set_spell_buttons_enabled(enabled: bool) -> void:
 		button.disabled = not enabled
 	print("Boutons activés :", enabled)
 
-# Fonction pour remplir la barre automatiquement, avec des étapes claires pour le suivi
-# Remplissage de la barre avec détection de la zone cible
 func _remplir_barre_automatiquement(duree: float) -> void:
 	var min_position_percentage = 20
 	var max_position_percentage = 80
@@ -546,7 +539,6 @@ func _remplir_barre_automatiquement(duree: float) -> void:
 		var t = elapsed_time / duree
 		progress_bar_joueur.value = lerp(start_value, end_value, t)
 
-		# Vérifie si la barre de progression est dans la zone cible
 		var progress_x = progress_bar_joueur.get_size().x * (progress_bar_joueur.value / progress_bar_joueur.max_value)
 		in_target_zone = (progress_x >= start_x and progress_x <= start_x + zone_width)
 
@@ -561,13 +553,12 @@ func _remplir_barre_automatiquement(duree: float) -> void:
 		progress_bar_joueur.value = 0
 
 	zone_cible.visible = false
-	in_target_zone = false  # Réinitialiser après le remplissage
-	space_pressed = false   # Réinitialiser pour le prochain remplissage
+	in_target_zone = false
+	space_pressed = false
 
-# Détecte l'appui sur la barre espace et vérifie si on est dans la zone cible
 func _on_attack_bar_pressed():
 	if space_pressed:
-		return  # Empêche de réappuyer plusieurs fois
+		return
 
 	space_pressed = true  # Indique que l'espace a été pressé
 
