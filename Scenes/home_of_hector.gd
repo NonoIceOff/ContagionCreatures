@@ -7,6 +7,7 @@ var scene = preload("res://Scenes/piano.tscn")
 @onready var transition_scene = $ui/Transition/AnimationPlayer
 @onready var ui_node = $ui
 @onready var control = $Control
+var piano_in = false
 
 func _ready():
 	Global.current_map = "HomeOfHector"
