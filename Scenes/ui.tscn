@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=10 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="1_p3l0n"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_imduj"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="6_reotg"]
 [ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="7_e7f4u"]
@@ -41,7 +42,7 @@ hue_variation_curve = SubResource("Curve_qti3j")
 offset_left = -1200.0
 offset_top = -24.0
 offset_right = 208.0
-offset_bottom = 24.0
+offset_bottom = 118.0
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
@@ -49,7 +50,10 @@ theme_override_constants/outline_size = 5
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_outline_size = 25
-theme_override_font_sizes/normal_font_size = 46
+theme_override_constants/line_separation = 0
+theme_override_fonts/normal_font = ExtResource("4_imduj")
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "[right]NO_QUEST"
 scroll_active = false
