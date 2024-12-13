@@ -126,6 +126,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="CanvasJour_Nuit" type="CanvasModulate" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
 [connection signal="body_entered" from="Piano1" to="." method="_on_piano_1_body_entered"]
