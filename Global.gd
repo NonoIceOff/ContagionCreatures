@@ -178,8 +178,6 @@ func save():
 	save_file.set_value("Tags", "Yellow", piny)
 	save_file.set_value("Tags", "Green", ping)
 	
-	save_file.set_value("Values", "items", items)
-	save_file.set_value("Values", "attacks", attacks)
 	save_file.set_value("Quests", "infos", quests)
 	save_file.set_value("Quests", "current", current_quest_id)
 	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
@@ -226,9 +224,6 @@ func load():
 	pinr = load_file.get_value("Tags", "Red", pinr)
 	piny = load_file.get_value("Tags", "Yellow", piny)
 	ping = load_file.get_value("Tags", "Green", ping)
-	
-	items = load_file.get_value("Values", "items", items)
-	attacks = load_file.get_value("Values", "attacks", attacks)
 
 	quests = load_file.get_value("Quests", "infos", quests)
 	current_quest_id = load_file.get_value("Quests", "current", current_quest_id)
