@@ -40,7 +40,7 @@ var close_button_pressed = false
 
 var current_quest_id = -1
 
-var current_hour: int = 19
+var current_hour: int = 16
 var current_minute: int = 0
 var current_day: int = 1
 var last_color = Color(1, 1, 1, 1)

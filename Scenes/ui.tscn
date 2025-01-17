@@ -37,16 +37,15 @@ mouse_filter = 2
 
 [node name="Aurore_boreales" type="CPUParticles2D" parent="."]
 position = Vector2(-48, -16)
-emitting = false
 amount = 800
 lifetime = 8.0
 emission_shape = 3
 emission_rect_extents = Vector2(5, 64)
 spread = 20.0
 gravity = Vector2(100, 0)
-scale_amount_min = 50.0
-scale_amount_max = 100.0
-color = Color(0, 1, 0, 0.352941)
+scale_amount_min = 25.0
+scale_amount_max = 50.0
+color = Color(0.33, 1, 0.531, 0.392157)
 script = ExtResource("3_xbp8f")
 
 [node name="Neige" type="CPUParticles2D" parent="."]
