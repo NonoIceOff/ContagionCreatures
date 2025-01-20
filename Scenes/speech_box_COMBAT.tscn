@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://vktexmgbgo6m"]
 
-[ext_resource type="Script" path="res://Scenes/speech_box_COMBAT.gd" id="1_jn1gq"]
+[ext_resource type="Script" path="res://Scripts/speech_box_COMBAT.gd" id="1_jn1gq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1xem"]
 bg_color = Color(0.192157, 0.192157, 0.192157, 1)

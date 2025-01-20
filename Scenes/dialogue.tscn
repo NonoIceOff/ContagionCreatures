@@ -32,6 +32,7 @@ offset_bottom = 808.0
 alignment = 2
 
 [node name="BackgroundPaper" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 178.0
 offset_top = 844.0
 offset_right = 1650.0

@@ -4,16 +4,9 @@
 [ext_resource type="Script" path="res://Scenes/AppearenceButton.gd" id="2_l2sb8"]
 [ext_resource type="Script" path="res://Scenes/Languages.gd" id="2_xel24"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="3_5er0g"]
-[ext_resource type="Script" path="res://Scenes/Titre.gd" id="4_afwsr"]
+[ext_resource type="Script" path="res://Scripts/Titre.gd" id="4_afwsr"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="5_k23y0"]
-[ext_resource type="Script" path="res://Scenes/PauseOk.gd" id="6_ge3rk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2ue8"]
-bg_color = Color(0.654902, 0.298039, 0.160784, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+[ext_resource type="Script" path="res://Scripts/Boutons/PauseOk.gd" id="6_ge3rk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8bsk"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)
@@ -33,7 +26,7 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui7us"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2ue8"]
 bg_color = Color(0.654902, 0.298039, 0.160784, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
@@ -58,6 +51,13 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui7us"]
+bg_color = Color(0.654902, 0.298039, 0.160784, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Background" type="ColorRect" parent="."]
@@ -72,9 +72,9 @@ offset_right = 1277.0
 offset_bottom = 464.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w8bsk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t00v6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
 text = "CONTROLS"
 script = ExtResource("1_hof3q")
 
@@ -85,9 +85,9 @@ offset_right = 1269.0
 offset_bottom = 592.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w8bsk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t00v6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
 text = "LANGUAGES"
 script = ExtResource("2_xel24")
 
@@ -98,9 +98,9 @@ offset_right = 1277.0
 offset_bottom = 720.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w8bsk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t00v6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
 text = "APPEARANCE"
 script = ExtResource("2_l2sb8")
 
@@ -139,9 +139,9 @@ offset_right = 1277.0
 offset_bottom = 1012.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dm8en")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jyc4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
 text = "RETOUR
 "
 script = ExtResource("6_ge3rk")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://d0k4nacwxxui8"]
 
-[ext_resource type="Script" path="res://Scenes/Player_Multiplayer.gd" id="1_1eb4v"]
+[ext_resource type="Script" path="res://Scripts/Player_Multiplayer.gd" id="1_1eb4v"]
 [ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="2_qqcse"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="3_fxwlk"]
 [ext_resource type="Script" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="4_pvajf"]
@@ -15,28 +15,22 @@ size = Vector2(100, 80)
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_25t2o"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/sync = true
-properties/0/watch = true
+properties/0/replication_mode = 2
 properties/1/path = NodePath("01-generic2:region_rect")
 properties/1/spawn = true
-properties/1/sync = true
-properties/1/watch = true
+properties/1/replication_mode = 2
 properties/2/path = NodePath("Name:text")
 properties/2/spawn = true
-properties/2/sync = true
-properties/2/watch = true
+properties/2/replication_mode = 2
 properties/3/path = NodePath("HUD/Name:text")
 properties/3/spawn = true
-properties/3/sync = true
-properties/3/watch = true
+properties/3/replication_mode = 2
 properties/4/path = NodePath("HUD/Coins/Label:text")
 properties/4/spawn = true
-properties/4/sync = true
-properties/4/watch = true
+properties/4/replication_mode = 2
 properties/5/path = NodePath("HUD/Vie:value")
 properties/5/spawn = true
-properties/5/sync = true
-properties/5/watch = true
+properties/5/replication_mode = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb62g"]
 bg_color = Color(0, 0, 0, 0.392157)

@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://0qjki1r0x1os" path="res://TileSet/TileSetN1/tileset_TileSetN1.tres" id="1_t4kqb"]
 [ext_resource type="Texture2D" uid="uid://cfrj1m3ierhb0" path="res://icon.svg" id="2_s76ib"]
-[ext_resource type="Script" path="res://Scenes/sprite_2d.gd" id="3_igcct"]
+[ext_resource type="Script" path="res://Scripts/sprite_2d.gd" id="3_igcct"]
 
 [node name="Map4" type="Node2D"]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
-[ext_resource type="Script" path="res://Scenes/ui.gd" id="1_p3l0n"]
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_p3l0n"]
 [ext_resource type="Texture2D" uid="uid://bpihtnygfbdmj" path="res://Textures/Particules/flocon_neige.png" id="2_flbvo"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
-[ext_resource type="Script" path="res://Scenes/aurore_boreales.gd" id="3_xbp8f"]
+[ext_resource type="Script" path="res://Scripts/aurore_boreales.gd" id="3_xbp8f"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_imduj"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="6_reotg"]

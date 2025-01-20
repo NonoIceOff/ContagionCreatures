@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=4 uid="uid://bowoxnua7u6p2"]
 
-[ext_resource type="Script" path="res://Scenes/map_3.gd" id="1_4748x"]
+[ext_resource type="Script" path="res://Scripts/Maps/map_3.gd" id="1_4748x"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_tuwr5"]
-[ext_resource type="Script" path="res://Scenes/Detected_player.gd" id="2_1plig"]
+[ext_resource type="Script" path="res://Scripts/Detected_player.gd" id="2_1plig"]
 [ext_resource type="TileSet" uid="uid://0qjki1r0x1os" path="res://TileSet/TileSetN1/tileset_TileSetN1.tres" id="2_24pqk"]
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="3_0tjfa"]
-[ext_resource type="Script" path="res://Scenes/bush_creatures.gd" id="5_44u67"]
+[ext_resource type="Script" path="res://Scripts/bush_creatures.gd" id="5_44u67"]
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="5_ve2ga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30i3a"]
@@ -22,6 +22,7 @@ stream = ExtResource("3_0tjfa")
 volume_db = -15.0
 
 [node name="ui" parent="." instance=ExtResource("5_ve2ga")]
+script = null
 
 [node name="TileMap" type="Node2D" parent="."]
 y_sort_enabled = true
