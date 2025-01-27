@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://c53cxaiwte76h"]
 
-[ext_resource type="Script" path="res://Scenes/loytan_enigme_1.gd" id="1_6rq4p"]
+[ext_resource type="Script" path="res://Scripts/loytan_enigme_1.gd" id="1_6rq4p"]
 [ext_resource type="AudioStream" uid="uid://b5h7wmfebxmvh" path="res://Sounds/enigma_debut.mp3" id="2_lgi74"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="3_q3m58"]
 [ext_resource type="Texture2D" uid="uid://cjdtiadalwaun" path="res://Textures/enigma_back.png" id="4_0yscg"]

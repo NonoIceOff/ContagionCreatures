@@ -1,13 +1,13 @@
 [gd_scene load_steps=49 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
-[ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_ba8wf"]
+[ext_resource type="Script" path="res://Scripts/Maps/main_map.gd" id="1_ba8wf"]
 [ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://main_map_2.tres" id="2_dxf0g"]
 [ext_resource type="PackedScene" uid="uid://clft6l0mv78bv" path="res://Scenes/animal.tscn" id="3_46rw2"]
 [ext_resource type="Texture2D" uid="uid://ckpe2pm4ddggs" path="res://Textures/Old_guy_who_lost_is_crampté_REAL.png" id="3_r3b5t"]
 [ext_resource type="Texture2D" uid="uid://blo1a6breprsw" path="res://Textures/Head-old-Guy-REAL.png" id="5_f74um"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="6_7grfu"]
-[ext_resource type="Script" path="res://Scenes/Detected_player.gd" id="7_5catn"]
+[ext_resource type="Script" path="res://Scripts/Detected_player.gd" id="7_5catn"]
 [ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="7_ch8cw"]
 [ext_resource type="Texture2D" uid="uid://dygmeeyh8svxo" path="res://Textures/headMOB.png" id="7_m7315"]
 [ext_resource type="Script" path="res://Scripts/areaEnnemy.gd" id="9_aabmy"]
@@ -391,6 +391,7 @@ text = "[ E ]
 label_settings = SubResource("LabelSettings_rqygx")
 
 [node name="ui" parent="." instance=ExtResource("10_cbqsb")]
+script = null
 
 [node name="Player_One" parent="." instance=ExtResource("1_1k8th")]
 z_index = 5
@@ -403,6 +404,7 @@ scale = Vector2(2.7, 2.7)
 
 [node name="PauseMenu" parent="Player_One/Camera2D/CanvasLayer" instance=ExtResource("9_roibj")]
 visible = false
+script = null
 
 [node name="LabelSauvegarde" type="Label" parent="Player_One/Camera2D/CanvasLayer"]
 visible = false

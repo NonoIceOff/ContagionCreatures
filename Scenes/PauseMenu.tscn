@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://dxt5b5tantpyy"]
 
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_8w1aj"]
-[ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="1_b5pbl"]
-[ext_resource type="Script" path="res://Scenes/Titre.gd" id="2_bw7xx"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_b5pbl"]
+[ext_resource type="Script" path="res://Scripts/Titre.gd" id="2_bw7xx"]
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="6_2265r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kl7q8"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8w5gua4qnj5k"]
+[gd_scene load_steps=8 format=3 uid="uid://doaw3aobgdqiy"]
 
 [ext_resource type="Script" path="res://Scripts/Precombat.gd" id="1_7cuix"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="5_7y40w"]
