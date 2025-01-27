@@ -15,7 +15,7 @@ run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Textures/pixil-frame-0_3.png"
-config/icon="res://icon.svg"
+config/icon="res://cc.png"
 
 [autoload]
 
