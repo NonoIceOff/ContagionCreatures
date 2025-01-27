@@ -184,6 +184,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
+disabled = true
 text = "MULTIPLAYER"
 expand_icon = true
 script = ExtResource("4_xyknk")
@@ -243,11 +244,10 @@ script = ExtResource("8_5568m")
 
 [node name="Label" type="Label" parent="DeleteSave"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 40.0
-offset_right = 392.0
-offset_bottom = 66.0
-theme_override_font_sizes/font_size = 16
+offset_top = 48.0
+offset_right = 384.0
+offset_bottom = 83.0
+theme_override_font_sizes/font_size = 32
 text = "TEXT_BIG_PROBLEM"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -284,23 +284,25 @@ offset_left = -24.0
 offset_top = 56.0
 offset_right = 408.0
 offset_bottom = 80.0
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "vOUS N'etes pas connecte"
 horizontal_alignment = 1
 
 [node name="Reseaux" type="Label" parent="."]
-offset_left = 1368.0
+offset_left = 1152.0
 offset_top = 832.0
-offset_right = 1576.0
-offset_bottom = 856.0
+offset_right = 1814.0
+offset_bottom = 902.0
 theme_override_font_sizes/font_size = 64
 text = "TEXT_SOCIAL_MEDIAS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Discord" type="Button" parent="Reseaux"]
 layout_mode = 0
-offset_left = -32.0
+offset_left = 181.0
 offset_top = 80.0
-offset_right = 240.0
+offset_right = 453.0
 offset_bottom = 120.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
@@ -314,9 +316,9 @@ script = ExtResource("21_nx528")
 
 [node name="Instagram" type="Button" parent="Reseaux"]
 layout_mode = 0
-offset_left = -32.0
+offset_left = 181.0
 offset_top = 128.0
-offset_right = 240.0
+offset_right = 453.0
 offset_bottom = 168.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32

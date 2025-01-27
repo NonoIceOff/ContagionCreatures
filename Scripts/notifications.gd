@@ -1,11 +1,20 @@
 extends CanvasLayer
 
+var http_request: HTTPRequest
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready():
+	http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
+	check_internet_connection()
 
+func check_internet_connection():
+	var error = http_request.request("http://www.google.com")
+	if error != OK:
+		print("Error making HTTP request: ", error)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_request_completed(_result, response_code, _headers, _body):
+	if response_code == 200:
+		get_node("Label").visible = false
+	else:
+		get_node("Label").visible = true

@@ -10,10 +10,14 @@ extends CanvasLayer
 var time_speed = 0.1
 var seconds_per_in_game_minute = 1.0
 
-func _ready():
-	advance_time()
+func _init() -> void:
+	print("a")
 
-func _process(delta):
+func _ready() -> void:
+	print("ok")
+	advance_time()
+	
+func _process(delta: float) -> void:
 	if Global.current_quest_id > -1 and get_node_or_null("CPUParticles2D") != null:
 		get_node("CPUParticles2D").visible = true
 		get_node("CPUParticles2D/QuestTextBar").text = "[right][rainbow freq=0.05]"+tr(Global.quests[Global.current_quest_id]["title"])+" [/rainbow]\n[color=white][i]"+tr(Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]])

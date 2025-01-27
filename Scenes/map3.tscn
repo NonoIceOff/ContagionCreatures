@@ -21,9 +21,6 @@ script = ExtResource("1_4748x")
 stream = ExtResource("3_0tjfa")
 volume_db = -15.0
 
-[node name="ui" parent="." instance=ExtResource("5_ve2ga")]
-script = null
-
 [node name="TileMap" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -92,6 +89,8 @@ position = Vector2(1152, 512)
 scale = Vector2(2.8, 2.8)
 
 [node name="CanvasJour_Nuit" type="CanvasModulate" parent="."]
+
+[node name="ui" parent="." instance=ExtResource("5_ve2ga")]
 
 [connection signal="body_entered" from="TileMap/house/AreaHome" to="TileMap/house/AreaHome" method="_Zone_Entered"]
 [connection signal="body_exited" from="TileMap/house/AreaHome" to="TileMap/house/AreaHome" method="_Zone_Exit"]

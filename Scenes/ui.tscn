@@ -37,6 +37,7 @@ mouse_filter = 2
 
 [node name="Aurore_boreales" type="CPUParticles2D" parent="."]
 position = Vector2(-48, -16)
+emitting = false
 amount = 800
 lifetime = 8.0
 emission_shape = 3
