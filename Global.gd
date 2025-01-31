@@ -2,6 +2,9 @@ extends Node
 
 var user = {}
 
+# Matchmaking
+var user_enemy = {}
+
 var interact = false
 var trigger = true
 var brazero_numbers = 0
