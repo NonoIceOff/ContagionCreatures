@@ -18,9 +18,16 @@ func _ready() -> void:
 	advance_time()
 	
 func _process(delta: float) -> void:
-	if Global.current_quest_id > -1 and get_node_or_null("CPUParticles2D") != null:
+	print(Global.current_map)
+	if Global.current_map != "HomeOfHector":
+		get_node("PanelDate").visible = true
+		get_node("Minimap").visible = true
+	else: 
+		get_node("PanelDate").visible = false
+		get_node("Minimap").visible = false
+	if Quests.current_quest_id > -1 and get_node_or_null("CPUParticles2D") != null:
 		get_node("CPUParticles2D").visible = true
-		get_node("CPUParticles2D/QuestTextBar").text = "[right][rainbow freq=0.05]"+tr(Global.quests[Global.current_quest_id]["title"])+" [/rainbow]\n[color=white][i]"+tr(Global.quests[Global.current_quest_id]["mini_descriptions"][ Global.quests[Global.current_quest_id]["stade"]])
+		get_node("CPUParticles2D/QuestTextBar").text = "[right][rainbow freq=0.05]"+tr(Quests.quests[Quests.current_quest_id]["title"])+" [/rainbow]\n[color=white][i]"+tr(Quests.quests[Quests.current_quest_id]["mini_descriptions"][Quests.quests[Quests.current_quest_id]["stade"]])
 
 
 func advance_time() -> void:

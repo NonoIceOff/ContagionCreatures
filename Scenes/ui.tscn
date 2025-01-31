@@ -224,3 +224,13 @@ offset_left = 1664.0
 offset_top = 824.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 8.0
+offset_top = 1000.0
+offset_right = 149.0
+offset_bottom = 1073.0
+theme_override_font_sizes/font_size = 32
+text = "[TAB] Quêtes
+[ESP] Pause"

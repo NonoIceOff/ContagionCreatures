@@ -41,7 +41,7 @@ var button_info_pressed_player = false
 var button_info_pressed_enemy = false
 var close_button_pressed = false
 
-var current_quest_id = -1
+
 
 var current_hour: int = 16
 var current_minute: int = 0
@@ -70,33 +70,6 @@ var daily_events = {
 
 signal fringe_changed
 
-func quest_finished(i):
-	Tutorial.get_node(".").tutorials[7]["progress"] += 100
-	if get_node_or_null("/root/"+current_map+"/SoundEffectFx") != null:
-		get_node("/root/"+current_map+"/SoundEffectFx").playing = false
-	if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:
-		get_node("/root/"+current_map+"/AudioStreamPlayer2D").stream = load("res://Sounds/victory.mp3")
-		get_node("/root/"+current_map+"/AudioStreamPlayer2D").playing = true
-		get_node("/root/"+current_map+"/ui/TerminatedQuest").visible = true
-		get_node("/root/"+current_map+"/ui/TerminatedQuest/Name").text = Global.quests[i]["title"]
-		await get_tree().create_timer(5).timeout 
-		if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:
-			get_node("/root/"+current_map+"/ui/TerminatedQuest").visible = false
-	if get_node_or_null("/root/main_map/SoundEffectFx") != null:
-		get_node("/root/main_map/SoundEffectFx").playing = true
-	quests[i]["finished"] = true
-
-func set_quest(i):
-	if i == -1:
-		if get_node_or_null("/root/"+current_map+"/ui/CPUParticles2D") != null:
-			get_node("/root/"+current_map+"/ui/CPUParticles2D").visible = false
-	else:
-		Global.current_quest_id = i
-		if get_node_or_null("/root/"+current_map+"/ui/Minimap") != null:
-			if get_node_or_null("/root/"+current_map+"/ui/CPUParticles2D") != null:
-				get_node("/root/"+current_map+"/ui/CPUParticles2D").visible = true
-			
-			get_node("/root/"+current_map+"/ui/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
 
 func _ready():
 	pass
@@ -104,72 +77,6 @@ func _ready():
 func _process(delta):
 	if tutorial == false:
 		tutorial_stade = -1
-
-var quests = {
-	0: {
-		"title":"QUEST_0_TITLE",
-		"long_description":"QUEST_0_LONG_DESCRIPTION",
-		"descriptions":
-			["QUEST_0_DESCRIPTION0",
-			"QUEST_0_DESCRIPTION1",
-			"QUEST_0_DESCRIPTION2",
-			"QUEST_0_DESCRIPTION3",
-			"QUEST_0_DESCRIPTION4",
-			"QUEST_0_DESCRIPTION5"],
-		"mini_descriptions":
-			["QUEST_0_MINI_DESCRIPTION0","QUEST_0_MINI_DESCRIPTION1","QUEST_0_MINI_DESCRIPTION2","QUEST_0_MINI_DESCRIPTION3","QUEST_0_MINI_DESCRIPTION4","QUEST_0_MINI_DESCRIPTION5"],
-		"pin_positions":[Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664),Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664)],
-		"stade":0,
-		"finished":false,
-		"members_only":false,
-	},
-	1: {
-		"title":"QUEST_1_TITLE",
-		"long_description":"QUEST_1_LONG_DESCRIPTION",
-		"descriptions":
-			["QUEST_1_DESCRIPTION0",
-			"QUEST_1_DESCRIPTION1",
-			"QUEST_1_DESCRIPTION2",
-			"QUEST_1_DESCRIPTION3"],
-		"mini_descriptions":
-			["QUEST_1_MINI_DESCRIPTION0","QUEST_1_MINI_DESCRIPTION1","QUEST_1_MINI_DESCRIPTION2","QUEST_1_MINI_DESCRIPTION3"],
-		"pin_positions":[Vector2(980,-680),Vector2(980,-680),Vector2(764,932),Vector2(-500,-740)],
-		"stade":0,
-		"finished":false,
-		"members_only":true,
-	},
-	2: {
-		"title":"QUEST_2_TITLE",
-		"long_description":"QUEST_2_LONG_DESCRIPTION",
-		"descriptions":
-			["QUEST_2_DESCRIPTION0"],
-		"mini_descriptions":
-			["QUEST_2_MINI_DESCRIPTION0"],
-		"pin_positions":[Vector2(0,0)],
-		"stade":0,
-		"finished":false,
-		"members_only":false,
-	},
-	3: {
-		"title":"QUEST_3_TITLE",
-		"long_description":"QUEST_3_LONG_DESCRIPTION",
-		"descriptions":
-			["QUEST_3_DESCRIPTION0","QUEST_3_DESCRIPTION1","QUEST_3_DESCRIPTION2","QUEST3_DESCRIPTION3"],
-		"mini_descriptions":
-			["QUEST_3_MINI_DESCRIPTION0","QUEST_3_MINI_DESCRIPTION1","QUEST_3_MINI_DESCRIPTION2","QUEST_3_MINI_DESCRIPTION3"],
-		"pin_positions":[Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(0,0)],
-		"stade":0,
-		"finished":false,
-		"members_only":true,
-	}
-}
-
-func finished_stade_quest(quest_id=current_quest_id):
-	if quest_id > -1:
-		if quests[quest_id]["descriptions"].size() > quests[quest_id]["stade"]:
-			quests[quest_id]["stade"] += 1
-		else:
-			quests[quest_id]["finished"] = true
 
 func save():
 	var save_file = ConfigFile.new()
@@ -181,8 +88,8 @@ func save():
 	save_file.set_value("Tags", "Yellow", piny)
 	save_file.set_value("Tags", "Green", ping)
 	
-	save_file.set_value("Quests", "infos", quests)
-	save_file.set_value("Quests", "current", current_quest_id)
+	save_file.set_value("Quests", "infos", Quests.quests)
+	save_file.set_value("Quests", "current", Quests.current_quest_id)
 	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
 		save_file.set_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
 		save_file.set_value("Quests", "radar_enabled", true)
@@ -228,14 +135,14 @@ func load():
 	piny = load_file.get_value("Tags", "Yellow", piny)
 	ping = load_file.get_value("Tags", "Green", ping)
 
-	quests = load_file.get_value("Quests", "infos", quests)
-	current_quest_id = load_file.get_value("Quests", "current", current_quest_id)
+	Quests.quests = load_file.get_value("Quests", "infos", Quests.quests)
+	Quests.current_quest_id = load_file.get_value("Quests", "current", Quests.current_quest_id)
 	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
 		get_node("/root/main_map/CanvasLayer/Minimap").pin = load_file.get_value("Quests", "radar_position", Vector2(0, 0))
 	
 	PlayerStats.pseudo = load_file.get_value("Player", "pseudo", PlayerStats.pseudo)
 	PlayerStats.health = load_file.get_value("Player", "health", PlayerStats.health)
-	PlayerStats.skin = load_file.get_value("Player", "ski3n", PlayerStats.skin)
+	PlayerStats.skin = load_file.get_value("Player", "skin", PlayerStats.skin)
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
 	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
 
@@ -278,7 +185,7 @@ func _apply_player_position():
 
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
-		player_node.position = load_file.get_value("Player", "position", Vector2(0, 0))
+		player_node.position = load_file.get_value("Player", "position", Vector2(3100, 1880))
 		print("Position joueur appliquée :", player_node.position)
 	else:
 		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")

@@ -14,7 +14,7 @@ func _ready() -> void:
 	print(Global.current_map)
 	print(Global.player_postion)
 	Global.load_position()
-	Global.load()
+	
 	label_home.visible = false
 	transition_scene.play("transition_to_screen")
 	await get_tree().create_timer(0.3).timeout
@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 			Key = true
 			transition_scene.play("screen_to_transition")
 			await get_tree().create_timer(3).timeout
-			get_tree().change_scene_to_file("res://Scenes/home_of_hector.tscn")
+			SceneLoader.load_scene("res://Scenes/home_of_hector.tscn")
 			Key = false
 
 func _Zone_Entered(body):

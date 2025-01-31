@@ -85,7 +85,7 @@ text = "[ E ]
 label_settings = SubResource("LabelSettings_yerkl")
 
 [node name="Player_One" parent="TileMap" instance=ExtResource("1_tuwr5")]
-position = Vector2(1152, 512)
+position = Vector2(3168, 1888)
 scale = Vector2(2.8, 2.8)
 
 [node name="CanvasJour_Nuit" type="CanvasModulate" parent="."]
