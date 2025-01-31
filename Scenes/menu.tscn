@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_3sngr"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_buk1w"]
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
-[ext_resource type="Texture2D" uid="uid://w5m4hlt7dhrk" path="res://logo.png" id="2_2tqwl"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_j62ra"]
 [ext_resource type="Script" path="res://Scripts/Boutons/PlayButton.gd" id="2_soydd"]
 [ext_resource type="Script" path="res://Scenes/SettingsButton.gd" id="3_4a2ih"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="4_4gslj"]
 [ext_resource type="Script" path="res://Scripts/Titre.gd" id="4_qccqg"]
 [ext_resource type="Script" path="res://Scripts/PlayMulti.gd" id="4_xyknk"]
+[ext_resource type="Texture2D" uid="uid://bkek7xuesbu2" path="res://cc.png" id="5_v4djk"]
 [ext_resource type="Script" path="res://Scripts/DeleteSave.gd" id="8_5568m"]
 [ext_resource type="Script" path="res://Scripts/Boutons/musicsbutton.gd" id="12_uqoq6"]
 [ext_resource type="Script" path="res://Scenes/Settings_Credits.gd" id="12_yb7yn"]
@@ -133,7 +133,7 @@ vertical_alignment = 1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(496, 280)
-texture = ExtResource("2_2tqwl")
+texture = ExtResource("5_v4djk")
 emission_shape = 3
 emission_rect_extents = Vector2(400, 80)
 direction = Vector2(0, 0)
@@ -184,7 +184,6 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-disabled = true
 text = "MULTIPLAYER"
 expand_icon = true
 script = ExtResource("4_xyknk")
