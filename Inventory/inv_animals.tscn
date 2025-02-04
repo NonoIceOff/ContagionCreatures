@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsnv6bayplkw4"]
+
+[ext_resource type="Script" path="res://Inventory/Inv_UI.gd" id="1_7t8th"]
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_papjk"]
+
+[node name="Inv_UI" type="Control"]
+layout_mode = 3
+anchor_right = 0.272
+anchor_bottom = 0.353
+offset_right = -0.240051
+offset_bottom = -0.240021
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7t8th")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 1016.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Titre" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_top = 64.0
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_papjk")
+theme_override_font_sizes/font_size = 32
+text = "ENCYCLOPEDIE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0

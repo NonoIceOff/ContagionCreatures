@@ -68,6 +68,93 @@ var daily_events = {
 "clear_sky": {"chance": 0.1, "active": false}
 }
 
+var items = {
+	0: {
+		"name":"ANTIDOTE",
+		"value":0,
+		"type":[0, "antidote"],
+		"effets":"Possibilite de recuperer l'animal ennemi. A utiliser si l'ennemi est inférieur a 20 PV",
+		"texture":"res://Textures/Items/Potion_verte.png",
+		"quantity":0
+	},
+	1: {
+		"name":"BLUE_GEM",
+		"value":0,
+		"type":[1.15, "def"],
+		"effets":"15% de DEF",
+		"texture":"res://Textures/Items/Gemme_bleu.png",
+		"quantity":0
+	},
+	2: {
+		"name":"CREPE",
+		"value":0,
+		"type":[1.1, "atk"],
+		"effets":"10% d'ATK",
+		"texture":"res://Textures/Items/Crepes.png",
+		"quantity":0
+	},
+	3: {
+		"name":"APPLE",
+		"value":0,
+		"type":[5, "regen"],
+		"effets":"5 PV",
+		"texture":"res://Textures/Items/Apple.png",
+		"quantity":0
+	},
+	4: {
+		"name":"N-KEY",
+		"value":0,
+		"type":[1, "key"],
+		"effets":"Active une porte",
+		"texture":"res://Textures/Items/nkey.png",
+		"quantity":0
+	},
+	5: {
+		"name":"CRAMPTE",
+		"value":0,
+		"type":[2, "atk"],
+		"effets":"200% d'ATK",
+		"texture":"res://Textures/Items/crapte.png",
+		"quantity":0
+	}
+}
+
+var attacks = {
+	0: {
+		"name":"BOW",
+		"value":11,
+		"type":['Relique'],
+		"boost":0,
+		"texture":"res://Textures/Items/ARC.png",
+		"quantity":0
+	},
+	1: {
+		"name":"SWORD",
+		"value":17,
+		"type":['Totem'],
+		"boost":0,
+		"texture":"res://Textures/Items/EPEE.png",
+		"quantity":0
+	},
+	2: {
+		"name":"AXE",
+		"value":20,
+		"type":['Echo'],
+		"boost":0,
+		"texture":"res://Textures/Items/HACHE.png",
+		"quantity":0
+	},
+	3: {
+		"name":"STOVE",
+		"value":23,
+		"type":['Prisme'],
+		"boost":0,
+		"texture":"res://Textures/Items/POELE.png",
+		"quantity":0
+	},
+}
+
+
 signal fringe_changed
 
 

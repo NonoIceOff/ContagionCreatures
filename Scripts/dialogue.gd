@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var dialogue_label : RichTextLabel = $Paper/Textes
 @onready var choices_container : VBoxContainer = $ChoicesContainer
@@ -91,6 +91,7 @@ func _on_choice_pressed(choice: Dictionary):
 func end_dialogue():
 	choices_container.visible = false
 	dialogue_label.text = "Fin du dialogue."
+	queue_free()
 
 ### ✅ **Gérer l'input (clic pour avancer)**
 func _input(event: InputEvent):
