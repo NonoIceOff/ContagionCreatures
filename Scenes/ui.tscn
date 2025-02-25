@@ -52,7 +52,6 @@ script = ExtResource("3_xbp8f")
 [node name="Neige" type="CPUParticles2D" parent="."]
 texture_filter = 1
 position = Vector2(2784, -912)
-emitting = false
 amount = 100
 lifetime = 5.0
 texture = ExtResource("2_flbvo")

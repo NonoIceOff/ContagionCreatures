@@ -45,7 +45,26 @@ var quests = {
 			Vector2(600, 1000) # Maison du chef
 		],
 		false # Pas réservé aux membres
-	)
+	),
+	#1: Quest.new(
+	#	1 (c'est l'id de la quête) , 
+	#	"nom de la quête", 
+	#	"Description de la quête entière",
+	#	[
+	#		"Description de la partie 1 de la quête",
+	#		"Description de la partie 2 de la quête",
+	#		"Description de la partie 3 de la quête",
+	#	],
+	#	[
+	#		"MINI Description de la partie 1 de la quête",
+	#		"MINI Description de la partie 2 de la quête",
+	#		"MINI Description de la partie 3 de la quête",
+	#	],
+	#	[
+	#		Vector2(200, 300), # Emplacement dans la carte du point d'interêt 1
+	#	],
+	#	false # Pas réservé aux membres Patreon
+	#)
 }
 
 

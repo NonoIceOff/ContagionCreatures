@@ -32,6 +32,6 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("ui_interact") and in_area == true and enemy_instance == null:
 		print("ok")
-		enemy_instance = dialogue_scene.instantiate()  # Instancier l'ennemi
+		enemy_instance = dialogue_scene.instantiate()
 		add_child(enemy_instance)
 		enemy_instance.start_dialogue(dialogue_data)
