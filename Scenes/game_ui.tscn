@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx6s6at1q7bed"]
+
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_r7j8k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocvbn"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(741, 198, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hvit0"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(709, 196, 22, 24)
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopupMenu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 40
+
+[node name="BaseMenuScreen" type="MarginContainer" parent="PopupMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupMenu/VBoxContainer/BaseMenuScreen"]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 2
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(742, 39, 18, 18)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/VBoxContainer/BaseMenuScreen/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 20
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="PopupMenu/VBoxContainer/BaseMenuScreen/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="TopButtonsContainer" type="HBoxContainer" parent="PopupMenu/VBoxContainer/BaseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+
+[node name="HelpButton" type="Button" parent="PopupMenu/VBoxContainer/BaseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/TopButtonsContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_ocvbn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ocvbn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hvit0")
+
+[node name="HelpButton2" type="Button" parent="PopupMenu/VBoxContainer/BaseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/TopButtonsContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_ocvbn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ocvbn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hvit0")
+
+[node name="BottomButtonsContainer2" type="HBoxContainer" parent="PopupMenu/VBoxContainer/BaseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+
+[node name="HelpButton" type="Button" parent="PopupMenu/VBoxContainer/BaseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/BottomButtonsContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_ocvbn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ocvbn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hvit0")
+
+[node name="HelpButton2" type="Button" parent="PopupMenu/VBoxContainer/BaseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/BottomButtonsContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_ocvbn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ocvbn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hvit0")
+
+[node name="Separator" type="Control" parent="PopupMenu/VBoxContainer"]
+layout_mode = 2
