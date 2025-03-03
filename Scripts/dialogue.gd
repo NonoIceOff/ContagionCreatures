@@ -1,125 +1,130 @@
-extends Control
+extends CanvasLayer
 
-@onready var dialogue_label : RichTextLabel = $Paper/Textes 
+@onready var dialogue_label : RichTextLabel = $Paper/Textes
 @onready var choices_container : VBoxContainer = $ChoicesContainer
 
 var dialogues : Array = []
 var current_dialogue : int = 0
 var is_choice_dialogue : bool = false
-var current_choice : Dictionary = {} 
+var current_choice : Dictionary = {}
 
-# Fonction pour démarrer le dialogue
+var typing_speed : float = 0.03  # Vitesse d'affichage progressive (optionnel)
+var is_typing : bool = false  # Vérifie si un texte est en cours d'affichage
+
+### ✅ **Démarrer un dialogue**
 func start_dialogue(dialogue_data: Array):
 	dialogues = dialogue_data
 	current_dialogue = 0
 	is_choice_dialogue = false
 	show_next_dialogue()
 
-# Fonction pour afficher le dialogue suivant
+### ✅ **Afficher le dialogue suivant**
 func show_next_dialogue():
+	if is_typing:
+		return  # Empêche l'affichage multiple
+
 	if current_dialogue < dialogues.size():
 		var dialogue = dialogues[current_dialogue]
 		current_dialogue += 1
 
-		# Vérifier si c'est un dialogue avec choix
 		if dialogue.has("choices"):
 			is_choice_dialogue = true
 			show_choices(dialogue["choices"])
 		else:
 			is_choice_dialogue = false
-			dialogue_label.bbcode_text = dialogue["text"]
-			set_process_input(true)  # Attendre un clic pour afficher le texte suivant
-			
-			# Vérifier s'il y a une fonction associée à ce texte (action)
-			if dialogue.has("action"):
-				call_custom_function(dialogue["action"])  # Appel de la fonction associée
+			type_text(dialogue["text"])  # Effet d'affichage progressif
+
+			# Vérifier et exécuter l'action associée
+			if dialogue.has("action") and dialogue["action"] is String and has_method(dialogue["action"]):
+				call(dialogue["action"])
 	else:
 		end_dialogue()
 
-# Fonction pour afficher les choix
-func show_choices(choices: Array):
-	dialogue_label.bbcode_text = "Choisissez une option:"
+### ✅ **Effet d'affichage progressif du texte**
+func type_text(full_text: String):
+	is_typing = true
+	dialogue_label.text = ""
 	
-	# Afficher les boutons de choix
+	for i in range(full_text.length()):
+		dialogue_label.text += full_text[i]
+		await get_tree().create_timer(typing_speed).timeout
+	
+	is_typing = false
+
+### ✅ **Afficher les choix**
+func show_choices(choices: Array):
+	dialogue_label.text = "Choisissez une option :"
+
 	choices_container.visible = true
-	clear_choices()  # Nettoyer les anciens boutons de choix
+	clear_choices()
 
 	for choice in choices:
 		var button = Button.new()
 		button.text = choice["text"]
-		button.set("theme_override_colors/font_color", Color(0,0,0));
-		button.self_modulate
-		button.custom_minimum_size = Vector2(128,32)
+		button.custom_minimum_size = Vector2(128, 32)
 		button.add_theme_font_size_override("font_size", 48)
-		var stylebox_theme: StyleBoxFlat = button.get_theme_stylebox("normal")
+
+		# Changer la couleur du bouton
+		var stylebox_theme: StyleBoxFlat = button.get_theme_stylebox("normal").duplicate()
 		stylebox_theme.bg_color = Color("ffffd8")
 		button.add_theme_stylebox_override("normal", stylebox_theme)
-		
-		# Utilisation d'une lambda pour passer le choix
-		button.connect("pressed", Callable(self, "_on_choice_pressed").bind(choice))  # Lier le choix avec bind()
+
+		button.pressed.connect(_on_choice_pressed.bind(choice))
 		choices_container.add_child(button)
 
-# Fonction pour nettoyer les anciens boutons de choix
+### ✅ **Nettoyer les anciens boutons de choix**
 func clear_choices():
 	for child in choices_container.get_children():
-		child.queue_free()  # Supprimer chaque enfant un par un
+		child.queue_free()
 
-# Fonction qui gère la sélection d'un choix
+### ✅ **Gérer la sélection d'un choix**
 func _on_choice_pressed(choice: Dictionary):
 	choices_container.visible = false
-	current_choice = choice  # L'assignation fonctionne maintenant car current_choice est un dictionnaire
-	dialogue_label.bbcode_text = current_choice["response"]
-	set_process_input(true)  # Activer l'attente de l'input pour passer au texte suivant
-	
-	# Appeler la fonction associée au choix
-	if choice.has("action"):
-		call_custom_function(choice["action"])
+	current_choice = choice
+	type_text(choice["response"])
 
-# Fonction pour terminer le dialogue
+	# Vérifier et exécuter l'action associée
+	if choice.has("action") and choice["action"] is String and has_method(choice["action"]):
+		call(choice["action"])
+
+### ✅ **Terminer le dialogue**
 func end_dialogue():
 	choices_container.visible = false
-	dialogue_label.bbcode_text = "Fin du dialogue."
+	dialogue_label.text = "Fin du dialogue."
+	queue_free()
 
-# Fonction qui gère le clic pour passer au texte suivant
+### ✅ **Gérer l'input (clic pour avancer)**
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
-		if current_choice != {}:  # Vérifie si un choix a été sélectionné
-			# Après le choix, afficher le texte suivant
-			current_choice = {}  # Réinitialiser le choix en cours
-			show_next_dialogue()  # Afficher le dialogue suivant
-		elif not is_choice_dialogue:  # Si ce n'est pas un dialogue de choix
-			# Afficher le dialogue suivant au clic
-			show_next_dialogue()  # Afficher le dialogue suivant
+		if is_typing:
+			# Si le texte est en train de s'afficher, on le complète immédiatement
+			dialogue_label.text = dialogues[current_dialogue - 1]["text"]
+			is_typing = false
+		elif current_choice != {}:
+			current_choice = {}  
+			show_next_dialogue()
+		elif not is_choice_dialogue:
+			show_next_dialogue()
 
-# Fonction pour appeler une fonction personnalisée basée sur l'élément "action"
-func call_custom_function(action: Callable):
-	if action:
-		action.call()  # Appel de la fonction si elle est définie
-
-# Exemple de fonction externe à appeler
-func _on_dialogue_start():
-	print("Début du dialogue, actions personnalisées ici.")
-
-# Exemple de fonction externe à appeler à la fin du dialogue
-func _on_dialogue_end():
-	print("Dialogue terminé, actions personnalisées ici.")
-
-# Exemple de dialogue avec des choix et des actions
+### ✅ **Exemple de dialogue avec des choix et des actions**
 var dialogue_data = [
-	{"text": "Bonjour, comment ça va ?", "action": Callable(self, "_on_dialogue_start")},  # Début du dialogue
+	{"text": "Bonjour, comment ça va ?", "action": "_on_dialogue_start"},
 	{"text": "Je peux vous aider ?"},
 	{"text": "Voulez-vous des informations ?", "choices": [
-		{"text": "Oui", "response": "Voici les informations.", "action": Callable(self, "_on_yes_choice")},  # Choix "Oui"
+		{"text": "Oui", "response": "Voici les informations.", "action": "_on_yes_choice"},
 		{"text": "Non", "response": "D'accord, à bientôt!"}
 	]},
-	{"text": "Fin du dialogue.", "action": Callable(self, "_on_dialogue_end")}  # Fin du dialogue
+	{"text": "Fin du dialogue.", "action": "_on_dialogue_end"}
 ]
 
-# Exemple de fonction pour le choix "Oui"
+### ✅ **Fonction pour le choix "Oui"**
 func _on_yes_choice():
 	print("Vous avez choisi Oui, voici les informations.")
 
-# Initialisation et démarrage du dialogue dans le _ready()
+### ✅ **Fonction à la fin du dialogue**
+func _on_dialogue_end():
+	print("Dialogue terminé, action spécifique ici.")
+
+### ✅ **Démarrer le dialogue au chargement**
 func _ready():
-	# Démarre le dialogue
 	start_dialogue(dialogue_data)

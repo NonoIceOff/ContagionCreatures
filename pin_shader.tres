@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cf568renknpt8"]
+
+[ext_resource type="Shader" path="res://Scenes/pin.gdshader" id="1_ujodm"]
+
+[resource]
+shader = ExtResource("1_ujodm")
+shader_parameter/glow_intensity = 2.0
+shader_parameter/glow_color = Vector4(0, 0, 0, 0.25)
+shader_parameter/glow_size = 2.0

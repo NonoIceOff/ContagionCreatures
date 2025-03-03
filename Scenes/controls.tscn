@@ -1,17 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://cv33vxrhul0da"]
 
-[ext_resource type="Script" path="res://Scenes/Ok.gd" id="1_j3ftm"]
-[ext_resource type="Script" path="res://Scenes/controls.gd" id="1_nskhi"]
+[ext_resource type="Script" path="res://Scripts/Boutons/Ok.gd" id="1_j3ftm"]
+[ext_resource type="Script" path="res://Scripts/controls.gd" id="1_nskhi"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_wbdo4"]
-[ext_resource type="Script" path="res://Scenes/Titre.gd" id="2_tuees"]
+[ext_resource type="Script" path="res://Scripts/Titre.gd" id="2_tuees"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="3_bm1pe"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
-bg_color = Color(0.654902, 0.298039, 0.160784, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)
@@ -26,6 +19,13 @@ corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7pwu"]
 bg_color = Color(0.717647, 0.203922, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
+bg_color = Color(0.654902, 0.298039, 0.160784, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
@@ -46,9 +46,9 @@ offset_right = 1277.0
 offset_bottom = 1012.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "VALIDATE"
 script = ExtResource("1_j3ftm")
 
@@ -107,9 +107,9 @@ offset_right = 1000.0
 offset_bottom = 64.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "up"
 
 [node name="Down" type="Label" parent="ScrollContainer/VBoxContainer"]
@@ -127,9 +127,9 @@ offset_right = 1000.0
 offset_bottom = 64.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "down"
 
 [node name="Left" type="Label" parent="ScrollContainer/VBoxContainer"]
@@ -147,9 +147,9 @@ offset_right = 1000.0
 offset_bottom = 64.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "left"
 
 [node name="Right" type="Label" parent="ScrollContainer/VBoxContainer"]
@@ -167,9 +167,9 @@ offset_right = 1000.0
 offset_bottom = 64.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "right"
 
 [connection signal="pressed" from="Valider" to="Valider" method="_on_pressed"]

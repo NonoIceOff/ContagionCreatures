@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://sqbwguxemyoi"]
 
-[ext_resource type="Script" path="res://Scenes/scene_Choose_Items.gd" id="1_5obou"]
+[ext_resource type="Script" path="res://Scripts/Combat/scene_Choose_Items.gd" id="1_5obou"]
 [ext_resource type="Texture2D" uid="uid://dp5pxuyx1t8of" path="res://Textures/Cross_Close.png" id="2_363pp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwfdf"]

@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://0qjki1r0x1os"]
 
 [ext_resource type="Texture2D" uid="uid://bud0d68y02qho" path="res://TileSet/TileSetN1/tileset_TileSetN1.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://ps780b5k8im5" path="res://TileSet/TileSetBush/bush/tileset_bush.png" id="2_caau5"]
 [ext_resource type="Texture2D" uid="uid://dp5tld12l676g" path="res://TileSet/TileSetHouse/first_House/tileset_first_House.png" id="2_ee50e"]
-[ext_resource type="Texture2D" uid="uid://cd03f6pu0jwe" path="res://TileSet/TileSetMoulin/output/SpriteMoulin.png" id="2_qkv0q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1mid"]
 texture = ExtResource("1")
@@ -255,15 +255,17 @@ texture = ExtResource("1")
 4:11/0 = 0
 4:10/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tx3j1"]
-texture = ExtResource("2_qkv0q")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mj4t"]
+resource_name = "bush"
+texture = ExtResource("2_caau5")
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7m3lv"]
 texture = ExtResource("2_ee50e")
 0:0/size_in_atlas = Vector2i(8, 7)
 0:0/0 = 0
 0:0/0/y_sort_origin = 21
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50.6465, -16.2635, 49.7626, -16.2635, 52, 36, 40, 48, 10.253, 42.4264, 7.875, 30.125, -15.5564, 29.8753, -21, 42.875, -36, 44, -50.4698, 32.8805)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50.6465, -16.2635, 49.7626, -16.2635, 52, 36, 40, 48, 10.253, 42.4264, 8.13173, 36.2392, -15.5, 36.125, -21, 42.875, -36, 44, -50.4698, 32.8805)
 
 [resource]
 physics_layer_0/collision_layer = 1
@@ -272,4 +274,4 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_y1mid")
 sources/5 = SubResource("TileSetAtlasSource_7m3lv")
-sources/1 = SubResource("TileSetAtlasSource_tx3j1")
+sources/1 = SubResource("TileSetAtlasSource_4mj4t")

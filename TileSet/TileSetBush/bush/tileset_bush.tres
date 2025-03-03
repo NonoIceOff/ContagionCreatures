@@ -1,0 +1,30 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://jt26qx16jk57"]
+
+[ext_resource type="Texture2D" uid="uid://ps780b5k8im5" path="res://TileSet/TileSetBush/bush/tileset_bush.png" id="1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjyyc"]
+texture = ExtResource("1")
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+
+[resource]
+sources/1 = SubResource("TileSetAtlasSource_cjyyc")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dll6t0qviglyv"]
 
-[ext_resource type="Script" path="res://Scenes/loytan_enigme_1.gd" id="1_c85vk"]
+[ext_resource type="Script" path="res://Scripts/loytan_enigme_1.gd" id="1_c85vk"]
 [ext_resource type="AudioStream" uid="uid://b5h7wmfebxmvh" path="res://Sounds/enigma_debut.mp3" id="2_73yks"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="3_7t2tp"]
 [ext_resource type="Texture2D" uid="uid://cjdtiadalwaun" path="res://Textures/enigma_back.png" id="3_xtil1"]
@@ -219,10 +219,10 @@ offset_right = 352.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
+theme_override_styles/disabled = ExtResource("8_6qqgj")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("4_hcsig")
 text = "ENIGMA_1_RESPONSE1"
 text_overrun_behavior = 1
 
@@ -235,10 +235,10 @@ offset_right = 736.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
+theme_override_styles/disabled = ExtResource("8_6qqgj")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("4_hcsig")
 text = "ENIGMA_1_RESPONSE2"
 text_overrun_behavior = 1
 
@@ -251,10 +251,10 @@ offset_right = 1120.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
+theme_override_styles/disabled = ExtResource("8_6qqgj")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("4_hcsig")
 text = "ENIGMA_1_RESPONSE3"
 text_overrun_behavior = 1
 
@@ -267,10 +267,10 @@ offset_right = 1504.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
+theme_override_styles/disabled = ExtResource("8_6qqgj")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("4_hcsig")
 text = "ENIGMA_1_RESPONSE4"
 text_overrun_behavior = 1
 
@@ -283,10 +283,10 @@ offset_right = 1888.0
 offset_bottom = 736.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
+theme_override_styles/disabled = ExtResource("8_6qqgj")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("4_hcsig")
 text = "ENIGMA_1_RESPONSE5"
 text_overrun_behavior = 1
 
@@ -299,10 +299,10 @@ offset_right = 930.0
 offset_bottom = 1075.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
+theme_override_styles/disabled = ExtResource("8_6qqgj")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("4_hcsig")
 text = "ENIGMA_1_RESPONSE6"
 text_overrun_behavior = 1
 
@@ -315,10 +315,10 @@ offset_right = 1314.0
 offset_bottom = 1075.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_hcsig")
+theme_override_styles/disabled = ExtResource("8_6qqgj")
 theme_override_styles/hover = ExtResource("4_huppo")
 theme_override_styles/pressed = ExtResource("7_jvrct")
-theme_override_styles/disabled = ExtResource("8_6qqgj")
+theme_override_styles/normal = ExtResource("4_hcsig")
 text = "ENIGMA_1_RESPONSE7"
 text_overrun_behavior = 1
 
