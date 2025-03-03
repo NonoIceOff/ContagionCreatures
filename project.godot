@@ -23,6 +23,8 @@ PlayerStats="*res://Scripts/PlayerStats.gd"
 SceneLoader="*res://Scripts/scene_loader.gd"
 Global="*res://Global.gd"
 Tutorial="*res://Scenes/tutorial.tscn"
+Notifications="*res://Scenes/notifications.tscn"
+Quests="*res://Scripts/Quests.gd"
 
 [display]
 
