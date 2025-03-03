@@ -26,7 +26,6 @@ Tutorial="*res://Scenes/tutorial.tscn"
 Notifications="*res://Scenes/notifications.tscn"
 Quests="*res://Scripts/Quests.gd"
 
-
 [display]
 
 window/size/viewport_width=1920
