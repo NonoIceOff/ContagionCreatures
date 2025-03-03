@@ -52,7 +52,6 @@ script = ExtResource("3_xbp8f")
 [node name="Neige" type="CPUParticles2D" parent="."]
 texture_filter = 1
 position = Vector2(2784, -912)
-emitting = false
 amount = 100
 lifetime = 5.0
 texture = ExtResource("2_flbvo")
@@ -224,3 +223,16 @@ offset_left = 1664.0
 offset_top = 824.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 16.0
+offset_top = 880.0
+offset_right = 198.0
+offset_bottom = 1067.0
+theme_override_font_sizes/font_size = 32
+text = "[TAB] Quêtes
+[ESP] Pause
+[I] Inventaire
+[A] Encyclopédie
+[M] Carte"

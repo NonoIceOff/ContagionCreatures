@@ -7,10 +7,10 @@ func draw_inventory():
 	var size_items = Global.items.size()
 	var attacks_items = Global.attacks.size()
 		
-	for i in 24:
+	for i in 16:
 		var color = ColorRect.new()
 		color.color = Color(0.1,0.1,0.1)
-		color.custom_minimum_size = Vector2(332,64)
+		color.custom_minimum_size = Vector2(332,128)
 		get_node("CanvasLayer/VBoxContainer"+str(i%colonnes)).add_child(color)
 		
 		var sprite = Sprite2D.new()
@@ -20,7 +20,7 @@ func draw_inventory():
 		
 		var sprite_no = Sprite2D.new()
 		sprite_no.scale = Vector2(0.2,0.2)
-		sprite_no.position = Vector2(164,32)
+		sprite_no.position = Vector2(164,100)
 		sprite_no.scale = Vector2(2,2)
 		sprite_no.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		sprite_no.texture = load("res://Textures/WHATTT.png")
@@ -29,24 +29,33 @@ func draw_inventory():
 		
 		var title = Label.new()
 		title.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		title.set("theme_override_font_sizes/font_size", 24)
+		title.set("theme_override_font_sizes/font_size", 64)
 		title.custom_minimum_size = Vector2(332,64)
-		title.vertical_alignment = VERTICAL_ALIGNMENT_TOP
-		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		color.add_child(title)
+		
+		var desc = Label.new()
+		desc.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		desc.set("theme_override_font_sizes/font_size", 32)
+		desc.custom_minimum_size = Vector2(332,164)
+		desc.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		desc.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		color.add_child(desc)
 		
 		var quantity = Label.new()
 		quantity.position.y = 32
 		quantity.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		quantity.set("theme_override_font_sizes/font_size", 24)
-		quantity.custom_minimum_size = Vector2(332,64)
-		quantity.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+		quantity.set("theme_override_font_sizes/font_size", 32)
+		quantity.custom_minimum_size = Vector2(332,96)
+		quantity.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 		quantity.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		color.add_child(quantity)
 		
 		
 		if Global.items.has(i+1):
 			title.text = Global.items[i+1]["name"]
+			desc.text = str(Global.items[i+1]["type"])
 			quantity.text = str(Global.items[i+1]["quantity"])
 			sprite.texture = load(Global.items[i+1]["texture"])
 			if Global.items[i+1]["quantity"] == 0:

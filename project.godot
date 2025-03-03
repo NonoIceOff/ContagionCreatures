@@ -23,6 +23,9 @@ PlayerStats="*res://Scripts/PlayerStats.gd"
 SceneLoader="*res://Scripts/scene_loader.gd"
 Global="*res://Global.gd"
 Tutorial="*res://Scenes/tutorial.tscn"
+Notifications="*res://Scenes/notifications.tscn"
+Quests="*res://Scripts/Quests.gd"
+
 
 [display]
 
@@ -42,7 +45,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 
 [gui]
 
-theme/custom_font="res://Font/Jersey10-Regular.ttf"
+theme/custom_font="res://Font/upheavtt.ttf"
 
 [input]
 

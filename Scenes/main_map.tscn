@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bppgfsdgr1rg"]
+[gd_scene load_steps=48 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
 [ext_resource type="Script" path="res://Scripts/Maps/main_map.gd" id="1_ba8wf"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="10_cbqsb"]
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="18_w4w46"]
 [ext_resource type="Texture2D" uid="uid://des7hyfw82tql" path="res://Textures/PNJ/Loytan/loytan_full.png" id="19_tc64p"]
+[ext_resource type="PackedScene" uid="uid://dnj0fapv33e0a" path="res://Scenes/PNJ.tscn" id="20_6gvfn"]
 [ext_resource type="Texture2D" uid="uid://cqsj1ecoh183k" path="res://Textures/PNJ/Loytan/tete_loytan.png" id="20_12piq"]
 [ext_resource type="Texture2D" uid="uid://cxqxfpw2do58x" path="res://Textures/Inventaire/brown_pressed.png" id="21_7ffd6"]
 [ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="21_m1aw1"]
@@ -23,8 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="23_o04f3"]
 [ext_resource type="Texture2D" uid="uid://b6qrnndoprfy7" path="res://Textures/Items/nkey.png" id="23_sq4xb"]
 [ext_resource type="Script" path="res://Scripts/area_saved.gd" id="24_cjwdc"]
-[ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="24_e0f8h"]
-[ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="25_2w24m"]
 
 [sub_resource type="Curve2D" id="Curve2D_iabi8"]
 _data = {
@@ -564,50 +563,7 @@ DUNGEON"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bagird" type="Area2D" parent="."]
-position = Vector2(1000, -680)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Bagird"]
-texture_filter = 1
-texture_repeat = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bagird/CharacterBody2D"]
-position = Vector2(0, -2.5)
-shape = SubResource("RectangleShape2D_184fj")
-
-[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Bagird/CharacterBody2D"]
-z_index = -1
-position = Vector2(0, 3)
-scale = Vector2(3.7, 3.7)
-texture = ExtResource("24_e0f8h")
-
-[node name="Head-old-guy-real" type="Sprite2D" parent="Bagird/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
-z_index = 10
-texture_filter = 1
-texture_repeat = 1
-texture = ExtResource("25_2w24m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bagird"]
-shape = SubResource("CircleShape2D_kocle")
-
-[node name="Trigger" type="Sprite2D" parent="Bagird"]
-visible = false
-position = Vector2(0, -73)
-scale = Vector2(2.9, 2.9)
-texture = ExtResource("7_ch8cw")
-
-[node name="Interact" type="Label" parent="Bagird"]
-visible = false
-offset_left = -24.0
-offset_top = -70.0
-offset_right = 84.0
-offset_bottom = -20.0
-scale = Vector2(0.5, 0.5)
-text = "[ E ]"
-label_settings = SubResource("LabelSettings_3qct3")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+[node name="Bagird" parent="." instance=ExtResource("20_6gvfn")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_distance = 200000.0
@@ -746,8 +702,6 @@ horizontal_alignment = 1
 [connection signal="body_exited" from="Loytan" to="." method="_on_loytan_body_exited"]
 [connection signal="body_entered" from="InversedDungeon" to="." method="_on_inversed_dungeon_body_entered"]
 [connection signal="body_exited" from="InversedDungeon" to="." method="_on_inversed_dungeon_body_exited"]
-[connection signal="body_entered" from="Bagird" to="." method="_on_bagird_body_entered"]
-[connection signal="body_exited" from="Bagird" to="." method="_on_bagird_body_exited"]
 [connection signal="pressed" from="StartCinematic/StopCinematic" to="." method="_on_stop_cinematic_pressed"]
 [connection signal="body_entered" from="Piano2" to="." method="_on_piano_2_body_entered"]
 [connection signal="body_exited" from="Piano2" to="." method="_on_piano_2_body_exited"]
