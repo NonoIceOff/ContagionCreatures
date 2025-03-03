@@ -35,7 +35,7 @@ var button_info_pressed_player = false
 var button_info_pressed_enemy = false
 var close_button_pressed = false
 
-
+var current_quest_id = -1
 
 var pianos = [0,0,0,0]
 var current_map = "main_map"
@@ -49,9 +49,39 @@ var start_cinematic = {
 	5: "START_CINEMATIC_TEXT_5",
 }
 
+
 signal fringe_changed
 
+func quest_finished(i):
+	Tutorial.get_node(".").tutorials[7]["progress"] += 100
+	if get_node_or_null("/root/"+current_map+"/SoundEffectFx") != null:
+		get_node("/root/"+current_map+"/SoundEffectFx").playing = false
+	if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:
+		get_node("/root/"+current_map+"/AudioStreamPlayer2D").stream = load("res://Sounds/victory.mp3")
+		get_node("/root/"+current_map+"/AudioStreamPlayer2D").playing = true
+		get_node("/root/"+current_map+"/ui/TerminatedQuest").visible = true
+		get_node("/root/"+current_map+"/ui/TerminatedQuest/Name").text = Global.quests[i]["title"]
+		await get_tree().create_timer(5).timeout 
+		if get_node_or_null("/root/"+current_map+"/ui/TerminatedQuest") != null:
+			get_node("/root/"+current_map+"/ui/TerminatedQuest").visible = false
+	if get_node_or_null("/root/main_map/SoundEffectFx") != null:
+		get_node("/root/main_map/SoundEffectFx").playing = true
+	quests[i]["finished"] = true
 
+func set_quest(i):
+	if i == -1:
+		if get_node_or_null("/root/"+current_map+"/ui/CPUParticles2D") != null:
+			get_node("/root/"+current_map+"/ui/CPUParticles2D").visible = false
+	else:
+		Global.current_quest_id = i
+		if get_node_or_null("/root/"+current_map+"/ui/Minimap") != null:
+			if get_node_or_null("/root/"+current_map+"/ui/CPUParticles2D") != null:
+				get_node("/root/"+current_map+"/ui/CPUParticles2D").visible = true
+			
+			get_node("/root/"+current_map+"/ui/Minimap").change_pin(Global.quests[i]["pin_positions"][Global.quests[i]["stade"]])
+
+func _ready():
+	pass
 
 func _process(delta):
 	if tutorial == false:
@@ -276,100 +306,69 @@ var all_enemys = {
 
 var quests = {
 	0: {
-		"name":"ANTIDOTE",
-		"value":0,
-		"type":[0, "antidote"],
-		"effets":"Possibilite de recuperer l'animal ennemi. A utiliser si l'ennemi est inférieur a 20 PV",
-		"texture":"res://Textures/Items/Potion_verte.png",
-		"quantity":0
+		"title":"QUEST_0_TITLE",
+		"long_description":"QUEST_0_LONG_DESCRIPTION",
+		"descriptions":
+			["QUEST_0_DESCRIPTION0",
+			"QUEST_0_DESCRIPTION1",
+			"QUEST_0_DESCRIPTION2",
+			"QUEST_0_DESCRIPTION3",
+			"QUEST_0_DESCRIPTION4",
+			"QUEST_0_DESCRIPTION5"],
+		"mini_descriptions":
+			["QUEST_0_MINI_DESCRIPTION0","QUEST_0_MINI_DESCRIPTION1","QUEST_0_MINI_DESCRIPTION2","QUEST_0_MINI_DESCRIPTION3","QUEST_0_MINI_DESCRIPTION4","QUEST_0_MINI_DESCRIPTION5"],
+		"pin_positions":[Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664),Vector2(1448,291),Vector2(3128,-664),Vector2(3128,-664)],
+		"stade":0,
+		"finished":false,
+		"members_only":false,
 	},
 	1: {
-		"name":"BLUE_GEM",
-		"value":0,
-		"type":[1.15, "def"],
-		"effets":"15% de DEF",
-		"texture":"res://Textures/Items/Gemme_bleu.png",
-		"quantity":0
+		"title":"QUEST_1_TITLE",
+		"long_description":"QUEST_1_LONG_DESCRIPTION",
+		"descriptions":
+			["QUEST_1_DESCRIPTION0",
+			"QUEST_1_DESCRIPTION1",
+			"QUEST_1_DESCRIPTION2",
+			"QUEST_1_DESCRIPTION3"],
+		"mini_descriptions":
+			["QUEST_1_MINI_DESCRIPTION0","QUEST_1_MINI_DESCRIPTION1","QUEST_1_MINI_DESCRIPTION2","QUEST_1_MINI_DESCRIPTION3"],
+		"pin_positions":[Vector2(980,-680),Vector2(980,-680),Vector2(764,932),Vector2(-500,-740)],
+		"stade":0,
+		"finished":false,
+		"members_only":true,
 	},
 	2: {
-		"name":"CREPE",
-		"value":0,
-		"type":[1.1, "atk"],
-		"effets":"10% d'ATK",
-		"texture":"res://Textures/Items/Crepes.png",
-		"quantity":0
+		"title":"QUEST_2_TITLE",
+		"long_description":"QUEST_2_LONG_DESCRIPTION",
+		"descriptions":
+			["QUEST_2_DESCRIPTION0"],
+		"mini_descriptions":
+			["QUEST_2_MINI_DESCRIPTION0"],
+		"pin_positions":[Vector2(0,0)],
+		"stade":0,
+		"finished":false,
+		"members_only":false,
 	},
 	3: {
-		"name":"APPLE",
-		"value":0,
-		"type":[5, "regen"],
-		"effets":"5 PV",
-		"texture":"res://Textures/Items/Apple.png",
-		"quantity":0
-	},
-	4: {
-		"name":"N-KEY",
-		"value":0,
-		"type":[1, "key"],
-		"effets":"Active une porte",
-		"texture":"res://Textures/Items/nkey.png",
-		"quantity":0
-	},
-	5: {
-		"name":"CRAMPTE",
-		"value":0,
-		"type":[2, "atk"],
-		"effets":"200% d'ATK",
-		"texture":"res://Textures/Items/crapte.png",
-		"quantity":0
+		"title":"QUEST_3_TITLE",
+		"long_description":"QUEST_3_LONG_DESCRIPTION",
+		"descriptions":
+			["QUEST_3_DESCRIPTION0","QUEST_3_DESCRIPTION1","QUEST_3_DESCRIPTION2","QUEST3_DESCRIPTION3"],
+		"mini_descriptions":
+			["QUEST_3_MINI_DESCRIPTION0","QUEST_3_MINI_DESCRIPTION1","QUEST_3_MINI_DESCRIPTION2","QUEST_3_MINI_DESCRIPTION3"],
+		"pin_positions":[Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(0,0)],
+		"stade":0,
+		"finished":false,
+		"members_only":true,
 	}
 }
 
-var attacks = {
-	0: {
-		"name":"BOW",
-		"value":11,
-		"type":['Relique'],
-		"boost":0,
-		"texture":"res://Textures/Items/ARC.png",
-		"quantity":0
-	},
-	1: {
-		"name":"SWORD",
-		"value":17,
-		"type":['Totem'],
-		"boost":0,
-		"texture":"res://Textures/Items/EPEE.png",
-		"quantity":0
-	},
-	2: {
-		"name":"AXE",
-		"value":20,
-		"type":['Echo'],
-		"boost":0,
-		"texture":"res://Textures/Items/HACHE.png",
-		"quantity":0
-	},
-	3: {
-		"name":"STOVE",
-		"value":23,
-		"type":['Prisme'],
-		"boost":0,
-		"texture":"res://Textures/Items/POELE.png",
-		"quantity":0
-	},
-}
-
-
-signal fringe_changed
-
-
-func _ready():
-	pass
-
-func _process(delta):
-	if tutorial == false:
-		tutorial_stade = -1
+func finished_stade_quest(quest_id=current_quest_id):
+	if quest_id > -1:
+		if quests[quest_id]["descriptions"].size() > quests[quest_id]["stade"]:
+			quests[quest_id]["stade"] += 1
+		else:
+			quests[quest_id]["finished"] = true
 
 
 func save():
@@ -379,11 +378,10 @@ func save():
 	save_file.set_value("Tuto", "Type", tutorial)
 	save_file.set_value("Tuto", "Validate", tutorial_validate)
 	
-
-	save_file.set_value("Quests", "infos", Quests.quests)
-	save_file.set_value("Quests", "current", Quests.current_quest_id)
 	save_file.set_value("Values", "items", items)
 	save_file.set_value("Values", "attacks", attacks)
+	save_file.set_value("Quests", "infos", quests)
+	save_file.set_value("Quests", "current", current_quest_id)
 	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
 		save_file.set_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
 		save_file.set_value("Quests", "radar_enabled", true)
@@ -415,18 +413,11 @@ func load():
 	tutorial_stade = load_file.get_value("Tuto", "Stade", tutorial_stade)
 	tutorial = load_file.get_value("Tuto", "Type", tutorial)
 	tutorial_validate = load_file.get_value("Tuto", "Validate", tutorial_validate)
-
-	pinb = load_file.get_value("Tags", "Blue", pinb)
-	pinr = load_file.get_value("Tags", "Red", pinr)
-	piny = load_file.get_value("Tags", "Yellow", piny)
-	ping = load_file.get_value("Tags", "Green", ping)
-
-	Quests.quests = load_file.get_value("Quests", "infos", Quests.quests)
-	Quests.current_quest_id = load_file.get_value("Quests", "current", Quests.current_quest_id)
-
 	
 	items = load_file.get_value("Values", "items", items)
 	attacks = load_file.get_value("Values", "attacks", attacks)
+	quests = load_file.get_value("Quests", "infos", quests)
+	current_quest_id = load_file.get_value("Quests", "current", current_quest_id)
 	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
 		get_node("/root/main_map/CanvasLayer/Minimap").pin = load_file.get_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
 		load_file.get_value("Quests", "radar_enabled", true)
@@ -464,12 +455,4 @@ func save_user():
 func load_position():
 	var load_file = ConfigFile.new()
 	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
-
-
-	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
-	if player_node:
-		player_node.position = load_file.get_value("Player", "position", Vector2(3100, 1880))
-		print("Position joueur appliquée :", player_node.position)
-	else:
-		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")
-
+	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", get_node("/root/main_map/Player_One").position)
