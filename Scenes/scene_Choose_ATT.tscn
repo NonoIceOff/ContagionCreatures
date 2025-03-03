@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcdv8bafc05hd"]
 
-[ext_resource type="Script" path="res://Scripts/Combat/ATK_Combat.gd" id="1_vi82x"]
+[ext_resource type="Script" path="res://Scenes/ATK_Combat.gd" id="1_vi82x"]
 [ext_resource type="Texture2D" uid="uid://dp5pxuyx1t8of" path="res://Textures/Cross_Close.png" id="2_20sba"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_miolq"]
