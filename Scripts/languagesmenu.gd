@@ -4,8 +4,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in TranslationServer.get_loaded_locales():
-		print(i)
-		print(TranslationServer.get_language_name(i))
 		var button = Button.new()
 		button.text = TranslationServer.get_language_name(i)
 		if i =="jp":

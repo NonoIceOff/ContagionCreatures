@@ -44,7 +44,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 
 [gui]
 
-theme/custom_font="res://Font/upheavtt.ttf"
+theme/custom_font="res://Font/Jersey20-Regular.ttf"
 
 [input]
 

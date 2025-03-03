@@ -7,12 +7,14 @@ var dialogues : Array = []
 var current_dialogue : int = 0
 var is_choice_dialogue : bool = false
 var current_choice : Dictionary = {}
+var pnj_name = ""
 
 var typing_speed : float = 0.03  # Vitesse d'affichage progressive (optionnel)
 var is_typing : bool = false  # Vérifie si un texte est en cours d'affichage
 
 ### ✅ **Démarrer un dialogue**
 func start_dialogue(dialogue_data: Array):
+	get_node("Label").text = pnj_name
 	dialogues = dialogue_data
 	current_dialogue = 0
 	is_choice_dialogue = false
@@ -91,7 +93,17 @@ func _on_choice_pressed(choice: Dictionary):
 func end_dialogue():
 	choices_container.visible = false
 	dialogue_label.text = "Fin du dialogue."
+	if Quests.quests.get(Quests.current_quest_id).stade != Quests.quests.get(Quests.current_quest_id).descriptions.size():
+		if Quests.quests.get(Quests.current_quest_id).stade != Quests.quests.get(Quests.current_quest_id).descriptions.size()-1:
+			Quests.advance_stade(Quests.current_quest_id)
+			Quests.respawn_pnj(Global.current_map, Quests.current_quest_id)
+		else:
+			Quests.quests.get(Quests.current_quest_id).finished = true
+			Quests.delete_pnj(Global.current_map, Quests.current_quest_id)
+			Quests.current_quest_id = -1
+
 	queue_free()
+
 
 ### ✅ **Gérer l'input (clic pour avancer)**
 func _input(event: InputEvent):
@@ -124,7 +136,3 @@ func _on_yes_choice():
 ### ✅ **Fonction à la fin du dialogue**
 func _on_dialogue_end():
 	print("Dialogue terminé, action spécifique ici.")
-
-### ✅ **Démarrer le dialogue au chargement**
-func _ready():
-	start_dialogue(dialogue_data)
