@@ -203,7 +203,6 @@ func save():
 	save_file.set_value("Time", "minute", current_minute)
 	save_file.set_value("Time", "day", current_day)
 	save_file.set_value("Time", "color", target_color)
-	print(target_color)
 	save_file.save_encrypted_pass("user://save.txt", "gentle_duck")
 	print("Sauvegarde terminée.")
 

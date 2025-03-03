@@ -11,9 +11,9 @@ var scene_load = false
 
 func _ready() -> void:
 	Global.current_map = self.name
-	print(Global.current_map)
-	print(Global.player_postion)
 	Global.load_position()
+	
+	Quests.init_pnj("Map3")
 	
 	label_home.visible = false
 	transition_scene.play("transition_to_screen")
@@ -23,7 +23,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Interaction avec la maison
 	if Input.is_action_just_pressed("M"):
-		print("test")
 		if scene_load == false:
 			var load_scene = preload("res://Scenes/Full_screen_map.tscn")
 			var load_instance = load_scene.instantiate()

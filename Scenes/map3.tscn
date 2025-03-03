@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bowoxnua7u6p2"]
+[gd_scene load_steps=10 format=4 uid="uid://bowoxnua7u6p2"]
 
 [ext_resource type="Script" path="res://Scripts/Maps/map_3.gd" id="1_4748x"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_tuwr5"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="3_0tjfa"]
 [ext_resource type="Script" path="res://Scripts/bush_creatures.gd" id="5_44u67"]
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="5_ve2ga"]
-[ext_resource type="PackedScene" uid="uid://dnj0fapv33e0a" path="res://Scenes/PNJ.tscn" id="7_ej7l0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30i3a"]
 size = Vector2(21.65, 18.6)
@@ -90,12 +89,6 @@ position = Vector2(3168, 1888)
 scale = Vector2(2.8, 2.8)
 
 [node name="CanvasJour_Nuit" type="CanvasModulate" parent="."]
-
-[node name="Bagird" parent="." instance=ExtResource("7_ej7l0")]
-offset_left = 2504.0
-offset_top = 1808.0
-offset_right = 2544.0
-offset_bottom = 1848.0
 
 [node name="ui" parent="." instance=ExtResource("5_ve2ga")]
 

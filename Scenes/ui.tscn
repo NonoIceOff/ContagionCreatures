@@ -50,6 +50,7 @@ color = Color(0.33, 1, 0.531, 0.392157)
 script = ExtResource("3_xbp8f")
 
 [node name="Neige" type="CPUParticles2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(2784, -912)
 amount = 100
