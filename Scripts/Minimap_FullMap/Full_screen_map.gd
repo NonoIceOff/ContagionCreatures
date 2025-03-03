@@ -9,6 +9,8 @@ var point_placed = false
 var point_sprite = ColorRect.new() 
 var point_pos
 
+	
+		
 func _ready():
 	pin = Global.pin
 	
@@ -68,6 +70,8 @@ func _ready():
 	
 	
 func _physics_process(delta):
+	
+		
 	if get_node("CanvasLayer/AddPin").visible == false:
 		if Input.is_action_pressed("droite") and get_node("SubViewportContainer/SubViewport/Camera2D").offset.x < 1000:
 			get_node("SubViewportContainer/SubViewport/Camera2D").offset.x += 5
@@ -91,6 +95,14 @@ func _physics_process(delta):
 func change_pin(position):
 	pin = position
 	Global.pin = pin
+
+func _process(delta: float) -> void:
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() >= 1:
+		if Input.is_action_pressed("ui_interact"):
+			print("ok")
+			get_node("CanvasLayer/AddPin").visible = true
+			get_node("CanvasLayer/AddPin").position = Vector2(992,544)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:

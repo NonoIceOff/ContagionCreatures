@@ -49,6 +49,7 @@ scale = Vector2(2.9, 2.9)
 texture = ExtResource("3_dfj6s")
 
 [node name="Interact" type="Label" parent="Area2D"]
+visible = false
 texture_filter = 1
 offset_left = -88.0
 offset_top = -80.0

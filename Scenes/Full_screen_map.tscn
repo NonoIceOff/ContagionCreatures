@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ko0f38o03f6f"]
+[gd_scene load_steps=19 format=3 uid="uid://ko0f38o03f6f"]
 
 [ext_resource type="Shader" path="res://Scenes/minimap.gdshader" id="1_44b0t"]
 [ext_resource type="Script" path="res://Scripts/Minimap_FullMap/Full_screen_map.gd" id="1_vnder"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/Minimap_FullMap/add_pin.gd" id="9_mjey4"]
 [ext_resource type="Texture2D" uid="uid://b7i8ualh4y70d" path="res://Textures/icons/right_mouse.png" id="9_va3dc"]
 [ext_resource type="AudioStream" uid="uid://8rqjw6gnc5hh" path="res://Sounds/new_tag.mp3" id="12_gaelq"]
+[ext_resource type="Texture2D" uid="uid://hr8gwy6r0qyt" path="res://Textures/cross.png" id="12_pjqsq"]
 
 [sub_resource type="Animation" id="Animation_2pobh"]
 length = 0.001
@@ -279,6 +280,7 @@ angle_max = 10.0
 scale_amount_max = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
 
 [node name="Position" type="Label" parent="CanvasLayer"]
 texture_filter = 1
@@ -422,6 +424,12 @@ offset_bottom = 27.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 32
 text = "Epingler un endroit"
+
+[node name="Cross" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(992, 544)
+scale = Vector2(5, 5)
+texture = ExtResource("12_pjqsq")
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_gaelq")

@@ -1,5 +1,13 @@
 extends Panel
 
+func _process(delta: float) -> void:
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() >= 1:
+		if Input.is_action_just_pressed("ui_down"):
+			print("down")
+		if Input.is_action_just_pressed("ui_up"):
+			print("up")
+
 func _on_add_blue_pressed() -> void:
 	Global.pinb = Global.pin_temp*2+Vector2(316,316)
 	get_node("../../SubViewportContainer/SubViewport/Camera2D/PinBlue").position = Global.pinb

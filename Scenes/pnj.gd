@@ -30,6 +30,11 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		in_area = false
 		
 func _process(delta: float) -> void:
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() < 1:
+		get_node("Area2D/Interact").text = "E"
+	else:
+		get_node("Area2D/Interact").text = "B"
 	if Quests.quests.get(quest_id).stade == Quests.quests.get(quest_id).descriptions.size():
 		queue_free()
 	if Input.is_action_just_pressed("ui_interact") and in_area == true and enemy_instance == null:
