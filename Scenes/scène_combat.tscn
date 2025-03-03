@@ -1,11 +1,11 @@
 [gd_scene load_steps=27 format=3 uid="uid://cuvepu5toqc02"]
 
-[ext_resource type="Script" path="res://Scripts/Maps/scène_combat.gd" id="1_hd4pf"]
+[ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="2_dxowc"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="5_4uere"]
-[ext_resource type="Script" path="res://Scripts/Combat/Enemy-Stat.gd" id="5_78kiw"]
+[ext_resource type="Script" path="res://Scenes/Enemy-Stat.gd" id="5_78kiw"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="6_8tkdv"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="10_g78tk"]
@@ -292,6 +292,18 @@ text = "0/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Shield" type="Label" parent="ContainerPLAYER/TextureProgressBar"]
+layout_mode = 0
+offset_left = 15.25
+offset_top = -9.25
+offset_right = 239.25
+offset_bottom = 25.75
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ContainerMob" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
@@ -572,7 +584,21 @@ offset_top = 616.0
 offset_right = 832.0
 offset_bottom = 664.0
 
-[node name="ZoneCible" type="ColorRect" parent="ProgressBar_Joueur"]
+[node name="ZoneCible1" type="ColorRect" parent="ProgressBar_Joueur"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="ZoneCible2" type="ColorRect" parent="ProgressBar_Joueur"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="ZoneCible3" type="ColorRect" parent="ProgressBar_Joueur"]
 layout_mode = 0
 offset_left = 49.0
 offset_right = 95.0

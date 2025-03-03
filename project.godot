@@ -14,9 +14,8 @@ config/name="Contagion Creatures"
 run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/image="res://cc.png"
-boot_splash/fullsize=false
-config/icon="res://cc.png"
+boot_splash/image="res://Textures/pixil-frame-0_3.png"
+config/icon="res://icon.svg"
 
 [autoload]
 
@@ -24,7 +23,6 @@ PlayerStats="*res://Scripts/PlayerStats.gd"
 SceneLoader="*res://Scripts/scene_loader.gd"
 Global="*res://Global.gd"
 Tutorial="*res://Scenes/tutorial.tscn"
-Notifications="*res://Scenes/notifications.tscn"
 
 [display]
 
@@ -110,7 +108,7 @@ q={
 }
 M={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":59,"key_label":0,"unicode":109,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 leftClick={
