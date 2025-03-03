@@ -98,7 +98,9 @@ func end_dialogue():
 			Quests.advance_stade(Quests.current_quest_id)
 			Quests.respawn_pnj(Global.current_map, Quests.current_quest_id)
 		else:
+			Quests.quests.get(Quests.current_quest_id).finished = true
 			Quests.delete_pnj(Global.current_map, Quests.current_quest_id)
+			Quests.current_quest_id = -1
 
 	queue_free()
 
