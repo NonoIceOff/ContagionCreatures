@@ -3,6 +3,7 @@
 Constantes/
 Constantes/creatures.json
 .vscode/
+.vscode/settings.json
 
 # Godot-specific ignores
 .import/
