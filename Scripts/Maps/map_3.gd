@@ -3,7 +3,7 @@ extends Node2D
 @onready var transition_scene = $ui/Transition/AnimationPlayer
 @onready var soundEffect = $SoundEffectFx
 @onready var label_home = $TileMap/house/AreaHome/Label_E_Home
-
+@onready var player_light = $TileMap/Player_One/PointLight2D
 
 var entered = false
 var Key = false
@@ -21,6 +21,7 @@ func _ready() -> void:
 	soundEffect.play()
 
 func _process(delta: float) -> void:
+
 	var joypads = Input.get_connected_joypads()
 	# Interaction avec la maison
 	if Input.is_action_just_pressed("M"):

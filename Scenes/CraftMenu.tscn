@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://u6bmap8bibmo"]
+
+[ext_resource type="Script" path="res://Scripts/craft_menu.gd" id="1_iy8qe"]
+
+[node name="CraftMenu" type="Node2D"]
+script = ExtResource("1_iy8qe")
+
+[node name="getItem" type="HTTPRequest" parent="."]
+
+[connection signal="request_completed" from="getItem" to="." method="_on_get_item_request_completed"]

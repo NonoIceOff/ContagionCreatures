@@ -12,9 +12,11 @@ var seconds_per_in_game_minute = 1.0
 
 
 func _ready() -> void:
+	print(Global.current_map)
 	advance_time()
 	
 func _process(delta: float) -> void:
+	advance_time()
 	if Global.current_map != "HomeOfHector":
 		get_node("PanelDate").visible = true
 		get_node("Minimap").visible = true

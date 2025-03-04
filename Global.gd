@@ -24,8 +24,6 @@ var piny = Vector2(0,0)
 var ping = Vector2(0,0)
 var pin_temp = Vector2(0,0)
 
-
-
 var grid_size = 31
 var step_delay = 0
 var allow_loops = false
@@ -41,14 +39,13 @@ var button_info_pressed_player = false
 var button_info_pressed_enemy = false
 var close_button_pressed = false
 
-
-
-var current_hour: int = 16
-var current_minute: int = 0
-var current_day: int = 1
+var current_hour: int = 19
+var current_minute: int = 45
+var current_day: int = 0
 var last_color = Color(1, 1, 1, 1)
 var target_color: Color
 
+var sprint_multiplier: float = 1.5
 
 var pianos = [0,0,0,0]
 var current_map = ""
@@ -208,21 +205,18 @@ func save():
 		save_file.set_value("Quests", "radar_position", Vector2(0, 0))
 		save_file.set_value("Quests", "radar_enabled", false)
 
-	# Sauvegarde des données du joueur
 	save_file.set_value("Player", "pseudo", PlayerStats.pseudo)
 	save_file.set_value("Player", "health", PlayerStats.health)
 	save_file.set_value("Player", "skin", PlayerStats.skin)
 	save_file.set_value("Player", "level", PlayerStats.level)
 	save_file.set_value("Player", "monnaie", PlayerStats.monnaie)
 
-	# Vérifier si le joueur est dans la scène actuelle avant de sauvegarder la position
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
 		save_file.set_value("Player", "position", player_node.position)
 	else:
 		print("Le joueur n'est pas disponible pour la sauvegarde de position.")
 
-	# Sauvegarde de l'heure
 	save_file.set_value("Time", "hour", current_hour)
 	save_file.set_value("Time", "minute", current_minute)
 	save_file.set_value("Time", "day", current_day)
@@ -256,7 +250,6 @@ func load():
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
 	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
 
-	# Application de la position sauvegardée
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
 		player_node.position = load_file.get_value("Player", "position", Vector2(0, 0))
