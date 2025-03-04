@@ -108,15 +108,23 @@ func end_dialogue():
 ### ✅ **Gérer l'input (clic pour avancer)**
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
-		if is_typing:
-			# Si le texte est en train de s'afficher, on le complète immédiatement
-			dialogue_label.text = dialogues[current_dialogue - 1]["text"]
-			is_typing = false
-		elif current_choice != {}:
-			current_choice = {}  
-			show_next_dialogue()
-		elif not is_choice_dialogue:
-			show_next_dialogue()
+		click_dialogue()
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() >= 1:
+		if Input.is_action_just_pressed(Controllers.a_input):
+			click_dialogue()
+		
+
+func click_dialogue():
+	if is_typing:
+		# Si le texte est en train de s'afficher, on le complète immédiatement
+		dialogue_label.text = dialogues[current_dialogue - 1]["text"]
+		is_typing = false
+	elif current_choice != {}:
+		current_choice = {}  
+		show_next_dialogue()
+	elif not is_choice_dialogue:
+		show_next_dialogue()
 
 ### ✅ **Exemple de dialogue avec des choix et des actions**
 var dialogue_data = [
