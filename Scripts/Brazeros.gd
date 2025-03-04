@@ -26,7 +26,7 @@ func _on_body_exited(body):
 
 func _process(delta):
 	if entered == true and Key == false and clicked == false:
-		if Input.is_action_just_pressed("ui_interact"):
+		if Input.is_action_just_pressed(Controllers.a_input):
 			get_node("../FlamesSounds").playing = true
 			get_node("PointLight2D").visible = true
 			clicked = true

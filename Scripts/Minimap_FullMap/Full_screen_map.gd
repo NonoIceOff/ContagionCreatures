@@ -9,6 +9,8 @@ var point_placed = false
 var point_sprite = ColorRect.new() 
 var point_pos
 
+var pin_menu = false
+
 	
 		
 func _ready():
@@ -87,8 +89,6 @@ func _physics_process(delta):
 	point_pos = pin - camera.position
 	get_node("SubViewportContainer/SubViewport/Camera2D/PinPoint").position =pin*2+get_node("SubViewportContainer/SubViewport/Camera2D/Map").position
 	get_node("SubViewportContainer/SubViewport/Camera2D/PlayerPoint").position = get_node("../../TileMap/Player_One").position*2+get_node("SubViewportContainer/SubViewport/Camera2D/Map").position
-		
-	get_node("CanvasLayer/Position").text = "X: "+str(int(get_node("../../TileMap/Player_One").position.x))+"  |  Y: "+str(int(get_node("../../TileMap/Player_One").position.y))
 	var postest = get_node("SubViewportContainer/SubViewport/Camera2D").offset*2
 	
 
@@ -99,8 +99,7 @@ func change_pin(position):
 func _process(delta: float) -> void:
 	var joypads = Input.get_connected_joypads()
 	if joypads.size() >= 1:
-		if Input.is_action_pressed("ui_interact"):
-			print("ok")
+		if Input.is_action_pressed(Controllers.x_input) and pin_menu == false:
 			get_node("CanvasLayer/AddPin").visible = true
 			get_node("CanvasLayer/AddPin").position = Vector2(992,544)
 	
@@ -155,8 +154,10 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if get_node("CanvasLayer/AddPin").visible == true:
+				pin_menu = false
 				get_node("CanvasLayer/AddPin").visible = false
 				get_node("CanvasLayer/AddPin").position = event.position
 			elif get_node("CanvasLayer/AddPin").visible == false:
+				pin_menu = true
 				get_node("CanvasLayer/AddPin").visible = true
 				get_node("CanvasLayer/AddPin").position = event.position
