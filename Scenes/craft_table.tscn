@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7sxy68le1a5y"]
+
+[ext_resource type="TileSet" uid="uid://bhsughrwcn78m" path="res://TileSet/TileSetCraftTable/Tilesettable/tileset_Tilesettable.tres" id="1_coftv"]
+[ext_resource type="Script" path="res://Scripts/craft_table.gd" id="1_lg33j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jgaeh"]
+font_size = 36
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hiesy"]
+size = Vector2(109.25, 75)
+
+[node name="CraftTable" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_lg33j")
+
+[node name="TableCraftNode2D" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TableCraftNode2D"]
+y_sort_enabled = true
+texture_filter = 1
+tile_map_data = PackedByteArray(0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_coftv")
+y_sort_origin = -8
+
+[node name="craftTableArea2D" type="Area2D" parent="TableCraftNode2D/TileMapLayer"]
+position = Vector2(55, 18)
+
+[node name="Interact" type="Label" parent="TableCraftNode2D/TileMapLayer/craftTableArea2D"]
+visible = false
+texture_filter = 1
+offset_left = 39.0
+offset_top = -54.0
+offset_right = 147.0
+offset_bottom = -4.00001
+scale = Vector2(0.6, 0.6)
+text = "[ E ]"
+label_settings = SubResource("LabelSettings_jgaeh")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="craftTableCollisionShaped2D" type="CollisionShape2D" parent="TableCraftNode2D/TileMapLayer/craftTableArea2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_hiesy")
+
+[connection signal="body_entered" from="TableCraftNode2D/TileMapLayer/craftTableArea2D" to="." method="_on_craft_table_area_2d_body_entered"]
+[connection signal="body_exited" from="TableCraftNode2D/TileMapLayer/craftTableArea2D" to="." method="_on_craft_table_area_2d_body_exited"]

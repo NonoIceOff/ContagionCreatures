@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpjigwu8bnhys"]
+[gd_scene load_steps=15 format=3 uid="uid://bpjigwu8bnhys"]
 
+[ext_resource type="Script" path="res://Scenes/pausesettings.gd" id="1_6h0dt"]
 [ext_resource type="Script" path="res://Scenes/ControlsButton.gd" id="1_hof3q"]
 [ext_resource type="Script" path="res://Scenes/AppearenceButton.gd" id="2_l2sb8"]
 [ext_resource type="Script" path="res://Scenes/Languages.gd" id="2_xel24"]
@@ -58,14 +59,15 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[node name="Node2D" type="Node2D"]
+[node name="PauseSettings" type="Node2D"]
+script = ExtResource("1_6h0dt")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1078.0
 color = Color(0, 0, 0, 1)
 
-[node name="Controls" type="Button" parent="."]
+[node name="Controls" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 384.0
 offset_right = 1277.0
@@ -78,7 +80,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
 text = "CONTROLS"
 script = ExtResource("1_hof3q")
 
-[node name="Languages" type="Button" parent="."]
+[node name="Languages" type="Button" parent="." groups=["buttons"]]
 offset_left = 632.0
 offset_top = 512.0
 offset_right = 1269.0
@@ -91,7 +93,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_e2ue8")
 text = "LANGUAGES"
 script = ExtResource("2_xel24")
 
-[node name="Appearence" type="Button" parent="."]
+[node name="Appearence" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 640.0
 offset_right = 1277.0
@@ -132,7 +134,7 @@ vertical_alignment = 1
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_k23y0")
 
-[node name="PauseOk" type="Button" parent="."]
+[node name="PauseOk" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 896.0
 offset_right = 1277.0
@@ -146,6 +148,7 @@ text = "RETOUR
 "
 script = ExtResource("6_ge3rk")
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Controls" to="Controls" method="_on_pressed"]
 [connection signal="pressed" from="Languages" to="Languages" method="_on_pressed"]
 [connection signal="pressed" from="Appearence" to="Appearence" method="_on_pressed"]

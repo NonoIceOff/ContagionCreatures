@@ -1,11 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://cuvepu5toqc02"]
+[gd_scene load_steps=26 format=3 uid="uid://cuvepu5toqc02"]
 
 [ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="2_dxowc"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="5_4uere"]
-[ext_resource type="Script" path="res://Scenes/Enemy-Stat.gd" id="5_78kiw"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="6_8tkdv"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="10_g78tk"]
@@ -369,11 +368,23 @@ text = "0/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Shield" type="Label" parent="ContainerMob/TextureProgressBar"]
+layout_mode = 0
+offset_left = 13.25
+offset_top = -9.25
+offset_right = 237.25
+offset_bottom = 25.75
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
 position = Vector2(1, 0)
 
 [node name="Player-1Tile-set" type="Sprite2D" parent="CharacterBody2D3"]
-position = Vector2(933, 1035)
+position = Vector2(975, 984)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_1fplo")
 region_enabled = true
@@ -385,12 +396,11 @@ position = Vector2(-12.999, -1.99902)
 [node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Mob"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(942.999, 806.999)
+position = Vector2(980.999, 777.999)
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_dxowc")
 region_enabled = true
 region_rect = Rect2(66, 1760, 30, 32)
-script = ExtResource("5_78kiw")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 552.0
@@ -442,7 +452,7 @@ max_distance = 2e+09
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_mb5p5")
-volume_db = -10.0
+volume_db = -12.799
 autoplay = true
 max_distance = 2e+09
 panning_strength = 0.9
@@ -578,6 +588,38 @@ offset_top = 472.0
 offset_right = 1384.0
 offset_bottom = 520.0
 
+[node name="ZoneCible1" type="ColorRect" parent="ProgressBar_ennemye"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="ZoneCible2" type="ColorRect" parent="ProgressBar_ennemye"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="ZoneCible3" type="ColorRect" parent="ProgressBar_ennemye"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="SpellName" type="Label" parent="ProgressBar_ennemye"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -56.0
+offset_right = 320.0
+offset_bottom = -1.0
+theme_override_font_sizes/font_size = 50
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ProgressBar_Joueur" type="ProgressBar" parent="."]
 offset_left = 504.0
 offset_top = 616.0
@@ -604,6 +646,16 @@ offset_left = 49.0
 offset_right = 95.0
 offset_bottom = 49.0
 color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="SpellName" type="Label" parent="ProgressBar_Joueur"]
+offset_left = 8.0
+offset_top = -56.0
+offset_right = 320.0
+offset_bottom = -1.0
+theme_override_font_sizes/font_size = 50
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GetCreaturesEnemy" type="HTTPRequest" parent="."]
 

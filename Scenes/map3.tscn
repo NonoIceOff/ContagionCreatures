@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bowoxnua7u6p2"]
+[gd_scene load_steps=10 format=4 uid="uid://bowoxnua7u6p2"]
 
 [ext_resource type="Script" path="res://Scripts/Maps/map_3.gd" id="1_4748x"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_tuwr5"]
@@ -7,12 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="3_0tjfa"]
 [ext_resource type="Script" path="res://Scripts/bush_creatures.gd" id="5_44u67"]
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="5_ve2ga"]
-[ext_resource type="PackedScene" uid="uid://dnj0fapv33e0a" path="res://Scenes/PNJ.tscn" id="7_ej7l0"]
+[ext_resource type="Texture2D" uid="uid://ftsqesla06t5" path="res://Textures/Buttons/keyboard/keyboard_e.png" id="6_dlhm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30i3a"]
 size = Vector2(21.65, 18.6)
-
-[sub_resource type="LabelSettings" id="LabelSettings_yerkl"]
 
 [node name="Map3" type="Node2D"]
 z_as_relative = false
@@ -71,31 +69,18 @@ script = ExtResource("2_1plig")
 z_index = 2
 shape = SubResource("RectangleShape2D_30i3a")
 
-[node name="Label_E_Home" type="Label" parent="TileMap/house/AreaHome"]
+[node name="Label_E_Home" type="Sprite2D" parent="TileMap/house/AreaHome"]
 visible = false
-z_index = 7
 texture_filter = 1
-texture_repeat = 1
-offset_left = 13.5
-offset_top = -13.0
-offset_right = 61.5
-offset_bottom = 6.0
-scale = Vector2(0.6, 0.6)
-text = "[ E ]
-"
-label_settings = SubResource("LabelSettings_yerkl")
+position = Vector2(0, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_dlhm5")
 
 [node name="Player_One" parent="TileMap" instance=ExtResource("1_tuwr5")]
 position = Vector2(3168, 1888)
 scale = Vector2(2.8, 2.8)
 
 [node name="CanvasJour_Nuit" type="CanvasModulate" parent="."]
-
-[node name="Bagird" parent="." instance=ExtResource("7_ej7l0")]
-offset_left = 2504.0
-offset_top = 1808.0
-offset_right = 2544.0
-offset_bottom = 1848.0
 
 [node name="ui" parent="." instance=ExtResource("5_ve2ga")]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd16x8fomdll5"
-path="res://.godot/imported/bfedffa9a4e0b6fc8b764a18b9651994.png-b972a12c6e1eadf47116307f31806ef0.ctex"
+uid="uid://cmdkmflgo832d"
+path="res://.godot/imported/joybar_+.png-ad567abd0e2e551f8db9773d494f2970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/bfedffa9a4e0b6fc8b764a18b9651994.png"
-dest_files=["res://.godot/imported/bfedffa9a4e0b6fc8b764a18b9651994.png-b972a12c6e1eadf47116307f31806ef0.ctex"]
+source_file="res://Textures/Buttons/joypads/joybar_+.png"
+dest_files=["res://.godot/imported/joybar_+.png-ad567abd0e2e551f8db9773d494f2970.ctex"]
 
 [params]
 

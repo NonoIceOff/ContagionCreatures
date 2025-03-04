@@ -24,8 +24,6 @@ var piny = Vector2(0,0)
 var ping = Vector2(0,0)
 var pin_temp = Vector2(0,0)
 
-
-
 var grid_size = 31
 var step_delay = 0
 var allow_loops = false
@@ -41,14 +39,13 @@ var button_info_pressed_player = false
 var button_info_pressed_enemy = false
 var close_button_pressed = false
 
-
-
-var current_hour: int = 16
-var current_minute: int = 0
-var current_day: int = 1
+var current_hour: int = 19
+var current_minute: int = 45
+var current_day: int = 0
 var last_color = Color(1, 1, 1, 1)
 var target_color: Color
 
+var sprint_multiplier: float = 1.5
 
 var pianos = [0,0,0,0]
 var current_map = ""
@@ -157,13 +154,37 @@ var attacks = {
 
 signal fringe_changed
 
+var selected_index = 0
+var buttons = []
 
 func _ready():
 	pass
 
 func _process(delta):
+	buttons = get_tree().get_nodes_in_group("buttons")
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() >= 1 and buttons.size() > 0:
+		if Input.is_action_just_pressed("ui_down"):
+			selected_index = (selected_index + 1) % buttons.size()
+			update_button_selection()
+		if Input.is_action_just_pressed("ui_up"):
+			selected_index = (selected_index - 1 + buttons.size()) % buttons.size()
+			update_button_selection()
+		if Input.is_action_just_pressed(Controllers.a_input):
+			pressed_button(buttons[selected_index])
 	if tutorial == false:
 		tutorial_stade = -1
+
+func update_button_selection() -> void:
+	for i in range(buttons.size()):
+		if i == selected_index:
+			buttons[i].modulate = Color(1, 1, 1, 1)  # Highlight selected button
+		else:
+			buttons[i].modulate = Color(0.5, 0.5, 0.5, 1)  # Dim non-selected buttons
+
+
+func pressed_button(button):
+	button.emit_signal("pressed")
 
 func save():
 	var save_file = ConfigFile.new()
@@ -184,26 +205,22 @@ func save():
 		save_file.set_value("Quests", "radar_position", Vector2(0, 0))
 		save_file.set_value("Quests", "radar_enabled", false)
 
-	# Sauvegarde des données du joueur
 	save_file.set_value("Player", "pseudo", PlayerStats.pseudo)
 	save_file.set_value("Player", "health", PlayerStats.health)
 	save_file.set_value("Player", "skin", PlayerStats.skin)
 	save_file.set_value("Player", "level", PlayerStats.level)
 	save_file.set_value("Player", "monnaie", PlayerStats.monnaie)
 
-	# Vérifier si le joueur est dans la scène actuelle avant de sauvegarder la position
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
 		save_file.set_value("Player", "position", player_node.position)
 	else:
 		print("Le joueur n'est pas disponible pour la sauvegarde de position.")
 
-	# Sauvegarde de l'heure
 	save_file.set_value("Time", "hour", current_hour)
 	save_file.set_value("Time", "minute", current_minute)
 	save_file.set_value("Time", "day", current_day)
 	save_file.set_value("Time", "color", target_color)
-	print(target_color)
 	save_file.save_encrypted_pass("user://save.txt", "gentle_duck")
 	print("Sauvegarde terminée.")
 
@@ -233,7 +250,6 @@ func load():
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
 	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
 
-	# Application de la position sauvegardée
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
 		player_node.position = load_file.get_value("Player", "position", Vector2(0, 0))
@@ -276,3 +292,9 @@ func _apply_player_position():
 		print("Position joueur appliquée :", player_node.position)
 	else:
 		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")
+
+
+func save_user():
+	var save_file = ConfigFile.new()
+	save_file.set_value("User","Data",Global.user)
+	save_file.save_encrypted_pass("user://user.txt", "user_key")

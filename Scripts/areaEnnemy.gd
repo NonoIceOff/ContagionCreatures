@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if entered_Ennemy == true:
-		if Input.is_action_just_pressed("ui_interact"):
+		if Input.is_action_just_pressed(Controllers.a_input):
 			Global.save()
 			Tutorial.get_node(".").tutorials[4]["progress"] += 100
 			emit_signal("getNode")
