@@ -151,7 +151,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Play" type="Button" parent="."]
+[node name="Play" type="Button" parent="." groups=["buttons"]]
 offset_left = 112.0
 offset_top = 448.0
 offset_right = 896.0
@@ -163,7 +163,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "SOLO"
 
-[node name="PlayMulti" type="Button" parent="."]
+[node name="PlayMulti" type="Button" parent="." groups=["buttons"]]
 offset_left = 112.0
 offset_top = 544.0
 offset_right = 896.0
@@ -176,7 +176,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "MULTIPLAYER"
 expand_icon = true
 
-[node name="Settings" type="Button" parent="."]
+[node name="Settings" type="Button" parent="." groups=["buttons"]]
 offset_left = 301.0
 offset_top = 704.0
 offset_right = 725.0
@@ -192,7 +192,7 @@ script = ExtResource("3_4a2ih")
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4gslj")
 
-[node name="Credits" type="Button" parent="."]
+[node name="Credits" type="Button" parent="." groups=["buttons"]]
 offset_left = 400.0
 offset_top = 832.0
 offset_right = 625.0
@@ -204,7 +204,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_gnwub")
 text = "CREDITS"
 script = ExtResource("12_yb7yn")
 
-[node name="Musics" type="Button" parent="."]
+[node name="Musics" type="Button" parent="." groups=["buttons"]]
 offset_left = 400.0
 offset_top = 888.0
 offset_right = 625.0
@@ -215,7 +215,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gnwub")
 text = "OST"
 
-[node name="DeleteSave" type="Button" parent="."]
+[node name="DeleteSave" type="Button" parent="." groups=["buttons"]]
 offset_left = 1280.0
 offset_top = 536.0
 offset_right = 1664.0
@@ -247,7 +247,7 @@ theme_override_font_sizes/font_size = 32
 text = "VERSION DE NOVEMBRE 2024"
 horizontal_alignment = 2
 
-[node name="Profile" type="Button" parent="."]
+[node name="Profile" type="Button" parent="." groups=["buttons"]]
 offset_left = 1280.0
 offset_top = 648.0
 offset_right = 1664.0
@@ -282,7 +282,7 @@ offset_bottom = 856.0
 theme_override_font_sizes/font_size = 64
 text = "TEXT_SOCIAL_MEDIAS"
 
-[node name="Discord" type="Button" parent="Reseaux"]
+[node name="Discord" type="Button" parent="Reseaux" groups=["buttons"]]
 layout_mode = 0
 offset_left = -32.0
 offset_top = 80.0
@@ -297,7 +297,7 @@ text = "DISCORD"
 icon = ExtResource("19_hhkdv")
 expand_icon = true
 
-[node name="Instagram" type="Button" parent="Reseaux"]
+[node name="Instagram" type="Button" parent="Reseaux" groups=["buttons"]]
 layout_mode = 0
 offset_left = -32.0
 offset_top = 128.0

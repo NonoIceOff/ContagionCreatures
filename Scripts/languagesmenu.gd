@@ -4,8 +4,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in TranslationServer.get_loaded_locales():
-		print(i)
-		print(TranslationServer.get_language_name(i))
 		var button = Button.new()
 		button.text = TranslationServer.get_language_name(i)
 		if i =="jp":
@@ -18,6 +16,7 @@ func _ready():
 		button.position = Vector2(100,100)
 		button.add_theme_font_size_override("font_size", 32)
 		button.name = str(i)
+		button.add_to_group("buttons")
 		get_node("ScrollContainer/VBoxContainer").add_child(button)
 		
 
@@ -28,3 +27,7 @@ func _process(delta):
 		if get_node("ScrollContainer/VBoxContainer/"+str(i)).button_pressed == true:
 			TranslationServer.set_locale(i)
 			Global.save_localisation()
+
+
+func _on_tree_entered() -> void:
+	Global.selected_index = 0

@@ -72,7 +72,7 @@ theme_override_fonts/font = ExtResource("2_6g602")
 theme_override_font_sizes/font_size = 32
 text = "00:00"
 
-[node name="Pause" type="Button" parent="."]
+[node name="Pause" type="Button" parent="." groups=["buttons"]]
 layout_mode = 0
 offset_left = 1248.0
 offset_top = 536.0
@@ -82,4 +82,5 @@ theme_override_fonts/font = ExtResource("2_6g602")
 theme_override_font_sizes/font_size = 48
 text = "II"
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]

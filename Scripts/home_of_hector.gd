@@ -11,6 +11,15 @@ var piano_in = false
 
 func _ready():
 	Global.current_map = "HomeOfHector"
+	
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() < 1:
+		get_node("Area2D/Label_E").texture = load("res://Textures/Buttons/keyboard/keyboard_e.png")
+		get_node("Piano1/Interact").texture = load("res://Textures/Buttons/keyboard/keyboard_e.png")
+	else:
+		get_node("Area2D/Label_E").texture = load("res://Textures/Buttons/joypads/joybar_a.png")
+		get_node("Piano1/Interact").texture = load("res://Textures/Buttons/joypads/joybar_a.png")
+		
 	transition_scene.play("transition_to_screen")
 
 
@@ -22,7 +31,7 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_interact") and piano_in == true:
+	if Input.is_action_just_pressed(Controllers.a_input) and piano_in == true:
 		var instance = scene.instantiate()
 		instance.piano_id = 0
 		ui_node.add_child(instance)

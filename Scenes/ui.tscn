@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=19 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_p3l0n"]
@@ -11,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="7_e7f4u"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="7_i5pcq"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="8_abm13"]
+[ext_resource type="Script" path="res://Scripts/info_touches.gd" id="12_7biym"]
+[ext_resource type="Texture2D" uid="uid://cmdkmflgo832d" path="res://Textures/Buttons/joypads/joybar_+.png" id="13_td3vo"]
+[ext_resource type="Texture2D" uid="uid://c0wv3un8wh42k" path="res://Textures/Buttons/joypads/joybar_r.png" id="14_6d7q7"]
+[ext_resource type="Texture2D" uid="uid://da8ubc6ik4rjv" path="res://Textures/Buttons/joypads/joybar_l.png" id="15_x3csd"]
+[ext_resource type="Texture2D" uid="uid://c7uvncushvljk" path="res://Textures/Buttons/joypads/joybar_-.png" id="16_8jrwf"]
 
 [sub_resource type="Curve" id="Curve_qti3j"]
 min_value = -1.0
@@ -50,6 +55,7 @@ color = Color(0.33, 1, 0.531, 0.392157)
 script = ExtResource("3_xbp8f")
 
 [node name="Neige" type="CPUParticles2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(2784, -912)
 amount = 100
@@ -224,15 +230,39 @@ offset_top = 824.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="Label" type="Label" parent="."]
+[node name="InfoTouches" type="Label" parent="."]
 texture_filter = 1
-offset_left = 16.0
-offset_top = 880.0
-offset_right = 198.0
-offset_bottom = 1067.0
+offset_left = 64.0
+offset_top = 928.0
+offset_right = 246.0
+offset_bottom = 1069.0
 theme_override_font_sizes/font_size = 32
-text = "[TAB] Quêtes
-[ESP] Pause
-[I] Inventaire
-[A] Encyclopédie
-[M] Carte"
+text = "Quêtes
+Pause
+Inventaire
+Carte"
+script = ExtResource("12_7biym")
+
+[node name="Pause" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
+position = Vector2(-24, 54)
+scale = Vector2(2, 2)
+texture = ExtResource("13_td3vo")
+
+[node name="Quest" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
+position = Vector2(-24, 18)
+scale = Vector2(2, 2)
+texture = ExtResource("14_6d7q7")
+
+[node name="Inventory" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
+position = Vector2(-24, 89)
+scale = Vector2(2, 2)
+texture = ExtResource("15_x3csd")
+
+[node name="Carte" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
+position = Vector2(-24, 126)
+scale = Vector2(2, 2)
+texture = ExtResource("16_8jrwf")
