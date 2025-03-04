@@ -16,7 +16,6 @@ func _ready() -> void:
 	advance_time()
 	
 func _process(delta: float) -> void:
-	advance_time()
 	if Global.current_map != "HomeOfHector":
 		get_node("PanelDate").visible = true
 		get_node("Minimap").visible = true
