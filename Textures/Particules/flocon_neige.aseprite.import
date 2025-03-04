@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://byo4hab2sjhl1"
+path="res://.godot/imported/flocon_neige.aseprite-b584a0a750dd4d324a77de997875325a.res"
+
+[deps]
+
+source_file="res://Textures/Particules/flocon_neige.aseprite"
+dest_files=["res://.godot/imported/flocon_neige.aseprite-b584a0a750dd4d324a77de997875325a.res"]
+
+[params]
+

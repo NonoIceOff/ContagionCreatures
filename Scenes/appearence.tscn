@@ -1,18 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://dybmipi48rk27"]
 
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_d0nrk"]
-[ext_resource type="Script" path="res://Scenes/Titre.gd" id="3_tdnu6"]
+[ext_resource type="Script" path="res://Scripts/Titre.gd" id="3_tdnu6"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="4_wy643"]
 [ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="5_8sb3t"]
-[ext_resource type="Script" path="res://Scenes/Ok.gd" id="5_80yua"]
-[ext_resource type="Script" path="res://Scenes/PersoActuel.gd" id="6_6ldjd"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui7us"]
-bg_color = Color(0.654902, 0.298039, 0.160784, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+[ext_resource type="Script" path="res://Scripts/Boutons/Ok.gd" id="5_80yua"]
+[ext_resource type="Script" path="res://Scripts/PersoActuel.gd" id="6_6ldjd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm8en"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)
@@ -27,6 +20,13 @@ corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jyc4"]
 bg_color = Color(0.717647, 0.203922, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui7us"]
+bg_color = Color(0.654902, 0.298039, 0.160784, 1)
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
@@ -87,9 +87,9 @@ offset_right = 1277.0
 offset_bottom = 1012.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dm8en")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jyc4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
 text = "VALIDATE"
 script = ExtResource("5_80yua")
 

@@ -15,6 +15,8 @@ var buttons_active = false  # Drapeau pour contrôler l'activation des boutons e
 var in_target_zone = false  # Indique si la barre est dans la zone cible
 var space_pressed = false   # Indique si la barre espace a été pressée une fois
 var current_attack_value = 0  # Stocke la valeur de l'attaque actuelle
+var current_mode = ""
+var current_difficulty= ""
 @onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
 @onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
 @onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
@@ -25,9 +27,13 @@ var combat_started = false  # Indicateur de début de combat
 
 @onready var player_creature_name = $ContainerPLAYER/Pseudo
 @onready var progress_bar_joueur = $ProgressBar_Joueur
-@onready var zone_cible = $ProgressBar_Joueur/ZoneCible
+@onready var zone_cible1 = $ProgressBar_Joueur/ZoneCible1
+@onready var zone_cible2 = $ProgressBar_Joueur/ZoneCible2
+@onready var zone_cible3 = $ProgressBar_Joueur/ZoneCible3
 @onready var player_progress_bar_hp  = $ContainerPLAYER/TextureProgressBar
 @onready var player_percentage_hp  = $ContainerPLAYER/TextureProgressBar/Percentage
+@onready var player_percentage_shield  = $ContainerPLAYER/TextureProgressBar/Shield
+
 
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var mob_pseudo_label  = $ContainerMob/Pseudo
@@ -51,6 +57,12 @@ var attack_colors = {
 	"ice": Color(0, 0.5, 1),         # Bleu pour Ice
 	"magic": Color(0.7, 0.3, 1)      # Violet clair pour Magic
 }
+var success_count = 0  # Compte des succès accumulés pendant la barre de progression
+var required_successes = {
+	"easy": 1,
+	"medium": 2,
+	"hard": 3
+}
 
 func _ready():
 	# Connecter les signaux de HTTPRequest pour gérer les réponses dès leur arrivée
@@ -65,8 +77,12 @@ func _ready():
 
 
 	# Initialiser l'affichage des sorts et masquer la zone cible
-	var zone_cible = $ProgressBar_Joueur/ZoneCible
-	zone_cible.visible = false
+	var zone_cible1 = $ProgressBar_Joueur/ZoneCible1
+	zone_cible1.visible = false
+	var zone_cible2 = $ProgressBar_Joueur/ZoneCible2
+	zone_cible2.visible = false
+	var zone_cibl3e = $ProgressBar_Joueur/ZoneCible3
+	zone_cible3.visible = false
 
 	# Charger les données locales
 	creatures_data = _load_local_json()
@@ -231,22 +247,20 @@ func _on_get_creatures_spells_request_completed(result: int, response_code: int,
 
 # Modification de `_input` pour vérifier si les boutons sont actifs
 func _input(event):
-	# Vérifie si le joueur appuie sur Espace pour commencer le combat
-	if not combat_started and event.is_action_pressed("ui_select"):
-		start_combat()
-
-	# Si le combat n'a pas commencé, bloque toutes les autres actions
+	if event.is_action_pressed("ui_select"):
+		if not combat_started:
+			print("Appui sur espace détecté : Démarrage du combat.")
+			start_combat()
+		else:
+			print("Appui sur espace détecté : Attaque.")
+			_on_attack_bar_pressed()
+	
 	if not combat_started:
 		return
 	
-	# Gestion de la touche pour la barre d'attaque
-	if event.is_action_pressed("attack_barre") and not space_pressed:
-		_on_attack_bar_pressed()
-		
-	# Si les boutons de sorts sont désactivés, ignore les entrées pour les sorts
 	if not buttons_active:
 		return
-	# Vérifie si l'une des touches associées aux sorts est pressée
+	
 	if event.is_action_pressed("Spell_1"):
 		_execute_spell_action("Spell_1", creatures_spells, 0)
 	elif event.is_action_pressed("Spell_2"):
@@ -301,15 +315,17 @@ func connect_spell_button_with_debug(button_name: String, spells: Array, index: 
 			print("Erreur : Le bouton ", button_name, " n'existe pas dans la scène.")
 	else:
 		print("Erreur : Index de sort invalide pour le bouton ", button_name)
+		
 # Fonction de débogage pour afficher les informations du sort lorsqu'un bouton est pressé
 func _debug_spell_info(spell_data: Dictionary):
-	# Afficher les informations de débogage dans la console
 	print("---- Informations du Sort ----")
-	print("Nom du sort : ", spell_data.name)
-	print("Type d'attaque : ", spell_data.type)
-	print("Valeur : ", spell_data.value)
-	print("Mode : ", spell_data.mode)
+	print("Nom du sort :", spell_data.name)
+	print("Type d'attaque :", spell_data.type)
+	print("Valeur :", spell_data.value)
+	print("Mode :", spell_data.mode)
+	print("Difficulty :", spell_data.difficulty)
 	print("---- Fin ----")
+
 # Fonction pour configurer chaque bouton de sort
 func configure_spell_button(button_name: String, spell_data: Dictionary) -> void:
 	var button = get_node(button_name)
@@ -318,7 +334,7 @@ func configure_spell_button(button_name: String, spell_data: Dictionary) -> void
 		button.text = spell_data.name + " : " + str(spell_data.value)
 		
 		# Définir la couleur de fond du bouton en fonction du type d'attaque
-		var attack_type = spell_data.type
+		var attack_type = spell_data.element
 		if attack_colors.has(attack_type):
 			button.modulate = attack_colors[attack_type]
 		
@@ -482,15 +498,6 @@ func desactivate_buttons():
 	else:
 		print("Les boutons ne sont pas initialisés.")
 
-func spawn_dialogue(custom_texts):
-	var dialogue = speechbox.instantiate()
-	dialogue.position = Vector2(0,-380)
-	dialogue.texts = custom_texts
-	add_child(dialogue)
-
-func _process(delta):
-	rng.randomize()
-
 func activate_buttons():
 	buttons_active = true
 	if buttonP != null and buttonE != null:
@@ -502,16 +509,25 @@ func activate_buttons():
 		get_node("Spell_4").disabled = false
 	else:
 		print("Les boutons ne sont pas initialisés.")
+		
+func spawn_dialogue(custom_texts):
+	var dialogue = speechbox.instantiate()
+	dialogue.position = Vector2(0,-380)
+	dialogue.texts = custom_texts
+	add_child(dialogue)
 
+func _process(delta):
+	rng.randomize()
 
-
-
-func _on_spell_button_pressed(spell_data: Dictionary):
-	set_spell_buttons_enabled(false)  # Désactive les boutons
-	space_pressed = false  # Réinitialise l'état de l'appui sur espace
+func _on_spell_button_pressed(spell_data: Dictionary) -> void:
+	set_spell_buttons_enabled(false)  # Désactive les boutons pendant la progression
 	current_attack_value = spell_data.value  # Récupère la valeur de l'attaque actuelle
-	await _remplir_barre_automatiquement(1.0)
-	set_spell_buttons_enabled(true)  # Réactive les boutons
+	current_mode = spell_data.mode
+	current_difficulty = spell_data.difficulty
+	print("Démarrage de la barre de progression pour la compétence :", current_difficulty)
+	await _remplir_barre_automatiquement(1.5, current_difficulty)  # Démarre la barre de progression
+	set_spell_buttons_enabled(true)  # Réactive les boutons après la progression
+	print("Barre de progression terminée et boutons réactivés.")
 
 
 func set_spell_buttons_enabled(enabled: bool) -> void:
@@ -523,82 +539,193 @@ func set_spell_buttons_enabled(enabled: bool) -> void:
 
 # Fonction pour remplir la barre automatiquement, avec des étapes claires pour le suivi
 # Remplissage de la barre avec détection de la zone cible
-func _remplir_barre_automatiquement(duree: float) -> void:
+func _remplir_barre_automatiquement(duree: float, difficulty: String) -> void:
+	success_count = 0
+	var difficulty_to_zones = {
+		"easy": 1,
+		"medium": 2,
+		"hard": 3
+	}
+	var num_zones = difficulty_to_zones.get(difficulty, 1)
+	
 	var min_position_percentage = 20
 	var max_position_percentage = 80
-	var zone_width_percentage = 20
-
-	var zone_cible = progress_bar_joueur.get_node("ZoneCible")
+	var zone_width_percentage = 15
+	
 	var bar_width = progress_bar_joueur.get_size().x
-	var start_x_percentage = randi_range(min_position_percentage, max_position_percentage - zone_width_percentage)
-	var start_x = bar_width * (start_x_percentage / 100.0)
-	var zone_width = bar_width * (zone_width_percentage / 100.0)
-
-	zone_cible.visible = true
-	zone_cible.set_size(Vector2(zone_width, zone_cible.size.y))
-	zone_cible.position.x = start_x
-
+	
+	# Créer les zones cibles en fonction du nombre de zones
+	var zones = []
+	for i in range(num_zones):
+		var range_start_percentage = min_position_percentage + i * (max_position_percentage - min_position_percentage) / num_zones
+		var range_end_percentage = range_start_percentage + (max_position_percentage - min_position_percentage) / num_zones - zone_width_percentage
+	
+		var start_x_percentage = rng.randi_range(range_start_percentage, range_end_percentage)
+		var start_x = bar_width * (start_x_percentage / 100.0)
+		var zone_width = bar_width * (zone_width_percentage / 100.0)
+	
+		var zone_cible = progress_bar_joueur.get_node("ZoneCible" + str(i + 1))
+		zone_cible.visible = true
+		zone_cible.set_size(Vector2(zone_width, zone_cible.size.y))
+		zone_cible.position.x = start_x
+	
+		zones.append([start_x, start_x + zone_width])
+		
+		# Débogage : Afficher les positions des zones
+		print("ZoneCible" + str(i + 1) + " : Start X =", start_x, ", End X =", start_x + zone_width)
+	
+	# Remplir la barre de progression
 	var elapsed_time = 0.0
-	var start_value = progress_bar_joueur.value
+	var start_value = 0.0
 	var end_value = progress_bar_joueur.max_value
-
+	
 	while elapsed_time < duree:
 		var t = elapsed_time / duree
 		progress_bar_joueur.value = lerp(start_value, end_value, t)
+		
 
-		# Vérifie si la barre de progression est dans la zone cible
-		var progress_x = progress_bar_joueur.get_size().x * (progress_bar_joueur.value / progress_bar_joueur.max_value)
-		in_target_zone = (progress_x >= start_x and progress_x <= start_x + zone_width)
-
+		# Vérifier si la barre est dans une des zones cibles (pour feedback visuel si nécessaire)
+		var progress_x = bar_width * (progress_bar_joueur.value / progress_bar_joueur.max_value)
+		in_target_zone = false
+		for zone in zones:
+			if progress_x >= zone[0] and progress_x <= zone[1]:
+				in_target_zone = true
+				break
+		
 		await get_tree().process_frame
 		elapsed_time += get_process_delta_time()
 	
+	# Remplir la barre jusqu'à la fin si elle ne l'est pas déjà
 	progress_bar_joueur.value = end_value
-
-	# Réinitialiser la barre et la zone cible
-	if progress_bar_joueur.value >= progress_bar_joueur.max_value:
-		await get_tree().process_frame
-		progress_bar_joueur.value = 0
-
-	zone_cible.visible = false
-	in_target_zone = false  # Réinitialiser après le remplissage
-	space_pressed = false   # Réinitialiser pour le prochain remplissage
+	
+	# Déterminer le niveau de réussite basé sur les succès accumulés et la difficulté
+	var success_level = determine_success_level(success_count, difficulty)
+	print("Niveau de réussite déterminé :", success_level)
+	
+	# Appliquer les dégâts en fonction du niveau de réussite
+	apply_damage_to_enemy(current_attack_value, success_level, current_mode)
+	
+	# Jouer le son associé au niveau de réussite
+	match success_level:
+		0:
+			spell_2_sound.play()  # Échec total
+		1:
+			spell_2_sound.play()  # Échec partiel ou Réussite Normale ou Partielle selon la difficulté
+		2:
+			spell_1_sound.play()  # Réussite normale ou Réussite Critique selon la difficulté
+		3:
+			spell_1_sound.play()  # Réussite Critique
+		_:
+			pass  # Aucun son pour les valeurs inconnues
+	
+	# Réinitialiser la barre de progression et les zones cibles
+	progress_bar_joueur.value = 0
+	for i in range(num_zones):
+		var zone_cible = progress_bar_joueur.get_node("ZoneCible" + str(i + 1))
+		zone_cible.visible = false
+	
+	in_target_zone = false
+	space_pressed = false
+	print("Barre de progression réinitialisée.")
 
 # Détecte l'appui sur la barre espace et vérifie si on est dans la zone cible
 func _on_attack_bar_pressed():
-	if space_pressed:
-		return  # Empêche de réappuyer plusieurs fois
-
-	space_pressed = true  # Indique que l'espace a été pressé
-
-	# Calculer la position de la zone cible en pourcentage de la largeur de la barre
-	var zone_start_percentage = zone_cible.position.x / progress_bar_joueur.get_size().x
-	var zone_end_percentage = (zone_cible.position.x + zone_cible.size.x) / progress_bar_joueur.get_size().x
-
-	# Convertir `progress_bar_joueur.value` en pourcentage de remplissage
+	# Vérifier si la barre est dans une zone cible au moment de l'appui
 	var progress_percentage = progress_bar_joueur.value / progress_bar_joueur.max_value
+	var in_target = false
+	print("Progression actuelle :", progress_percentage)
 
-	# Vérifier si `progress_percentage` se trouve dans la plage de la zone cible
-	if progress_percentage >= zone_start_percentage and progress_percentage <= zone_end_percentage:
-		print("Réussite")
-		apply_damage_to_enemy(current_attack_value, true)
-		spell_1_sound.play
+	var zones = [
+		progress_bar_joueur.get_node("ZoneCible1"),
+		progress_bar_joueur.get_node("ZoneCible2"),
+		progress_bar_joueur.get_node("ZoneCible3")
+	]
+
+	for zone in zones:
+		if not zone.visible:
+			continue
+		var zone_start_percentage = zone.position.x / progress_bar_joueur.get_size().x
+		var zone_end_percentage = (zone.position.x + zone.size.x) / progress_bar_joueur.get_size().x
+		if progress_percentage >= zone_start_percentage and progress_percentage <= zone_end_percentage:
+			in_target = true
+			break
+
+	if in_target:
+		success_count += 1
+		print("Succès ajouté, total :", success_count)
+		# Optionnel : Jouer un son de succès ou donner un feedback visuel
 	else:
-		print("Échec")
-		apply_damage_to_enemy(current_attack_value, false)
-		spell_2_sound.play
+		print("Tentative échouée.")
+		# Optionnel : Jouer un son d'échec ou donner un feedback visuel
 
-func apply_damage_to_enemy(damage: int, successful: bool) -> void:
+
+		# Optionnel : Jouer un son d'échec ou donner un feedback visuel
+
+func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> void:
 	var final_damage = damage
-	if not successful:
-		final_damage /= 2  # Divise les dégâts par 2 en cas d'échec
-	
-	# Applique les dégâts finaux à la barre de vie de l'ennemi
-	mob_progress_bar_hp.value -= final_damage
-	mob_percentage_hp.text = str(mob_progress_bar_hp.value) + "/" + str(mob_progress_bar_hp.max_value)
-	
-	# Affiche un message pour indiquer les dégâts infligés
-	print("Dégâts infligés à l'ennemi :", final_damage)
+
+	# Calcul des dégâts en fonction du niveau de réussite
+	match success_level:
+		0:  # Échec total
+			final_damage = 0
+		1:  # Réussite partielle ou Échec partiel selon la difficulté
+			if mode == "att":
+				final_damage = int(final_damage / 2)
+			elif mode == "def":
+				final_damage = int(final_damage / 2)
+		2:  # Réussite normale
+			pass  # Dégâts inchangés
+		3:  # Réussite Critique
+			final_damage = int(final_damage * 1.5)  # Convertir en entier si nécessaire
+
+	if mode == "def":
+		# Appliquer les dégâts comme bouclier
+		var current_shield = player_percentage_shield.text.to_int()  # Convertir le texte en entier
+		current_shield += final_damage  # Ajouter les dégâts au bouclier
+		player_percentage_shield.text = str(current_shield)  # Mettre à jour l'affichage
+		print("Bouclier ajouté :", final_damage)
+		print("Difficulté :", current_difficulty)
+
+	elif mode == "att":
+		# Appliquer les dégâts à la vie de l'ennemi
+		mob_progress_bar_hp.value -= final_damage
+		mob_percentage_hp.text = str(mob_progress_bar_hp.value) + "/" + str(mob_progress_bar_hp.max_value)
+		print("Dégâts infligés à l'ennemi :", final_damage)
+
+	# Affichage de debug
+	print("Niveau de réussite :", success_level)
+	print("Mode :", mode)
+
+
+func determine_success_level(success_count: int, difficulty: String) -> int:
+	match difficulty:
+		"hard":
+			if success_count >= 3:
+				return 3  # Réussite Critique
+			elif success_count == 2:
+				return 2  # Réussite Normale
+			elif success_count == 1:
+				return 1  # Échec Partiel
+			else:
+				return 0  # Échec Total
+		"medium":
+			if success_count >= 2:
+				return 2  # Réussite Critique
+			elif success_count == 1:
+				return 1  # Réussite Normale
+			else:
+				return 0  # Échec Total
+		"easy":
+			if success_count >= 2:
+				return 2  # Réussite Normale
+			elif success_count == 1:
+				return 1  # Réussite Partielle
+			else:
+				return 0  # Échec Total (si applicable)
+		_:
+			return 0  # Valeur par défaut en cas de difficulté inconnue
+
+
 
 	
 func _on_get_spells_player_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:

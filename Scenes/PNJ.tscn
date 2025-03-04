@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnj0fapv33e0a"]
+
+[ext_resource type="Script" path="res://Scenes/pnj.gd" id="1_h3nvd"]
+[ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="1_od3sy"]
+[ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="2_qh4c1"]
+[ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="3_dfj6s"]
+[ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="5_djiqf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_184fj"]
+size = Vector2(46, 45)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kocle"]
+radius = 85.21
+
+[node name="PNJ" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_h3nvd")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Area2D"]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_184fj")
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Area2D/CharacterBody2D"]
+z_index = -1
+position = Vector2(0, 3)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("1_od3sy")
+
+[node name="Head-old-guy-real" type="Sprite2D" parent="Area2D/CharacterBody2D/OldGuyWhoLostIsCramptéReal"]
+z_index = 10
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_qh4c1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kocle")
+
+[node name="Trigger" type="Sprite2D" parent="Area2D"]
+visible = false
+position = Vector2(0, -73)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("3_dfj6s")
+
+[node name="Interact" type="Label" parent="Area2D"]
+visible = false
+texture_filter = 1
+offset_left = -88.0
+offset_top = -80.0
+offset_right = 264.0
+offset_bottom = -10.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_djiqf")
+theme_override_font_sizes/font_size = 64
+text = "[ E ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

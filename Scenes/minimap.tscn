@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cs1t5u15aehqw"]
 
-[ext_resource type="Script" path="res://Scenes/Minimap.gd" id="1_jkw46"]
+[ext_resource type="Script" path="res://Scripts/Minimap_FullMap/Minimap.gd" id="1_jkw46"]
 [ext_resource type="Material" uid="uid://cf568renknpt8" path="res://pin_shader.tres" id="3_mj33y"]
 [ext_resource type="Texture2D" uid="uid://bw1evxysvpify" path="res://Textures/Pins/blue.png" id="4_ltftm"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="5_drc3f"]

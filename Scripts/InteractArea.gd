@@ -17,9 +17,3 @@ func _on_interact_area_entered(body):
 func _on_interact_area_exited(body):
 	if body.name == "Player_One":
 		Global.interact = false
-
-
-
-
-
-

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8j31d24utmb0"]
+
+[ext_resource type="Texture2D" uid="uid://cw6pf16deq822" path="res://Textures/checkmate.png" id="1_8mtt7"]
+
+[sub_resource type="TileSet" id="TileSet_bruyf"]
+
+[node name="CheckMate" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(960, 504)
+scale = Vector2(64, 64)
+texture = ExtResource("1_8mtt7")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_bruyf")

@@ -2,6 +2,8 @@
 .godot/
 Constantes/
 Constantes/creatures.json
+.vscode/
+.vscode/settings.json
 
 # Godot-specific ignores
 .import/
@@ -16,3 +18,5 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+settings.json
