@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="1_od3sy"]
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="2_qh4c1"]
 [ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="3_dfj6s"]
-[ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="5_dhiwj"]
+[ext_resource type="Texture2D" uid="uid://ftsqesla06t5" path="res://Textures/Buttons/keyboard/keyboard_e.png" id="5_gd1bm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_184fj"]
 size = Vector2(46, 45)
@@ -48,21 +48,12 @@ position = Vector2(0, -73)
 scale = Vector2(2.9, 2.9)
 texture = ExtResource("3_dfj6s")
 
-[node name="Interact" type="Label" parent="Area2D"]
+[node name="Interact" type="Sprite2D" parent="Area2D"]
+visible = false
 texture_filter = 1
-offset_left = -88.0
-offset_top = -80.0
-offset_right = 264.0
-offset_bottom = -10.0
-scale = Vector2(0.5, 0.5)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("5_dhiwj")
-theme_override_font_sizes/font_size = 64
-text = "[ E ]"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+position = Vector2(0, -73)
+scale = Vector2(2, 2)
+texture = ExtResource("5_gd1bm")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

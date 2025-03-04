@@ -30,9 +30,14 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		in_area = false
 		
 func _process(delta: float) -> void:
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() < 1:
+		get_node("Area2D/Interact").texture = load("res://Textures/Buttons/keyboard/keyboard_e.png")
+	else:
+		get_node("Area2D/Interact").texture = load("res://Textures/Buttons/joypads/joybar_a.png")
 	if Quests.quests.get(quest_id).stade == Quests.quests.get(quest_id).descriptions.size():
 		queue_free()
-	if Input.is_action_just_pressed("ui_interact") and in_area == true and enemy_instance == null:
+	if Input.is_action_just_pressed(Controllers.a_input) and in_area == true and enemy_instance == null:
 		Quests.current_quest_id = quest_id
 		enemy_instance = dialogue_scene.instantiate()
 		enemy_instance.pnj_name = pnj_name

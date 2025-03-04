@@ -21,6 +21,7 @@ func _ready() -> void:
 	soundEffect.play()
 
 func _process(delta: float) -> void:
+	var joypads = Input.get_connected_joypads()
 	# Interaction avec la maison
 	if Input.is_action_just_pressed("M"):
 		if scene_load == false:
@@ -29,6 +30,7 @@ func _process(delta: float) -> void:
 			load_instance.position = Vector2(0,0)
 			get_node("ui/Minimap").visible = false
 			get_node("ui").add_child(load_instance)
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
 			scene_load = true
 
@@ -36,9 +38,10 @@ func _process(delta: float) -> void:
 			get_node("ui/Full_Screen_map").queue_free()
 			get_node("ui/Minimap").visible = true
 			scene_load = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if entered == true and Key == false:
-		if Input.is_action_just_pressed("ui_interact"):
+		if Input.is_action_just_pressed(Controllers.a_input):
 			Global.save()
 			Key = true
 			transition_scene.play("screen_to_transition")

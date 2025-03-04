@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://cs1t5u15aehqw"]
 
 [ext_resource type="Script" path="res://Scripts/Minimap_FullMap/Minimap.gd" id="1_jkw46"]
+[ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="2_hdawy"]
 [ext_resource type="Material" uid="uid://cf568renknpt8" path="res://pin_shader.tres" id="3_mj33y"]
 [ext_resource type="Texture2D" uid="uid://bw1evxysvpify" path="res://Textures/Pins/blue.png" id="4_ltftm"]
-[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="5_drc3f"]
 [ext_resource type="Texture2D" uid="uid://bako680pmqpsb" path="res://Textures/Pins/red.png" id="5_sf2co"]
 [ext_resource type="Texture2D" uid="uid://byeatwoc7k5qo" path="res://Textures/Pins/yellow.png" id="6_xlw0t"]
 [ext_resource type="Texture2D" uid="uid://cd6cqkc67n7kc" path="res://Textures/Pins/green.png" id="7_qcxhw"]
@@ -166,8 +166,9 @@ offset_bottom = 235.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
-theme_override_fonts/font = ExtResource("5_drc3f")
-text = "x 0y 0"
+theme_override_fonts/font = ExtResource("2_hdawy")
+theme_override_font_sizes/font_size = 32
+text = "X 0 | Y 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

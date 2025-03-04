@@ -157,13 +157,37 @@ var attacks = {
 
 signal fringe_changed
 
+var selected_index = 0
+var buttons = []
 
 func _ready():
 	pass
 
 func _process(delta):
+	buttons = get_tree().get_nodes_in_group("buttons")
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() >= 1 and buttons.size() > 0:
+		if Input.is_action_just_pressed("ui_down"):
+			selected_index = (selected_index + 1) % buttons.size()
+			update_button_selection()
+		if Input.is_action_just_pressed("ui_up"):
+			selected_index = (selected_index - 1 + buttons.size()) % buttons.size()
+			update_button_selection()
+		if Input.is_action_just_pressed(Controllers.a_input):
+			pressed_button(buttons[selected_index])
 	if tutorial == false:
 		tutorial_stade = -1
+
+func update_button_selection() -> void:
+	for i in range(buttons.size()):
+		if i == selected_index:
+			buttons[i].modulate = Color(1, 1, 1, 1)  # Highlight selected button
+		else:
+			buttons[i].modulate = Color(0.5, 0.5, 0.5, 1)  # Dim non-selected buttons
+
+
+func pressed_button(button):
+	button.emit_signal("pressed")
 
 func save():
 	var save_file = ConfigFile.new()
