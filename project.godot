@@ -27,6 +27,7 @@ Notifications="*res://Scenes/notifications.tscn"
 Quests="*res://Scripts/Quests.gd"
 Controllers="*res://Scripts/Controllers.gd"
 
+
 [display]
 
 window/size/viewport_width=1920
@@ -41,7 +42,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/LPCAnimatedSprite/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/LPCAnimatedSprite/plugin.cfg", "res://addons/copilot_godot/addons/copilot/plugin.cfg")
 
 [global_group]
 
@@ -50,6 +51,7 @@ buttons=""
 [gui]
 
 theme/custom_font="res://Font/Jersey20-Regular.ttf"
+
 
 [input]
 

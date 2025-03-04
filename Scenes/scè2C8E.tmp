@@ -384,7 +384,7 @@ vertical_alignment = 1
 position = Vector2(1, 0)
 
 [node name="Player-1Tile-set" type="Sprite2D" parent="CharacterBody2D3"]
-position = Vector2(975, 984)
+position = Vector2(933, 1035)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_1fplo")
 region_enabled = true
@@ -396,7 +396,7 @@ position = Vector2(-12.999, -1.99902)
 [node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Mob"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(980.999, 777.999)
+position = Vector2(942.999, 806.999)
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_dxowc")
 region_enabled = true
@@ -452,7 +452,7 @@ max_distance = 2e+09
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_mb5p5")
-volume_db = -12.799
+volume_db = -10.0
 autoplay = true
 max_distance = 2e+09
 panning_strength = 0.9
@@ -609,17 +609,6 @@ offset_right = 95.0
 offset_bottom = 49.0
 color = Color(0.843137, 0.188235, 0.439216, 1)
 
-[node name="SpellName" type="Label" parent="ProgressBar_ennemye"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = -56.0
-offset_right = 320.0
-offset_bottom = -1.0
-theme_override_font_sizes/font_size = 50
-text = "test"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ProgressBar_Joueur" type="ProgressBar" parent="."]
 offset_left = 504.0
 offset_top = 616.0
@@ -646,16 +635,6 @@ offset_left = 49.0
 offset_right = 95.0
 offset_bottom = 49.0
 color = Color(0.843137, 0.188235, 0.439216, 1)
-
-[node name="SpellName" type="Label" parent="ProgressBar_Joueur"]
-offset_left = 8.0
-offset_top = -56.0
-offset_right = 320.0
-offset_bottom = -1.0
-theme_override_font_sizes/font_size = 50
-text = "test"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="GetCreaturesEnemy" type="HTTPRequest" parent="."]
 

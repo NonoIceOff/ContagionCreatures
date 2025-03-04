@@ -299,3 +299,19 @@ func _apply_player_position():
 		print("Position joueur appliquée :", player_node.position)
 	else:
 		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")
+
+	
+func load_user():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://user.txt", "user_key")
+	Global.user = load_file.get_value("User","Data",Global.user)
+	
+func save_user():
+	var save_file = ConfigFile.new()
+	save_file.set_value("User","Data",Global.user)
+	save_file.save_encrypted_pass("user://user.txt", "user_key")
+	
+func load_position():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
+	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", get_node("/root/main_map/Player_One").position)
