@@ -6,7 +6,7 @@ signal player_entered_door_signal
 @export var speed: float = 200
 
 @onready var animated_sprite: AnimatedSprite2D = $player1
-@onready var pause_menu = $"player1/2/CanvasLayer/PauseMenu"
+@onready var pause_menu = $"player1/2/CanvasLayer/"
 
 func entered_door():
 	emit_signal("player_entered_door_signal")
