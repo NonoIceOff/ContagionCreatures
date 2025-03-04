@@ -1,6 +1,7 @@
 extends Node2D
 
 var ennemy_manager = EnnemyManager.new()
+var craft_manager = CraftManager.new()
 
 
 
@@ -29,6 +30,7 @@ var combat_started = false  # Indicateur de début de combat
 @onready var start_overlay = ColorRect.new()
 @onready var start_message = Label.new()
 
+# Player bar
 @onready var player_creature_name = $ContainerPLAYER/Pseudo
 @onready var progress_bar_joueur = $ProgressBar_Joueur
 @onready var zone_cible1 = $ProgressBar_Joueur/ZoneCible1
@@ -38,6 +40,8 @@ var combat_started = false  # Indicateur de début de combat
 @onready var player_percentage_hp  = $ContainerPLAYER/TextureProgressBar/Percentage
 @onready var player_percentage_shield  = $ContainerPLAYER/TextureProgressBar/Shield
 
+
+# Ennemy bar
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var progress_bar_ennemye = $ProgressBar_ennemye
 @onready var zone_cible1_ennemye = $ProgressBar_Joueur/ZoneCible1
@@ -46,6 +50,7 @@ var combat_started = false  # Indicateur de début de combat
 @onready var mob_pseudo_label  = $ContainerMob/Pseudo
 @onready var mob_percentage_hp  = $ContainerMob/TextureProgressBar/Percentage
 @onready var mob_percentage_shield  = $ContainerMob/TextureProgressBar/Shield
+
 
 @onready var http_get_creatures = $GetCreaturesEnemy
 @onready var http_get_creatures_spells = $GetSpellsPlayer
@@ -75,6 +80,7 @@ var required_successes = {
 }
 
 func _ready():
+	craft_manager.list_craft()
 	# Connecter les signaux de HTTPRequest pour gérer les réponses dès leur arrivée
 	http_get_creatures.connect("request_completed", Callable(self, "_on_get_creatures_request_completed"))
 	http_get_creatures_spells.connect("request_completed", Callable(self, "_on_get_creatures_spells_request_completed"))
@@ -93,6 +99,11 @@ func _ready():
 	zone_cible2.visible = false
 	var zone_cibl3e = $ProgressBar_Joueur/ZoneCible3
 	zone_cible3.visible = false
+	
+	var spell_name_player = $ProgressBar_Joueur/SpellName
+	spell_name_player.visible = false
+	var spell_name_ennemye = $ProgressBar_ennemye/SpellName
+	spell_name_ennemye.visible = false
 	
 		# Initialiser l'affichage des sorts et masquer la zone cible
 	var zone_cible1_ennemye = $ProgressBar_ennemye/ZoneCible1
@@ -167,8 +178,6 @@ func setup_player_animal():
 			animalP.z_index = 0
 			animalP.scale = Vector2(5.1, 5.1)
 			add_child(animalP)
-			
-		
 		
 
 func setup_enemy_animal():

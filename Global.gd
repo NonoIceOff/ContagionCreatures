@@ -116,6 +116,110 @@ var items = {
 	}
 }
 
+var actual_animal = {
+	
+	0: {
+		"name":"Deagle",
+		"infected": false,
+		"type":['Totem'],
+		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et * 2 si l'arme "],		
+		"textureA":"res://Textures/Animals/EAGLE_.png",
+		"texture_animal_fight":"res://Textures/Animals/eagle_Player.png",
+	},
+}
+var animals_player = {
+
+	0: {
+		"name":"GentleDuck",
+		"infected": false,
+		"type":['Prisme'],
+		"boost":[ 1.08 , 1.06 , "atk/def"], #+8% d'ATK et 6% DEF pour le joueur et * 2 si arme du meme type
+		"effets":["+6% d'attaque et +6% de defense pour le joueur et *2 si"],
+		"textureA":"res://Textures/pixil-frame-0_3.png"
+	},
+	1: {
+		"name":"Deagle",
+		"infected": false,
+		"type":['Relique'],
+		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et *2 si"],		
+		"textureA":"res://Textures/Animals/EAGLE_.png",
+	},
+	2: {
+		"name":"Froggy",
+		"infected": false,
+		"type":['Essence'],
+		"boost":[ 1.03 ,"atk"], #d'ATK pour le player et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 3% d'attaque à chaque tours pour le joueur et *2 si"],
+		"textureA":"res://Textures/Animals/FROG.png",
+	},
+	3: {
+		"name":"Leonard",
+		"infected": false,
+		"type":['Totem'],
+		"boost":[  1.2 , "regen"],  # +20 PV à chaque tours pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 20 PV à chaque tours pour le joueur et *2 "],								
+		"textureA":"res://Textures/Animals/DRAGON.png",
+	},
+	4: {
+		"name":"Douglas",
+		"infected": false,
+		"type":['Echo'],
+		"boost":[  0.9 , "DEF"],  # +9 de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+9% de defense en plus pour l'utilisateur et 5%"],						
+		"textureA": "res://Textures/Animals/CHICKEN.png",		
+	},
+}
+
+var animals_enemy = {
+	0: {
+		"name":"Deagle",
+		"infected": true,
+		"type":['Relique'],
+		"boost":[ 1.1, "def"], #+10% de DEF pour le player si l'arme est du même type
+		"effets":["+10% de defense en plus pour l'utilisateur et *2 si l'arme est du meme type"],
+		"textureA":"res://Textures/Animals/EAGLE_.png",
+		"texture_infected":"res://Textures/Animals/Eagle_infected.png"
+	},
+	1: {
+		"name":"GentleDuck",
+		"infected": true,
+		"type":['Prisme'],
+		"boost":[ 1.06 , "atk"], #+6% d'ATK et DEF pour le joueur si l'arme est du même type
+		"effets":["+6% d'attaque en plus pour l'utilisateur et *2 si l'arme est du meme type"],		
+		"textureA":"res://Textures/pixil-frame-0_3.png",
+		"texture_infected":""
+	},
+	2: {
+		"name":"Froggy",
+		"infected": true,
+		"type":['Essence'],
+		"boost":[ 1.03 ,"atk"], # +3% d'ATK pour le joueur si l'arme est du même type
+		"effets":["+3% d'attaque en plus pour l'utilisateur et *2 si l'arme est du meme type"],
+		"textureA":"res://Textures/Animals/FROG.png",
+		"texture_infected":""
+	},
+	3: {
+		"name":"Leonard",
+		"infected": true,
+		"type":['Echo'],
+		"boost":[ 1.2, "regen"],  # +20 PV à chaque tours pour le joueur si l'arme est du même type
+		"effets":["L'utilisateur recupere +2O pv en plus à chaque tour et *2 si l'arme est du meme type"],
+		"textureA":"res://Textures/Animals/DRAGON.png",
+		"texture_infected":""
+	},
+	4: {
+		"name":"Douglas",
+		"infected": true,
+		"type":['Relique'],
+		"boost":[  1.09 , "def"], # +9 de DEF pour le joueur pendant tout le combat si l'arme est du même type
+		"effets":["+9% de defense en plus pour l'utilisateur"],  
+		"textureA": "res://Textures/Animals/CHICKEN.png",
+		"texture_infected":""
+	},
+}
+
 var attacks = {
 	0: {
 		"name":"BOW",
