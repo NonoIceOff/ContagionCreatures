@@ -63,3 +63,7 @@ func _on_menu_principal_pressed():
 
 func _on_quitter_pressed():
 	get_tree().quit()
+
+
+func _on_tree_entered() -> void:
+	Global.selected_index = 0

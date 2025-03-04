@@ -244,21 +244,25 @@ Carte"
 script = ExtResource("12_7biym")
 
 [node name="Pause" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
 position = Vector2(-24, 54)
 scale = Vector2(2, 2)
 texture = ExtResource("13_td3vo")
 
 [node name="Quest" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
 position = Vector2(-24, 18)
 scale = Vector2(2, 2)
 texture = ExtResource("14_6d7q7")
 
 [node name="Inventory" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
 position = Vector2(-24, 89)
 scale = Vector2(2, 2)
 texture = ExtResource("15_x3csd")
 
 [node name="Carte" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
 position = Vector2(-24, 126)
 scale = Vector2(2, 2)
 texture = ExtResource("16_8jrwf")

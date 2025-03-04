@@ -82,3 +82,7 @@ func _on_right_button_pressed():
 	get_node("ScrollContainer/VBoxContainer/Right/RightButton").text = "_"
 	change_key = "ui_right"
 	change_key_state = 1
+
+
+func _on_tree_entered() -> void:
+	Global.selected_index = 0
