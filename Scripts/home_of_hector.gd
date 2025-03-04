@@ -1,6 +1,5 @@
 extends Node2D
 
-
 var scene = preload("res://Scenes/piano.tscn")
 var piano_in = false
 
@@ -20,8 +19,7 @@ func _ready():
 	control.visible = true
 	
 
-
-func _process(delta):
+func _process(delt: float) -> void:
 	if Input.is_action_just_pressed("ui_interact") and piano_in == true:
 		var instance = scene.instantiate()
 		instance.piano_id = 0

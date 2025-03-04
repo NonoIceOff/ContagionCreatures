@@ -14,11 +14,11 @@ func _init() -> void:
 	print("a")
 
 func _ready() -> void:
-	print("ok")
+	print(Global.current_map)
 	advance_time()
 	
 func _process(delta: float) -> void:
-	print(Global.current_map)
+	
 	if Global.current_map != "HomeOfHector":
 		get_node("PanelDate").visible = true
 		get_node("Minimap").visible = true
