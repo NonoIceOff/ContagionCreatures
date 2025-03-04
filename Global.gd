@@ -4,7 +4,6 @@ var user = {}
 
 # Matchmaking
 var user_enemy = {}
-
 var interact = false
 var trigger = true
 var brazero_numbers = 0
@@ -160,6 +159,19 @@ var buttons = []
 func _ready():
 	pass
 
+var actual_animal = {
+    
+    0: {
+        "name":"Deagle",
+        "infected": false,
+        "type":['Totem'],
+        "boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+        "effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et * 2 si l'arme "],        
+        "textureA":"res://Textures/Animals/EAGLE_.png",
+        "texture_animal_fight":"res://Textures/Animals/eagle_Player.png",
+    },
+}
+
 func _process(delta):
 	buttons = get_tree().get_nodes_in_group("buttons")
 	var joypads = Input.get_connected_joypads()
@@ -184,7 +196,10 @@ func update_button_selection() -> void:
 
 
 func pressed_button(button):
-	button.emit_signal("pressed")
+	if get_node_or_null("/root/"+current_map+"/TileMap/Player_One") and paused == true:
+		button.emit_signal("pressed")
+	elif get_node_or_null("/root/"+current_map+"/TileMap/Player_One") == null:
+		button.emit_signal("pressed")
 
 func save():
 	var save_file = ConfigFile.new()

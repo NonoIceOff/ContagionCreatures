@@ -15,6 +15,7 @@ func _ready() -> void:
 	print(Global.current_map)
 	advance_time()
 	
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	if Global.current_map != "HomeOfHector":
 		get_node("PanelDate").visible = true

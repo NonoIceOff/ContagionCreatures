@@ -648,6 +648,7 @@ offset_bottom = 49.0
 color = Color(0.843137, 0.188235, 0.439216, 1)
 
 [node name="SpellName" type="Label" parent="ProgressBar_Joueur"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = -56.0
 offset_right = 320.0
