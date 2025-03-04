@@ -21,7 +21,7 @@ func _on_body_exited(body):
 
 func _process(delta):
 	if entered == true and Key == false:
-		if Input.is_action_just_pressed("ui_interact"):
+		if Input.is_action_just_pressed(Controllers.a_input):
 			Global.save()
 			Key = true
 			if get_node_or_null("/root/HomeOfHector/CanvasLayer/Transition/AnimationPlayer") != null:

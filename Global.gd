@@ -154,13 +154,37 @@ var attacks = {
 
 signal fringe_changed
 
+var selected_index = 0
+var buttons = []
 
 func _ready():
 	pass
 
 func _process(delta):
+	buttons = get_tree().get_nodes_in_group("buttons")
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() >= 1 and buttons.size() > 0:
+		if Input.is_action_just_pressed("ui_down"):
+			selected_index = (selected_index + 1) % buttons.size()
+			update_button_selection()
+		if Input.is_action_just_pressed("ui_up"):
+			selected_index = (selected_index - 1 + buttons.size()) % buttons.size()
+			update_button_selection()
+		if Input.is_action_just_pressed(Controllers.a_input):
+			pressed_button(buttons[selected_index])
 	if tutorial == false:
 		tutorial_stade = -1
+
+func update_button_selection() -> void:
+	for i in range(buttons.size()):
+		if i == selected_index:
+			buttons[i].modulate = Color(1, 1, 1, 1)  # Highlight selected button
+		else:
+			buttons[i].modulate = Color(0.5, 0.5, 0.5, 1)  # Dim non-selected buttons
+
+
+func pressed_button(button):
+	button.emit_signal("pressed")
 
 func save():
 	var save_file = ConfigFile.new()
@@ -197,7 +221,6 @@ func save():
 	save_file.set_value("Time", "minute", current_minute)
 	save_file.set_value("Time", "day", current_day)
 	save_file.set_value("Time", "color", target_color)
-	print(target_color)
 	save_file.save_encrypted_pass("user://save.txt", "gentle_duck")
 	print("Sauvegarde terminée.")
 
@@ -269,3 +292,19 @@ func _apply_player_position():
 		print("Position joueur appliquée :", player_node.position)
 	else:
 		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")
+
+	
+func load_user():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://user.txt", "user_key")
+	Global.user = load_file.get_value("User","Data",Global.user)
+	
+func save_user():
+	var save_file = ConfigFile.new()
+	save_file.set_value("User","Data",Global.user)
+	save_file.save_encrypted_pass("user://user.txt", "user_key")
+	
+func load_position():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
+	get_node("/root/main_map/Player_One").position = load_file.get_value("Player", "position", get_node("/root/main_map/Player_One").position)

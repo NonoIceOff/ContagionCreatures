@@ -155,7 +155,7 @@ func _process(delta):
 	
 	
 	
-	if Input.is_action_just_pressed("ui_interact") and get_node_or_null("ui/SpeechBox") == null:
+	if Input.is_action_just_pressed(Controllers.a_input) and get_node_or_null("ui/SpeechBox") == null:
 		interacted = true
 		var scene_source = preload("res://Scenes/speech_box.tscn")
 		var scene_instance = scene_source.instantiate()

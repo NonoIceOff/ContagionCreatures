@@ -60,11 +60,12 @@ func _ready():
 		quest_container.add_child(panel)
 
 func _on_quest_selected(quest_id):
-	Quests.set_quest(quest_id)
-	get_node("AudioStreamPlayer").stream = load("res://Sounds/click.mp3")
-	get_node("AudioStreamPlayer").playing = true
-	get_node("QuestInfos/TitreQuete").text = Quests.quests[quest_id]["title"]
-	get_node("QuestInfos/DescriptionQuete").text = "[color=black]" + tr(Quests.quests[quest_id]["long_description"]) + "[/color]\n\n[color=orange][i][font_size=46]" + tr(Quests.quests[quest_id]["mini_descriptions"][Quests.quests[quest_id]["stade"]]) + "[/font_size][/i][/color]"
+	if Quests.quests.get(quest_id).finished == false:
+		Quests.set_quest(quest_id)
+		get_node("AudioStreamPlayer").stream = load("res://Sounds/click.mp3")
+		get_node("AudioStreamPlayer").playing = true
+		get_node("QuestInfos/TitreQuete").text = Quests.quests[quest_id]["title"]
+		get_node("QuestInfos/DescriptionQuete").text = "[color=black]" + tr(Quests.quests[quest_id]["long_description"]) + "[/color]\n\n[color=orange][i][font_size=46]" + tr(Quests.quests[quest_id]["mini_descriptions"][Quests.quests[quest_id]["stade"]]) + "[/font_size][/i][/color]"
 
 func open():
 	visible = true
