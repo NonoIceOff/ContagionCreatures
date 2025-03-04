@@ -1,23 +1,15 @@
-[gd_scene load_steps=28 format=3 uid="uid://dlj82x8ysevhm"]
+[gd_scene load_steps=20 format=3 uid="uid://dlj82x8ysevhm"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_3sngr"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_buk1w"]
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
 [ext_resource type="Texture2D" uid="uid://w5m4hlt7dhrk" path="res://logo.png" id="2_2tqwl"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_j62ra"]
-[ext_resource type="Script" path="res://Scripts/Boutons/PlayButton.gd" id="2_soydd"]
 [ext_resource type="Script" path="res://Scenes/SettingsButton.gd" id="3_4a2ih"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="4_4gslj"]
-[ext_resource type="Script" path="res://Scripts/Titre.gd" id="4_qccqg"]
-[ext_resource type="Script" path="res://Scripts/PlayMulti.gd" id="4_xyknk"]
-[ext_resource type="Script" path="res://Scripts/DeleteSave.gd" id="8_5568m"]
-[ext_resource type="Script" path="res://Scripts/Boutons/musicsbutton.gd" id="12_uqoq6"]
 [ext_resource type="Script" path="res://Scenes/Settings_Credits.gd" id="12_yb7yn"]
 [ext_resource type="Texture2D" uid="uid://bv55etaq3hgwq" path="res://Textures/user_profile.png" id="14_3buyc"]
 [ext_resource type="Texture2D" uid="uid://d1g423653v4tm" path="res://Textures/discord.png" id="19_hhkdv"]
-[ext_resource type="Script" path="res://Scripts/DiscordRez.gd" id="21_nx528"]
 [ext_resource type="Texture2D" uid="uid://crj8d71jcq7lc" path="res://Textures/Instagram.png" id="22_4l4g4"]
-[ext_resource type="Script" path="res://Scripts/InstagramRez.gd" id="22_dautx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvldv"]
 bg_color = Color(1, 1, 1, 1)
@@ -87,7 +79,6 @@ corner_radius_bottom_left = 40
 
 [node name="Menu" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_3sngr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -159,7 +150,6 @@ text = "CONTAGION CREATURES"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-script = ExtResource("4_qccqg")
 
 [node name="Play" type="Button" parent="."]
 offset_left = 112.0
@@ -172,7 +162,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "SOLO"
-script = ExtResource("2_soydd")
 
 [node name="PlayMulti" type="Button" parent="."]
 offset_left = 112.0
@@ -186,7 +175,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "MULTIPLAYER"
 expand_icon = true
-script = ExtResource("4_xyknk")
 
 [node name="Settings" type="Button" parent="."]
 offset_left = 301.0
@@ -226,7 +214,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gnwub")
 text = "OST"
-script = ExtResource("12_uqoq6")
 
 [node name="DeleteSave" type="Button" parent="."]
 offset_left = 1280.0
@@ -239,7 +226,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7dkss")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wlqyn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lsl8i")
 text = "DELETE_SAVE"
-script = ExtResource("8_5568m")
 
 [node name="Label" type="Label" parent="DeleteSave"]
 layout_mode = 0
@@ -310,7 +296,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "DISCORD"
 icon = ExtResource("19_hhkdv")
 expand_icon = true
-script = ExtResource("21_nx528")
 
 [node name="Instagram" type="Button" parent="Reseaux"]
 layout_mode = 0
@@ -326,7 +311,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "INSTAGRAM"
 icon = ExtResource("22_4l4g4")
 expand_icon = true
-script = ExtResource("22_dautx")
 
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
 [connection signal="pressed" from="PlayMulti" to="PlayMulti" method="_on_pressed"]
