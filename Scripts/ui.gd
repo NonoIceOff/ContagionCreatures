@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 		if is_open:
 			get_node("inv_animal").queue_free()
 		else:
-			print("ouvert")
 			var load_scene = preload("res://Inventory/inv_animals.tscn")
 			var load_instance = load_scene.instantiate()
 			load_instance.position = Vector2(0,0)
