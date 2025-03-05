@@ -33,7 +33,8 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor]
 
@@ -192,4 +193,5 @@ locale/translations=PackedStringArray("res://translations.en.translation", "res:
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
