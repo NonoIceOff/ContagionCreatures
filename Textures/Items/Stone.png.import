@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnj2e50esfuhx"
-path="res://.godot/imported/ARC.png-d308ac31953d3afa8249b1ce262eb17d.ctex"
+uid="uid://bcoxlrv826kyq"
+path="res://.godot/imported/Stone.png-88620ff7b3aaed5560b027c464806e57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ARC.png"
-dest_files=["res://.godot/imported/ARC.png-d308ac31953d3afa8249b1ce262eb17d.ctex"]
+source_file="res://Textures/Items/Stone.png"
+dest_files=["res://.godot/imported/Stone.png-88620ff7b3aaed5560b027c464806e57.ctex"]
 
 [params]
 

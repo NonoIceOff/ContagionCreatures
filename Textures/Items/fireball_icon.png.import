@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcoxlrv826kyq"
-path="res://.godot/imported/Stone.png-1c4c227e1b316cb3fe3ee7f14f76ee52.ctex"
+uid="uid://dp88ip2atyf1h"
+path="res://.godot/imported/fireball_icon.png-732fc82d09fb5eba03178be7f27055c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Stone.png"
-dest_files=["res://.godot/imported/Stone.png-1c4c227e1b316cb3fe3ee7f14f76ee52.ctex"]
+source_file="res://Textures/Items/fireball_icon.png"
+dest_files=["res://.godot/imported/fireball_icon.png-732fc82d09fb5eba03178be7f27055c8.ctex"]
 
 [params]
 

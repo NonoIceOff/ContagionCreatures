@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp88ip2atyf1h"
-path="res://.godot/imported/fireball_icon.png-bc8f47d2945c3313e02d760ecb3a536e.ctex"
+uid="uid://cnj2e50esfuhx"
+path="res://.godot/imported/ARC.png-be7176b2d3d6c2074669735e67c7644a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/fireball_icon.png"
-dest_files=["res://.godot/imported/fireball_icon.png-bc8f47d2945c3313e02d760ecb3a536e.ctex"]
+source_file="res://Textures/Items/ARC.png"
+dest_files=["res://.godot/imported/ARC.png-be7176b2d3d6c2074669735e67c7644a.ctex"]
 
 [params]
 
