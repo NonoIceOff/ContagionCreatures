@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbefb2mkq4xrv"]
+[gd_scene load_steps=19 format=3 uid="uid://dbefb2mkq4xrv"]
 
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_r7j8k"]
 [ext_resource type="Script" path="res://Scenes/game_ui.gd" id="1_xtvsa"]
@@ -206,7 +206,7 @@ cache/0/25/0/scale = 1.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jarj"]
 texture = ExtResource("1_r7j8k")
-region_rect = Rect2(252.911, 15.8957, 15.9079, 12.3158)
+region_rect = Rect2(301, 108, 22, 23)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v2xow"]
 texture = ExtResource("1_r7j8k")
@@ -405,13 +405,21 @@ cache/0/25/0/underline_position = 0.0
 cache/0/25/0/underline_thickness = 0.0
 cache/0/25/0/scale = 1.0
 
+[sub_resource type="Theme" id="Theme_ln13t"]
+CheckButton/styles/normal = null
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ksaeg"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
 texture = ExtResource("1_r7j8k")
-region_rect = Rect2(255.673, 12.3188, 16.4732, 17.5247)
+texture_margin_left = 1.0
+region_rect = Rect2(300, 110, 23, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g37xr"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(388, 36, 24, 25)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -708,17 +716,20 @@ text = "Ressources
 "
 
 [node name="ResourcesList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(380, 700)
 layout_mode = 2
+theme = SubResource("Theme_ln13t")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_margin = -6
 theme_override_constants/v_separation = 15
 theme_override_constants/h_separation = 15
 theme_override_styles/panel = SubResource("StyleBoxTexture_ksaeg")
-item_count = 2
+theme_override_styles/selected_focus = SubResource("StyleBoxTexture_g37xr")
 max_columns = 5
 same_column_width = true
+fixed_column_width = 102
 fixed_icon_size = Vector2i(60, 60)
-item_0/icon = ExtResource("3_pormx")
-item_1/icon = ExtResource("3_pormx")
 
 [node name="getItem" type="HTTPRequest" parent="PopupMenu/CraftMenuScreenContainer"]
 

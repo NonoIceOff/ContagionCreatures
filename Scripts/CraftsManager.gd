@@ -4,8 +4,8 @@ class_name CraftTableManager
 var player_inventory = []
 
 var acces = {
-	"Potion": false,
-	"Herboristerie": true,
+	"Potion": true,
+	"Herboristerie": false,
 	"Alchimie": true
 }
 
@@ -54,7 +54,13 @@ func can_craft(item_name: String) -> bool:
 		print(" Le craft '" + item_name + "' n'existe pas !")
 		return false
 
-	var ingredients = craft_list[item_name]["ingredients"]
+	var craft = craft_list[item_name]
+	var category = craft["unlock"]
+	var ingredients = craft["ingredients"]
+
+	if not acces[category]:
+		print(" Vous n'avez pas débloqué la catégorie " + category)
+		return false
 
 	for ingredient in ingredients:
 		var quantity_needed = ingredients[ingredient]

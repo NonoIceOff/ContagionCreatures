@@ -1,10 +1,13 @@
-extends Node2D
+extends Control
 
 @onready var http_request_get_item = $getItem
+@onready var list_player_items = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/ResourcesList
+@onready var list_all_items = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftsList
+
 # Récupère les items du player 
 var player_items = []  
 #Récupère les tout les items du jeu
-var all_item = []
+var all_items = []
 
 const API_ITEMS_URL = "https://contagioncreaturesapi.vercel.app/api/items"
 const ITEMS_FILE_PATH = "res://Constantes/items.json"
@@ -14,6 +17,7 @@ const ITEMS_FILE_PATH = "res://Constantes/items.json"
 func _ready():
 	http_request_get_item.request(API_ITEMS_URL)
 	load_player_items()
+	display_player_items()
 	display_craft_options()
 
 func _on_get_item_request_completed(response_code, body):
@@ -21,9 +25,9 @@ func _on_get_item_request_completed(response_code, body):
 		var response_text = body.get_string_from_utf8()
 		var parse_result = JSON.parse_string(response_text)
 		if parse_result:
-			all_item = parse_result
-			print("Items récupérés : ", all_item)
-			for item in all_item:
+			all_items = parse_result
+			print("Items récupérés : ", all_items)
+			for item in all_items:
 				print("Item dispo")
 				print(item["name"])
 		else:
@@ -46,7 +50,7 @@ func load_player_items():
 		
 		if parse_result is Array:
 			player_items = parse_result
-
+			display_player_items()
 			for item in player_items:
 				print(" Nom: ", item["name"])
 				print(" Description: ", item["description"])
@@ -75,3 +79,17 @@ func save_player_inventory():
 	if file:
 		file.store_string(JSON.stringify(player_items))
 		file.close()
+		
+func display_player_items():
+	list_player_items.clear()
+	
+	print("📜 Affichage des items du joueur :")
+	
+	for item in player_items:
+		var texture: Texture
+		if ResourceLoader.exists(item["texture"]):
+			texture = load(item["texture"])
+		else:
+			print(" Texture introuvable pour :", item["name"])
+			texture = null
+		list_player_items.add_item(" x" + str(item["quantity"]), texture)
