@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0l2ugqd86u1l"
-path="res://.godot/imported/Liana.png-025768adff009d6fe63735245ef900dd.ctex"
+uid="uid://dp88ip2atyf1h"
+path="res://.godot/imported/fireball_icon.png-732fc82d09fb5eba03178be7f27055c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Liana.png"
-dest_files=["res://.godot/imported/Liana.png-025768adff009d6fe63735245ef900dd.ctex"]
+source_file="res://Textures/Items/fireball_icon.png"
+dest_files=["res://.godot/imported/fireball_icon.png-732fc82d09fb5eba03178be7f27055c8.ctex"]
 
 [params]
 

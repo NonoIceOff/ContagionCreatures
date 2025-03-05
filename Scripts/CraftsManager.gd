@@ -1,5 +1,5 @@
 extends Node
-class_name CraftsTableManager
+class_name CraftTableManager
 
 var player_inventory = []
 
@@ -15,21 +15,24 @@ var craft_list = {
 			"Herbe": 2,
 			"Eau": 1
 		},
-		"unlock": "Potion"
+		"unlock": "Potion",
+		"texture": "res://Textures/Items/Potion_verte.png"
 	},
 	"Potion défense": {
 		"ingredients": {
 			"Herbe": 1,
 			"Eau": 2
 		},
-		"unlock": "Potion"
+		"unlock": "Potion",
+		"texture" : "res://Textures/Items/potion_defense.png"
 	},
 	"Collier pierro": {
 		"ingredients": {
 			"Liane": 3,
 			"Pierre": 1
 		},
-		"unlock": "Alchimie"
+		"unlock": "Alchimie",
+		"texture" : "res://Textures/Items/necklace.png"
 	},
 	"Herbe medicinale": {
 		"ingredients": {
@@ -38,7 +41,8 @@ var craft_list = {
 			"Poussiere": 1,
 			"Racine ": 1
 		},
-		"unlock": "Herboristerie"
+		"unlock": "Herboristerie",
+		"texture" : "res://Textures/Items/herbe_medicinale.png"
 	}
 }
 
@@ -85,7 +89,7 @@ func load_player_inventory():
 	const ITEMS_FILE_PATH = "res://Constantes/items.json"
 	
 	if not FileAccess.file_exists(ITEMS_FILE_PATH):
-		print(" Fichier d'inventaire introuvable !")
+		print(" Fichier d'inventaire introuvable")
 		return
 	
 	var file = FileAccess.open(ITEMS_FILE_PATH, FileAccess.READ)
@@ -95,8 +99,16 @@ func load_player_inventory():
 		
 		if parse_result is Array:
 			player_inventory = parse_result
-			print(" Inventaire chargé avec succès !")
+			print(" Inventaire chargé avec succès")
 		else:
 			print(" Erreur de parsing JSON")
 	else:
-		print(" Impossible d'ouvrir le fichier !")
+		print(" Impossible d'ouvrir le fichier")
+
+func save_player_inventory():
+	const ITEMS_FILE_PATH = "res://Constantes/items.json"
+	var file = FileAccess.open(ITEMS_FILE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(player_inventory, "\t"))
+		file.close()
+		print(" Inventaire mis à jour dans items.json")

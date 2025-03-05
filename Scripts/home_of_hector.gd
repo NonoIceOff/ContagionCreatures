@@ -29,7 +29,7 @@ func _ready():
 	
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(Controllers.a_input) and piano_in == true:
 		var instance = scene.instantiate()
 		instance.piano_id = 0

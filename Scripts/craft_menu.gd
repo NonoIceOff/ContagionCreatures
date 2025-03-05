@@ -1,4 +1,5 @@
 extends Node2D
+
 @onready var http_request_get_item = $getItem
 # Récupère les items du player 
 var player_items = []  
@@ -8,12 +9,12 @@ var all_item = []
 const API_ITEMS_URL = "https://contagioncreaturesapi.vercel.app/api/items"
 const ITEMS_FILE_PATH = "res://Constantes/items.json"
 
-@onready var craft_manager = CraftsManager
+@onready var craft_manager = CraftTableManager.new()
 
 func _ready():
-	http_request_get_item.request(API_ITEMS_URL)  
+	http_request_get_item.request(API_ITEMS_URL)
 	load_player_items()
-	
+	display_craft_options()
 
 func _on_get_item_request_completed(response_code, body):
 	if response_code == 200:
@@ -51,13 +52,23 @@ func load_player_items():
 				print(" Description: ", item["description"])
 				print(" Mode: ", item["mode"])
 				print(" Texture: ", item["texture"])
-				print("---------")
 		else:
 			print(" Erreur : JSON invalide")
 	else:
 		print(" Impossible d'ouvrir le fichier !")
 	return player_items
 
+func display_craft_options():
+	print(" Affichage des crafts disponibles :")
+	for craft_name in craft_manager.craft_list.keys():
+		print("- " + craft_name)
+
+func attempt_craft(item_name: String):
+	if craft_manager.craft_item(item_name):
+		print(" " + item_name + " a été fabriqué !")
+		save_player_inventory()
+	else:
+		print(" Impossible de fabriquer " + item_name)
 
 func save_player_inventory():
 	var file = FileAccess.open(ITEMS_FILE_PATH, FileAccess.WRITE)
