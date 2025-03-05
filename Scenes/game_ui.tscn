@@ -94,6 +94,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 20.0
+offset_right = 44.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -129,7 +133,7 @@ grow_vertical = 2
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_bottom = 80
 
-[node name="Titre" type="Label" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer"]
+[node name="Title" type="Label" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -231,9 +235,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 40
+theme_override_constants/margin_top = 25
 
-[node name="Titre" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer"]
+[node name="Title" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -244,31 +248,29 @@ theme_override_font_sizes/font_size = 60
 text = "fabrication"
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer"]
+[node name="MainContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer"]
 custom_minimum_size = Vector2(0, 360)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="CraftsList" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="CraftsListContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/HBoxContainer/CraftsList"]
+[node name="CraftsListLabel" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Fabrications disponibles"
 horizontal_alignment = 1
 
-[node name="ItemsList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/HBoxContainer/CraftsList"]
+[node name="CraftsList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
 custom_minimum_size = Vector2(250, 360)
 layout_mode = 2
-item_count = 1
 max_columns = 5
-item_0/text = "item1"
 
-[node name="CraftGrid" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="CraftInfoContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
 layout_mode = 2
 
-[node name="CraftResult" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="RessourcesContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
 layout_mode = 2
 
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
