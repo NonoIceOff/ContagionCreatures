@@ -231,7 +231,7 @@ func load():
 	PlayerStats.health = load_file.get_value("Player", "health", PlayerStats.health)
 	PlayerStats.skin = load_file.get_value("Player", "skin", PlayerStats.skin)
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
-	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
+	PlayerStats.money = load_file.get_value("Player", "money", PlayerStats.money)
 
 	# Application de la position sauvegardée
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
