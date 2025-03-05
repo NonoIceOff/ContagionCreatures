@@ -27,6 +27,7 @@ func _on_joy_connection_changed(device_id: int, connected: bool):
 		notification_controller(Input.get_joy_name(device_id), false)
 
 func notification_controller(controller_name: String, connected: bool):
+	get_node("AudioStreamPlayer2D").play()
 	get_node("ColorRect").visible = true
 	if connected:
 		get_node("ColorRect/Label").text = "Manette '" + controller_name + "' connectée."

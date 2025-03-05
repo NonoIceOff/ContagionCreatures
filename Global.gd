@@ -196,9 +196,9 @@ func update_button_selection() -> void:
 
 
 func pressed_button(button):
-	if get_node_or_null("/root/"+current_map+"/TileMap/Player_One") and paused == true:
+	if get_tree().get_nodes_in_group("Player_One").size() > 0 and paused == true:
 		button.emit_signal("pressed")
-	elif get_node_or_null("/root/"+current_map+"/TileMap/Player_One") == null:
+	elif get_tree().get_nodes_in_group("Player_One").size() == 0:
 		button.emit_signal("pressed")
 
 func save():

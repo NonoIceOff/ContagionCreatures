@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/Minimap_FullMap/add_pin.gd" id="9_mjey4"]
 [ext_resource type="AudioStream" uid="uid://8rqjw6gnc5hh" path="res://Sounds/new_tag.mp3" id="12_gaelq"]
 [ext_resource type="Texture2D" uid="uid://hr8gwy6r0qyt" path="res://Textures/cross.png" id="12_pjqsq"]
-[ext_resource type="Texture2D" uid="uid://cfeyw38ulaxrq" path="res://Textures/Buttons/joypads/joybar_x.png" id="13_kfaom"]
+[ext_resource type="Texture2D" uid="uid://bux8wlh55a6br" path="res://Textures/Buttons/joypads/joybar_x.png" id="13_kfaom"]
 
 [sub_resource type="Animation" id="Animation_2pobh"]
 length = 0.001

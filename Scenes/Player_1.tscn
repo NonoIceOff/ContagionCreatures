@@ -271,6 +271,6 @@ shape = SubResource("RectangleShape2D_d4feh")
 visible = false
 position = Vector2(16, 16)
 scale = Vector2(0.413625, 0.390972)
-color = Color(0.547011, 0.544299, 0, 1)
+color = Color(0.950982, 1, 0.627932, 1)
 energy = 0.5
 texture = ExtResource("6_s8kby")

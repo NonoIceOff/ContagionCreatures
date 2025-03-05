@@ -5,6 +5,7 @@ extends Node2D
 @onready var label_home = $TileMap/house/AreaHome/Label_E_Home
 @onready var player_light = $TileMap/Player_One/PointLight2D
 
+
 var entered = false
 var Key = false
 var scene_load = false
@@ -21,12 +22,17 @@ func _ready() -> void:
 	soundEffect.play()
 
 func _process(delta: float) -> void:
-
+	if Global.current_hour == 20 and Global.current_minute == 0:
+		soundEffect.stream = load("res://Sounds/music/night_sound.mp3")
+		soundEffect.play()
+	if Global.current_hour == 6 and Global.current_minute == 0:
+		soundEffect.stream = load("res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3")
+		soundEffect.play()
 	var joypads = Input.get_connected_joypads()
 	# Interaction avec la maison
 	if Input.is_action_just_pressed("M"):
 		if scene_load == false:
-			var load_scene = preload("res://Scenes/Full_screen_map.tscn")
+			var load_scene = preload("res://Scenes/Full_Screen_map.tscn")
 			var load_instance = load_scene.instantiate()
 			load_instance.position = Vector2(0,0)
 			get_node("ui/Minimap").visible = false

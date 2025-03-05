@@ -14,6 +14,7 @@ var pin_menu = false
 	
 		
 func _ready():
+	get_node("CanvasLayer/InfoTouches/Carte").texture = load(Controllers.x_texture)
 	pin = Global.pin
 	
 	if Global.pinb != Vector2(0,0):

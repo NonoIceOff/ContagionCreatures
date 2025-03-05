@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var particules_neige = $Neige
 @onready var aurora_particles = $Aurore_boreales
 
-
+var is_open = false
 var time_speed = 0.1
 var seconds_per_in_game_minute = 1.0
 
@@ -17,6 +17,19 @@ func _ready() -> void:
 	
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_p"):
+		if is_open:
+			get_node("inv_animal").queue_free()
+		else:
+			print("ouvert")
+			var load_scene = preload("res://Inventory/inv_animals.tscn")
+			var load_instance = load_scene.instantiate()
+			load_instance.position = Vector2(0,0)
+			load_instance.name = "inv_animal"
+			add_child(load_instance)
+			load_instance.get_node("CanvasLayer").visible = true
+		is_open = !is_open
+
 	if Global.current_map != "HomeOfHector":
 		get_node("PanelDate").visible = true
 		get_node("Minimap").visible = true

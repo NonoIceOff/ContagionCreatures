@@ -69,6 +69,7 @@ func _physics_process(delta: float) -> void:
 
 func PauseMenu():
 	print("pause")
+	Global.paused = !Global.paused
 	if Global.paused == true:
 		pause_menu.show()
 		Engine.time_scale = 0
@@ -78,4 +79,4 @@ func PauseMenu():
 		Engine.time_scale = 1
 		Global.can_move = true
 	Global.selected_index = 0
-	Global.paused = !Global.paused
+	
