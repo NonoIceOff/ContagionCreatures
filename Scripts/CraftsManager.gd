@@ -189,11 +189,10 @@ func can_craft(item_name: String) -> bool:
 
 	for ingredient in ingredients:
 		var quantity_needed = ingredients[ingredient]
-		# var found = false
 		for item in player_inventory:
 			print("Vérification de l'ingrédient: ", ingredient, " - Quantité nécessaire: ", quantity_needed, " - Quantité disponible: ", item["quantity"])
 			if item["name"] == ingredient:
-				# found = true
+
 				if item["quantity"] >= quantity_needed:
 					break
 				else:
@@ -202,10 +201,6 @@ func can_craft(item_name: String) -> bool:
 			else :
 				print("Non correspondance de l'ingrédient: ", ingredient, " - Quantité nécessaire: ", quantity_needed, " - Quantité disponible: ", item["quantity"])
 				return false
-		# if not found:
-		# 	print(" Manque de " + ingredient + " pour crafter " + item_name)
-		# 	return false
-
 	print(" Tous les ingrédients sont disponibles pour crafter " + item_name)
 	return true
 
@@ -243,11 +238,3 @@ func load_player_inventory():
 			print(" Erreur de parsing JSON")
 	else:
 		print(" Impossible d'ouvrir le fichier")
-
-func save_player_inventory():
-	const ITEMS_FILE_PATH = "res://Constantes/items.json"
-	var file = FileAccess.open(ITEMS_FILE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_string(JSON.stringify(player_inventory, "\t"))
-		file.close()
-		print(" Inventaire mis à jour dans items.json")

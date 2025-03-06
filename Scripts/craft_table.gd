@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var interact_label = $TableCraftNode2D/TileMapLayer/craftTableArea2D/Interact
+@onready var craft_menu = get_node("../Control/Player_One/player1/2/CanvasLayer/GameUI/PopupMenu/CraftMenuScreenContainer")
+
 var can_interact = false
 
 func _ready() -> void:
@@ -23,5 +25,4 @@ func _on_craft_table_area_2d_body_exited(body: Node2D) -> void:
 		can_interact = false
 
 func load_game_ui_scene() -> void:
-	var game_ui_scene = load("res://Scenes/game_ui.tscn").instantiate()
-	add_child(game_ui_scene)
+	craft_menu.visible = true

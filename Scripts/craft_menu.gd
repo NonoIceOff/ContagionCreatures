@@ -9,6 +9,7 @@ extends Control
 @onready var craft_info_ressources_item_list = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer/ResourcesNeededItemList
 @onready var craftLineEdit = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftLineEdit
 @onready var craft_button = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftButtonContainer/CraftButton
+@onready var exit_button = $CraftMenuScreen/NinePatchRect/ExitButton
 
 # Récupère les items du player
 var player_items = []  
@@ -28,6 +29,7 @@ func _ready():
 	display_all_items()
 	connect("item_selected", Callable(self, "_on_item_selected"))
 	craft_button.connect("pressed", Callable(self, "_on_craft_button_pressed"))
+	exit_button.connect("pressed", Callable(self, "_on_exit_button_pressed"))
 
 func _on_get_item_request_completed(response_code, body):
 	if response_code == 200:
@@ -43,6 +45,9 @@ func _on_get_item_request_completed(response_code, body):
 			print("Erreur : Réponse API invalide")
 	else:
 		print("Erreur HTTP : Code ", response_code)
+
+func _on_exit_button_pressed() -> void:
+	visible = false
 
 func _process(_delta: float) -> void:
 	pass
@@ -68,13 +73,6 @@ func load_player_items():
 	else:
 		print(" Impossible d'ouvrir le fichier !")
 	return player_items
-
-func attempt_craft(item_name: String):
-	if craft_manager.craft_item(item_name):
-		print(" " + item_name + " a été fabriqué !")
-		save_player_inventory()
-	else:
-		print(" Impossible de fabriquer " + item_name)
 
 func save_player_inventory():
 	var file = FileAccess.open(ITEMS_FILE_PATH, FileAccess.WRITE)
@@ -124,13 +122,32 @@ func _on_item_selected(index: int) -> void:
 	craft_info_description_label.text = craft_manager.craft_list[selected_item_name]["description"]
 
 	craft_info_ressources_item_list.clear()
+	var can_craft = true
 	for ressource in item_ressources:
-		var http_request = HTTPRequest.new()
-		add_child(http_request)
-		http_request.connect("request_completed", Callable(self, "_on_get_item_name_request_completed").bind(ressource, item_ressources[ressource]))
-		http_request.request(API_ITEMS_URL)
+		var quantity_needed = item_ressources[ressource]
+		var quantity_available = 0
+		for item in player_items:
+			if item["name"] == ressource:
+				quantity_available = item["quantity"]
+				break
 
-func _on_get_item_name_request_completed(_result, response_code, _headers, body, ressource, quantity):
+		var ressource_text = ressource + " x" + str(quantity_needed)
+		if quantity_available < quantity_needed:
+			ressource_text += " (Manquant)"
+			can_craft = false
+			var item_id = craft_info_ressources_item_list.add_item(ressource_text)
+			craft_info_ressources_item_list.set_item_custom_bg_color(item_id, Color(1, 0, 0))
+		else:
+			var item_id = craft_info_ressources_item_list.add_item(ressource_text)
+			# Récupérer la texture de la ressource
+			var http_request = HTTPRequest.new()
+			add_child(http_request)
+			http_request.connect("request_completed", Callable(self, "_on_get_item_name_request_completed").bind(item_id, ressource, quantity_needed))
+			http_request.request(API_ITEMS_URL)
+
+	craft_button.disabled = not can_craft
+
+func _on_get_item_name_request_completed(_result, response_code, _headers, body, item_id, ressource, quantity_needed):
 	if response_code == 200:
 		var response_text = body.get_string_from_utf8()
 		var parse_result = JSON.parse_string(response_text)
@@ -143,7 +160,7 @@ func _on_get_item_name_request_completed(_result, response_code, _headers, body,
 						ressource_texture = ResourceLoader.load(texture_path)
 					else:
 						print("Erreur : Texture introuvable pour ", ressource, " avec le chemin ", texture_path)
-					craft_info_ressources_item_list.add_item(ressource + " x" + str(quantity), ressource_texture)
+					craft_info_ressources_item_list.set_item_icon(item_id, ressource_texture)
 					return
 			print("Erreur : Ressource non trouvée dans la réponse pour ", ressource)
 		else:
@@ -165,6 +182,13 @@ func _on_craft_button_pressed() -> void:
 		print("Aucun item sélectionné pour le craft")
 
 func _update_inventory(item_name: String):
+	var ingredients = craft_manager.craft_list[item_name]["ingredients"]
+	for ingredient in ingredients:
+		var quantity_needed = ingredients[ingredient]
+		for item in player_items:
+			if item["name"] == ingredient:
+				item["quantity"] -= quantity_needed
+				break
 	var item_found = false
 	for item in player_items:
 		if item["name"] == item_name:

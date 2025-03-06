@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://cgeiuvmq46mhr"]
+[gd_scene load_steps=27 format=3 uid="uid://cgeiuvmq46mhr"]
 
 [ext_resource type="Script" path="res://Scripts/Player_1_Settings.gd" id="1_ny7x7"]
 [ext_resource type="Script" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="4_0rm42"]
 [ext_resource type="Texture2D" uid="uid://droj4wt6rug7e" path="res://Textures/spritePlayer/output/CharacterGame.png" id="5_tjhtf"]
+[ext_resource type="PackedScene" uid="uid://dbefb2mkq4xrv" path="res://Scenes/game_ui.tscn" id="6_64bj6"]
 [ext_resource type="PackedScene" uid="uid://dxt5b5tantpyy" path="res://Scenes/PauseMenu.tscn" id="6_pyjks"]
 [ext_resource type="Texture2D" uid="uid://p838sug386nh" path="res://Textures/light_mask.png" id="6_s8kby"]
 
@@ -255,6 +256,8 @@ zoom = Vector2(1.8, 1.8)
 
 [node name="PauseMenu" parent="player1/2/CanvasLayer" instance=ExtResource("6_pyjks")]
 visible = false
+
+[node name="GameUI" parent="player1/2/CanvasLayer" instance=ExtResource("6_64bj6")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player1"]
 root_node = NodePath("../..")
