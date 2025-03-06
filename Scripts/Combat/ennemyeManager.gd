@@ -10,4 +10,4 @@ func display_enemy_spell(spell_data: Dictionary) -> void:
 	print("Difficulty :", spell_data.difficulty)
 	print("------------")
 
-# Fonction asynchrone pour incrémenter la barre de progression de l'ennemi
+ 
