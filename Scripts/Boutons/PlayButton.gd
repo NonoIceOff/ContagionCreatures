@@ -18,6 +18,11 @@ func _on_pressed():
 	
 
 func load_next_scene():
-	SceneLoader.load_scene("res://Scenes/map3.tscn")
+	Global.load()
+	print(Global.tutorial_stade)
+	if Global.tutorial_stade >= 9-9:
+		SceneLoader.load_scene("res://Scenes/map3.tscn")
+	else:
+		SceneLoader.load_scene("res://Scenes/intro.tscn")
 	get_node("../Sounds").stream = load("res://Sounds/coinc.mp3")
 	get_node("../Sounds").playing = true

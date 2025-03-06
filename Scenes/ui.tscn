@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=20 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_p3l0n"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c0wv3un8wh42k" path="res://Textures/Buttons/joypads/joybar_r.png" id="14_6d7q7"]
 [ext_resource type="Texture2D" uid="uid://da8ubc6ik4rjv" path="res://Textures/Buttons/joypads/joybar_l.png" id="15_x3csd"]
 [ext_resource type="Texture2D" uid="uid://c7uvncushvljk" path="res://Textures/Buttons/joypads/joybar_-.png" id="16_8jrwf"]
+[ext_resource type="Texture2D" uid="uid://b1tpqldiveuik" path="res://Textures/Buttons/keyboard/keyboard_p.png" id="17_de75t"]
 
 [sub_resource type="Curve" id="Curve_qti3j"]
 min_value = -1.0
@@ -71,7 +72,7 @@ scale_amount_max = 3.0
 
 [node name="QuestMenu" parent="." instance=ExtResource("3_850rj")]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." groups=["ui"]]
 self_modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(1632, 48)
 amount = 50
@@ -154,7 +155,7 @@ text = "nom de la quete"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stats" type="Control" parent="."]
+[node name="Stats" type="Control" parent="." groups=["ui"]]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
@@ -187,7 +188,7 @@ offset_bottom = 8.0
 theme_override_font_sizes/font_size = 12
 text = "0"
 
-[node name="PanelDate" type="Panel" parent="."]
+[node name="PanelDate" type="Panel" parent="." groups=["ui"]]
 offset_left = 720.0
 offset_top = 3.0
 offset_right = 1141.0
@@ -224,23 +225,24 @@ points = PackedVector2Array(240, 16, 240, 82.169, 240, 169)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Minimap" parent="." instance=ExtResource("7_e7f4u")]
+[node name="Minimap" parent="." groups=["ui"] instance=ExtResource("7_e7f4u")]
 offset_left = 1664.0
 offset_top = 824.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="InfoTouches" type="Label" parent="."]
+[node name="InfoTouches" type="Label" parent="." groups=["ui"]]
 texture_filter = 1
 offset_left = 64.0
-offset_top = 928.0
+offset_top = 888.0
 offset_right = 246.0
-offset_bottom = 1069.0
+offset_bottom = 1065.0
 theme_override_font_sizes/font_size = 32
 text = "Quêtes
 Pause
 Inventaire
-Carte"
+Carte
+Encyclopédie"
 script = ExtResource("12_7biym")
 
 [node name="Pause" type="Sprite2D" parent="InfoTouches"]
@@ -266,3 +268,9 @@ texture_filter = 1
 position = Vector2(-24, 126)
 scale = Vector2(2, 2)
 texture = ExtResource("16_8jrwf")
+
+[node name="Encyclopédie" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
+position = Vector2(-24, 162)
+scale = Vector2(2, 2)
+texture = ExtResource("17_de75t")

@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	var current_minute = Global.current_minute
 	
 	if Input.is_action_just_pressed("échap"):
+		print("échap")
 		PauseMenu()
 
 	if get_node_or_null("../../ui/Full_Screen_map") == null:
@@ -67,6 +68,8 @@ func _physics_process(delta: float) -> void:
 		#print(player_light.visible)
 
 func PauseMenu():
+	print("pause")
+	Global.paused = !Global.paused
 	if Global.paused == true:
 		pause_menu.show()
 		Engine.time_scale = 0
@@ -75,5 +78,5 @@ func PauseMenu():
 		pause_menu.hide()
 		Engine.time_scale = 1
 		Global.can_move = true
+	Global.selected_index = 0
 	
-	Global.paused = !Global.pause
