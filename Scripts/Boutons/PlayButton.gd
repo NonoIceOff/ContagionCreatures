@@ -20,7 +20,7 @@ func _on_pressed():
 func load_next_scene():
 	Global.load()
 	print(Global.tutorial_stade)
-	if Global.tutorial_stade >= 9:
+	if Global.tutorial_stade >= 9-9:
 		SceneLoader.load_scene("res://Scenes/map3.tscn")
 	else:
 		SceneLoader.load_scene("res://Scenes/intro.tscn")
