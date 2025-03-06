@@ -40,6 +40,8 @@ func start_dialogue(dialogue_data: Array):
 
 ### ✅ **Afficher le dialogue suivant**
 func show_next_dialogue():
+	var random_dialogue_next_sound = randi()%2+1
+	MusicsPlayer.play_sound("res://Sounds/dialogue/dialogue_next"+str(random_dialogue_next_sound)+".mp3","Bus1",1.0,-10.0)
 	if is_typing:
 		return  # Empêche l'affichage multiple
 
@@ -109,6 +111,7 @@ func _on_choice_pressed(choice: Dictionary):
 
 ### ✅ **Terminer le dialogue**
 func end_dialogue():
+	MusicsPlayer.play_sound("res://Sounds/dialogue/dialogue_end.mp3","Bus1",1.0,-10.0)
 	Global.ui_visible = true
 	smooth_zoom(camera[0], 1.8)
 	choices_container.visible = false
@@ -150,15 +153,7 @@ func click_dialogue():
 		show_next_dialogue()
 
 ### ✅ **Exemple de dialogue avec des choix et des actions**
-var dialogue_data = [
-	{"text": "Bonjour, comment ça va ?", "action": "_on_dialogue_start"},
-	{"text": "Je peux vous aider ?"},
-	{"text": "Voulez-vous des informations ?", "choices": [
-		{"text": "Oui", "response": "Voici les informations.", "action": "_on_yes_choice"},
-		{"text": "Non", "response": "D'accord, à bientôt!"}
-	]},
-	{"text": "Fin du dialogue.", "action": "_on_dialogue_end"}
-]
+var dialogue_data = []
 
 ### ✅ **Fonction pour le choix "Oui"**
 func _on_yes_choice():
@@ -167,3 +162,32 @@ func _on_yes_choice():
 ### ✅ **Fonction à la fin du dialogue**
 func _on_dialogue_end():
 	print("Dialogue terminé, action spécifique ici.")
+
+### ✅ **Fonction pour donner un objet au joueur**
+func _on_give_item(item):
+	print("Vous avez reçu l'objet :", item)
+	#Global.inventory.append(item)
+
+### ✅ **Fonction pour débloquer un craft**
+func _on_unlock_craft(craft):
+	print("Vous avez débloqué le craft :", craft)
+	#CraftsManager.acces[craft] = true
+
+### ✅ **Fonction pour soigner le joueur**
+func _on_heal():
+	PlayerStats.health = 100
+	print("Vous avez été soigné !")
+
+### ✅ **Fonction pour donner de l'argent au joueur**
+func _on_give_monney(money):
+	PlayerStats.money += money
+	print("Vous avez reçu", money, "pièces d'or !")
+
+# Fonction qui fait déplacer la caméra vers une position, qui mets en pause le dialogue pendant la durée du déplacement, puis qui revient à la position initiale, et qui reprend le dialogue
+func _on_watch_camera(position:Vector2, speed, duration):
+	is_typing = true 
+	Global.smooth_zoom(camera[0], 3, position, 0.1)
+	await get_tree().create_timer(duration).timeout
+	Global.smooth_zoom(camera[0], 1.8, Vector2(0,0), 0.1)
+	is_typing = false 
+	show_next_dialogue()
