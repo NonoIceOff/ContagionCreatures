@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	if joypads.size() < 1:
 		get_node("Area2D/Interact").texture = load("res://Textures/Buttons/keyboard/keyboard_e.png")
 	else:
-		get_node("Area2D/Interact").texture = load("res://Textures/Buttons/joypads/joybar_a.png")
+		get_node("Area2D/Interact").texture = load(Controllers.a_texture)
 	if Quests.quests.get(quest_id).stade == Quests.quests.get(quest_id).descriptions.size():
 		queue_free()
 	if Input.is_action_just_pressed(Controllers.a_input) and in_area == true and enemy_instance == null:

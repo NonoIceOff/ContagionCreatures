@@ -27,7 +27,7 @@ class Quest:
 	
 	var members_only: bool = false
 
-	func _init(id, title, long_description, descriptions, mini_descriptions, pin_positions, pnj_data, members_only = false):
+	func _init(id, title, long_description, descriptions, mini_descriptions, pin_positions, pnj_data, members_only = false, stade = 0):
 		self.id = id
 		self.title = title
 		self.long_description = long_description
@@ -49,55 +49,56 @@ var bagird_pnj = PNJ.new(
 
 var quests = {}
 
-func _init() -> void:
-	quests[0] = Quest.new(
-		0,
-		"L'aube d'un fléau",
-		"Une nuit étrange s'est abattue sur votre village, Héronbourg. Les animaux qui vivaient en harmonie semblent possédés par une étrange aura violette. Vous vous réveillez ce matin alors que tout bascule...",
-		[
-			"Vous trouvez une poêle dans la cuisine.",
-			"Un Goupil Contaminé surgit devant votre maison, vous devez le combattre !",
-		],
-		[
-			"Trouvez un équipement.",
-			"Affrontez votre premier adversaire !",
-		],
-		[
-			Vector2(3000, 2000), # Maison du joueur
-			Vector2(3500, 2000), # Juste à côté
 
-		],
-		[
-			# PREMIERE PARTIE
-			[
-				bagird_pnj, 
-				[
-					{"text": "Bonjour, comment ça va ?", "action": "_on_dialogue_start"},
-					{"text": "Je peux vous aider ?"},
-					{"text": "Voulez-vous des informations ?", "choices": [
-						{"text": "Oui", "response": "Voici les informations.", "action": "_on_yes_choice"},
-						{"text": "Non", "response": "D'accord, à bientôt!"}
-					]},
-					{"text": "Fin du dialogue.", "action": "_on_dialogue_end"}
-				]
-			],
-			# SECONDE PARTIE
-			[
-				bagird_pnj, 
-				[
-					{"text": "Bonjour 2, comment ça va ?", "action": "_on_dialogue_start"},
-					{"text": "Je peux vous aider ?"},
-					{"text": "Voulez-vous des informations ?", "choices": [
-						{"text": "Oui", "response": "Voici les informations.", "action": "_on_yes_choice"},
-						{"text": "Non", "response": "D'accord, à bientôt!"}
-					]},
-					{"text": "Fin du dialogue.", "action": "_on_dialogue_end"}
-				]
-			]
-		],
-		false # Pas réservé aux membres
+func add_quest(quest_data: Dictionary) -> void:
+	var new_quest = Quest.new(
+		quest_data.get("id"),
+		quest_data.get("title"),
+		quest_data.get("long_description"),
+		quest_data.get("descriptions"),
+		quest_data.get("mini_descriptions"),
+		quest_data.get("pin_positions").map(func(pos): return Vector2(pos.x, pos.y)),
+		quest_data.get("pnj_data").map(func(pnj_entry):
+				var pnj
+				if pnj_entry[0] == "bagird_pnj":
+					pnj = bagird_pnj
+				else:
+					pnj = bagird_pnj
+				return [pnj, pnj_entry[1]],
+			),
+		quest_data.get("members_only", false),
+		quest_data.get("stade", 0)
 	)
+	quests[new_quest.id] = new_quest
 
+func load_quests_from_files() -> void:
+	var directories = ["res://Constantes/Quests/", "user://Quests/"]
+	
+	for dir_path in directories:
+		var dir = DirAccess.open(dir_path)
+		
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".json"):
+					var file_path = dir_path + file_name
+					var file = FileAccess.open(file_path, FileAccess.READ)
+					if file:
+						var json = JSON.new()
+						var parse_result = json.parse(file.get_as_text())
+						if parse_result == OK:
+							add_quest(json.get_data())
+						else:
+							print("Error parsing JSON: ", parse_result)
+						
+						file.close()
+				file_name = dir.get_next()
+			dir.list_dir_end()
+	
+
+func _ready() -> void:
+	load_quests_from_files()
 
 func init_pnj(map):
 	for i in quests.size():
@@ -157,8 +158,6 @@ func quest_finished(i):
 			ui_terminated_quest.get_node("Name").text = quest.title
 			await get_tree().create_timer(5).timeout
 			ui_terminated_quest.visible = false
-
-		Tutorial.get_node(".").tutorials[7]["progress"] += 100
 
 func set_quest(i):
 	var current_map = "/root/" + Global.current_map

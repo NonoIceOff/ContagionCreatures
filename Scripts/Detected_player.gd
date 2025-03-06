@@ -10,7 +10,7 @@ func _ready():
 	if joypads.size() < 1:
 		get_node("Label_E_Home").texture = load("res://Textures/Buttons/keyboard/keyboard_e.png")
 	else:
-		get_node("Label_E_Home").texture = load("res://Textures/Buttons/joypads/joybar_a.png")
+		get_node("Label_E_Home").texture = load(Controllers.a_texture)
 
 func _Zone_Entered(body):
 	if body.is_in_group("Player_One"):
