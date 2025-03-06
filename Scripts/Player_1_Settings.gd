@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var speed: float = 200
 
 @onready var animated_sprite: AnimatedSprite2D = $player1
-@onready var popup_menu = $PopupMenu
+# @onready var game_ui = get_tree().get_root().find_child("GameUI", true, false)
 
 func entered_door():
 	emit_signal("player_entered_door_signal")
@@ -14,8 +14,9 @@ func entered_door():
 func _physics_process(_delta: float) -> void:
 	var input_velocity = Vector2.ZERO
 	
-	if Input.is_action_just_pressed("échap"):
-		pass
+	if Input.is_action_just_pressed("échap") and GameUI:
+		if GameUI.pause_menu:
+			GameUI.toggle_visibility(GameUI.pause_menu)
 
 	if get_node_or_null("../../ui/Full_Screen_map") == null:
 		if Input.is_action_pressed("droite"):
