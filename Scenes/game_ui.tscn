@@ -624,7 +624,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PopupMenu" type="MarginContainer" parent="."]
+[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -632,6 +632,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xtvsa")
+pause_menu = NodePath("PauseMenuScreenContainer")
+craft_menu = NodePath("CraftMenuScreenContainer")
+settings_menu = NodePath("SettingsMenuScreenContainer")
+controls_settings = NodePath("ControlsSettingsScreenContainer2")
 
 [node name="PauseMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
 visible = false
@@ -1036,6 +1040,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
 text = "RETOUR"
 
 [node name="ControlsSettingsScreenContainer2" type="VBoxContainer" parent="PopupMenu"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1348,10 +1353,10 @@ layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxTexture_nhswb")
 
-[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/MainMenuButton" to="." method="_on_mainmenu_button_pressed"]
+[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/PlayButton" to="PopupMenu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SaveButton" to="PopupMenu" method="_on_save_button_pressed"]
+[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SettingsButton" to="PopupMenu" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/MainMenuButton" to="PopupMenu" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/ControlsButton" to="PopupMenu" method="_on_controls_button_pressed"]
 [connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/LanguageButton" to="PopupMenu" method="_on_language_button_pressed"]
 [connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/AppearanceButton" to="PopupMenu" method="_on_appearance_button_pressed"]

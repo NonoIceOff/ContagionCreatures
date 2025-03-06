@@ -14,22 +14,25 @@ func toggle_visibility(object):
 
 
 
-
 # Pause menu
 
 func _on_play_button_pressed() -> void:
-	pass
+	toggle_visibility(pause_menu)
+	Engine.time_scale = 1
+	Global.can_move = true
 
 
 func _on_save_button_pressed() -> void:
-	pass
+	Global.save
+	print("Données sauvegardées")
 
 
 func _on_settings_button_pressed() -> void:
-	pass
+	toggle_visibility(pause_menu)
+	toggle_visibility(settings_menu)
 
 
-func _on_mainmenu_button_pressed() -> void:
+func _on_main_menu_button_pressed() -> void:
 	pass
 
 
@@ -37,7 +40,8 @@ func _on_mainmenu_button_pressed() -> void:
 # Settings menu
 
 func _on_controls_button_pressed() -> void:
-	pass
+	toggle_visibility(settings_menu)
+	toggle_visibility(controls_settings)
 
 
 func _on_appearance_button_pressed() -> void:
@@ -49,7 +53,8 @@ func _on_language_button_pressed() -> void:
 
 
 func _on_settings_menu_back_button_pressed() -> void:
-	pass
+	toggle_visibility(settings_menu)
+	toggle_visibility(pause_menu)
 
 
 
@@ -71,10 +76,6 @@ func _on_controls_right_button_pressed() -> void:
 	pass
 
 
-func _on_controls_back_button_pressed() -> void:
-	pass
-
-
 func _on_controls_quests_button_pressed() -> void:
 	pass
 
@@ -89,3 +90,8 @@ func _on_controls_inventory_button_pressed() -> void:
 
 func _on_controls_interact_button_pressed() -> void:
 	pass
+	
+
+func _on_controls_back_button_pressed() -> void:
+	toggle_visibility(controls_settings)
+	toggle_visibility(settings_menu)
