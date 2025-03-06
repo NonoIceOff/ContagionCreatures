@@ -15,36 +15,161 @@ var craft_list = {
 			"Herbe": 2,
 			"Eau": 1
 		},
+		"mode": "ressource",
+		"description": "Une potion magique qui restaure instantanément 50 points de vie.",
 		"unlock": "Potion",
-		"texture": "res://Textures/Items/Potion_verte.png"
+		"texture": "res://Textures/Items/Potion_verte.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
+	},
+	"Bow": {
+		"ingredients": {
+			"Liane": 7,
+			"Collier pierro": 1
+		},
+		"mode": "ressource",
+		"description": "Un arc robuste fabriqué avec des lianes résistantes. Idéal pour les attaques à distance.",
+		"unlock": "Alchimie",
+		"texture": "res://Textures/Items/ARC.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
 	},
 	"Potion défense": {
 		"ingredients": {
 			"Herbe": 1,
 			"Eau": 2
 		},
+		"mode": "ressource",
+		"description": "Une potion rare qui augmente votre défense temporairement de 20%.",
 		"unlock": "Potion",
-		"texture" : "res://Textures/Items/potion_defense.png"
+		"texture": "res://Textures/Items/Gemme_bleu.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
 	},
 	"Collier pierro": {
 		"ingredients": {
 			"Liane": 3,
 			"Pierre": 1
 		},
+		"mode": "ressource",
+		"description": "Un collier orné d'une pierre précieuse qui améliore votre concentration.",
 		"unlock": "Alchimie",
-		"texture" : "res://Textures/Items/necklace.png"
+		"texture": "res://Textures/Items/collierPierro.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
 	},
 	"Herbe medicinale": {
 		"ingredients": {
 			"Herbe": 1,
 			"Eau": 1,
 			"Poussiere": 1,
-			"Racine ": 1
+			"Racine": 1
 		},
+		"mode": "ressource",
+		"description": "Une herbe rare utilisée dans la préparation de potions puissantes.",
 		"unlock": "Herboristerie",
-		"texture" : "res://Textures/Items/herbe_medicinale.png"
+		"texture": "res://Textures/Items/Apple.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
+	},
+	"Kollier pierro": {
+		"ingredients": {
+			"Liane": 3,
+			"Pierre": 1
+		},
+		"mode": "ressource",
+		"description": "Un collier légèrement différent du modèle original, conférant une aura magique.",
+		"unlock": "Alchimie",
+		"texture": "res://Textures/Items/collierPierro.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
+	},
+	"Qollier pierro": {
+		"ingredients": {
+			"Liane": 3,
+			"Pierre": 1
+		},
+		"mode": "ressource",
+		"description": "Un collier orné d’une pierre mystique augmentant l'intelligence du porteur.",
+		"unlock": "Alchimie",
+		"texture": "res://Textures/Items/collierPierro.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
+	},
+	"Pollier pierro": {
+		"ingredients": {
+			"Liane": 3,
+			"Pierre": 1
+		},
+		"mode": "ressource",
+		"description": "Un bijou élégant qui amplifie les effets des potions consommées.",
+		"unlock": "Alchimie",
+		"texture": "res://Textures/Items/collierPierro.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
+	},
+	"Mollier pierro": {
+		"ingredients": {
+			"Liane": 3,
+			"Pierre": 1
+		},
+		"mode": "ressource",
+		"description": "Un collier rare qui améliore la vitesse et l'agilité du porteur.",
+		"unlock": "Alchimie",
+		"texture": "res://Textures/Items/collierPierro.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
+	},
+	"Zollier pierro": {
+		"ingredients": {
+			"Liane": 3,
+			"Pierre": 1
+		},
+		"mode": "ressource",
+		"description": "Un collier ancien capable d’absorber une partie des dégâts subis.",
+		"unlock": "Alchimie",
+		"texture": "res://Textures/Items/collierPierro.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
+	},
+	"Tollier pierro": {
+		"ingredients": {
+			"Liane": 3,
+			"Pierre": 1
+		},
+		"mode": "ressource",
+		"description": "Un collier doté d'un enchantement de protection magique.",
+		"unlock": "Alchimie",
+		"texture": "res://Textures/Items/collierPierro.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
+	},
+	"Jollier pierro": {
+		"ingredients": {
+			"Liane": 3,
+			"Pierre": 1
+		},
+		"mode": "ressource",
+		"description": "Un collier mystique dont l'origine est inconnue, imprégné d’une magie mystérieuse.",
+		"unlock": "Alchimie",
+		"texture": "res://Textures/Items/collierPierro.png",
+		"price": 10,
+		"type": "type",
+		"coef": 1
 	}
 }
+
 
 func _ready():
 	load_player_inventory()
@@ -64,14 +189,22 @@ func can_craft(item_name: String) -> bool:
 
 	for ingredient in ingredients:
 		var quantity_needed = ingredients[ingredient]
-		var found = false
+		# var found = false
 		for item in player_inventory:
-			if item["name"] == ingredient and item["quantity"] >= quantity_needed:
-				found = true
-				break
-		if not found:
-			print(" Manque de " + ingredient + " pour crafter " + item_name)
-			return false
+			print("Vérification de l'ingrédient: ", ingredient, " - Quantité nécessaire: ", quantity_needed, " - Quantité disponible: ", item["quantity"])
+			if item["name"] == ingredient:
+				# found = true
+				if item["quantity"] >= quantity_needed:
+					break
+				else:
+					print(" Manque de " + ingredient + " pour crafter " + item_name)
+					return false
+			else :
+				print("Non correspondance de l'ingrédient: ", ingredient, " - Quantité nécessaire: ", quantity_needed, " - Quantité disponible: ", item["quantity"])
+				return false
+		# if not found:
+		# 	print(" Manque de " + ingredient + " pour crafter " + item_name)
+		# 	return false
 
 	print(" Tous les ingrédients sont disponibles pour crafter " + item_name)
 	return true

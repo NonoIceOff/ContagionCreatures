@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dbefb2mkq4xrv"]
+[gd_scene load_steps=24 format=3 uid="uid://dbefb2mkq4xrv"]
 
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_r7j8k"]
 [ext_resource type="Script" path="res://Scenes/game_ui.gd" id="1_xtvsa"]
-[ext_resource type="Texture2D" uid="uid://cnj2e50esfuhx" path="res://Textures/Items/ARC.png" id="3_pormx"]
 [ext_resource type="Script" path="res://Scripts/craft_menu.gd" id="3_qq716"]
+[ext_resource type="FontFile" uid="uid://bd7xb0xeb5ibh" path="res://Textures/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="4_sk4gx"]
+[ext_resource type="Script" path="res://Scripts/search_craft.gd" id="5_mixql"]
 
 [sub_resource type="FontFile" id="FontFile_kg5o7"]
 cache/0/60/0/ascent = 0.0
@@ -204,12 +205,17 @@ cache/0/25/0/underline_position = 0.0
 cache/0/25/0/underline_thickness = 0.0
 cache/0/25/0/scale = 1.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhkrt"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(341, 6, 38, 4)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jarj"]
 texture = ExtResource("1_r7j8k")
 region_rect = Rect2(301, 108, 22, 23)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v2xow"]
 texture = ExtResource("1_r7j8k")
+texture_margin_left = 1.0
 region_rect = Rect2(252.534, 12.1623, 21.11, 22.6334)
 
 [sub_resource type="FontFile" id="FontFile_50yd6"]
@@ -356,17 +362,19 @@ cache/0/14/0/underline_position = 0.0
 cache/0/14/0/underline_thickness = 0.0
 cache/0/14/0/scale = 1.0
 
-[sub_resource type="FontFile" id="FontFile_cwayb"]
-cache/0/14/0/ascent = 0.0
-cache/0/14/0/descent = 0.0
-cache/0/14/0/underline_position = 0.0
-cache/0/14/0/underline_thickness = 0.0
-cache/0/14/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qvf72"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37uvl"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(568, 195, 35, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_csvnq"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(11, 107, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_chosw"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(568, 195, 35, 18)
 
 [sub_resource type="FontFile" id="FontFile_bp8o0"]
 cache/0/16/0/ascent = 0.0
@@ -405,8 +413,9 @@ cache/0/25/0/underline_position = 0.0
 cache/0/25/0/underline_thickness = 0.0
 cache/0/25/0/scale = 1.0
 
-[sub_resource type="Theme" id="Theme_ln13t"]
-CheckButton/styles/normal = null
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s83ah"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(341, 6, 38, 4)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ksaeg"]
 content_margin_left = 10.0
@@ -605,13 +614,27 @@ theme_override_font_sizes/font_size = 25
 text = "Fabrications disponibles"
 horizontal_alignment = 1
 
+[node name="CraftLineEdit" type="LineEdit" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_sk4gx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xhkrt")
+alignment = 1
+script = ExtResource("5_mixql")
+
 [node name="CraftsList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(380, 700)
 layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_margin = 25
+theme_override_constants/v_separation = 15
+theme_override_constants/h_separation = 15
 theme_override_styles/panel = SubResource("StyleBoxTexture_8jarj")
-item_count = 1
-max_columns = 5
+same_column_width = true
+fixed_column_width = 102
+fixed_icon_size = Vector2i(105, 60)
 
 [node name="CraftInfoContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
 layout_mode = 2
@@ -642,7 +665,6 @@ texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("3_pormx")
 
 [node name="CraftInfoLabel" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftNamePreviewContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -650,7 +672,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = SubResource("FontFile_50yd6")
 theme_override_font_sizes/font_size = 20
-text = "Arc en bois de mauvaise qualité"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -670,26 +691,23 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = SubResource("FontFile_4r40u")
 theme_override_font_sizes/font_size = 14
-text = "dgsgdfsedgfsedfsgsefsfsfsfdfsfddfdfdgsgsgsgsdgsdgsdgsdgsdgdsgsdgdsgsdgsdgsdgsdgsdgsdgsdgsdgsdgdsgsgsgddsgdsffEGuk:dviulsdjhvfhjksqlbvkjdsebfdskjhebfkldjnshsbgbqslkugkljbnqsrjgbjklfjgqbjlkjhfgbnjqjrgbnjfkjbjrkgjfbjqdjrgbjnfjdkqrbjgnfjkdqrbnjkgjkfdbjnrgjfdjbnkrjgkfjbkdjqrgjbjfkdqbjrjgfjbdkqkrgjbkfjdkrgbsdjbsdnsjkbdkhqvbkhjsdfvbjhkqsvbdjh;vsbqhjvbzd;jkhsvqjk;hzbvdkj;hsbqkzbdkhjsqbhzdshqbzjhdbshjkqbgquiygdiufsgqiyziduhshqizhdklshquiohzdhsuqhzhduoishqzdhshuqizhdshqoiuzhdosiqozihdoishqiozhdioshqiohzodhsohqozihdoishqozidhisqhozlidhsiqhozdhsqiozdhosiqhzodhsoqozhdshqozhdqdyduiyfisfdlsblkefkjdsbekjfbdjsekfbduseujfdujsbefojdklsbeflkdsbekufbdklsbefkudsbekufsf"
-autowrap_mode = 1
+autowrap_mode = 3
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer"]
+[node name="ResourcesNeededItemList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="ResourcesNeeded" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer/ScrollContainer2"]
-custom_minimum_size = Vector2(220, 150)
-layout_mode = 2
-theme_override_fonts/font = SubResource("FontFile_cwayb")
-theme_override_font_sizes/font_size = 14
-text = "- Ressource 1
-- Ressource 2
-- Ressource 3
-- Ressource 4
-- Ressource 5
-- Ressource 6
-- Ressource 7
-- Ressource 8"
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_margin = 12
+theme_override_constants/v_separation = 15
+theme_override_constants/h_separation = 15
+theme_override_font_sizes/font_size = 17
+theme_override_styles/panel = SubResource("StyleBoxTexture_qvf72")
+max_columns = 3
+same_column_width = true
+fixed_column_width = 100
+fixed_icon_size = Vector2i(40, 40)
 
 [node name="CraftButtonContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 85)
@@ -701,6 +719,10 @@ custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_37uvl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_csvnq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_chosw")
 text = "CRAFT"
 
 [node name="ResourcesContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
@@ -715,26 +737,38 @@ theme_override_font_sizes/font_size = 25
 text = "Ressources
 "
 
+[node name="RessourcesLineEdit" type="LineEdit" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_sk4gx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_s83ah")
+alignment = 1
+
 [node name="ResourcesList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(380, 700)
 layout_mode = 2
-theme = SubResource("Theme_ln13t")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/icon_margin = -6
 theme_override_constants/v_separation = 15
 theme_override_constants/h_separation = 15
 theme_override_styles/panel = SubResource("StyleBoxTexture_ksaeg")
 theme_override_styles/selected_focus = SubResource("StyleBoxTexture_g37xr")
-max_columns = 5
+max_columns = 3
 same_column_width = true
 fixed_column_width = 102
 fixed_icon_size = Vector2i(60, 60)
 
 [node name="getItem" type="HTTPRequest" parent="PopupMenu/CraftMenuScreenContainer"]
 
+[node name="getItemName" type="HTTPRequest" parent="PopupMenu/CraftMenuScreenContainer"]
+
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/MainMenuButton" to="." method="_on_mainmenu_button_pressed"]
+[connection signal="text_changed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftLineEdit" to="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftLineEdit" method="_on_text_changed"]
+[connection signal="item_selected" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftsList" to="PopupMenu/CraftMenuScreenContainer" method="_on_item_selected"]
+[connection signal="pressed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftButtonContainer/CraftButton" to="PopupMenu/CraftMenuScreenContainer" method="_on_craft_button_pressed"]
 [connection signal="request_completed" from="PopupMenu/CraftMenuScreenContainer/getItem" to="PopupMenu/CraftMenuScreenContainer" method="_on_get_item_request_completed"]
+[connection signal="request_completed" from="PopupMenu/CraftMenuScreenContainer/getItemName" to="PopupMenu/CraftMenuScreenContainer" method="_on_get_item_name_request_completed"]
