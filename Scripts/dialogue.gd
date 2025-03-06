@@ -12,8 +12,26 @@ var pnj_name = ""
 var typing_speed : float = 0.03  # Vitesse d'affichage progressive (optionnel)
 var is_typing : bool = false  # Vérifie si un texte est en cours d'affichage
 
+var camera = []
+
+func _ready() -> void:
+	camera = get_tree().get_nodes_in_group("camera")
+	
+	
+
+func smooth_zoom(camera, zoom):
+	var zoom_speed = 0.1
+	var zoom_target = zoom
+	var zoom_current = camera.zoom
+	while zoom_current.distance_to(Vector2(zoom_target, zoom_target)) > 0.01:
+		zoom_current = lerp(zoom_current, Vector2(zoom_target, zoom_target), zoom_speed)
+		camera.zoom = zoom_current
+		await get_tree().create_timer(0.01).timeout
+
 ### ✅ **Démarrer un dialogue**
 func start_dialogue(dialogue_data: Array):
+	Global.ui_visible = false
+	smooth_zoom(camera[0], 3)
 	get_node("Label").text = pnj_name
 	dialogues = dialogue_data
 	current_dialogue = 0
@@ -91,8 +109,14 @@ func _on_choice_pressed(choice: Dictionary):
 
 ### ✅ **Terminer le dialogue**
 func end_dialogue():
+	Global.ui_visible = true
+	smooth_zoom(camera[0], 1.8)
 	choices_container.visible = false
 	dialogue_label.text = "Fin du dialogue."
+
+	visible = false
+	await get_tree().create_timer(1).timeout
+	
 	if Quests.quests.get(Quests.current_quest_id).stade != Quests.quests.get(Quests.current_quest_id).descriptions.size():
 		if Quests.quests.get(Quests.current_quest_id).stade != Quests.quests.get(Quests.current_quest_id).descriptions.size()-1:
 			Quests.advance_stade(Quests.current_quest_id)
@@ -101,7 +125,6 @@ func end_dialogue():
 			Quests.quests.get(Quests.current_quest_id).finished = true
 			Quests.delete_pnj(Global.current_map, Quests.current_quest_id)
 			Quests.current_quest_id = -1
-
 	queue_free()
 
 

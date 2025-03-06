@@ -9,6 +9,7 @@ extends Node2D
 var entered = false
 var Key = false
 var scene_load = false
+var camera = []
 
 func _ready() -> void:
 	Global.current_map = self.name
@@ -20,8 +21,29 @@ func _ready() -> void:
 	transition_scene.play("transition_to_screen")
 	await get_tree().create_timer(0.3).timeout
 	soundEffect.play()
+	camera = get_tree().get_nodes_in_group("camera")
+	#Global.smooth_zoom(camera[0], 1.5, Vector2(1150, 650),0.01)
 
+var camera_id = 0
 func _process(delta: float) -> void:
+	camera = get_tree().get_nodes_in_group("camera")
+	
+	
+	match Global.tutorial_stade:
+		9:
+			if camera_id == 0:
+				Global.smooth_zoom(camera[0], 1, Vector2(1150, 650),0.01)
+				camera_id = 1
+				await get_tree().create_timer(10).timeout
+				Global.tutorial_stade = 10
+		10:
+			if camera_id == 1:
+				Global.smooth_zoom(camera[0], 1.8, Vector2(0, 0),0.01)
+				camera_id = 2
+				await get_tree().create_timer(10).timeout
+				Global.tutorial_stade = 11
+			
+				
 	if Global.current_hour == 20 and Global.current_minute == 0:
 		soundEffect.stream = load("res://Sounds/music/night_sound.mp3")
 		soundEffect.play()

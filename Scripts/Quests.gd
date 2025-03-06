@@ -27,7 +27,7 @@ class Quest:
 	
 	var members_only: bool = false
 
-	func _init(id, title, long_description, descriptions, mini_descriptions, pin_positions, pnj_data, members_only = false):
+	func _init(id, title, long_description, descriptions, mini_descriptions, pin_positions, pnj_data, members_only = false, stade = 0):
 		self.id = id
 		self.title = title
 		self.long_description = long_description
@@ -95,7 +95,8 @@ func _init() -> void:
 				]
 			]
 		],
-		false # Pas réservé aux membres
+		false, # Pas réservé aux membres,
+		0
 	)
 
 
@@ -157,8 +158,6 @@ func quest_finished(i):
 			ui_terminated_quest.get_node("Name").text = quest.title
 			await get_tree().create_timer(5).timeout
 			ui_terminated_quest.visible = false
-
-		Tutorial.get_node(".").tutorials[7]["progress"] += 100
 
 func set_quest(i):
 	var current_map = "/root/" + Global.current_map

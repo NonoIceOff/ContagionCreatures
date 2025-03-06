@@ -29,17 +29,19 @@ func _process(delta: float) -> void:
 			load_instance.get_node("CanvasLayer").visible = true
 		is_open = !is_open
 
-	if Global.current_map != "HomeOfHector":
-		get_node("PanelDate").visible = true
-		get_node("Minimap").visible = true
-	else: 
-		get_node("PanelDate").visible = false
-		get_node("Minimap").visible = false
-	if Quests.current_quest_id > -1 and get_node_or_null("CPUParticles2D") != null:
-		get_node("CPUParticles2D").visible = true
-		get_node("CPUParticles2D/QuestTextBar").text = "[right][rainbow freq=0.05]"+tr(Quests.quests[Quests.current_quest_id]["title"])+" [/rainbow]\n[color=white][i]"+tr(Quests.quests[Quests.current_quest_id]["mini_descriptions"][Quests.quests[Quests.current_quest_id]["stade"]])
+	var panel_date = get_node("PanelDate")
+	var minimap = get_node("Minimap")
+	var quest_particles = get_node_or_null("CPUParticles2D")
+
+	panel_date.visible = Global.ui_visible and Global.current_map != "HomeOfHector"
+	minimap.visible = Global.ui_visible and Global.current_map != "HomeOfHector"
+
+	if Quests.current_quest_id > -1 and quest_particles != null:
+		quest_particles.visible = true
+		quest_particles.get_node("QuestTextBar").text = "[right][rainbow freq=0.05]" + tr(Quests.quests[Quests.current_quest_id]["title"]) + " [/rainbow]\n[color=white][i]" + tr(Quests.quests[Quests.current_quest_id]["mini_descriptions"][Quests.quests[Quests.current_quest_id]["stade"]])
 	else:
-		get_node("CPUParticles2D").visible = false
+		if quest_particles != null:
+			quest_particles.visible = false
 
 func advance_time() -> void:
 	while true:

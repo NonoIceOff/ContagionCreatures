@@ -84,7 +84,6 @@ func _process(delta):
 			close()
 		else:
 			open()
-			Tutorial.get_node(".").tutorials[6]["progress"] += 100
 	
 	for i in Quests.quests.keys():
 		var panel = get_node_or_null("ScrollContainer/VBoxContainer/Panel" + str(i))
