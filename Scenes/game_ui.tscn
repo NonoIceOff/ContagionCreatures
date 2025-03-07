@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Scripts/search_ressources.gd" id="6_a4b4q"]
 
 [sub_resource type="FontFile" id="FontFile_kg5o7"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/60/0/ascent = 0.0
 cache/0/60/0/descent = 0.0
 cache/0/60/0/underline_position = 0.0
@@ -65,6 +68,9 @@ cache/0/51/0/underline_thickness = 0.0
 cache/0/51/0/scale = 1.0
 
 [sub_resource type="FontFile" id="FontFile_7wjhh"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/40/0/ascent = 0.0
 cache/0/40/0/descent = 0.0
 cache/0/40/0/underline_position = 0.0
@@ -97,6 +103,9 @@ texture = ExtResource("1_r7j8k")
 region_rect = Rect2(839, 37, 18, 20)
 
 [sub_resource type="FontFile" id="FontFile_7tcmm"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -256,6 +265,9 @@ texture_margin_left = 1.0
 region_rect = Rect2(252.534, 12.1623, 21.11, 22.6334)
 
 [sub_resource type="FontFile" id="FontFile_50yd6"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -368,6 +380,9 @@ cache/0/23/0/underline_thickness = 0.0
 cache/0/23/0/scale = 1.0
 
 [sub_resource type="FontFile" id="FontFile_4r40u"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/10/0/ascent = 0.0
 cache/0/10/0/descent = 0.0
 cache/0/10/0/underline_position = 0.0
@@ -414,6 +429,9 @@ texture = ExtResource("1_r7j8k")
 region_rect = Rect2(568, 195, 35, 18)
 
 [sub_resource type="FontFile" id="FontFile_bp8o0"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0

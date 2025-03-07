@@ -209,7 +209,7 @@ func save():
 	save_file.set_value("Player", "health", PlayerStats.health)
 	save_file.set_value("Player", "skin", PlayerStats.skin)
 	save_file.set_value("Player", "level", PlayerStats.level)
-	save_file.set_value("Player", "monnaie", PlayerStats.monnaie)
+	save_file.set_value("Player", "monnaie", PlayerStats.money)
 
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
