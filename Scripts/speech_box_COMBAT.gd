@@ -38,7 +38,7 @@ func _process(delta):
 		get_node("TextsBox/Choices").visible = false
 		get_node("TextsBox/ChoicesTexts").visible = false
 
-	if Input.is_action_just_pressed("ui_interact"):
+	if Input.is_action_just_pressed(Controllers.a_input):
 		if texts.size() > actual_text:
 			if not texts[actual_text]["has_choices"]:
 				get_node("TextsBox/Label").visible_ratio = 0

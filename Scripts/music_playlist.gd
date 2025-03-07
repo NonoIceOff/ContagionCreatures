@@ -31,6 +31,7 @@ func _ready() -> void:
 	for i in musics:
 		var box = Button.new()
 		box.name = "Box_" + str(i)
+		box.add_to_group("buttons")
 		box.custom_minimum_size = Vector2(564, 128)
 		
 		var title = Label.new()
@@ -71,3 +72,7 @@ func _process(delta: float) -> void:
 func _on_pause_pressed() -> void:
 	audio_player.stream_paused = !audio_player.stream_paused
 	pause_button.text = "II" if !audio_player.stream_paused else ">"
+
+
+func _on_tree_entered() -> void:
+	Global.selected_index = 0

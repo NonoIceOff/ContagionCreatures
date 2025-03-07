@@ -1,23 +1,21 @@
-[gd_scene load_steps=28 format=3 uid="uid://dlj82x8ysevhm"]
+[gd_scene load_steps=25 format=3 uid="uid://dlj82x8ysevhm"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_3sngr"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_43l4o"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_buk1w"]
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
 [ext_resource type="Texture2D" uid="uid://w5m4hlt7dhrk" path="res://logo.png" id="2_2tqwl"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_j62ra"]
-[ext_resource type="Script" path="res://Scripts/Boutons/PlayButton.gd" id="2_soydd"]
 [ext_resource type="Script" path="res://Scenes/SettingsButton.gd" id="3_4a2ih"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="4_4gslj"]
-[ext_resource type="Script" path="res://Scripts/Titre.gd" id="4_qccqg"]
-[ext_resource type="Script" path="res://Scripts/PlayMulti.gd" id="4_xyknk"]
-[ext_resource type="Script" path="res://Scripts/DeleteSave.gd" id="8_5568m"]
-[ext_resource type="Script" path="res://Scripts/Boutons/musicsbutton.gd" id="12_uqoq6"]
+[ext_resource type="Script" path="res://Scripts/Boutons/PlayButton.gd" id="5_ke7wv"]
+[ext_resource type="Script" path="res://Scripts/PlayMulti.gd" id="6_xn2ou"]
+[ext_resource type="Script" path="res://Scripts/Boutons/musicsbutton.gd" id="10_8uf3i"]
 [ext_resource type="Script" path="res://Scenes/Settings_Credits.gd" id="12_yb7yn"]
+[ext_resource type="Script" path="res://Scripts/DiscordRez.gd" id="13_q7uu7"]
 [ext_resource type="Texture2D" uid="uid://bv55etaq3hgwq" path="res://Textures/user_profile.png" id="14_3buyc"]
+[ext_resource type="Script" path="res://Scripts/InstagramRez.gd" id="15_avs4k"]
 [ext_resource type="Texture2D" uid="uid://d1g423653v4tm" path="res://Textures/discord.png" id="19_hhkdv"]
-[ext_resource type="Script" path="res://Scripts/DiscordRez.gd" id="21_nx528"]
 [ext_resource type="Texture2D" uid="uid://crj8d71jcq7lc" path="res://Textures/Instagram.png" id="22_4l4g4"]
-[ext_resource type="Script" path="res://Scripts/InstagramRez.gd" id="22_dautx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvldv"]
 bg_color = Color(1, 1, 1, 1)
@@ -83,11 +81,9 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="GDScript" id="GDScript_0xfd2"]
-
 [node name="Menu" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_3sngr")
+script = ExtResource("1_43l4o")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -159,9 +155,8 @@ text = "CONTAGION CREATURES"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-script = ExtResource("4_qccqg")
 
-[node name="Play" type="Button" parent="."]
+[node name="Play" type="Button" parent="." groups=["buttons"]]
 offset_left = 112.0
 offset_top = 448.0
 offset_right = 896.0
@@ -172,9 +167,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "SOLO"
-script = ExtResource("2_soydd")
+script = ExtResource("5_ke7wv")
 
-[node name="PlayMulti" type="Button" parent="."]
+[node name="PlayMulti" type="Button" parent="." groups=["buttons"]]
 offset_left = 112.0
 offset_top = 544.0
 offset_right = 896.0
@@ -186,9 +181,9 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "MULTIPLAYER"
 expand_icon = true
-script = ExtResource("4_xyknk")
+script = ExtResource("6_xn2ou")
 
-[node name="Settings" type="Button" parent="."]
+[node name="Settings" type="Button" parent="." groups=["buttons"]]
 offset_left = 301.0
 offset_top = 704.0
 offset_right = 725.0
@@ -204,7 +199,7 @@ script = ExtResource("3_4a2ih")
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4gslj")
 
-[node name="Credits" type="Button" parent="."]
+[node name="Credits" type="Button" parent="." groups=["buttons"]]
 offset_left = 400.0
 offset_top = 832.0
 offset_right = 625.0
@@ -216,7 +211,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_gnwub")
 text = "CREDITS"
 script = ExtResource("12_yb7yn")
 
-[node name="Musics" type="Button" parent="."]
+[node name="Musics" type="Button" parent="." groups=["buttons"]]
 offset_left = 400.0
 offset_top = 888.0
 offset_right = 625.0
@@ -226,9 +221,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gnwub")
 text = "OST"
-script = ExtResource("12_uqoq6")
+script = ExtResource("10_8uf3i")
 
-[node name="DeleteSave" type="Button" parent="."]
+[node name="DeleteSave" type="Button" parent="." groups=["buttons"]]
 offset_left = 1280.0
 offset_top = 536.0
 offset_right = 1664.0
@@ -239,7 +234,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7dkss")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wlqyn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lsl8i")
 text = "DELETE_SAVE"
-script = ExtResource("8_5568m")
 
 [node name="Label" type="Label" parent="DeleteSave"]
 layout_mode = 0
@@ -258,10 +252,10 @@ offset_top = 1040.0
 offset_right = 1904.0
 offset_bottom = 1075.0
 theme_override_font_sizes/font_size = 32
-text = "VERSION DE NOVEMBRE 2024"
+text = "VERSION DE MARS 2025"
 horizontal_alignment = 2
 
-[node name="Profile" type="Button" parent="."]
+[node name="Profile" type="Button" parent="." groups=["buttons"]]
 offset_left = 1280.0
 offset_top = 648.0
 offset_right = 1664.0
@@ -274,7 +268,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "votre profil"
 icon = ExtResource("14_3buyc")
 expand_icon = true
-script = SubResource("GDScript_0xfd2")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="Profile"]
 
@@ -296,7 +289,7 @@ offset_bottom = 856.0
 theme_override_font_sizes/font_size = 64
 text = "TEXT_SOCIAL_MEDIAS"
 
-[node name="Discord" type="Button" parent="Reseaux"]
+[node name="Discord" type="Button" parent="Reseaux" groups=["buttons"]]
 layout_mode = 0
 offset_left = -32.0
 offset_top = 80.0
@@ -310,9 +303,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "DISCORD"
 icon = ExtResource("19_hhkdv")
 expand_icon = true
-script = ExtResource("21_nx528")
+script = ExtResource("13_q7uu7")
 
-[node name="Instagram" type="Button" parent="Reseaux"]
+[node name="Instagram" type="Button" parent="Reseaux" groups=["buttons"]]
 layout_mode = 0
 offset_left = -32.0
 offset_top = 128.0
@@ -326,7 +319,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "INSTAGRAM"
 icon = ExtResource("22_4l4g4")
 expand_icon = true
-script = ExtResource("22_dautx")
+script = ExtResource("15_avs4k")
 
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
 [connection signal="pressed" from="PlayMulti" to="PlayMulti" method="_on_pressed"]

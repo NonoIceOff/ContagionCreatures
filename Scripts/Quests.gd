@@ -1,5 +1,19 @@
 extends Node
 
+var pnj_scene = load("res://Scenes/PNJ.tscn")
+
+class PNJ:
+	var id: int
+	var over_texture: String
+	var under_texture: String
+	var name: String
+
+	func _init(id, over_texture, under_texture, name):
+		self.id = id
+		self.over_texture = over_texture
+		self.under_texture = under_texture
+		self.name = name
+
 class Quest:
 	var id: int
 	var title: String
@@ -9,64 +23,116 @@ class Quest:
 	var pin_positions: Array
 	var stade: int = 0
 	var finished: bool = false
+	var pnj_data: Array
+	
 	var members_only: bool = false
 
-	func _init(id, title, long_description, descriptions, mini_descriptions, pin_positions, members_only = false):
+	func _init(id, title, long_description, descriptions, mini_descriptions, pin_positions, pnj_data, members_only = false, stade = 0):
 		self.id = id
 		self.title = title
 		self.long_description = long_description
 		self.descriptions = descriptions
 		self.mini_descriptions = mini_descriptions
 		self.pin_positions = pin_positions
+		self.pnj_data = pnj_data
 		self.members_only = members_only
+		self.stade = 0
 
 var current_quest_id = -1
-var quests = {
-	0: Quest.new(
-		0, 
-		"L'aube d'un fléau", 
-		"Une nuit étrange s'est abattue sur votre village, Héronbourg. Les animaux qui vivaient en harmonie semblent possédés par une étrange aura violette. Vous vous réveillez ce matin alors que tout bascule...",
-		[
-			"Vous trouvez une poêle dans la cuisine.",
-			"Un Goupil Contaminé surgit devant votre maison, vous devez le combattre !",
-			"Les habitants paniqués parlent d'une pluie violette tombée il y a trois jours.",
-			"Le chef du village, Aldric, vous attend pour discuter de la menace qui grandit."
-		],
-		[
-			"Trouvez un équipement.",
-			"Affrontez votre premier adversaire !",
-			"Explorez le village et parlez aux habitants.",
-			"Obtenez des explications du chef Aldric."
-		],
-		[
-			Vector2(200, 300), # Maison du joueur
-			Vector2(250, 350), # Devant la maison (combat)
-			Vector2(500, 700), # Place du village
-			Vector2(600, 1000) # Maison du chef
-		],
-		false # Pas réservé aux membres
-	),
-	#1: Quest.new(
-	#	1 (c'est l'id de la quête) , 
-	#	"nom de la quête", 
-	#	"Description de la quête entière",
-	#	[
-	#		"Description de la partie 1 de la quête",
-	#		"Description de la partie 2 de la quête",
-	#		"Description de la partie 3 de la quête",
-	#	],
-	#	[
-	#		"MINI Description de la partie 1 de la quête",
-	#		"MINI Description de la partie 2 de la quête",
-	#		"MINI Description de la partie 3 de la quête",
-	#	],
-	#	[
-	#		Vector2(200, 300), # Emplacement dans la carte du point d'interêt 1
-	#	],
-	#	false # Pas réservé aux membres Patreon
-	#)
-}
 
+var bagird_pnj = PNJ.new(
+	0,
+	"res://Textures/Head-old-Guy-REAL.png",
+	"res://Textures/Old_guy_who_lost_is_crampté_REAL.png",
+	"Vieux sage"
+)
+
+var quests = {}
+
+
+func add_quest(quest_data: Dictionary) -> void:
+	var new_quest = Quest.new(
+		quest_data.get("id"),
+		quest_data.get("title"),
+		quest_data.get("long_description"),
+		quest_data.get("descriptions"),
+		quest_data.get("mini_descriptions"),
+		quest_data.get("pin_positions").map(func(pos): return Vector2(pos.x, pos.y)),
+		quest_data.get("pnj_data").map(func(pnj_entry):
+				var pnj
+				if pnj_entry[0] == "bagird_pnj":
+					pnj = bagird_pnj
+				else:
+					pnj = bagird_pnj
+				return [pnj, pnj_entry[1]],
+			),
+		quest_data.get("members_only", false),
+		quest_data.get("stade", 0)
+	)
+	quests[new_quest.id] = new_quest
+
+func load_quests_from_files() -> void:
+	var directories = ["res://Constantes/Quests/", "user://Quests/"]
+	
+	for dir_path in directories:
+		var dir = DirAccess.open(dir_path)
+		
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".json"):
+					var file_path = dir_path + file_name
+					var file = FileAccess.open(file_path, FileAccess.READ)
+					if file:
+						var json = JSON.new()
+						var parse_result = json.parse(file.get_as_text())
+						if parse_result == OK:
+							add_quest(json.get_data())
+						else:
+							print("Error parsing JSON: ", parse_result)
+						
+						file.close()
+				file_name = dir.get_next()
+			dir.list_dir_end()
+	
+
+func _ready() -> void:
+	load_quests_from_files()
+
+func init_pnj(map):
+	for i in quests.size():
+		spawn_pnj(map, i)
+
+func spawn_pnj(map, quest_id):
+	var i = quest_id
+	var quest_stade = quests.get(i).stade
+	var pnj_position = quests.get(i).pin_positions[quests.get(i).stade]
+	var dialogue_data = quests.get(i).pnj_data[quest_stade][1]
+	var pnj_data = quests.get(i).pnj_data[quest_stade][0]
+
+	var instance = pnj_scene.instantiate()
+	instance.position = Vector2(pnj_position)
+	instance.quest_id = i
+	instance.name = "Quest"+str(i)
+	instance.pnj_name = pnj_data.name
+	instance.quest_stade = quest_stade
+	instance.dialogue_data = dialogue_data
+	instance.over_texture = pnj_data.over_texture
+	instance.under_texture = pnj_data.under_texture
+	get_node("/root/" + map).add_child(instance)
+
+func delete_pnj(map, quest_id):
+	print("oui")
+	var node_name = "Quest" + str(quest_id)
+	var node = get_node_or_null("/root/" + map + "/" + node_name)
+	if node != null:
+		node.call_deferred("free")
+
+func respawn_pnj(map, quest_id):
+	delete_pnj(map, quest_id)
+	await get_tree().process_frame
+	spawn_pnj(map, quest_id)
 
 
 func quest_finished(i):
@@ -93,8 +159,6 @@ func quest_finished(i):
 			await get_tree().create_timer(5).timeout
 			ui_terminated_quest.visible = false
 
-		Tutorial.get_node(".").tutorials[7]["progress"] += 100
-
 func set_quest(i):
 	var current_map = "/root/" + Global.current_map
 	var minimap = get_node_or_null(current_map + "/ui/Minimap")
@@ -110,9 +174,7 @@ func set_quest(i):
 			minimap.change_pin(quests[i].pin_positions[quests[i].stade])
 
 func advance_stade(quest_id = current_quest_id):
-	var quest = quests.get(quest_id, null)
-	if quest and not quest.finished:
-		if quest.stade < quest.descriptions.size() - 1:
-			quest.stade += 1
-		else:
-			quest.finished = true
+	if quests.get(quest_id).stade < quests.get(int(quest_id)).descriptions.size():
+		quests.get(quest_id).stade += 1
+	else:
+		delete_pnj(Global.current_map,quest_id)

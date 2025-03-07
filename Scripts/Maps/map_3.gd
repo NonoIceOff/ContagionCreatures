@@ -3,33 +3,63 @@ extends Node2D
 @onready var transition_scene = $ui/Transition/AnimationPlayer
 @onready var soundEffect = $SoundEffectFx
 @onready var label_home = $TileMap/house/AreaHome/Label_E_Home
+@onready var player_light = $TileMap/Player_One/PointLight2D
 
 
 var entered = false
 var Key = false
 var scene_load = false
+var camera = []
 
 func _ready() -> void:
 	Global.current_map = self.name
-	print(Global.current_map)
-	print(Global.player_postion)
 	Global.load_position()
+	
+	Quests.init_pnj("Map3")
 	
 	label_home.visible = false
 	transition_scene.play("transition_to_screen")
 	await get_tree().create_timer(0.3).timeout
 	soundEffect.play()
+	camera = get_tree().get_nodes_in_group("camera")
+	#Global.smooth_zoom(camera[0], 1.5, Vector2(1150, 650),0.01)
 
+var camera_id = 0
 func _process(delta: float) -> void:
+	camera = get_tree().get_nodes_in_group("camera")
+	
+	
+	match Global.tutorial_stade:
+		9:
+			if camera_id == 0:
+				Global.smooth_zoom(camera[0], 1, Vector2(1150, 650),0.01)
+				camera_id = 1
+				await get_tree().create_timer(10).timeout
+				Global.tutorial_stade = 10
+		10:
+			if camera_id == 1:
+				Global.smooth_zoom(camera[0], 1.8, Vector2(0, 0),0.01)
+				camera_id = 2
+				await get_tree().create_timer(10).timeout
+				Global.tutorial_stade = 11
+			
+				
+	if Global.current_hour == 20 and Global.current_minute == 0:
+		soundEffect.stream = load("res://Sounds/music/night_sound.mp3")
+		soundEffect.play()
+	if Global.current_hour == 6 and Global.current_minute == 0:
+		soundEffect.stream = load("res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3")
+		soundEffect.play()
+	var joypads = Input.get_connected_joypads()
 	# Interaction avec la maison
 	if Input.is_action_just_pressed("M"):
-		print("test")
 		if scene_load == false:
-			var load_scene = preload("res://Scenes/Full_screen_map.tscn")
+			var load_scene = preload("res://Scenes/Full_Screen_map.tscn")
 			var load_instance = load_scene.instantiate()
 			load_instance.position = Vector2(0,0)
 			get_node("ui/Minimap").visible = false
 			get_node("ui").add_child(load_instance)
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
 			scene_load = true
 
@@ -37,9 +67,10 @@ func _process(delta: float) -> void:
 			get_node("ui/Full_Screen_map").queue_free()
 			get_node("ui/Minimap").visible = true
 			scene_load = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if entered == true and Key == false:
-		if Input.is_action_just_pressed("ui_interact"):
+		if Input.is_action_just_pressed(Controllers.a_input):
 			Global.save()
 			Key = true
 			transition_scene.play("screen_to_transition")
