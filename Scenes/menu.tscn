@@ -265,7 +265,7 @@ theme_override_font_sizes/font_size = 46
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-text = "votre profil"
+text = "Votre profil"
 icon = ExtResource("14_3buyc")
 expand_icon = true
 

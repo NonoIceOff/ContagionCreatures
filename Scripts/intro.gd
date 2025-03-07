@@ -7,7 +7,7 @@ const PLAYER1_TARGET_X = 1132
 
 var camera = []
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	camera = get_tree().get_nodes_in_group("camera")
 	var player1 = get_node("Control/player1")
 	var tilemap = get_node("Control/TileMap")
@@ -18,12 +18,12 @@ func _process(_delta: float) -> void:
 
 	match Global.tutorial_stade:
 		0:
-			player1.position.y -= 1
+			player1.position.y -= 100 * delta
 			player1.animation = "NorthWalk"
 			if player1.position.y < PLAYER1_TARGET_Y:
 				Global.tutorial_stade = 1
 		1:
-			player1.position.x += 1
+			player1.position.x += 100 * delta
 			player1.animation = "EastWalk"
 			if player1.position.x > PLAYER1_TARGET_X:
 				tilemap.set_cell(1, Vector2i(19, 14), 0, Vector2i(9, 10))
@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 			player1.speed_scale = 0
 			audio_player.stream_paused = true
 			await get_tree().create_timer(1).timeout
-			Global.smooth_zoom(camera[0], 1, Vector2(-32, -32),0.1)
+			Global.smooth_zoom(camera[0], 1, Vector2(-32, -32), 0.1)
 			Global.tutorial_stade = 3
 		3:
 			player1.speed_scale = 0
@@ -47,7 +47,7 @@ func _process(_delta: float) -> void:
 			player1.speed_scale = 0
 			await get_tree().create_timer(2).timeout
 			audio_player.stream_paused = false
-			Global.smooth_zoom(camera[0], 1.8, Vector2(16, 16),0.1)
+			Global.smooth_zoom(camera[0], 1.8, Vector2(16, 16), 0.1)
 			Global.tutorial_stade = 5
 		5:
 			player1.speed_scale = 0
@@ -68,14 +68,14 @@ func _process(_delta: float) -> void:
 			Global.tutorial_stade = 6
 		6:
 			get_node("CanvasLayer/Chute").emitting = false
-			player1.speed_scale = 0.8*2
-			player1.position.x -= 2
+			player1.speed_scale = 0.8 * 2
+			player1.position.x -= 200 * delta
 			player1.animation = "WestWalk"
-			if player1.position.x < 900:
+			if player1.position.x < 1000:
 				Global.tutorial_stade = 7
 		7:
-			player1.speed_scale = 0.8*2
-			player1.position.y += 2
+			player1.speed_scale = 0.8 * 2
+			player1.position.y += 200 * delta
 			player1.animation = "SouthWalk"
 			if player1.position.y > 1000:
 				Global.tutorial_stade = 8
