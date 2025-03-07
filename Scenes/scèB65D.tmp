@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cuvepu5toqc02"]
+[gd_scene load_steps=27 format=3 uid="uid://cuvepu5toqc02"]
 
 [ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="5_4uere"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="6_8tkdv"]
-[ext_resource type="Texture2D" uid="uid://bym20beqjnbde" path="res://Textures/Animals/Eagle_infected.png" id="6_i001t"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
 [ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="10_f36pc"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="10_g78tk"]
@@ -14,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://cucsn5iftliuo" path="res://Sounds/Shield Block.mp3" id="12_f2f2j"]
 [ext_resource type="AudioStream" uid="uid://m31hopp2f6ib" path="res://Sounds/Ice Shard.mp3" id="13_ggiij"]
 [ext_resource type="AudioStream" uid="uid://b87m4fatlldq1" path="res://Sounds/Magic Barrier.mp3" id="14_62ako"]
-[ext_resource type="Texture2D" uid="uid://k8osxe2tlhju" path="res://Textures/Animals/eagle_Player.png" id="15_dunku"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
 bg_color = Color(0.619608, 0.423529, 0.972549, 1)
@@ -383,16 +381,11 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="ContainerMob"]
-position = Vector2(-272, 696)
-scale = Vector2(4.13185, 4.6326)
-texture = ExtResource("6_i001t")
-
 [node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
 position = Vector2(1, 0)
 
 [node name="Player-1Tile-set" type="Sprite2D" parent="CharacterBody2D3"]
-position = Vector2(903, 984)
+position = Vector2(975, 984)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_1fplo")
 region_enabled = true
@@ -629,16 +622,6 @@ text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ProgressBar_ennemye"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.049
-anchor_bottom = 0.667
-offset_left = 8.0
-offset_top = 49.0
-offset_right = 311.928
-offset_bottom = 143.984
-
 [node name="ProgressBar_Joueur" type="ProgressBar" parent="."]
 offset_left = 504.0
 offset_top = 616.0
@@ -678,12 +661,6 @@ text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ProgressBar_Joueur"]
-layout_mode = 2
-offset_top = 49.0
-offset_right = 328.0
-offset_bottom = 176.0
-
 [node name="GetCreaturesEnemy" type="HTTPRequest" parent="."]
 
 [node name="GetSpellsPlayer" type="HTTPRequest" parent="."]
@@ -717,11 +694,6 @@ scale = Vector2(-0.0442489, 0.0465564)
 position = Vector2(1612, 850)
 rotation = -3.14159
 scale = Vector2(0.0442489, -0.0465564)
-
-[node name="EaglePlayer" type="Sprite2D" parent="."]
-position = Vector2(576, 920)
-scale = Vector2(4.76172, 4.29492)
-texture = ExtResource("15_dunku")
 
 [connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
 [connection signal="pressed" from="Spell3" to="." method="_on_spell_3_pressed"]

@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://u6bmap8bibmo"]
-
-[node name="CraftMenu" type="Node2D"]
-
-[node name="getItem" type="HTTPRequest" parent="."]
-
-[connection signal="request_completed" from="getItem" to="." method="_on_get_item_request_completed"]
