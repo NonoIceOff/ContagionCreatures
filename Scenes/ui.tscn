@@ -39,6 +39,7 @@ corner_radius_bottom_left = 5
 script = ExtResource("1_p3l0n")
 
 [node name="Transition" parent="." instance=ExtResource("1_88tsw")]
+z_index = 20
 mouse_filter = 2
 
 [node name="Aurore_boreales" type="CPUParticles2D" parent="."]
