@@ -82,7 +82,7 @@ text = "Pause"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Reprendre" type="Button" parent="."]
+[node name="Reprendre" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 401.0
 offset_right = 1277.0
@@ -95,7 +95,20 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2sld6")
 text = "REPRENDRE"
 
-[node name="Paramètres" type="Button" parent="."]
+[node name="Sauvegarde" type="Button" parent="." groups=["buttons"]]
+offset_left = 640.152
+offset_top = 512.838
+offset_right = 1277.15
+offset_bottom = 585.838
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_8w1aj")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/hover = SubResource("StyleBoxFlat_kl7q8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2sld6")
+text = "Sauvegarde"
+
+[node name="Paramètres" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 626.0
 offset_right = 1277.0
@@ -108,7 +121,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2sld6")
 text = "PARAMETRES"
 
-[node name="Menu principal" type="Button" parent="."]
+[node name="Menu principal" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 737.0
 offset_right = 1277.0
@@ -121,7 +134,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2sld6")
 text = "MENU PRINCIPAL"
 
-[node name="Quitter" type="Button" parent="."]
+[node name="Quitter" type="Button" parent="." groups=["buttons"]]
 offset_left = 1577.0
 offset_top = 956.0
 offset_right = 1861.0
@@ -161,19 +174,6 @@ A MOJIRO?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sauvegarde" type="Button" parent="."]
-offset_left = 640.152
-offset_top = 512.838
-offset_right = 1277.15
-offset_bottom = 585.838
-focus_mode = 0
-theme_override_fonts/font = ExtResource("1_8w1aj")
-theme_override_font_sizes/font_size = 35
-theme_override_styles/hover = SubResource("StyleBoxFlat_kl7q8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_gy2gr")
-theme_override_styles/normal = SubResource("StyleBoxFlat_2sld6")
-text = "Sauvegarde"
-
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 title = "Save"
 initial_position = 3
@@ -209,9 +209,10 @@ offset_bottom = 51.0
 scale = Vector2(2, 2)
 text = "Save..."
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Reprendre" to="." method="_on_reprendre_pressed"]
+[connection signal="pressed" from="Sauvegarde" to="." method="_on_sauvegarde_pressed"]
 [connection signal="pressed" from="Paramètres" to="." method="_on_paramètres_pressed"]
 [connection signal="pressed" from="Menu principal" to="." method="_on_menu_principal_pressed"]
 [connection signal="pressed" from="Quitter" to="." method="_on_quitter_pressed"]
-[connection signal="pressed" from="Sauvegarde" to="." method="_on_sauvegarde_pressed"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_sauvegarde_confirmed"]

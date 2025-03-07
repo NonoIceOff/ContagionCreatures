@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dybmipi48rk27"]
+[gd_scene load_steps=12 format=3 uid="uid://dybmipi48rk27"]
 
+[ext_resource type="Script" path="res://Scenes/appearence.gd" id="1_0u55x"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_d0nrk"]
 [ext_resource type="Script" path="res://Scripts/Titre.gd" id="3_tdnu6"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="4_wy643"]
-[ext_resource type="Texture2D" uid="uid://dredmuniisvo3" path="res://Textures/01-generic.png" id="5_8sb3t"]
+[ext_resource type="Texture2D" uid="uid://d2mm1gdiqjptn" path="res://Textures/01-generic.png" id="5_8sb3t"]
 [ext_resource type="Script" path="res://Scripts/Boutons/Ok.gd" id="5_80yua"]
 [ext_resource type="Script" path="res://Scripts/PersoActuel.gd" id="6_6ldjd"]
 
@@ -45,7 +46,8 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
-[node name="Node2D" type="Node2D"]
+[node name="Apprearence" type="Node2D"]
+script = ExtResource("1_0u55x")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1920.0
@@ -80,7 +82,7 @@ vertical_alignment = 1
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wy643")
 
-[node name="Valider" type="Button" parent="."]
+[node name="Valider" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 896.0
 offset_right = 1277.0
@@ -140,7 +142,7 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
-[node name="ButtonPerso1" type="Button" parent="Perso1"]
+[node name="ButtonPerso1" type="Button" parent="Perso1" groups=["buttons"]]
 texture_filter = 1
 offset_left = -8.7
 offset_top = -9.2
@@ -157,7 +159,7 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(64, 0, 16, 16)
 
-[node name="ButtonPerso2" type="Button" parent="Perso2"]
+[node name="ButtonPerso2" type="Button" parent="Perso2" groups=["buttons"]]
 texture_filter = 1
 offset_left = -8.7
 offset_top = -9.2
@@ -174,7 +176,7 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(112, 0, 16, 16)
 
-[node name="ButtonPerso3" type="Button" parent="Perso3"]
+[node name="ButtonPerso3" type="Button" parent="Perso3" groups=["buttons"]]
 texture_filter = 1
 offset_left = -8.7
 offset_top = -9.2
@@ -191,7 +193,7 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(160, 0, 16, 16)
 
-[node name="ButtonPerso4" type="Button" parent="Perso4"]
+[node name="ButtonPerso4" type="Button" parent="Perso4" groups=["buttons"]]
 texture_filter = 1
 offset_left = -8.7
 offset_top = -9.2
@@ -208,7 +210,7 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(16, 64, 16, 16)
 
-[node name="ButtonPerso5" type="Button" parent="Perso5"]
+[node name="ButtonPerso5" type="Button" parent="Perso5" groups=["buttons"]]
 texture_filter = 1
 offset_left = -8.7
 offset_top = -9.2
@@ -225,12 +227,12 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(64, 64, 16, 16)
 
-[node name="ButtonPerso6" type="Button" parent="Perso6"]
+[node name="ButtonPerso6" type="Button" parent="Perso6" groups=["buttons"]]
 texture_filter = 1
-offset_left = -8.7
-offset_top = -9.2
-offset_right = 10.3
-offset_bottom = 9.8
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 10.0
+offset_bottom = 10.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
 flat = true
 
@@ -242,7 +244,7 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(112, 64, 16, 16)
 
-[node name="ButtonPerso7" type="Button" parent="Perso7"]
+[node name="ButtonPerso7" type="Button" parent="Perso7" groups=["buttons"]]
 texture_filter = 1
 offset_left = -8.7
 offset_top = -9.2
@@ -259,7 +261,7 @@ texture = ExtResource("5_8sb3t")
 region_enabled = true
 region_rect = Rect2(160, 64, 16, 16)
 
-[node name="ButtonPerso8" type="Button" parent="Perso8"]
+[node name="ButtonPerso8" type="Button" parent="Perso8" groups=["buttons"]]
 texture_filter = 1
 offset_left = -8.7
 offset_top = -9.2
@@ -268,6 +270,7 @@ offset_bottom = 9.8
 theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
 flat = true
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Valider" to="Valider" method="_on_pressed"]
 [connection signal="pressed" from="Perso1/ButtonPerso1" to="PersoActuel" method="_on_button_perso_1_pressed"]
 [connection signal="pressed" from="Perso2/ButtonPerso2" to="PersoActuel" method="_on_button_perso_2_pressed"]

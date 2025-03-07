@@ -6,30 +6,42 @@ extends CanvasLayer
 @onready var particules_neige = $Neige
 @onready var aurora_particles = $Aurore_boreales
 
-
+var is_open = false
 var time_speed = 0.1
 var seconds_per_in_game_minute = 1.0
 
-func _init() -> void:
-	print("a")
 
 func _ready() -> void:
-	print("ok")
+	print(Global.current_map)
 	advance_time()
 	
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
-	print(Global.current_map)
-	if Global.current_map != "HomeOfHector":
-		get_node("PanelDate").visible = true
-		get_node("Minimap").visible = true
-	else: 
-		get_node("PanelDate").visible = false
-		get_node("Minimap").visible = false
-	if Quests.current_quest_id > -1 and get_node_or_null("CPUParticles2D") != null:
-		get_node("CPUParticles2D").visible = true
-		get_node("CPUParticles2D/QuestTextBar").text = "[right][rainbow freq=0.05]"+tr(Quests.quests[Quests.current_quest_id]["title"])+" [/rainbow]\n[color=white][i]"+tr(Quests.quests[Quests.current_quest_id]["mini_descriptions"][Quests.quests[Quests.current_quest_id]["stade"]])
+	if Input.is_action_just_pressed("ui_p"):
+		if is_open:
+			get_node("inv_animal").queue_free()
+		else:
+			var load_scene = preload("res://Inventory/inv_animals.tscn")
+			var load_instance = load_scene.instantiate()
+			load_instance.position = Vector2(0,0)
+			load_instance.name = "inv_animal"
+			add_child(load_instance)
+			load_instance.get_node("CanvasLayer").visible = true
+		is_open = !is_open
+
+	var panel_date = get_node("PanelDate")
+	var minimap = get_node("Minimap")
+	var quest_particles = get_node_or_null("CPUParticles2D")
+
+	panel_date.visible = Global.ui_visible and Global.current_map != "HomeOfHector"
+	minimap.visible = Global.ui_visible and Global.current_map != "HomeOfHector"
+
+	if Quests.current_quest_id > -1 and quest_particles != null:
+		quest_particles.visible = true
+		quest_particles.get_node("QuestTextBar").text = "[right][rainbow freq=0.05]" + tr(Quests.quests[Quests.current_quest_id]["title"]) + " [/rainbow]\n[color=white][i]" + tr(Quests.quests[Quests.current_quest_id]["mini_descriptions"][Quests.quests[Quests.current_quest_id]["stade"]])
 	else:
-		get_node("CPUParticles2D").visible = false
+		if quest_particles != null:
+			quest_particles.visible = false
 
 func advance_time() -> void:
 	while true:

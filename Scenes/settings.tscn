@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc4gs8m4imtji"]
+[gd_scene load_steps=15 format=3 uid="uid://dc4gs8m4imtji"]
 
+[ext_resource type="Script" path="res://Scenes/settings.gd" id="1_8w70o"]
 [ext_resource type="Script" path="res://Scenes/ControlsButton.gd" id="1_cfn84"]
 [ext_resource type="Script" path="res://Scenes/AppearenceButton.gd" id="2_5wkqo"]
 [ext_resource type="Script" path="res://Scenes/Languages.gd" id="2_xlfvj"]
@@ -58,14 +59,15 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[node name="Node2D" type="Node2D"]
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_8w70o")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1078.0
 color = Color(0, 0, 0, 1)
 
-[node name="Controls" type="Button" parent="."]
+[node name="Controls" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 384.0
 offset_right = 1277.0
@@ -78,7 +80,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "CONTROLS"
 script = ExtResource("1_cfn84")
 
-[node name="Languages" type="Button" parent="."]
+[node name="Languages" type="Button" parent="." groups=["buttons"]]
 offset_left = 632.0
 offset_top = 512.0
 offset_right = 1269.0
@@ -91,7 +93,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
 text = "LANGUAGES"
 script = ExtResource("2_xlfvj")
 
-[node name="Appearence" type="Button" parent="."]
+[node name="Appearence" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 640.0
 offset_right = 1277.0
@@ -132,7 +134,7 @@ vertical_alignment = 1
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_vs5pu")
 
-[node name="Retour" type="Button" parent="."]
+[node name="Retour" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 896.0
 offset_right = 1277.0
@@ -145,6 +147,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
 text = "BACK"
 script = ExtResource("6_mdffj")
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Controls" to="Controls" method="_on_pressed"]
 [connection signal="pressed" from="Languages" to="Languages" method="_on_pressed"]
 [connection signal="pressed" from="Appearence" to="Appearence" method="_on_pressed"]

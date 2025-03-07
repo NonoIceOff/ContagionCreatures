@@ -1,0 +1,704 @@
+[gd_scene load_steps=27 format=3 uid="uid://cuvepu5toqc02"]
+
+[ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
+[ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
+[ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="2_dxowc"]
+[ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]
+[ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="5_4uere"]
+[ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="6_8tkdv"]
+[ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="10_43je6"]
+[ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="10_f36pc"]
+[ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="10_g78tk"]
+[ext_resource type="AudioStream" uid="uid://dgv6kihqgq3qw" path="res://Sounds/music/combat_1.mp3" id="10_mb5p5"]
+[ext_resource type="AudioStream" uid="uid://cucsn5iftliuo" path="res://Sounds/Shield Block.mp3" id="12_f2f2j"]
+[ext_resource type="AudioStream" uid="uid://m31hopp2f6ib" path="res://Sounds/Ice Shard.mp3" id="13_ggiij"]
+[ext_resource type="AudioStream" uid="uid://b87m4fatlldq1" path="res://Sounds/Magic Barrier.mp3" id="14_62ako"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
+bg_color = Color(0.619608, 0.423529, 0.972549, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i1hw"]
+bg_color = Color(0.470588, 0.180392, 0.839216, 1)
+border_width_left = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6neb"]
+bg_color = Color(0.619608, 0.423529, 0.972549, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t287m"]
+bg_color = Color(0.227451, 0.321569, 0.988235, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.996078, 0.996078, 0.996078, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8md2"]
+bg_color = Color(0.12549, 0.0705882, 0.780392, 1)
+border_width_left = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij5us"]
+bg_color = Color(0.227451, 0.321569, 0.988235, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_7y6a2"]
+resource_name = "Damage_Enemy"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mob/OldGuyWhoLostIsCramptéReal:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gd1ce"]
+resource_name = "Damage_Player"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D3/Player-1Tile-set:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sy467"]
+resource_name = "Enemy_Death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mob/OldGuyWhoLostIsCramptéReal:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.842994, 1.4748]
+}
+
+[sub_resource type="Animation" id="Animation_of105"]
+resource_name = "Player_Death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D3/Player-1Tile-set:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.842994, 1.4748]
+}
+
+[sub_resource type="Animation" id="Animation_kkly6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mob/OldGuyWhoLostIsCramptéReal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D3/Player-1Tile-set:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mob/OldGuyWhoLostIsCramptéReal:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D3/Player-1Tile-set:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cupx5"]
+resource_name = "shake"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-24, -17), Vector2(32, 19), Vector2(31, -22), Vector2(-34, 20), Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fhsy"]
+_data = {
+"Damage_Enemy": SubResource("Animation_7y6a2"),
+"Damage_Player": SubResource("Animation_gd1ce"),
+"Enemy_Death": SubResource("Animation_sy467"),
+"Player_Death": SubResource("Animation_of105"),
+"RESET": SubResource("Animation_kkly6"),
+"shake": SubResource("Animation_cupx5")
+}
+
+[node name="SceneCombat" type="Node2D"]
+script = ExtResource("1_hd4pf")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1.0
+offset_right = 1922.0
+offset_bottom = 1083.0
+texture = ExtResource("1_psdp5")
+
+[node name="ContainerPLAYER" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -80.0
+offset_top = 256.0
+offset_right = 168.0
+offset_bottom = 372.0
+
+[node name="Pseudo" type="Label" parent="ContainerPLAYER"]
+layout_mode = 2
+offset_left = 152.0
+offset_top = 273.0
+offset_right = 400.0
+offset_bottom = 292.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 64
+text = "PSEUDO"
+vertical_alignment = 1
+
+[node name="NIV" type="Label" parent="ContainerPLAYER"]
+layout_mode = 2
+offset_left = 163.0
+offset_top = 325.0
+offset_right = 237.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 32
+text = "NIVEAU"
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ContainerPLAYER"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+offset_left = 163.0
+offset_top = 365.0
+offset_right = 219.0
+offset_bottom = 374.0
+scale = Vector2(4, 4)
+value = 100.0
+texture_under = ExtResource("6_8tkdv")
+texture_progress = ExtResource("5_4uere")
+
+[node name="Percentage" type="Label" parent="ContainerPLAYER/TextureProgressBar"]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 35.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 32
+text = "0/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shield" type="Label" parent="ContainerPLAYER/TextureProgressBar"]
+layout_mode = 0
+offset_left = 15.25
+offset_top = -9.25
+offset_right = 239.25
+offset_bottom = 25.75
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContainerMob" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1464.0
+offset_top = 112.0
+offset_right = 1672.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+
+[node name="Pseudo" type="Label" parent="ContainerMob"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 273.0
+offset_right = 400.0
+offset_bottom = 292.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 64
+text = "PSEUDO"
+vertical_alignment = 1
+
+[node name="NIV" type="Label" parent="ContainerMob"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 325.0
+offset_right = 237.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 32
+text = "NIVEAU"
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ContainerMob"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 163.0
+offset_top = 365.0
+offset_right = 219.0
+offset_bottom = 374.0
+scale = Vector2(4, 4)
+value = 100.0
+texture_under = ExtResource("6_8tkdv")
+texture_progress = ExtResource("5_4uere")
+
+[node name="Percentage" type="Label" parent="ContainerMob/TextureProgressBar"]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 35.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 32
+text = "0/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shield" type="Label" parent="ContainerMob/TextureProgressBar"]
+layout_mode = 0
+offset_left = 13.25
+offset_top = -9.25
+offset_right = 237.25
+offset_bottom = 25.75
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Player-1Tile-set" type="Sprite2D" parent="CharacterBody2D3"]
+position = Vector2(975, 984)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_1fplo")
+region_enabled = true
+region_rect = Rect2(25, 680, 220, 220)
+
+[node name="Mob" type="CharacterBody2D" parent="."]
+position = Vector2(-12.999, -1.99902)
+
+[node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Mob"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(980.999, 777.999)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_dxowc")
+region_enabled = true
+region_rect = Rect2(66, 1760, 30, 32)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 552.0
+offset_top = -3.0
+offset_right = 862.0
+offset_bottom = 107.0
+rotation = 0.00115545
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxFlat_d2ui4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2i1hw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_f6neb")
+text = "ITEMS"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 936.0
+offset_right = 1246.0
+offset_bottom = 110.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxFlat_t287m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n8md2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij5us")
+text = "FUIR"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2fhsy")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("10_43je6")]
+visible = false
+offset_top = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+max_distance = 2e+09
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_mb5p5")
+volume_db = -12.799
+autoplay = true
+max_distance = 2e+09
+panning_strength = 0.9
+parameters/looping = true
+
+[node name="Spell1" type="Button" parent="."]
+custom_minimum_size = Vector2(280, 0)
+offset_left = 1280.0
+offset_top = 800.0
+offset_right = 1451.0
+offset_bottom = 895.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 48
+text = "Spell 1"
+
+[node name="difficulty1" type="Label" parent="Spell1"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+horizontal_alignment = 1
+
+[node name="type1" type="Label" parent="Spell1"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 280.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 40
+text = "Mode"
+horizontal_alignment = 1
+
+[node name="Spell3" type="Button" parent="."]
+custom_minimum_size = Vector2(280, 0)
+offset_left = 1280.0
+offset_top = 944.0
+offset_right = 1468.0
+offset_bottom = 1039.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 48
+text = "Spell 2"
+
+[node name="difficulty3" type="Label" parent="Spell3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type3" type="Label" parent="Spell3"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 280.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 40
+text = "Mode"
+horizontal_alignment = 1
+
+[node name="Spell2" type="Button" parent="."]
+custom_minimum_size = Vector2(280, 0)
+offset_left = 1577.0
+offset_top = 800.0
+offset_right = 1761.0
+offset_bottom = 895.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 48
+text = "spell 3"
+
+[node name="difficulty2" type="Label" parent="Spell2"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 281.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+horizontal_alignment = 1
+
+[node name="type2" type="Label" parent="Spell2"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = 278.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 40
+text = "Mode"
+horizontal_alignment = 1
+
+[node name="Spell4" type="Button" parent="."]
+custom_minimum_size = Vector2(280, 0)
+offset_left = 1581.0
+offset_top = 944.0
+offset_right = 1760.0
+offset_bottom = 1039.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 48
+text = "spell 4"
+
+[node name="difficulty4" type="Label" parent="Spell4"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 279.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+horizontal_alignment = 1
+
+[node name="type4" type="Label" parent="Spell4"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 273.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("10_g78tk")
+theme_override_font_sizes/font_size = 40
+text = "Mode"
+horizontal_alignment = 1
+
+[node name="ProgressBar_ennemye" type="ProgressBar" parent="."]
+offset_left = 1056.0
+offset_top = 472.0
+offset_right = 1384.0
+offset_bottom = 520.0
+
+[node name="ZoneCible1" type="ColorRect" parent="ProgressBar_ennemye"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="ZoneCible2" type="ColorRect" parent="ProgressBar_ennemye"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="ZoneCible3" type="ColorRect" parent="ProgressBar_ennemye"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="SpellName" type="Label" parent="ProgressBar_ennemye"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -64.0
+offset_right = 320.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("10_f36pc")
+theme_override_font_sizes/font_size = 50
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar_Joueur" type="ProgressBar" parent="."]
+offset_left = 504.0
+offset_top = 616.0
+offset_right = 832.0
+offset_bottom = 664.0
+
+[node name="ZoneCible1" type="ColorRect" parent="ProgressBar_Joueur"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="ZoneCible2" type="ColorRect" parent="ProgressBar_Joueur"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="ZoneCible3" type="ColorRect" parent="ProgressBar_Joueur"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 95.0
+offset_bottom = 49.0
+color = Color(0.843137, 0.188235, 0.439216, 1)
+
+[node name="SpellName" type="Label" parent="ProgressBar_Joueur"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -64.0
+offset_right = 320.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("10_f36pc")
+theme_override_font_sizes/font_size = 50
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GetCreaturesEnemy" type="HTTPRequest" parent="."]
+
+[node name="GetSpellsPlayer" type="HTTPRequest" parent="."]
+
+[node name="GetSpellsEnnemy" type="HTTPRequest" parent="."]
+
+[node name="Spell1_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Spell2_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_f2f2j")
+
+[node name="Spell3_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_ggiij")
+
+[node name="Spell4_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_62ako")
+
+[node name="Spell1_icon" type="Sprite2D" parent="."]
+position = Vector2(1312, 850)
+scale = Vector2(-0.0442489, 0.0465564)
+
+[node name="Spell2_icon" type="Sprite2D" parent="."]
+position = Vector2(1612, 850)
+scale = Vector2(-0.0442489, 0.0465564)
+
+[node name="Spell3_icon" type="Sprite2D" parent="."]
+position = Vector2(1612, 850)
+scale = Vector2(-0.0442489, 0.0465564)
+
+[node name="Spell4_icon" type="Sprite2D" parent="."]
+position = Vector2(1612, 850)
+rotation = -3.14159
+scale = Vector2(0.0442489, -0.0465564)
+
+[connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
+[connection signal="pressed" from="Spell3" to="." method="_on_spell_3_pressed"]
+[connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]
+[connection signal="pressed" from="Spell4" to="." method="_on_spell_4_pressed"]
+[connection signal="request_completed" from="GetCreaturesEnemy" to="." method="_on_get_creatures_enemy_request_completed"]
+[connection signal="request_completed" from="GetSpellsPlayer" to="." method="_on_get_spells_player_request_completed"]
+[connection signal="request_completed" from="GetSpellsEnnemy" to="." method="_on_get_spells_ennemy_request_completed"]

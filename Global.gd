@@ -4,14 +4,12 @@ var user = {}
 
 # Matchmaking
 var user_enemy = {}
-
 var interact = false
 var trigger = true
 var brazero_numbers = 0
-var paused = false
 var can_move = true
 var player_postion = Vector2(0,0)
-
+var game_paused = false
 var attack_index = 0
 var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
 var attack_values = [11,23,2,20]
@@ -23,8 +21,6 @@ var pinr = Vector2(0,0)
 var piny = Vector2(0,0)
 var ping = Vector2(0,0)
 var pin_temp = Vector2(0,0)
-
-
 
 var grid_size = 31
 var step_delay = 0
@@ -41,14 +37,13 @@ var button_info_pressed_player = false
 var button_info_pressed_enemy = false
 var close_button_pressed = false
 
-
-
-var current_hour: int = 16
-var current_minute: int = 0
-var current_day: int = 1
+var current_hour: int = 19
+var current_minute: int = 45
+var current_day: int = 0
 var last_color = Color(1, 1, 1, 1)
 var target_color: Color
 
+var sprint_multiplier: float = 1.5
 
 var pianos = [0,0,0,0]
 var current_map = ""
@@ -119,6 +114,110 @@ var items = {
 	}
 }
 
+var actual_animal = {
+	
+	0: {
+		"name":"Deagle",
+		"infected": false,
+		"type":['Totem'],
+		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et * 2 si l'arme "],		
+		"textureA":"res://Textures/Animals/EAGLE_.png",
+		"texture_animal_fight":"res://Textures/Animals/eagle_Player.png",
+	},
+}
+var animals_player = {
+
+	0: {
+		"name":"GentleDuck",
+		"infected": false,
+		"type":['Prisme'],
+		"boost":[ 1.08 , 1.06 , "atk/def"], #+8% d'ATK et 6% DEF pour le joueur et * 2 si arme du meme type
+		"effets":["+6% d'attaque et +6% de defense pour le joueur et *2 si"],
+		"textureA":"res://Textures/pixil-frame-0_3.png"
+	},
+	1: {
+		"name":"Deagle",
+		"infected": false,
+		"type":['Relique'],
+		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et *2 si"],		
+		"textureA":"res://Textures/Animals/EAGLE_.png",
+	},
+	2: {
+		"name":"Froggy",
+		"infected": false,
+		"type":['Essence'],
+		"boost":[ 1.03 ,"atk"], #d'ATK pour le player et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 3% d'attaque à chaque tours pour le joueur et *2 si"],
+		"textureA":"res://Textures/Animals/FROG.png",
+	},
+	3: {
+		"name":"Leonard",
+		"infected": false,
+		"type":['Totem'],
+		"boost":[  1.2 , "regen"],  # +20 PV à chaque tours pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+ 20 PV à chaque tours pour le joueur et *2 "],								
+		"textureA":"res://Textures/Animals/DRAGON.png",
+	},
+	4: {
+		"name":"Douglas",
+		"infected": false,
+		"type":['Echo'],
+		"boost":[  0.9 , "DEF"],  # +9 de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
+		"effets":["+9% de defense en plus pour l'utilisateur et 5%"],						
+		"textureA": "res://Textures/Animals/CHICKEN.png",		
+	},
+}
+
+var animals_enemy = {
+	0: {
+		"name":"Deagle",
+		"infected": true,
+		"type":['Relique'],
+		"boost":[ 1.1, "def"], #+10% de DEF pour le player si l'arme est du même type
+		"effets":["+10% de defense en plus pour l'utilisateur et *2 si l'arme est du meme type"],
+		"textureA":"res://Textures/Animals/EAGLE_.png",
+		"texture_infected":"res://Textures/Animals/Eagle_infected.png"
+	},
+	1: {
+		"name":"GentleDuck",
+		"infected": true,
+		"type":['Prisme'],
+		"boost":[ 1.06 , "atk"], #+6% d'ATK et DEF pour le joueur si l'arme est du même type
+		"effets":["+6% d'attaque en plus pour l'utilisateur et *2 si l'arme est du meme type"],		
+		"textureA":"res://Textures/pixil-frame-0_3.png",
+		"texture_infected":""
+	},
+	2: {
+		"name":"Froggy",
+		"infected": true,
+		"type":['Essence'],
+		"boost":[ 1.03 ,"atk"], # +3% d'ATK pour le joueur si l'arme est du même type
+		"effets":["+3% d'attaque en plus pour l'utilisateur et *2 si l'arme est du meme type"],
+		"textureA":"res://Textures/Animals/FROG.png",
+		"texture_infected":""
+	},
+	3: {
+		"name":"Leonard",
+		"infected": true,
+		"type":['Echo'],
+		"boost":[ 1.2, "regen"],  # +20 PV à chaque tours pour le joueur si l'arme est du même type
+		"effets":["L'utilisateur recupere +2O pv en plus à chaque tour et *2 si l'arme est du meme type"],
+		"textureA":"res://Textures/Animals/DRAGON.png",
+		"texture_infected":""
+	},
+	4: {
+		"name":"Douglas",
+		"infected": true,
+		"type":['Relique'],
+		"boost":[  1.09 , "def"], # +9 de DEF pour le joueur pendant tout le combat si l'arme est du même type
+		"effets":["+9% de defense en plus pour l'utilisateur"],  
+		"textureA": "res://Textures/Animals/CHICKEN.png",
+		"texture_infected":""
+	},
+}
+
 var attacks = {
 	0: {
 		"name":"BOW",
@@ -157,13 +256,48 @@ var attacks = {
 
 signal fringe_changed
 
+var selected_index = 0
+var buttons = []
+var ui = []
+var ui_visible = true
 
 func _ready():
-	pass
+	ui = get_tree().get_nodes_in_group("ui")
+
 
 func _process(delta):
+	ui = get_tree().get_nodes_in_group("ui")
+	for i in range(ui.size()):
+		ui[i].visible = ui_visible
+
+
+	buttons = get_tree().get_nodes_in_group("buttons")
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() >= 1 and buttons.size() > 0:
+		if Input.is_action_just_pressed("ui_down"):
+			selected_index = (selected_index + 1) % buttons.size()
+			update_button_selection()
+		if Input.is_action_just_pressed("ui_up"):
+			selected_index = (selected_index - 1 + buttons.size()) % buttons.size()
+			update_button_selection()
+		if Input.is_action_just_pressed(Controllers.a_input):
+			pressed_button(buttons[selected_index])
 	if tutorial == false:
 		tutorial_stade = -1
+
+func update_button_selection() -> void:
+	for i in range(buttons.size()):
+		if i == selected_index:
+			buttons[i].modulate = Color(1, 1, 1, 1)  # Highlight selected button
+		else:
+			buttons[i].modulate = Color(0.5, 0.5, 0.5, 1)  # Dim non-selected buttons
+
+
+func pressed_button(button):
+	if get_tree().get_nodes_in_group("Player_One").size() > 0 and paused == true:
+		button.emit_signal("pressed")
+	elif get_tree().get_nodes_in_group("Player_One").size() == 0:
+		button.emit_signal("pressed")
 
 func save():
 	var save_file = ConfigFile.new()
@@ -174,6 +308,10 @@ func save():
 	save_file.set_value("Tags", "Red", pinr)
 	save_file.set_value("Tags", "Yellow", piny)
 	save_file.set_value("Tags", "Green", ping)
+
+	save_file.set_value("Tutorial", "Stade", tutorial_stade)
+	save_file.set_value("Tutorial", "Validate", tutorial_validate)
+	save_file.set_value("Tutorial", "Tutorial", tutorial)
 	
 	save_file.set_value("Quests", "infos", Quests.quests)
 	save_file.set_value("Quests", "current", Quests.current_quest_id)
@@ -184,26 +322,22 @@ func save():
 		save_file.set_value("Quests", "radar_position", Vector2(0, 0))
 		save_file.set_value("Quests", "radar_enabled", false)
 
-	# Sauvegarde des données du joueur
 	save_file.set_value("Player", "pseudo", PlayerStats.pseudo)
 	save_file.set_value("Player", "health", PlayerStats.health)
 	save_file.set_value("Player", "skin", PlayerStats.skin)
 	save_file.set_value("Player", "level", PlayerStats.level)
-	save_file.set_value("Player", "monnaie", PlayerStats.monnaie)
+	save_file.set_value("Player", "monnaie", PlayerStats.money)
 
-	# Vérifier si le joueur est dans la scène actuelle avant de sauvegarder la position
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
 		save_file.set_value("Player", "position", player_node.position)
 	else:
 		print("Le joueur n'est pas disponible pour la sauvegarde de position.")
 
-	# Sauvegarde de l'heure
 	save_file.set_value("Time", "hour", current_hour)
 	save_file.set_value("Time", "minute", current_minute)
 	save_file.set_value("Time", "day", current_day)
 	save_file.set_value("Time", "color", target_color)
-	print(target_color)
 	save_file.save_encrypted_pass("user://save.txt", "gentle_duck")
 	print("Sauvegarde terminée.")
 
@@ -221,19 +355,16 @@ func load():
 	pinr = load_file.get_value("Tags", "Red", pinr)
 	piny = load_file.get_value("Tags", "Yellow", piny)
 	ping = load_file.get_value("Tags", "Green", ping)
-
-	Quests.quests = load_file.get_value("Quests", "infos", Quests.quests)
-	Quests.current_quest_id = load_file.get_value("Quests", "current", Quests.current_quest_id)
-	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
-		get_node("/root/main_map/CanvasLayer/Minimap").pin = load_file.get_value("Quests", "radar_position", Vector2(0, 0))
+	tutorial_stade = load_file.get_value("Tutorial", "Stade", tutorial_stade)
+	tutorial_validate = load_file.get_value("Tutorial", "Validate", tutorial_validate)
+	tutorial = load_file.get_value("Tutorial", "Tutorial", tutorial)
 	
 	PlayerStats.pseudo = load_file.get_value("Player", "pseudo", PlayerStats.pseudo)
 	PlayerStats.health = load_file.get_value("Player", "health", PlayerStats.health)
 	PlayerStats.skin = load_file.get_value("Player", "skin", PlayerStats.skin)
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
-	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
+	PlayerStats.money = load_file.get_value("Player", "money", PlayerStats.money)
 
-	# Application de la position sauvegardée
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
 		player_node.position = load_file.get_value("Player", "position", Vector2(0, 0))
@@ -272,7 +403,19 @@ func _apply_player_position():
 
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
-		player_node.position = load_file.get_value("Player", "position", Vector2(3100, 1880))
+		player_node.position = load_file.get_value("Player", "position", Vector2(32, 100))
 		print("Position joueur appliquée :", player_node.position)
 	else:
 		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")
+
+func smooth_zoom(_camera, zoom, _position_target, speed):
+	var zoom_target = Vector2(zoom, zoom)
+	while _camera.zoom.distance_to(zoom_target) > 0.01:
+		_camera.zoom = lerp(_camera.zoom, zoom_target, speed)
+		_camera.position = lerp(_camera.position, _position_target, speed)
+		await get_tree().create_timer(speed).timeout
+
+func save_user():
+	var save_file = ConfigFile.new()
+	save_file.set_value("User","Data",Global.user)
+	save_file.save_encrypted_pass("user://user.txt", "user_key")

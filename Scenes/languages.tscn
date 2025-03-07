@@ -39,7 +39,7 @@ offset_right = 1920.0
 offset_bottom = 1078.0
 color = Color(0, 0, 0, 1)
 
-[node name="Valider" type="Button" parent="."]
+[node name="Valider" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
 offset_top = 896.0
 offset_right = 1277.0
@@ -93,4 +93,5 @@ size_flags_vertical = 6
 theme_override_constants/separation = 32
 alignment = 1
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Valider" to="Valider" method="_on_pressed"]
