@@ -294,7 +294,7 @@ func update_button_selection() -> void:
 
 
 func pressed_button(button):
-	if get_tree().get_nodes_in_group("Player_One").size() > 0 and paused == true:
+	if get_tree().get_nodes_in_group("Player_One").size() > 0 and game_paused == true:
 		button.emit_signal("pressed")
 	elif get_tree().get_nodes_in_group("Player_One").size() == 0:
 		button.emit_signal("pressed")
