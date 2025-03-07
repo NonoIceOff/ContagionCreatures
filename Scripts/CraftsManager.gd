@@ -24,7 +24,7 @@ var craft_list = {
 		"type": "type",
 		"coef": 1
 	},
-	"Bow": {
+	"Arc en bois": {
 		"ingredients": {
 			"Liane": 7,
 			"Collier pierro": 1

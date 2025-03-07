@@ -48,6 +48,8 @@ func _on_get_item_request_completed(response_code, body):
 
 func _on_exit_button_pressed() -> void:
 	visible = false
+	Engine.time_scale = 1
+	Global.can_move = true
 
 func _process(_delta: float) -> void:
 	pass
@@ -188,6 +190,8 @@ func _update_inventory(item_name: String):
 		for item in player_items:
 			if item["name"] == ingredient:
 				item["quantity"] -= quantity_needed
+				if item["quantity"] <= 0:
+					player_items.erase(item)
 				break
 	var item_found = false
 	for item in player_items:
