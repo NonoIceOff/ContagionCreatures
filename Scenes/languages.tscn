@@ -1,10 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpvj8ye6n4hb6"]
+[gd_scene load_steps=13 format=3 uid="uid://cpvj8ye6n4hb6"]
 
 [ext_resource type="Script" path="res://Scripts/languagesmenu.gd" id="1_patet"]
 [ext_resource type="Script" path="res://Scripts/Boutons/Ok.gd" id="2_g7mj5"]
+[ext_resource type="Shader" path="res://Inventory/inv_animals.gdshader" id="2_t0jdo"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="3_reqxc"]
+[ext_resource type="Texture2D" uid="uid://b12y342v323gw" path="res://Textures/Inventaire/grey_pressed.png" id="3_tj24x"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_hapc2"]
+[ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_p2tqy"]
 [ext_resource type="Script" path="res://Scripts/Titre.gd" id="5_4lvn7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aklc6"]
+shader = ExtResource("2_t0jdo")
+shader_parameter/scroll_speed = 1.0
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 0.5
+shader_parameter/repeat_y = 0.5
+shader_parameter/row_offset = 2.5
+shader_parameter/texture_to_scroll = ExtResource("3_tj24x")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)
@@ -34,10 +46,20 @@ corner_radius_bottom_left = 40
 [node name="LanguagesMenu" type="Node2D"]
 script = ExtResource("1_patet")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="BackgroundTiles" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_aklc6")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_right = 1920.0
-offset_bottom = 1078.0
-color = Color(0, 0, 0, 1)
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_p2tqy")
+stretch_mode = 1
 
 [node name="Valider" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0

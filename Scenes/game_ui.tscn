@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cx6s6at1q7bed"]
+[gd_scene load_steps=43 format=3 uid="uid://dbefb2mkq4xrv"]
 
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_r7j8k"]
 [ext_resource type="Script" path="res://Scenes/game_ui.gd" id="1_xtvsa"]
@@ -413,21 +413,6 @@ cache/0/14/0/descent = 0.0
 cache/0/14/0/underline_position = 0.0
 cache/0/14/0/underline_thickness = 0.0
 cache/0/14/0/scale = 1.0
-
-[sub_resource type="FontFile" id="FontFile_cwayb"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/14/0/ascent = 0.0
-cache/0/14/0/descent = 0.0
-cache/0/14/0/underline_position = 0.0
-cache/0/14/0/underline_thickness = 0.0
-cache/0/14/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qvf72"]
 
@@ -924,22 +909,20 @@ theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 50
 
 [node name="MainContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer"]
-
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 45
 
-[node name="CraftsListContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer"]
+[node name="CraftsListContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
 layout_mode = 2
 
-[node name="CraftsListTitle" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftsListContainer"]
+[node name="CraftsListTitle" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_7tcmm")
 theme_override_font_sizes/font_size = 25
 text = "Fabrications disponibles"
 horizontal_alignment = 1
-
 
 [node name="CraftLineEdit" type="LineEdit" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
 texture_filter = 1
@@ -984,7 +967,6 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_ncf33")
 
 [node name="CraftsList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
-
 texture_filter = 1
 custom_minimum_size = Vector2(380, 700)
 layout_mode = 2
@@ -998,37 +980,37 @@ same_column_width = true
 fixed_column_width = 102
 fixed_icon_size = Vector2i(105, 60)
 
-[node name="CraftInfoContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer"]
+[node name="CraftInfoContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer"]
 custom_minimum_size = Vector2(500, 420)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_v2xow")
 
-[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 18
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 18
 
-[node name="CraftNamePreviewContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
+[node name="CraftNamePreviewContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(420, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/separation = 22
 
-[node name="TextureRect" type="TextureRect" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftNamePreviewContainer"]
+[node name="TextureRect" type="TextureRect" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftNamePreviewContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="CraftInfoLabel" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftNamePreviewContainer"]
+[node name="CraftInfoLabel" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftNamePreviewContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1037,23 +1019,22 @@ theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="CraftDescriptionContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
+[node name="CraftDescriptionContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 22
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer"]
 custom_minimum_size = Vector2(220, 150)
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="CraftDescription" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer/ScrollContainer"]
+[node name="CraftDescription" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer/ScrollContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = SubResource("FontFile_4r40u")
 theme_override_font_sizes/font_size = 14
-
 autowrap_mode = 3
 
 [node name="ResourcesNeededItemList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer"]
@@ -1072,12 +1053,12 @@ same_column_width = true
 fixed_column_width = 100
 fixed_icon_size = Vector2i(40, 40)
 
-[node name="CraftButtonContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
+[node name="CraftButtonContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 85)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="CraftButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftButtonContainer"]
+[node name="CraftButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftButtonContainer"]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -1088,10 +1069,10 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_csvnq")
 theme_override_styles/normal = SubResource("StyleBoxTexture_chosw")
 text = "CRAFT"
 
-[node name="ResourcesContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer"]
+[node name="ResourcesContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
 layout_mode = 2
 
-[node name="ResourcesTitle" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/ResourcesContainer"]
+[node name="ResourcesTitle" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -1163,6 +1144,7 @@ fixed_icon_size = Vector2i(60, 60)
 
 [node name="SettingsMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
 visible = false
+z_index = 4096
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1275,6 +1257,7 @@ text = "RETOUR"
 
 [node name="ControlsSettingsScreenContainer" type="VBoxContainer" parent="PopupMenu"]
 visible = false
+z_index = 4096
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1591,6 +1574,12 @@ theme_override_styles/separator = SubResource("StyleBoxTexture_nhswb")
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SaveButton" to="PopupMenu" method="_on_save_button_pressed"]
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SettingsButton" to="PopupMenu" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/MainMenuButton" to="PopupMenu" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/ExitButton" to="PopupMenu/CraftMenuScreenContainer" method="_on_exit_button_pressed"]
+[connection signal="text_changed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftLineEdit" to="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftLineEdit" method="_on_text_changed"]
+[connection signal="item_selected" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftsList" to="PopupMenu/CraftMenuScreenContainer" method="_on_item_selected"]
+[connection signal="pressed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftButtonContainer/CraftButton" to="PopupMenu/CraftMenuScreenContainer" method="_on_craft_button_pressed"]
+[connection signal="request_completed" from="PopupMenu/CraftMenuScreenContainer/getItem" to="PopupMenu/CraftMenuScreenContainer" method="_on_get_item_request_completed"]
+[connection signal="request_completed" from="PopupMenu/CraftMenuScreenContainer/getItemName" to="PopupMenu/CraftMenuScreenContainer" method="_on_get_item_name_request_completed"]
 [connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/ControlsButton" to="PopupMenu" method="_on_controls_button_pressed"]
 [connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/LanguageButton" to="PopupMenu" method="_on_language_button_pressed"]
 [connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/AppearanceButton" to="PopupMenu" method="_on_appearance_button_pressed"]
@@ -1604,9 +1593,3 @@ theme_override_styles/separator = SubResource("StyleBoxTexture_nhswb")
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsMapContainer/ControlsMapButton" to="PopupMenu" method="_on_controls_map_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsQuestsContainer/ControlsQuestsButton" to="PopupMenu" method="_on_controls_quests_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer/ControlsBackButton" to="PopupMenu" method="_on_controls_back_button_pressed"]
-[connection signal="pressed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/ExitButton" to="PopupMenu/CraftMenuScreenContainer" method="_on_exit_button_pressed"]
-[connection signal="text_changed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftLineEdit" to="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftLineEdit" method="_on_text_changed"]
-[connection signal="item_selected" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftsList" to="PopupMenu/CraftMenuScreenContainer" method="_on_item_selected"]
-[connection signal="pressed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftButtonContainer/CraftButton" to="PopupMenu/CraftMenuScreenContainer" method="_on_craft_button_pressed"]
-[connection signal="request_completed" from="PopupMenu/CraftMenuScreenContainer/getItem" to="PopupMenu/CraftMenuScreenContainer" method="_on_get_item_request_completed"]
-[connection signal="request_completed" from="PopupMenu/CraftMenuScreenContainer/getItemName" to="PopupMenu/CraftMenuScreenContainer" method="_on_get_item_name_request_completed"]
