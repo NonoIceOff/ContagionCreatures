@@ -266,18 +266,6 @@ func _ready():
 	ui = get_tree().get_nodes_in_group("ui")
 
 
-var actual_animal = {
-	
-	0: {
-		"name":"Deagle",
-		"infected": false,
-		"type":['Totem'],
-		"boost":[ 1.1 , "def"], #+10% de DEF pour le joueur et plus 5% de plus si l'arme est du meme type
-		"effets":["+ 10% d'attaque pour le joueur ( Cumulable 1 fois ) et * 2 si l'arme "],        
-		"textureA":"res://Textures/Animals/EAGLE_.png",
-		"texture_animal_fight":"res://Textures/Animals/eagle_Player.png",
-	},
-}
 
 func _process(delta):
 	ui = get_tree().get_nodes_in_group("ui")
