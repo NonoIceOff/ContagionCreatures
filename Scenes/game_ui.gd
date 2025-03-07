@@ -4,6 +4,7 @@ extends MarginContainer
 @export var craft_menu = VBoxContainer
 @export var settings_menu = VBoxContainer
 @export var controls_settings = VBoxContainer
+@export var save_confirmmation = ConfirmationDialog
 
 
 func toggle_visibility(object):
@@ -22,8 +23,13 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_save_button_pressed() -> void:
-	Global.save
+	save_confirmmation.visible = true
 	
+	
+func _on_save_confirmed() -> void:
+	Global.save()
+	print("Sauvegarde effectuée !")
+
 
 func _on_settings_button_pressed() -> void:
 	toggle_visibility(pause_menu)

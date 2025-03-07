@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dbefb2mkq4xrv"]
+[gd_scene load_steps=45 format=3 uid="uid://cx6s6at1q7bed"]
 
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_r7j8k"]
 [ext_resource type="Script" path="res://Scenes/game_ui.gd" id="1_xtvsa"]
@@ -713,6 +713,57 @@ cache/0/40/0/scale = 1.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhswb"]
 
+[sub_resource type="FontFile" id="FontFile_whgwg"]
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/15/0/ascent = 0.0
+cache/0/15/0/descent = 0.0
+cache/0/15/0/underline_position = 0.0
+cache/0/15/0/underline_thickness = 0.0
+cache/0/15/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/19/0/ascent = 0.0
+cache/0/19/0/descent = 0.0
+cache/0/19/0/underline_position = 0.0
+cache/0/19/0/underline_thickness = 0.0
+cache/0/19/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
+cache/0/22/0/ascent = 0.0
+cache/0/22/0/descent = 0.0
+cache/0/22/0/underline_position = 0.0
+cache/0/22/0/underline_thickness = 0.0
+cache/0/22/0/scale = 1.0
+
+[sub_resource type="Theme" id="Theme_ynvfv"]
+default_font = SubResource("FontFile_whgwg")
+default_font_size = 22
+
 [node name="GameUI" type="Control"]
 z_index = 4096
 layout_mode = 3
@@ -722,7 +773,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings")]
+[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings", "save_confirmmation")]
 z_index = 4096
 layout_mode = 1
 anchors_preset = 15
@@ -735,6 +786,7 @@ pause_menu = NodePath("PauseMenuScreenContainer")
 craft_menu = NodePath("CraftMenuScreenContainer")
 settings_menu = NodePath("SettingsMenuScreenContainer")
 controls_settings = NodePath("ControlsSettingsScreenContainer")
+save_confirmmation = NodePath("SaveConfirm")
 
 [node name="PauseMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
 visible = false
@@ -1570,6 +1622,18 @@ layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxTexture_nhswb")
 
+[node name="SaveConfirm" type="ConfirmationDialog" parent="PopupMenu"]
+auto_translate_mode = 1
+title = "Sauvegarder"
+initial_position = 3
+size = Vector2i(500, 250)
+current_screen = 0
+theme = SubResource("Theme_ynvfv")
+ok_button_text = "Ok"
+dialog_text = "Confirmer la sauvegarde ?"
+dialog_autowrap = true
+cancel_button_text = "Annuler"
+
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/PlayButton" to="PopupMenu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SaveButton" to="PopupMenu" method="_on_save_button_pressed"]
 [connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SettingsButton" to="PopupMenu" method="_on_settings_button_pressed"]
@@ -1593,3 +1657,4 @@ theme_override_styles/separator = SubResource("StyleBoxTexture_nhswb")
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsMapContainer/ControlsMapButton" to="PopupMenu" method="_on_controls_map_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsQuestsContainer/ControlsQuestsButton" to="PopupMenu" method="_on_controls_quests_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer/ControlsBackButton" to="PopupMenu" method="_on_controls_back_button_pressed"]
+[connection signal="confirmed" from="PopupMenu/SaveConfirm" to="PopupMenu" method="_on_save_confirmed"]
