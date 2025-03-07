@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dbefb2mkq4xrv"]
+[gd_scene load_steps=19 format=3 uid="uid://cx6s6at1q7bed"]
 
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_r7j8k"]
 [ext_resource type="Script" path="res://Scenes/game_ui.gd" id="1_xtvsa"]
@@ -414,6 +414,21 @@ cache/0/14/0/underline_position = 0.0
 cache/0/14/0/underline_thickness = 0.0
 cache/0/14/0/scale = 1.0
 
+[sub_resource type="FontFile" id="FontFile_cwayb"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qvf72"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37uvl"]
@@ -509,25 +524,236 @@ region_rect = Rect2(300, 110, 23, 20)
 texture = ExtResource("1_r7j8k")
 region_rect = Rect2(388, 36, 24, 25)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sjh4y"]
+
+[sub_resource type="FontFile" id="FontFile_6cogi"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/2/0/ascent = 0.0
+cache/0/2/0/descent = 0.0
+cache/0/2/0/underline_position = 0.0
+cache/0/2/0/underline_thickness = 0.0
+cache/0/2/0/scale = 1.0
+cache/0/3/0/ascent = 0.0
+cache/0/3/0/descent = 0.0
+cache/0/3/0/underline_position = 0.0
+cache/0/3/0/underline_thickness = 0.0
+cache/0/3/0/scale = 1.0
+cache/0/4/0/ascent = 0.0
+cache/0/4/0/descent = 0.0
+cache/0/4/0/underline_position = 0.0
+cache/0/4/0/underline_thickness = 0.0
+cache/0/4/0/scale = 1.0
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/6/0/ascent = 0.0
+cache/0/6/0/descent = 0.0
+cache/0/6/0/underline_position = 0.0
+cache/0/6/0/underline_thickness = 0.0
+cache/0/6/0/scale = 1.0
+cache/0/7/0/ascent = 0.0
+cache/0/7/0/descent = 0.0
+cache/0/7/0/underline_position = 0.0
+cache/0/7/0/underline_thickness = 0.0
+cache/0/7/0/scale = 1.0
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+cache/0/9/0/ascent = 0.0
+cache/0/9/0/descent = 0.0
+cache/0/9/0/underline_position = 0.0
+cache/0/9/0/underline_thickness = 0.0
+cache/0/9/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/13/0/ascent = 0.0
+cache/0/13/0/descent = 0.0
+cache/0/13/0/underline_position = 0.0
+cache/0/13/0/underline_thickness = 0.0
+cache/0/13/0/scale = 1.0
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/15/0/ascent = 0.0
+cache/0/15/0/descent = 0.0
+cache/0/15/0/underline_position = 0.0
+cache/0/15/0/underline_thickness = 0.0
+cache/0/15/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/19/0/ascent = 0.0
+cache/0/19/0/descent = 0.0
+cache/0/19/0/underline_position = 0.0
+cache/0/19/0/underline_thickness = 0.0
+cache/0/19/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
+cache/0/22/0/ascent = 0.0
+cache/0/22/0/descent = 0.0
+cache/0/22/0/underline_position = 0.0
+cache/0/22/0/underline_thickness = 0.0
+cache/0/22/0/scale = 1.0
+cache/0/23/0/ascent = 0.0
+cache/0/23/0/descent = 0.0
+cache/0/23/0/underline_position = 0.0
+cache/0/23/0/underline_thickness = 0.0
+cache/0/23/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/26/0/ascent = 0.0
+cache/0/26/0/descent = 0.0
+cache/0/26/0/underline_position = 0.0
+cache/0/26/0/underline_thickness = 0.0
+cache/0/26/0/scale = 1.0
+cache/0/27/0/ascent = 0.0
+cache/0/27/0/descent = 0.0
+cache/0/27/0/underline_position = 0.0
+cache/0/27/0/underline_thickness = 0.0
+cache/0/27/0/scale = 1.0
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+cache/0/29/0/ascent = 0.0
+cache/0/29/0/descent = 0.0
+cache/0/29/0/underline_position = 0.0
+cache/0/29/0/underline_thickness = 0.0
+cache/0/29/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/31/0/ascent = 0.0
+cache/0/31/0/descent = 0.0
+cache/0/31/0/underline_position = 0.0
+cache/0/31/0/underline_thickness = 0.0
+cache/0/31/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/33/0/ascent = 0.0
+cache/0/33/0/descent = 0.0
+cache/0/33/0/underline_position = 0.0
+cache/0/33/0/underline_thickness = 0.0
+cache/0/33/0/scale = 1.0
+cache/0/34/0/ascent = 0.0
+cache/0/34/0/descent = 0.0
+cache/0/34/0/underline_position = 0.0
+cache/0/34/0/underline_thickness = 0.0
+cache/0/34/0/scale = 1.0
+cache/0/35/0/ascent = 0.0
+cache/0/35/0/descent = 0.0
+cache/0/35/0/underline_position = 0.0
+cache/0/35/0/underline_thickness = 0.0
+cache/0/35/0/scale = 1.0
+cache/0/36/0/ascent = 0.0
+cache/0/36/0/descent = 0.0
+cache/0/36/0/underline_position = 0.0
+cache/0/36/0/underline_thickness = 0.0
+cache/0/36/0/scale = 1.0
+cache/0/37/0/ascent = 0.0
+cache/0/37/0/descent = 0.0
+cache/0/37/0/underline_position = 0.0
+cache/0/37/0/underline_thickness = 0.0
+cache/0/37/0/scale = 1.0
+cache/0/38/0/ascent = 0.0
+cache/0/38/0/descent = 0.0
+cache/0/38/0/underline_position = 0.0
+cache/0/38/0/underline_thickness = 0.0
+cache/0/38/0/scale = 1.0
+cache/0/39/0/ascent = 0.0
+cache/0/39/0/descent = 0.0
+cache/0/39/0/underline_position = 0.0
+cache/0/39/0/underline_thickness = 0.0
+cache/0/39/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhswb"]
+
 [node name="GameUI" type="Control"]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xtvsa")
 
-[node name="PopupMenu" type="MarginContainer" parent="."]
+[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings")]
+z_index = 4096
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xtvsa")
+pause_menu = NodePath("PauseMenuScreenContainer")
+craft_menu = NodePath("CraftMenuScreenContainer")
+settings_menu = NodePath("SettingsMenuScreenContainer")
+controls_settings = NodePath("ControlsSettingsScreenContainer")
 
 [node name="PauseMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
 visible = false
+z_index = 4096
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -569,15 +795,15 @@ theme_override_font_sizes/font_size = 60
 text = "PAUSE"
 uppercase = true
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer"]
+[node name="PauseMenuButtonsContainer" type="VBoxContainer" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer"]
 custom_minimum_size = Vector2(400, 350)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 20
 
-[node name="PlayButton" type="Button" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer"]
-custom_minimum_size = Vector2(250, 80)
+[node name="PlayButton" type="Button" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -590,8 +816,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
 text = "REPRENDRE"
 
-[node name="SaveButton" type="Button" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer"]
-custom_minimum_size = Vector2(250, 80)
+[node name="SaveButton" type="Button" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -604,8 +830,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
 text = "SAUVEGARDER"
 
-[node name="SettingsButton" type="Button" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer"]
-custom_minimum_size = Vector2(250, 80)
+[node name="SettingsButton" type="Button" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -618,8 +844,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
 text = "PARAMÈTRES"
 
-[node name="MainMenuButton" type="Button" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer"]
-custom_minimum_size = Vector2(250, 80)
+[node name="MainMenuButton" type="Button" parent="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -698,20 +924,22 @@ theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 50
 
 [node name="MainContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer"]
+
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 45
 
-[node name="CraftsListContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
+[node name="CraftsListContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer"]
 layout_mode = 2
 
-[node name="CraftsListTitle" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
+[node name="CraftsListTitle" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftsListContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_7tcmm")
 theme_override_font_sizes/font_size = 25
 text = "Fabrications disponibles"
 horizontal_alignment = 1
+
 
 [node name="CraftLineEdit" type="LineEdit" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
 texture_filter = 1
@@ -756,6 +984,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_ncf33")
 
 [node name="CraftsList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
+
 texture_filter = 1
 custom_minimum_size = Vector2(380, 700)
 layout_mode = 2
@@ -769,37 +998,37 @@ same_column_width = true
 fixed_column_width = 102
 fixed_icon_size = Vector2i(105, 60)
 
-[node name="CraftInfoContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
+[node name="CraftInfoContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer"]
 custom_minimum_size = Vector2(500, 420)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_v2xow")
 
-[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 18
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 18
 
-[node name="CraftNamePreviewContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
+[node name="CraftNamePreviewContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(420, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/separation = 22
 
-[node name="TextureRect" type="TextureRect" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftNamePreviewContainer"]
+[node name="TextureRect" type="TextureRect" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftNamePreviewContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="CraftInfoLabel" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftNamePreviewContainer"]
+[node name="CraftInfoLabel" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftNamePreviewContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -808,22 +1037,23 @@ theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="CraftDescriptionContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
+[node name="CraftDescriptionContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 22
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer"]
 custom_minimum_size = Vector2(220, 150)
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="CraftDescription" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer/ScrollContainer"]
+[node name="CraftDescription" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer/ScrollContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = SubResource("FontFile_4r40u")
 theme_override_font_sizes/font_size = 14
+
 autowrap_mode = 3
 
 [node name="ResourcesNeededItemList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftDescriptionContainer"]
@@ -842,12 +1072,12 @@ same_column_width = true
 fixed_column_width = 100
 fixed_icon_size = Vector2i(40, 40)
 
-[node name="CraftButtonContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
+[node name="CraftButtonContainer" type="HBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 85)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="CraftButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftButtonContainer"]
+[node name="CraftButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftButtonContainer"]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -858,10 +1088,10 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_csvnq")
 theme_override_styles/normal = SubResource("StyleBoxTexture_chosw")
 text = "CRAFT"
 
-[node name="ResourcesContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer"]
+[node name="ResourcesContainer" type="VBoxContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer"]
 layout_mode = 2
 
-[node name="ResourcesTitle" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer"]
+[node name="ResourcesTitle" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/CraftMenuMainContainer/ResourcesContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -931,10 +1161,449 @@ fixed_icon_size = Vector2i(60, 60)
 
 [node name="getItemName" type="HTTPRequest" parent="PopupMenu/CraftMenuScreenContainer"]
 
-[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/ButtonsContainer/MainMenuButton" to="." method="_on_mainmenu_button_pressed"]
+[node name="SettingsMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SettingsMenuScreen" type="MarginContainer" parent="PopupMenu/SettingsMenuScreenContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen"]
+custom_minimum_size = Vector2(550, 650)
+layout_mode = 2
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(742, 39, 18, 18)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 45
+
+[node name="Title" type="Label" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_kg5o7")
+theme_override_font_sizes/font_size = 60
+text = "PARAMÈTRES"
+uppercase = true
+
+[node name="SettingsMenuButtonsContainer" type="VBoxContainer" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="ControlsButton" type="Button" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "CONTRÔLES"
+
+[node name="LanguageButton" type="Button" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "LANGUE"
+
+[node name="AppearanceButton" type="Button" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "APPARENCE"
+
+[node name="HSeparator" type="HSeparator" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxTexture_sjh4y")
+
+[node name="SettingsMenuBackButton" type="Button" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "RETOUR"
+
+[node name="ControlsSettingsScreenContainer" type="VBoxContainer" parent="PopupMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ControlsSettingsScreen" type="MarginContainer" parent="PopupMenu/ControlsSettingsScreenContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(742, 39, 18, 18)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="Title" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_kg5o7")
+theme_override_font_sizes/font_size = 60
+text = "CONTRÔLEs
+"
+uppercase = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(1500, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+horizontal_scroll_mode = 0
+
+[node name="ControlsSettingsButtonsContainer" type="VBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="ControlsUpContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 800
+
+[node name="ControlsUpLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsUpContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_6cogi")
+theme_override_font_sizes/font_size = 35
+text = "Aller en haut"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ControlsUpButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsUpContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "Z"
+
+[node name="ControlsDownContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 800
+
+[node name="ControlsDownLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsDownContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_6cogi")
+theme_override_font_sizes/font_size = 35
+text = "Aller en bas"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ControlsDownButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsDownContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "S"
+
+[node name="ControlsLeftContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 800
+
+[node name="ControlsLeftLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsLeftContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_6cogi")
+theme_override_font_sizes/font_size = 35
+text = "Aller à gauche"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ControlsLeftButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsLeftContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "Q"
+
+[node name="ControlsRightContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 800
+
+[node name="ControlsRightLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsRightContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_6cogi")
+theme_override_font_sizes/font_size = 35
+text = "Aller à droite"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ControlsRightButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsRightContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "D"
+
+[node name="ControlsInteractContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 800
+
+[node name="ControlsInteractLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInteractContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_6cogi")
+theme_override_font_sizes/font_size = 35
+text = "Intéragir"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ControlsInteractButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInteractContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "E"
+
+[node name="ControlsInventoryContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 800
+
+[node name="ControlsInventoryLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInventoryContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_6cogi")
+theme_override_font_sizes/font_size = 35
+text = "ouvrir l'inventaire"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ControlsInventoryButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInventoryContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "I"
+
+[node name="ControlsMapContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 800
+
+[node name="ControlsMapLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsMapContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_6cogi")
+theme_override_font_sizes/font_size = 35
+text = "Ouvrir la carte"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ControlsMapButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsMapContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "M"
+
+[node name="ControlsQuestsContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 800
+
+[node name="ControlsQuestsLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsQuestsContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_6cogi")
+theme_override_font_sizes/font_size = 35
+text = "Ouvrir le menu des quêtes"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ControlsQuestsButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsQuestsContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "TAB"
+
+[node name="ControlsBackButtonContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="ControlsBackButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "Retour"
+
+[node name="VSeparator" type="VSeparator" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxTexture_nhswb")
+
+[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/PlayButton" to="PopupMenu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SaveButton" to="PopupMenu" method="_on_save_button_pressed"]
+[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/SettingsButton" to="PopupMenu" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PopupMenu/PauseMenuScreenContainer/PauseMenuScreen/NinePatchRect/MarginContainer/PauseMenuButtonsContainer/MainMenuButton" to="PopupMenu" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/ControlsButton" to="PopupMenu" method="_on_controls_button_pressed"]
+[connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/LanguageButton" to="PopupMenu" method="_on_language_button_pressed"]
+[connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/AppearanceButton" to="PopupMenu" method="_on_appearance_button_pressed"]
+[connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/SettingsMenuBackButton" to="PopupMenu" method="_on_settings_menu_back_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsUpContainer/ControlsUpButton" to="PopupMenu" method="_on_controls_up_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsDownContainer/ControlsDownButton" to="PopupMenu" method="_on_controls_down_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsLeftContainer/ControlsLeftButton" to="PopupMenu" method="_on_controls_left_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsRightContainer/ControlsRightButton" to="PopupMenu" method="_on_controls_right_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInteractContainer/ControlsInteractButton" to="PopupMenu" method="_on_controls_interact_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInventoryContainer/ControlsInventoryButton" to="PopupMenu" method="_on_controls_inventory_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsMapContainer/ControlsMapButton" to="PopupMenu" method="_on_controls_map_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsQuestsContainer/ControlsQuestsButton" to="PopupMenu" method="_on_controls_quests_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer/ControlsBackButton" to="PopupMenu" method="_on_controls_back_button_pressed"]
 [connection signal="pressed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/ExitButton" to="PopupMenu/CraftMenuScreenContainer" method="_on_exit_button_pressed"]
 [connection signal="text_changed" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftLineEdit" to="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftLineEdit" method="_on_text_changed"]
 [connection signal="item_selected" from="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/CraftsList" to="PopupMenu/CraftMenuScreenContainer" method="_on_item_selected"]

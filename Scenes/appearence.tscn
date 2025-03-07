@@ -229,10 +229,10 @@ region_rect = Rect2(64, 64, 16, 16)
 
 [node name="ButtonPerso6" type="Button" parent="Perso6" groups=["buttons"]]
 texture_filter = 1
-offset_left = -8.7
-offset_top = -9.2
-offset_right = 10.3
-offset_bottom = 9.8
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 10.0
+offset_bottom = 10.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_ypyhf")
 flat = true
 

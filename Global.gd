@@ -7,10 +7,9 @@ var user_enemy = {}
 var interact = false
 var trigger = true
 var brazero_numbers = 0
-var paused = false
 var can_move = true
 var player_postion = Vector2(0,0)
-
+var game_paused = false
 var attack_index = 0
 var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
 var attack_values = [11,23,2,20]
