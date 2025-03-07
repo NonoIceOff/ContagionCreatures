@@ -1,7 +1,7 @@
 [
   {
 	"description": "A small, sneaky creature that likes to ambush travelers.",
-	"hp": 30,
+	"hp": 3000,
 	"id": 1,
 	"is_infected": false,
 	"name": "Goblin",
