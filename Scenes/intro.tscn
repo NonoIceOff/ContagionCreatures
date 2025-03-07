@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://p838sug386nh" path="res://Textures/light_mask.png" id="3_55fkg"]
 [ext_resource type="AudioStream" uid="uid://bhadmg6kov1tb" path="res://Sounds/music/dungeons.ogg" id="4_lfd5b"]
 [ext_resource type="AudioStream" uid="uid://chi02efau43ep" path="res://Sounds/flame_sound.mp3" id="5_188md"]
-[ext_resource type="Texture2D" uid="uid://bcoxlrv826kyq" path="res://Textures/Stone.png" id="7_edp2d"]
+[ext_resource type="Texture2D" uid="uid://bcoxlrv826kyq" path="res://Textures/Items/Stone.png" id="7_edp2d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tr7xy"]
 atlas = ExtResource("3_2bcry")

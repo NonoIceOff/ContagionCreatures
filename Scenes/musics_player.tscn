@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://w2h3xtekh8o3"]
+
+[ext_resource type="Script" path="res://Scripts/musics_player.gd" id="1_3saj3"]
+
+[node name="MusicsPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3saj3")
+
+[node name="Musics" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
+
+[node name="Player" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
+
+[node name="UI" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
+
+[node name="Bus1" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
+
+[node name="Bus2" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
+
+[node name="Bus3" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
+
+[node name="Bus4" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
+
+[node name="Bus5" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
+
+[node name="Bus6" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
+
+[node name="Bus7" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9.22337e+18
