@@ -17,15 +17,13 @@ func toggle_visibility(object):
 # Pause menu
 
 func _on_play_button_pressed() -> void:
-	toggle_visibility(pause_menu)
+	pause_menu.visible = false
 	Engine.time_scale = 1
-	Global.can_move = true
 
 
 func _on_save_button_pressed() -> void:
 	Global.save
-	print("Données sauvegardées")
-
+	
 
 func _on_settings_button_pressed() -> void:
 	toggle_visibility(pause_menu)

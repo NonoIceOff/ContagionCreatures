@@ -25,7 +25,6 @@ Global="*res://Global.gd"
 Tutorial="*res://Scenes/tutorial.tscn"
 Notifications="*res://Scenes/notifications.tscn"
 Quests="*res://Scripts/Quests.gd"
-GameUI="*res://Scenes/game_ui.tscn"
 
 [display]
 

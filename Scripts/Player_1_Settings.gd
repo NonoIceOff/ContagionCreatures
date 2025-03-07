@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var speed: float = 200
 
 @onready var animated_sprite: AnimatedSprite2D = $player1
-# @onready var game_ui = get_tree().get_root().find_child("GameUI", true, false)
+@onready var pause_menu = get_node("player1/2/CanvasLayer/GameUI/PopupMenu/PauseMenuScreenContainer") 
 
 func entered_door():
 	emit_signal("player_entered_door_signal")
@@ -14,9 +14,8 @@ func entered_door():
 func _physics_process(_delta: float) -> void:
 	var input_velocity = Vector2.ZERO
 	
-	if Input.is_action_just_pressed("échap") and GameUI:
-		if GameUI.pause_menu:
-			GameUI.toggle_visibility(GameUI.pause_menu)
+	if Input.is_action_just_pressed("échap"):
+		PauseMenu()
 
 	if get_node_or_null("../../ui/Full_Screen_map") == null:
 		if Input.is_action_pressed("droite"):
@@ -41,14 +40,12 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
-# func PauseMenu ():
-# 	if Global.paused == true:
-# 		pause_menu.show()
-# 		Engine.time_scale = 0
-# 		Global.can_move = false
-# 	elif Global.paused == false:
-# 		pause_menu.hide()
-# 		Engine.time_scale = 1
-# 		Global.can_move = true
-	
-# 	Global.paused = !Global.paused
+func PauseMenu ():
+	if Global.game_paused == true:
+		pause_menu.visible = false
+		Engine.time_scale = 1
+	elif Global.game_paused == false:
+		pause_menu.visible = true
+		Engine.time_scale = 0
+
+	Global.game_paused = !Global.game_paused
