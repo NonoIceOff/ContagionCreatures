@@ -1,13 +1,12 @@
 extends CharacterBody2D
 
-# signal player_entering_door_signal
-# signal player_entered_door_signal
+signal player_entering_door_signal
+signal player_entered_door_signal
 
 @export var speed: float = 200
 @export var speed_multi = Global.sprint_multiplier
 
 @onready var animated_sprite: AnimatedSprite2D = $player1
-@onready var pause_menu = get_node("player1/2/CanvasLayer/GameUI/PopupMenu/PauseMenuScreenContainer") 
 @onready var pause_menu = $"player1/2/CanvasLayer/PauseMenu"
 @onready var player_light = $PointLight2D
 
@@ -68,12 +67,16 @@ func _physics_process(delta: float) -> void:
 		player_light.visible = false
 		#print(player_light.visible)
 
-func PauseMenu ():
-	if Global.game_paused == true:
-		pause_menu.visible = false
-		Engine.time_scale = 1
-	elif Global.game_paused == false:
-		pause_menu.visible = true
+func PauseMenu():
+	print("pause")
+	Global.paused = !Global.paused
+	if Global.paused == true:
+		pause_menu.show()
 		Engine.time_scale = 0
-
-	Global.game_paused = !Global.game_paused
+		Global.can_move = false
+	elif Global.paused == false:
+		pause_menu.hide()
+		Engine.time_scale = 1
+		Global.can_move = true
+	Global.selected_index = 0
+	
