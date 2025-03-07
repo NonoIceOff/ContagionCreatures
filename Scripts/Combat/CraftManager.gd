@@ -64,7 +64,12 @@ func list_craft():
 				"poussiere": 1
 			},
 			"unlock": "Herboristerie",
-			"result": "herbe_anti_poison"
+			"result": "herbe_anti_poison",
+			"common_pourcentage": 0.5,
+			"rare_pourcentage": 0.3,
+			"epic_pourcentage": 0.2,
+			"legendary_pourcentage": 0.1,
+			"exotic_pourcentage": 0.05
 		}
 	}
   

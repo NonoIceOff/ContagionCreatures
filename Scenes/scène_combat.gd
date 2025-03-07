@@ -3,8 +3,6 @@ extends Node2D
 var ennemy_manager = EnnemyManager.new()
 var craft_manager = CraftManager.new()
 
-
-
 var speechbox =  preload("res://Scenes/speech_box_COMBAT.tscn")
 var precombat_scene = preload("res://Scenes/Precombat.tscn")
 var rng = RandomNumberGenerator.new()
@@ -23,6 +21,30 @@ var space_pressed = false   # Indique si la barre espace a été pressée une fo
 var current_attack_value = 0  # Stocke la valeur de l'attaque actuelle
 var current_mode = ""
 var current_difficulty= ""
+# Création des variables pour stocker les infos du combat pour les enregistrer à l'écran de fin de combat
+var number_attack_player = 0
+var number_attack_ennemye = 0
+var total_damage_player = 0
+var total_damage_ennemye = 0
+var max_damage_player = 0
+var max_damage_ennemye = 0
+var total_heal_player = 0
+var total_heal_ennemye = 0
+var max_heal_player = 0
+var max_heal_ennemye = 0
+var total_shield_player = 0
+var total_shield_ennemye = 0
+var max_shield_player = 0
+var max_shield_ennemye = 0
+# pourcentage de réussite de coup critique avec la barre espace
+var critique_attaque_player = 0
+var critique_attaque_ennemye = 0
+var normal_attaque_player = 0
+var normal_attaque_ennemye = 0
+var echec_attaque_player = 0
+var echec_attaque_ennemye = 0
+var time_on_game = 0
+
 @onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
 @onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
 @onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
@@ -42,7 +64,6 @@ var combat_started = false  # Indicateur de début de combat
 @onready var player_percentage_shield  = $ContainerPLAYER/TextureProgressBar/Shield
 @onready var spell_name_player = $ProgressBar_Joueur/SpellName
 
-
 # Ennemy bar
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var progress_bar_ennemye = $ProgressBar_ennemye
@@ -53,9 +74,6 @@ var combat_started = false  # Indicateur de début de combat
 @onready var mob_percentage_hp  = $ContainerMob/TextureProgressBar/Percentage
 @onready var mob_percentage_shield  = $ContainerMob/TextureProgressBar/Shield
 @onready var spell_name_ennemye = $ProgressBar_ennemye/SpellName
-
-
-
 
 @onready var http_get_creatures = $GetCreaturesEnemy
 @onready var http_get_creatures_spells = $GetSpellsPlayer
@@ -94,7 +112,6 @@ func _ready():
 	var enemy_mob_id = randi_range(1, 10)
 	http_get_creatures.request(API_URL + "/" + str(enemy_mob_id))
 	http_get_enemy_spells.request(API_URL + "/" + str(enemy_mob_id) + "/attacks")
-
 
 	# Initialiser l'affichage des sorts et masquer la zone cible
 	var zone_cible1 = $ProgressBar_Joueur/ZoneCible1
@@ -183,9 +200,6 @@ func _on_get_creatures_spells_request_completed(result: int, response_code: int,
 	if response_code == 200:
 		var response_text = body.get_string_from_utf8()
 		var parse_result = JSON.parse_string(response_text)
-		
-		# Vérifie que le parsing a réussi et que des données sont disponibles
-		
 
 			# Assurez-vous qu'il y a au moins 4 sorts
 		if creatures_spells.size() >= 4:
@@ -236,10 +250,8 @@ func _input(event):
 	
 	if not combat_started:
 		return
-	
 	if not buttons_active:
 		return
-	
 	if event.is_action_pressed("Spell_1"):
 		ennemy_canAttack = true
 		_execute_spell_action("Spell_1", creatures_spells, 0)
@@ -258,12 +270,13 @@ func start_combat():
 	buttons_active = true  # Active les boutons de sorts après le démarrage du combat
 	start_overlay.hide()  # Masquer l'overlay de démarrage
 	print("Combat commencé")
+	# ajouter au time on game le temps actuel depuis le début du combat
+	time_on_game = Time.get_ticks_msec()
 	
 	# mettre de façon random une compétence entre 0 et 3 
 	var rand_attack = rng.randi_range(0,3)
 	_remplir_barre_ennemye(1.5,enemy_creatures_spells[rand_attack].difficulty,enemy_creatures_spells[rand_attack].value, enemy_creatures_spells[rand_attack].mode, rand_attack)
 
-	
 # Nouvelle fonction pour exécuter les actions de debug et de remplissage de la barre
 func _execute_spell_action(button_name: String, spells: Array, index: int):
 	if spells.size() > index:
@@ -294,7 +307,6 @@ func _execute_spell_action(button_name: String, spells: Array, index: int):
 		print("Erreur : Index de sort invalide pour ", button_name)
 
 
-# Fonction pour connecter le bouton de sort avec une fonction de débogage pour afficher les informations
 # Fonction pour connecter le bouton avec les données de sort
 func connect_spell_button_with_debug(button_name: String, spells: Array, index: int):
 	if spells.size() > index:
@@ -352,7 +364,6 @@ func _load_local_json():
 		return []
 		
 	return parse_result
-	
 
 func desactivate_buttons():
 	if buttonP != null and buttonE != null:
@@ -395,7 +406,6 @@ func _on_spell_button_pressed(spell_data: Dictionary) -> void:
 	set_spell_buttons_enabled(true)  # Réactive les boutons après la progression
 	print("Barre de progression terminée et boutons réactivés.")
 
-
 func set_spell_buttons_enabled(enabled: bool) -> void:
 	buttons_active = enabled  # Met à jour le drapeau pour bloquer/débloquer les touches
 
@@ -425,16 +435,13 @@ func _remplir_barre_automatiquement(duree: float, difficulty: String) -> void:
 	for i in range(num_zones):
 		var range_start_percentage = min_position_percentage + i * (max_position_percentage - min_position_percentage) / num_zones
 		var range_end_percentage = range_start_percentage + (max_position_percentage - min_position_percentage) / num_zones - zone_width_percentage
-	
 		var start_x_percentage = rng.randi_range(range_start_percentage, range_end_percentage)
 		var start_x = bar_width * (start_x_percentage / 100.0)
 		var zone_width = bar_width * (zone_width_percentage / 100.0)
-	
 		var zone_cible = progress_bar_joueur.get_node("ZoneCible" + str(i + 1))
 		zone_cible.visible = true
 		zone_cible.set_size(Vector2(zone_width, zone_cible.size.y))
 		zone_cible.position.x = start_x
-	
 		zones.append([start_x, start_x + zone_width])
 		
 		# Débogage : Afficher les positions des zones
@@ -448,7 +455,6 @@ func _remplir_barre_automatiquement(duree: float, difficulty: String) -> void:
 	while elapsed_time < duree:
 		var t = elapsed_time / duree
 		progress_bar_joueur.value = lerp(start_value, end_value, t)
-		
 
 		# Vérifier si la barre est dans une des zones cibles (pour feedback visuel si nécessaire)
 		var progress_x = bar_width * (progress_bar_joueur.value / progress_bar_joueur.max_value)
@@ -533,22 +539,31 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 	match success_level:
 		0:
 			final_damage = 0
+			# stock echec
+			echec_attaque_player += 1
 		1:
-			if mode == "att":
-				final_damage = int(final_damage / 2)
-			elif mode == "def":
-				final_damage = int(final_damage / 2)
+			final_damage = int(final_damage / 2)
+			# stock check
+			echec_attaque_player += 1
 		2:
+			# stock check
+			normal_attaque_player += 1
 			pass
 		3:
+			# stock check
+			critique_attaque_player += 1
 			final_damage = int(final_damage * 1.5)
-			
-	# Si mode "def", le lanceur (le joueur) gagne du bouclier
+	
+	# Mode "def" : le lanceur (joueur) gagne du bouclier
 	if mode == "def":
 		var current_shield = player_percentage_shield.text.to_int()
 		current_shield += final_damage
 		player_percentage_shield.text = str(current_shield)
-	else:
+		# stockage des infos
+		total_shield_player += final_damage
+		if final_damage < max_shield_player:
+			max_shield_player = final_damage
+	if mode == "att":
 		var current_shield = mob_percentage_shield.text.to_int()
 		if current_shield > 0:
 			current_shield -= final_damage
@@ -562,33 +577,50 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 		else:
 			mob_progress_bar_hp.value -= final_damage
 			mob_percentage_hp.text = str(mob_progress_bar_hp.value) + "/" + str(mob_progress_bar_hp.max_value)
-			
+		# stockage des infos
+		total_damage_player += final_damage
+		if final_damage < max_damage_player:
+			max_damage_player = final_damage
+	if mode == "heal":
+		var current_hp = player_progress_bar_hp.value
+		current_hp += final_damage
+		player_progress_bar_hp.value = current_hp
+		player_percentage_hp.text = str(current_hp) + "/" + str(player_progress_bar_hp.max_value)
+		# stockage des infos
+		total_heal_player += final_damage
+		if final_damage < max_heal_player:
+			max_heal_player = final_damage
 	print("Niveau de réussite :", success_level)
 	print("Mode :", mode)
 	
 	var damage_label = Label.new()
-	damage_label.add_theme_font_size_override("font_size", 30)
-	damage_label.modulate = Color(1.0, 0.2, 0.2, 0.0)
+	damage_label.add_theme_font_size_override("font_size", 42)
 	
 	var tween = create_tween()
 	if mode == "def":
-		# Mode défensif : le lanceur (joueur) gagne du bouclier, on affiche un "+"
 		damage_label.text = "+" + str(final_damage)
+		damage_label.modulate = Color(0.2, 0.2, 1.0, 0.0)
 		progress_bar_joueur.get_node("VBoxContainer").add_child(damage_label)
-	else:
-		# Mode attaque : l'ennemi subit des dégâts, on affiche un "-"
+		tween.tween_property(damage_label, "modulate", Color(0.2, 0.2, 1.0, 1.0), 0.5).from(Color(0.2, 0.2, 1.0, 0.0))
+	if mode == "att":
 		damage_label.text = "-" + str(final_damage)
+		damage_label.modulate = Color(1.0, 0.2, 0.2, 0.0)
 		progress_bar_ennemye.get_node("VBoxContainer").add_child(damage_label)
-		
-	tween.tween_property(damage_label, "modulate", Color(1.0, 0.2, 0.2, 1.0), 0.5).from(Color(1.0, 0.2, 0.2, 0.0))
+		tween.tween_property(damage_label, "modulate", Color(1.0, 0.2, 0.2, 1.0), 0.5).from(Color(1.0, 0.2, 0.2, 0.0))
+	if mode == "heal":
+		damage_label.text = "+" + str(final_damage)
+		# la couleur du texte est verte
+		damage_label.modulate = Color(0.2, 1.0, 0.2, 0.0)
+		progress_bar_joueur.get_node("VBoxContainer").add_child(damage_label)
+		tween.tween_property(damage_label, "modulate", Color(0.2, 1.0, 0.2, 1.0), 0.5).from(Color(0.2, 1.0, 0.2, 0.0))
+	
 	tween.tween_callback(Callable(self, "_do_nothing")).set_delay(3.0)
-	tween.tween_property(damage_label, "modulate", Color(1.0, 0.2, 0.2, 0.0), 0.5)
+	var new_color = damage_label.modulate
+	new_color.a = 0.0
+	tween.tween_property(damage_label, "modulate", new_color, 0.5)
 	tween.tween_callback(Callable(damage_label, "queue_free"))
-
 func _do_nothing() -> void:
 	pass
-
-
 
 func determine_success_level(success_count: int, difficulty: String) -> int:
 	match difficulty:
@@ -629,7 +661,6 @@ func _on_get_spells_ennemy_request_completed(result: int, response_code: int, he
 	enemy_creatures_spells = parse_result
 	await get_ennemye_spell()
 	
-
 func get_ennemye_spell() -> void:
 	if enemy_creatures_spells.size() > 0:
 		print("---- Début de l'affichage des sorts de l'ennemi ----")
@@ -647,11 +678,8 @@ func _on_get_creatures_enemy_request_completed(result: int, response_code: int, 
 	var parse_result = JSON.parse_string(response_text)
 	enemy_creatures_data = parse_result
 
-
 func _remplir_barre_ennemye(duree: float, difficulty: String,  ennemye_attack: int, ennemye_mode: String, competence_number) -> void:
-	
 	number_attack + 1
-	
 	var difficulty_to_zones = {
 		"easy": 1,
 		"medium": 2,
@@ -670,7 +698,6 @@ func _remplir_barre_ennemye(duree: float, difficulty: String,  ennemye_attack: i
 	if attack_colors.has(enemy_creatures_spells[competence_number].element):
 		spell_name_ennemye.modulate = attack_colors[enemy_creatures_spells[competence_number].element]
 
-	
 	var bar_width = progress_bar_ennemye.get_size().x
 	
 	# Créer les zones cibles en fonction du nombre de zones
@@ -702,7 +729,6 @@ func _remplir_barre_ennemye(duree: float, difficulty: String,  ennemye_attack: i
 		var t = elapsed_time / duree
 		progress_bar_ennemye.value = lerp(start_value, end_value, t)
 		
-
 		# Vérifier si la barre est dans une des zones cibles (pour feedback visuel si nécessaire)
 		var progress_x = bar_width * (progress_bar_ennemye.value / progress_bar_ennemye.max_value)
 
@@ -738,23 +764,33 @@ func apply_damage_to_player(damage: int, success_level: int, mode: String) -> vo
 	var final_damage = damage
 	match success_level:
 		0:
+			# stock echec
+			echec_attaque_ennemye += 1
 			final_damage = 0
 		1:
-			if mode == "att":
-				final_damage = int(final_damage / 2)
-			elif mode == "def":
-				final_damage = int(final_damage / 2)
+			final_damage = int(final_damage / 2)
+			# stock echec
+			echec_attaque_ennemye += 1
+
 		2:
+			# stock reussite
+			normal_attaque_ennemye += 1
 			pass
 		3:
+			# stock crit
+			critique_attaque_ennemye += 1
 			final_damage = int(final_damage * 1.5)
-			
-	# Si mode "def", le lanceur (l'ennemi) gagne du bouclier
+	
+	# Mode "def" : le lanceur (ennemi) gagne du bouclier
 	if mode == "def":
 		var current_shield = mob_percentage_shield.text.to_int()
 		current_shield += final_damage
 		mob_percentage_shield.text = str(current_shield)
-	else:
+		# stockage des points de défense ici, et vérifier sir le max_sield est dépasser pour stocker la valeur max pour stocker les infos 
+		if max_shield_ennemye < final_damage:
+			max_shield_ennemye = final_damage
+		total_shield_ennemye += final_damage
+	if mode == "att":
 		var current_shield = player_percentage_shield.text.to_int()
 		if current_shield > 0:
 			current_shield -= final_damage
@@ -768,25 +804,50 @@ func apply_damage_to_player(damage: int, success_level: int, mode: String) -> vo
 		else:
 			player_progress_bar_hp.value -= final_damage
 			player_percentage_hp.text = str(player_progress_bar_hp.value) + "/" + str(player_progress_bar_hp.max_value)
+			# stockage des points d'attaque 
+			if max_damage_ennemye < final_damage:
+				max_damage_ennemye = final_damage
+			total_damage_ennemye += final_damage
 			
+	if mode == "heal":
+		# Mode "heal" : le lanceur (ennemi) gagne des points de vie
+		var current_hp = mob_progress_bar_hp.value
+		current_hp += final_damage
+		mob_progress_bar_hp.value = current_hp
+		mob_percentage_hp.text = str(mob_progress_bar_hp.value) + "/" + str(mob_progress_bar_hp.max_value)
+		# stockage des points de soin
+		if max_heal_ennemye < final_damage:
+			max_heal_ennemye = final_damage
+		total_heal_ennemye += final_damage
+
 	print("Niveau de réussite :", success_level)
 	print("Mode :", mode)
 	
 	var damage_label = Label.new()
-	damage_label.add_theme_font_size_override("font_size", 30)
-	damage_label.modulate = Color(1.0, 0.2, 0.2, 0.0)
+	damage_label.add_theme_font_size_override("font_size", 42)
 	
 	var tween = create_tween()
 	if mode == "def":
-		# Mode défensif : le lanceur (ennemi) gagne du bouclier, on affiche un "+"
 		damage_label.text = "+" + str(final_damage)
+		# Couleur bleue pour le bouclier
+		damage_label.modulate = Color(0.2, 0.2, 1.0, 0.0)
 		progress_bar_ennemye.get_node("VBoxContainer").add_child(damage_label)
-	else:
-		# Mode attaque : le joueur subit des dégâts, on affiche un "-"
+		tween.tween_property(damage_label, "modulate", Color(0.2, 0.2, 1.0, 1.0), 0.5).from(Color(0.2, 0.2, 1.0, 0.0))
+	if mode == "att":
 		damage_label.text = "-" + str(final_damage)
+		# Couleur rouge pour les dégâts
+		damage_label.modulate = Color(1.0, 0.2, 0.2, 0.0)
 		progress_bar_joueur.get_node("VBoxContainer").add_child(damage_label)
-		
-	tween.tween_property(damage_label, "modulate", Color(1.0, 0.2, 0.2, 1.0), 0.5).from(Color(1.0, 0.2, 0.2, 0.0))
+		tween.tween_property(damage_label, "modulate", Color(1.0, 0.2, 0.2, 1.0), 0.5).from(Color(1.0, 0.2, 0.2, 0.0))
+	if mode == "heal":
+		damage_label.text = "+" + str(final_damage)
+		# Couleur verte pour les soins
+		damage_label.modulate = Color(0.2, 1.0, 0.2, 0.0)
+		progress_bar_ennemye.get_node("VBoxContainer").add_child(damage_label)
+		tween.tween_property(damage_label, "modulate", Color(0.2, 1.0, 0.2, 1.0), 0.5).from(Color(0.2, 1.0, 0.2, 0.0))
+	
 	tween.tween_callback(Callable(self, "_do_nothing")).set_delay(3.0)
-	tween.tween_property(damage_label, "modulate", Color(1.0, 0.2, 0.2, 0.0), 0.5)
+	var new_color = damage_label.modulate
+	new_color.a = 0.0
+	tween.tween_property(damage_label, "modulate", new_color, 0.5)
 	tween.tween_callback(Callable(damage_label, "queue_free"))
