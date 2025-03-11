@@ -7,10 +7,9 @@ var user_enemy = {}
 var interact = false
 var trigger = true
 var brazero_numbers = 0
-var paused = false
 var can_move = true
 var player_postion = Vector2(0,0)
-
+var game_paused = false
 var attack_index = 0
 var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
 var attack_values = [11,23,2,20]
@@ -266,7 +265,6 @@ func _ready():
 	ui = get_tree().get_nodes_in_group("ui")
 
 
-
 func _process(delta):
 	ui = get_tree().get_nodes_in_group("ui")
 	for i in range(ui.size()):
@@ -296,7 +294,7 @@ func update_button_selection() -> void:
 
 
 func pressed_button(button):
-	if get_tree().get_nodes_in_group("Player_One").size() > 0 and paused == true:
+	if get_tree().get_nodes_in_group("Player_One").size() > 0 and game_paused == true:
 		button.emit_signal("pressed")
 	elif get_tree().get_nodes_in_group("Player_One").size() == 0:
 		button.emit_signal("pressed")
