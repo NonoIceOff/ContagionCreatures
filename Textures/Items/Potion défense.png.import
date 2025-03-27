@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0l2ugqd86u1l"
-path="res://.godot/imported/Liana.png-ac1d78701d72af194fb2f9ea4c195c64.ctex"
+uid="uid://boe2kscr5xust"
+path="res://.godot/imported/Potion défense.png-60d56549af8d90214d5e69927c07da89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Liana.png"
-dest_files=["res://.godot/imported/Liana.png-ac1d78701d72af194fb2f9ea4c195c64.ctex"]
+source_file="res://Textures/Items/Potion défense.png"
+dest_files=["res://.godot/imported/Potion défense.png-60d56549af8d90214d5e69927c07da89.ctex"]
 
 [params]
 

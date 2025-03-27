@@ -19,7 +19,7 @@ var craft_list = {
 		"description": "Une potion magique qui restaure instantanément 50 points de vie.",
 		"unlock": "Potion",
 		"quest_unlock": "",
-		"texture": "res://Textures/Items/Potion_verte.png",
+		"texture": "res://Textures/Items/Potion soin.png",
 		"price": 10,
 		"type": "type",
 		"coef": 1
@@ -33,7 +33,7 @@ var craft_list = {
 		"description": "Un arc robuste fabriqué avec des lianes résistantes. Idéal pour les attaques à distance.",
 		"unlock": "Alchimie",
 		"quest_unlock": "",
-		"texture": "res://Textures/Items/ARC.png",
+		"texture": "res://Textures/Items/Arc en bois.png",
 		"price": 10,
 		"type": "type",
 		"coef": 1
@@ -47,7 +47,7 @@ var craft_list = {
 		"quest_unlock": "",
 		"description": "Une potion rare qui augmente votre défense temporairement de 20%.",
 		"unlock": "Potion",
-		"texture": "res://Textures/Items/Gemme_bleu.png",
+		"texture": "res://Textures/Items/Potion défense.png",
 		"price": 10,
 		"type": "type",
 		"coef": 1
@@ -61,7 +61,7 @@ var craft_list = {
 		"description": "Un collier orné d'une pierre précieuse qui améliore votre concentration.",
 		"unlock": "Alchimie",
 		"quest_unlock": "",
-		"texture": "res://Textures/Items/collierPierro.png",
+		"texture": "res://Textures/Items/Collier Pierro.png",
 		"price": 10,
 		"type": "type",
 		"coef": 1
@@ -77,8 +77,24 @@ var craft_list = {
 		"description": "Une herbe rare utilisée dans la préparation de potions puissantes.",
 		"unlock": "Herboristerie",
 		"quest_unlock": "",
-		"texture": "res://Textures/Items/Apple.png",
+		"texture": "res://Textures/Items/Herbe medicinale.png",
 		"price": 10,
+		"type": "type",
+		"coef": 1
+	},
+	"Fireball": {
+		"ingredients": {
+			"Bois": 4,
+			"Baton de bois": 15,
+			"Eau": 8,
+			"Herbe": 5
+		},
+		"mode": "ressource",
+		"description": "Une boule de feu qui inflige 50 points de dégâts à la cible.",
+		"unlock": "Alchimie",
+		"quest_unlock": "",
+		"texture": "res://Textures/Items/Fireball.png",
+		"price": 2500,
 		"type": "type",
 		"coef": 1
 	}

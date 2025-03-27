@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1uu63i2dagd6"
-path="res://.godot/imported/collierPierro.png-cb318e203a988c9951d1e9e8e202dde5.ctex"
+uid="uid://bnfhvt44gvw5t"
+path="res://.godot/imported/Potion soin.png-becb2ef0b997e14409ad4c12d23464e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/collierPierro.png"
-dest_files=["res://.godot/imported/collierPierro.png-cb318e203a988c9951d1e9e8e202dde5.ctex"]
+source_file="res://Textures/Items/Potion soin.png"
+dest_files=["res://.godot/imported/Potion soin.png-becb2ef0b997e14409ad4c12d23464e2.ctex"]
 
 [params]
 
