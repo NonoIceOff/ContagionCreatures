@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcoxlrv826kyq"
-path="res://.godot/imported/Stone.png-88620ff7b3aaed5560b027c464806e57.ctex"
+uid="uid://c1uu63i2dagd6"
+path="res://.godot/imported/Collier Pierro.png-9a54dcbbcafb77656f41841daf018844.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Stone.png"
-dest_files=["res://.godot/imported/Stone.png-88620ff7b3aaed5560b027c464806e57.ctex"]
+source_file="res://Textures/Items/Collier Pierro.png"
+dest_files=["res://.godot/imported/Collier Pierro.png-9a54dcbbcafb77656f41841daf018844.ctex"]
 
 [params]
 

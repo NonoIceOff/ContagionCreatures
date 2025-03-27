@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tjgf8g314c8b"
-path="res://.godot/imported/Epee.png-afe64ebf05d6f9b8155ba5b6cf538353.ctex"
+uid="uid://cnj2e50esfuhx"
+path="res://.godot/imported/Arc en bois.png-14d0cb82169e41ac7d745ba27684d815.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Epee.png"
-dest_files=["res://.godot/imported/Epee.png-afe64ebf05d6f9b8155ba5b6cf538353.ctex"]
+source_file="res://Textures/Items/Arc en bois.png"
+dest_files=["res://.godot/imported/Arc en bois.png-14d0cb82169e41ac7d745ba27684d815.ctex"]
 
 [params]
 

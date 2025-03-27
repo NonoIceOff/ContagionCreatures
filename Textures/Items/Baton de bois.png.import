@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnfhvt44gvw5t"
-path="res://.godot/imported/Potion_verte.png-70a40fdb5b7f71b3bd6f81f274bb1291.ctex"
+uid="uid://wtvvvs2c0uko"
+path="res://.godot/imported/Baton de bois.png-01b7483af1f79eeed93bc3d78aa36ae4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Potion_verte.png"
-dest_files=["res://.godot/imported/Potion_verte.png-70a40fdb5b7f71b3bd6f81f274bb1291.ctex"]
+source_file="res://Textures/Items/Baton de bois.png"
+dest_files=["res://.godot/imported/Baton de bois.png-01b7483af1f79eeed93bc3d78aa36ae4.ctex"]
 
 [params]
 

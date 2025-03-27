@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0l2ugqd86u1l"
-path="res://.godot/imported/Liana.png-ac1d78701d72af194fb2f9ea4c195c64.ctex"
+uid="uid://bcxx1s8tuwixs"
+path="res://.godot/imported/Herbe medicinale.png-d84134d94e5aeb1b41df9258889ef2e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Liana.png"
-dest_files=["res://.godot/imported/Liana.png-ac1d78701d72af194fb2f9ea4c195c64.ctex"]
+source_file="res://Textures/Items/Herbe medicinale.png"
+dest_files=["res://.godot/imported/Herbe medicinale.png-d84134d94e5aeb1b41df9258889ef2e8.ctex"]
 
 [params]
 

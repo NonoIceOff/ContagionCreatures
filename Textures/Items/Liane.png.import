@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boe2kscr5xust"
-path="res://.godot/imported/Potion_bleu.png-de561e7e6f82ff45bf03061d4da08ea8.ctex"
+uid="uid://0l2ugqd86u1l"
+path="res://.godot/imported/Liane.png-451acf222f1e91e697ebf6fdbf33b0ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Potion_bleu.png"
-dest_files=["res://.godot/imported/Potion_bleu.png-de561e7e6f82ff45bf03061d4da08ea8.ctex"]
+source_file="res://Textures/Items/Liane.png"
+dest_files=["res://.godot/imported/Liane.png-451acf222f1e91e697ebf6fdbf33b0ca.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tjgf8g314c8b"
-path="res://.godot/imported/Epee.png-afe64ebf05d6f9b8155ba5b6cf538353.ctex"
+uid="uid://boe2kscr5xust"
+path="res://.godot/imported/Potion défense.png-60d56549af8d90214d5e69927c07da89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Epee.png"
-dest_files=["res://.godot/imported/Epee.png-afe64ebf05d6f9b8155ba5b6cf538353.ctex"]
+source_file="res://Textures/Items/Potion défense.png"
+dest_files=["res://.godot/imported/Potion défense.png-60d56549af8d90214d5e69927c07da89.ctex"]
 
 [params]
 

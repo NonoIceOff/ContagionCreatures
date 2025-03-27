@@ -125,27 +125,42 @@ func _on_item_selected(index: int) -> void:
 
 	craft_info_ressources_item_list.clear()
 	var can_craft = true
+
 	for ressource in item_ressources:
 		var quantity_needed = item_ressources[ressource]
 		var quantity_available = 0
+		var texture: Texture = null
+
 		for item in player_items:
-			if item["name"] == ressource:
+			if item["name"].to_lower() == ressource.to_lower():
 				quantity_available = item["quantity"]
+				if ResourceLoader.exists(item["texture"]):
+					texture = ResourceLoader.load(item["texture"])
 				break
+
+		if texture == null:
+			for item in all_items:
+				if item["name"].to_lower() == ressource.to_lower():
+					if ResourceLoader.exists(item["texture"]):
+						texture = ResourceLoader.load(item["texture"])
+					break
+
+		if texture == null:
+			var texture_path = "res://Textures/Items/" + ressource + ".png"
+			if ResourceLoader.exists(texture_path):
+				texture = ResourceLoader.load(texture_path)
+			else:
+				print("Erreur : Texture introuvable pour ", ressource, " avec le chemin ", texture_path)
+
 
 		var ressource_text = ressource + " x" + str(quantity_needed)
 		if quantity_available < quantity_needed:
 			ressource_text += " (Manquant)"
 			can_craft = false
-			var item_id = craft_info_ressources_item_list.add_item(ressource_text)
+			var item_id = craft_info_ressources_item_list.add_item(ressource_text, texture)
 			craft_info_ressources_item_list.set_item_custom_bg_color(item_id, Color(1, 0, 0))
 		else:
-			var item_id = craft_info_ressources_item_list.add_item(ressource_text)
-			# Récupérer la texture de la ressource
-			var http_request = HTTPRequest.new()
-			add_child(http_request)
-			http_request.connect("request_completed", Callable(self, "_on_get_item_name_request_completed").bind(item_id, ressource, quantity_needed))
-			http_request.request(API_ITEMS_URL)
+			var item_id = craft_info_ressources_item_list.add_item(ressource_text, texture)
 
 	craft_button.disabled = not can_craft
 

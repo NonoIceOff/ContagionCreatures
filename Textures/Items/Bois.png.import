@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tjgf8g314c8b"
-path="res://.godot/imported/Epee.png-afe64ebf05d6f9b8155ba5b6cf538353.ctex"
+uid="uid://cprlsb3w4ty7p"
+path="res://.godot/imported/Bois.png-ca4fbaba0472f4539d4e7e1b1ae70b31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Epee.png"
-dest_files=["res://.godot/imported/Epee.png-afe64ebf05d6f9b8155ba5b6cf538353.ctex"]
+source_file="res://Textures/Items/Bois.png"
+dest_files=["res://.godot/imported/Bois.png-ca4fbaba0472f4539d4e7e1b1ae70b31.ctex"]
 
 [params]
 
