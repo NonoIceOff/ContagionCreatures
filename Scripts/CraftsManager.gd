@@ -15,7 +15,7 @@ var craft_list = {
 			"Herbe": 2,
 			"Eau": 1
 		},
-		"mode": "ressource",
+		"mode": "Consommable",
 		"description": "Une potion magique qui restaure instantanément 50 points de vie.",
 		"unlock": "Potion",
 		"quest_unlock": "",
@@ -29,7 +29,7 @@ var craft_list = {
 			"Liane": 7,
 			"Collier pierro": 1
 		},
-		"mode": "ressource",
+		"mode": "Arme",
 		"description": "Un arc robuste fabriqué avec des lianes résistantes. Idéal pour les attaques à distance.",
 		"unlock": "Alchimie",
 		"quest_unlock": "",
@@ -43,7 +43,7 @@ var craft_list = {
 			"Herbe": 1,
 			"Eau": 2
 		},
-		"mode": "ressource",
+		"mode": "Consommable",
 		"quest_unlock": "",
 		"description": "Une potion rare qui augmente votre défense temporairement de 20%.",
 		"unlock": "Potion",
@@ -57,7 +57,7 @@ var craft_list = {
 			"Liane": 3,
 			"Pierre": 1
 		},
-		"mode": "ressource",
+		"mode": "Ressource",
 		"description": "Un collier orné d'une pierre précieuse qui améliore votre concentration.",
 		"unlock": "Alchimie",
 		"quest_unlock": "",
@@ -73,7 +73,7 @@ var craft_list = {
 			"Poussiere": 1,
 			"Racine": 1
 		},
-		"mode": "ressource",
+		"mode": "Ressource",
 		"description": "Une herbe rare utilisée dans la préparation de potions puissantes.",
 		"unlock": "Herboristerie",
 		"quest_unlock": "",
@@ -89,7 +89,7 @@ var craft_list = {
 			"Eau": 8,
 			"Herbe": 5
 		},
-		"mode": "ressource",
+		"mode": "Special",
 		"description": "Une boule de feu qui inflige 50 points de dégâts à la cible.",
 		"unlock": "Alchimie",
 		"quest_unlock": "",

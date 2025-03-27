@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cx6s6at1q7bed"]
+[gd_scene load_steps=51 format=3 uid="uid://dbefb2mkq4xrv"]
 
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_r7j8k"]
 [ext_resource type="Script" path="res://Scenes/game_ui.gd" id="1_xtvsa"]
@@ -231,25 +231,79 @@ cache/0/25/0/scale = 1.0
 texture = ExtResource("1_r7j8k")
 region_rect = Rect2(341, 6, 38, 4)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y7hvb"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(678, 5, 20, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_esah6"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(678, 5, 20, 21)
+modulate_color = Color(0.404511, 0.404511, 0.404511, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xntx4"]
 texture = ExtResource("1_r7j8k")
 region_rect = Rect2(678, 5, 20, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5ufc"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(710, 5, 20, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cxij"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(710, 5, 20, 21)
+modulate_color = Color(0.403922, 0.403922, 0.403922, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocwej"]
 texture = ExtResource("1_r7j8k")
 region_rect = Rect2(710, 5, 20, 21)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tcmt"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(742, 5, 20, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o6ysw"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(742, 5, 20, 21)
+modulate_color = Color(0.403922, 0.403922, 0.403922, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cbvmm"]
 texture = ExtResource("1_r7j8k")
 region_rect = Rect2(742, 5, 20, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ccu4r"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(774, 5, 20, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rtwr0"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(774, 5, 20, 21)
+modulate_color = Color(0.403922, 0.403922, 0.403922, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uyw50"]
 texture = ExtResource("1_r7j8k")
 region_rect = Rect2(774, 5, 20, 21)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kakj6"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(806, 5, 20, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dksk3"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(806, 5, 20, 21)
+modulate_color = Color(0.403922, 0.403922, 0.403922, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jb4ok"]
 texture = ExtResource("1_r7j8k")
 region_rect = Rect2(806, 5, 20, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_146sl"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(646, 5, 20, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y2x7j"]
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(646, 5, 20, 21)
+modulate_color = Color(0.403922, 0.403922, 0.403922, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncf33"]
 texture = ExtResource("1_r7j8k")
@@ -471,30 +525,6 @@ cache/0/25/0/scale = 1.0
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s83ah"]
 texture = ExtResource("1_r7j8k")
 region_rect = Rect2(341, 6, 38, 4)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5h4e"]
-texture = ExtResource("1_r7j8k")
-region_rect = Rect2(678, 5, 20, 21)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_otqwn"]
-texture = ExtResource("1_r7j8k")
-region_rect = Rect2(710, 5, 20, 21)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3v1v"]
-texture = ExtResource("1_r7j8k")
-region_rect = Rect2(742, 5, 20, 21)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1b3f2"]
-texture = ExtResource("1_r7j8k")
-region_rect = Rect2(774, 5, 20, 21)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mrj68"]
-texture = ExtResource("1_r7j8k")
-region_rect = Rect2(806, 5, 20, 21)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g34dr"]
-texture = ExtResource("1_r7j8k")
-region_rect = Rect2(646, 5, 20, 21)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ksaeg"]
 content_margin_left = 10.0
@@ -988,34 +1018,46 @@ script = ExtResource("5_mixql")
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Button" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
+[node name="WeaponButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_y7hvb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_esah6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xntx4")
 
-[node name="Button2" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
+[node name="RessourceButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_s5ufc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0cxij")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ocwej")
 
-[node name="Button3" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
+[node name="ItemFarmButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_0tcmt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_o6ysw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_cbvmm")
 
-[node name="Button4" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
+[node name="Concusible_Button" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_ccu4r")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rtwr0")
 theme_override_styles/normal = SubResource("StyleBoxTexture_uyw50")
 
-[node name="Button5" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
+[node name="SpecialItemButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_kakj6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dksk3")
 theme_override_styles/normal = SubResource("StyleBoxTexture_jb4ok")
 
-[node name="Button6" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
+[node name="AllButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_146sl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y2x7j")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ncf33")
 
 [node name="CraftsList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer"]
@@ -1145,35 +1187,47 @@ script = ExtResource("6_a4b4q")
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Button" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
+[node name="WeaponButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_f5h4e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_y7hvb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_esah6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xntx4")
 
-[node name="Button2" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
+[node name="RessourceButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_otqwn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_s5ufc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0cxij")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ocwej")
 
-[node name="Button3" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
+[node name="ItemFarmButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_r3v1v")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0tcmt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_o6ysw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cbvmm")
 
-[node name="Button4" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
+[node name="Concusible_Button" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_1b3f2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ccu4r")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rtwr0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uyw50")
 
-[node name="Button5" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
+[node name="SpecialItemButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_mrj68")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kakj6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dksk3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jb4ok")
 
-[node name="Button6" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
+[node name="AllButton" type="Button" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_g34dr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_146sl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y2x7j")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ncf33")
 
 [node name="ResourcesList" type="ItemList" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer"]
 texture_filter = 1
