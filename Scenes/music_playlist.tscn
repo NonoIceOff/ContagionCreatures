@@ -139,6 +139,7 @@ theme_override_font_sizes/font_size = 48
 text = "II"
 
 [node name="Retour" type="Button" parent="." groups=["buttons"]]
+layout_mode = 0
 offset_left = 1656.0
 offset_top = 32.0
 offset_right = 1885.0
