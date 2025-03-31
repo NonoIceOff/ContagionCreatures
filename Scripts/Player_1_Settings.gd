@@ -28,6 +28,14 @@ func _physics_process(delta: float) -> void:
 		print("échap")
 		PauseMenu()
 
+	## Détection d'un tile, si le joueur est sur un tile spécifique (l'id 3) alors print
+	if get_node_or_null("/root/Map3/TileMap/bush") != null:
+		var position_player_centered = (position+ Vector2(8, 8))/(16*3) 
+		var tile_id = get_node("/root/Map3/TileMap/bush").get_cell_source_id(position_player_centered)
+		var random = randi() % 50
+		if tile_id == 1 and random == 1:
+			SceneLoader.load_scene("res://Scenes/scène_combat.tscn")
+
 	if get_node_or_null("../../ui/Full_Screen_map") == null:
 		if Input.is_action_pressed("droite"):
 			input_velocity.x += 1
