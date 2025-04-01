@@ -15,7 +15,7 @@ func pause_sound(type):
 
 func get_sound_duration(sound_path):
 	var sound = AudioStreamPlayer.new()
-	sound.stream = load(sound_path)
+	sound.stream = load(sound_path)	
 	return sound.get_stream_length()
 
 func get_sound_position(type):

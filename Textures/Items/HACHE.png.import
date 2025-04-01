@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsvynrr325y48"
-path="res://.godot/imported/Hache.png-65818cf46151a37647b3e72bc7b081c2.ctex"
+path="res://.godot/imported/HACHE.png-6aa619ae663c6539b69ee81ae5d53508.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Hache.png"
-dest_files=["res://.godot/imported/Hache.png-65818cf46151a37647b3e72bc7b081c2.ctex"]
+source_file="res://Textures/Items/HACHE.png"
+dest_files=["res://.godot/imported/HACHE.png-6aa619ae663c6539b69ee81ae5d53508.ctex"]
 
 [params]
 
