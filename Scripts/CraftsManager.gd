@@ -73,7 +73,7 @@ var craft_list = {
 			"Poussiere": 1,
 			"Racine": 1
 		},
-		"mode": "Ressource",
+		"mode": "Consommable",
 		"description": "Une herbe rare utilisée dans la préparation de potions puissantes.",
 		"unlock": "Herboristerie",
 		"quest_unlock": "",
