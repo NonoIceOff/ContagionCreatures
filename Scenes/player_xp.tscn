@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://c65ywo6ftkvtc"]
+
+[ext_resource type="Script" path="res://Scripts/player_xp.gd" id="1_88clc"]
+
+[node name="XPPanel" type="Node2D"]
+script = ExtResource("1_88clc")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 256.0
+offset_bottom = 128.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 112.0
+
+[node name="LevelLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Niv : 5"
+
+[node name="XPProgressBar" type="TextureProgressBar" parent="Panel/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+step = 5.0
+value = 20.0
+
+[node name="XPDetailsLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "15/1005"
