@@ -1,16 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=20 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" uid="uid://c00pkg3a1dyrk" path="res://Scripts/ui.gd" id="1_p3l0n"]
 [ext_resource type="Texture2D" uid="uid://bpihtnygfbdmj" path="res://Textures/Particules/flocon_neige.png" id="2_flbvo"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
 [ext_resource type="Script" uid="uid://bkh8lxp5m5u61" path="res://Scripts/aurore_boreales.gd" id="3_xbp8f"]
-[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_imduj"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="6_reotg"]
 [ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="7_e7f4u"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="7_i5pcq"]
-[ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="8_abm13"]
 [ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="10_d42i4"]
 [ext_resource type="Script" uid="uid://dryjk0sogdq1a" path="res://Scripts/info_touches.gd" id="12_7biym"]
 [ext_resource type="Texture2D" uid="uid://cmdkmflgo832d" path="res://Textures/Buttons/joypads/joybar_+.png" id="13_td3vo"]
@@ -26,12 +24,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wxsk"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+bg_color = Color(0.909804, 0.811765, 0.65098, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -77,8 +70,8 @@ scale_amount_max = 3.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." groups=["ui"]]
 self_modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(1632, 48)
-amount = 50
+position = Vector2(1920, 48)
+amount = 5
 draw_order = 1
 emission_shape = 3
 emission_rect_extents = Vector2(256, 16)
@@ -92,21 +85,22 @@ hue_variation_max = 0.1
 hue_variation_curve = SubResource("Curve_qti3j")
 
 [node name="QuestTextBar" type="RichTextLabel" parent="CPUParticles2D"]
-offset_left = -1168.0
-offset_top = -24.0
-offset_right = 240.0
-offset_bottom = 118.0
+offset_left = -1416.0
+offset_top = -32.0
+offset_right = -16.0
+offset_bottom = 110.0
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 25
-theme_override_constants/line_separation = 0
-theme_override_fonts/normal_font = ExtResource("4_imduj")
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/normal_font_size = 26
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/line_separation = -8
+theme_override_font_sizes/bold_italics_font_size = 46
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 46
+theme_override_font_sizes/normal_font_size = 46
+theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[right]NO_QUEST"
 scroll_active = false
@@ -140,7 +134,7 @@ offset_bottom = 1023.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0.360784, 0.188235, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 128
 text = "quete terminee"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -204,41 +198,32 @@ bbcode_enabled = true
 text = "0 [img=32x32]res://Textures/COIN.png[/img]"
 
 [node name="PanelDate" type="Panel" parent="." groups=["ui"]]
-offset_left = 720.0
-offset_top = 3.0
-offset_right = 1141.0
-offset_bottom = 115.0
+offset_left = 1693.0
+offset_top = 808.0
+offset_right = 1877.0
+offset_bottom = 848.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4wxsk")
 
 [node name="Heure" type="Label" parent="PanelDate"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 272.0
-offset_top = 23.0
-offset_right = 400.0
-offset_bottom = 93.0
+offset_left = 92.0
+offset_right = 179.0
+offset_bottom = 40.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_abm13")
-theme_override_font_sizes/font_size = 64
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 32
+text = "00:00"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Jour" type="Label" parent="PanelDate"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 22.0
-offset_right = 224.0
-offset_bottom = 92.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
+offset_left = 3.0
+offset_right = 99.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 32
+text = "JOUR 1"
 vertical_alignment = 1
-
-[node name="Line2D" type="Line2D" parent="PanelDate"]
-position = Vector2(497.999, -9.15724)
-scale = Vector2(-0.999993, 0.704403)
-points = PackedVector2Array(240, 16, 240, 82.169, 240, 169)
-width = 3.0
-default_color = Color(0, 0, 0, 1)
 
 [node name="Minimap" parent="." groups=["ui"] instance=ExtResource("7_e7f4u")]
 offset_left = 1664.0
@@ -291,4 +276,4 @@ scale = Vector2(2, 2)
 texture = ExtResource("17_de75t")
 
 [node name="XPPanel" parent="." instance=ExtResource("18_mxn78")]
-position = Vector2(816, 944)
+position = Vector2(24, 128)
