@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-signal player_entering_door_signal
 signal player_entered_door_signal
 
 @export var speed: float = 200
@@ -8,11 +7,12 @@ signal player_entered_door_signal
 
 @onready var animated_sprite: AnimatedSprite2D = $player1
 @onready var pause_menu = $"player1/2/CanvasLayer/PauseMenu"
+@onready var player_xp = get_node_or_null("/root/Map3/ui/XPPanel")  # Adjust the path to match the actual location
 
 func entered_door():
 	emit_signal("player_entered_door_signal")
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var input_velocity = Vector2.ZERO
 	
 	if Input.is_action_just_pressed("échap"):
@@ -24,7 +24,11 @@ func _physics_process(delta: float) -> void:
 		var tile_id = get_node("/root/Map3/TileMap/bush").get_cell_source_id(position_player_centered)
 		var random = randi() % 50
 		if tile_id == 1 and random == 1:
-			SceneLoader.load_scene("res://Scenes/scène_combat.tscn")
+			#SceneLoader.load_scene("res://Scenes/scène_combat.tscn")
+			if player_xp:
+				player_xp.gain_xp(10)
+			else:
+				print("Error: player_xp node not found! Verify the path.")
 
 	if get_node_or_null("../../ui/Full_Screen_map") == null:
 		if Input.is_action_pressed("droite"):
