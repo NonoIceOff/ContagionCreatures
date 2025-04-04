@@ -17,6 +17,8 @@ func _ready() -> void:
 	
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
+	get_node("Stats/CoinsLabel").text = str(Global.coins)+" [img=32x32]res://Textures/COIN.png[/img]"
+
 	if Input.is_action_just_pressed("ui_p"):
 		if is_open:
 			get_node("inv_animal").queue_free()
