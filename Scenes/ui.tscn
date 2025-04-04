@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
-[ext_resource type="Script" uid="uid://bs5v4nygpn52i" path="res://Scripts/ui.gd" id="1_p3l0n"]
+[ext_resource type="Script" uid="uid://c00pkg3a1dyrk" path="res://Scripts/ui.gd" id="1_p3l0n"]
 [ext_resource type="Texture2D" uid="uid://bpihtnygfbdmj" path="res://Textures/Particules/flocon_neige.png" id="2_flbvo"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
 [ext_resource type="Script" uid="uid://bkh8lxp5m5u61" path="res://Scripts/aurore_boreales.gd" id="3_xbp8f"]
