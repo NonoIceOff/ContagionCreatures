@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://dybmipi48rk27"]
 
-[ext_resource type="Script" path="res://Scenes/appearence.gd" id="1_0u55x"]
+[ext_resource type="Script" uid="uid://dqcoi2lvk4pf7" path="res://Scenes/appearence.gd" id="1_0u55x"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_d0nrk"]
-[ext_resource type="Script" path="res://Scripts/Titre.gd" id="3_tdnu6"]
+[ext_resource type="Script" uid="uid://dfvv32246670" path="res://Scripts/Titre.gd" id="3_tdnu6"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="4_wy643"]
 [ext_resource type="Texture2D" uid="uid://d2mm1gdiqjptn" path="res://Textures/01-generic.png" id="5_8sb3t"]
-[ext_resource type="Script" path="res://Scripts/Boutons/Ok.gd" id="5_80yua"]
-[ext_resource type="Script" path="res://Scripts/PersoActuel.gd" id="6_6ldjd"]
+[ext_resource type="Script" uid="uid://c05hnvlh27wfx" path="res://Scripts/Boutons/Ok.gd" id="5_80yua"]
+[ext_resource type="Script" uid="uid://dojtax3w7daoh" path="res://Scripts/PersoActuel.gd" id="6_6ldjd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm8en"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)

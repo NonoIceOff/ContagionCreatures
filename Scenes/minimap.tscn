@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cs1t5u15aehqw"]
 
-[ext_resource type="Script" path="res://Scripts/Minimap_FullMap/Minimap.gd" id="1_jkw46"]
+[ext_resource type="Script" uid="uid://2wxvt6hv3tae" path="res://Scripts/Minimap_FullMap/Minimap.gd" id="1_jkw46"]
 [ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="2_hdawy"]
 [ext_resource type="Material" uid="uid://cf568renknpt8" path="res://pin_shader.tres" id="3_mj33y"]
 [ext_resource type="Texture2D" uid="uid://bw1evxysvpify" path="res://Textures/Pins/blue.png" id="4_ltftm"]
@@ -89,8 +89,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v75dw"]
 _data = {
-"RESET": SubResource("Animation_2pobh"),
-"pin": SubResource("Animation_fnqu0")
+&"RESET": SubResource("Animation_2pobh"),
+&"pin": SubResource("Animation_fnqu0")
 }
 
 [node name="Minimap" type="Control"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://cpvj8ye6n4hb6"]
 
-[ext_resource type="Script" path="res://Scripts/languagesmenu.gd" id="1_patet"]
-[ext_resource type="Script" path="res://Scripts/Boutons/Ok.gd" id="2_g7mj5"]
+[ext_resource type="Script" uid="uid://1m6v6pvrg5lb" path="res://Scripts/languagesmenu.gd" id="1_patet"]
+[ext_resource type="Script" uid="uid://c05hnvlh27wfx" path="res://Scripts/Boutons/Ok.gd" id="2_g7mj5"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="3_reqxc"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_hapc2"]
-[ext_resource type="Script" path="res://Scripts/Titre.gd" id="5_4lvn7"]
+[ext_resource type="Script" uid="uid://dfvv32246670" path="res://Scripts/Titre.gd" id="5_4lvn7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dcjkb3fb5ro8e"]
 
 [ext_resource type="Texture2D" uid="uid://cnj2e50esfuhx" path="res://Textures/ARC.png" id="1_5npf8"]
-[ext_resource type="Script" path="res://Scripts/item.gd" id="1_be5xl"]
+[ext_resource type="Script" uid="uid://b2rar6cjfiwlb" path="res://Scripts/item.gd" id="1_be5xl"]
 
 [sub_resource type="Animation" id="Animation_xxwru"]
 length = 0.001
@@ -60,8 +60,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ffq3"]
 _data = {
-"RESET": SubResource("Animation_xxwru"),
-"item": SubResource("Animation_dr32l")
+&"RESET": SubResource("Animation_xxwru"),
+&"item": SubResource("Animation_dr32l")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6g1h"]

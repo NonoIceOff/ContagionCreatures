@@ -45,6 +45,11 @@ var echec_attaque_player = 0
 var echec_attaque_ennemye = 0
 var time_on_game = 0
 
+var total_attaque_player = 0
+var total_attaque_ennemye = 0
+
+@onready var stats_scene = preload("res://Scenes/Stats/Stats.tscn")
+
 @onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
 @onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
 @onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
@@ -590,6 +595,9 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 		total_heal_player += final_damage
 		if final_damage < max_heal_player:
 			max_heal_player = final_damage
+
+	total_attaque_player += 1
+
 	print("Niveau de réussite :", success_level)
 	print("Mode :", mode)
 	
@@ -619,6 +627,9 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 	new_color.a = 0.0
 	tween.tween_property(damage_label, "modulate", new_color, 0.5)
 	tween.tween_callback(Callable(damage_label, "queue_free"))
+
+	check_end_of_combat()
+	
 func _do_nothing() -> void:
 	pass
 
@@ -820,6 +831,8 @@ func apply_damage_to_player(damage: int, success_level: int, mode: String) -> vo
 			max_heal_ennemye = final_damage
 		total_heal_ennemye += final_damage
 
+	
+	total_attaque_ennemye += 1
 	print("Niveau de réussite :", success_level)
 	print("Mode :", mode)
 	
@@ -851,3 +864,18 @@ func apply_damage_to_player(damage: int, success_level: int, mode: String) -> vo
 	new_color.a = 0.0
 	tween.tween_property(damage_label, "modulate", new_color, 0.5)
 	tween.tween_callback(Callable(damage_label, "queue_free"))
+	check_end_of_combat()
+	
+	
+	
+func check_end_of_combat():
+	if mob_progress_bar_hp.value <= 0:
+		# L'ennemi est mort donc on met la page de stats avec les variable dedans 
+		var stats_instance = stats_scene.instantiate()  # On crée une instance de la scène
+		add_child(stats_scene)
+		stats_scene.set_all_text_variable(total_damage_player, total_heal_player, total_shield_player, total_attaque_player, echec_attaque_player, normal_attaque_player, critique_attaque_player, max_damage_player, max_heal_player, max_shield_player, total_damage_ennemye, total_heal_ennemye, total_shield_ennemye, total_attaque_ennemye, echec_attaque_ennemye, normal_attaque_ennemye, critique_attaque_ennemye, max_damage_ennemye, max_heal_ennemye, max_shield_ennemye)
+	elif player_progress_bar_hp.value <= 0:
+		# Le joueur est mort
+		var stats_instance = stats_scene.instantiate()  # On crée une instance de la scène
+		add_child(stats_scene)
+		stats_scene.set_all_text_variable(total_damage_player, total_heal_player, total_shield_player, total_attaque_player, echec_attaque_player, normal_attaque_player, critique_attaque_player, max_damage_player, max_heal_player, max_shield_player, total_damage_ennemye, total_heal_ennemye, total_shield_ennemye, total_attaque_ennemye, echec_attaque_ennemye, normal_attaque_ennemye, critique_attaque_ennemye, max_damage_ennemye, max_heal_ennemye, max_shield_ennemye)

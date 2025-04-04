@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b237pffon12gr"]
 
-[ext_resource type="Script" path="res://bdd.gd" id="1_10jud"]
+[ext_resource type="Script" uid="uid://chma3o5ckja88" path="res://bdd.gd" id="1_10jud"]
 [ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="2_1xexi"]
 
 [node name="BDD" type="Node2D"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cv33vxrhul0da"]
 
-[ext_resource type="Script" path="res://Scripts/Boutons/Ok.gd" id="1_j3ftm"]
-[ext_resource type="Script" path="res://Scripts/controls.gd" id="1_nskhi"]
+[ext_resource type="Script" uid="uid://c05hnvlh27wfx" path="res://Scripts/Boutons/Ok.gd" id="1_j3ftm"]
+[ext_resource type="Script" uid="uid://qf3860bpskev" path="res://Scripts/controls.gd" id="1_nskhi"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_wbdo4"]
-[ext_resource type="Script" path="res://Scripts/Titre.gd" id="2_tuees"]
+[ext_resource type="Script" uid="uid://dfvv32246670" path="res://Scripts/Titre.gd" id="2_tuees"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="3_bm1pe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://doaw3aobgdqiy"]
 
-[ext_resource type="Script" path="res://Scripts/Precombat.gd" id="1_7cuix"]
+[ext_resource type="Script" uid="uid://dudvoicbojg03" path="res://Scripts/Precombat.gd" id="1_7cuix"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="5_7y40w"]
 [ext_resource type="AudioStream" uid="uid://bw2b7bo3uq503" path="res://Sounds/SoundeffectFight.wav" id="5_h61o2"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="7_gys42"]
@@ -182,8 +182,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dvicw"]
 _data = {
-"RESET": SubResource("Animation_6qy5i"),
-"precombat_animation": SubResource("Animation_3lvh2")
+&"RESET": SubResource("Animation_6qy5i"),
+&"precombat_animation": SubResource("Animation_3lvh2")
 }
 
 [node name="Precombat" type="Node2D"]
