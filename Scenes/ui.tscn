@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=22 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" uid="uid://c5xn6maahlkfg" path="res://Scripts/ui.gd" id="1_p3l0n"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="7_e7f4u"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="7_i5pcq"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="8_abm13"]
+[ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="10_d42i4"]
 [ext_resource type="Script" uid="uid://dryjk0sogdq1a" path="res://Scripts/info_touches.gd" id="12_7biym"]
 [ext_resource type="Texture2D" uid="uid://cmdkmflgo832d" path="res://Textures/Buttons/joypads/joybar_+.png" id="13_td3vo"]
 [ext_resource type="Texture2D" uid="uid://c0wv3un8wh42k" path="res://Textures/Buttons/joypads/joybar_r.png" id="14_6d7q7"]
@@ -177,6 +178,7 @@ texture_under = ExtResource("5_26lyu")
 texture_progress = ExtResource("6_reotg")
 
 [node name="Coins" type="Sprite2D" parent="Stats"]
+visible = false
 texture_filter = 1
 position = Vector2(48, 80)
 scale = Vector2(2, 2)
@@ -187,8 +189,19 @@ offset_left = 12.0
 offset_top = -7.0
 offset_right = 52.0
 offset_bottom = 8.0
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("10_d42i4")
+theme_override_font_sizes/font_size = 16
 text = "0"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stats"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 288.0
+offset_bottom = 128.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "0 [img=32x32]res://Textures/COIN.png[/img]"
 
 [node name="PanelDate" type="Panel" parent="." groups=["ui"]]
 offset_left = 720.0

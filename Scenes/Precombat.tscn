@@ -193,7 +193,7 @@ script = ExtResource("1_7cuix")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_dvicw")
+&"": SubResource("AnimationLibrary_dvicw")
 }
 
 [node name="Creature1" type="Sprite2D" parent="."]
