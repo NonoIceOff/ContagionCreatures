@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bpihtnygfbdmj" path="res://Textures/Particules/flocon_neige.png" id="2_flbvo"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
 [ext_resource type="Script" uid="uid://bkh8lxp5m5u61" path="res://Scripts/aurore_boreales.gd" id="3_xbp8f"]
+
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="6_reotg"]
 [ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="7_e7f4u"]
