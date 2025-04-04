@@ -157,10 +157,17 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Play" type="Button" parent="." groups=["buttons"]]
+<<<<<<< HEAD
 offset_left = 107.0
 offset_top = 522.0
 offset_right = 901.0
 offset_bottom = 587.0
+=======
+offset_left = 110.0
+offset_top = 623.0
+offset_right = 894.0
+offset_bottom = 688.0
+>>>>>>> newUI
 focus_mode = 0
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
