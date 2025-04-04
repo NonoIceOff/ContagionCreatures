@@ -1,7 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://dq07bruwx0jev"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://c3s7j1y1h8usu" path="res://Scripts/Minimap_FullMap/minimap_2.gd" id="1_0q67l"]
 [ext_resource type="Shader" uid="uid://2y3xkc15uhm0" path="res://Scenes/minimap.gdshader" id="1_sifbv"]
+=======
+[ext_resource type="Script" uid="uid://nd4tvf4788ve" path="res://Scripts/Minimap_FullMap/minimap_2.gd" id="1_0q67l"]
+[ext_resource type="Shader" uid="uid://clux318o8gn5t" path="res://Scenes/minimap.gdshader" id="1_sifbv"]
+>>>>>>> main4.4.1
 [ext_resource type="Texture2D" uid="uid://choldy7fvdm7e" path="res://Textures/radar_mask.png" id="2_xvyaw"]
 [ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="3_qgfyk"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_p1x1l"]

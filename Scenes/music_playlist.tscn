@@ -1,11 +1,15 @@
 [gd_scene load_steps=12 format=3 uid="uid://bya63mfapts6i"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://1hx7nej5l7qo" path="res://Scripts/music_playlist.gd" id="1_haxuc"]
+=======
+[ext_resource type="Script" uid="uid://c4ysyu8bsycm2" path="res://Scripts/music_playlist.gd" id="1_haxuc"]
+>>>>>>> main4.4.1
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="2_6g602"]
-[ext_resource type="Shader" path="res://Inventory/inv_animals.gdshader" id="2_ay82u"]
+[ext_resource type="Shader" uid="uid://caac6ffe48o4h" path="res://Inventory/inv_animals.gdshader" id="2_ay82u"]
 [ext_resource type="AudioStream" uid="uid://dgv6kihqgq3qw" path="res://Sounds/music/combat_1.mp3" id="3_0bk86"]
 [ext_resource type="Texture2D" uid="uid://dh2hkjp0twcwb" path="res://Textures/Inventaire/tan_pressed.png" id="3_lemrr"]
-[ext_resource type="Script" path="res://Scripts/Retour.gd" id="4_77fsf"]
+[ext_resource type="Script" uid="uid://yvbw547mklrw" path="res://Scripts/Retour.gd" id="4_77fsf"]
 [ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_nlmcy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6uko5"]

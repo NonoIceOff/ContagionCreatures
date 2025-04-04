@@ -1,6 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dnj0fapv33e0a"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://b5wykbcjly2ws" path="res://Scenes/pnj.gd" id="1_h3nvd"]
+=======
+[ext_resource type="Script" uid="uid://cr5wbbnb4qjbb" path="res://Scenes/pnj.gd" id="1_h3nvd"]
+>>>>>>> main4.4.1
 [ext_resource type="Texture2D" uid="uid://dt4mjicrbadue" path="res://Textures/PNJ/Bagird/bagird_full.png" id="1_od3sy"]
 [ext_resource type="Texture2D" uid="uid://kmnhjqu5wm6k" path="res://Textures/PNJ/Bagird/tete_bagird.png" id="2_qh4c1"]
 [ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="3_dfj6s"]

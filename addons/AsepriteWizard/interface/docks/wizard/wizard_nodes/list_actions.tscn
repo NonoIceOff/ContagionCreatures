@@ -9,6 +9,7 @@ offset_right = 950.0
 offset_bottom = 58.0
 custom_constants/separation = 5
 script = ExtResource("1")
+script = ExtResource("1")
 
 [node name="edit" type="Button" parent="."]
 offset_right = 36.0

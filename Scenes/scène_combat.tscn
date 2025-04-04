@@ -1,6 +1,10 @@
 [gd_scene load_steps=29 format=3 uid="uid://cuvepu5toqc02"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://mlg4ebci7bgi" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
+=======
+[ext_resource type="Script" uid="uid://852ixppgjwjo" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
+>>>>>>> main4.4.1
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="2_dxowc"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]

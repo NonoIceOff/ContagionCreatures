@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://fsx5pkk05nk5"]
 
-[ext_resource type="Script" path="res://Scripts/intro.gd" id="1_i6aya"]
+[ext_resource type="Script" uid="uid://bxl4ljhcdkw7x" path="res://Scripts/intro.gd" id="1_i6aya"]
 [ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://main_map_2.tres" id="2_ibgrp"]
 [ext_resource type="Texture2D" uid="uid://droj4wt6rug7e" path="res://Textures/spritePlayer/output/CharacterGame.png" id="3_2bcry"]
 [ext_resource type="Texture2D" uid="uid://p838sug386nh" path="res://Textures/light_mask.png" id="3_55fkg"]
@@ -193,10 +193,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_556cq"]
 _data = {
-"EastWalk": SubResource("Animation_gbgpv"),
-"NorthWalk": SubResource("Animation_6m5cv"),
-"SouthWalk": SubResource("Animation_cf48i"),
-"WestLook": SubResource("Animation_ruxu8")
+&"EastWalk": SubResource("Animation_gbgpv"),
+&"NorthWalk": SubResource("Animation_6m5cv"),
+&"SouthWalk": SubResource("Animation_cf48i"),
+&"WestLook": SubResource("Animation_ruxu8")
 }
 
 [node name="Intro" type="Node2D"]
@@ -289,7 +289,7 @@ zoom = Vector2(1.8, 1.8)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/player1"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_556cq")
+&"": SubResource("AnimationLibrary_556cq")
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -309,8 +309,8 @@ texture_filter = 1
 position = Vector2(992, -160)
 emitting = false
 amount = 100
-lifetime = 5.0
 texture = ExtResource("7_edp2d")
+lifetime = 5.0
 emission_shape = 3
 emission_rect_extents = Vector2(2000, 100)
 angle_min = -100.0

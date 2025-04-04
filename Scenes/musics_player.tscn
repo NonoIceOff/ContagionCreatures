@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://w2h3xtekh8o3"]
 
-[ext_resource type="Script" path="res://Scripts/musics_player.gd" id="1_3saj3"]
+[ext_resource type="Script" uid="uid://di2mqpenyiajg" path="res://Scripts/musics_player.gd" id="1_3saj3"]
 
 [node name="MusicsPlayer" type="Control"]
 layout_mode = 3

@@ -1,17 +1,28 @@
 [gd_scene load_steps=21 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://d0x6rmyvi7x0f" path="res://Scripts/ui.gd" id="1_p3l0n"]
 [ext_resource type="Texture2D" uid="uid://bpihtnygfbdmj" path="res://Textures/Particules/flocon_neige.png" id="2_flbvo"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
 [ext_resource type="Script" uid="uid://b15yqtccoatd" path="res://Scripts/aurore_boreales.gd" id="3_xbp8f"]
+=======
+[ext_resource type="Script" uid="uid://c5xn6maahlkfg" path="res://Scripts/ui.gd" id="1_p3l0n"]
+[ext_resource type="Texture2D" uid="uid://bpihtnygfbdmj" path="res://Textures/Particules/flocon_neige.png" id="2_flbvo"]
+[ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
+[ext_resource type="Script" uid="uid://bkh8lxp5m5u61" path="res://Scripts/aurore_boreales.gd" id="3_xbp8f"]
+>>>>>>> main4.4.1
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_imduj"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="6_reotg"]
 [ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="7_e7f4u"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="7_i5pcq"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="8_abm13"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://cganmay4ldxt8" path="res://Scripts/info_touches.gd" id="12_7biym"]
+=======
+[ext_resource type="Script" uid="uid://dryjk0sogdq1a" path="res://Scripts/info_touches.gd" id="12_7biym"]
+>>>>>>> main4.4.1
 [ext_resource type="Texture2D" uid="uid://cmdkmflgo832d" path="res://Textures/Buttons/joypads/joybar_+.png" id="13_td3vo"]
 [ext_resource type="Texture2D" uid="uid://c0wv3un8wh42k" path="res://Textures/Buttons/joypads/joybar_r.png" id="14_6d7q7"]
 [ext_resource type="Texture2D" uid="uid://da8ubc6ik4rjv" path="res://Textures/Buttons/joypads/joybar_l.png" id="15_x3csd"]
@@ -62,8 +73,8 @@ visible = false
 texture_filter = 1
 position = Vector2(2784, -912)
 amount = 100
-lifetime = 5.0
 texture = ExtResource("2_flbvo")
+lifetime = 5.0
 emission_shape = 3
 emission_rect_extents = Vector2(2000, 100)
 gravity = Vector2(-900, 900)

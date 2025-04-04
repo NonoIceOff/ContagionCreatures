@@ -1,8 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjlxu0tq77cxk"]
 
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_0gv73"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://8gd86320wdql" path="res://Scenes/matchmaking.gd" id="1_lw7ow"]
 [ext_resource type="Script" uid="uid://vthc2bwtt16x" path="res://Scripts/LoadingText.gd" id="2_d0auc"]
+=======
+[ext_resource type="Script" uid="uid://cg6n5jktwrtbk" path="res://Scenes/matchmaking.gd" id="1_lw7ow"]
+[ext_resource type="Script" uid="uid://b4sfiqtq52mj1" path="res://Scripts/LoadingText.gd" id="2_d0auc"]
+>>>>>>> main4.4.1
 
 [node name="Matchmaking" type="Node2D"]
 script = ExtResource("1_lw7ow")

@@ -1,15 +1,26 @@
 [gd_scene load_steps=19 format=3 uid="uid://ko0f38o03f6f"]
 
+<<<<<<< HEAD
 [ext_resource type="Shader" uid="uid://2y3xkc15uhm0" path="res://Scenes/minimap.gdshader" id="1_44b0t"]
 [ext_resource type="Script" uid="uid://b14ccy08ngbmb" path="res://Scripts/Minimap_FullMap/Full_screen_map.gd" id="1_vnder"]
 [ext_resource type="Texture2D" uid="uid://choldy7fvdm7e" path="res://Textures/radar_mask.png" id="2_vqgc8"]
 [ext_resource type="Script" uid="uid://76msnwoi77sd" path="res://Scripts/Maps/mapfs.gd" id="4_8op7h"]
+=======
+[ext_resource type="Shader" uid="uid://clux318o8gn5t" path="res://Scenes/minimap.gdshader" id="1_44b0t"]
+[ext_resource type="Script" uid="uid://bbxoy4lgsx6rb" path="res://Scripts/Minimap_FullMap/Full_screen_map.gd" id="1_vnder"]
+[ext_resource type="Texture2D" uid="uid://choldy7fvdm7e" path="res://Textures/radar_mask.png" id="2_vqgc8"]
+[ext_resource type="Script" uid="uid://65e3p1qt81ft" path="res://Scripts/Maps/mapfs.gd" id="4_8op7h"]
+>>>>>>> main4.4.1
 [ext_resource type="Material" uid="uid://cf568renknpt8" path="res://pin_shader.tres" id="5_darb5"]
 [ext_resource type="Texture2D" uid="uid://bw1evxysvpify" path="res://Textures/Pins/blue.png" id="5_xvfxp"]
 [ext_resource type="Texture2D" uid="uid://bako680pmqpsb" path="res://Textures/Pins/red.png" id="6_2mmqw"]
 [ext_resource type="Texture2D" uid="uid://byeatwoc7k5qo" path="res://Textures/Pins/yellow.png" id="7_x1bfy"]
 [ext_resource type="Texture2D" uid="uid://cd6cqkc67n7kc" path="res://Textures/Pins/green.png" id="8_omj78"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://dpmxpdfif0cp1" path="res://Scripts/Minimap_FullMap/add_pin.gd" id="9_mjey4"]
+=======
+[ext_resource type="Script" uid="uid://ccn5j6kguv5k5" path="res://Scripts/Minimap_FullMap/add_pin.gd" id="9_mjey4"]
+>>>>>>> main4.4.1
 [ext_resource type="AudioStream" uid="uid://8rqjw6gnc5hh" path="res://Sounds/new_tag.mp3" id="12_gaelq"]
 [ext_resource type="Texture2D" uid="uid://hr8gwy6r0qyt" path="res://Textures/cross.png" id="12_pjqsq"]
 [ext_resource type="Texture2D" uid="uid://bux8wlh55a6br" path="res://Textures/Buttons/joypads/joybar_x.png" id="13_kfaom"]

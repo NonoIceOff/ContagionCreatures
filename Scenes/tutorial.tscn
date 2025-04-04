@@ -1,7 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c01fx5dwyh475"]
 
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="1_k4aiy"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://hvdy1qv2rhxj" path="res://Scripts/Tutorial.gd" id="1_uxkps"]
+=======
+[ext_resource type="Script" uid="uid://dwum4j0w1hxj1" path="res://Scripts/Tutorial.gd" id="1_uxkps"]
+>>>>>>> main4.4.1
 
 [node name="tutorial" type="CanvasLayer"]
 script = ExtResource("1_uxkps")

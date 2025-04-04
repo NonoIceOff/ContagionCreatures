@@ -1,6 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://fqgl785pe846"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://h50wld4glrpr" path="res://Scripts/multiplayer.gd" id="1_qffeu"]
+=======
+[ext_resource type="Script" uid="uid://bjo5ujug3ncdk" path="res://Scripts/multiplayer.gd" id="1_qffeu"]
+>>>>>>> main4.4.1
 
 [node name="Multiplayer" type="Node2D"]
 script = ExtResource("1_qffeu")

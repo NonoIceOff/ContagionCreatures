@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dc4gs8m4imtji"]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://c2m81yw853orv" path="res://Scenes/settings.gd" id="1_8w70o"]
 [ext_resource type="Script" uid="uid://hosktn6va8ws" path="res://Scenes/ControlsButton.gd" id="1_cfn84"]
 [ext_resource type="Script" uid="uid://dvskfrbnns6o6" path="res://Scenes/AppearenceButton.gd" id="2_5wkqo"]
@@ -11,6 +12,9 @@
 [ext_resource type="Script" uid="uid://bqn5aad04dytk" path="res://Scripts/Retour.gd" id="6_mdffj"]
 =======
 [ext_resource type="Script" path="res://Scenes/settings.gd" id="1_8w70o"]
+=======
+[ext_resource type="Script" uid="uid://d4nwgyypgtfgy" path="res://Scenes/settings.gd" id="1_8w70o"]
+>>>>>>> main4.4.1
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_1k108"]
 >>>>>>> main
 

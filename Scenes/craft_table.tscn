@@ -1,7 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7sxy68le1a5y"]
 
 [ext_resource type="TileSet" uid="uid://bhsughrwcn78m" path="res://TileSet/TileSetCraftTable/Tilesettable/tileset_Tilesettable.tres" id="1_coftv"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://blu6g31fucseb" path="res://Scripts/craft_table.gd" id="1_lg33j"]
+=======
+[ext_resource type="Script" uid="uid://gwxrfqids7no" path="res://Scripts/craft_table.gd" id="1_lg33j"]
+>>>>>>> main4.4.1
 
 [sub_resource type="LabelSettings" id="LabelSettings_jgaeh"]
 font_size = 36

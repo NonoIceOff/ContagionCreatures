@@ -1,6 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bygxx7a6c4m0f"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://b0nunbxyrcarl" path="res://Scripts/speech_box.gd" id="1_uc22q"]
+=======
+[ext_resource type="Script" uid="uid://d383k18dekmci" path="res://Scripts/speech_box.gd" id="1_uc22q"]
+>>>>>>> main4.4.1
 [ext_resource type="Texture2D" uid="uid://d2mm1gdiqjptn" path="res://Textures/01-generic.png" id="2_a0xcg"]
 [ext_resource type="AudioStream" uid="uid://cemminjheexhv" path="res://Sounds/Lens - Bobby Richards.mp3" id="3_a541l"]
 

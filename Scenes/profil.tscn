@@ -1,6 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbflfw68ef4rh"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://b4n14bv4pyhnc" path="res://Scripts/profil.gd" id="1_stqfv"]
+=======
+[ext_resource type="Script" uid="uid://0cxkvm2a4kat" path="res://Scripts/profil.gd" id="1_stqfv"]
+>>>>>>> main4.4.1
 [ext_resource type="Texture2D" uid="uid://bv55etaq3hgwq" path="res://Textures/user_profile.png" id="1_t1eos"]
 [ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="3_ufvdp"]
 

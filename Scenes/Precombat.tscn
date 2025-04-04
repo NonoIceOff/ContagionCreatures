@@ -1,6 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://doaw3aobgdqiy"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://dudvoicbojg03" path="res://Scripts/Precombat.gd" id="1_7cuix"]
+=======
+[ext_resource type="Script" uid="uid://xafbf0160tve" path="res://Scripts/Precombat.gd" id="1_7cuix"]
+>>>>>>> main4.4.1
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="5_7y40w"]
 [ext_resource type="AudioStream" uid="uid://bw2b7bo3uq503" path="res://Sounds/SoundeffectFight.wav" id="5_h61o2"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="7_gys42"]

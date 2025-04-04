@@ -1,5 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bpjigwu8bnhys"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://bytdla238j5y3" path="res://Scenes/pausesettings.gd" id="1_6h0dt"]
 [ext_resource type="Script" uid="uid://hosktn6va8ws" path="res://Scenes/ControlsButton.gd" id="1_hof3q"]
 [ext_resource type="Script" uid="uid://dvskfrbnns6o6" path="res://Scenes/AppearenceButton.gd" id="2_l2sb8"]
@@ -8,6 +9,16 @@
 [ext_resource type="Script" uid="uid://dfvv32246670" path="res://Scripts/Titre.gd" id="4_afwsr"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="5_k23y0"]
 [ext_resource type="Script" uid="uid://dkr5c8bk3g0y7" path="res://Scripts/Boutons/PauseOk.gd" id="6_ge3rk"]
+=======
+[ext_resource type="Script" uid="uid://cpoeklmxwq2qw" path="res://Scenes/pausesettings.gd" id="1_6h0dt"]
+[ext_resource type="Script" uid="uid://c0coppj47mtoo" path="res://Scenes/ControlsButton.gd" id="1_hof3q"]
+[ext_resource type="Script" uid="uid://hh6n8isswx23" path="res://Scenes/AppearenceButton.gd" id="2_l2sb8"]
+[ext_resource type="Script" uid="uid://cv830ixqmpaxk" path="res://Scenes/Languages.gd" id="2_xel24"]
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="3_5er0g"]
+[ext_resource type="Script" uid="uid://b8wsd0kxnsqvy" path="res://Scripts/Titre.gd" id="4_afwsr"]
+[ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="5_k23y0"]
+[ext_resource type="Script" uid="uid://clxken735b6im" path="res://Scripts/Boutons/PauseOk.gd" id="6_ge3rk"]
+>>>>>>> main4.4.1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8bsk"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)

@@ -1,6 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://bjlr0fptctcjs"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://d4ii2kpns75p0" path="res://Scripts/scène_combat_multi.gd" id="1_oqlxs"]
+=======
+[ext_resource type="Script" uid="uid://6d818g6wq6xf" path="res://Scripts/scène_combat_multi.gd" id="1_oqlxs"]
+>>>>>>> main4.4.1
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="2_kdu2y"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="3_c0o1j"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="4_7twcj"]

@@ -1,15 +1,26 @@
 [gd_scene load_steps=13 format=3 uid="uid://du85867fudmd2"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://dviw6c6jted1n" path="res://Scripts/Donjons/dungeon_enigme.gd" id="1_w8fhh"]
+=======
+[ext_resource type="Script" uid="uid://dweggikr0fxjm" path="res://Scripts/Donjons/dungeon_enigme.gd" id="1_w8fhh"]
+>>>>>>> main4.4.1
 [ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="2_na7c3"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="3_lduav"]
 [ext_resource type="Texture2D" uid="uid://p838sug386nh" path="res://Textures/light_mask.png" id="4_vgb7i"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="5_kcaed"]
 [ext_resource type="Texture2D" uid="uid://c18q56cdgsav5" path="res://Textures/WHATTT.png" id="6_sfjpb"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://cgokw8ttx3bht" path="res://Scripts/Transition_To_mainMap.gd" id="8_dcgnd"]
 [ext_resource type="AudioStream" uid="uid://bfw628o70egcf" path="res://Sounds/dungeon_sound.mp3" id="9_5assc"]
 [ext_resource type="AudioStream" uid="uid://chi02efau43ep" path="res://Sounds/flame_sound.mp3" id="9_7g1t8"]
 [ext_resource type="Script" uid="uid://brq4gi2duhsj8" path="res://Scripts/Brazeros.gd" id="9_ed2xt"]
+=======
+[ext_resource type="Script" uid="uid://dirvfacosqkox" path="res://Scripts/Transition_To_mainMap.gd" id="8_dcgnd"]
+[ext_resource type="AudioStream" uid="uid://bfw628o70egcf" path="res://Sounds/dungeon_sound.mp3" id="9_5assc"]
+[ext_resource type="AudioStream" uid="uid://chi02efau43ep" path="res://Sounds/flame_sound.mp3" id="9_7g1t8"]
+[ext_resource type="Script" uid="uid://cvnn1hkyuseo4" path="res://Scripts/Brazeros.gd" id="9_ed2xt"]
+>>>>>>> main4.4.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4vl6"]
 size = Vector2(24, 13.3334)

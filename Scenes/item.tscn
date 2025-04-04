@@ -5,8 +5,12 @@
 [ext_resource type="Script" uid="uid://b2rar6cjfiwlb" path="res://Scripts/item.gd" id="1_be5xl"]
 =======
 [ext_resource type="Texture2D" uid="uid://cnj2e50esfuhx" path="res://Textures/Items/Arc en bois.png" id="1_5npf8"]
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_be5xl"]
 >>>>>>> main
+=======
+[ext_resource type="Script" uid="uid://mwwn5egt0ues" path="res://Scripts/item.gd" id="1_be5xl"]
+>>>>>>> main4.4.1
 
 [sub_resource type="Animation" id="Animation_xxwru"]
 length = 0.001

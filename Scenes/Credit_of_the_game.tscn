@@ -1,7 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://d4jfp7imlkl0w"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://dv6wd0c8ijm58" path="res://Scenes/Credit_of_the_game.gd" id="1_sl7ei"]
 [ext_resource type="Script" uid="uid://dvjtblak3jpkl" path="res://Scenes/Settings_return_menu.gd" id="2_4wso2"]
+=======
+[ext_resource type="Script" uid="uid://dpiugp6spvbsn" path="res://Scenes/Credit_of_the_game.gd" id="1_sl7ei"]
+[ext_resource type="Script" uid="uid://baanwajoy6vtn" path="res://Scenes/Settings_return_menu.gd" id="2_4wso2"]
+>>>>>>> main4.4.1
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="2_idc8o"]
 [ext_resource type="AudioStream" uid="uid://dwgue3u2oyhwy" path="res://Sounds/music/credits.mp3" id="4_7vfbs"]
 
