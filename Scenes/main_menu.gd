@@ -20,3 +20,15 @@ func _on_ost_button_pressed() -> void:
 
 func _on_credits_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Credit_of_the_game.tscn")
+
+
+func _on_profile_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/profil.tscn")
+
+
+func _on_instagram_button_pressed() -> void:
+	OS.shell_open("https://www.instagram.com/contagion_creatures/")
+
+
+func _on_discord_button_pressed() -> void:
+	OS.shell_open("https://discord.gg/JSyQFFEqaS")
