@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://clft6l0mv78bv"]
 
-[ext_resource type="Script" path="res://Animal_follow.gd" id="1_nc1w6"]
+[ext_resource type="Script" uid="uid://bb1g2dhuxm5up" path="res://Animal_follow.gd" id="1_nc1w6"]
 [ext_resource type="Texture2D" uid="uid://dklqcsx2x2pm2" path="res://Textures/Animals/CHICKEN.png" id="2_jsm3g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxhpy"]

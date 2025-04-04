@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dq07bruwx0jev"]
 
-[ext_resource type="Script" path="res://Scripts/Minimap_FullMap/minimap_2.gd" id="1_0q67l"]
-[ext_resource type="Shader" path="res://Scenes/minimap.gdshader" id="1_sifbv"]
+[ext_resource type="Script" uid="uid://nd4tvf4788ve" path="res://Scripts/Minimap_FullMap/minimap_2.gd" id="1_0q67l"]
+[ext_resource type="Shader" uid="uid://clux318o8gn5t" path="res://Scenes/minimap.gdshader" id="1_sifbv"]
 [ext_resource type="Texture2D" uid="uid://choldy7fvdm7e" path="res://Textures/radar_mask.png" id="2_xvyaw"]
 [ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="3_qgfyk"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_p1x1l"]
@@ -87,8 +87,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v75dw"]
 _data = {
-"RESET": SubResource("Animation_2pobh"),
-"pin": SubResource("Animation_fnqu0")
+&"RESET": SubResource("Animation_2pobh"),
+&"pin": SubResource("Animation_fnqu0")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6cl2x"]

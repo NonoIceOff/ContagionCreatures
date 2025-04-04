@@ -49,9 +49,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_exv2c"]
 _data = {
-"RESET": SubResource("Animation_7mypd"),
-"screen_to_transition": SubResource("Animation_veu4t"),
-"transition_to_screen": SubResource("Animation_dvxsw")
+&"RESET": SubResource("Animation_7mypd"),
+&"screen_to_transition": SubResource("Animation_veu4t"),
+&"transition_to_screen": SubResource("Animation_dvxsw")
 }
 
 [node name="Transition" type="Control"]

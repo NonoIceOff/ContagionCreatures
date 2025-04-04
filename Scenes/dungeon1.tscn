@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://rnnv1bcs2ux6"]
 
-[ext_resource type="Script" path="res://Scripts/Donjons/dungeon1.gd" id="1_xfhqh"]
+[ext_resource type="Script" uid="uid://c1g6ce3lsv34k" path="res://Scripts/Donjons/dungeon1.gd" id="1_xfhqh"]
 [ext_resource type="TileSet" uid="uid://x0mi7itdvsq1" path="res://main_map.tres" id="2_fmi1b"]
 [ext_resource type="PackedScene" uid="uid://c8vw5i3xsv6w6" path="res://Maze/tile_map.tscn" id="2_pfpa5"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="3_5pcrv"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="4_a1ito"]
 [ext_resource type="Texture2D" uid="uid://p838sug386nh" path="res://Textures/light_mask.png" id="4_gsk56"]
-[ext_resource type="Script" path="res://Scripts/Transition_To_mainMap.gd" id="5_2xtxa"]
+[ext_resource type="Script" uid="uid://dirvfacosqkox" path="res://Scripts/Transition_To_mainMap.gd" id="5_2xtxa"]
 [ext_resource type="Texture2D" uid="uid://c18q56cdgsav5" path="res://Textures/WHATTT.png" id="6_md5wr"]
 [ext_resource type="AudioStream" uid="uid://bfw628o70egcf" path="res://Sounds/dungeon_sound.mp3" id="9_r0ofs"]
 

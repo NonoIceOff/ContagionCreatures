@@ -1,21 +1,21 @@
 [gd_scene load_steps=48 format=3 uid="uid://bppgfsdgr1rg"]
 
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="1_1k8th"]
-[ext_resource type="Script" path="res://Scripts/Maps/main_map.gd" id="1_ba8wf"]
+[ext_resource type="Script" uid="uid://ds8swk5oklhka" path="res://Scripts/Maps/main_map.gd" id="1_ba8wf"]
 [ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://main_map_2.tres" id="2_dxf0g"]
 [ext_resource type="PackedScene" uid="uid://clft6l0mv78bv" path="res://Scenes/animal.tscn" id="3_46rw2"]
 [ext_resource type="Texture2D" uid="uid://ckpe2pm4ddggs" path="res://Textures/Old_guy_who_lost_is_crampté_REAL.png" id="3_r3b5t"]
 [ext_resource type="Texture2D" uid="uid://blo1a6breprsw" path="res://Textures/Head-old-Guy-REAL.png" id="5_f74um"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="6_7grfu"]
-[ext_resource type="Script" path="res://Scripts/Detected_player.gd" id="7_5catn"]
+[ext_resource type="Script" uid="uid://ce3k2rxbnhwtl" path="res://Scripts/Detected_player.gd" id="7_5catn"]
 [ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="7_ch8cw"]
 [ext_resource type="Texture2D" uid="uid://dygmeeyh8svxo" path="res://Textures/headMOB.png" id="7_m7315"]
-[ext_resource type="Script" path="res://Scripts/areaEnnemy.gd" id="9_aabmy"]
+[ext_resource type="Script" uid="uid://dthck28jh6sbj" path="res://Scripts/areaEnnemy.gd" id="9_aabmy"]
 [ext_resource type="PackedScene" uid="uid://dxt5b5tantpyy" path="res://Scenes/PauseMenu.tscn" id="9_roibj"]
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="10_cbqsb"]
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="18_w4w46"]
 [ext_resource type="Texture2D" uid="uid://des7hyfw82tql" path="res://Textures/PNJ/Loytan/loytan_full.png" id="19_tc64p"]
-[ext_resource type="PackedScene" path="res://Scenes/PNJ.tscn" id="20_6gvfn"]
+[ext_resource type="PackedScene" uid="uid://dnj0fapv33e0a" path="res://Scenes/PNJ.tscn" id="20_6gvfn"]
 [ext_resource type="Texture2D" uid="uid://cqsj1ecoh183k" path="res://Textures/PNJ/Loytan/tete_loytan.png" id="20_12piq"]
 [ext_resource type="Texture2D" uid="uid://cxqxfpw2do58x" path="res://Textures/Inventaire/brown_pressed.png" id="21_7ffd6"]
 [ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="21_m1aw1"]
@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://d00cubkujysav" path="res://Textures/Inventaire/grey.png" id="22_ku8d1"]
 [ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="23_o04f3"]
 [ext_resource type="Texture2D" uid="uid://b6qrnndoprfy7" path="res://Textures/Items/nkey.png" id="23_sq4xb"]
-[ext_resource type="Script" path="res://Scripts/area_saved.gd" id="24_cjwdc"]
+[ext_resource type="Script" uid="uid://bw7mmjn2qpxyc" path="res://Scripts/area_saved.gd" id="24_cjwdc"]
 
 [sub_resource type="Curve2D" id="Curve2D_iabi8"]
 _data = {
@@ -65,8 +65,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3u8m7"]
 _data = {
-"RESET": SubResource("Animation_k33xm"),
-"camera_shake": SubResource("Animation_hg4wj")
+&"RESET": SubResource("Animation_k33xm"),
+&"camera_shake": SubResource("Animation_hg4wj")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qsd3"]
@@ -106,7 +106,7 @@ outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Curve" id="Curve_rl2k1"]
-min_value = -1.0
+_limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -191,8 +191,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_82t7x"]
 _data = {
-"RESET": SubResource("Animation_8sw8d"),
-"new_animation": SubResource("Animation_rfcfc")
+&"RESET": SubResource("Animation_8sw8d"),
+&"new_animation": SubResource("Animation_rfcfc")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43bhh"]

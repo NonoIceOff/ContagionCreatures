@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b63rx26tciilj"]
 
-[ext_resource type="Script" path="res://Scripts/notifications.gd" id="1_4c3ls"]
+[ext_resource type="Script" uid="uid://db0xqgps5vkta" path="res://Scripts/notifications.gd" id="1_4c3ls"]
 [ext_resource type="Texture2D" uid="uid://b5ji1p8ffbd5h" path="res://Textures/controller_icon.png" id="2_jy4vv"]
 [ext_resource type="AudioStream" uid="uid://cixkv861obgt1" path="res://Sounds/notification_sound.mp3" id="3_ljjfn"]
 

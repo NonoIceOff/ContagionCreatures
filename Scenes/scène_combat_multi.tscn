@@ -1,18 +1,20 @@
 [gd_scene load_steps=27 format=3 uid="uid://bjlr0fptctcjs"]
 
-[ext_resource type="Script" path="res://Scripts/scène_combat_multi.gd" id="1_oqlxs"]
+[ext_resource type="Script" uid="uid://6d818g6wq6xf" path="res://Scripts/scène_combat_multi.gd" id="1_oqlxs"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="2_kdu2y"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="3_c0o1j"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="4_7twcj"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="5_35ljt"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="6_pyekl"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="7_mrf2b"]
-[ext_resource type="Script" path="res://Scripts/Combat/Enemy-Stat.gd" id="8_ankta"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="9_i2xqd"]
 [ext_resource type="AudioStream" uid="uid://dgv6kihqgq3qw" path="res://Sounds/music/combat_1.mp3" id="10_guba5"]
 [ext_resource type="AudioStream" uid="uid://cucsn5iftliuo" path="res://Sounds/Shield Block.mp3" id="11_5rbht"]
 [ext_resource type="AudioStream" uid="uid://m31hopp2f6ib" path="res://Sounds/Ice Shard.mp3" id="12_6n5s6"]
 [ext_resource type="AudioStream" uid="uid://b87m4fatlldq1" path="res://Sounds/Magic Barrier.mp3" id="13_kxrki"]
+
+[sub_resource type="Resource" id="Resource_xe36t"]
+metadata/__load_path__ = "res://Scripts/Combat/Enemy-Stat.gd"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
 bg_color = Color(0.619608, 0.423529, 0.972549, 1)
@@ -214,12 +216,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2fhsy"]
 _data = {
-"Damage_Enemy": SubResource("Animation_7y6a2"),
-"Damage_Player": SubResource("Animation_gd1ce"),
-"Enemy_Death": SubResource("Animation_sy467"),
-"Player_Death": SubResource("Animation_of105"),
-"RESET": SubResource("Animation_kkly6"),
-"shake": SubResource("Animation_cupx5")
+&"Damage_Enemy": SubResource("Animation_7y6a2"),
+&"Damage_Player": SubResource("Animation_gd1ce"),
+&"Enemy_Death": SubResource("Animation_sy467"),
+&"Player_Death": SubResource("Animation_of105"),
+&"RESET": SubResource("Animation_kkly6"),
+&"shake": SubResource("Animation_cupx5")
 }
 
 [node name="SceneCombat" type="Node2D"]
@@ -378,7 +380,7 @@ scale = Vector2(4.5, 4.5)
 texture = ExtResource("7_mrf2b")
 region_enabled = true
 region_rect = Rect2(66, 1760, 30, 32)
-script = ExtResource("8_ankta")
+script = SubResource("Resource_xe36t")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 552.0

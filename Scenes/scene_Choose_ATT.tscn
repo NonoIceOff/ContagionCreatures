@@ -1,7 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcdv8bafc05hd"]
 
-[ext_resource type="Script" path="res://Scenes/ATK_Combat.gd" id="1_vi82x"]
 [ext_resource type="Texture2D" uid="uid://dp5pxuyx1t8of" path="res://Textures/Cross_Close.png" id="2_20sba"]
+
+[sub_resource type="Resource" id="Resource_bpw7i"]
+metadata/__load_path__ = "res://Scenes/ATK_Combat.gd"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_miolq"]
 bg_color = Color(1, 1, 1, 1)
@@ -28,7 +30,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="All-Case1" type="Node2D"]
-script = ExtResource("1_vi82x")
+script = SubResource("Resource_bpw7i")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 2688.0

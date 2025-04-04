@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://cinc84vpc2a4s"]
 
-[ext_resource type="Script" path="res://Scripts/home_of_hector.gd" id="1_7yy64"]
+[ext_resource type="Script" uid="uid://i7tx1ntg2vnb" path="res://Scripts/home_of_hector.gd" id="1_7yy64"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="2_3hxkl"]
 [ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://main_map_2.tres" id="2_svkma"]
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="5_676qs"]
 [ext_resource type="Texture2D" uid="uid://ftsqesla06t5" path="res://Textures/Buttons/keyboard/keyboard_e.png" id="5_e7x4g"]
-[ext_resource type="Script" path="res://Scripts/Transition_To_mainMap.gd" id="5_so67a"]
+[ext_resource type="Script" uid="uid://dirvfacosqkox" path="res://Scripts/Transition_To_mainMap.gd" id="5_so67a"]
 [ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="6_6ytuu"]
 [ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="7_cm1j3"]
 [ext_resource type="PackedScene" uid="uid://c7sxy68le1a5y" path="res://Scenes/craft_table.tscn" id="8_ek832"]

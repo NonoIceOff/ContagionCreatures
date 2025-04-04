@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://cuvepu5toqc02"]
 
-[ext_resource type="Script" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
+[ext_resource type="Script" uid="uid://852ixppgjwjo" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="2_dxowc"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]
@@ -216,12 +216,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2fhsy"]
 _data = {
-"Damage_Enemy": SubResource("Animation_7y6a2"),
-"Damage_Player": SubResource("Animation_gd1ce"),
-"Enemy_Death": SubResource("Animation_sy467"),
-"Player_Death": SubResource("Animation_of105"),
-"RESET": SubResource("Animation_kkly6"),
-"shake": SubResource("Animation_cupx5")
+&"Damage_Enemy": SubResource("Animation_7y6a2"),
+&"Damage_Player": SubResource("Animation_gd1ce"),
+&"Enemy_Death": SubResource("Animation_sy467"),
+&"Player_Death": SubResource("Animation_of105"),
+&"RESET": SubResource("Animation_kkly6"),
+&"shake": SubResource("Animation_cupx5")
 }
 
 [node name="SceneCombat" type="Node2D"]

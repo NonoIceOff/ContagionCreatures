@@ -1,11 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcdv8bafc05hd"]
 
 [ext_resource type="Texture2D" uid="uid://pnturgqkcrwq" path="res://Textures/pixil-frame-0 (4).png" id="1_77grx"]
-[ext_resource type="Texture2D" uid="uid://ggjf5m4idrje" path="res://Textures/ARC.png" id="2_i2wr2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ksap"]
 line_spacing = 20.0
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_ojj4a"]
+metadata/__load_path__ = "res://Textures/ARC.png"
 
 [node name="All-Case1" type="Node2D"]
 
@@ -39,7 +41,7 @@ vertical_alignment = 1
 [node name="Arc" type="Sprite2D" parent="."]
 position = Vector2(80, 290.001)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_i2wr2")
+texture = SubResource("Resource_ojj4a")
 
 [node name="Button" type="Button" parent="."]
 offset_left = -109.0

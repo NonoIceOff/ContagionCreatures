@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dll6t0qviglyv"]
 
-[ext_resource type="Script" path="res://Scripts/loytan_enigme_1.gd" id="1_c85vk"]
+[ext_resource type="Script" uid="uid://djcjvh8kbm5i0" path="res://Scripts/loytan_enigme_1.gd" id="1_c85vk"]
 [ext_resource type="AudioStream" uid="uid://b5h7wmfebxmvh" path="res://Sounds/enigma_debut.mp3" id="2_73yks"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="3_7t2tp"]
 [ext_resource type="Texture2D" uid="uid://cjdtiadalwaun" path="res://Textures/enigma_back.png" id="3_xtil1"]
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g1eob"]
 _data = {
-"RESET": SubResource("Animation_lqvf3"),
-"validate": SubResource("Animation_0q1ba")
+&"RESET": SubResource("Animation_lqvf3"),
+&"validate": SubResource("Animation_0q1ba")
 }
 
 [sub_resource type="Animation" id="Animation_32bcw"]
@@ -83,8 +83,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nlyct"]
 _data = {
-"RESET": SubResource("Animation_32bcw"),
-"validate": SubResource("Animation_4g8bq")
+&"RESET": SubResource("Animation_32bcw"),
+&"validate": SubResource("Animation_4g8bq")
 }
 
 [sub_resource type="Animation" id="Animation_vd7td"]
@@ -120,8 +120,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_laa26"]
 _data = {
-"RESET": SubResource("Animation_vd7td"),
-"validate": SubResource("Animation_ges6v")
+&"RESET": SubResource("Animation_vd7td"),
+&"validate": SubResource("Animation_ges6v")
 }
 
 [node name="LoytanEnigme1" type="Node2D"]

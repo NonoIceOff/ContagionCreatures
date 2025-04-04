@@ -1,19 +1,19 @@
 [gd_scene load_steps=25 format=3 uid="uid://dlj82x8ysevhm"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_43l4o"]
+[ext_resource type="Script" uid="uid://b2qxigw2cnmfq" path="res://Scripts/menu.gd" id="1_43l4o"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_buk1w"]
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_rwphk"]
 [ext_resource type="Texture2D" uid="uid://w5m4hlt7dhrk" path="res://logo.png" id="2_2tqwl"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_j62ra"]
-[ext_resource type="Script" path="res://Scenes/SettingsButton.gd" id="3_4a2ih"]
+[ext_resource type="Script" uid="uid://bd8sfhkg0hkgc" path="res://Scenes/SettingsButton.gd" id="3_4a2ih"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="4_4gslj"]
-[ext_resource type="Script" path="res://Scripts/Boutons/PlayButton.gd" id="5_ke7wv"]
-[ext_resource type="Script" path="res://Scripts/PlayMulti.gd" id="6_xn2ou"]
-[ext_resource type="Script" path="res://Scripts/Boutons/musicsbutton.gd" id="10_8uf3i"]
-[ext_resource type="Script" path="res://Scenes/Settings_Credits.gd" id="12_yb7yn"]
-[ext_resource type="Script" path="res://Scripts/DiscordRez.gd" id="13_q7uu7"]
+[ext_resource type="Script" uid="uid://cn8nwl4mt4ntr" path="res://Scripts/Boutons/PlayButton.gd" id="5_ke7wv"]
+[ext_resource type="Script" uid="uid://cqrqsoq8wfvy8" path="res://Scripts/PlayMulti.gd" id="6_xn2ou"]
+[ext_resource type="Script" uid="uid://seld4l6ebkii" path="res://Scripts/Boutons/musicsbutton.gd" id="10_8uf3i"]
+[ext_resource type="Script" uid="uid://b3rddyrctx0y6" path="res://Scenes/Settings_Credits.gd" id="12_yb7yn"]
+[ext_resource type="Script" uid="uid://iug5evtt7pct" path="res://Scripts/DiscordRez.gd" id="13_q7uu7"]
 [ext_resource type="Texture2D" uid="uid://bv55etaq3hgwq" path="res://Textures/user_profile.png" id="14_3buyc"]
-[ext_resource type="Script" path="res://Scripts/InstagramRez.gd" id="15_avs4k"]
+[ext_resource type="Script" uid="uid://b1qcdutbffc4m" path="res://Scripts/InstagramRez.gd" id="15_avs4k"]
 [ext_resource type="Texture2D" uid="uid://d1g423653v4tm" path="res://Textures/discord.png" id="19_hhkdv"]
 [ext_resource type="Texture2D" uid="uid://crj8d71jcq7lc" path="res://Textures/Instagram.png" id="22_4l4g4"]
 
@@ -157,17 +157,10 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Play" type="Button" parent="." groups=["buttons"]]
-<<<<<<< HEAD
-offset_left = 107.0
-offset_top = 522.0
-offset_right = 901.0
-offset_bottom = 587.0
-=======
 offset_left = 110.0
-offset_top = 623.0
+offset_top = 532.0
 offset_right = 894.0
-offset_bottom = 688.0
->>>>>>> newUI
+offset_bottom = 597.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")

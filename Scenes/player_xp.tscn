@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c65ywo6ftkvtc"]
 
-[ext_resource type="Script" path="res://Scripts/player_xp.gd" id="1_88clc"]
+[ext_resource type="Script" uid="uid://qn1dv8lmxiwf" path="res://Scripts/player_xp.gd" id="1_88clc"]
 
 [node name="XPPanel" type="Node2D"]
 script = ExtResource("1_88clc")

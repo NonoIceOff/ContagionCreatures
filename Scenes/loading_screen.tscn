@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcroj1y3bufqu"]
 
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_wue53"]
-[ext_resource type="Script" path="res://Scripts/LoadingText.gd" id="2_y83c2"]
+[ext_resource type="Script" uid="uid://b4sfiqtq52mj1" path="res://Scripts/LoadingText.gd" id="2_y83c2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8sn8"]
 bg_color = Color(0.0928626, 0.0207888, 0.00597633, 1)

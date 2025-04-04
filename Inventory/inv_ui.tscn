@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3dl6hqqqel25"]
 
-[ext_resource type="Script" path="res://Inventory/Inv_UI.gd" id="1_6vqhs"]
+[ext_resource type="Script" uid="uid://b22ms4u33l6ut" path="res://Inventory/Inv_UI.gd" id="1_6vqhs"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_16ut7"]
 
 [node name="Inv_UI" type="Control"]
