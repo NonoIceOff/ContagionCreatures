@@ -252,7 +252,7 @@ offset_top = 1040.0
 offset_right = 1904.0
 offset_bottom = 1075.0
 theme_override_font_sizes/font_size = 32
-text = "VERSION DE MARS 2025"
+text = "VERSION DE AVRIL 2025"
 horizontal_alignment = 2
 
 [node name="Profile" type="Button" parent="." groups=["buttons"]]
