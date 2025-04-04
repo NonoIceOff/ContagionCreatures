@@ -67,20 +67,23 @@ color = Color(1, 1, 0.847059, 1)
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 760.0
-offset_bottom = 51.0
+offset_right = 927.0
+offset_bottom = 103.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
+theme_override_colors/font_outline_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 86
 text = "TEXT_NO_QUEST_SELECTED"
 clip_text = true
 text_overrun_behavior = 4
+uppercase = true
 
 [node name="DescriptionQuete" type="RichTextLabel" parent="QuestInfos"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 104.0
-offset_right = 736.0
-offset_bottom = 824.0
+offset_right = 912.0
+offset_bottom = 448.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_ookii")
 theme_override_font_sizes/normal_font_size = 24
@@ -88,16 +91,44 @@ bbcode_enabled = true
 text = "TEXT_NO_QUEST_SELECTED"
 
 [node name="CheckButton" type="CheckButton" parent="QuestInfos"]
-visible = false
 layout_mode = 0
-offset_left = 488.0
-offset_top = 64.0
-offset_right = 752.0
-offset_bottom = 88.0
+offset_left = 664.0
+offset_top = 776.0
+offset_right = 928.0
+offset_bottom = 817.0
 focus_mode = 0
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
 button_pressed = true
 text = "SUIVRE LA QUETE"
+
+[node name="HSeparator" type="HSeparator" parent="QuestInfos"]
+layout_mode = 0
+offset_top = 456.0
+offset_right = 936.0
+offset_bottom = 472.0
+
+[node name="ProgressBar" type="ProgressBar" parent="QuestInfos"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 472.0
+offset_right = 920.0
+offset_bottom = 496.0
+
+[node name="QuestStatus" type="RichTextLabel" parent="QuestInfos"]
+offset_left = 32.0
+offset_top = 512.0
+offset_right = 912.0
+offset_bottom = 768.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_ookii")
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "TEXT_QUEST_NO_STATUS"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
