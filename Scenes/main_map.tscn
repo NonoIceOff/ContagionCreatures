@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="10_cbqsb"]
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="18_w4w46"]
 [ext_resource type="Texture2D" uid="uid://des7hyfw82tql" path="res://Textures/PNJ/Loytan/loytan_full.png" id="19_tc64p"]
-[ext_resource type="PackedScene" uid="uid://dnj0fapv33e0a" path="res://Scenes/PNJ.tscn" id="20_6gvfn"]
+[ext_resource type="PackedScene" path="res://Scenes/PNJ.tscn" id="20_6gvfn"]
 [ext_resource type="Texture2D" uid="uid://cqsj1ecoh183k" path="res://Textures/PNJ/Loytan/tete_loytan.png" id="20_12piq"]
 [ext_resource type="Texture2D" uid="uid://cxqxfpw2do58x" path="res://Textures/Inventaire/brown_pressed.png" id="21_7ffd6"]
 [ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="21_m1aw1"]

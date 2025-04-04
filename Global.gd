@@ -4,14 +4,12 @@ var user = {}
 
 # Matchmaking
 var user_enemy = {}
-
 var interact = false
 var trigger = true
 var brazero_numbers = 0
-var paused = false
 var can_move = true
 var player_postion = Vector2(0,0)
-
+var game_paused = false
 var attack_index = 0
 var attack_names = ["[color=red]avalanche de singes[/color]","[color=red]poele surpuissante[/color]","[color=red]dragibus noir[/color]","[color=red]douche[/color]"]
 var attack_values = [11,23,2,20]
@@ -260,11 +258,19 @@ signal fringe_changed
 
 var selected_index = 0
 var buttons = []
+var ui = []
+var ui_visible = true
 
 func _ready():
-	pass
+	ui = get_tree().get_nodes_in_group("ui")
+
 
 func _process(delta):
+	ui = get_tree().get_nodes_in_group("ui")
+	for i in range(ui.size()):
+		ui[i].visible = ui_visible
+
+
 	buttons = get_tree().get_nodes_in_group("buttons")
 	var joypads = Input.get_connected_joypads()
 	if joypads.size() >= 1 and buttons.size() > 0:
@@ -288,7 +294,10 @@ func update_button_selection() -> void:
 
 
 func pressed_button(button):
-	button.emit_signal("pressed")
+	if get_tree().get_nodes_in_group("Player_One").size() > 0 and game_paused == true:
+		button.emit_signal("pressed")
+	elif get_tree().get_nodes_in_group("Player_One").size() == 0:
+		button.emit_signal("pressed")
 
 func save():
 	var save_file = ConfigFile.new()
@@ -299,6 +308,10 @@ func save():
 	save_file.set_value("Tags", "Red", pinr)
 	save_file.set_value("Tags", "Yellow", piny)
 	save_file.set_value("Tags", "Green", ping)
+
+	save_file.set_value("Tutorial", "Stade", tutorial_stade)
+	save_file.set_value("Tutorial", "Validate", tutorial_validate)
+	save_file.set_value("Tutorial", "Tutorial", tutorial)
 	
 	save_file.set_value("Quests", "infos", Quests.quests)
 	save_file.set_value("Quests", "current", Quests.current_quest_id)
@@ -313,7 +326,7 @@ func save():
 	save_file.set_value("Player", "health", PlayerStats.health)
 	save_file.set_value("Player", "skin", PlayerStats.skin)
 	save_file.set_value("Player", "level", PlayerStats.level)
-	save_file.set_value("Player", "monnaie", PlayerStats.monnaie)
+	save_file.set_value("Player", "monnaie", PlayerStats.money)
 
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
@@ -342,17 +355,15 @@ func load():
 	pinr = load_file.get_value("Tags", "Red", pinr)
 	piny = load_file.get_value("Tags", "Yellow", piny)
 	ping = load_file.get_value("Tags", "Green", ping)
-
-	Quests.quests = load_file.get_value("Quests", "infos", Quests.quests)
-	Quests.current_quest_id = load_file.get_value("Quests", "current", Quests.current_quest_id)
-	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
-		get_node("/root/main_map/CanvasLayer/Minimap").pin = load_file.get_value("Quests", "radar_position", Vector2(0, 0))
+	tutorial_stade = load_file.get_value("Tutorial", "Stade", tutorial_stade)
+	tutorial_validate = load_file.get_value("Tutorial", "Validate", tutorial_validate)
+	tutorial = load_file.get_value("Tutorial", "Tutorial", tutorial)
 	
 	PlayerStats.pseudo = load_file.get_value("Player", "pseudo", PlayerStats.pseudo)
 	PlayerStats.health = load_file.get_value("Player", "health", PlayerStats.health)
 	PlayerStats.skin = load_file.get_value("Player", "skin", PlayerStats.skin)
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
-	PlayerStats.monnaie = load_file.get_value("Player", "monnaie", PlayerStats.monnaie)
+	PlayerStats.money = load_file.get_value("Player", "money", PlayerStats.money)
 
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
@@ -392,11 +403,17 @@ func _apply_player_position():
 
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
-		player_node.position = load_file.get_value("Player", "position", Vector2(3100, 1880))
+		player_node.position = load_file.get_value("Player", "position", Vector2(32, 100))
 		print("Position joueur appliquée :", player_node.position)
 	else:
 		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")
 
+func smooth_zoom(_camera, zoom, _position_target, speed):
+	var zoom_target = Vector2(zoom, zoom)
+	while _camera.zoom.distance_to(zoom_target) > 0.01:
+		_camera.zoom = lerp(_camera.zoom, zoom_target, speed)
+		_camera.position = lerp(_camera.position, _position_target, speed)
+		await get_tree().create_timer(speed).timeout
 
 func save_user():
 	var save_file = ConfigFile.new()

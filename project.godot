@@ -22,10 +22,10 @@ config/icon="res://cc.png"
 PlayerStats="*res://Scripts/PlayerStats.gd"
 SceneLoader="*res://Scripts/scene_loader.gd"
 Global="*res://Global.gd"
-Tutorial="*res://Scenes/tutorial.tscn"
 Notifications="*res://Scenes/notifications.tscn"
 Quests="*res://Scripts/Quests.gd"
 Controllers="*res://Scripts/Controllers.gd"
+MusicsPlayer="*res://Scenes/musics_player.tscn"
 
 [display]
 
@@ -33,7 +33,8 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor]
 
@@ -46,6 +47,9 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 [global_group]
 
 buttons=""
+Player_One=""
+camera=""
+ui=""
 
 [gui]
 
@@ -183,6 +187,12 @@ ui_x={
 Sprint={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":7,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+ui_p={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
 }
 
@@ -192,4 +202,5 @@ locale/translations=PackedStringArray("res://translations.en.translation", "res:
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

@@ -1,9 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsnv6bayplkw4"]
+[gd_scene load_steps=8 format=3 uid="uid://bsnv6bayplkw4"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://6oqqq0hetbwa" path="res://Inventory/Inv_UI.gd" id="1_7t8th"]
+=======
+[ext_resource type="Script" path="res://Inventory/inv_animals.gd" id="1_dmnuy"]
+[ext_resource type="Shader" path="res://Inventory/inv_animals.gdshader" id="2_37m55"]
+>>>>>>> main
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_papjk"]
+[ext_resource type="Texture2D" uid="uid://dac4irabvulb6" path="res://Textures/Inventaire/brown.png" id="3_ai7fb"]
+[ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_fhksd"]
+[ext_resource type="Texture2D" uid="uid://b1tpqldiveuik" path="res://Textures/Buttons/keyboard/keyboard_p.png" id="6_2xg4d"]
 
-[node name="Inv_UI" type="Control"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhj1s"]
+shader = ExtResource("2_37m55")
+shader_parameter/scroll_speed = 1.0
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 1.0
+shader_parameter/repeat_y = 1.0
+shader_parameter/row_offset = 1.0
+shader_parameter/texture_to_scroll = ExtResource("3_ai7fb")
+
+[node name="Inv_Animal" type="Control"]
 layout_mode = 3
 anchor_right = 0.272
 anchor_bottom = 0.353
@@ -11,9 +28,17 @@ offset_right = -0.240051
 offset_bottom = -0.240021
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7t8th")
+script = ExtResource("1_dmnuy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="BackgroundTiles" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_uhj1s")
+offset_right = 1912.0
+offset_bottom = 1080.0
+texture = ExtResource("4_fhksd")
+stretch_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = 64.0
@@ -35,6 +60,43 @@ text = "ENCYCLOPEDIE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+offset_left = 216.0
+offset_top = 128.0
+offset_right = 1856.0
+offset_bottom = 1016.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 16
+columns = 5
+
+[node name="Loading" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -528.0
+offset_top = -62.0
+offset_right = 528.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[center][wave]CHARGEMENT.."
+
+[node name="InfoTouches" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 64.0
+offset_top = 1036.0
+offset_right = 246.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 32
+text = "Quitter"
+
+[node name="Carte" type="Sprite2D" parent="CanvasLayer/InfoTouches"]
+texture_filter = 1
+position = Vector2(-24, 18)
+scale = Vector2(2, 2)
+texture = ExtResource("6_2xg4d")

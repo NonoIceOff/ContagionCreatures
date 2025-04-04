@@ -16,8 +16,8 @@ func _ready():
 		get_node("Area2D/Label_E").texture = load("res://Textures/Buttons/keyboard/keyboard_e.png")
 		get_node("Piano1/Interact").texture = load("res://Textures/Buttons/keyboard/keyboard_e.png")
 	else:
-		get_node("Area2D/Label_E").texture = load("res://Textures/Buttons/joypads/joybar_a.png")
-		get_node("Piano1/Interact").texture = load("res://Textures/Buttons/joypads/joybar_a.png")
+		get_node("Area2D/Label_E").texture = load(Controllers.a_texture)
+		get_node("Piano1/Interact").texture = load(Controllers.a_texture)
 		
 	transition_scene.play("transition_to_screen")
 
@@ -29,7 +29,7 @@ func _ready():
 	
 
 
-func _process(delt: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(Controllers.a_input) and piano_in == true:
 		var instance = scene.instantiate()
 		instance.piano_id = 0

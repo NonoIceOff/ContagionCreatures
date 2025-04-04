@@ -49,7 +49,7 @@ position = Vector2(-13, -800)
 scale = Vector2(1.5, 1.5)
 script = null
 
-[node name="PointLight2D" type="PointLight2D" parent="Player_One"]
+[node name="PointLight2D2" type="PointLight2D" parent="Player_One"]
 visible = false
 position = Vector2(30, 34.6667)
 scale = Vector2(0.666667, 0.666667)
