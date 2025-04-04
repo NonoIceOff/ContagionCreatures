@@ -1,191 +1,313 @@
-[gd_scene load_steps=20 format=3 uid="uid://dc4gs8m4imtji"]
+[gd_scene load_steps=8 format=3 uid="uid://dc4gs8m4imtji"]
 
 [ext_resource type="Script" path="res://Scenes/settings.gd" id="1_8w70o"]
-[ext_resource type="Script" path="res://Scenes/ControlsButton.gd" id="1_cfn84"]
-[ext_resource type="Script" path="res://Scenes/AppearenceButton.gd" id="2_5wkqo"]
-[ext_resource type="Shader" path="res://Inventory/inv_animals.gdshader" id="2_l14p2"]
-[ext_resource type="Script" path="res://Scenes/Languages.gd" id="2_xlfvj"]
-[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="3_rtdht"]
-[ext_resource type="Texture2D" uid="uid://b12y342v323gw" path="res://Textures/Inventaire/grey_pressed.png" id="3_ulkb0"]
-[ext_resource type="Script" path="res://Scripts/Titre.gd" id="4_ggfiq"]
-[ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_nhgeo"]
-[ext_resource type="Script" path="res://Scripts/Boutons/sounds_settings.gd" id="5_3xmbo"]
-[ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="5_vs5pu"]
-[ext_resource type="Script" path="res://Scripts/Retour.gd" id="6_mdffj"]
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_1k108"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2sac"]
-shader = ExtResource("2_l14p2")
-shader_parameter/scroll_speed = 1.0
-shader_parameter/angle_degrees = 45.0
-shader_parameter/repeat_x = 0.5
-shader_parameter/repeat_y = 0.5
-shader_parameter/row_offset = 2.5
-shader_parameter/texture_to_scroll = ExtResource("3_ulkb0")
+[sub_resource type="FontFile" id="FontFile_lsj5q"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/60/0/ascent = 0.0
+cache/0/60/0/descent = 0.0
+cache/0/60/0/underline_position = 0.0
+cache/0/60/0/underline_thickness = 0.0
+cache/0/60/0/scale = 1.0
+cache/0/59/0/ascent = 0.0
+cache/0/59/0/descent = 0.0
+cache/0/59/0/underline_position = 0.0
+cache/0/59/0/underline_thickness = 0.0
+cache/0/59/0/scale = 1.0
+cache/0/58/0/ascent = 0.0
+cache/0/58/0/descent = 0.0
+cache/0/58/0/underline_position = 0.0
+cache/0/58/0/underline_thickness = 0.0
+cache/0/58/0/scale = 1.0
+cache/0/57/0/ascent = 0.0
+cache/0/57/0/descent = 0.0
+cache/0/57/0/underline_position = 0.0
+cache/0/57/0/underline_thickness = 0.0
+cache/0/57/0/scale = 1.0
+cache/0/56/0/ascent = 0.0
+cache/0/56/0/descent = 0.0
+cache/0/56/0/underline_position = 0.0
+cache/0/56/0/underline_thickness = 0.0
+cache/0/56/0/scale = 1.0
+cache/0/55/0/ascent = 0.0
+cache/0/55/0/descent = 0.0
+cache/0/55/0/underline_position = 0.0
+cache/0/55/0/underline_thickness = 0.0
+cache/0/55/0/scale = 1.0
+cache/0/54/0/ascent = 0.0
+cache/0/54/0/descent = 0.0
+cache/0/54/0/underline_position = 0.0
+cache/0/54/0/underline_thickness = 0.0
+cache/0/54/0/scale = 1.0
+cache/0/53/0/ascent = 0.0
+cache/0/53/0/descent = 0.0
+cache/0/53/0/underline_position = 0.0
+cache/0/53/0/underline_thickness = 0.0
+cache/0/53/0/scale = 1.0
+cache/0/52/0/ascent = 0.0
+cache/0/52/0/descent = 0.0
+cache/0/52/0/underline_position = 0.0
+cache/0/52/0/underline_thickness = 0.0
+cache/0/52/0/scale = 1.0
+cache/0/51/0/ascent = 0.0
+cache/0/51/0/descent = 0.0
+cache/0/51/0/underline_position = 0.0
+cache/0/51/0/underline_thickness = 0.0
+cache/0/51/0/scale = 1.0
+cache/0/61/0/ascent = 0.0
+cache/0/61/0/descent = 0.0
+cache/0/61/0/underline_position = 0.0
+cache/0/61/0/underline_thickness = 0.0
+cache/0/61/0/scale = 1.0
+cache/0/62/0/ascent = 0.0
+cache/0/62/0/descent = 0.0
+cache/0/62/0/underline_position = 0.0
+cache/0/62/0/underline_thickness = 0.0
+cache/0/62/0/scale = 1.0
+cache/0/63/0/ascent = 0.0
+cache/0/63/0/descent = 0.0
+cache/0/63/0/underline_position = 0.0
+cache/0/63/0/underline_thickness = 0.0
+cache/0/63/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/65/0/ascent = 0.0
+cache/0/65/0/descent = 0.0
+cache/0/65/0/underline_position = 0.0
+cache/0/65/0/underline_thickness = 0.0
+cache/0/65/0/scale = 1.0
+cache/0/66/0/ascent = 0.0
+cache/0/66/0/descent = 0.0
+cache/0/66/0/underline_position = 0.0
+cache/0/66/0/underline_thickness = 0.0
+cache/0/66/0/scale = 1.0
+cache/0/67/0/ascent = 0.0
+cache/0/67/0/descent = 0.0
+cache/0/67/0/underline_position = 0.0
+cache/0/67/0/underline_thickness = 0.0
+cache/0/67/0/scale = 1.0
+cache/0/68/0/ascent = 0.0
+cache/0/68/0/descent = 0.0
+cache/0/68/0/underline_position = 0.0
+cache/0/68/0/underline_thickness = 0.0
+cache/0/68/0/scale = 1.0
+cache/0/69/0/ascent = 0.0
+cache/0/69/0/descent = 0.0
+cache/0/69/0/underline_position = 0.0
+cache/0/69/0/underline_thickness = 0.0
+cache/0/69/0/scale = 1.0
+cache/0/70/0/ascent = 0.0
+cache/0/70/0/descent = 0.0
+cache/0/70/0/underline_position = 0.0
+cache/0/70/0/underline_thickness = 0.0
+cache/0/70/0/scale = 1.0
+cache/0/71/0/ascent = 0.0
+cache/0/71/0/descent = 0.0
+cache/0/71/0/underline_position = 0.0
+cache/0/71/0/underline_thickness = 0.0
+cache/0/71/0/scale = 1.0
+cache/0/72/0/ascent = 0.0
+cache/0/72/0/descent = 0.0
+cache/0/72/0/underline_position = 0.0
+cache/0/72/0/underline_thickness = 0.0
+cache/0/72/0/scale = 1.0
+cache/0/73/0/ascent = 0.0
+cache/0/73/0/descent = 0.0
+cache/0/73/0/underline_position = 0.0
+cache/0/73/0/underline_thickness = 0.0
+cache/0/73/0/scale = 1.0
+cache/0/74/0/ascent = 0.0
+cache/0/74/0/descent = 0.0
+cache/0/74/0/underline_position = 0.0
+cache/0/74/0/underline_thickness = 0.0
+cache/0/74/0/scale = 1.0
+cache/0/75/0/ascent = 0.0
+cache/0/75/0/descent = 0.0
+cache/0/75/0/underline_position = 0.0
+cache/0/75/0/underline_thickness = 0.0
+cache/0/75/0/scale = 1.0
+cache/0/76/0/ascent = 0.0
+cache/0/76/0/descent = 0.0
+cache/0/76/0/underline_position = 0.0
+cache/0/76/0/underline_thickness = 0.0
+cache/0/76/0/scale = 1.0
+cache/0/77/0/ascent = 0.0
+cache/0/77/0/descent = 0.0
+cache/0/77/0/underline_position = 0.0
+cache/0/77/0/underline_thickness = 0.0
+cache/0/77/0/scale = 1.0
+cache/0/78/0/ascent = 0.0
+cache/0/78/0/descent = 0.0
+cache/0/78/0/underline_position = 0.0
+cache/0/78/0/underline_thickness = 0.0
+cache/0/78/0/scale = 1.0
+cache/0/79/0/ascent = 0.0
+cache/0/79/0/descent = 0.0
+cache/0/79/0/underline_position = 0.0
+cache/0/79/0/underline_thickness = 0.0
+cache/0/79/0/scale = 1.0
+cache/0/80/0/ascent = 0.0
+cache/0/80/0/descent = 0.0
+cache/0/80/0/underline_position = 0.0
+cache/0/80/0/underline_thickness = 0.0
+cache/0/80/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
-bg_color = Color(0.654902, 0.298039, 0.14902, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+[sub_resource type="FontFile" id="FontFile_ckeno"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7pwu"]
-bg_color = Color(0.717647, 0.203922, 0, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_egi6e"]
+texture = ExtResource("2_1k108")
+region_rect = Rect2(275, 212, 90, 25)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
-bg_color = Color(0.654902, 0.298039, 0.160784, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0hj8s"]
+texture = ExtResource("2_1k108")
+region_rect = Rect2(275, 178, 90, 27)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm8en"]
-bg_color = Color(0.654902, 0.298039, 0.14902, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jyc4"]
-bg_color = Color(0.717647, 0.203922, 0, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui7us"]
-bg_color = Color(0.654902, 0.298039, 0.160784, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jj6x2"]
 
 [node name="Settings" type="Node2D"]
 script = ExtResource("1_8w70o")
 
-[node name="BackgroundTiles" type="TextureRect" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_c2sac")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+texture = ExtResource("2_1k108")
+region_rect = Rect2(742, 39, 18, 18)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_nhgeo")
-stretch_mode = 1
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_bottom = 88
 
-[node name="Controls" type="Button" parent="." groups=["buttons"]]
-offset_left = 640.0
-offset_top = 322.0
-offset_right = 1277.0
-offset_bottom = 402.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 64
-theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-text = "CONTROLS"
-script = ExtResource("1_cfn84")
+[node name="Title" type="Label" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_lsj5q")
+theme_override_font_sizes/font_size = 80
+text = "PARAMÈTRES"
+uppercase = true
 
-[node name="Languages" type="Button" parent="." groups=["buttons"]]
-offset_left = 632.0
-offset_top = 450.0
-offset_right = 1269.0
-offset_bottom = 530.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 64
-theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-text = "LANGUAGES"
-script = ExtResource("2_xlfvj")
+[node name="SettingsButtonsContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(750, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 40
+alignment = 2
 
-[node name="Appearence" type="Button" parent="." groups=["buttons"]]
-offset_left = 640.0
-offset_top = 578.0
-offset_right = 1277.0
-offset_bottom = 658.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 64
-theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-text = "APPEARANCE"
-script = ExtResource("2_5wkqo")
+[node name="ControlsButton" type="Button" parent="NinePatchRect/MarginContainer/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_ckeno")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0hj8s")
+text = "CONTRÔLES"
 
-[node name="SoundsSettings" type="Button" parent="." groups=["buttons"]]
-offset_left = 640.0
-offset_top = 707.0
-offset_right = 1277.0
-offset_bottom = 787.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 64
-theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-text = "MUSICS AND SOUNDS"
-script = ExtResource("5_3xmbo")
+[node name="LanguageButton" type="Button" parent="NinePatchRect/MarginContainer/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_ckeno")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0hj8s")
+text = "LANGUE"
 
-[node name="Titre" type="Label" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-offset_top = 128.0
-offset_right = 1920.0
-offset_bottom = 256.0
-theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_rtdht")
-theme_override_font_sizes/font_size = 64
-text = "SETTINGS"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("4_ggfiq")
+[node name="AppearanceButton" type="Button" parent="NinePatchRect/MarginContainer/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_ckeno")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0hj8s")
+text = "APPARENCE"
 
-[node name="TitreTriche" type="Label" parent="Titre"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("3_rtdht")
-theme_override_font_sizes/font_size = 64
-text = "SETTINGS"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="MusicAndSoundButton" type="Button" parent="NinePatchRect/MarginContainer/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_ckeno")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0hj8s")
+text = "MUSIC AND SOUNDS"
 
-[node name="Sounds" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_vs5pu")
+[node name="HSeparator" type="HSeparator" parent="NinePatchRect/MarginContainer/SettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 55
+theme_override_styles/separator = SubResource("StyleBoxTexture_jj6x2")
 
-[node name="Retour" type="Button" parent="." groups=["buttons"]]
-offset_left = 640.0
-offset_top = 896.0
-offset_right = 1277.0
-offset_bottom = 1012.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 35
-theme_override_styles/hover = SubResource("StyleBoxFlat_dm8en")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jyc4")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ui7us")
-text = "BACK"
-script = ExtResource("6_mdffj")
+[node name="SettingsBackButton" type="Button" parent="NinePatchRect/MarginContainer/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_ckeno")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_egi6e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0hj8s")
+text = "RETOUR"
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
-[connection signal="pressed" from="Controls" to="Controls" method="_on_pressed"]
-[connection signal="pressed" from="Languages" to="Languages" method="_on_pressed"]
-[connection signal="pressed" from="Appearence" to="Appearence" method="_on_pressed"]
-[connection signal="pressed" from="SoundsSettings" to="SoundsSettings" method="_on_pressed"]
-[connection signal="pressed" from="Retour" to="Retour" method="_on_retour_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/SettingsButtonsContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/SettingsButtonsContainer/LanguageButton" to="." method="_on_language_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/SettingsButtonsContainer/AppearanceButton" to="." method="_on_appearance_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/SettingsButtonsContainer/MusicAndSoundButton" to="." method="_on_music_and_sound_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/SettingsButtonsContainer/SettingsBackButton" to="." method="_on_settings_back_button_pressed"]

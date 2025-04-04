@@ -11,6 +11,25 @@ extends Control
 @onready var craft_button = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftInfoContainer/PanelContainer/MarginContainer/CraftButtonContainer/CraftButton
 @onready var exit_button = $CraftMenuScreen/NinePatchRect/ExitButton
 
+
+# Bouton de filtre des items de crafts
+@onready var weapon_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/WeaponButton
+@onready var ressource_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/RessourceButton
+@onready var item_farm_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/ItemFarmButton
+@onready var concusible_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/Concusible_Button
+@onready var special_item_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/SpecialItemButton
+@onready var all_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/AllButton
+
+# Bouton de filtre des items de l'inventaire
+
+@onready var weapon_filter_button_inventory = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer/WeaponButton
+@onready var ressource_filter_button_inventory = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer/RessourceButton
+@onready var item_farm_filter_button_inventory = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer/ItemFarmButton
+@onready var concusible_filter_button_inventory = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer/Concusible_Button
+@onready var special_item_filter_button_inventory = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer/SpecialItemButton
+@onready var all_filter_button_inventory = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer/AllButton
+
+
 # Récupère les items du player
 var player_items = []  
 # Récupère les tout les items du jeu
@@ -30,6 +49,38 @@ func _ready():
 	connect("item_selected", Callable(self, "_on_item_selected"))
 	craft_button.connect("pressed", Callable(self, "_on_craft_button_pressed"))
 	exit_button.connect("pressed", Callable(self, "_on_exit_button_pressed"))
+	
+		# Connexion des boutons de filtre pour les crafts
+	weapon_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Arme"))
+	ressource_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Ressource"))
+	item_farm_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("ItemFarm"))
+	concusible_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Consommable"))
+	special_item_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Special"))
+	all_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("All"))
+
+	# Connexion des boutons de filtre pour l'inventaire
+	weapon_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Arme"))
+	ressource_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Ressource"))
+	item_farm_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("ItemFarm"))
+	concusible_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Consommable"))
+	special_item_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Special"))
+	all_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("All"))
+
+		# Connexion des boutons de filtre pour les crafts
+	weapon_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Arme"))
+	ressource_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Ressource"))
+	item_farm_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("ItemFarm"))
+	concusible_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Consommable"))
+	special_item_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Special"))
+	all_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("All"))
+
+	# Connexion des boutons de filtre pour l'inventaire
+	weapon_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Arme"))
+	ressource_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Ressource"))
+	item_farm_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("ItemFarm"))
+	concusible_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Consommable"))
+	special_item_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Special"))
+	all_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("All"))
 
 func _on_get_item_request_completed(response_code, body):
 	if response_code == 200:
@@ -50,6 +101,38 @@ func _on_exit_button_pressed() -> void:
 	visible = false
 	Engine.time_scale = 1
 	Global.can_move = true
+	
+func _on_craft_filter_pressed(type: String) -> void:
+	filter_crafts_by_type(type)
+
+func _on_inventory_filter_pressed(type: String) -> void:
+	filter_inventory_by_type(type)
+	
+func filter_crafts_by_type(type: String) -> void:
+	list_all_items.clear()
+
+	for craft_name in craft_manager.craft_list.keys():
+		var craft = craft_manager.craft_list[craft_name]
+		if type == "All" or craft["mode"] == type:
+			var texture: Texture = null
+			if ResourceLoader.exists(craft["texture"]):
+				texture = load(craft["texture"])
+			else:
+				print("Texture introuvable pour :", craft_name)
+			var item_id = list_all_items.add_item(craft_name, texture)
+			list_all_items.set_item_disabled(item_id, not craft_manager.acces.get(craft["unlock"], false))
+
+func filter_inventory_by_type(type: String) -> void:
+	list_player_items.clear()
+
+	for item in player_items:
+		if type == "All" or item["mode"] == type:
+			var texture: Texture = null
+			if ResourceLoader.exists(item["texture"]):
+				texture = load(item["texture"])
+			else:
+				print("Texture introuvable pour :", item["name"])
+			list_player_items.add_item("x" + str(item["quantity"]), texture)
 
 func _process(_delta: float) -> void:
 	pass
@@ -125,27 +208,42 @@ func _on_item_selected(index: int) -> void:
 
 	craft_info_ressources_item_list.clear()
 	var can_craft = true
+
 	for ressource in item_ressources:
 		var quantity_needed = item_ressources[ressource]
 		var quantity_available = 0
+		var texture: Texture = null
+
 		for item in player_items:
-			if item["name"] == ressource:
+			if item["name"].to_lower() == ressource.to_lower():
 				quantity_available = item["quantity"]
+				if ResourceLoader.exists(item["texture"]):
+					texture = ResourceLoader.load(item["texture"])
 				break
+
+		if texture == null:
+			for item in all_items:
+				if item["name"].to_lower() == ressource.to_lower():
+					if ResourceLoader.exists(item["texture"]):
+						texture = ResourceLoader.load(item["texture"])
+					break
+
+		if texture == null:
+			var texture_path = "res://Textures/Items/" + ressource + ".png"
+			if ResourceLoader.exists(texture_path):
+				texture = ResourceLoader.load(texture_path)
+			else:
+				print("Erreur : Texture introuvable pour ", ressource, " avec le chemin ", texture_path)
+
 
 		var ressource_text = ressource + " x" + str(quantity_needed)
 		if quantity_available < quantity_needed:
 			ressource_text += " (Manquant)"
 			can_craft = false
-			var item_id = craft_info_ressources_item_list.add_item(ressource_text)
+			var item_id = craft_info_ressources_item_list.add_item(ressource_text, texture)
 			craft_info_ressources_item_list.set_item_custom_bg_color(item_id, Color(1, 0, 0))
 		else:
-			var item_id = craft_info_ressources_item_list.add_item(ressource_text)
-			# Récupérer la texture de la ressource
-			var http_request = HTTPRequest.new()
-			add_child(http_request)
-			http_request.connect("request_completed", Callable(self, "_on_get_item_name_request_completed").bind(item_id, ressource, quantity_needed))
-			http_request.request(API_ITEMS_URL)
+			var item_id = craft_info_ressources_item_list.add_item(ressource_text, texture)
 
 	craft_button.disabled = not can_craft
 

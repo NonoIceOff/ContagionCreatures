@@ -40,11 +40,18 @@ class Quest:
 
 var current_quest_id = -1
 
-var bagird_pnj = PNJ.new(
+var sage_pnj = PNJ.new(
 	0,
 	"res://Textures/Head-old-Guy-REAL.png",
 	"res://Textures/Old_guy_who_lost_is_crampté_REAL.png",
 	"Vieux sage"
+)
+
+var bagird_pnj = PNJ.new(
+	1,
+	"res://Textures/PNJ/Bagird/bagird_full.png",
+	"res://Textures/PNJ/Bagird/tete_bagird.png",
+	"Bagird"
 )
 
 var quests = {}
@@ -62,6 +69,8 @@ func add_quest(quest_data: Dictionary) -> void:
 				var pnj
 				if pnj_entry[0] == "bagird_pnj":
 					pnj = bagird_pnj
+				elif pnj_entry[0] == "sage_pnj":
+					pnj = sage_pnj
 				else:
 					pnj = bagird_pnj
 				return [pnj, pnj_entry[1]],

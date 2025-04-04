@@ -15,11 +15,11 @@ var craft_list = {
 			"Herbe": 2,
 			"Eau": 1
 		},
-		"mode": "ressource",
+		"mode": "Consommable",
 		"description": "Une potion magique qui restaure instantanément 50 points de vie.",
 		"unlock": "Potion",
 		"quest_unlock": "",
-		"texture": "res://Textures/Items/Potion_verte.png",
+		"texture": "res://Textures/Items/Potion soin.png",
 		"price": 10,
 		"type": "type",
 		"coef": 1
@@ -29,11 +29,11 @@ var craft_list = {
 			"Liane": 7,
 			"Collier pierro": 1
 		},
-		"mode": "ressource",
+		"mode": "Arme",
 		"description": "Un arc robuste fabriqué avec des lianes résistantes. Idéal pour les attaques à distance.",
 		"unlock": "Alchimie",
 		"quest_unlock": "",
-		"texture": "res://Textures/Items/ARC.png",
+		"texture": "res://Textures/Items/Arc en bois.png",
 		"price": 10,
 		"type": "type",
 		"coef": 1
@@ -43,11 +43,11 @@ var craft_list = {
 			"Herbe": 1,
 			"Eau": 2
 		},
-		"mode": "ressource",
+		"mode": "Consommable",
 		"quest_unlock": "",
 		"description": "Une potion rare qui augmente votre défense temporairement de 20%.",
 		"unlock": "Potion",
-		"texture": "res://Textures/Items/Gemme_bleu.png",
+		"texture": "res://Textures/Items/Potion défense.png",
 		"price": 10,
 		"type": "type",
 		"coef": 1
@@ -57,11 +57,11 @@ var craft_list = {
 			"Liane": 3,
 			"Pierre": 1
 		},
-		"mode": "ressource",
+		"mode": "Ressource",
 		"description": "Un collier orné d'une pierre précieuse qui améliore votre concentration.",
 		"unlock": "Alchimie",
 		"quest_unlock": "",
-		"texture": "res://Textures/Items/collierPierro.png",
+		"texture": "res://Textures/Items/Collier Pierro.png",
 		"price": 10,
 		"type": "type",
 		"coef": 1
@@ -73,110 +73,28 @@ var craft_list = {
 			"Poussiere": 1,
 			"Racine": 1
 		},
-		"mode": "ressource",
+		"mode": "Consommable",
 		"description": "Une herbe rare utilisée dans la préparation de potions puissantes.",
 		"unlock": "Herboristerie",
 		"quest_unlock": "",
-		"texture": "res://Textures/Items/Apple.png",
+		"texture": "res://Textures/Items/Herbe medicinale.png",
 		"price": 10,
 		"type": "type",
 		"coef": 1
 	},
-	"Kollier pierro": {
+	"Fireball": {
 		"ingredients": {
-			"Liane": 3,
-			"Pierre": 1
+			"Bois": 4,
+			"Baton de bois": 15,
+			"Eau": 8,
+			"Herbe": 5
 		},
-		"mode": "ressource",
-		"description": "Un collier légèrement différent du modèle original, conférant une aura magique.",
+		"mode": "Special",
+		"description": "Une boule de feu qui inflige 50 points de dégâts à la cible.",
 		"unlock": "Alchimie",
 		"quest_unlock": "",
-		"texture": "res://Textures/Items/collierPierro.png",
-		"price": 10,
-		"type": "type",
-		"coef": 1
-	},
-	"Qollier pierro": {
-		"ingredients": {
-			"Liane": 3,
-			"Pierre": 1
-		},
-		"mode": "ressource",
-		"description": "Un collier orné d’une pierre mystique augmentant l'intelligence du porteur.",
-		"unlock": "Alchimie",
-		"quest_unlock": "",
-		"texture": "res://Textures/Items/collierPierro.png",
-		"price": 10,
-		"type": "type",
-		"coef": 1
-	},
-	"Pollier pierro": {
-		"ingredients": {
-			"Liane": 3,
-			"Pierre": 1
-		},
-		"mode": "ressource",
-		"description": "Un bijou élégant qui amplifie les effets des potions consommées.",
-		"unlock": "Alchimie",
-		"quest_unlock": "",
-		"texture": "res://Textures/Items/collierPierro.png",
-		"price": 10,
-		"type": "type",
-		"coef": 1
-	},
-	"Mollier pierro": {
-		"ingredients": {
-			"Liane": 3,
-			"Pierre": 1
-		},
-		"mode": "ressource",
-		"description": "Un collier rare qui améliore la vitesse et l'agilité du porteur.",
-		"unlock": "Alchimie",
-		"quest_unlock": "",
-		"texture": "res://Textures/Items/collierPierro.png",
-		"price": 10,
-		"type": "type",
-		"coef": 1
-	},
-	"Zollier pierro": {
-		"ingredients": {
-			"Liane": 3,
-			"Pierre": 1
-		},
-		"mode": "ressource",
-		"description": "Un collier ancien capable d’absorber une partie des dégâts subis.",
-		"unlock": "Alchimie",
-		"quest_unlock": "",
-		"texture": "res://Textures/Items/collierPierro.png",
-		"price": 10,
-		"type": "type",
-		"coef": 1
-	},
-	"Tollier pierro": {
-		"ingredients": {
-			"Liane": 3,
-			"Pierre": 1
-		},
-		"mode": "ressource",
-		"description": "Un collier doté d'un enchantement de protection magique.",
-		"unlock": "Alchimie",
-		"quest_unlock": "",
-		"texture": "res://Textures/Items/collierPierro.png",
-		"price": 10,
-		"type": "type",
-		"coef": 1
-	},
-	"Jollier pierro": {
-		"ingredients": {
-			"Liane": 3,
-			"Pierre": 1
-		},
-		"mode": "ressource",
-		"description": "Un collier mystique dont l'origine est inconnue, imprégné d’une magie mystérieuse.",
-		"unlock": "Alchimie",
-		"quest_unlock": "",
-		"texture": "res://Textures/Items/collierPierro.png",
-		"price": 10,
+		"texture": "res://Textures/Items/Fireball.png",
+		"price": 2500,
 		"type": "type",
 		"coef": 1
 	}

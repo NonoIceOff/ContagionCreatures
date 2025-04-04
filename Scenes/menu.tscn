@@ -161,6 +161,7 @@ offset_left = 110.0
 offset_top = 623.0
 offset_right = 894.0
 offset_bottom = 688.0
+
 focus_mode = 0
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
@@ -171,9 +172,9 @@ script = ExtResource("5_ke7wv")
 
 [node name="PlayMulti" type="Button" parent="." groups=["buttons"]]
 offset_left = 112.0
-offset_top = 544.0
+offset_top = 614.0
 offset_right = 896.0
-offset_bottom = 609.0
+offset_bottom = 679.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
