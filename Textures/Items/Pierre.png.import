@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp88ip2atyf1h"
-path="res://.godot/imported/fireball_icon.png-732fc82d09fb5eba03178be7f27055c8.ctex"
+uid="uid://bcoxlrv826kyq"
+path="res://.godot/imported/Pierre.png-768a7666b538a720320a4a668687b4d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/fireball_icon.png"
-dest_files=["res://.godot/imported/fireball_icon.png-732fc82d09fb5eba03178be7f27055c8.ctex"]
+source_file="res://Textures/Items/Pierre.png"
+dest_files=["res://.godot/imported/Pierre.png-768a7666b538a720320a4a668687b4d7.ctex"]
 
 [params]
 

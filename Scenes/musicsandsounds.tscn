@@ -137,6 +137,7 @@ theme_override_font_sizes/font_size = 32
 text = "MUSICS"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/Musics"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0
@@ -166,6 +167,7 @@ theme_override_font_sizes/font_size = 32
 text = "PLAYER"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/Player"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0
@@ -195,6 +197,7 @@ theme_override_font_sizes/font_size = 32
 text = "UI"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/UI"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0
@@ -224,6 +227,7 @@ theme_override_font_sizes/font_size = 32
 text = "BUS1"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/Bus1"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0
@@ -253,6 +257,7 @@ theme_override_font_sizes/font_size = 32
 text = "BUS2"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/Bus2"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0
@@ -282,6 +287,7 @@ theme_override_font_sizes/font_size = 32
 text = "BUS3"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/Bus3"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0
@@ -311,6 +317,7 @@ theme_override_font_sizes/font_size = 32
 text = "BUS4"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/Bus4"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0
@@ -340,6 +347,7 @@ theme_override_font_sizes/font_size = 32
 text = "BUS5"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/Bus5"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0
@@ -369,6 +377,7 @@ theme_override_font_sizes/font_size = 32
 text = "BUS6"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/Bus6"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0
@@ -398,6 +407,7 @@ theme_override_font_sizes/font_size = 32
 text = "BUS7"
 
 [node name="Volume" type="Label" parent="ScrollContainer/VBoxContainer/Bus7"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = -36.0
 offset_right = 1152.0

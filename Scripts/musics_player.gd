@@ -7,12 +7,15 @@ func play_sound(sound_path, type, pitch=1.0, volume_db=0.0):
 	get_node(type).volume_db = volume_db
 	get_node(type).play()
 
+func apply_bus_volume(type, volume_db=0.0):
+	get_node(type).volume_db = volume_db
+
 func pause_sound(type):
 	get_node(type).stop()
 
 func get_sound_duration(sound_path):
 	var sound = AudioStreamPlayer.new()
-	sound.stream = load(sound_path)
+	sound.stream = load(sound_path)	
 	return sound.get_stream_length()
 
 func get_sound_position(type):

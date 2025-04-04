@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1uu63i2dagd6"
-path="res://.godot/imported/collierPierro.png-cb318e203a988c9951d1e9e8e202dde5.ctex"
+uid="uid://dekyteoi3k5dx"
+path="res://.godot/imported/Herbe.png-268dba64ce8ac2e9e6b9631f07cea147.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/collierPierro.png"
-dest_files=["res://.godot/imported/collierPierro.png-cb318e203a988c9951d1e9e8e202dde5.ctex"]
+source_file="res://Textures/Items/Herbe.png"
+dest_files=["res://.godot/imported/Herbe.png-268dba64ce8ac2e9e6b9631f07cea147.ctex"]
 
 [params]
 

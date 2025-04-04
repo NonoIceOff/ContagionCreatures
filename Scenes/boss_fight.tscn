@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://b48dtrtjrb7nv"]
+
+[ext_resource type="Texture2D" uid="uid://q22nnxcjjpgf" path="res://Textures/Backgrounds/boss.png" id="1_bp22d"]
+[ext_resource type="Script" path="res://Scenes/boss_fight.gd" id="1_m0cq2"]
+[ext_resource type="Texture2D" uid="uid://bd16is5v8ma4p" path="res://Textures/Animals/dragon_texture.png" id="4_nre7b"]
+
+[node name="BossFight" type="Node2D"]
+script = ExtResource("1_m0cq2")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 542)
+scale = Vector2(15, 14.9444)
+texture = ExtResource("1_bp22d")
+
+[node name="Mob" type="Sprite2D" parent="."]
+position = Vector2(1568, 568)
+scale = Vector2(20, 20)
+texture = ExtResource("4_nre7b")
+
+[node name="MobProgressBar" type="ProgressBar" parent="."]
+offset_left = 1208.0
+offset_top = 896.0
+offset_right = 1864.0
+offset_bottom = 944.0
+value = 50.0
+
+[node name="Players" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WIN" type="ColorRect" parent="UI"]
+visible = false
+z_index = 99
+layout_mode = 0
+offset_left = 368.0
+offset_top = 216.0
+offset_right = 1536.0
+offset_bottom = 808.0
+
+[node name="Label" type="Label" parent="UI/WIN"]
+layout_mode = 0
+offset_right = 1168.0
+offset_bottom = 232.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "Vous avez gagné"
+horizontal_alignment = 1
+vertical_alignment = 1

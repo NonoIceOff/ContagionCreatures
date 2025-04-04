@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcxx1s8tuwixs"
-path="res://.godot/imported/Apple.png-4905aaf098ceadd0d4535a2bb026ed75.ctex"
+uid="uid://wtvvvs2c0uko"
+path="res://.godot/imported/Baton de bois.png-01b7483af1f79eeed93bc3d78aa36ae4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Apple.png"
-dest_files=["res://.godot/imported/Apple.png-4905aaf098ceadd0d4535a2bb026ed75.ctex"]
+source_file="res://Textures/Items/Baton de bois.png"
+dest_files=["res://.godot/imported/Baton de bois.png-01b7483af1f79eeed93bc3d78aa36ae4.ctex"]
 
 [params]
 
