@@ -440,7 +440,7 @@ text = "FUIR"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_2fhsy")
+&"": SubResource("AnimationLibrary_2fhsy")
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]

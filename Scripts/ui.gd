@@ -17,6 +17,8 @@ func _ready() -> void:
 	
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
+	get_node("Stats/CoinsLabel").text = str(PlayerStats.money)+" [img=32x32]res://Textures/COIN.png[/img]"
+
 	if Input.is_action_just_pressed("ui_p"):
 		if is_open:
 			get_node("inv_animal").queue_free()
@@ -38,7 +40,7 @@ func _process(delta: float) -> void:
 
 	if Quests.current_quest_id > -1 and quest_particles != null:
 		quest_particles.visible = true
-		quest_particles.get_node("QuestTextBar").text = "[right][rainbow freq=0.05]" + tr(Quests.quests[Quests.current_quest_id]["title"]) + " [/rainbow]\n[color=white][i]" + tr(Quests.quests[Quests.current_quest_id]["mini_descriptions"][Quests.quests[Quests.current_quest_id]["stade"]])
+		quest_particles.get_node("QuestTextBar").text = "[right][rainbow freq=0.05][b]" + tr(Quests.quests[Quests.current_quest_id]["title"]).to_upper() + " [/b][/rainbow]\n[color=white][i]" + tr(Quests.quests[Quests.current_quest_id]["mini_descriptions"][Quests.quests[Quests.current_quest_id]["stade"]])
 	else:
 		if quest_particles != null:
 			quest_particles.visible = false
