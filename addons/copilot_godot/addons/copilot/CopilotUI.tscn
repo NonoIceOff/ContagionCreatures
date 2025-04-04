@@ -1,11 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://rv5dl08lcb8e"]
 
-[ext_resource type="Script" path="res://addons/copilot/Copilot.gd" id="1_pq1gj"]
-[ext_resource type="Script" path="res://addons/copilot/OpenAIChat.gd" id="2"]
-[ext_resource type="Material" uid="uid://cccmbprav6vgu" path="res://addons/copilot/small_icon.tres" id="2_gdw4j"]
-[ext_resource type="Script" path="res://addons/copilot/OpenAICompletion.gd" id="3_loa2x"]
-[ext_resource type="Material" uid="uid://bl1rtf743e4l3" path="res://addons/copilot/large_icon.tres" id="3_xn70b"]
-[ext_resource type="Script" path="res://addons/copilot/GithubCopilot.gd" id="6_hmh8w"]
+[ext_resource type="Material" uid="uid://cccmbprav6vgu" path="res://addons/copilot_godot/addons/copilot/small_icon.tres" id="2_gdw4j"]
+[ext_resource type="Material" uid="uid://bl1rtf743e4l3" path="res://addons/copilot_godot/addons/copilot/large_icon.tres" id="3_xn70b"]
+
+[sub_resource type="Resource" id="Resource_oh3w4"]
+metadata/__load_path__ = "res://addons/copilot/Copilot.gd"
+
+[sub_resource type="Resource" id="Resource_pehff"]
+metadata/__load_path__ = "res://addons/copilot/OpenAICompletion.gd"
+
+[sub_resource type="Resource" id="Resource_86ulo"]
+metadata/__load_path__ = "res://addons/copilot/OpenAIChat.gd"
+
+[sub_resource type="Resource" id="Resource_k7egs"]
+metadata/__load_path__ = "res://addons/copilot/GithubCopilot.gd"
 
 [node name="Copilot" type="Control"]
 layout_mode = 3
@@ -14,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pq1gj")
+script = SubResource("Resource_oh3w4")
 icon_shader = ExtResource("2_gdw4j")
 highlight_color = Color(0.223529, 0.254902, 0.298039, 1)
 
@@ -259,13 +267,13 @@ selection_enabled = true
 [node name="LLMs" type="Node" parent="."]
 
 [node name="OpenAICompletion" type="Node" parent="LLMs"]
-script = ExtResource("3_loa2x")
+script = SubResource("Resource_pehff")
 
 [node name="OpenAIChat" type="Node" parent="LLMs"]
-script = ExtResource("2")
+script = SubResource("Resource_86ulo")
 
 [node name="GithubCopilot" type="Node" parent="LLMs"]
-script = ExtResource("6_hmh8w")
+script = SubResource("Resource_k7egs")
 
 [node name="Version" type="Label" parent="."]
 layout_mode = 1

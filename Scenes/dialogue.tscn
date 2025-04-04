@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cy7i05orx8usr"]
 
-[ext_resource type="Script" path="res://Scripts/dialogue.gd" id="1_nurke"]
+[ext_resource type="Script" uid="uid://buggs3qy45ef3" path="res://Scripts/dialogue.gd" id="1_nurke"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="3_x3htj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pf7fl"]

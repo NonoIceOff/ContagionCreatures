@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://crh50t7ckfxol"]
 
-[ext_resource type="Script" path="res://Scripts/Donjons/dungeon_inversed.gd" id="1_d3qf0"]
+[ext_resource type="Script" uid="uid://b0ymvom1pmnc5" path="res://Scripts/Donjons/dungeon_inversed.gd" id="1_d3qf0"]
 [ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://main_map_2.tres" id="2_gp8cl"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="3_64hv4"]
 [ext_resource type="Texture2D" uid="uid://dd068qtnnburx" path="res://Textures/unlight_mask.png" id="4_f76xm"]
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="5_adgva"]
 [ext_resource type="Texture2D" uid="uid://b8yagtt5i3n0k" path="res://Textures/WHATTTInversed.png" id="6_k47gl"]
-[ext_resource type="Script" path="res://Scripts/Transition_To_mainMap.gd" id="7_eve5m"]
+[ext_resource type="Script" uid="uid://cgokw8ttx3bht" path="res://Scripts/Transition_To_mainMap.gd" id="7_eve5m"]
 [ext_resource type="AudioStream" uid="uid://cjg2eqjrp0uxs" path="res://Sounds/reversed_dungeon_sound.mp3" id="8_txfda"]
 [ext_resource type="AudioStream" uid="uid://chi02efau43ep" path="res://Sounds/flame_sound.mp3" id="9_hn3aw"]
 

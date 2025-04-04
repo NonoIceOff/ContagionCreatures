@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cudq4udwc88dm"]
 
-[ext_resource type="Script" path="res://Scripts/drop_crate.gd" id="1_j8lr5"]
+[ext_resource type="Script" uid="uid://dd47tvpdi3ckc" path="res://Scripts/drop_crate.gd" id="1_j8lr5"]
 [ext_resource type="SpriteFrames" uid="uid://1x2nw21jwnrk" path="res://DropCrate.tres" id="2_2xte1"]
 [ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="2_vsfdu"]
 [ext_resource type="Texture2D" uid="uid://do32i36l6ciew" path="res://TileSet/TileSetCasePack/RareCasePack/output/Rarecasepack.png" id="3_nns4y"]

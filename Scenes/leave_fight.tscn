@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://kvkv8ep4kioo"]
 
-[ext_resource type="Script" path="res://Scenes/leave_fight.gd" id="1_pb3pd"]
+[ext_resource type="Script" uid="uid://df0g335e6oqgj" path="res://Scenes/leave_fight.gd" id="1_pb3pd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8rqa"]
 bg_color = Color(1, 1, 1, 1)
