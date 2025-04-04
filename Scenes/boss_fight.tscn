@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b48dtrtjrb7nv"]
+[gd_scene load_steps=5 format=3 uid="uid://b48dtrtjrb7nv"]
 
 [ext_resource type="Texture2D" uid="uid://q22nnxcjjpgf" path="res://Textures/Backgrounds/boss.png" id="1_bp22d"]
 [ext_resource type="Script" uid="uid://bocrm3wyet7j" path="res://Scenes/boss_fight.gd" id="1_m0cq2"]
 [ext_resource type="Texture2D" uid="uid://bd16is5v8ma4p" path="res://Textures/Animals/dragon_texture.png" id="4_nre7b"]
+[ext_resource type="Script" uid="uid://cs8ytmvbycml0" path="res://Scenes/timer.gd" id="4_wha5u"]
 
 [node name="BossFight" type="Node2D"]
 script = ExtResource("1_m0cq2")
@@ -54,3 +55,49 @@ theme_override_font_sizes/font_size = 128
 text = "Vous avez gagné"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Descriptions" type="Label" parent="."]
+texture_filter = 1
+offset_right = 1920.0
+offset_bottom = 232.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attaque" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 768.0
+offset_right = 1068.0
+offset_bottom = 896.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 0.260006, 0.200835, 1)
+theme_override_font_sizes/font_size = 64
+text = "ATTAQUE"
+
+[node name="Speciale" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 920.0
+offset_right = 1068.0
+offset_bottom = 1048.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.219626, 0.445708, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "SPECIALE"
+
+[node name="Timer" type="RichTextLabel" parent="."]
+offset_left = 1648.0
+offset_top = 8.0
+offset_right = 1904.0
+offset_bottom = 160.0
+theme_override_colors/default_color = Color(0.975664, 4.57242e-06, 1.54018e-06, 1)
+theme_override_font_sizes/normal_font_size = 114
+bbcode_enabled = true
+text = "[shake rate=40.0 level=30 connected=1]01:00"
+horizontal_alignment = 2
+script = ExtResource("4_wha5u")
+
+[connection signal="pressed" from="Attaque" to="." method="_on_attaque_pressed"]
+[connection signal="pressed" from="Speciale" to="." method="_on_speciale_pressed"]

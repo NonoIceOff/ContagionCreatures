@@ -28,6 +28,6 @@ func _process(delta):
 			Global.save()
 			Key = true
 			get_node("/root/Map3/ui/Transition/AnimationPlayer").play("screen_to_transition")
-			await get_tree().create_timer(3).timeout
-			get_tree().change_scene_to_file("res://Scenes/home_of_hector.tscn")
+			SceneLoader.load_scene("res://Scenes/home_of_hector.tscn")
+			#get_tree().change_scene_to_file("res://Scenes/home_of_hector.tscn")
 			Key = false

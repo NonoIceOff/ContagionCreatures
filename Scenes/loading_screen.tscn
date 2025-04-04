@@ -1,21 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcroj1y3bufqu"]
+[gd_scene load_steps=9 format=3 uid="uid://bcroj1y3bufqu"]
 
+[ext_resource type="Shader" uid="uid://c7r3th281ihh2" path="res://Inventory/inv_animals.gdshader" id="1_gegoj"]
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="1_wue53"]
+[ext_resource type="Texture2D" uid="uid://c46bjoyf3b5y1" path="res://Textures/Barre-PV-ProgressBar2.png" id="2_fayou"]
+[ext_resource type="Texture2D" uid="uid://1mweqbsp53y3" path="res://Textures/background_multiplayer - Copie.png" id="2_gegoj"]
 [ext_resource type="Script" uid="uid://b4sfiqtq52mj1" path="res://Scripts/LoadingText.gd" id="2_y83c2"]
+[ext_resource type="Texture2D" uid="uid://b0036vlffhy36" path="res://Textures/BARRE-PV-ProgressBar.png" id="3_1godw"]
+[ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="3_1opfs"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8sn8"]
-bg_color = Color(0.0928626, 0.0207888, 0.00597633, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bi4k4"]
-bg_color = Color(0.654902, 0.298039, 0.160784, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbrhi"]
+shader = ExtResource("1_gegoj")
+shader_parameter/scroll_speed = 1.0
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 0.1
+shader_parameter/repeat_y = 0.2
+shader_parameter/row_offset = 5.0
+shader_parameter/texture_to_scroll = ExtResource("2_gegoj")
 
 [node name="loading_screen" type="Control"]
 layout_mode = 3
@@ -25,17 +25,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1078.0
-color = Color(0, 0, 0, 1)
+[node name="BackgroundTiles" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_xbrhi")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1opfs")
+stretch_mode = 1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(976, -40)
 amount = 10
-lifetime = 5.0
 texture = ExtResource("1_wue53")
+lifetime = 5.0
 emission_shape = 3
 emission_rect_extents = Vector2(1000, 10)
 angle_min = -720.0
@@ -44,27 +56,22 @@ scale_amount_min = 0.0
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = 420.0
-offset_right = -64.0
-offset_bottom = 484.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-theme_override_styles/background = SubResource("StyleBoxFlat_c8sn8")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bi4k4")
+offset_left = 320.0
+offset_top = 992.0
+offset_right = 576.0
+offset_bottom = 1004.0
+scale = Vector2(5, 5)
 max_value = 1.0
-value = 0.5
+value = 1.0
+texture_under = ExtResource("2_fayou")
+texture_progress = ExtResource("3_1godw")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_top = 1032.0
+offset_top = 1047.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_font_sizes/font_size = 32
