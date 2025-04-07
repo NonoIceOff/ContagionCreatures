@@ -533,24 +533,76 @@ func _on_attack_bar_pressed():
 
 
 		# Optionnel : Jouer un son d'échec ou donner un feedback visuel
+func end_combat_and_show_stats():
+	print("==> Début de end_combat_and_show_stats()")
+	print("Valeurs des stats dans Combat :")
+	print("total_damage_player =", total_damage_player)
+	print("total_heal_player =", total_heal_player)
+	print("total_shield_player =", total_shield_player)
+	print("max_damage_player =", max_damage_player)
+	print("max_heal_player =", max_heal_player)
+	print("max_shield_player =", max_shield_player)
+	print("total_damage_ennemye =", total_damage_ennemye)
+	print("total_heal_ennemye =", total_heal_ennemye)
+	print("total_shield_ennemye =", total_shield_ennemye)
+	print("max_damage_ennemye =", max_damage_ennemye)
+	print("max_heal_ennemye =", max_heal_ennemye)  # attention, vérifie l'orthographe si besoin
+	print("max_shield_ennemye =", max_shield_ennemye)
+	print("critique_attaque_player =", critique_attaque_player)
+	print("critique_attaque_ennemye =", critique_attaque_ennemye)
+	print("normal_attaque_player =", normal_attaque_player)
+	print("normal_attaque_ennemye =", normal_attaque_ennemye)
+	print("echec_attaque_player =", echec_attaque_player)
+	print("echec_attaque_ennemye =", echec_attaque_ennemye)
+	
+	# Instancie la scène Stats
+	var stats_scene = preload("res://Scenes/Stats/Stats.tscn").instantiate()
+	print("Instance Stats instanciée :", stats_scene)
+	
+	# Ajoute la scène à l'arbre pour que son _ready() s'exécute
+	get_tree().root.add_child(stats_scene)
+	print("Stats Scene ajoutée à l'arbre")
+	
+	# Utilise call_deferred pour appeler set_all_text_variable après _ready()
+	stats_scene.call_deferred("set_all_text_variable",
+		total_damage_player,
+		total_heal_player,
+		total_shield_player,
+		max_damage_player,
+		max_heal_player,
+		max_shield_player,
+		total_damage_ennemye,
+		total_heal_ennemye,
+		total_shield_ennemye,
+		max_damage_ennemye,
+		max_heal_ennemye,  
+		max_shield_ennemye,
+		critique_attaque_player,
+		critique_attaque_ennemye,
+		normal_attaque_player,
+		normal_attaque_ennemye,
+		echec_attaque_player,
+		echec_attaque_ennemye
+	)
+	print("Appel deferred de set_all_text_variable effectué")
+
 
 func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> void:
 	var final_damage = damage
 	match success_level:
 		0:
 			final_damage = 0
-			# stock echec
+			# Stock echec
 			echec_attaque_player += 1
 		1:
 			final_damage = int(final_damage / 2)
-			# stock check
+			# Stock check
 			echec_attaque_player += 1
 		2:
-			# stock check
+			# Stock check
 			normal_attaque_player += 1
-			pass
 		3:
-			# stock check
+			# Stock check
 			critique_attaque_player += 1
 			final_damage = int(final_damage * 1.5)
 	
@@ -559,10 +611,12 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 		var current_shield = player_percentage_shield.text.to_int()
 		current_shield += final_damage
 		player_percentage_shield.text = str(current_shield)
-		# stockage des infos
+		# Stockage des infos
 		total_shield_player += final_damage
 		if final_damage < max_shield_player:
 			max_shield_player = final_damage
+	
+	# Mode "att" : attaque sur l'ennemi
 	if mode == "att":
 		var current_shield = mob_percentage_shield.text.to_int()
 		if current_shield > 0:
@@ -577,19 +631,23 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 		else:
 			mob_progress_bar_hp.value -= final_damage
 			mob_percentage_hp.text = str(mob_progress_bar_hp.value) + "/" + str(mob_progress_bar_hp.max_value)
-		# stockage des infos
+		# Stockage des infos
 		total_damage_player += final_damage
 		if final_damage < max_damage_player:
 			max_damage_player = final_damage
+		$ContainerMob/EnnemyeSprite/AnimationPlayer.play("blink & knockback ennemye")
+	
+	# Mode "heal" : soin du joueur
 	if mode == "heal":
 		var current_hp = player_progress_bar_hp.value
 		current_hp += final_damage
 		player_progress_bar_hp.value = current_hp
 		player_percentage_hp.text = str(current_hp) + "/" + str(player_progress_bar_hp.max_value)
-		# stockage des infos
+		# Stockage des infos
 		total_heal_player += final_damage
 		if final_damage < max_heal_player:
 			max_heal_player = final_damage
+	
 	print("Niveau de réussite :", success_level)
 	print("Mode :", mode)
 	
@@ -602,14 +660,15 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 		damage_label.modulate = Color(0.2, 0.2, 1.0, 0.0)
 		progress_bar_joueur.get_node("VBoxContainer").add_child(damage_label)
 		tween.tween_property(damage_label, "modulate", Color(0.2, 0.2, 1.0, 1.0), 0.5).from(Color(0.2, 0.2, 1.0, 0.0))
+	
 	if mode == "att":
 		damage_label.text = "-" + str(final_damage)
 		damage_label.modulate = Color(1.0, 0.2, 0.2, 0.0)
 		progress_bar_ennemye.get_node("VBoxContainer").add_child(damage_label)
 		tween.tween_property(damage_label, "modulate", Color(1.0, 0.2, 0.2, 1.0), 0.5).from(Color(1.0, 0.2, 0.2, 0.0))
+	
 	if mode == "heal":
 		damage_label.text = "+" + str(final_damage)
-		# la couleur du texte est verte
 		damage_label.modulate = Color(0.2, 1.0, 0.2, 0.0)
 		progress_bar_joueur.get_node("VBoxContainer").add_child(damage_label)
 		tween.tween_property(damage_label, "modulate", Color(0.2, 1.0, 0.2, 1.0), 0.5).from(Color(0.2, 1.0, 0.2, 0.0))
@@ -619,6 +678,20 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 	new_color.a = 0.0
 	tween.tween_property(damage_label, "modulate", new_color, 0.5)
 	tween.tween_callback(Callable(damage_label, "queue_free"))
+	
+	# Vérifier si le mob ennemi est mort
+	if mob_progress_bar_hp.value <= 0:
+		print("Le mob est mort !")
+		mob_progress_bar_hp.value = 0
+		mob_percentage_hp.text = str(mob_progress_bar_hp.value) + "/" + str(mob_progress_bar_hp.max_value)
+		#mettre le combat en pause
+		combat_started = false
+		# Attendre un peu avant d'afficher l'écran des stats
+		await get_tree().create_timer(1.5).timeout
+		end_combat_and_show_stats()
+	else:
+		print("Le mob a encore de la vie.")
+
 func _do_nothing() -> void:
 	pass
 
@@ -679,6 +752,11 @@ func _on_get_creatures_enemy_request_completed(result: int, response_code: int, 
 	enemy_creatures_data = parse_result
 
 func _remplir_barre_ennemye(duree: float, difficulty: String,  ennemye_attack: int, ennemye_mode: String, competence_number) -> void:
+	# vérifier que le combat est commencer et que combat est true
+	if not combat_started:
+		print("Le combat n'a pas encore commencé ou est en pause.")
+		return
+	
 	number_attack + 1
 	var difficulty_to_zones = {
 		"easy": 1,
@@ -839,6 +917,8 @@ func apply_damage_to_player(damage: int, success_level: int, mode: String) -> vo
 		damage_label.modulate = Color(1.0, 0.2, 0.2, 0.0)
 		progress_bar_joueur.get_node("VBoxContainer").add_child(damage_label)
 		tween.tween_property(damage_label, "modulate", Color(1.0, 0.2, 0.2, 1.0), 0.5).from(Color(1.0, 0.2, 0.2, 0.0))
+		$EaglePlayer/AnimationPlayer.play("blink & knockback")
+
 	if mode == "heal":
 		damage_label.text = "+" + str(final_damage)
 		# Couleur verte pour les soins
@@ -851,3 +931,4 @@ func apply_damage_to_player(damage: int, success_level: int, mode: String) -> vo
 	new_color.a = 0.0
 	tween.tween_property(damage_label, "modulate", new_color, 0.5)
 	tween.tween_callback(Callable(damage_label, "queue_free"))
+	

@@ -96,10 +96,10 @@ vertical_alignment = 1
 
 [node name="Max_heal" type="Label" parent="Stats/Joueur"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 384.0
-offset_right = 552.0
-offset_bottom = 448.0
+offset_left = 15.0
+offset_top = 395.0
+offset_right = 551.0
+offset_bottom = 459.0
 theme_override_fonts/font = ExtResource("3_qphhe")
 theme_override_font_sizes/font_size = 25
 text = "Soin max
@@ -197,10 +197,10 @@ vertical_alignment = 1
 
 [node name="Max_heal" type="Label" parent="Stats/Ennemi"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 384.0
-offset_right = 576.0
-offset_bottom = 448.0
+offset_left = 42.0
+offset_top = 396.0
+offset_right = 578.0
+offset_bottom = 460.0
 theme_override_fonts/font = ExtResource("3_qphhe")
 theme_override_font_sizes/font_size = 25
 text = "Soin max
