@@ -26,6 +26,11 @@ func _ready() -> void:
 		get_node("Panel/username").text = str(Global.user.username)
 		get_node("Panel/money").text = str(Global.user.money)+" coins"
 		get_node("Panel/points").text = str(Global.user.points)+" points"
+		get_node("Login").visible = false
+		get_node("Register").visible = false
+		get_node("Disconnect").visible = true
+	else :
+		get_node("Disconnect").visible = false
 		
 	# Connecte le signal de réponse de HTTPRequest
 	http_request.request_completed.connect(_on_request_completed)
@@ -53,6 +58,9 @@ func login():
 	if error != OK:
 		print("Erreur lors de la requête de login:", error)
 	
+	get_node("Login").visible = false
+	get_node("Register").visible = false
+	
 func register():
 	var email = r_email_field.text.strip_edges()
 	var password = r_password_field.text.strip_edges()
@@ -76,6 +84,7 @@ func register():
 	var error = http_request.request(REGISTER_URL, headers, HTTPClient.METHOD_POST, JSON.stringify(register_data))
 	if error != OK:
 		print("Erreur lors de la requête d'inscription:", error)
+		
 
 # Fonction pour gérer le bouton de login
 func _on_login_pressed() -> void:
@@ -125,19 +134,26 @@ func _on_disconnect_pressed() -> void:
 	get_node("Panel/money").text = "-"
 	get_node("Panel/points").text = "-"
 	Global.save_user()
+	get_node("Login").visible = true
+	get_node("Register").visible = true
+	get_node("Waiting").visible = false
+	get_node("Disconnect").visible = false
 
 
 func _on_validate_login_pressed() -> void:
 	login()
 	get_node("Waiting").visible = true
 	get_node("LoginPanel").visible = false
+	get_node("Disconnect").visible = true
+	
 
 
 func _on_validate_register_pressed() -> void:
 	register()
 	get_node("Waiting").visible = true
 	get_node("RegisterPanel").visible = false
-
+	get_node("Disconnect").visible = true
+	
 
 func _on_back_to_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

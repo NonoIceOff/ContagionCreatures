@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cyofep22rmi33"]
+[gd_scene load_steps=14 format=3 uid="uid://cyofep22rmi33"]
 
 [ext_resource type="Script" uid="uid://jx52ry63qxrc" path="res://Scenes/main_menu.gd" id="1_bfu8w"]
 [ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_irci0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://crj8d71jcq7lc" path="res://Textures/Instagram.png" id="5_opfnp"]
 [ext_resource type="Texture2D" uid="uid://d1g423653v4tm" path="res://Textures/discord.png" id="6_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://w5m4hlt7dhrk" path="res://logo.png" id="8_yhxw7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ja6sr"]
 
@@ -58,6 +59,18 @@ layout_mode = 2
 theme_override_constants/separation = 125
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Menu/Left_part/VBoxContainer"]
+position = Vector2(500, 180)
+texture = ExtResource("8_yhxw7")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 80)
+direction = Vector2(0, 0)
+gravity = Vector2(0, 200)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+
 [node name="Title" type="Label" parent="Menu/Left_part/VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 40)
 layout_mode = 2
@@ -67,7 +80,7 @@ theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
 theme_override_constants/outline_size = 10
 theme_override_constants/shadow_outline_size = 50
 theme_override_fonts/font = ExtResource("2_pgg7n")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 75
 text = "CONTAGION CREATURES"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -169,7 +182,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
 text = "PROFIL"
 expand_icon = true
 
-[node name="PatreonCode" type="Label" parent="Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="ConnexionStatus" type="Label" parent="Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
