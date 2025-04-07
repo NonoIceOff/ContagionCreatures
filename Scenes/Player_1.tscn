@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://cgeiuvmq46mhr"]
+[gd_scene load_steps=28 format=3 uid="uid://cgeiuvmq46mhr"]
 
 [ext_resource type="Script" uid="uid://c6lg3qad8k5pp" path="res://Scripts/Player_1_Settings.gd" id="1_ny7x7"]
 [ext_resource type="Script" uid="uid://dcmnnivm67gir" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="4_0rm42"]
+[ext_resource type="Texture2D" uid="uid://denr1gf81y0pp" path="res://Textures/spritePlayer/qeD0Js1.png" id="4_xc2ir"]
 [ext_resource type="Texture2D" uid="uid://droj4wt6rug7e" path="res://Textures/spritePlayer/output/CharacterGame.png" id="5_tjhtf"]
 [ext_resource type="PackedScene" uid="uid://cx6s6at1q7bed" path="res://Scenes/game_ui.tscn" id="6_13vdf"]
 [ext_resource type="PackedScene" uid="uid://dxt5b5tantpyy" path="res://Scenes/PauseMenu.tscn" id="6_pyjks"]
@@ -107,7 +108,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"SouthWalk",
-"speed": 6.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -124,7 +125,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WestWalk",
-"speed": 6.0
+"speed": 60.0
 }]
 
 [sub_resource type="Animation" id="Animation_gbgpv"]
@@ -200,7 +201,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4feh"]
-size = Vector2(15, 15)
+size = Vector2(13.3333, 19.7708)
 
 [node name="Player_One" type="CharacterBody2D" groups=["Player_One"]]
 script = ExtResource("1_ny7x7")
@@ -221,6 +222,33 @@ offset_bottom = 334.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.25, 0.25)
+
+[node name="SpritePlayer" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(64, 5)
+scale = Vector2(2.09836, 2)
+texture = ExtResource("4_xc2ir")
+region_enabled = true
+region_rect = Rect2(3, 5, 61, 68)
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": false,
+"pending_changes": {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": ""
+},
+"slice_section": false
+}
 
 [node name="player1" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -247,8 +275,15 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "af05444b34072f04acb82d85cdd69606"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player1"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_556cq")
+}
+
 [node name="2" type="Camera2D" parent="player1" groups=["camera"]]
 position = Vector2(16, 16)
+scale = Vector2(2.09836, 2)
 offset = Vector2(2.08165e-12, 2.08165e-12)
 zoom = Vector2(1.8, 1.8)
 
@@ -258,12 +293,6 @@ zoom = Vector2(1.8, 1.8)
 visible = false
 
 [node name="GameUI" parent="player1/2/CanvasLayer" instance=ExtResource("6_13vdf")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="player1"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_556cq")
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 16)
