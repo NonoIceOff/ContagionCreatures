@@ -60,5 +60,5 @@ func level_up():
 
 		if Global.current_xp >= Global.xp_to_next_level:
 			level_up()
-			is_leveling_up = false
+		is_leveling_up = false
 	)
