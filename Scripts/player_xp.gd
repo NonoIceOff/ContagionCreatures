@@ -1,9 +1,9 @@
 extends Node2D
 
 @onready var panel = $Panel
-@onready var level_label = $Panel/LevelLabel
-@onready var xp_progress_bar = $Panel/XPProgressBar
-@onready var xp_details_label = $Panel/XPDetailsLabel
+@onready var level_label = $Panel/VBoxContainer/LevelLabel
+@onready var xp_progress_bar = $Panel/VBoxContainer/XPProgressBar
+@onready var xp_details_label = $Panel/VBoxContainer/XPDetailsLabel
 
 var panel_visible = false
 var is_leveling_up = false
@@ -27,7 +27,7 @@ func update_xp():
 
 	animate_xp_update()
 
-	while Global.current_xp >= Global.xp_to_next_level and not is_leveling_up:
+	if Global.current_xp >= Global.xp_to_next_level and not is_leveling_up:
 		level_up()
 
 func animate_xp_update():
@@ -42,17 +42,23 @@ func animate_xp_update():
 func level_up():
 	is_leveling_up = true
 
+	var excess_xp = Global.current_xp - Global.xp_to_next_level
+
 	var tween = get_tree().create_tween()
 	tween.tween_property(xp_progress_bar, "value", 0, 0.5)
+	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.set_ease(Tween.EASE_IN_OUT)
 
 	tween.finished.connect(func():
-		Global.current_xp -= Global.xp_to_next_level
 		Global.level += 1
+		Global.current_xp = excess_xp
 		Global.xp_to_next_level = int(Global.xp_to_next_level * 1.5)
 
 		level_label.text = "Niveau : %d" % Global.level
 		xp_progress_bar.value = float(Global.current_xp) / Global.xp_to_next_level * 100
 		xp_details_label.text = "XP : %d / %d" % [Global.current_xp, Global.xp_to_next_level]
 
+		if Global.current_xp >= Global.xp_to_next_level:
+			level_up()
 		is_leveling_up = false
 	)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://cgeiuvmq46mhr"]
 
 [ext_resource type="Script" uid="uid://c6lg3qad8k5pp" path="res://Scripts/Player_1_Settings.gd" id="1_ny7x7"]
-[ext_resource type="Script" uid="uid://dg6mmgooodt21" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
+[ext_resource type="Script" uid="uid://dcmnnivm67gir" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="4_0rm42"]
 [ext_resource type="Texture2D" uid="uid://droj4wt6rug7e" path="res://Textures/spritePlayer/output/CharacterGame.png" id="5_tjhtf"]
 [ext_resource type="PackedScene" uid="uid://cx6s6at1q7bed" path="res://Scenes/game_ui.tscn" id="6_13vdf"]
