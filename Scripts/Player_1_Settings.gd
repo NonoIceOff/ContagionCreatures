@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 		PauseMenu()
 		
 	if Input.is_action_just_pressed("Space"):
-		player_xp.gain_xp(1)
+		player_xp.gain_xp(700)
 
 	## Détection d'un tile, si le joueur est sur un tile spécifique (l'id 3) alors print
 	if get_node_or_null("/root/Map3/TileMap/bush") != null:
@@ -27,6 +27,7 @@ func _physics_process(_delta: float) -> void:
 		var tile_id = get_node("/root/Map3/TileMap/bush").get_cell_source_id(position_player_centered)
 		var random = randi() % 100
 		if tile_id == 1 and random == 1:
+
 			Global.smooth_zoom(get_node("player1/2"), 4, Vector2(16,16), 0.1)
 			Global.ui_visible = false
 			await get_tree().create_timer(5).timeout

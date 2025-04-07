@@ -281,4 +281,4 @@ scale = Vector2(2, 2)
 texture = ExtResource("17_de75t")
 
 [node name="XPPanel" parent="." instance=ExtResource("18_mxn78")]
-position = Vector2(24, 112)
+position = Vector2(1692, 730)
