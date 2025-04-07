@@ -129,7 +129,7 @@ text = "SOLO"
 
 [node name="HSeparator" type="HSeparator" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 50
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
 
 [node name="SettingsButton" type="Button" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
@@ -147,6 +147,38 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
 text = "PARAMETRES"
+
+[node name="HSeparator2" type="HSeparator" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 175
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Menu/Left_part/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="InstagramButton" type="Button" parent="Menu/Left_part/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+action_mode = 0
+text = "QUITTER"
+
+[node name="HSeparator3" type="HSeparator" parent="Menu/Left_part/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
 
 [node name="Right_part" type="HBoxContainer" parent="Menu"]
 custom_minimum_size = Vector2(960, 0)
