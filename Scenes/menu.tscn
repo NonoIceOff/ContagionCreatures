@@ -95,7 +95,7 @@ stretch_mode = 6
 
 [node name="ColorRect" type="ColorRect" parent="TextureRect"]
 layout_mode = 0
-offset_top = 14.0
+offset_top = 2.0
 offset_right = 1024.0
 offset_bottom = 1086.0
 color = Color(0, 0, 0, 0.196078)

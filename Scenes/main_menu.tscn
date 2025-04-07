@@ -309,7 +309,7 @@ theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
 
 [node name="Duck" type="Sprite2D" parent="Menu/Right_part/VBoxContainer"]
-position = Vector2(486, 324)
+position = Vector2(495, 375)
 scale = Vector2(1.4808, 1.40838)
 texture = ExtResource("5_n45e2")
 

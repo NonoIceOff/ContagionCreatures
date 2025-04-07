@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cx6s6at1q7bed"]
+[gd_scene load_steps=53 format=3 uid="uid://cx6s6at1q7bed"]
 
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_r7j8k"]
 [ext_resource type="Script" uid="uid://buuxw0r6bm6hd" path="res://Scenes/game_ui.gd" id="1_xtvsa"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bd7xb0xeb5ibh" path="res://Textures/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="4_sk4gx"]
 [ext_resource type="Script" uid="uid://cx3fo704yiisq" path="res://Scripts/search_craft.gd" id="5_mixql"]
 [ext_resource type="Script" uid="uid://hbybaoafbrtu" path="res://Scripts/search_ressources.gd" id="6_a4b4q"]
+[ext_resource type="Script" uid="uid://j74c85rhj0ne" path="res://Scenes/languages_settings_screen_container.gd" id="7_3t1kc"]
 
 [sub_resource type="FontFile" id="FontFile_kg5o7"]
 subpixel_positioning = 0
@@ -66,6 +67,11 @@ cache/0/51/0/descent = 0.0
 cache/0/51/0/underline_position = 0.0
 cache/0/51/0/underline_thickness = 0.0
 cache/0/51/0/scale = 1.0
+cache/0/80/0/ascent = 0.0
+cache/0/80/0/descent = 0.0
+cache/0/80/0/underline_position = 0.0
+cache/0/80/0/underline_thickness = 0.0
+cache/0/80/0/scale = 1.0
 
 [sub_resource type="FontFile" id="FontFile_7wjhh"]
 subpixel_positioning = 0
@@ -824,6 +830,7 @@ controls_settings = NodePath("ControlsSettingsScreenContainer")
 save_confirmmation = NodePath("SaveConfirm")
 
 [node name="PauseMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
+visible = false
 z_index = 4096
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1685,6 +1692,89 @@ layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxTexture_nhswb")
 
+[node name="LanguagesSettingsScreenContainer" type="VBoxContainer" parent="PopupMenu"]
+z_index = 4096
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("7_3t1kc")
+
+[node name="LanguagesSettingsScreen" type="MarginContainer" parent="PopupMenu/LanguagesSettingsScreenContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+texture = ExtResource("1_r7j8k")
+region_rect = Rect2(461, 139, 6, 5)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="Title" type="Label" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_kg5o7")
+theme_override_font_sizes/font_size = 80
+text = "Langues
+"
+uppercase = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(600, 650)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+horizontal_scroll_mode = 0
+
+[node name="LanguagesSettingsButtonsContainer2" type="VBoxContainer" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="ControlsBackButtonContainer" type="HBoxContainer" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="ControlsBackButton" type="Button" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "Retour"
+
+[node name="VSeparator" type="VSeparator" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxTexture_nhswb")
+
 [node name="SaveConfirm" type="ConfirmationDialog" parent="PopupMenu"]
 auto_translate_mode = 1
 title = "Sauvegarder"
@@ -1720,4 +1810,5 @@ cancel_button_text = "Annuler"
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsMapContainer/ControlsMapButton" to="PopupMenu" method="_on_controls_map_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsQuestsContainer/ControlsQuestsButton" to="PopupMenu" method="_on_controls_quests_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer/ControlsBackButton" to="PopupMenu" method="_on_controls_back_button_pressed"]
+[connection signal="pressed" from="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer/ControlsBackButton" to="PopupMenu" method="_on_controls_back_button_pressed"]
 [connection signal="confirmed" from="PopupMenu/SaveConfirm" to="PopupMenu" method="_on_save_confirmed"]

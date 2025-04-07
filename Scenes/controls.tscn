@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://l0bg0rmfgfar" path="res://Scripts/Boutons/Ok.gd" id="1_j3ftm"]
 [ext_resource type="Script" uid="uid://kj1d5bktxntv" path="res://Scripts/controls.gd" id="1_nskhi"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="1_wbdo4"]
-[ext_resource type="Shader" uid="uid://caac6ffe48o4h" path="res://Inventory/inv_animals.gdshader" id="2_drd8k"]
+[ext_resource type="Shader" uid="uid://c7r3th281ihh2" path="res://Inventory/inv_animals.gdshader" id="2_drd8k"]
 [ext_resource type="Script" uid="uid://b8wsd0kxnsqvy" path="res://Scripts/Titre.gd" id="2_tuees"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="3_bm1pe"]
 [ext_resource type="Texture2D" uid="uid://b12y342v323gw" path="res://Textures/Inventaire/grey_pressed.png" id="3_bmbd1"]
@@ -103,9 +103,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-offset_left = 384.0
+offset_left = 402.0
 offset_top = 232.0
-offset_right = 1536.0
+offset_right = 1554.0
 offset_bottom = 896.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
@@ -117,6 +117,7 @@ theme_override_constants/separation = 32
 [node name="Up" type="Label" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 38
 text = "KEY_UP"
 horizontal_alignment = 2
@@ -177,6 +178,7 @@ text = "left"
 [node name="Right" type="Label" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_font_sizes/font_size = 38
 text = "KEY_RIGHT"
 horizontal_alignment = 2

@@ -8,10 +8,10 @@ func _ready():
 		button.text = TranslationServer.get_language_name(i)
 		if i =="jp":
 			button.text = "Japanese"
-		button.add_theme_stylebox_override("normal",load("res://Thème/button_normal.tres"))
-		button.add_theme_stylebox_override("hover",load("res://Thème/button_hover.tres"))
-		button.add_theme_stylebox_override("pressed",load("res://Thème/button_pressed.tres"))
-		button.add_theme_stylebox_override("disabled",load("res://Thème/button_disabled.tres"))
+		button.add_theme_stylebox_override("normal",load("res://Thème/normal_button.tres"))
+		button.add_theme_stylebox_override("hover",load("res://Thème/hover_button.tres"))
+		button.add_theme_stylebox_override("pressed",load("res://Thème/pressed_button.tres"))
+		#button.add_theme_stylebox_override("disabled",load("res://Thème/button_disabled.tres"))
 		button.custom_minimum_size = Vector2(280,64)
 		button.position = Vector2(100,100)
 		button.add_theme_font_size_override("font_size", 32)

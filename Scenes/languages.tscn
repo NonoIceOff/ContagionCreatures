@@ -1,22 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpvj8ye6n4hb6"]
+[gd_scene load_steps=9 format=3 uid="uid://cpvj8ye6n4hb6"]
 
 [ext_resource type="Script" uid="uid://dk1h7x3tjcfe" path="res://Scripts/languagesmenu.gd" id="1_patet"]
 [ext_resource type="Script" uid="uid://l0bg0rmfgfar" path="res://Scripts/Boutons/Ok.gd" id="2_g7mj5"]
-[ext_resource type="Shader" uid="uid://caac6ffe48o4h" path="res://Inventory/inv_animals.gdshader" id="2_t0jdo"]
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_l1w4d"]
 [ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="3_reqxc"]
-[ext_resource type="Texture2D" uid="uid://b12y342v323gw" path="res://Textures/Inventaire/grey_pressed.png" id="3_tj24x"]
-[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_hapc2"]
-[ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_p2tqy"]
-[ext_resource type="Script" uid="uid://b8wsd0kxnsqvy" path="res://Scripts/Titre.gd" id="5_4lvn7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aklc6"]
-shader = ExtResource("2_t0jdo")
-shader_parameter/scroll_speed = 1.0
-shader_parameter/angle_degrees = 45.0
-shader_parameter/repeat_x = 0.5
-shader_parameter/repeat_y = 0.5
-shader_parameter/row_offset = 2.5
-shader_parameter/texture_to_scroll = ExtResource("3_tj24x")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
 bg_color = Color(0.654902, 0.298039, 0.14902, 1)
@@ -43,12 +30,171 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
+[sub_resource type="FontFile" id="FontFile_qglcv"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/60/0/ascent = 0.0
+cache/0/60/0/descent = 0.0
+cache/0/60/0/underline_position = 0.0
+cache/0/60/0/underline_thickness = 0.0
+cache/0/60/0/scale = 1.0
+cache/0/59/0/ascent = 0.0
+cache/0/59/0/descent = 0.0
+cache/0/59/0/underline_position = 0.0
+cache/0/59/0/underline_thickness = 0.0
+cache/0/59/0/scale = 1.0
+cache/0/58/0/ascent = 0.0
+cache/0/58/0/descent = 0.0
+cache/0/58/0/underline_position = 0.0
+cache/0/58/0/underline_thickness = 0.0
+cache/0/58/0/scale = 1.0
+cache/0/57/0/ascent = 0.0
+cache/0/57/0/descent = 0.0
+cache/0/57/0/underline_position = 0.0
+cache/0/57/0/underline_thickness = 0.0
+cache/0/57/0/scale = 1.0
+cache/0/56/0/ascent = 0.0
+cache/0/56/0/descent = 0.0
+cache/0/56/0/underline_position = 0.0
+cache/0/56/0/underline_thickness = 0.0
+cache/0/56/0/scale = 1.0
+cache/0/55/0/ascent = 0.0
+cache/0/55/0/descent = 0.0
+cache/0/55/0/underline_position = 0.0
+cache/0/55/0/underline_thickness = 0.0
+cache/0/55/0/scale = 1.0
+cache/0/54/0/ascent = 0.0
+cache/0/54/0/descent = 0.0
+cache/0/54/0/underline_position = 0.0
+cache/0/54/0/underline_thickness = 0.0
+cache/0/54/0/scale = 1.0
+cache/0/53/0/ascent = 0.0
+cache/0/53/0/descent = 0.0
+cache/0/53/0/underline_position = 0.0
+cache/0/53/0/underline_thickness = 0.0
+cache/0/53/0/scale = 1.0
+cache/0/52/0/ascent = 0.0
+cache/0/52/0/descent = 0.0
+cache/0/52/0/underline_position = 0.0
+cache/0/52/0/underline_thickness = 0.0
+cache/0/52/0/scale = 1.0
+cache/0/51/0/ascent = 0.0
+cache/0/51/0/descent = 0.0
+cache/0/51/0/underline_position = 0.0
+cache/0/51/0/underline_thickness = 0.0
+cache/0/51/0/scale = 1.0
+cache/0/61/0/ascent = 0.0
+cache/0/61/0/descent = 0.0
+cache/0/61/0/underline_position = 0.0
+cache/0/61/0/underline_thickness = 0.0
+cache/0/61/0/scale = 1.0
+cache/0/62/0/ascent = 0.0
+cache/0/62/0/descent = 0.0
+cache/0/62/0/underline_position = 0.0
+cache/0/62/0/underline_thickness = 0.0
+cache/0/62/0/scale = 1.0
+cache/0/63/0/ascent = 0.0
+cache/0/63/0/descent = 0.0
+cache/0/63/0/underline_position = 0.0
+cache/0/63/0/underline_thickness = 0.0
+cache/0/63/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/65/0/ascent = 0.0
+cache/0/65/0/descent = 0.0
+cache/0/65/0/underline_position = 0.0
+cache/0/65/0/underline_thickness = 0.0
+cache/0/65/0/scale = 1.0
+cache/0/66/0/ascent = 0.0
+cache/0/66/0/descent = 0.0
+cache/0/66/0/underline_position = 0.0
+cache/0/66/0/underline_thickness = 0.0
+cache/0/66/0/scale = 1.0
+cache/0/67/0/ascent = 0.0
+cache/0/67/0/descent = 0.0
+cache/0/67/0/underline_position = 0.0
+cache/0/67/0/underline_thickness = 0.0
+cache/0/67/0/scale = 1.0
+cache/0/68/0/ascent = 0.0
+cache/0/68/0/descent = 0.0
+cache/0/68/0/underline_position = 0.0
+cache/0/68/0/underline_thickness = 0.0
+cache/0/68/0/scale = 1.0
+cache/0/69/0/ascent = 0.0
+cache/0/69/0/descent = 0.0
+cache/0/69/0/underline_position = 0.0
+cache/0/69/0/underline_thickness = 0.0
+cache/0/69/0/scale = 1.0
+cache/0/70/0/ascent = 0.0
+cache/0/70/0/descent = 0.0
+cache/0/70/0/underline_position = 0.0
+cache/0/70/0/underline_thickness = 0.0
+cache/0/70/0/scale = 1.0
+cache/0/71/0/ascent = 0.0
+cache/0/71/0/descent = 0.0
+cache/0/71/0/underline_position = 0.0
+cache/0/71/0/underline_thickness = 0.0
+cache/0/71/0/scale = 1.0
+cache/0/72/0/ascent = 0.0
+cache/0/72/0/descent = 0.0
+cache/0/72/0/underline_position = 0.0
+cache/0/72/0/underline_thickness = 0.0
+cache/0/72/0/scale = 1.0
+cache/0/73/0/ascent = 0.0
+cache/0/73/0/descent = 0.0
+cache/0/73/0/underline_position = 0.0
+cache/0/73/0/underline_thickness = 0.0
+cache/0/73/0/scale = 1.0
+cache/0/74/0/ascent = 0.0
+cache/0/74/0/descent = 0.0
+cache/0/74/0/underline_position = 0.0
+cache/0/74/0/underline_thickness = 0.0
+cache/0/74/0/scale = 1.0
+cache/0/75/0/ascent = 0.0
+cache/0/75/0/descent = 0.0
+cache/0/75/0/underline_position = 0.0
+cache/0/75/0/underline_thickness = 0.0
+cache/0/75/0/scale = 1.0
+cache/0/76/0/ascent = 0.0
+cache/0/76/0/descent = 0.0
+cache/0/76/0/underline_position = 0.0
+cache/0/76/0/underline_thickness = 0.0
+cache/0/76/0/scale = 1.0
+cache/0/77/0/ascent = 0.0
+cache/0/77/0/descent = 0.0
+cache/0/77/0/underline_position = 0.0
+cache/0/77/0/underline_thickness = 0.0
+cache/0/77/0/scale = 1.0
+cache/0/78/0/ascent = 0.0
+cache/0/78/0/descent = 0.0
+cache/0/78/0/underline_position = 0.0
+cache/0/78/0/underline_thickness = 0.0
+cache/0/78/0/scale = 1.0
+cache/0/79/0/ascent = 0.0
+cache/0/79/0/descent = 0.0
+cache/0/79/0/underline_position = 0.0
+cache/0/79/0/underline_thickness = 0.0
+cache/0/79/0/scale = 1.0
+cache/0/80/0/ascent = 0.0
+cache/0/80/0/descent = 0.0
+cache/0/80/0/underline_position = 0.0
+cache/0/80/0/underline_thickness = 0.0
+cache/0/80/0/scale = 1.0
+
 [node name="LanguagesMenu" type="Node2D"]
 script = ExtResource("1_patet")
 
-[node name="BackgroundTiles" type="TextureRect" parent="."]
+[node name="BackgroundTiles" type="NinePatchRect" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_aklc6")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -58,8 +204,8 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_p2tqy")
-stretch_mode = 1
+texture = ExtResource("2_l1w4d")
+region_rect = Rect2(462, 138, 6, 4)
 
 [node name="Valider" type="Button" parent="." groups=["buttons"]]
 offset_left = 640.0
@@ -77,31 +223,6 @@ script = ExtResource("2_g7mj5")
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_reqxc")
 
-[node name="Titre" type="Label" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-offset_top = 128.0
-offset_right = 1920.0
-offset_bottom = 256.0
-theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("4_hapc2")
-theme_override_font_sizes/font_size = 64
-text = "LANGUAGES"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("5_4lvn7")
-
-[node name="TitreTriche" type="Label" parent="Titre"]
-custom_minimum_size = Vector2(2.08165e-12, 40)
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("4_hapc2")
-theme_override_font_sizes/font_size = 64
-text = "LANGUAGES"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 offset_left = 640.0
 offset_top = 232.0
@@ -114,6 +235,20 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_constants/separation = 32
 alignment = 1
+
+[node name="Title" type="Label" parent="."]
+offset_left = 719.0
+offset_top = 68.0
+offset_right = 1194.0
+offset_bottom = 176.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_qglcv")
+theme_override_font_sizes/font_size = 80
+text = "PARAMÈTRES"
+uppercase = true
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Valider" to="Valider" method="_on_pressed"]
