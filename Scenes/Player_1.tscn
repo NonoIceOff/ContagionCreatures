@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://cgeiuvmq46mhr"]
 
 [ext_resource type="Script" uid="uid://c6lg3qad8k5pp" path="res://Scripts/Player_1_Settings.gd" id="1_ny7x7"]
-[ext_resource type="Script" uid="uid://dcmnnivm67gir" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
+[ext_resource type="Script" uid="uid://dg6mmgooodt21" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="4_0rm42"]
 [ext_resource type="Texture2D" uid="uid://denr1gf81y0pp" path="res://Textures/spritePlayer/qeD0Js1.png" id="4_xc2ir"]
 [ext_resource type="Texture2D" uid="uid://droj4wt6rug7e" path="res://Textures/spritePlayer/output/CharacterGame.png" id="5_tjhtf"]
@@ -108,7 +108,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"SouthWalk",
-"speed": 7.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,7 +125,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WestWalk",
-"speed": 60.0
+"speed": 6.0
 }]
 
 [sub_resource type="Animation" id="Animation_gbgpv"]
@@ -253,8 +253,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 [node name="player1" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_deahx")
-animation = &"SouthWalk"
-frame = 3
+animation = &"EastWalk"
 centered = false
 offset = Vector2(0, -4)
 metadata/_aseprite_wizard_interface_config_ = {
