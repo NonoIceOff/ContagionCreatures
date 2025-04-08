@@ -44,6 +44,7 @@ var normal_attaque_ennemye = 0
 var echec_attaque_player = 0
 var echec_attaque_ennemye = 0
 var time_on_game = 0
+var ennemy_id = 0 
 
 @onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
 @onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
@@ -107,7 +108,7 @@ func _ready():
 	http_get_creatures.connect("request_completed", Callable(self, "_on_get_creatures_request_completed"))
 	http_get_creatures_spells.connect("request_completed", Callable(self, "_on_get_creatures_spells_request_completed"))
 	http_get_enemy_spells.connect("request_completed", Callable(self, "_on_get_enemy_spells_request_completed"))
-
+	
 	# Obtenir le mob de l'ennemi (en lançant les requêtes HTTP)
 	var enemy_mob_id = randi_range(1, 10)
 	http_get_creatures.request(API_URL + "/" + str(enemy_mob_id))
@@ -194,6 +195,8 @@ func _on_get_creatures_request_completed(result: int, response_code: int, header
 			mob_percentage_hp.text = str(enemy_creatures_data.hp) + "/" + str(mob_progress_bar_hp.max_value)
 			mob_pseudo_label.text = enemy_creatures_data.name
 			ennemye_texture = enemy_creatures_data.texture
+			ennemy_id = enemy_creatures_data.id
+			print("ennemye id :", ennemy_id)
 
 # Callback pour les sorts du joueur
 func _on_get_creatures_spells_request_completed(result: int, response_code: int, headers: Array, body: PackedByteArray) -> void:
@@ -582,7 +585,8 @@ func end_combat_and_show_stats():
 		normal_attaque_player,
 		normal_attaque_ennemye,
 		echec_attaque_player,
-		echec_attaque_ennemye
+		echec_attaque_ennemye,
+		ennemy_id
 	)
 	print("Appel deferred de set_all_text_variable effectué")
 
@@ -633,7 +637,7 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 			mob_percentage_hp.text = str(mob_progress_bar_hp.value) + "/" + str(mob_progress_bar_hp.max_value)
 		# Stockage des infos
 		total_damage_player += final_damage
-		if final_damage < max_damage_player:
+		if final_damage > max_damage_player:
 			max_damage_player = final_damage
 		$ContainerMob/EnnemyeSprite/AnimationPlayer.play("blink & knockback ennemye")
 	

@@ -17,8 +17,8 @@ texture = ExtResource("5_bh64c")
 script = ExtResource("1_i4i0r")
 
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(960, 544)
-scale = Vector2(9.64384, 4.54645)
+position = Vector2(966.5, 543)
+scale = Vector2(11.6096, 5.14754)
 texture = ExtResource("1_8g02b")
 
 [node name="Line" type="Sprite2D" parent="."]
@@ -29,9 +29,9 @@ texture = ExtResource("2_u8em0")
 
 [node name="Stats" type="Label" parent="."]
 offset_left = 272.0
-offset_top = 160.0
+offset_top = 121.0
 offset_right = 1648.0
-offset_bottom = 264.0
+offset_bottom = 225.0
 theme_override_fonts/font = ExtResource("3_qphhe")
 theme_override_font_sizes/font_size = 80
 text = "Stats"
@@ -96,14 +96,13 @@ vertical_alignment = 1
 
 [node name="Max_heal" type="Label" parent="Stats/Joueur"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 395.0
-offset_right = 551.0
-offset_bottom = 459.0
+offset_left = 19.0
+offset_top = 382.0
+offset_right = 555.0
+offset_bottom = 446.0
 theme_override_fonts/font = ExtResource("3_qphhe")
 theme_override_font_sizes/font_size = 25
-text = "Soin max
-"
+text = "Soin max"
 vertical_alignment = 1
 
 [node name="Max_shield" type="Label" parent="Stats/Joueur"]
@@ -197,14 +196,13 @@ vertical_alignment = 1
 
 [node name="Max_heal" type="Label" parent="Stats/Ennemi"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 396.0
-offset_right = 578.0
-offset_bottom = 460.0
+offset_left = 44.0
+offset_top = 387.0
+offset_right = 580.0
+offset_bottom = 440.0
 theme_override_fonts/font = ExtResource("3_qphhe")
 theme_override_font_sizes/font_size = 25
-text = "Soin max
-"
+text = "Soin max"
 vertical_alignment = 1
 
 [node name="Max_shield" type="Label" parent="Stats/Ennemi"]
@@ -240,11 +238,26 @@ theme_override_font_sizes/font_size = 25
 text = "Nombre d'attaque"
 vertical_alignment = 1
 
+[node name="Drop" type="Label" parent="Stats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.029
+anchor_bottom = 0.221
+offset_left = -126.0
+offset_top = 759.0
+offset_right = 1477.1
+offset_bottom = 834.016
+theme_override_fonts/font = ExtResource("3_qphhe")
+theme_override_font_sizes/font_size = 25
+text = "Drop : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Button" type="Button" parent="."]
-offset_left = 1536.0
-offset_top = 192.0
-offset_right = 1600.0
-offset_bottom = 256.0
+offset_left = 1656.0
+offset_top = 138.0
+offset_right = 1720.0
+offset_bottom = 202.0
 theme_override_styles/hover = SubResource("StyleBoxTexture_dc8h3")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fbhxa")
 script = ExtResource("6_dh7g4")
