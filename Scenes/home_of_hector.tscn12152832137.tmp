@@ -92,6 +92,7 @@ vertical_alignment = 1
 
 [node name="1" type="Sprite2D" parent="Control/MobChoose"]
 z_index = 1
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_grnjc")
 
 [node name="Label2" type="Label" parent="Control/MobChoose"]
@@ -111,6 +112,7 @@ vertical_alignment = 1
 [node name="2" type="Sprite2D" parent="Control/MobChoose"]
 z_index = 1
 position = Vector2(64, 0)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_ijf6x")
 
 [node name="Label3" type="Label" parent="Control/MobChoose"]
@@ -130,6 +132,7 @@ vertical_alignment = 1
 [node name="3" type="Sprite2D" parent="Control/MobChoose"]
 z_index = 1
 position = Vector2(128, 0)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_7g7wo")
 
 [node name="Area2D" type="Area2D" parent="."]

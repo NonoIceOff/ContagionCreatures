@@ -3,16 +3,23 @@ extends Node2D
 var scene = preload("res://Scenes/piano.tscn")
 var piano_in = false
 
+var creatures = []
+var creatures_starter = []
+
 @onready var interact_piano = $Piano1/Interact
 @onready var transition_scene = $ui/Transition/AnimationPlayer
 @onready var ui_node = $ui
 @onready var control = $Control
 
 func _ready():
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
+	http_request.request("https://contagioncreaturesapi.vercel.app/api/creatures")
+	
+	
 	Quests.quests[0]["stade"] = 1
-	
 	Global.current_map = "HomeOfHector"
-	
 	Quests.init_pnj("HomeOfHector")
 	
 	Global.tutorial_stade = 9
@@ -45,13 +52,23 @@ func _process(_delta: float) -> void:
 		
 	match int(Global.tutorial_stade):
 		10:
-			print("10 ----")
 			get_node("Control/MobChoose").visible = true
 		11:
-			print("11 ----")
 			get_node("Control/MobChoose").visible = false
 
-
+func _on_request_completed(result, response_code, headers, body):
+	if response_code == 200:
+		var response_text = body.get_string_from_utf8()
+		var parse_result = JSON.parse_string(response_text)
+		creatures = parse_result
+		for i in range(1,4):
+			var random = randi_range(0,creatures.size()-1)
+			creatures_starter.append(creatures[random]["id"])
+			get_node("Control/MobChoose/"+str(i)).texture = load("res://Textures/Animals/"+str(creatures[random]["texture"]))
+			print("res://Textures/Animals/"+str(creatures[random]["texture"]))
+	else:
+		print("Failed to fetch creatures: ", response_code)
+		
 func _on_piano_1_body_entered(body):
 	if body.is_in_group("Player_One"):
 		interact_piano.visible = true
