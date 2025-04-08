@@ -489,7 +489,7 @@ libraries = {
 position = Vector2(1, 0)
 
 [node name="Player-1Tile-set" type="Sprite2D" parent="CharacterBody2D3"]
-position = Vector2(398, 812)
+position = Vector2(368, 821)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_1fplo")
 region_enabled = true
