@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=23 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" uid="uid://c00pkg3a1dyrk" path="res://Scripts/ui.gd" id="1_p3l0n"]
@@ -16,7 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://da8ubc6ik4rjv" path="res://Textures/Buttons/joypads/joybar_l.png" id="15_x3csd"]
 [ext_resource type="Texture2D" uid="uid://c7uvncushvljk" path="res://Textures/Buttons/joypads/joybar_-.png" id="16_8jrwf"]
 [ext_resource type="Texture2D" uid="uid://b1tpqldiveuik" path="res://Textures/Buttons/keyboard/keyboard_p.png" id="17_de75t"]
+[ext_resource type="Script" uid="uid://cm4gesp4y5y2m" path="res://Scenes/slots_shown.gd" id="18_fcexb"]
+[ext_resource type="Texture2D" uid="uid://b0svu776o5qoh" path="res://Textures/slot.png" id="18_lkjmk"]
 [ext_resource type="PackedScene" uid="uid://c65ywo6ftkvtc" path="res://Scenes/player_xp.tscn" id="18_mxn78"]
+[ext_resource type="Texture2D" uid="uid://bcx8tk1aasud1" path="res://Textures/Animals/RABBIT.png" id="19_d42i4"]
 
 [sub_resource type="Curve" id="Curve_qti3j"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -282,3 +285,53 @@ texture = ExtResource("17_de75t")
 
 [node name="XPPanel" parent="." instance=ExtResource("18_mxn78")]
 position = Vector2(1693, 715)
+
+[node name="SlotsShown" type="HBoxContainer" parent="."]
+offset_left = 24.0
+offset_top = 120.0
+offset_right = 64.0
+offset_bottom = 160.0
+theme_override_constants/separation = 86
+script = ExtResource("18_fcexb")
+
+[node name="1" type="Control" parent="SlotsShown"]
+layout_mode = 2
+
+[node name="Slot1" type="Sprite2D" parent="SlotsShown/1"]
+texture_filter = 1
+position = Vector2(33, 41)
+scale = Vector2(2, 2)
+texture = ExtResource("18_lkjmk")
+
+[node name="Creature" type="Sprite2D" parent="SlotsShown/1"]
+position = Vector2(33, 41)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("19_d42i4")
+
+[node name="2" type="Control" parent="SlotsShown"]
+layout_mode = 2
+
+[node name="Slot1" type="Sprite2D" parent="SlotsShown/2"]
+texture_filter = 1
+position = Vector2(33, 41)
+scale = Vector2(2, 2)
+texture = ExtResource("18_lkjmk")
+
+[node name="Creature" type="Sprite2D" parent="SlotsShown/2"]
+position = Vector2(33, 41)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("19_d42i4")
+
+[node name="3" type="Control" parent="SlotsShown"]
+layout_mode = 2
+
+[node name="Slot1" type="Sprite2D" parent="SlotsShown/3"]
+texture_filter = 1
+position = Vector2(33, 41)
+scale = Vector2(2, 2)
+texture = ExtResource("18_lkjmk")
+
+[node name="Creature" type="Sprite2D" parent="SlotsShown/3"]
+position = Vector2(33, 41)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("19_d42i4")

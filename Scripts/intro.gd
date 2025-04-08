@@ -8,6 +8,7 @@ const PLAYER1_TARGET_X = 1132
 var brazero_in_area = false 
 var exit_in_area = false
 var enter_in_area = false
+var door_in_area = false
 
 var camera = []
 	
@@ -82,6 +83,7 @@ func _process(delta: float) -> void:
 	get_node("Control/TileMap/BrazeroIntro/Label_E_Home").visible = brazero_in_area
 	get_node("Control/TileMap/ExitArea/Label_E_Home").visible = exit_in_area
 	get_node("Control/TileMap/EnterArea/Label_E_Home").visible = enter_in_area
+	get_node("Control/TileMap/DoorArea/Label_E_Home").visible = door_in_area
 	
 	if get_node("CanvasLayer/Timer").time_left <= 0:
 		get_tree().change_scene_to_file("res://Scenes/intro.tscn")
@@ -98,6 +100,8 @@ func _input(event: InputEvent) -> void:
 		if enter_in_area == true:
 			MusicsPlayer.play_sound("res://Sounds/hurt.mp3","Player")
 			get_node("Control/TileMap/Player_One").position = Vector2(224,250)
+		if door_in_area == true:
+			SceneLoader.load_scene("res://Scenes/map3.tscn")
 	
 func _on_brazero_intro_body_entered(body: Node2D) -> void:
 	if Global.tutorial_stade <= 6 and body.is_in_group("Player_One"):
@@ -126,3 +130,13 @@ func _on_enter_area_body_entered(body: Node2D) -> void:
 func _on_enter_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player_One"):
 		enter_in_area = false
+
+
+func _on_door_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player_One"):
+		door_in_area = true
+
+
+func _on_door_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player_One"):
+		door_in_area = true

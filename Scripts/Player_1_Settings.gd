@@ -26,8 +26,7 @@ func _physics_process(_delta: float) -> void:
 		var position_player_centered = (position+ Vector2(8, 8))/(16*3)
 		var tile_id = get_node("/root/Map3/TileMap/bush").get_cell_source_id(position_player_centered)
 		var random = randi() % 100
-		if tile_id == 1 and random == 1:
-
+		if tile_id == 1 and random == 1 and Global.tutorial_stade > 9:
 			Global.smooth_zoom(get_node("player1/2"), 4, Vector2(16,16), 0.1)
 			Global.ui_visible = false
 			await get_tree().create_timer(5).timeout

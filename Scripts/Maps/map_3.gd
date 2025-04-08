@@ -27,21 +27,16 @@ func _ready() -> void:
 var camera_id = 0
 func _process(delta: float) -> void:
 	camera = get_tree().get_nodes_in_group("camera")
+
 	
 	
 	match Global.tutorial_stade:
-		9:
-			if camera_id == 0:
-				Global.smooth_zoom(camera[0], 1, Vector2(1150, 650),0.01)
-				camera_id = 1
-				await get_tree().create_timer(10).timeout
-				Global.tutorial_stade = 10
-		10:
-			if camera_id == 1:
-				Global.smooth_zoom(camera[0], 1.8, Vector2(0, 0),0.01)
-				camera_id = 2
-				await get_tree().create_timer(10).timeout
-				Global.tutorial_stade = 11
+		6:
+			await get_tree().create_timer(2).timeout
+			Global.tutorial_stade = 7
+		7:
+			await get_tree().create_timer(2).timeout
+			Global.tutorial_stade = 8
 			
 				
 	if Global.current_hour == 20 and Global.current_minute == 0:

@@ -34,7 +34,7 @@ var show_labels = false
 var saved_point_position: Vector2 = Vector2.ZERO 
 
 var tutorial = true
-var tutorial_stade = 0
+var tutorial_stade = 6
 var tutorial_validate = false
 
 var button_info_pressed_player = false
