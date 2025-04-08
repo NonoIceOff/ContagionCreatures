@@ -7,16 +7,19 @@ signal player_entered_door_signal
 
 @onready var animated_sprite: AnimatedSprite2D = $player1
 @onready var pause_menu = $"player1/2/CanvasLayer/PauseMenu"
-@onready var player_xp = get_node_or_null("/root/Map3/ui/XPPanel")  # Adjust the path to match the actual location
+@onready var player_xp = get_node_or_null("/root/Map3/ui/XPPanel") 
 
 func entered_door():
 	emit_signal("player_entered_door_signal")
-	
+
 func _physics_process(_delta: float) -> void:
 	var input_velocity = Vector2.ZERO
 	
 	if Input.is_action_just_pressed("échap"):
 		PauseMenu()
+		
+	if Input.is_action_just_pressed("Space"):
+		player_xp.gain_xp(700)
 
 	## Détection d'un tile, si le joueur est sur un tile spécifique (l'id 3) alors print
 	if get_node_or_null("/root/Map3/TileMap/bush") != null:
@@ -24,14 +27,16 @@ func _physics_process(_delta: float) -> void:
 		var tile_id = get_node("/root/Map3/TileMap/bush").get_cell_source_id(position_player_centered)
 		var random = randi() % 100
 		if tile_id == 1 and random == 1:
+
 			Global.smooth_zoom(get_node("player1/2"), 4, Vector2(16,16), 0.1)
 			Global.ui_visible = false
 			await get_tree().create_timer(5).timeout
 			SceneLoader.load_scene("res://Scenes/scène_combat.tscn")
-			if player_xp:
-				player_xp.gain_xp(10)
-			else:
-				print("Error: player_xp node not found! Verify the path.")
+			#if player_xp:
+				#print("Player XP node found, gaining XP.")
+				#player_xp.gain_xp(50)
+			#else:
+				#print("Error: player_xp node not found! Verify the path.")
 
 	if get_node_or_null("../../ui/Full_Screen_map") == null:
 		if Input.is_action_pressed("droite"):
