@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tjgf8g314c8b"
-path="res://.godot/imported/EPEE.png-213c5a370d98eeff0b0ef0ba42df41c3.ctex"
+uid="uid://c46bjoyf3b5y1"
+path="res://.godot/imported/Barre-PV-ProgressBar2.png-612bc349f0e6aec2f70fecf4fa82d2f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/EPEE.png"
-dest_files=["res://.godot/imported/EPEE.png-213c5a370d98eeff0b0ef0ba42df41c3.ctex"]
+source_file="res://Textures/Barre-PV-ProgressBar2.png"
+dest_files=["res://.godot/imported/Barre-PV-ProgressBar2.png-612bc349f0e6aec2f70fecf4fa82d2f7.ctex"]
 
 [params]
 

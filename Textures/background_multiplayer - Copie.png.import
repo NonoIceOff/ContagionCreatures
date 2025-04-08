@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tjgf8g314c8b"
-path="res://.godot/imported/EPEE.png-213c5a370d98eeff0b0ef0ba42df41c3.ctex"
+uid="uid://1mweqbsp53y3"
+path="res://.godot/imported/background_multiplayer - Copie.png-af7ea2d21e90d8819b71eeebf63cdb58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/EPEE.png"
-dest_files=["res://.godot/imported/EPEE.png-213c5a370d98eeff0b0ef0ba42df41c3.ctex"]
+source_file="res://Textures/background_multiplayer - Copie.png"
+dest_files=["res://.godot/imported/background_multiplayer - Copie.png-af7ea2d21e90d8819b71eeebf63cdb58.ctex"]
 
 [params]
 

@@ -7,9 +7,15 @@ var current_turn = 0
 var rng = RandomNumberGenerator.new()
 var player_turn = Texture
 
-
 var dialogue_label: Label
 var message_timer: Timer
+var http_request: HTTPRequest
+
+
+func _ready() -> void:
+	get_node("MobChoices").visible = true
+	http_request = HTTPRequest.new()
+	add_child(http_request)
 
 
 func _load_creatures_data():
@@ -23,16 +29,11 @@ func _load_creatures_data():
 	else:
 		print("Erreur : impossible d'ouvrir le fichier JSON.")
 
-func _ready() -> void:
-	_load_creatures_data()
-	MusicsPlayer.play_sound("res://Sounds/music/boss_fight.mp3", "Musics")
 
-	dialogue_label = Label.new()
-	dialogue_label.custom_minimum_size = Vector2(600, 100) 
-	dialogue_label.position = Vector2(300, 600)
-	dialogue_label.add_theme_font_size_override("font_size", 24) 
-	dialogue_label.add_theme_color_override("font_color", Color(1, 1, 1))
-	add_child(dialogue_label)
+func spawn_mobs() -> void:
+	MusicsPlayer.play_sound("res://Sounds/music/boss_fight.mp3", "Musics", 1.0, -5)
+
+	dialogue_label = get_node("Descriptions")
 
 	message_timer = Timer.new()
 	message_timer.wait_time = 1.0
@@ -75,25 +76,14 @@ func _ready() -> void:
 		creature_data["progress_bar"] = progress_bar
 
 	_create_buttons()
-
 	start_turn()
+
 
 func _create_buttons():
 	var ui = get_node("UI") 
+	var attack_button = get_node("Attaque")
+	var special_button = get_node("Speciale")
 
-	var attack_button = Button.new()
-	attack_button.text = "Attaque"
-	attack_button.custom_minimum_size = Vector2(200, 60) 
-	attack_button.position = Vector2(get_viewport().size.x / 2 - 100, get_viewport().size.y - 100)
-	attack_button.connect("pressed", Callable(self, "_on_attack_pressed")) 
-	ui.add_child(attack_button)
-
-	var special_button = Button.new()
-	special_button.text = "Spéciale"
-	special_button.custom_minimum_size = Vector2(200, 60)  
-	special_button.position = Vector2(get_viewport().size.x / 2 + 100, get_viewport().size.y - 100)
-	special_button.connect("pressed", Callable(self, "_on_special_pressed")) 
-	ui.add_child(special_button)
 
 func start_turn():
 	if boss_hp <= 0:
@@ -114,13 +104,6 @@ func start_turn():
 	player_turn = true
 	display_message(creatures[current_turn]["name"] + " doit attaquer !")
 
-func _on_attack_pressed():
-	if player_turn:
-		attack(creatures[current_turn], "normal")
-
-func _on_special_pressed():
-	if player_turn:
-		attack(creatures[current_turn], "special")
 
 func attack(attacker, attack_type):
 	var damage = rng.randi_range(10, 30) if attack_type == "normal" else rng.randi_range(30, 50)
@@ -137,11 +120,15 @@ func attack(attacker, attack_type):
 
 	var progress_bar = attacker["progress_bar"]
 	progress_bar.value = max(attacker["hp"], 0)
+	
+	MusicsPlayer.play_sound("res://Sounds/hits/hitHurt ("+str(randi_range(1,6))+").wav", "Player")
 
 	message_timer.start()
 
+
 func display_message(message: String) -> void:
 	dialogue_label.text = message
+
 
 func enemy_attack():
 	print("Le boss attaque !")
@@ -151,6 +138,8 @@ func enemy_attack():
 
 	target["hp"] -= damage
 	display_message("Le boss inflige " + str(damage) + " dégâts à " + target["name"] + "!")
+
+	MusicsPlayer.play_sound("res://Sounds/hits/explosion ("+str(randi_range(1,3))+").wav", "Player")
 
 	var progress_bar = target["progress_bar"]
 	progress_bar.value = max(target["hp"], 0)
@@ -164,9 +153,51 @@ func enemy_attack():
 	player_turn = true
 	start_turn()
 
+
 func _on_message_timeout():
 	current_turn += 1
 	start_turn()
 
+
 func win():
 	get_node("UI/WIN").visible = true
+	MusicsPlayer.play_sound("res://Sounds/enigma_solved.mp3", "Musics")
+
+	# Requête HTTP pour les drops
+	http_request.request_completed.connect(_on_drops_received)
+	var url = "https://contagioncreaturesapi.vercel.app/api/creatures/11/drops"
+	var error = http_request.request(url)
+	if error != OK:
+		print("Erreur lors de la requête HTTP :", error)
+
+
+func _on_drops_received(result, response_code, headers, body):
+	if response_code == 200:
+		var json = JSON.parse_string(body.get_string_from_utf8())
+		if json is Array:
+			var drops_text = ""
+			for drop in json:
+				drops_text += "- " + drop["name"] + " X1\n"
+			get_node("UI/WIN/Recompenses").text = drops_text
+		else:
+			get_node("UI/WIN/Recompenses").text = "Erreur de lecture des drops."
+	else:
+		get_node("UI/WIN/Recompenses").text = "Erreur de connexion."
+
+
+func _on_attaque_pressed() -> void:
+	if player_turn:
+		attack(creatures[current_turn], "normal")
+
+
+func _on_speciale_pressed() -> void:
+	if player_turn:
+		attack(creatures[current_turn], "special")
+
+
+func _on_fuite_pressed() -> void:
+	SceneLoader.load_scene("res://Scenes/map3.tscn")
+
+
+func _on_retour_pressed() -> void:
+	SceneLoader.load_scene("res://Scenes/map3.tscn")
