@@ -65,3 +65,7 @@ func _on_instagram_button_pressed() -> void:
 
 func _on_discord_button_pressed() -> void:
 	OS.shell_open("https://discord.gg/JSyQFFEqaS")
+
+
+func _on_leave_button_pressed() -> void:
+	get_tree().quit()

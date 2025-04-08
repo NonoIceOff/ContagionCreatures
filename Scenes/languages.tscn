@@ -1,36 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpvj8ye6n4hb6"]
+[gd_scene load_steps=8 format=3 uid="uid://cpvj8ye6n4hb6"]
 
-[ext_resource type="Script" uid="uid://dk1h7x3tjcfe" path="res://Scripts/languagesmenu.gd" id="1_patet"]
-[ext_resource type="Script" uid="uid://l0bg0rmfgfar" path="res://Scripts/Boutons/Ok.gd" id="2_g7mj5"]
+[ext_resource type="Script" uid="uid://dfq134f170xtb" path="res://Scenes/languages_settings.gd" id="1_eiv5m"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_l1w4d"]
-[ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="3_reqxc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilexp"]
-bg_color = Color(0.654902, 0.298039, 0.14902, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7pwu"]
-bg_color = Color(0.717647, 0.203922, 0, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s75dg"]
-bg_color = Color(0.654902, 0.298039, 0.160784, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="FontFile" id="FontFile_qglcv"]
+[sub_resource type="FontFile" id="FontFile_eiv5m"]
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
@@ -44,6 +17,11 @@ cache/0/60/0/descent = 0.0
 cache/0/60/0/underline_position = 0.0
 cache/0/60/0/underline_thickness = 0.0
 cache/0/60/0/scale = 1.0
+cache/0/55/0/ascent = 0.0
+cache/0/55/0/descent = 0.0
+cache/0/55/0/underline_position = 0.0
+cache/0/55/0/underline_thickness = 0.0
+cache/0/55/0/scale = 1.0
 cache/0/59/0/ascent = 0.0
 cache/0/59/0/descent = 0.0
 cache/0/59/0/underline_position = 0.0
@@ -64,11 +42,6 @@ cache/0/56/0/descent = 0.0
 cache/0/56/0/underline_position = 0.0
 cache/0/56/0/underline_thickness = 0.0
 cache/0/56/0/scale = 1.0
-cache/0/55/0/ascent = 0.0
-cache/0/55/0/descent = 0.0
-cache/0/55/0/underline_position = 0.0
-cache/0/55/0/underline_thickness = 0.0
-cache/0/55/0/scale = 1.0
 cache/0/54/0/ascent = 0.0
 cache/0/54/0/descent = 0.0
 cache/0/54/0/underline_position = 0.0
@@ -89,6 +62,11 @@ cache/0/51/0/descent = 0.0
 cache/0/51/0/underline_position = 0.0
 cache/0/51/0/underline_thickness = 0.0
 cache/0/51/0/scale = 1.0
+cache/0/80/0/ascent = 0.0
+cache/0/80/0/descent = 0.0
+cache/0/80/0/underline_position = 0.0
+cache/0/80/0/underline_thickness = 0.0
+cache/0/80/0/scale = 1.0
 cache/0/61/0/ascent = 0.0
 cache/0/61/0/descent = 0.0
 cache/0/61/0/underline_position = 0.0
@@ -184,71 +162,107 @@ cache/0/79/0/descent = 0.0
 cache/0/79/0/underline_position = 0.0
 cache/0/79/0/underline_thickness = 0.0
 cache/0/79/0/scale = 1.0
-cache/0/80/0/ascent = 0.0
-cache/0/80/0/descent = 0.0
-cache/0/80/0/underline_position = 0.0
-cache/0/80/0/underline_thickness = 0.0
-cache/0/80/0/scale = 1.0
 
-[node name="LanguagesMenu" type="Node2D"]
-script = ExtResource("1_patet")
+[sub_resource type="FontFile" id="FontFile_fdahy"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
 
-[node name="BackgroundTiles" type="NinePatchRect" parent="."]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1920.0
-offset_bottom = 1080.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l1w4d"]
+texture = ExtResource("2_l1w4d")
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qglcv"]
+texture = ExtResource("2_l1w4d")
+region_rect = Rect2(275, 178, 90, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g84q5"]
+
+[node name="Languages" type="Node2D"]
+script = ExtResource("1_eiv5m")
+
+[node name="LanguagesSettingsScreen" type="MarginContainer" parent="."]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="LanguagesSettingsScreen"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+texture = ExtResource("2_l1w4d")
+region_rect = Rect2(461, 139, 6, 5)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="LanguagesSettingsScreen/NinePatchRect"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_l1w4d")
-region_rect = Rect2(462, 138, 6, 4)
+scale = Vector2(1.00072, 1)
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 35
 
-[node name="Valider" type="Button" parent="." groups=["buttons"]]
-offset_left = 640.0
-offset_top = 896.0
-offset_right = 1277.0
-offset_bottom = 1012.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 35
-theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b7pwu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_s75dg")
-text = "VALIDATE"
-script = ExtResource("2_g7mj5")
-
-[node name="Sounds" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_reqxc")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-offset_left = 640.0
-offset_top = 232.0
-offset_right = 1277.0
-offset_bottom = 896.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="Title" type="Label" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="Title" type="Label" parent="."]
-offset_left = 719.0
-offset_top = 68.0
-offset_right = 1194.0
-offset_bottom = 176.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontFile_qglcv")
+theme_override_fonts/font = SubResource("FontFile_eiv5m")
 theme_override_font_sizes/font_size = 80
-text = "PARAMÈTRES"
+text = "Langues
+"
 uppercase = true
 
-[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
-[connection signal="pressed" from="Valider" to="Valider" method="_on_pressed"]
+[node name="ScrollContainer" type="ScrollContainer" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(600, 650)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+horizontal_scroll_mode = 0
+
+[node name="LanguagesSettingsButtonsContainer" type="VBoxContainer" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="LanguagesBackButtonContainer" type="HBoxContainer" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="LanguagesBackButton" type="Button" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer/LanguagesBackButtonContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_fdahy")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_l1w4d")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l1w4d")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qglcv")
+text = "BACK"
+
+[node name="VSeparator" type="VSeparator" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer/LanguagesBackButtonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxTexture_g84q5")
+
+[connection signal="pressed" from="LanguagesSettingsScreen/NinePatchRect/MarginContainer/LanguagesBackButtonContainer/LanguagesBackButton" to="." method="_on_languages_back_button_pressed"]

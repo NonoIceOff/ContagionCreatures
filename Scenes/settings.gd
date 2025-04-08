@@ -5,7 +5,7 @@ func _on_tree_entered() -> void:
 
 
 func _on_controls_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/controls.tscn")
+	get_tree().change_scene_to_file("res://Scenes/controls_settings.tscn")
 
 
 func _on_language_button_pressed() -> void:
@@ -13,7 +13,7 @@ func _on_language_button_pressed() -> void:
 
 
 func _on_appearance_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/appearence.tscn")
+	pass
 
 
 func _on_music_and_sound_button_pressed() -> void:

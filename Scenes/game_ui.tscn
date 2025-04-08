@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://bd7xb0xeb5ibh" path="res://Textures/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="4_sk4gx"]
 [ext_resource type="Script" uid="uid://cx3fo704yiisq" path="res://Scripts/search_craft.gd" id="5_mixql"]
 [ext_resource type="Script" uid="uid://hbybaoafbrtu" path="res://Scripts/search_ressources.gd" id="6_a4b4q"]
-[ext_resource type="Script" uid="uid://j74c85rhj0ne" path="res://Scenes/languages_settings_screen_container.gd" id="7_3t1kc"]
 
 [sub_resource type="FontFile" id="FontFile_kg5o7"]
 subpixel_positioning = 0
@@ -72,6 +71,101 @@ cache/0/80/0/descent = 0.0
 cache/0/80/0/underline_position = 0.0
 cache/0/80/0/underline_thickness = 0.0
 cache/0/80/0/scale = 1.0
+cache/0/61/0/ascent = 0.0
+cache/0/61/0/descent = 0.0
+cache/0/61/0/underline_position = 0.0
+cache/0/61/0/underline_thickness = 0.0
+cache/0/61/0/scale = 1.0
+cache/0/62/0/ascent = 0.0
+cache/0/62/0/descent = 0.0
+cache/0/62/0/underline_position = 0.0
+cache/0/62/0/underline_thickness = 0.0
+cache/0/62/0/scale = 1.0
+cache/0/63/0/ascent = 0.0
+cache/0/63/0/descent = 0.0
+cache/0/63/0/underline_position = 0.0
+cache/0/63/0/underline_thickness = 0.0
+cache/0/63/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/65/0/ascent = 0.0
+cache/0/65/0/descent = 0.0
+cache/0/65/0/underline_position = 0.0
+cache/0/65/0/underline_thickness = 0.0
+cache/0/65/0/scale = 1.0
+cache/0/66/0/ascent = 0.0
+cache/0/66/0/descent = 0.0
+cache/0/66/0/underline_position = 0.0
+cache/0/66/0/underline_thickness = 0.0
+cache/0/66/0/scale = 1.0
+cache/0/67/0/ascent = 0.0
+cache/0/67/0/descent = 0.0
+cache/0/67/0/underline_position = 0.0
+cache/0/67/0/underline_thickness = 0.0
+cache/0/67/0/scale = 1.0
+cache/0/68/0/ascent = 0.0
+cache/0/68/0/descent = 0.0
+cache/0/68/0/underline_position = 0.0
+cache/0/68/0/underline_thickness = 0.0
+cache/0/68/0/scale = 1.0
+cache/0/69/0/ascent = 0.0
+cache/0/69/0/descent = 0.0
+cache/0/69/0/underline_position = 0.0
+cache/0/69/0/underline_thickness = 0.0
+cache/0/69/0/scale = 1.0
+cache/0/70/0/ascent = 0.0
+cache/0/70/0/descent = 0.0
+cache/0/70/0/underline_position = 0.0
+cache/0/70/0/underline_thickness = 0.0
+cache/0/70/0/scale = 1.0
+cache/0/71/0/ascent = 0.0
+cache/0/71/0/descent = 0.0
+cache/0/71/0/underline_position = 0.0
+cache/0/71/0/underline_thickness = 0.0
+cache/0/71/0/scale = 1.0
+cache/0/72/0/ascent = 0.0
+cache/0/72/0/descent = 0.0
+cache/0/72/0/underline_position = 0.0
+cache/0/72/0/underline_thickness = 0.0
+cache/0/72/0/scale = 1.0
+cache/0/73/0/ascent = 0.0
+cache/0/73/0/descent = 0.0
+cache/0/73/0/underline_position = 0.0
+cache/0/73/0/underline_thickness = 0.0
+cache/0/73/0/scale = 1.0
+cache/0/74/0/ascent = 0.0
+cache/0/74/0/descent = 0.0
+cache/0/74/0/underline_position = 0.0
+cache/0/74/0/underline_thickness = 0.0
+cache/0/74/0/scale = 1.0
+cache/0/75/0/ascent = 0.0
+cache/0/75/0/descent = 0.0
+cache/0/75/0/underline_position = 0.0
+cache/0/75/0/underline_thickness = 0.0
+cache/0/75/0/scale = 1.0
+cache/0/76/0/ascent = 0.0
+cache/0/76/0/descent = 0.0
+cache/0/76/0/underline_position = 0.0
+cache/0/76/0/underline_thickness = 0.0
+cache/0/76/0/scale = 1.0
+cache/0/77/0/ascent = 0.0
+cache/0/77/0/descent = 0.0
+cache/0/77/0/underline_position = 0.0
+cache/0/77/0/underline_thickness = 0.0
+cache/0/77/0/scale = 1.0
+cache/0/78/0/ascent = 0.0
+cache/0/78/0/descent = 0.0
+cache/0/78/0/underline_position = 0.0
+cache/0/78/0/underline_thickness = 0.0
+cache/0/78/0/scale = 1.0
+cache/0/79/0/ascent = 0.0
+cache/0/79/0/descent = 0.0
+cache/0/79/0/underline_position = 0.0
+cache/0/79/0/underline_thickness = 0.0
+cache/0/79/0/scale = 1.0
 
 [sub_resource type="FontFile" id="FontFile_7wjhh"]
 subpixel_positioning = 0
@@ -751,6 +845,18 @@ cache/0/40/0/scale = 1.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhswb"]
 
+[sub_resource type="FontFile" id="FontFile_1t2s1"]
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
 [sub_resource type="FontFile" id="FontFile_whgwg"]
 subpixel_positioning = 0
 msdf_pixel_range = 14
@@ -806,15 +912,28 @@ default_font = SubResource("FontFile_whgwg")
 default_font_size = 22
 
 [node name="GameUI" type="Control"]
-z_index = 4096
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.99728)
 
-[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings", "save_confirmmation")]
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.172
+anchor_bottom = 0.176
+offset_right = 1598.76
+offset_bottom = 893.92
+theme_override_font_sizes/font_size = 150
+text = "JBEZ LES NEGRO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings", "languages_settings", "save_confirmmation")]
 z_index = 4096
 layout_mode = 1
 anchors_preset = 15
@@ -827,6 +946,7 @@ pause_menu = NodePath("PauseMenuScreenContainer")
 craft_menu = NodePath("CraftMenuScreenContainer")
 settings_menu = NodePath("SettingsMenuScreenContainer")
 controls_settings = NodePath("ControlsSettingsScreenContainer")
+languages_settings = NodePath("LanguagesSettingsScreenContainer")
 save_confirmmation = NodePath("SaveConfirm")
 
 [node name="PauseMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
@@ -845,7 +965,7 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(550, 650)
 layout_mode = 2
 texture = ExtResource("1_r7j8k")
-region_rect = Rect2(742, 39, 18, 18)
+region_rect = Rect2(461.137, 139.307, 5.43271, 2.1731)
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
@@ -869,7 +989,7 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_kg5o7")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 80
 text = "PAUSE"
 uppercase = true
 
@@ -939,8 +1059,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
-text = "MENU PRINCIPAL
-"
+text = "MENU PRINCIPAL"
 
 [node name="CraftMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
 visible = false
@@ -959,7 +1078,7 @@ theme_override_constants/margin_top = 0
 [node name="NinePatchRect" type="NinePatchRect" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen"]
 layout_mode = 2
 texture = ExtResource("1_r7j8k")
-region_rect = Rect2(742, 39, 18, 18)
+region_rect = Rect2(463.507, 140.295, 3.3584, 2.86453)
 patch_margin_left = 4
 patch_margin_top = 5
 patch_margin_right = 4
@@ -981,16 +1100,18 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_vivos")
 
 [node name="Title" type="Label" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect"]
 layout_mode = 2
-offset_left = 540.0
+offset_left = 485.0
 offset_top = 40.0
-offset_right = 870.0
+offset_right = 914.0
 offset_bottom = 114.0
+scale = Vector2(0.9973, 1.00146)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_kg5o7")
-theme_override_font_sizes/font_size = 55
+theme_override_font_sizes/font_size = 65
 text = "fabrication"
+vertical_alignment = 1
 uppercase = true
 
 [node name="MarginContainer" type="MarginContainer" parent="PopupMenu/CraftMenuScreenContainer/CraftMenuScreen/NinePatchRect"]
@@ -1280,7 +1401,7 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(550, 650)
 layout_mode = 2
 texture = ExtResource("1_r7j8k")
-region_rect = Rect2(742, 39, 18, 18)
+region_rect = Rect2(461.729, 139.406, 3.3584, 3.25964)
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
@@ -1305,7 +1426,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_kg5o7")
 theme_override_font_sizes/font_size = 60
-text = "PARAMÈTRES"
+text = "paramètres"
 uppercase = true
 
 [node name="SettingsMenuButtonsContainer" type="VBoxContainer" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer"]
@@ -1341,9 +1462,9 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
-text = "LANGUE"
+text = "LANGUES"
 
-[node name="AppearanceButton" type="Button" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer"]
+[node name="MusicAndSoundsButton" type="Button" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -1355,7 +1476,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
-text = "APPARENCE"
+text = "MUSIC & SOUNDS"
 
 [node name="HSeparator" type="HSeparator" parent="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer"]
 layout_mode = 2
@@ -1393,7 +1514,7 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
 texture = ExtResource("1_r7j8k")
-region_rect = Rect2(742, 39, 18, 18)
+region_rect = Rect2(461.637, 138.695, 4.44495, 4.84006)
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
@@ -1417,9 +1538,8 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_kg5o7")
-theme_override_font_sizes/font_size = 60
-text = "CONTRÔLEs
-"
+theme_override_font_sizes/font_size = 80
+text = "CONTRÔLES"
 uppercase = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer"]
@@ -1437,7 +1557,7 @@ theme_override_constants/separation = 40
 
 [node name="ControlsUpContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 800
+theme_override_constants/separation = 600
 
 [node name="ControlsUpLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsUpContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -1445,8 +1565,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_6cogi")
-theme_override_font_sizes/font_size = 35
-text = "Aller en haut"
+theme_override_font_sizes/font_size = 40
+text = "MOVE UP"
 vertical_alignment = 1
 uppercase = true
 
@@ -1466,7 +1586,7 @@ text = "Z"
 
 [node name="ControlsDownContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 800
+theme_override_constants/separation = 600
 
 [node name="ControlsDownLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsDownContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -1474,8 +1594,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_6cogi")
-theme_override_font_sizes/font_size = 35
-text = "Aller en bas"
+theme_override_font_sizes/font_size = 40
+text = "MOVE DOWN"
 vertical_alignment = 1
 uppercase = true
 
@@ -1495,7 +1615,7 @@ text = "S"
 
 [node name="ControlsLeftContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 800
+theme_override_constants/separation = 600
 
 [node name="ControlsLeftLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsLeftContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -1503,8 +1623,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_6cogi")
-theme_override_font_sizes/font_size = 35
-text = "Aller à gauche"
+theme_override_font_sizes/font_size = 40
+text = "MOVE LEFT"
 vertical_alignment = 1
 uppercase = true
 
@@ -1524,7 +1644,7 @@ text = "Q"
 
 [node name="ControlsRightContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 800
+theme_override_constants/separation = 600
 
 [node name="ControlsRightLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsRightContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -1532,8 +1652,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_6cogi")
-theme_override_font_sizes/font_size = 35
-text = "Aller à droite"
+theme_override_font_sizes/font_size = 40
+text = "MOVE RIGHT"
 vertical_alignment = 1
 uppercase = true
 
@@ -1551,9 +1671,38 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
 text = "D"
 
+[node name="ControlsSprintContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 600
+
+[node name="ControlsSprintLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsSprintContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_6cogi")
+theme_override_font_sizes/font_size = 40
+text = "SPRINT"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ControlsSprintButton" type="Button" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsSprintContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
+text = "SHIFT"
+
 [node name="ControlsInteractContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 800
+theme_override_constants/separation = 600
 
 [node name="ControlsInteractLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInteractContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -1561,8 +1710,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_6cogi")
-theme_override_font_sizes/font_size = 35
-text = "Intéragir"
+theme_override_font_sizes/font_size = 40
+text = "interact"
 vertical_alignment = 1
 uppercase = true
 
@@ -1582,7 +1731,7 @@ text = "E"
 
 [node name="ControlsInventoryContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 800
+theme_override_constants/separation = 600
 
 [node name="ControlsInventoryLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInventoryContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -1590,8 +1739,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_6cogi")
-theme_override_font_sizes/font_size = 35
-text = "ouvrir l'inventaire"
+theme_override_font_sizes/font_size = 40
+text = "OPEN INVENTORY"
 vertical_alignment = 1
 uppercase = true
 
@@ -1611,7 +1760,7 @@ text = "I"
 
 [node name="ControlsMapContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 800
+theme_override_constants/separation = 600
 
 [node name="ControlsMapLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsMapContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -1619,8 +1768,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_6cogi")
-theme_override_font_sizes/font_size = 35
-text = "Ouvrir la carte"
+theme_override_font_sizes/font_size = 40
+text = "OPEN MAP"
 vertical_alignment = 1
 uppercase = true
 
@@ -1640,7 +1789,7 @@ text = "M"
 
 [node name="ControlsQuestsContainer" type="HBoxContainer" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 800
+theme_override_constants/separation = 600
 
 [node name="ControlsQuestsLabel" type="Label" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsQuestsContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -1648,8 +1797,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_6cogi")
-theme_override_font_sizes/font_size = 35
-text = "Ouvrir le menu des quêtes"
+theme_override_font_sizes/font_size = 40
+text = "OPEN QUESTS MENU"
 vertical_alignment = 1
 uppercase = true
 
@@ -1685,7 +1834,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
-text = "Retour"
+text = "RETOUR"
 
 [node name="VSeparator" type="VSeparator" parent="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer"]
 layout_mode = 2
@@ -1697,7 +1846,6 @@ z_index = 4096
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("7_3t1kc")
 
 [node name="LanguagesSettingsScreen" type="MarginContainer" parent="PopupMenu/LanguagesSettingsScreenContainer"]
 layout_mode = 2
@@ -1722,8 +1870,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.00072, 1)
 theme_override_constants/margin_top = 60
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 35
 
 [node name="Title" type="Label" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
 layout_mode = 2
@@ -1744,17 +1893,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 horizontal_scroll_mode = 0
 
-[node name="LanguagesSettingsButtonsContainer2" type="VBoxContainer" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer"]
+[node name="LanguagesSettingsButtonsContainer" type="VBoxContainer" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_constants/separation = 20
 
-[node name="ControlsBackButtonContainer" type="HBoxContainer" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
+[node name="LanguagesBackButtonContainer" type="HBoxContainer" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="ControlsBackButton" type="Button" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer"]
+[node name="LanguagesBackButton" type="Button" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/LanguagesBackButtonContainer"]
 custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -1763,14 +1913,14 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontFile_7wjhh")
+theme_override_fonts/font = SubResource("FontFile_1t2s1")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y46lw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bcdvx")
-text = "Retour"
+text = "BACK"
 
-[node name="VSeparator" type="VSeparator" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer"]
+[node name="VSeparator" type="VSeparator" parent="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/LanguagesBackButtonContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxTexture_nhswb")
@@ -1799,16 +1949,17 @@ cancel_button_text = "Annuler"
 [connection signal="request_completed" from="PopupMenu/CraftMenuScreenContainer/getItemName" to="PopupMenu/CraftMenuScreenContainer" method="_on_get_item_name_request_completed"]
 [connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/ControlsButton" to="PopupMenu" method="_on_controls_button_pressed"]
 [connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/LanguageButton" to="PopupMenu" method="_on_language_button_pressed"]
-[connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/AppearanceButton" to="PopupMenu" method="_on_appearance_button_pressed"]
+[connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/MusicAndSoundsButton" to="PopupMenu" method="_on_music_and_sounds_button_pressed"]
 [connection signal="pressed" from="PopupMenu/SettingsMenuScreenContainer/SettingsMenuScreen/NinePatchRect/MarginContainer/SettingsMenuButtonsContainer/SettingsMenuBackButton" to="PopupMenu" method="_on_settings_menu_back_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsUpContainer/ControlsUpButton" to="PopupMenu" method="_on_controls_up_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsDownContainer/ControlsDownButton" to="PopupMenu" method="_on_controls_down_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsLeftContainer/ControlsLeftButton" to="PopupMenu" method="_on_controls_left_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsRightContainer/ControlsRightButton" to="PopupMenu" method="_on_controls_right_button_pressed"]
+[connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsSprintContainer/ControlsSprintButton" to="PopupMenu" method="_on_controls_right_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInteractContainer/ControlsInteractButton" to="PopupMenu" method="_on_controls_interact_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInventoryContainer/ControlsInventoryButton" to="PopupMenu" method="_on_controls_inventory_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsMapContainer/ControlsMapButton" to="PopupMenu" method="_on_controls_map_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsQuestsContainer/ControlsQuestsButton" to="PopupMenu" method="_on_controls_quests_button_pressed"]
 [connection signal="pressed" from="PopupMenu/ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer/ControlsBackButton" to="PopupMenu" method="_on_controls_back_button_pressed"]
-[connection signal="pressed" from="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer/ControlsBackButton" to="PopupMenu" method="_on_controls_back_button_pressed"]
+[connection signal="pressed" from="PopupMenu/LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/LanguagesBackButtonContainer/LanguagesBackButton" to="PopupMenu" method="_on_languages_back_button_pressed"]
 [connection signal="confirmed" from="PopupMenu/SaveConfirm" to="PopupMenu" method="_on_save_confirmed"]

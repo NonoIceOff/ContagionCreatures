@@ -194,7 +194,7 @@ script = ExtResource("1_8w70o")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
 texture = ExtResource("2_1k108")
-region_rect = Rect2(742, 39, 18, 18)
+region_rect = Rect2(459.754, 140.393, 7.01312, 2.9633)
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
@@ -283,7 +283,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_egi6e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_egi6e")
 theme_override_styles/normal = SubResource("StyleBoxTexture_0hj8s")
-text = "MUSIC AND SOUNDS"
+text = "MUSIQUE ET SONS"
 
 [node name="HSeparator" type="HSeparator" parent="NinePatchRect/MarginContainer/SettingsButtonsContainer"]
 layout_mode = 2

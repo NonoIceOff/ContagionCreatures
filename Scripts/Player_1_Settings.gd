@@ -7,7 +7,7 @@ signal player_entered_door_signal
 @export var sprint_multiplier: float = 1.3
 
 @onready var animated_sprite: AnimatedSprite2D = $player1
-@onready var pause_menu = $"player1/2/CanvasLayer/PauseMenu"
+@onready var pause_menu = $"player1/2/CanvasLayer/GameUI/PopupMenu/PauseMenuScreenContainer"
 
 func entered_door():
 	emit_signal("player_entered_door_signal")
@@ -58,13 +58,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func PauseMenu():
-	if Global.paused == true:
-		pause_menu.show()
+	if Global.game_paused == false:
+		pause_menu.visible = true
 		Engine.time_scale = 0
-		Global.can_move = false
-	elif Global.paused == false:
-		pause_menu.hide()
+	elif Global.game_paused == true:
+		pause_menu.visible = false 
 		Engine.time_scale = 1
-		Global.can_move = true
 	
-	Global.paused = !Global.paused
+	Global.game_paused = !Global.game_paused

@@ -125,7 +125,7 @@ theme_override_font_sizes/font_size = 52
 theme_override_styles/hover = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
-text = "SOLO"
+text = "1 JOUEUR"
 
 [node name="HSeparator" type="HSeparator" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -158,7 +158,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 2
 
-[node name="InstagramButton" type="Button" parent="Menu/Left_part/VBoxContainer/HBoxContainer3"]
+[node name="LeaveButton" type="Button" parent="Menu/Left_part/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -339,6 +339,7 @@ uppercase = true
 [connection signal="pressed" from="Menu/Left_part/VBoxContainer/VBoxContainer2/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
 [connection signal="pressed" from="Menu/Left_part/VBoxContainer/VBoxContainer2/SoloButton" to="." method="_on_solo_button_pressed"]
 [connection signal="pressed" from="Menu/Left_part/VBoxContainer/VBoxContainer2/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Menu/Left_part/VBoxContainer/HBoxContainer3/LeaveButton" to="." method="_on_leave_button_pressed"]
 [connection signal="pressed" from="Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer/ProfileButton" to="." method="_on_profile_button_pressed"]
 [connection signal="pressed" from="Menu/Right_part/VBoxContainer/VBoxContainer2/OstButton" to="." method="_on_ost_button_pressed"]
 [connection signal="pressed" from="Menu/Right_part/VBoxContainer/VBoxContainer2/CreditsButton" to="." method="_on_credits_button_pressed"]
