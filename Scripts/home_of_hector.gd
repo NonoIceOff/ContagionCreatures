@@ -13,6 +13,7 @@ var creatures_starter = []
 
 func _ready():
 	var http_request = HTTPRequest.new()
+	Quests.quests[0]["stade"] = 1
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
 	http_request.request("https://contagioncreaturesapi.vercel.app/api/creatures")

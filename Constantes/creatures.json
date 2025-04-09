@@ -1,2 +1,15 @@
 [
+	{
+		"description": "A powerful witch that uses ice element.",
+		"element1": "ice",
+		"element2": "water",
+		"hp": 150.0,
+		"id": 10.0,
+		"is_infected": true,
+		"name": "Ice witch",
+		"speed": "1.40",
+		"texture": "demon_texture.png",
+		"texture_back": null,
+		"type": "witch"
+	}
 ]

@@ -231,3 +231,8 @@ func _on_choose_creature(variable_path):
 	print(parts)
 	Global.tutorial_stade = 11
 	Global.add_creature(Global.starters_id[parts-1])
+
+func _on_launch_battle():
+	_on_dialogue_end()
+	Global.tutorial_stade = 12
+	SceneLoader.load_scene("res://Scenes/scène_combat.tscn")
