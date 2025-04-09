@@ -5,6 +5,7 @@ extends MarginContainer
 @export var settings_menu = VBoxContainer
 @export var controls_settings = VBoxContainer
 @export var languages_settings = VBoxContainer
+@export var musicsandsounds_settings = VBoxContainer
 #@export var appearance_settings = VBoxContainer
 @export var save_confirmmation = ConfirmationDialog
 
@@ -29,7 +30,7 @@ func _ready():
 	#uppercase_all_buttons(self)
 
 
-	# Languages menu
+# Languages menu
 	
 	for i in TranslationServer.get_loaded_locales():
 		var language_button = Button.new()
@@ -49,6 +50,12 @@ func _ready():
 		language_button.name = str(i)
 		language_button.add_to_group("buttons")
 		get_node("LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/LanguagesSettingsButtonsContainer").add_child(language_button)
+
+
+func _on_languages_back_button_pressed() -> void:
+	toggle_visibility(languages_settings)
+	toggle_visibility(settings_menu)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -92,8 +99,8 @@ func _on_controls_button_pressed() -> void:
 	toggle_visibility(controls_settings)
 
 
-func _on_appearance_button_pressed() -> void:
-	pass
+func _on_music_and_sounds_button_pressed() -> void:
+	pass # Replace with function body.
 
 
 func _on_language_button_pressed() -> void:
@@ -146,10 +153,9 @@ func _on_controls_back_button_pressed() -> void:
 	toggle_visibility(settings_menu)
 
 
-func _on_languages_back_button_pressed() -> void:
-	toggle_visibility(languages_settings)
+
+# Musics and sounds menu
+
+func _on_musics_and_sounds_back_button_pressed() -> void:
+	toggle_visibility(musicsandsounds_settings)
 	toggle_visibility(settings_menu)
-
-
-func _on_music_and_sounds_button_pressed() -> void:
-	pass # Replace with function body.
