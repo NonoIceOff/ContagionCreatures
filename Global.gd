@@ -34,7 +34,7 @@ var show_labels = false
 var saved_point_position: Vector2 = Vector2.ZERO 
 
 var tutorial = true
-var tutorial_stade = 0
+var tutorial_stade = 6
 var tutorial_validate = false
 
 var button_info_pressed_player = false
@@ -51,6 +51,8 @@ var sprint_multiplier: float = 1.5
 
 var pianos = [0,0,0,0]
 var current_map = ""
+
+var starters_id = [0,0,0]
 
 var start_cinematic = {
 	0: "START_CINEMATIC_TEXT_0",
@@ -423,3 +425,57 @@ func save_user():
 	var save_file = ConfigFile.new()
 	save_file.set_value("User","Data",Global.user)
 	save_file.save_encrypted_pass("user://user.txt", "user_key")
+
+func add_creature(id: int) -> void:
+	var url = "https://contagioncreaturesapi.vercel.app/api/creatures/%s" % id
+
+	var http := HTTPRequest.new()
+	add_child(http)
+
+	# Connecte le signal à une méthode dédiée
+	http.request_completed.connect(_on_creature_request_completed.bind(http))
+
+	var error = http.request(url)
+	if error != OK:
+		print("Erreur lors de la requête :", error)
+
+func _on_creature_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray, http: HTTPRequest) -> void:
+	if response_code != 200:
+		print("Erreur HTTP :", response_code)
+		return
+
+	var creature = JSON.parse_string(body.get_string_from_utf8())
+	if creature == null:
+		print("Erreur de parsing JSON")
+		return
+
+	var file_path = "res://Constantes/creatures.json"
+	var creatures: Array = []
+
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		if file:
+			var content = file.get_as_text()
+			file.close()
+			if content.strip_edges() != "":
+				var parse_result := JSON.new()
+				var error = parse_result.parse(content)
+				if error == OK and typeof(parse_result.data) == TYPE_ARRAY:
+					creatures = parse_result.data
+				else:
+					print("Contenu invalide dans creatures.json, utilisation d'une liste vide.")
+
+
+	creatures.append(creature)
+
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(creatures, "\t"))
+		file.close()
+		print("Créature ajoutée avec succès.")
+		print(creatures)
+	else:
+		print("Erreur : impossible d'ouvrir le fichier en écriture.")
+
+	# Nettoie le noeud HTTP pour éviter des fuites mémoire
+	http.queue_free()
