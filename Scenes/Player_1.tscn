@@ -1,9 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://cgeiuvmq46mhr"]
+[gd_scene load_steps=27 format=3 uid="uid://cgeiuvmq46mhr"]
 
 [ext_resource type="Script" uid="uid://c6lg3qad8k5pp" path="res://Scripts/Player_1_Settings.gd" id="1_ny7x7"]
 [ext_resource type="Script" uid="uid://dg6mmgooodt21" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
 [ext_resource type="PackedScene" uid="uid://3dl6hqqqel25" path="res://Inventory/inv_ui.tscn" id="4_0rm42"]
-[ext_resource type="Texture2D" uid="uid://denr1gf81y0pp" path="res://Textures/spritePlayer/qeD0Js1.png" id="4_xc2ir"]
 [ext_resource type="Texture2D" uid="uid://droj4wt6rug7e" path="res://Textures/spritePlayer/output/CharacterGame.png" id="5_tjhtf"]
 [ext_resource type="PackedScene" uid="uid://cx6s6at1q7bed" path="res://Scenes/game_ui.tscn" id="6_13vdf"]
 [ext_resource type="Texture2D" uid="uid://p838sug386nh" path="res://Textures/light_mask.png" id="6_s8kby"]
@@ -222,33 +221,6 @@ grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.25, 0.25)
 
-[node name="SpritePlayer" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(64, 5)
-scale = Vector2(2.09836, 2)
-texture = ExtResource("4_xc2ir")
-region_enabled = true
-region_rect = Rect2(3, 5, 61, 68)
-metadata/_aseprite_wizard_interface_config_ = {
-"animation_section": false,
-"layer_section": false,
-"output_section": false,
-"pending_changes": {
-"i_mode": -1,
-"keep_anim_length": false,
-"layer": "",
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": false,
-"player": "",
-"slice": "",
-"source": ""
-},
-"slice_section": false
-}
-
 [node name="player1" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_deahx")
@@ -296,7 +268,6 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_d4feh")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(16, 16)
 scale = Vector2(0.413625, 0.390972)
 color = Color(0.950982, 1, 0.627932, 1)

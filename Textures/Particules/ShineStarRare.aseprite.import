@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://drnpc6snvjonh"
+path="res://.godot/imported/ShineStarRare.aseprite-e4a06caf0e1dc17b1e9ab17a3f631a0d.res"
+
+[deps]
+
+source_file="res://Textures/Particules/ShineStarRare.aseprite"
+dest_files=["res://.godot/imported/ShineStarRare.aseprite-e4a06caf0e1dc17b1e9ab17a3f631a0d.res"]
+
+[params]
+

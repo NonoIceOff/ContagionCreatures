@@ -4,6 +4,8 @@ extends Node2D
 @onready var soundEffect = $SoundEffectFx
 @onready var label_home = $TileMap/house/AreaHome/Label_E_Home
 @onready var player_light = $TileMap/Player_One/PointLight2D
+@onready var shineStar1 = $AnimatedShineStar
+
 
 
 var entered = false
@@ -12,6 +14,8 @@ var scene_load = false
 var camera = []
 
 func _ready() -> void:
+	shineStar1.play()
+	
 	Global.current_map = self.name
 	Global.load_position()
 	
@@ -25,7 +29,7 @@ func _ready() -> void:
 	#Global.smooth_zoom(camera[0], 1.5, Vector2(1150, 650),0.01)
 
 var camera_id = 0
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	camera = get_tree().get_nodes_in_group("camera")
 
 	
