@@ -17,12 +17,9 @@ func _ready():
 	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
 	http_request.request("https://contagioncreaturesapi.vercel.app/api/creatures")
 	
-	
-	Quests.quests[0]["stade"] = 1
 	Global.current_map = "HomeOfHector"
 	Quests.init_pnj("HomeOfHector")
 	
-	Global.tutorial_stade = 9
 	
 	var joypads = Input.get_connected_joypads()
 	if joypads.size() < 1:
@@ -66,6 +63,7 @@ func _on_request_completed(result, response_code, headers, body):
 			creatures_starter.append(creatures[random]["id"])
 			get_node("Control/MobChoose/"+str(i)).texture = load("res://Textures/Animals/"+str(creatures[random]["texture"]))
 			print("res://Textures/Animals/"+str(creatures[random]["texture"]))
+		Global.starters_id = creatures_starter
 	else:
 		print("Failed to fetch creatures: ", response_code)
 		

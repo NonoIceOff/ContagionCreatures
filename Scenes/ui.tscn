@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=22 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" uid="uid://c00pkg3a1dyrk" path="res://Scripts/ui.gd" id="1_p3l0n"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://cm4gesp4y5y2m" path="res://Scenes/slots_shown.gd" id="18_fcexb"]
 [ext_resource type="Texture2D" uid="uid://b0svu776o5qoh" path="res://Textures/slot.png" id="18_lkjmk"]
 [ext_resource type="PackedScene" uid="uid://c65ywo6ftkvtc" path="res://Scenes/player_xp.tscn" id="18_mxn78"]
-[ext_resource type="Texture2D" uid="uid://bcx8tk1aasud1" path="res://Textures/Animals/RABBIT.png" id="19_d42i4"]
 
 [sub_resource type="Curve" id="Curve_qti3j"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -92,11 +91,12 @@ hue_variation_min = -0.1
 hue_variation_max = 0.1
 hue_variation_curve = SubResource("Curve_qti3j")
 
-[node name="QuestTextBar" type="RichTextLabel" parent="CPUParticles2D"]
+[node name="QuestTextBar" type="RichTextLabel" parent="CPUParticles2D" groups=["ui"]]
 offset_left = -1416.0
 offset_top = -32.0
 offset_right = -16.0
 offset_bottom = 110.0
+mouse_filter = 2
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
@@ -112,6 +112,7 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[right]NO_QUEST"
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Cinematic" type="Control" parent="."]
 visible = false
@@ -195,7 +196,7 @@ theme_override_fonts/font = ExtResource("10_d42i4")
 theme_override_font_sizes/font_size = 16
 text = "0"
 
-[node name="CoinsLabel" type="RichTextLabel" parent="Stats"]
+[node name="CoinsLabel" type="RichTextLabel" parent="Stats" groups=["ui"]]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 80.0
@@ -283,10 +284,10 @@ position = Vector2(-24, 162)
 scale = Vector2(2, 2)
 texture = ExtResource("17_de75t")
 
-[node name="XPPanel" parent="." instance=ExtResource("18_mxn78")]
+[node name="XPPanel" parent="." groups=["ui"] instance=ExtResource("18_mxn78")]
 position = Vector2(1693, 715)
 
-[node name="SlotsShown" type="HBoxContainer" parent="."]
+[node name="SlotsShown" type="HBoxContainer" parent="." groups=["ui"]]
 offset_left = 24.0
 offset_top = 120.0
 offset_right = 64.0
@@ -306,7 +307,6 @@ texture = ExtResource("18_lkjmk")
 [node name="Creature" type="Sprite2D" parent="SlotsShown/1"]
 position = Vector2(33, 41)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("19_d42i4")
 
 [node name="2" type="Control" parent="SlotsShown"]
 layout_mode = 2
@@ -320,7 +320,6 @@ texture = ExtResource("18_lkjmk")
 [node name="Creature" type="Sprite2D" parent="SlotsShown/2"]
 position = Vector2(33, 41)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("19_d42i4")
 
 [node name="3" type="Control" parent="SlotsShown"]
 layout_mode = 2
@@ -334,4 +333,3 @@ texture = ExtResource("18_lkjmk")
 [node name="Creature" type="Sprite2D" parent="SlotsShown/3"]
 position = Vector2(33, 41)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("19_d42i4")

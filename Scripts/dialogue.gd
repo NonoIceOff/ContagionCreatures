@@ -230,3 +230,4 @@ func _on_choose_creature(variable_path):
 	var parts = int(variable_path)
 	print(parts)
 	Global.tutorial_stade = 11
+	Global.add_creature(Global.starters_id[parts-1])
