@@ -107,7 +107,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"SouthWalk",
-"speed": 7.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -124,7 +124,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WestWalk",
-"speed": 60.0
+"speed": 6.0
 }]
 
 [sub_resource type="Animation" id="Animation_gbgpv"]
@@ -225,8 +225,7 @@ scale = Vector2(0.25, 0.25)
 [node name="player1" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_deahx")
-animation = &"SouthWalk"
-frame = 3
+animation = &"EastWalk"
 centered = false
 offset = Vector2(0, -4)
 metadata/_aseprite_wizard_interface_config_ = {
@@ -272,7 +271,6 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_d4feh")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(16, 16)
 scale = Vector2(0.413625, 0.390972)
 color = Color(0.950982, 1, 0.627932, 1)

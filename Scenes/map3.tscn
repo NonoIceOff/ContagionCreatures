@@ -130,7 +130,7 @@ texture = ExtResource("6_dlhm5")
 
 [node name="Player_One" parent="TileMap" instance=ExtResource("1_tuwr5")]
 z_index = 5
-position = Vector2(2624, 808)
+position = Vector2(32.0002, 88.0001)
 scale = Vector2(2.8, 2.8)
 
 [node name="CanvasJour_Nuit" type="CanvasModulate" parent="."]
@@ -164,10 +164,10 @@ metadata/_aseprite_wizard_source_file_hash_ = "9eb17dd447240b38f68dc60ee103aead"
 [node name="Area2D" type="Area2D" parent="AnimatedShineStar"]
 position = Vector2(0.400002, 3.39999)
 script = ExtResource("10_k0o66")
+item_quantity = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedShineStar/Area2D"]
 position = Vector2(-0.514986, -0.600003)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fc6d2")
 debug_color = Color(0, 0, 1, 0.419608)
 
