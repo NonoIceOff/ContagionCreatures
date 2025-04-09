@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyofep22rmi33"]
+[gd_scene load_steps=14 format=3 uid="uid://cyofep22rmi33"]
 
 [ext_resource type="Script" uid="uid://jx52ry63qxrc" path="res://Scenes/main_menu.gd" id="1_bfu8w"]
-[ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_irci0"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_pgg7n"]
+[ext_resource type="Texture2D" uid="uid://cfm1xju26fey0" path="res://Background_main_menu2.png" id="2_yhxw7"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="3_tdjih"]
+[ext_resource type="Texture2D" uid="uid://bhayo8p144op2" path="res://Textures/pixil-frame-0_3.png" id="5_n45e2"]
+[ext_resource type="Texture2D" uid="uid://crj8d71jcq7lc" path="res://Textures/Instagram.png" id="5_opfnp"]
+[ext_resource type="Texture2D" uid="uid://d1g423653v4tm" path="res://Textures/discord.png" id="6_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://w5m4hlt7dhrk" path="res://logo.png" id="8_yhxw7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ja6sr"]
 
@@ -19,60 +23,80 @@ region_rect = Rect2(275, 178, 90, 27)
 texture = ExtResource("3_tdjih")
 region_rect = Rect2(275, 212, 90, 25)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp0ys"]
+bg_color = Color(0.909804, 0.811765, 0.65098, 1)
+border_color = Color(0.294118, 0.580392, 0.643137, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_bfu8w")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="NinePatchRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_irci0")
+texture = ExtResource("2_yhxw7")
+region_rect = Rect2(0, 83, 400, 317)
 
-[node name="Menu" type="MarginContainer" parent="."]
+[node name="Menu" type="MarginContainer" parent="Background"]
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1083.0
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_right = 25
 
-[node name="Left_part" type="HBoxContainer" parent="Menu"]
+[node name="Left_part" type="HBoxContainer" parent="Background/Menu"]
 custom_minimum_size = Vector2(960, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Left_part"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Menu/Left_part"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator" type="HSeparator" parent="Menu/Left_part/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Background/Menu/Left_part/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 120
+theme_override_constants/separation = 125
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
 
-[node name="Title" type="Label" parent="Menu/Left_part/VBoxContainer"]
-custom_minimum_size = Vector2(550, 0)
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Background/Menu/Left_part/VBoxContainer"]
+position = Vector2(500, 180)
+texture = ExtResource("8_yhxw7")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 80)
+direction = Vector2(0, 0)
+gravity = Vector2(0, 200)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+
+[node name="Title" type="Label" parent="Background/Menu/Left_part/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 22
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 50
 theme_override_fonts/font = ExtResource("2_pgg7n")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 75
 text = "CONTAGION CREATURES"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-uppercase = true
 
-[node name="HSeparator2" type="HSeparator" parent="Menu/Left_part/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Background/Menu/Left_part/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 135
+theme_override_constants/separation = 220
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Left_part/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/Menu/Left_part/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 18
+theme_override_constants/separation = 20
 
-[node name="MultiplayerButton" type="Button" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
+[node name="MultiplayerButton" type="Button" parent="Background/Menu/Left_part/VBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(550, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -88,7 +112,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
 text = "MULTIJOUEURS"
 
-[node name="SoloButton" type="Button" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
+[node name="SoloButton" type="Button" parent="Background/Menu/Left_part/VBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(550, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -102,9 +126,14 @@ theme_override_font_sizes/font_size = 52
 theme_override_styles/hover = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
-text = "SOLO"
+text = "1 JOUEUR"
 
-[node name="SettingsButton" type="Button" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
+[node name="HSeparator" type="HSeparator" parent="Background/Menu/Left_part/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
+
+[node name="SettingsButton" type="Button" parent="Background/Menu/Left_part/VBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(550, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -120,12 +149,81 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
 text = "PARAMETRES"
 
-[node name="HSeparator3" type="HSeparator" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
+[node name="HSeparator2" type="HSeparator" parent="Background/Menu/Left_part/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 175
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
 
-[node name="OstButton" type="Button" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/Menu/Left_part/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="LeaveButton" type="Button" parent="Background/Menu/Left_part/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+action_mode = 0
+text = "QUITTER"
+
+[node name="HSeparator3" type="HSeparator" parent="Background/Menu/Left_part/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
+
+[node name="Right_part" type="HBoxContainer" parent="Background/Menu"]
+custom_minimum_size = Vector2(960, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Menu/Right_part"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/Menu/Right_part/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ProfileButton" type="Button" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(420, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+text = "PROFIL"
+expand_icon = true
+
+[node name="ConnexionStatus" type="Label" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "vOUS N'etes pas connecte"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="OstButton" type="Button" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(420, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -141,7 +239,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
 text = "OST"
 
-[node name="CreditsButton" type="Button" parent="Menu/Left_part/VBoxContainer/VBoxContainer2"]
+[node name="CreditsButton" type="Button" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(420, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -157,13 +255,94 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
 text = "CREDITS"
 
-[node name="Right_part" type="HBoxContainer" parent="Menu"]
-custom_minimum_size = Vector2(960, 0)
+[node name="HSeparator" type="HSeparator" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 8
+theme_override_constants/separation = 135
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
 
-[connection signal="pressed" from="Menu/Left_part/VBoxContainer/VBoxContainer2/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
-[connection signal="pressed" from="Menu/Left_part/VBoxContainer/VBoxContainer2/SoloButton" to="." method="_on_solo_button_pressed"]
-[connection signal="pressed" from="Menu/Left_part/VBoxContainer/VBoxContainer2/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Menu/Left_part/VBoxContainer/VBoxContainer2/OstButton" to="." method="_on_ost_button_pressed"]
-[connection signal="pressed" from="Menu/Left_part/VBoxContainer/VBoxContainer2/CreditsButton" to="." method="_on_credits_button_pressed"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/Menu/Right_part/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="InstagramButton" type="Button" parent="Background/Menu/Right_part/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+action_mode = 0
+text = "INSTAGRAM
+"
+icon = ExtResource("5_opfnp")
+expand_icon = true
+
+[node name="DiscordButton" type="Button" parent="Background/Menu/Right_part/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+action_mode = 0
+text = "DISCORD"
+icon = ExtResource("6_cp0ys")
+expand_icon = true
+
+[node name="HSeparator" type="HSeparator" parent="Background/Menu/Right_part/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ja6sr")
+
+[node name="Duck" type="Sprite2D" parent="Background/Menu/Right_part/VBoxContainer"]
+position = Vector2(495, 375)
+scale = Vector2(1.4808, 1.40838)
+texture = ExtResource("5_n45e2")
+
+[node name="Bubble" type="Panel" parent="Background/Menu/Right_part/VBoxContainer/Duck"]
+offset_left = 31.6053
+offset_top = -133.254
+offset_right = 473.605
+offset_bottom = -11.254
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_cp0ys")
+
+[node name="Texte" type="Label" parent="Background/Menu/Right_part/VBoxContainer/Duck/Bubble"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 10.3197
+offset_right = 448.0
+offset_bottom = 121.32
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_pgg7n")
+theme_override_font_sizes/font_size = 35
+text = "DO YOU WANT
+A MOJItO?"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="pressed" from="Background/Menu/Left_part/VBoxContainer/VBoxContainer2/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
+[connection signal="pressed" from="Background/Menu/Left_part/VBoxContainer/VBoxContainer2/SoloButton" to="." method="_on_solo_button_pressed"]
+[connection signal="pressed" from="Background/Menu/Left_part/VBoxContainer/VBoxContainer2/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Background/Menu/Left_part/VBoxContainer/HBoxContainer3/LeaveButton" to="." method="_on_leave_button_pressed"]
+[connection signal="pressed" from="Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer/ProfileButton" to="." method="_on_profile_button_pressed"]
+[connection signal="pressed" from="Background/Menu/Right_part/VBoxContainer/VBoxContainer2/OstButton" to="." method="_on_ost_button_pressed"]
+[connection signal="pressed" from="Background/Menu/Right_part/VBoxContainer/VBoxContainer2/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Background/Menu/Right_part/VBoxContainer/HBoxContainer3/InstagramButton" to="." method="_on_instagram_button_pressed"]
+[connection signal="pressed" from="Background/Menu/Right_part/VBoxContainer/HBoxContainer3/DiscordButton" to="." method="_on_discord_button_pressed"]

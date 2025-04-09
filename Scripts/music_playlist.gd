@@ -76,3 +76,7 @@ func _on_pause_pressed() -> void:
 
 func _on_tree_entered() -> void:
 	Global.selected_index = 0
+
+
+func _on_retour_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

@@ -11,7 +11,6 @@ var user_enemy = {}
 var interact = false
 var trigger = true
 var brazero_numbers = 0
-var can_move = true
 var player_postion = Vector2(0,0)
 var game_paused = false
 var attack_index = 0

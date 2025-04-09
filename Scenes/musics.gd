@@ -9,4 +9,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	get_node("Volume").text = str(value)+"dB"
-	MusicsPlayer.apply_bus_volume(name,value)
+	#MusicsPlayer.apply_bus_volume(name,value)

@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://byfjhlm1iwal7"]
+
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_bnn0c"]
+
+[resource]
+texture = ExtResource("1_bnn0c")
+region_rect = Rect2(275, 178, 90, 27)
