@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpvj8ye6n4hb6"]
+[gd_scene load_steps=7 format=3 uid="uid://cpvj8ye6n4hb6"]
 
 [ext_resource type="Script" uid="uid://dfq134f170xtb" path="res://Scenes/languages_settings.gd" id="1_eiv5m"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_l1w4d"]
@@ -183,8 +183,6 @@ region_rect = Rect2(275, 212, 90, 25)
 texture = ExtResource("2_l1w4d")
 region_rect = Rect2(275, 178, 90, 27)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g84q5"]
-
 [node name="Languages" type="Node2D"]
 script = ExtResource("1_eiv5m")
 
@@ -222,8 +220,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_eiv5m")
 theme_override_font_sizes/font_size = 80
-text = "Langues
-"
+text = "LANGUAGES"
 uppercase = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
@@ -241,13 +238,12 @@ theme_override_constants/separation = 20
 
 [node name="LanguagesBackButtonContainer" type="HBoxContainer" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="LanguagesBackButton" type="Button" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer/LanguagesBackButtonContainer"]
 custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 6
 size_flags_vertical = 8
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -258,11 +254,6 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_l1w4d")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_l1w4d")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qglcv")
-text = "BACK"
-
-[node name="VSeparator" type="VSeparator" parent="LanguagesSettingsScreen/NinePatchRect/MarginContainer/LanguagesBackButtonContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-theme_override_styles/separator = SubResource("StyleBoxTexture_g84q5")
+text = "VALIDATE"
 
 [connection signal="pressed" from="LanguagesSettingsScreen/NinePatchRect/MarginContainer/LanguagesBackButtonContainer/LanguagesBackButton" to="." method="_on_languages_back_button_pressed"]

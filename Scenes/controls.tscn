@@ -125,9 +125,10 @@ vertical_alignment = 1
 
 [node name="UpButton" type="Button" parent="ScrollContainer/VBoxContainer/Up" groups=["buttons"]]
 layout_mode = 0
-offset_left = 744.0
-offset_right = 1000.0
-offset_bottom = 64.0
+offset_left = 721.0
+offset_top = 3.0
+offset_right = 977.0
+offset_bottom = 67.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_ilexp")

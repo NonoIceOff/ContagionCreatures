@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://f3m334m5trfi"]
+[gd_scene load_steps=8 format=3 uid="uid://f3m334m5trfi"]
 
-[ext_resource type="Script" uid="uid://bxvr1tovvuli0" path="res://Scenes/controls_settings.gd" id="1_ip3fm"]
+[ext_resource type="Script" uid="uid://db7crsyowf6da" path="res://Scenes/controls_settings.gd" id="1_ip3fm"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_pbyiv"]
 
 [sub_resource type="FontFile" id="FontFile_ip3fm"]
@@ -286,8 +286,6 @@ region_rect = Rect2(275, 212, 90, 25)
 texture = ExtResource("1_pbyiv")
 region_rect = Rect2(275, 178, 90, 27)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4xlvs"]
-
 [node name="ControlsSetting" type="Node2D"]
 script = ExtResource("1_ip3fm")
 
@@ -330,8 +328,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_ip3fm")
 theme_override_font_sizes/font_size = 60
-text = "CONTRÔLEs
-"
+text = "CONTROLS"
 uppercase = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer"]
@@ -358,7 +355,7 @@ size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_o1ge4")
 theme_override_font_sizes/font_size = 35
-text = "Aller en haut"
+text = "KEY_UP"
 vertical_alignment = 1
 uppercase = true
 
@@ -387,7 +384,7 @@ size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_o1ge4")
 theme_override_font_sizes/font_size = 35
-text = "Aller en bas"
+text = "KEY_DOWN"
 vertical_alignment = 1
 uppercase = true
 
@@ -416,7 +413,7 @@ size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_o1ge4")
 theme_override_font_sizes/font_size = 35
-text = "Aller à gauche"
+text = "KEY_LEFT"
 vertical_alignment = 1
 uppercase = true
 
@@ -445,7 +442,7 @@ size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_o1ge4")
 theme_override_font_sizes/font_size = 35
-text = "Aller à droite"
+text = "KEY_RIGHT"
 vertical_alignment = 1
 uppercase = true
 
@@ -464,6 +461,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_60jhc")
 text = "D"
 
 [node name="ControlsInteractContainer" type="HBoxContainer" parent="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 800
 
@@ -474,7 +472,7 @@ size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_o1ge4")
 theme_override_font_sizes/font_size = 35
-text = "Intéragir"
+text = "KEY_INTERACT"
 vertical_alignment = 1
 uppercase = true
 
@@ -493,6 +491,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_60jhc")
 text = "E"
 
 [node name="ControlsInventoryContainer" type="HBoxContainer" parent="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 800
 
@@ -522,6 +521,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_60jhc")
 text = "I"
 
 [node name="ControlsMapContainer" type="HBoxContainer" parent="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 800
 
@@ -551,6 +551,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_60jhc")
 text = "M"
 
 [node name="ControlsQuestsContainer" type="HBoxContainer" parent="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 800
 
@@ -586,7 +587,7 @@ size_flags_vertical = 8
 [node name="ControlsBackButton" type="Button" parent="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer"]
 custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 6
 size_flags_vertical = 8
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -597,11 +598,11 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_a24qc")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_a24qc")
 theme_override_styles/normal = SubResource("StyleBoxTexture_60jhc")
-text = "Retour"
+text = "VALIDATE"
 
-[node name="VSeparator" type="VSeparator" parent="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-theme_override_styles/separator = SubResource("StyleBoxTexture_4xlvs")
-
+[connection signal="pressed" from="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsUpContainer/ControlsUpButton" to="." method="_on_controls_up_button_pressed"]
+[connection signal="pressed" from="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsDownContainer/ControlsDownButton" to="." method="_on_controls_down_button_pressed"]
+[connection signal="pressed" from="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsLeftContainer/ControlsLeftButton" to="." method="_on_controls_left_button_pressed"]
+[connection signal="pressed" from="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsRightContainer/ControlsRightButton" to="." method="_on_controls_right_button_pressed"]
+[connection signal="pressed" from="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/ControlsSettingsButtonsContainer/ControlsInteractContainer/ControlsInteractButton" to="." method="_on_controls_interact_button_pressed"]
 [connection signal="pressed" from="ControlsSettingsScreenContainer/ControlsSettingsScreen/NinePatchRect/MarginContainer/ControlsBackButtonContainer/ControlsBackButton" to="." method="_on_controls_back_button_pressed"]

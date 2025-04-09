@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cadp578yf3omq"]
+[gd_scene load_steps=9 format=3 uid="uid://cadp578yf3omq"]
 
 [ext_resource type="Script" uid="uid://bscaoqqu1e06b" path="res://Scripts/musicsandsounds.gd" id="1_76qaw"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_pvcbm"]
@@ -188,8 +188,6 @@ region_rect = Rect2(275, 212, 90, 25)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pvcbm"]
 texture = ExtResource("2_pvcbm")
 region_rect = Rect2(275, 178, 90, 27)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ggbs6"]
 
 [node name="MusicsAndSounds" type="Node2D"]
 script = ExtResource("1_76qaw")
@@ -560,7 +558,7 @@ size_flags_vertical = 8
 [node name="MusicsAndSoundsBackButton" type="Button" parent="MusicsAndSoundsSettingsScreenContainer/MusicsAndSoundsSettingsScreen/NinePatchRect/MarginContainer/MucisAndSoundsBackButtonContainer"]
 custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 6
 size_flags_vertical = 8
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -571,12 +569,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_pl7e0")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_pl7e0")
 theme_override_styles/normal = SubResource("StyleBoxTexture_pvcbm")
-text = "RETOUR"
-
-[node name="VSeparator" type="VSeparator" parent="MusicsAndSoundsSettingsScreenContainer/MusicsAndSoundsSettingsScreen/NinePatchRect/MarginContainer/MucisAndSoundsBackButtonContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-theme_override_styles/separator = SubResource("StyleBoxTexture_ggbs6")
+text = "VALIDATE"
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="MusicsAndSoundsSettingsScreenContainer/MusicsAndSoundsSettingsScreen/NinePatchRect/MarginContainer/MucisAndSoundsBackButtonContainer/MusicsAndSoundsBackButton" to="." method="_on_musics_and_sounds_back_button_pressed"]
