@@ -1,6 +1,7 @@
 extends Node2D
 
 # Variables pour stocker les stats (pour conserver les valeurs)
+var win = false
 var total_damage_player = 0
 var total_heal_player = 0
 var total_shield_player = 0
@@ -47,7 +48,6 @@ func _ready() -> void:
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_on_get_creatures_request_completed"))
 	
-	# Construire l'URL en convertissant l'ID en entier pour éviter "10.0"
 	var url = "https://contagioncreaturesapi.vercel.app/api/creatures/1/drops"
 	print("URL demandée :", url)
 	var err = http_request.request(url)
@@ -56,7 +56,7 @@ func _ready() -> void:
 	
 
 func set_all_text_variable(
-		total_damage_player, total_heal_player, total_shield_player,
+		win, total_damage_player, total_heal_player, total_shield_player,
 		max_damage_player, max_heal_player, max_shield_player,
 		total_damage_enemy, total_heal_enemy, total_shield_enemy,
 		max_damage_enemy, max_heal_enemy, max_shield_enemy,
@@ -104,7 +104,11 @@ func set_all_text_variable(
 	succes_enemy.text             += " : " + str(echec_attaque_ennemye) + " | " + str(normal_attaque_ennemye) + " | " + str(critique_attaque_ennemye)
 	
 	# Mise à jour du label Drop avec l'ID de l'ennemi
-	drops.text += " : " + str(ennemy_id)
+	if win == true:
+		drops.text = "Victoire ! vous allez recevoir ces drops : "
+
+	else:
+		drops.text = "Défaite ! vous avez perdu ces potentiel drops : "
 	
 	# Attente pour s'assurer que l'interface est mise à jour (Godot 4)
 	await get_tree().create_timer(4.0).timeout
@@ -123,7 +127,7 @@ func _on_get_creatures_request_completed(result: int, response_code: int, header
 
 	# Si data est un dictionnaire et qu'il contient une clé "message", on affiche ce message
 	if typeof(data) == TYPE_DICTIONARY and data.has("message"):
-		drops.text = data["message"]
+		drops.text += data["message"]
 	# Sinon, si data est un array, on récupère les noms de tous les items et on les affiche séparés par des virgules.
 	elif typeof(data) == TYPE_ARRAY:
 		var names = ""
@@ -132,7 +136,7 @@ func _on_get_creatures_request_completed(result: int, response_code: int, header
 		# Supprime la dernière virgule et l'espace
 		if names.length() > 2:
 			names = names.substr(0, names.length() - 2)
-		drops.text = names
+		drops.text += names
 	else:
 		drops.text = "Format de réponse inattendu"
 	

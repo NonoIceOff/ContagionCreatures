@@ -27,6 +27,10 @@ Quests="*res://Scripts/Quests.gd"
 Controllers="*res://Scripts/Controllers.gd"
 MusicsPlayer="*res://Scenes/musics_player.tscn"
 
+[debug]
+
+settings/physics_interpolation/enable_warnings=false
+
 [display]
 
 window/size/viewport_width=1920
@@ -42,7 +46,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/LPCAnimatedSprite/plugin.cfg", "res://addons/copilot_godot/addons/copilot/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/LPCAnimatedSprite/plugin.cfg")
 
 [global_group]
 
