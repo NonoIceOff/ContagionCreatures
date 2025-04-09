@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bscaoqqu1e06b" path="res://Scripts/musicsandsounds.gd" id="1_76qaw"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_pvcbm"]
+[ext_resource type="Script" uid="uid://l0bg0rmfgfar" path="res://Scripts/Boutons/Ok.gd" id="2_6liay"]
+[ext_resource type="Shader" uid="uid://c7r3th281ihh2" path="res://Inventory/inv_animals.gdshader" id="2_cqopc"]
+[ext_resource type="Texture2D" uid="uid://b12y342v323gw" path="res://Textures/Inventaire/grey_pressed.png" id="3_4duy2"]
+[ext_resource type="AudioStream" uid="uid://2q10byvr4wgh" path="res://Sounds/coinc.mp3" id="3_xj248"]
+[ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="4_pgcpr"]
+[ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_uixee"]
+[ext_resource type="Script" uid="uid://b8wsd0kxnsqvy" path="res://Scripts/Titre.gd" id="5_dejip"]
 [ext_resource type="Script" uid="uid://sxo002d04fdm" path="res://Scenes/musics.gd" id="6_4vfut"]
 
 [sub_resource type="FontFile" id="FontFile_1ta0a"]

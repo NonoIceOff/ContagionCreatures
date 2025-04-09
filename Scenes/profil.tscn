@@ -1,38 +1,126 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbflfw68ef4rh"]
+[gd_scene load_steps=11 format=3 uid="uid://cbflfw68ef4rh"]
 
 [ext_resource type="Script" uid="uid://0cxkvm2a4kat" path="res://Scripts/profil.gd" id="1_stqfv"]
 [ext_resource type="Texture2D" uid="uid://bv55etaq3hgwq" path="res://Textures/user_profile.png" id="1_t1eos"]
+[ext_resource type="Shader" uid="uid://c7r3th281ihh2" path="res://Inventory/inv_animals.gdshader" id="2_3s8wn"]
+[ext_resource type="Texture2D" uid="uid://c22ivb1nlbj55" path="res://Textures/background_multiplayer.png" id="3_3s8wn"]
 [ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="3_ufvdp"]
+[ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_abwh1"]
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="5_8wsmv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2qpn"]
+shader = ExtResource("2_3s8wn")
+shader_parameter/scroll_speed = 1.0
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 0.1
+shader_parameter/repeat_y = 0.2
+shader_parameter/row_offset = 5.0
+shader_parameter/texture_to_scroll = ExtResource("3_3s8wn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abwh1"]
+texture = ExtResource("5_8wsmv")
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e2qpn"]
+texture = ExtResource("5_8wsmv")
+region_rect = Rect2(275, 178, 90, 27)
 
 [node name="Profil" type="Node2D"]
 script = ExtResource("1_stqfv")
 
+[node name="BackgroundTiles" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_e2qpn")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_abwh1")
+stretch_mode = 1
+
+[node name="BackToMenu" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 424.0
+offset_bottom = 84.0
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_abwh1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_abwh1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e2qpn")
+text = "RETOUR AU MENU"
+
 [node name="Login" type="Button" parent="."]
-offset_left = 160.0
-offset_top = 56.0
-offset_right = 448.0
-offset_bottom = 160.0
-text = "se connecter"
+offset_left = 120.0
+offset_top = 312.0
+offset_right = 670.0
+offset_bottom = 440.0
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_abwh1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_abwh1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e2qpn")
+text = "SE CONNECTER"
 
 [node name="Register" type="Button" parent="."]
-offset_left = 160.0
-offset_top = 184.0
-offset_right = 448.0
-offset_bottom = 288.0
-text = "s'inscrire"
+offset_left = 120.0
+offset_top = 456.0
+offset_right = 670.0
+offset_bottom = 584.0
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_abwh1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_abwh1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e2qpn")
+text = "S'INSCRIRE"
 
 [node name="Disconnect" type="Button" parent="."]
-offset_left = 40.0
-offset_top = 896.0
-offset_right = 328.0
-offset_bottom = 1000.0
-text = "se deconnecter"
+offset_left = 16.0
+offset_top = 992.0
+offset_right = 424.0
+offset_bottom = 1068.0
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_abwh1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_abwh1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e2qpn")
+text = "SE DECONNECTER"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="ColorRect" parent="."]
 offset_left = 512.0
 offset_top = 64.0
 offset_right = 1432.0
 offset_bottom = 256.0
+color = Color(1, 0, 0.223529, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel"]
 texture_filter = 1
@@ -48,6 +136,7 @@ offset_right = 736.0
 offset_bottom = 80.0
 theme_override_font_sizes/font_size = 64
 text = "pas connecte"
+uppercase = true
 
 [node name="points" type="Label" parent="Panel"]
 layout_mode = 0
@@ -172,17 +261,10 @@ theme_override_font_sizes/bold_font_size = 64
 bbcode_enabled = true
 text = "[center][wave amp=50.0 freq=5.0 connected=1]En attente...[/wave]"
 
-[node name="BackToMenu" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 240.0
-offset_bottom = 48.0
-text = "Retour au menu"
-
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="Login" to="." method="_on_login_pressed"]
 [connection signal="pressed" from="Register" to="." method="_on_register_pressed"]
 [connection signal="pressed" from="Disconnect" to="." method="_on_disconnect_pressed"]
 [connection signal="request_completed" from="GetUser" to="." method="_on_get_user_request_completed"]
 [connection signal="pressed" from="LoginPanel/ValidateLogin" to="." method="_on_validate_login_pressed"]
 [connection signal="pressed" from="RegisterPanel/ValidateRegister" to="." method="_on_validate_register_pressed"]
-[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
