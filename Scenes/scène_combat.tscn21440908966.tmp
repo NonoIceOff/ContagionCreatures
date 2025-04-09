@@ -1,6 +1,7 @@
-[gd_scene load_steps=41 format=3 uid="uid://cuvepu5toqc02"]
+[gd_scene load_steps=33 format=3 uid="uid://cuvepu5toqc02"]
 
 [ext_resource type="Script" uid="uid://852ixppgjwjo" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
+[ext_resource type="Texture2D" uid="uid://dq3p13c5dyrhw" path="res://Textures/background-pixel2.png" id="1_psdp5"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="2_dxowc"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="5_4uere"]
@@ -14,7 +15,34 @@
 [ext_resource type="AudioStream" uid="uid://m31hopp2f6ib" path="res://Sounds/Ice Shard.mp3" id="13_ggiij"]
 [ext_resource type="AudioStream" uid="uid://b87m4fatlldq1" path="res://Sounds/Magic Barrier.mp3" id="14_62ako"]
 [ext_resource type="Texture2D" uid="uid://k8osxe2tlhju" path="res://Textures/Animals/eagle_Player.png" id="15_dunku"]
-[ext_resource type="Texture2D" uid="uid://d1b1etkxtnxyq" path="res://Textures/Backgrounds/untitled_0002.png" id="16_wh47d"]
+
+[sub_resource type="Animation" id="Animation_yxopx"]
+resource_name = "blink & knockback"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.300563, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.729412, 0.729412, 0.729412, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.300563, 0.398962),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-5, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_wh47d"]
 length = 0.001
@@ -41,82 +69,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("shield_ennemy:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../ContainerMob/EnnemyeSprite/particles_ennemy:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("shield_player:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("particles_player:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_yxopx"]
-resource_name = "blink & knockback"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.729412, 0.729412, 0.729412, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-5, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_rfeug"]
@@ -147,88 +99,12 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(5, 0), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_mmxg4"]
-resource_name = "heal_player"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("particles_player:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.980051),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_nwkt3"]
-resource_name = "heal_ennemye"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../ContainerMob/EnnemyeSprite/particles_ennemy:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.992734),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_2ob4d"]
-resource_name = "shield_ennemy"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shield_ennemy:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_8y4c2"]
-resource_name = "shield_player"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shield_player:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.99504),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rfeug"]
 _data = {
 &"RESET": SubResource("Animation_wh47d"),
 &"blink & knockback": SubResource("Animation_yxopx"),
-&"blink & knockback ennemye": SubResource("Animation_rfeug"),
-&"heal_ennemye": SubResource("Animation_nwkt3"),
-&"heal_player": SubResource("Animation_mmxg4"),
-&"shield_ennemy": SubResource("Animation_2ob4d"),
-&"shield_player": SubResource("Animation_8y4c2")
+&"blink & knockback ennemye": SubResource("Animation_rfeug")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yxopx"]
-
-[sub_resource type="Gradient" id="Gradient_wh47d"]
-offsets = PackedFloat32Array(0, 0.0121951, 0.603659, 0.859756)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0.52549, 1, 1, 1, 0.129412)
-
-[sub_resource type="Gradient" id="Gradient_sjlwb"]
-offsets = PackedFloat32Array(0, 0.00609756, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.745098, 0.745098, 0.745098, 0, 1, 1, 1, 1)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2b6j8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ui4"]
 bg_color = Color(0.619608, 0.423529, 0.972549, 1)
@@ -448,7 +324,7 @@ format = 2
 offset_left = 1.0
 offset_right = 1922.0
 offset_bottom = 1083.0
-texture = ExtResource("16_wh47d")
+texture = ExtResource("1_psdp5")
 
 [node name="ContainerPLAYER" type="Control" parent="."]
 layout_mode = 3
@@ -600,7 +476,7 @@ vertical_alignment = 1
 
 [node name="EnnemyeSprite" type="Sprite2D" parent="ContainerMob"]
 modulate = Color(0.728822, 0.728822, 0.728822, 1)
-position = Vector2(-270, 707)
+position = Vector2(-272, 696)
 scale = Vector2(4.13185, 4.6326)
 texture = ExtResource("6_i001t")
 
@@ -609,46 +485,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_rfeug")
 }
 
-[node name="particles_ennemy" type="CPUParticles2D" parent="ContainerMob/EnnemyeSprite"]
-material = SubResource("ShaderMaterial_yxopx")
-position = Vector2(-0.484036, 18.3482)
-scale = Vector2(0.242022, 0.215862)
-emitting = false
-amount = 64
-emission_shape = 3
-emission_rect_extents = Vector2(106.41, 1)
-direction = Vector2(0, -1)
-spread = 0.0
-gravity = Vector2(1, -500)
-damping_max = 17.34
-scale_amount_min = 0.0
-scale_amount_max = 17.3
-color = Color(0, 1, 0, 1)
-color_ramp = SubResource("Gradient_wh47d")
-color_initial_ramp = SubResource("Gradient_sjlwb")
-
-[node name="shield_ennemy" type="CPUParticles2D" parent="ContainerMob/EnnemyeSprite"]
-modulate = Color(1, 1, 1, 0.137255)
-material = SubResource("CanvasItemMaterial_2b6j8")
-emitting = false
-amount = 296
-emission_shape = 1
-emission_sphere_radius = 21.7
-direction = Vector2(0, 0)
-gravity = Vector2(0, 0)
-angular_velocity_min = 5.0
-angular_velocity_max = 5.0
-orbit_velocity_min = 0.5
-orbit_velocity_max = 0.5
-scale_amount_min = 12.25
-scale_amount_max = 17.25
-color = Color(0.0823529, 0.027451, 1, 1)
-
 [node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
 position = Vector2(1, 0)
 
 [node name="Player-1Tile-set" type="Sprite2D" parent="CharacterBody2D3"]
-position = Vector2(398, 812)
+position = Vector2(903, 984)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_1fplo")
 region_enabled = true
@@ -660,7 +501,7 @@ position = Vector2(-12.999, -1.99902)
 [node name="OldGuyWhoLostIsCramptéReal" type="Sprite2D" parent="Mob"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(1548, 816.999)
+position = Vector2(980.999, 777.999)
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_dxowc")
 region_enabled = true
@@ -955,7 +796,6 @@ stream = ExtResource("12_f2f2j")
 stream = ExtResource("13_ggiij")
 
 [node name="Spell4_sound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(50, 39)
 stream = ExtResource("14_62ako")
 
 [node name="Spell1_icon" type="Sprite2D" parent="."]
@@ -977,7 +817,7 @@ scale = Vector2(0.0442489, -0.0465564)
 
 [node name="EaglePlayer" type="Sprite2D" parent="."]
 modulate = Color(0.728822, 0.728822, 0.728822, 1)
-position = Vector2(595, 828)
+position = Vector2(576, 920)
 scale = Vector2(4.76172, 4.29492)
 texture = ExtResource("15_dunku")
 
@@ -985,41 +825,6 @@ texture = ExtResource("15_dunku")
 libraries = {
 &"": SubResource("AnimationLibrary_rfeug")
 }
-
-[node name="particles_player" type="CPUParticles2D" parent="EaglePlayer"]
-material = SubResource("ShaderMaterial_yxopx")
-position = Vector2(0.210007, 16.0655)
-emitting = false
-amount = 64
-emission_shape = 3
-emission_rect_extents = Vector2(20, 1)
-direction = Vector2(0, -1)
-spread = 0.0
-gravity = Vector2(1, -500)
-damping_max = 17.34
-scale_amount_min = 0.0
-scale_amount_max = 17.3
-color = Color(0, 1, 0, 1)
-color_ramp = SubResource("Gradient_wh47d")
-color_initial_ramp = SubResource("Gradient_sjlwb")
-
-[node name="shield_player" type="CPUParticles2D" parent="EaglePlayer"]
-modulate = Color(1, 1, 1, 0.137255)
-material = SubResource("CanvasItemMaterial_2b6j8")
-position = Vector2(0.630024, 3.02683)
-emitting = false
-amount = 296
-emission_shape = 1
-emission_sphere_radius = 21.7
-direction = Vector2(0, 0)
-gravity = Vector2(0, 0)
-angular_velocity_min = 5.0
-angular_velocity_max = 5.0
-orbit_velocity_min = 0.5
-orbit_velocity_max = 0.5
-scale_amount_min = 12.25
-scale_amount_max = 17.25
-color = Color(0.0823529, 0.027451, 1, 1)
 
 [connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
 [connection signal="pressed" from="Spell3" to="." method="_on_spell_3_pressed"]
