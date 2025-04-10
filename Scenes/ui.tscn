@@ -1,21 +1,23 @@
-[gd_scene load_steps=20 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=22 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" uid="uid://c00pkg3a1dyrk" path="res://Scripts/ui.gd" id="1_p3l0n"]
 [ext_resource type="Texture2D" uid="uid://bpihtnygfbdmj" path="res://Textures/Particules/flocon_neige.png" id="2_flbvo"]
 [ext_resource type="PackedScene" uid="uid://diqbutm2ry0bg" path="res://Scenes/quest_menu.tscn" id="3_850rj"]
-[ext_resource type="Script" uid="uid://cxfklkqj4k4ut" path="res://Scripts/aurore_boreales.gd" id="3_xbp8f"]
+[ext_resource type="Script" uid="uid://bkh8lxp5m5u61" path="res://Scripts/aurore_boreales.gd" id="3_xbp8f"]
 [ext_resource type="Texture2D" uid="uid://knm4frun7pwf" path="res://Textures/Barre-PV-Combat2.png" id="5_26lyu"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="6_reotg"]
 [ext_resource type="PackedScene" uid="uid://cs1t5u15aehqw" path="res://Scenes/minimap.tscn" id="7_e7f4u"]
 [ext_resource type="Texture2D" uid="uid://bhtfor6q6se7" path="res://Textures/COIN.png" id="7_i5pcq"]
 [ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="10_d42i4"]
-[ext_resource type="Script" uid="uid://dqrcdvccxjurk" path="res://Scripts/info_touches.gd" id="12_7biym"]
+[ext_resource type="Script" uid="uid://dryjk0sogdq1a" path="res://Scripts/info_touches.gd" id="12_7biym"]
 [ext_resource type="Texture2D" uid="uid://cmdkmflgo832d" path="res://Textures/Buttons/joypads/joybar_+.png" id="13_td3vo"]
 [ext_resource type="Texture2D" uid="uid://c0wv3un8wh42k" path="res://Textures/Buttons/joypads/joybar_r.png" id="14_6d7q7"]
 [ext_resource type="Texture2D" uid="uid://da8ubc6ik4rjv" path="res://Textures/Buttons/joypads/joybar_l.png" id="15_x3csd"]
 [ext_resource type="Texture2D" uid="uid://c7uvncushvljk" path="res://Textures/Buttons/joypads/joybar_-.png" id="16_8jrwf"]
 [ext_resource type="Texture2D" uid="uid://b1tpqldiveuik" path="res://Textures/Buttons/keyboard/keyboard_p.png" id="17_de75t"]
+[ext_resource type="Script" uid="uid://cm4gesp4y5y2m" path="res://Scenes/slots_shown.gd" id="18_fcexb"]
+[ext_resource type="Texture2D" uid="uid://b0svu776o5qoh" path="res://Textures/slot.png" id="18_lkjmk"]
 [ext_resource type="PackedScene" uid="uid://c65ywo6ftkvtc" path="res://Scenes/player_xp.tscn" id="18_mxn78"]
 
 [sub_resource type="Curve" id="Curve_qti3j"]
@@ -89,11 +91,12 @@ hue_variation_min = -0.1
 hue_variation_max = 0.1
 hue_variation_curve = SubResource("Curve_qti3j")
 
-[node name="QuestTextBar" type="RichTextLabel" parent="CPUParticles2D"]
+[node name="QuestTextBar" type="RichTextLabel" parent="CPUParticles2D" groups=["ui"]]
 offset_left = -1416.0
 offset_top = -32.0
 offset_right = -16.0
 offset_bottom = 110.0
+mouse_filter = 2
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
@@ -109,6 +112,7 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[right]NO_QUEST"
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Cinematic" type="Control" parent="."]
 visible = false
@@ -192,7 +196,7 @@ theme_override_fonts/font = ExtResource("10_d42i4")
 theme_override_font_sizes/font_size = 16
 text = "0"
 
-[node name="CoinsLabel" type="RichTextLabel" parent="Stats"]
+[node name="CoinsLabel" type="RichTextLabel" parent="Stats" groups=["ui"]]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 80.0
@@ -280,5 +284,52 @@ position = Vector2(-24, 162)
 scale = Vector2(2, 2)
 texture = ExtResource("17_de75t")
 
-[node name="XPPanel" parent="." instance=ExtResource("18_mxn78")]
+[node name="XPPanel" parent="." groups=["ui"] instance=ExtResource("18_mxn78")]
 position = Vector2(1693, 715)
+
+[node name="SlotsShown" type="HBoxContainer" parent="." groups=["ui"]]
+offset_left = 24.0
+offset_top = 120.0
+offset_right = 64.0
+offset_bottom = 160.0
+theme_override_constants/separation = 86
+script = ExtResource("18_fcexb")
+
+[node name="1" type="Control" parent="SlotsShown"]
+layout_mode = 2
+
+[node name="Slot1" type="Sprite2D" parent="SlotsShown/1"]
+texture_filter = 1
+position = Vector2(33, 41)
+scale = Vector2(2, 2)
+texture = ExtResource("18_lkjmk")
+
+[node name="Creature" type="Sprite2D" parent="SlotsShown/1"]
+position = Vector2(33, 41)
+scale = Vector2(0.1, 0.1)
+
+[node name="2" type="Control" parent="SlotsShown"]
+layout_mode = 2
+
+[node name="Slot1" type="Sprite2D" parent="SlotsShown/2"]
+texture_filter = 1
+position = Vector2(33, 41)
+scale = Vector2(2, 2)
+texture = ExtResource("18_lkjmk")
+
+[node name="Creature" type="Sprite2D" parent="SlotsShown/2"]
+position = Vector2(33, 41)
+scale = Vector2(0.1, 0.1)
+
+[node name="3" type="Control" parent="SlotsShown"]
+layout_mode = 2
+
+[node name="Slot1" type="Sprite2D" parent="SlotsShown/3"]
+texture_filter = 1
+position = Vector2(33, 41)
+scale = Vector2(2, 2)
+texture = ExtResource("18_lkjmk")
+
+[node name="Creature" type="Sprite2D" parent="SlotsShown/3"]
+position = Vector2(33, 41)
+scale = Vector2(0.1, 0.1)

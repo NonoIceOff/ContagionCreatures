@@ -103,7 +103,7 @@ script = ExtResource("1_jkw46")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_v75dw")
+&"": SubResource("AnimationLibrary_v75dw")
 }
 autoplay = "pin"
 
@@ -184,8 +184,8 @@ self_modulate = Color(1, 1, 1, 0.588235)
 z_index = -1
 position = Vector2(0, -8)
 amount = 5
-local_coords = true
 texture = ExtResource("4_ltftm")
+local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(4, 10)
 gravity = Vector2(0, -16)
@@ -207,8 +207,8 @@ self_modulate = Color(1, 1, 1, 0.588235)
 z_index = -1
 position = Vector2(0, -8)
 amount = 5
-local_coords = true
 texture = ExtResource("5_sf2co")
+local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(4, 10)
 gravity = Vector2(0, -16)
@@ -230,8 +230,8 @@ self_modulate = Color(1, 1, 1, 0.588235)
 z_index = -1
 position = Vector2(0, -8)
 amount = 5
-local_coords = true
 texture = ExtResource("6_xlw0t")
+local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(4, 10)
 gravity = Vector2(0, -16)
@@ -253,8 +253,8 @@ self_modulate = Color(1, 1, 1, 0.588235)
 z_index = -1
 position = Vector2(0, -8)
 amount = 5
-local_coords = true
 texture = ExtResource("7_qcxhw")
+local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(4, 10)
 gravity = Vector2(0, -16)

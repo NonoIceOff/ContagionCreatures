@@ -79,6 +79,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Recompenses" type="Label" parent="UI/WIN"]
+layout_mode = 0
 offset_top = 168.0
 offset_right = 1168.0
 offset_bottom = 376.0
@@ -89,6 +90,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Retour" type="Button" parent="UI/WIN"]
+layout_mode = 0
 offset_left = 168.0
 offset_top = 376.0
 offset_right = 984.0
@@ -195,6 +197,7 @@ stretch_mode = 1
 
 [node name="Label" type="Label" parent="MobChoices"]
 texture_filter = 1
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 160.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.392157)

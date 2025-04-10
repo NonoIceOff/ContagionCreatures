@@ -1,32 +1,15 @@
 [
-  {
-	"description": "A small, sneaky creature that likes to ambush travelers.",
-	"hp": 3000,
-	"id": 1,
-	"is_infected": false,
-	"name": "Goblin",
-	"speed": "1.50",
-	"texture": "res://Textures/Animals/FROG.png",
-	"type": "goblin"
-  },
-  {
-	"description": "AA large spider with venomous fangs.",
-	"hp": 60,
-	"id": 7,
-	"is_infected": false,
-	"name": "Giant Spider",
-	"speed": "1.50",
-	"texture": "res://Textures/Animals/FROG.png",
-	"type": "spider"
-  },
-  {
-	"description": "A gelatinous creature that absorbs whatever it touches.",
-	"hp": 20,
-	"id": 6,
-	"is_infected": false,
-	"name": "Slime",
-	"speed": "0.50",
-	"texture": "res://Textures/Animals/FROG.png",
-	"type": "slime"
-  }
+	{
+		"description": "A powerful witch that uses ice element.",
+		"element1": "ice",
+		"element2": "water",
+		"hp": 150.0,
+		"id": 10.0,
+		"is_infected": true,
+		"name": "Ice witch",
+		"speed": "1.40",
+		"texture": "demon_texture.png",
+		"texture_back": null,
+		"type": "witch"
+	}
 ]

@@ -78,7 +78,7 @@ func _process(delta):
 	}
 
 	for pin_name in pins.keys():
-		var pin_global = pins[pin_name]/2
+		var pin_global = Vector2(pins[pin_name][0],pins[pin_name][1])/2
 		var pin_relative = (pin_global - camera.position) * map_scale
 		var pin_minimap_pos = pin_relative + minimap_center
 

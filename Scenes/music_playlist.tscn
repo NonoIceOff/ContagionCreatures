@@ -1,46 +1,32 @@
-[gd_scene load_steps=12 format=3 uid="uid://bya63mfapts6i"]
+[gd_scene load_steps=8 format=3 uid="uid://bya63mfapts6i"]
 
 [ext_resource type="Script" uid="uid://c4ysyu8bsycm2" path="res://Scripts/music_playlist.gd" id="1_haxuc"]
 [ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="2_6g602"]
-[ext_resource type="Shader" uid="uid://caac6ffe48o4h" path="res://Inventory/inv_animals.gdshader" id="2_ay82u"]
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_ypnw8"]
 [ext_resource type="AudioStream" uid="uid://dgv6kihqgq3qw" path="res://Sounds/music/combat_1.mp3" id="3_0bk86"]
-[ext_resource type="Texture2D" uid="uid://dh2hkjp0twcwb" path="res://Textures/Inventaire/tan_pressed.png" id="3_lemrr"]
-[ext_resource type="Script" uid="uid://yvbw547mklrw" path="res://Scripts/Retour.gd" id="4_77fsf"]
-[ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_nlmcy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6uko5"]
-shader = ExtResource("2_ay82u")
-shader_parameter/scroll_speed = 1.0
-shader_parameter/angle_degrees = 45.0
-shader_parameter/repeat_x = 0.5
-shader_parameter/repeat_y = 0.5
-shader_parameter/row_offset = 2.5
-shader_parameter/texture_to_scroll = ExtResource("3_lemrr")
+[sub_resource type="FontFile" id="FontFile_ypnw8"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpvjp"]
-bg_color = Color(0.654902, 0.298039, 0.14902, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tnj0h"]
+texture = ExtResource("2_ypnw8")
+region_rect = Rect2(275, 212, 90, 25)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jknh3"]
-bg_color = Color(0.717647, 0.203922, 0, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0fb6"]
-bg_color = Color(0.654902, 0.298039, 0.160784, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0b1q"]
+texture = ExtResource("2_ypnw8")
+region_rect = Rect2(275, 178, 90, 27)
 
 [node name="MusicPlaylist" type="Control"]
 layout_mode = 3
@@ -51,9 +37,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_haxuc")
 
-[node name="BackgroundTiles" type="TextureRect" parent="."]
+[node name="BackgroundTiles" type="NinePatchRect" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_6uko5")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -66,8 +51,8 @@ offset_right = 960.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_nlmcy")
-stretch_mode = 1
+texture = ExtResource("2_ypnw8")
+region_rect = Rect2(462, 139, 5, 5)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -75,6 +60,7 @@ offset_left = 40.0
 offset_top = 32.0
 offset_right = 561.0
 offset_bottom = 102.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_6g602")
 theme_override_font_sizes/font_size = 64
 text = "PLAYLIST MUSICALE (ost)"
@@ -138,20 +124,23 @@ theme_override_fonts/font = ExtResource("2_6g602")
 theme_override_font_sizes/font_size = 48
 text = "II"
 
-[node name="Retour" type="Button" parent="." groups=["buttons"]]
+[node name="Retour" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1656.0
-offset_top = 32.0
-offset_right = 1885.0
-offset_bottom = 88.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 35
-theme_override_styles/hover = SubResource("StyleBoxFlat_vpvjp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jknh3")
-theme_override_styles/normal = SubResource("StyleBoxFlat_s0fb6")
-text = "BACK"
-script = ExtResource("4_77fsf")
+offset_left = 1679.0
+offset_top = 24.0
+offset_right = 1892.0
+offset_bottom = 117.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_ypnw8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_tnj0h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tnj0h")
+theme_override_styles/normal = SubResource("StyleBoxTexture_r0b1q")
+text = "RETOUR"
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
-[connection signal="pressed" from="Retour" to="Retour" method="_on_retour_pressed"]
+[connection signal="pressed" from="Retour" to="." method="_on_retour_pressed"]

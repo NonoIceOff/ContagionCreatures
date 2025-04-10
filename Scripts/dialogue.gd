@@ -58,7 +58,11 @@ func show_next_dialogue():
 
 			# Vérifier et exécuter l'action associée
 			if dialogue.has("action") and dialogue["action"] is String and has_method(dialogue["action"]):
-				call(dialogue["action"])
+				if dialogue.has("params"):
+					callv(dialogue["action"], dialogue["params"])
+				else:
+					call(dialogue["action"])
+
 	else:
 		end_dialogue()
 
@@ -107,7 +111,16 @@ func _on_choice_pressed(choice: Dictionary):
 
 	# Vérifier et exécuter l'action associée
 	if choice.has("action") and choice["action"] is String and has_method(choice["action"]):
-		call(choice["action"])
+		if choice.has("params"):
+			print("action params")
+			print(choice["action"])
+			print(choice["params"])
+			callv(choice["action"], choice["params"])
+		else:
+			print("action")
+			call(choice["action"])
+
+
 
 ### ✅ **Terminer le dialogue**
 func end_dialogue():
@@ -191,3 +204,35 @@ func _on_watch_camera(position:Vector2, speed, duration):
 	Global.smooth_zoom(camera[0], 1.8, Vector2(0,0), 0.1)
 	is_typing = false 
 	show_next_dialogue()
+
+func _on_set_variable(variable_path: String, value):
+	var parts = variable_path.split(".")
+	if parts.size() != 2:
+		push_error("Format incorrect. Utiliser 'Singleton.variable'")
+		return
+	
+	var singleton_name = parts[0]
+	var variable_name = parts[1]
+
+	if has_node("/root/" + singleton_name):
+		var singleton = get_node("/root/" + singleton_name)
+		
+		# Vérifie si la propriété existe (sinon on la crée quand même, GDScript est permissif)
+		if singleton.has_method("set"):
+			singleton.set(variable_name, value)
+		else:
+			push_error("Impossible de définir la propriété '%s' sur %s." % [variable_name, singleton_name])
+	else:
+		push_error("Le singleton '%s' n'existe pas." % singleton_name)
+
+
+func _on_choose_creature(variable_path):
+	var parts = int(variable_path)
+	print(parts)
+	Global.tutorial_stade = 11
+	Global.add_creature(Global.starters_id[parts-1])
+
+func _on_launch_battle():
+	_on_dialogue_end()
+	Global.tutorial_stade = 12
+	SceneLoader.load_scene("res://Scenes/scène_combat.tscn")

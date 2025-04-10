@@ -64,7 +64,7 @@ func add_quest(quest_data: Dictionary) -> void:
 		quest_data.get("long_description"),
 		quest_data.get("descriptions"),
 		quest_data.get("mini_descriptions"),
-		quest_data.get("pin_positions").map(func(pos): return Vector2(pos.x, pos.y)),
+		quest_data.get("pin_positions").map(func(pos):return [pos.x, pos.y, pos.map]),
 		quest_data.get("pnj_data").map(func(pnj_entry):
 				var pnj
 				if pnj_entry[0] == "bagird_pnj":
@@ -111,12 +111,14 @@ func _ready() -> void:
 
 func init_pnj(map):
 	for i in quests.size():
-		spawn_pnj(map, i)
+		spawn_pnj(i)
 
-func spawn_pnj(map, quest_id):
+func spawn_pnj(quest_id):
 	var i = quest_id
 	var quest_stade = quests.get(i).stade
-	var pnj_position = quests.get(i).pin_positions[quests.get(i).stade]
+	var pnj_position = Vector2(quests.get(i).pin_positions[quests.get(i).stade][0], quests.get(i).pin_positions[quests.get(i).stade][1])
+	var map = quests.get(i).pin_positions[quests.get(i).stade][2]
+	print("Map sur pnj: " + map)
 	var dialogue_data = quests.get(i).pnj_data[quest_stade][1]
 	var pnj_data = quests.get(i).pnj_data[quest_stade][0]
 
@@ -129,7 +131,11 @@ func spawn_pnj(map, quest_id):
 	instance.dialogue_data = dialogue_data
 	instance.over_texture = pnj_data.over_texture
 	instance.under_texture = pnj_data.under_texture
-	get_node("/root/" + map).add_child(instance)
+	if get_node_or_null("/root/" + map) == null:
+		print("Map not found: " + map)
+		return
+	else:
+		get_node("/root/" + map).add_child(instance)
 
 func delete_pnj(map, quest_id):
 	print("oui")
@@ -141,7 +147,7 @@ func delete_pnj(map, quest_id):
 func respawn_pnj(map, quest_id):
 	delete_pnj(map, quest_id)
 	await get_tree().process_frame
-	spawn_pnj(map, quest_id)
+	spawn_pnj(quest_id)
 
 
 func quest_finished(i):

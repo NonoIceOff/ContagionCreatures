@@ -6,7 +6,7 @@ signal player_entered_door_signal
 @export var sprint_multiplier: float = 1.3
 
 @onready var animated_sprite: AnimatedSprite2D = $player1
-@onready var pause_menu = $"player1/2/CanvasLayer/PauseMenu"
+@onready var pause_menu = $"player1/2/CanvasLayer/GameUI/PopupMenu/PauseMenuScreenContainer"
 @onready var player_xp = get_node_or_null("/root/Map3/ui/XPPanel") 
 
 func entered_door():
@@ -26,8 +26,7 @@ func _physics_process(_delta: float) -> void:
 		var position_player_centered = (position+ Vector2(8, 8))/(16*3)
 		var tile_id = get_node("/root/Map3/TileMap/bush").get_cell_source_id(position_player_centered)
 		var random = randi() % 100
-		if tile_id == 1 and random == 1:
-
+		if tile_id == 1 and random == 1 and Global.tutorial_stade > 9:
 			Global.smooth_zoom(get_node("player1/2"), 4, Vector2(16,16), 0.1)
 			Global.ui_visible = false
 			await get_tree().create_timer(5).timeout
@@ -67,13 +66,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func PauseMenu():
-	if Global.paused == true:
-		pause_menu.show()
+	if Global.game_paused == false:
+		pause_menu.visible = true
 		Engine.time_scale = 0
-		Global.can_move = false
-	elif Global.paused == false:
-		pause_menu.hide()
+	elif Global.game_paused == true:
+		pause_menu.visible = false 
 		Engine.time_scale = 1
-		Global.can_move = true
 	
-	Global.paused = !Global.paused
+	Global.game_paused = !Global.game_paused

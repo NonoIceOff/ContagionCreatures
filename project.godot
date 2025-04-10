@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Contagion Creatures"
-run/main_scene="res://Scenes/menu.tscn"
+run/main_scene="uid://cyofep22rmi33"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Textures/pixil-frame-0_3.png"
@@ -26,6 +26,10 @@ Notifications="*res://Scenes/notifications.tscn"
 Quests="*res://Scripts/Quests.gd"
 Controllers="*res://Scripts/Controllers.gd"
 MusicsPlayer="*res://Scenes/musics_player.tscn"
+
+[debug]
+
+settings/physics_interpolation/enable_warnings=false
 
 [display]
 

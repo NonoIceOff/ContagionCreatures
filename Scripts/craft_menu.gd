@@ -12,7 +12,7 @@ extends Control
 @onready var exit_button = $CraftMenuScreen/NinePatchRect/ExitButton
 
 
-# Bouton de filtre des items de crafts
+
 @onready var weapon_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/WeaponButton
 @onready var ressource_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/RessourceButton
 @onready var item_farm_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/ItemFarmButton
@@ -20,7 +20,6 @@ extends Control
 @onready var special_item_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/SpecialItemButton
 @onready var all_filter_button_crafts = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/CraftsListContainer/FilterCraftHBoxContainer/AllButton
 
-# Bouton de filtre des items de l'inventaire
 
 @onready var weapon_filter_button_inventory = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer/WeaponButton
 @onready var ressource_filter_button_inventory = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer/RessourceButton
@@ -30,9 +29,8 @@ extends Control
 @onready var all_filter_button_inventory = $CraftMenuScreen/NinePatchRect/MarginContainer/MainContainer/ResourcesContainer/FilterCraftHBoxContainer/AllButton
 
 
-# Récupère les items du player
+
 var player_items = []  
-# Récupère les tout les items du jeu
 var all_items = []
 
 const API_ITEMS_URL = "https://contagioncreaturesapi.vercel.app/api/items"
@@ -50,7 +48,6 @@ func _ready():
 	craft_button.connect("pressed", Callable(self, "_on_craft_button_pressed"))
 	exit_button.connect("pressed", Callable(self, "_on_exit_button_pressed"))
 	
-		# Connexion des boutons de filtre pour les crafts
 	weapon_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Arme"))
 	ressource_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Ressource"))
 	item_farm_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("ItemFarm"))
@@ -58,7 +55,6 @@ func _ready():
 	special_item_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Special"))
 	all_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("All"))
 
-	# Connexion des boutons de filtre pour l'inventaire
 	weapon_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Arme"))
 	ressource_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Ressource"))
 	item_farm_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("ItemFarm"))
@@ -66,7 +62,7 @@ func _ready():
 	special_item_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Special"))
 	all_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("All"))
 
-		# Connexion des boutons de filtre pour les crafts
+	# Connexion des boutons de filtre pour les crafts #
 	weapon_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Arme"))
 	ressource_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Ressource"))
 	item_farm_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("ItemFarm"))
@@ -74,7 +70,7 @@ func _ready():
 	special_item_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("Special"))
 	all_filter_button_crafts.connect("pressed", Callable(self, "_on_craft_filter_pressed").bind("All"))
 
-	# Connexion des boutons de filtre pour l'inventaire
+	# Connexion des boutons de filtre pour l'inventaire #
 	weapon_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Arme"))
 	ressource_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("Ressource"))
 	item_farm_filter_button_inventory.connect("pressed", Callable(self, "_on_inventory_filter_pressed").bind("ItemFarm"))
