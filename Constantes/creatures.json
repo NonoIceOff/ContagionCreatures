@@ -1,15 +1,15 @@
 [
-	{
-		"description": "A powerful witch that uses ice element.",
-		"element1": "ice",
-		"element2": "water",
-		"hp": 150.0,
-		"id": 10.0,
-		"is_infected": true,
-		"name": "Ice witch",
-		"speed": "1.40",
-		"texture": "demon_texture.png",
-		"texture_back": null,
-		"type": "witch"
-	}
+  {
+    "description": "A powerful witch that uses ice element.",
+    "element1": "nature",
+    "element2": "null",
+    "hp": 1500.0,
+    "id": 10.0,
+    "is_infected": true,
+    "name": "Hypoclope",
+    "speed": "1.40",
+    "texture": "hypoclop_backward.png",
+    "texture_back": null,
+    "type": "witch"
+  }
 ]
