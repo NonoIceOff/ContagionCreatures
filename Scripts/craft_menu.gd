@@ -171,7 +171,7 @@ func display_player_items():
 		else:
 			print(" Texture introuvable pour :", item["name"])
 			texture = null
-		list_player_items.add_item(" x" + str(item["quantity"]), texture)
+		list_player_items.add_item(" x" + str(int(item["quantity"])), texture)
 
 func display_all_items():
 	list_all_items.clear()
@@ -212,7 +212,7 @@ func _on_item_selected(index: int) -> void:
 
 		for item in player_items:
 			if item["name"].to_lower() == ressource.to_lower():
-				quantity_available = item["quantity"]
+				quantity_available = int(item["quantity"])
 				if ResourceLoader.exists(item["texture"]):
 					texture = ResourceLoader.load(item["texture"])
 				break

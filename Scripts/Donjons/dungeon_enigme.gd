@@ -55,11 +55,11 @@ func intro():
 	var visible_text = 0
 	var intro_state = 0
 	get_node("CanvasLayer/DungeonTitle").visible = true
-	get_node("Player_One/2").zoom = Vector2(.4,.4)
-	get_node("Player_One/2").position = -get_node("Player_One").position+Vector2(0,350)
+	get_node("Control/TileMap/Player_One/player1/2").zoom = Vector2(.4,.4)
+	get_node("Control/TileMap/Player_One/player1/2").position = -get_node("Control/TileMap/Player_One/player1").position+Vector2(0,350)
 	for i in 100:
 		visible_text += 0.05
-		get_node("Player_One/2").zoom += Vector2(.001,.001)
+		get_node("Control/TileMap/Player_One/player1/2").zoom += Vector2(.001,.001)
 		get_node("CanvasLayer/DungeonTitle").modulate.a = visible_text
 		await get_tree().create_timer(0.1).timeout
 	intro_state = 1
@@ -69,10 +69,10 @@ func intro():
 		await get_tree().create_timer(0.1).timeout
 	intro_var = false
 	
-	get_node("Player_One/2").zoom = Vector2(2,2)
-	get_node("Player_One/PointLight2D").texture_scale = 5
-	get_node("Player_One/PointLight2D").visible = true
-	get_node("Player_One/2").position = Vector2(30,35)
+	get_node("Control/TileMap/Player_One/player1/2").zoom = Vector2(2,2)
+	get_node("Control/TileMap/Player_One/PointLight2D").texture_scale = 5
+	get_node("Control/TileMap/Player_One/PointLight2D").visible = true
+	get_node("Control/TileMap/Player_One/player1/2").position = Vector2(30,35)
 	
 	
 func _ready() -> void:
@@ -86,8 +86,8 @@ func _ready() -> void:
 	get_node("Control").visible = true
 
 func _process(delta: float) -> void:
-	if get_node("Player_One/PointLight2D").texture_scale > 1 and intro_var == false:
-		get_node("Player_One/PointLight2D").texture_scale -= 0.1
+	if get_node("Control/TileMap/Player_One/PointLight2D").texture_scale > 1 and intro_var == false:
+		get_node("Control/TileMap/Player_One/PointLight2D").texture_scale -= 0.1
 	
 func spawn_item(pos,type,id):
 	var item_instance = item_scene.instantiate()

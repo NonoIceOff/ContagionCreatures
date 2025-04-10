@@ -3,7 +3,6 @@ extends Panel
 var data = {}
 
 func _on_click_pressed() -> void:
-	print(data)
 	var placeable_scene = load("res://Inventory/invanimal_info.tscn").instantiate()
 	placeable_scene.get_node("CanvasLayer/Name").text = data["name"]
 	placeable_scene.get_node("CanvasLayer/Description").text = data["description"]
