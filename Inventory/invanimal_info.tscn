@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://1jgoxty0r1xg" path="res://Scripts/invanimal_info.gd" id="1_fqat5"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_3m01o"]
 [ext_resource type="Texture2D" uid="uid://bd16is5v8ma4p" path="res://Textures/Animals/dragon_texture.png" id="3_jhio5"]
-
 [node name="Inv_Animal_Info" type="Control"]
 layout_mode = 3
 anchor_right = 0.272
@@ -15,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_fqat5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 12
 
 [node name="Background" type="NinePatchRect" parent="CanvasLayer"]
 texture_filter = 1

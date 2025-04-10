@@ -13,7 +13,6 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("ui_interact"):
 			load_game_ui_scene()
 			Engine.time_scale = 0
-			Global.can_move = false
 
 func _on_craft_table_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player_One"):

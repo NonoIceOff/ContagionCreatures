@@ -41,6 +41,7 @@ corner_radius_bottom_left = 5
 script = ExtResource("1_p3l0n")
 
 [node name="Transition" parent="." instance=ExtResource("1_88tsw")]
+visible = false
 z_index = 20
 mouse_filter = 2
 
@@ -73,9 +74,8 @@ angle_max = 100.0
 scale_amount_min = 3.0
 scale_amount_max = 3.0
 
-[node name="QuestMenu" parent="." instance=ExtResource("3_850rj")]
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." groups=["ui"]]
+visible = false
 self_modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(1920, 48)
 amount = 5
@@ -120,6 +120,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Cinematic"]
 layout_mode = 2
@@ -167,6 +168,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Vie" type="TextureProgressBar" parent="Stats"]
 texture_filter = 1
@@ -211,6 +213,7 @@ offset_left = 1693.0
 offset_top = 808.0
 offset_right = 1877.0
 offset_bottom = 848.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4wxsk")
 
 [node name="Heure" type="Label" parent="PanelDate"]
@@ -239,6 +242,7 @@ offset_left = 1664.0
 offset_top = 824.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="InfoTouches" type="Label" parent="." groups=["ui"]]
 texture_filter = 1
@@ -290,8 +294,9 @@ position = Vector2(1693, 715)
 [node name="SlotsShown" type="HBoxContainer" parent="." groups=["ui"]]
 offset_left = 24.0
 offset_top = 120.0
-offset_right = 64.0
+offset_right = 196.0
 offset_bottom = 160.0
+mouse_filter = 2
 theme_override_constants/separation = 86
 script = ExtResource("18_fcexb")
 
@@ -333,3 +338,18 @@ texture = ExtResource("18_lkjmk")
 [node name="Creature" type="Sprite2D" parent="SlotsShown/3"]
 position = Vector2(33, 41)
 scale = Vector2(0.1, 0.1)
+
+[node name="QuestMenu" parent="." instance=ExtResource("3_850rj")]
+visible = false
+z_index = 4096
+mouse_filter = 2
+
+[node name="Informations" type="Label" parent="."]
+visible = false
+offset_left = 296.0
+offset_top = 24.0
+offset_right = 541.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "IMPOSSIBLE DE RECUPERER UNE CREATURE MAINTENANT"

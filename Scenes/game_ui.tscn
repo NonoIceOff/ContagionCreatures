@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://hbybaoafbrtu" path="res://Scripts/search_ressources.gd" id="6_a4b4q"]
 [ext_resource type="Script" uid="uid://sxo002d04fdm" path="res://Scenes/musics.gd" id="7_3t1kc"]
 [ext_resource type="Script" path="res://Scenes/controls_settings_screen_container.gd" id="7_rxsu6"]
-
 [sub_resource type="FontFile" id="FontFile_kg5o7"]
 subpixel_positioning = 0
 msdf_pixel_range = 14
@@ -846,6 +845,9 @@ cache/0/40/0/underline_thickness = 0.0
 cache/0/40/0/scale = 1.0
 
 [sub_resource type="FontFile" id="FontFile_1t2s1"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/40/0/ascent = 0.0
 cache/0/40/0/descent = 0.0
 cache/0/40/0/underline_position = 0.0

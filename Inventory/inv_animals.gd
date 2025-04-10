@@ -42,14 +42,10 @@ func draw_inventory():
 		child.queue_free()
 
 	for creature in creatures:
-		print(creature)
 		var is_captured = false 
-		
-		print(creatures_captured)
+	
 
 		for captured in creatures_captured:
-			print("Captured :",creature)
-			print("aaaaaaaaaa")
 			if int(creature["id"]) == int(captured["id"]):
 				is_captured = true
 				break 

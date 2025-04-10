@@ -197,7 +197,7 @@ grow_vertical = 2
 script = ExtResource("1_dmnuy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 11
 
 [node name="BackgroundTiles" type="NinePatchRect" parent="CanvasLayer"]
 offset_right = 1912.0

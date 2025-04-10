@@ -9,6 +9,9 @@ signal player_entered_door_signal
 @onready var pause_menu = $"player1/2/CanvasLayer/GameUI/PopupMenu/PauseMenuScreenContainer"
 @onready var player_xp = get_node_or_null("/root/Map3/ui/XPPanel") 
 
+func _ready() -> void:
+	Global.ui_visible = true
+
 func entered_door():
 	emit_signal("player_entered_door_signal")
 
