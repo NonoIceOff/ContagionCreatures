@@ -27,7 +27,7 @@ grow_vertical = 2
 script = ExtResource("1_dmnuy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 11
 
 [node name="BackgroundTiles" type="TextureRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_uhj1s")
