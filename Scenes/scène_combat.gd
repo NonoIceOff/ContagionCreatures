@@ -181,13 +181,14 @@ func setup_enemy_animal():
 		if Global.animals_enemy[key] == Global.animals_enemy[PlayerStats.animal_id]:
 			# S'assurer que la texture est bien chargée, par exemple après le callback "on_get_creatures_request_completed"
 			if ennemye_texture != null and ennemye_texture != "":
-				animalE.texture = load("res://Textures/Animals/" + ennemye_texture)
-				animalE.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-				animalE.position = Vector2(1102, 841)
-				animalE.z_index = 0
-				animalE.scale = Vector2(5.1, 5.1)
-				add_child(animalE)
-				print("res://Textures/Animals/" + ennemye_texture)
+				var texture_path = ennemye_texture
+				# Si le chemin n'inclut pas déjà "res://", ajouter le préfixe
+				if not ennemye_texture.begins_with("res://"):
+					texture_path = "res://Textures/Animals/" + ennemye_texture
+				animalE.texture = load(texture_path)
+			
+			
+				print(texture_path)
 			else:
 				print("Texture non disponible, attendre le callback de chargement.")
 	
@@ -368,6 +369,7 @@ func _load_local_json():
 		print("Type de données JSON correct pour le fichier local.")
 	print(parse_result[0].name)
 	player_creature_name.text = parse_result[0].name
+	$EaglePlayer.texture = load("res://Textures/Animals/" + parse_result[0].texture)
 	if parse_result == null:
 		print("Erreur lors du chargement du fichier JSON local.")
 		return []
@@ -648,7 +650,7 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 		total_damage_player += final_damage
 		if final_damage > max_damage_player:
 			max_damage_player = final_damage
-		$ContainerMob/EnnemyeSprite/AnimationPlayer.play("blink & knockback ennemye")
+		$ContainerMob/Sprite_animal_ennemy/AnimationPlayer.play("blink & knockback ennemye")
 	
 	# Mode "heal" : soin du joueur
 	if mode == "heal":
