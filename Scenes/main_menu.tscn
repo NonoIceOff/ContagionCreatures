@@ -41,6 +41,7 @@ region_rect = Rect2(0, 83, 400, 317)
 
 [node name="Menu" type="MarginContainer" parent="Background"]
 custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1083.0
 theme_override_constants/margin_left = 25
@@ -217,8 +218,8 @@ expand_icon = true
 
 [node name="ConnexionStatus" type="Label" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 text = "vOUS N'etes pas connecte"
 horizontal_alignment = 1
 uppercase = true
