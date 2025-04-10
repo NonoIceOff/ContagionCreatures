@@ -99,19 +99,17 @@ func _on_quest_selected(quest_id):
 
 func masquer_texte(original_text: String) -> String:
 	var length = original_text.length()
-	var half_length = length / 2  # On masque la moitié du texte
 	
 	var obscured_text = ""
 	for i in length:
-		if i < half_length:
-			if original_text[i] == " ":
-				obscured_text += " "  # Conserve les espaces
-			else:
-				obscured_text += "▒"  # Masque avec des blocs
+		obscured_text += text_to_contafont(original_text[i])  # Masque avec des blocs
 
 	return obscured_text
 
-
+func text_to_contafont(char):
+	char = str(char).to_lower()
+	return "[img=24x24]res://Textures/Font/contafont_"+str(char)+".png[/img]"
+	
 func open():
 	visible = true
 	is_open = true

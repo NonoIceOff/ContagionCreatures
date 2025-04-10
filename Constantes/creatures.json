@@ -1,15 +1,54 @@
 [
-  {
-    "description": "A powerful witch that uses ice element.",
-    "element1": "nature",
-    "element2": "null",
-    "hp": 1500.0,
-    "id": 10.0,
-    "is_infected": true,
-    "name": "Hypoclope",
-    "speed": "1.40",
-    "texture": "hypoclop_backward.png",
-    "texture_back": null,
-    "type": "witch"
-  }
+	{
+		"description": "A powerful witch that uses ice element.",
+		"element1": "nature",
+		"element2": "null",
+		"hp": 1500.0,
+		"id": 10.0,
+		"is_infected": true,
+		"name": "Hypoclope",
+		"speed": "1.40",
+		"texture": "hypoclop_backward.png",
+		"texture_back": null,
+		"type": "witch"
+	},
+	{
+		"description": "An elegant yet deadly creature of the night.",
+		"element1": "wind",
+		"element2": "fire",
+		"hp": 100.0,
+		"id": 5.0,
+		"is_infected": true,
+		"name": "Olymde",
+		"speed": "1.70",
+		"texture": "olymde_forward.png",
+		"texture_back": "olymde_backward.png",
+		"type": "olymde"
+	},
+	{
+		"description": "A large spider with venomous fangs.",
+		"element1": "poison",
+		"element2": null,
+		"hp": 60.0,
+		"id": 7.0,
+		"is_infected": false,
+		"name": "Macakwa",
+		"speed": "1.20",
+		"texture": "macakwa_forward.png",
+		"texture_back": "macakwa_backward.png",
+		"type": "insect"
+	},
+	{
+		"description": "A gelatinous creature that absorbs whatever it touches.",
+		"element1": "nature",
+		"element2": null,
+		"hp": 20.0,
+		"id": 6.0,
+		"is_infected": false,
+		"name": "Hypoclop",
+		"speed": "0.50",
+		"texture": "hypoclop_forward.png",
+		"texture_back": "hypoclop_backward.png",
+		"type": "slime"
+	}
 ]

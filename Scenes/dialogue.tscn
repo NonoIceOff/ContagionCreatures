@@ -51,7 +51,7 @@ theme_override_font_sizes/mono_font_size = 64
 theme_override_font_sizes/normal_font_size = 64
 theme_override_font_sizes/bold_font_size = 64
 bbcode_enabled = true
-text = "Texte pour dialogue"
+text = "test"
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
