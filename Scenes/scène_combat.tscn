@@ -57,7 +57,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../ContainerMob/EnnemyeSprite/particles_ennemy:emitting")
+tracks/3/path = NodePath("../ContainerMob/Sprite_animal_ennemy/particles_ennemy:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -147,6 +147,21 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(5, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_nwkt3"]
+resource_name = "heal_ennemye"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ContainerMob/Sprite_animal_ennemy/particles_ennemy:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.992734),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_mmxg4"]
 resource_name = "heal_player"
 tracks/0/type = "value"
@@ -157,21 +172,6 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.980051),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_nwkt3"]
-resource_name = "heal_ennemye"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../ContainerMob/EnnemyeSprite/particles_ennemy:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.992734),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -598,18 +598,18 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EnnemyeSprite" type="Sprite2D" parent="ContainerMob"]
+[node name="Sprite_animal_ennemy" type="Sprite2D" parent="ContainerMob"]
 modulate = Color(0.728822, 0.728822, 0.728822, 1)
 position = Vector2(-270, 707)
 scale = Vector2(4.13185, 4.6326)
 texture = ExtResource("6_i001t")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ContainerMob/EnnemyeSprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ContainerMob/Sprite_animal_ennemy"]
 libraries = {
 &"": SubResource("AnimationLibrary_rfeug")
 }
 
-[node name="particles_ennemy" type="CPUParticles2D" parent="ContainerMob/EnnemyeSprite"]
+[node name="particles_ennemy" type="CPUParticles2D" parent="ContainerMob/Sprite_animal_ennemy"]
 material = SubResource("ShaderMaterial_yxopx")
 position = Vector2(-0.484036, 18.3482)
 scale = Vector2(0.242022, 0.215862)
@@ -627,7 +627,7 @@ color = Color(0, 1, 0, 1)
 color_ramp = SubResource("Gradient_wh47d")
 color_initial_ramp = SubResource("Gradient_sjlwb")
 
-[node name="shield_ennemy" type="CPUParticles2D" parent="ContainerMob/EnnemyeSprite"]
+[node name="shield_ennemy" type="CPUParticles2D" parent="ContainerMob/Sprite_animal_ennemy"]
 modulate = Color(1, 1, 1, 0.137255)
 material = SubResource("CanvasItemMaterial_2b6j8")
 emitting = false
