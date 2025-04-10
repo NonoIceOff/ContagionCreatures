@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 		PauseMenu()
 		
 	if Input.is_action_just_pressed("Space"):
-		player_xp.gain_xp(700)
+		player_xp.gain_xp(100)
 
 	## Détection d'un tile, si le joueur est sur un tile spécifique (l'id 3) alors print
 	if get_node_or_null("/root/Map3/TileMap/bush") != null:
