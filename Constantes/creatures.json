@@ -11,5 +11,31 @@
 		"texture": "demon_texture.png",
 		"texture_back": null,
 		"type": "witch"
+	},
+	{
+		"description": "Un boss",
+		"element1": "fire",
+		"element2": null,
+		"hp": 500.0,
+		"id": 11.0,
+		"is_infected": true,
+		"name": "Tipion",
+		"speed": "1.00",
+		"texture": "tipion_forward.png",
+		"texture_back": "tipion_backward.png",
+		"type": "boss"
+	},
+	{
+		"description": "A small, sneaky creature that likes to ambush travelers.",
+		"element1": "combat",
+		"element2": null,
+		"hp": 30.0,
+		"id": 1.0,
+		"is_infected": false,
+		"name": "Bluatox",
+		"speed": "1.50",
+		"texture": "bluatox_forward.png",
+		"texture_back": "bluatox_backward.png",
+		"type": "goblin"
 	}
 ]

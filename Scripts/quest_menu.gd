@@ -133,6 +133,7 @@ func _process(delta):
 	for i in Quests.quests.keys():
 		var panel = get_node_or_null("ScrollContainer/VBoxContainer/Panel" + str(i))
 		if panel:
+			
 			if i != Quests.current_quest_id:
 				panel.self_modulate = Color(0, 0, 0)
 			else:

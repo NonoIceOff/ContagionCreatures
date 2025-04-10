@@ -236,3 +236,7 @@ func _on_launch_battle():
 	_on_dialogue_end()
 	Global.tutorial_stade = 12
 	SceneLoader.load_scene("res://Scenes/scène_combat.tscn")
+
+func _on_start_scene(variable_path):
+	_on_dialogue_end()
+	SceneLoader.load_scene(variable_path)

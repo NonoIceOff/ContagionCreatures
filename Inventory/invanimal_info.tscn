@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1jgoxty0r1xg" path="res://Scripts/invanimal_info.gd" id="1_fqat5"]
 [ext_resource type="Texture2D" uid="uid://ca2bv2gm76q2v" path="res://Textures/Inventaire/grey_inlay.png" id="2_1dn3g"]
-[ext_resource type="Shader" uid="uid://caac6ffe48o4h" path="res://Inventory/inv_animals.gdshader" id="2_sukme"]
+[ext_resource type="Shader" uid="uid://c7r3th281ihh2" path="res://Inventory/inv_animals.gdshader" id="2_sukme"]
 [ext_resource type="Texture2D" uid="uid://bd16is5v8ma4p" path="res://Textures/Animals/dragon_texture.png" id="3_jhio5"]
 [ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_o5qgg"]
 
@@ -26,7 +26,7 @@ grow_vertical = 2
 script = ExtResource("1_fqat5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 12
 
 [node name="BackgroundTiles" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1

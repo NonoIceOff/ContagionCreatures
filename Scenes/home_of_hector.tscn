@@ -1,15 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://cinc84vpc2a4s"]
+[gd_scene load_steps=14 format=3 uid="uid://cinc84vpc2a4s"]
 
 [ext_resource type="Script" uid="uid://i7tx1ntg2vnb" path="res://Scripts/home_of_hector.gd" id="1_7yy64"]
 [ext_resource type="PackedScene" uid="uid://cgeiuvmq46mhr" path="res://Scenes/Player_1.tscn" id="2_3hxkl"]
 [ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://main_map_2.tres" id="2_svkma"]
-[ext_resource type="Texture2D" uid="uid://dklqcsx2x2pm2" path="res://Textures/Animals/CHICKEN.png" id="4_grnjc"]
+[ext_resource type="Texture2D" uid="uid://ct7q8fjc3iyni" path="res://Textures/Animals/noctilune_forward.png" id="4_d1k63"]
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="5_676qs"]
 [ext_resource type="Texture2D" uid="uid://ftsqesla06t5" path="res://Textures/Buttons/keyboard/keyboard_e.png" id="5_e7x4g"]
-[ext_resource type="Texture2D" uid="uid://bcx8tk1aasud1" path="res://Textures/Animals/RABBIT.png" id="5_ijf6x"]
 [ext_resource type="Script" uid="uid://dirvfacosqkox" path="res://Scripts/Transition_To_mainMap.gd" id="5_so67a"]
 [ext_resource type="Texture2D" uid="uid://5poghk83m0gg" path="res://Textures/piano.png" id="6_6ytuu"]
-[ext_resource type="Texture2D" uid="uid://c7n3kd1ha1dxx" path="res://Textures/Animals/HAMSTER.png" id="6_7g7wo"]
 [ext_resource type="Texture2D" uid="uid://du2naogiwerkj" path="res://Textures/point_exclam.png" id="7_cm1j3"]
 [ext_resource type="PackedScene" uid="uid://c7sxy68le1a5y" path="res://Scenes/craft_table.tscn" id="8_ek832"]
 
@@ -69,7 +67,6 @@ position = Vector2(882, 725)
 scale = Vector2(2.7, 2.7)
 
 [node name="MobChoose" type="Control" parent="Control"]
-visible = false
 anchors_preset = 0
 offset_left = 891.0
 offset_top = 570.0
@@ -92,7 +89,8 @@ vertical_alignment = 1
 
 [node name="1" type="Sprite2D" parent="Control/MobChoose"]
 z_index = 1
-texture = ExtResource("4_grnjc")
+scale = Vector2(2, 2)
+texture = ExtResource("4_d1k63")
 
 [node name="Label2" type="Label" parent="Control/MobChoose"]
 z_index = 1
@@ -111,7 +109,8 @@ vertical_alignment = 1
 [node name="2" type="Sprite2D" parent="Control/MobChoose"]
 z_index = 1
 position = Vector2(64, 0)
-texture = ExtResource("5_ijf6x")
+scale = Vector2(2, 2)
+texture = ExtResource("4_d1k63")
 
 [node name="Label3" type="Label" parent="Control/MobChoose"]
 z_index = 1
@@ -130,7 +129,8 @@ vertical_alignment = 1
 [node name="3" type="Sprite2D" parent="Control/MobChoose"]
 z_index = 1
 position = Vector2(128, 0)
-texture = ExtResource("6_7g7wo")
+scale = Vector2(2, 2)
+texture = ExtResource("4_d1k63")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("5_so67a")
