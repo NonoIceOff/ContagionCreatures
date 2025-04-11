@@ -144,4 +144,6 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxTexture_s7bj4")
 text = "Equip Item"
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="CanvasLayer/x" to="." method="_on_x_pressed"]

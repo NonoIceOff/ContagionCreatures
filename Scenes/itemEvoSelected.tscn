@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0lmtw3wy6og4"]
+
+[ext_resource type="Script" uid="uid://ddursc06oooda" path="res://Scripts/item_evo_selected.gd" id="1_84dp8"]
+
+[node name="ItemSelectPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_84dp8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemButtonsContainer" type="VBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
