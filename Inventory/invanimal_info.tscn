@@ -1,9 +1,11 @@
+
 [gd_scene load_steps=9 format=3 uid="uid://chkbjvbmhr6p2"]
 
+
 [ext_resource type="Script" uid="uid://1jgoxty0r1xg" path="res://Scripts/invanimal_info.gd" id="1_fqat5"]
-[ext_resource type="Texture2D" uid="uid://ca2bv2gm76q2v" path="res://Textures/Inventaire/grey_inlay.png" id="2_1dn3g"]
-[ext_resource type="Shader" uid="uid://c7r3th281ihh2" path="res://Inventory/inv_animals.gdshader" id="2_sukme"]
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_3m01o"]
 [ext_resource type="Texture2D" uid="uid://bd16is5v8ma4p" path="res://Textures/Animals/dragon_texture.png" id="3_jhio5"]
+
 [ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_o5qgg"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="6_vs3pb"]
 
@@ -20,6 +22,7 @@ shader_parameter/texture_to_scroll = ExtResource("2_1dn3g")
 texture = ExtResource("6_vs3pb")
 region_rect = Rect2(274.954, 177.943, 90.2297, 26.9999)
 
+
 [node name="Inv_Animal_Info" type="Control"]
 layout_mode = 3
 anchor_right = 0.272
@@ -33,9 +36,8 @@ script = ExtResource("1_fqat5")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 12
 
-[node name="BackgroundTiles" type="TextureRect" parent="CanvasLayer"]
+[node name="Background" type="NinePatchRect" parent="CanvasLayer"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_uhj1s")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -47,15 +49,15 @@ offset_right = 500.0
 offset_bottom = 500.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_o5qgg")
-stretch_mode = 1
+texture = ExtResource("2_3m01o")
+region_rect = Rect2(460.979, 138.597, 5.77673, 4.68384)
 
 [node name="Name" type="Label" parent="CanvasLayer"]
 texture_filter = 1
 offset_left = 460.0
-offset_top = 560.0
+offset_top = 561.0
 offset_right = 1460.0
-offset_bottom = 689.0
+offset_bottom = 690.0
 theme_override_font_sizes/font_size = 128
 text = "NAME"
 horizontal_alignment = 1
@@ -64,10 +66,10 @@ uppercase = true
 
 [node name="Description" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 472.0
-offset_top = 680.0
+offset_left = 484.0
+offset_top = 682.0
 offset_right = 1448.0
-offset_bottom = 832.0
+offset_bottom = 834.0
 theme_override_constants/line_spacing = -16
 theme_override_font_sizes/font_size = 64
 text = "Description"
@@ -77,13 +79,13 @@ uppercase = true
 
 [node name="Animal" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
-position = Vector2(952, 328)
-scale = Vector2(16, 16)
+position = Vector2(987, 319)
+scale = Vector2(15.4375, 15.1875)
 texture = ExtResource("3_jhio5")
 
 [node name="HPMax" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 472.0
+offset_left = 482.0
 offset_top = 840.0
 offset_right = 1440.0
 offset_bottom = 887.0
@@ -93,10 +95,10 @@ uppercase = true
 
 [node name="Speed" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 472.0
+offset_left = 480.0
 offset_top = 887.0
 offset_right = 1440.0
-offset_bottom = 934.0
+offset_bottom = 984.0
 theme_override_font_sizes/font_size = 46
 text = "SPEED
 "
@@ -104,7 +106,7 @@ uppercase = true
 
 [node name="Element1" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 472.0
+offset_left = 480.0
 offset_top = 936.0
 offset_right = 1440.0
 offset_bottom = 983.0
@@ -114,7 +116,7 @@ uppercase = true
 
 [node name="Element2" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 472.0
+offset_left = 480.0
 offset_top = 984.0
 offset_right = 1440.0
 offset_bottom = 1031.0

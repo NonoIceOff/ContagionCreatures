@@ -33,7 +33,7 @@ func intro():
 	
 	
 func _ready() -> void:
-	MusicsPlayer.play_sound("res://Sounds/dungeon_sound.mp3","Music")
+	MusicsPlayer.play_sound("res://Sounds/dungeon_sound.mp3","Musics")
 	Global.load_localisation()
 	intro()
 	

@@ -1,5 +1,6 @@
 [
 	{
+
 		"description": "Un primate doré à la puissance exceptionnel ",
 		"element1": "Feu",
 		"element2": "Combat",
@@ -26,16 +27,16 @@
 		"type": "boss"
 	},
 	{
-		"description": "A small, sneaky creature that likes to ambush travelers.",
-		"element1": "combat",
+		"description": "A gelatinous creature that absorbs whatever it touches.",
+		"element1": "nature",
 		"element2": null,
 		"hp": 30,
 		"id": 1,
 		"is_infected": false,
-		"name": "Bluatox",
-		"speed": "1.50",
-		"texture": "bluatox_forward.png",
-		"texture_back": "bluatox_backward.png",
-		"type": "goblin"
+		"name": "Hypoclop",
+		"speed": "0.50",
+		"texture": "hypoclop_forward.png",
+		"texture_back": "hypoclop_backward.png",
+		"type": "slime"
 	}
 ]

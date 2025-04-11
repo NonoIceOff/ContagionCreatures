@@ -7,8 +7,7 @@
 [ext_resource type="Script" uid="uid://cx3fo704yiisq" path="res://Scripts/search_craft.gd" id="5_mixql"]
 [ext_resource type="Script" uid="uid://hbybaoafbrtu" path="res://Scripts/search_ressources.gd" id="6_a4b4q"]
 [ext_resource type="Script" uid="uid://sxo002d04fdm" path="res://Scenes/musics.gd" id="7_3t1kc"]
-[ext_resource type="Script" uid="uid://yxlnnxiq37ri" path="res://Scenes/controls_settings_screen_container.gd" id="7_rxsu6"]
-
+[ext_resource type="Script" path="res://Scenes/controls_settings_screen_container.gd" id="7_rxsu6"]
 [sub_resource type="FontFile" id="FontFile_kg5o7"]
 subpixel_positioning = 0
 msdf_pixel_range = 14
@@ -1863,7 +1862,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.00072, 1)
+scale = Vector2(0.999456, 1.01234)
 theme_override_constants/margin_top = 60
 theme_override_constants/margin_bottom = 35
 

@@ -67,6 +67,7 @@ position = Vector2(882, 725)
 scale = Vector2(2.7, 2.7)
 
 [node name="MobChoose" type="Control" parent="Control"]
+visible = false
 anchors_preset = 0
 offset_left = 891.0
 offset_top = 570.0

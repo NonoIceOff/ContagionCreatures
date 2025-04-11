@@ -8,6 +8,7 @@ var current_dialogue : int = 0
 var is_choice_dialogue : bool = false
 var current_choice : Dictionary = {}
 var pnj_name = ""
+var contafont_mode = false
 
 var typing_speed : float = 0.03  # Vitesse d'affichage progressive (optionnel)
 var is_typing : bool = false  # Vérifie si un texte est en cours d'affichage
@@ -72,11 +73,21 @@ func type_text(full_text: String):
 	dialogue_label.text = ""
 	
 	for i in range(full_text.length()):
-		dialogue_label.text += full_text[i]
+		var add_text = full_text[i]
+		if contafont_mode == true:
+			add_text = str(text_to_contafont(add_text))
+		dialogue_label.text += add_text
 		await get_tree().create_timer(typing_speed).timeout
 	
 	is_typing = false
 
+func text_to_contafont(char):
+	char = str(char).to_lower()
+	return "[img=52x52]res://Textures/Font/contafont_"+str(char)+".png[/img]"
+
+	
+	
+	
 ### ✅ **Afficher les choix**
 func show_choices(choices: Array):
 	dialogue_label.text = "Choisissez une option :"
