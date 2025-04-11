@@ -9,15 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_o5qgg"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="6_vs3pb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhj1s"]
-shader = ExtResource("2_sukme")
-shader_parameter/scroll_speed = 1.0
-shader_parameter/angle_degrees = 45.0
-shader_parameter/repeat_x = 0.5
-shader_parameter/repeat_y = 0.5
-shader_parameter/row_offset = 2.5
-shader_parameter/texture_to_scroll = ExtResource("2_1dn3g")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s7bj4"]
 texture = ExtResource("6_vs3pb")
 region_rect = Rect2(274.954, 177.943, 90.2297, 26.9999)
