@@ -12,6 +12,7 @@ func _ready():
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
 	http_request.request("https://contagioncreaturesapi.vercel.app/api/creatures")
+	http_request.request("https://contagioncreaturesapi.vercel.app/api/evolutions")
 	_load_creatures_data()
 
 func _load_creatures_data():
