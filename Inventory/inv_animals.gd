@@ -12,6 +12,7 @@ func _ready():
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
 	http_request.request("https://contagioncreaturesapi.vercel.app/api/creatures")
+	http_request.request("https://contagioncreaturesapi.vercel.app/api/evolutions")
 	_load_creatures_data()
 
 func _load_creatures_data():
@@ -42,14 +43,10 @@ func draw_inventory():
 		child.queue_free()
 
 	for creature in creatures:
-		print(creature)
 		var is_captured = false 
-		
-		print(creatures_captured)
+	
 
 		for captured in creatures_captured:
-			print("Captured :",creature)
-			print("aaaaaaaaaa")
 			if int(creature["id"]) == int(captured["id"]):
 				is_captured = true
 				break 

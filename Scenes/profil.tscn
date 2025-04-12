@@ -1,21 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbflfw68ef4rh"]
+[gd_scene load_steps=7 format=3 uid="uid://cbflfw68ef4rh"]
 
 [ext_resource type="Script" uid="uid://0cxkvm2a4kat" path="res://Scripts/profil.gd" id="1_stqfv"]
 [ext_resource type="Texture2D" uid="uid://bv55etaq3hgwq" path="res://Textures/user_profile.png" id="1_t1eos"]
-[ext_resource type="Shader" uid="uid://c7r3th281ihh2" path="res://Inventory/inv_animals.gdshader" id="2_3s8wn"]
-[ext_resource type="Texture2D" uid="uid://c22ivb1nlbj55" path="res://Textures/background_multiplayer.png" id="3_3s8wn"]
 [ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="3_ufvdp"]
-[ext_resource type="Texture2D" uid="uid://bueqr4wj8dprb" path="res://Textures/Inventaire/blue.png" id="4_abwh1"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="5_8wsmv"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2qpn"]
-shader = ExtResource("2_3s8wn")
-shader_parameter/scroll_speed = 1.0
-shader_parameter/angle_degrees = 45.0
-shader_parameter/repeat_x = 0.1
-shader_parameter/repeat_y = 0.2
-shader_parameter/row_offset = 5.0
-shader_parameter/texture_to_scroll = ExtResource("3_3s8wn")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abwh1"]
 texture = ExtResource("5_8wsmv")
@@ -28,9 +16,8 @@ region_rect = Rect2(275, 178, 90, 27)
 [node name="Profil" type="Node2D"]
 script = ExtResource("1_stqfv")
 
-[node name="BackgroundTiles" type="TextureRect" parent="."]
+[node name="BackgroundTiles" type="NinePatchRect" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_e2qpn")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -40,14 +27,16 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_abwh1")
-stretch_mode = 1
+texture = ExtResource("5_8wsmv")
+region_rect = Rect2(461.516, 139.21, 3.76517, 2.64363)
 
-[node name="BackToMenu" type="Button" parent="."]
+[node name="BackToMenu" type="Button" parent="BackgroundTiles"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 8.0
 offset_right = 424.0
 offset_bottom = 84.0
+scale = Vector2(0.994867, 1)
 size_flags_horizontal = 4
 focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -61,11 +50,12 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_abwh1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e2qpn")
 text = "RETOUR AU MENU"
 
-[node name="Login" type="Button" parent="."]
-offset_left = 120.0
-offset_top = 312.0
-offset_right = 670.0
-offset_bottom = 440.0
+[node name="Login" type="Button" parent="BackgroundTiles"]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 334.0
+offset_right = 1234.0
+offset_bottom = 462.0
 size_flags_horizontal = 4
 focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -79,11 +69,12 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_abwh1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e2qpn")
 text = "SE CONNECTER"
 
-[node name="Register" type="Button" parent="."]
-offset_left = 120.0
-offset_top = 456.0
-offset_right = 670.0
-offset_bottom = 584.0
+[node name="Register" type="Button" parent="BackgroundTiles"]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 494.0
+offset_right = 1234.0
+offset_bottom = 622.0
 size_flags_horizontal = 4
 focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -97,7 +88,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_abwh1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e2qpn")
 text = "S'INSCRIRE"
 
-[node name="Disconnect" type="Button" parent="."]
+[node name="Disconnect" type="Button" parent="BackgroundTiles"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 992.0
 offset_right = 424.0
@@ -115,20 +107,21 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_abwh1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e2qpn")
 text = "SE DECONNECTER"
 
-[node name="Panel" type="ColorRect" parent="."]
+[node name="Panel" type="ColorRect" parent="BackgroundTiles"]
+layout_mode = 0
 offset_left = 512.0
 offset_top = 64.0
 offset_right = 1432.0
 offset_bottom = 256.0
 color = Color(1, 0, 0.223529, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundTiles/Panel"]
 texture_filter = 1
 position = Vector2(96, 96)
 scale = Vector2(10, 10)
 texture = ExtResource("1_t1eos")
 
-[node name="username" type="Label" parent="Panel"]
+[node name="username" type="Label" parent="BackgroundTiles/Panel"]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 16.0
@@ -138,7 +131,7 @@ theme_override_font_sizes/font_size = 64
 text = "pas connecte"
 uppercase = true
 
-[node name="points" type="Label" parent="Panel"]
+[node name="points" type="Label" parent="BackgroundTiles/Panel"]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 96.0
@@ -147,7 +140,7 @@ offset_bottom = 128.0
 theme_override_font_sizes/font_size = 32
 text = "-"
 
-[node name="money" type="Label" parent="Panel"]
+[node name="money" type="Label" parent="BackgroundTiles/Panel"]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 136.0
@@ -156,25 +149,29 @@ offset_bottom = 168.0
 theme_override_font_sizes/font_size = 32
 text = "-"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundTiles/Panel"]
+visible = false
 layout_mode = 0
-offset_top = 208.0
-offset_right = 608.0
-offset_bottom = 544.0
+offset_left = 150.0
+offset_top = 224.0
+offset_right = 758.0
+offset_bottom = 560.0
+scale = Vector2(0.998007, 1)
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="HTTPRequest" type="HTTPRequest" parent="BackgroundTiles"]
 
-[node name="GetUser" type="HTTPRequest" parent="."]
+[node name="GetUser" type="HTTPRequest" parent="BackgroundTiles"]
 
-[node name="LoginPanel" type="Panel" parent="."]
+[node name="LoginPanel" type="Panel" parent="BackgroundTiles"]
 visible = false
 self_modulate = Color(1, 0, 1, 1)
-offset_left = 72.0
+layout_mode = 0
+offset_left = 270.0
 offset_top = 320.0
-offset_right = 1480.0
+offset_right = 1678.0
 offset_bottom = 512.0
 
-[node name="EmailField" type="LineEdit" parent="LoginPanel"]
+[node name="EmailField" type="LineEdit" parent="BackgroundTiles/LoginPanel"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
@@ -184,7 +181,7 @@ theme_override_fonts/font = ExtResource("3_ufvdp")
 theme_override_font_sizes/font_size = 32
 placeholder_text = "Email"
 
-[node name="PasswordField" type="LineEdit" parent="LoginPanel"]
+[node name="PasswordField" type="LineEdit" parent="BackgroundTiles/LoginPanel"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 128.0
@@ -194,23 +191,24 @@ theme_override_fonts/font = ExtResource("3_ufvdp")
 theme_override_font_sizes/font_size = 32
 placeholder_text = "Mot de passe"
 
-[node name="ValidateLogin" type="Button" parent="LoginPanel"]
+[node name="ValidateLogin" type="Button" parent="BackgroundTiles/LoginPanel"]
 layout_mode = 0
-offset_left = 592.0
-offset_top = 200.0
-offset_right = 728.0
-offset_bottom = 232.0
+offset_left = 500.0
+offset_top = 206.0
+offset_right = 876.0
+offset_bottom = 286.0
 text = "VALIDER"
 
-[node name="RegisterPanel" type="Panel" parent="."]
+[node name="RegisterPanel" type="Panel" parent="BackgroundTiles"]
 visible = false
 self_modulate = Color(0.391736, 0.722288, 3.85046e-07, 1)
-offset_left = 72.0
-offset_top = 552.0
-offset_right = 1480.0
-offset_bottom = 848.0
+layout_mode = 0
+offset_left = 270.0
+offset_top = 320.0
+offset_right = 1678.0
+offset_bottom = 616.0
 
-[node name="EmailField" type="LineEdit" parent="RegisterPanel"]
+[node name="EmailField" type="LineEdit" parent="BackgroundTiles/RegisterPanel"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
@@ -220,7 +218,7 @@ theme_override_fonts/font = ExtResource("3_ufvdp")
 theme_override_font_sizes/font_size = 32
 placeholder_text = "Email"
 
-[node name="PasswordField" type="LineEdit" parent="RegisterPanel"]
+[node name="PasswordField" type="LineEdit" parent="BackgroundTiles/RegisterPanel"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 128.0
@@ -230,7 +228,7 @@ theme_override_fonts/font = ExtResource("3_ufvdp")
 theme_override_font_sizes/font_size = 32
 placeholder_text = "Mot de passe"
 
-[node name="UsernameField" type="LineEdit" parent="RegisterPanel"]
+[node name="UsernameField" type="LineEdit" parent="BackgroundTiles/RegisterPanel"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 224.0
@@ -240,12 +238,12 @@ theme_override_fonts/font = ExtResource("3_ufvdp")
 theme_override_font_sizes/font_size = 32
 placeholder_text = "Pseuso"
 
-[node name="ValidateRegister" type="Button" parent="RegisterPanel"]
+[node name="ValidateRegister" type="Button" parent="BackgroundTiles/RegisterPanel"]
 layout_mode = 0
-offset_left = 592.0
-offset_top = 200.0
-offset_right = 728.0
-offset_bottom = 232.0
+offset_left = 500.0
+offset_top = 316.0
+offset_right = 876.0
+offset_bottom = 396.0
 text = "VALIDER"
 
 [node name="Waiting" type="RichTextLabel" parent="."]
@@ -253,18 +251,19 @@ visible = false
 offset_top = 552.0
 offset_right = 1920.0
 offset_bottom = 632.0
-theme_override_font_sizes/bold_italics_font_size = 64
-theme_override_font_sizes/italics_font_size = 64
-theme_override_font_sizes/mono_font_size = 64
-theme_override_font_sizes/normal_font_size = 64
-theme_override_font_sizes/bold_font_size = 64
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_italics_font_size = 80
+theme_override_font_sizes/italics_font_size = 80
+theme_override_font_sizes/mono_font_size = 80
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 80
 bbcode_enabled = true
 text = "[center][wave amp=50.0 freq=5.0 connected=1]En attente...[/wave]"
 
-[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
-[connection signal="pressed" from="Login" to="." method="_on_login_pressed"]
-[connection signal="pressed" from="Register" to="." method="_on_register_pressed"]
-[connection signal="pressed" from="Disconnect" to="." method="_on_disconnect_pressed"]
-[connection signal="request_completed" from="GetUser" to="." method="_on_get_user_request_completed"]
-[connection signal="pressed" from="LoginPanel/ValidateLogin" to="." method="_on_validate_login_pressed"]
-[connection signal="pressed" from="RegisterPanel/ValidateRegister" to="." method="_on_validate_register_pressed"]
+[connection signal="pressed" from="BackgroundTiles/BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="BackgroundTiles/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="BackgroundTiles/Register" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="BackgroundTiles/Disconnect" to="." method="_on_disconnect_pressed"]
+[connection signal="request_completed" from="BackgroundTiles/GetUser" to="." method="_on_get_user_request_completed"]
+[connection signal="pressed" from="BackgroundTiles/LoginPanel/ValidateLogin" to="." method="_on_validate_login_pressed"]
+[connection signal="pressed" from="BackgroundTiles/RegisterPanel/ValidateRegister" to="." method="_on_validate_register_pressed"]

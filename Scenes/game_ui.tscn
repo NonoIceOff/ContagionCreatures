@@ -1,14 +1,13 @@
 [gd_scene load_steps=54 format=3 uid="uid://cx6s6at1q7bed"]
 
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_r7j8k"]
-[ext_resource type="Script" uid="uid://rvjqo82yph12" path="res://Scenes/game_ui.gd" id="1_xtvsa"]
-[ext_resource type="Script" uid="uid://by050ae2hgsl4" path="res://Scripts/craft_menu.gd" id="3_qq716"]
+[ext_resource type="Script" uid="uid://buuxw0r6bm6hd" path="res://Scenes/game_ui.gd" id="1_xtvsa"]
+[ext_resource type="Script" uid="uid://7fvo2h1bvo73" path="res://Scripts/craft_menu.gd" id="3_qq716"]
 [ext_resource type="FontFile" uid="uid://bd7xb0xeb5ibh" path="res://Textures/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="4_sk4gx"]
+[ext_resource type="Script" uid="uid://cx3fo704yiisq" path="res://Scripts/search_craft.gd" id="5_mixql"]
+[ext_resource type="Script" uid="uid://hbybaoafbrtu" path="res://Scripts/search_ressources.gd" id="6_a4b4q"]
 [ext_resource type="Script" uid="uid://sxo002d04fdm" path="res://Scenes/musics.gd" id="7_3t1kc"]
-[ext_resource type="Script" uid="uid://yxlnnxiq37ri" path="res://Scenes/controls_settings_screen_container.gd" id="7_rxsu6"]
-[ext_resource type="Script" uid="uid://it6fb50h2qvu" path="res://Scripts/search_craft.gd" id="5_mixql"]
-[ext_resource type="Script" uid="uid://buht4nnsv1xx" path="res://Scripts/search_ressources.gd" id="6_a4b4q"]
-
+[ext_resource type="Script" path="res://Scenes/controls_settings_screen_container.gd" id="7_rxsu6"]
 [sub_resource type="FontFile" id="FontFile_kg5o7"]
 subpixel_positioning = 0
 msdf_pixel_range = 14
@@ -846,6 +845,9 @@ cache/0/40/0/underline_thickness = 0.0
 cache/0/40/0/scale = 1.0
 
 [sub_resource type="FontFile" id="FontFile_1t2s1"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/40/0/ascent = 0.0
 cache/0/40/0/descent = 0.0
 cache/0/40/0/underline_position = 0.0
@@ -938,6 +940,7 @@ musicsandsounds_settings = NodePath("MusicsAndSoundsSettingsScreenContainer")
 save_confirmmation = NodePath("SaveConfirm")
 
 [node name="PauseMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
+visible = false
 z_index = 4096
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1859,7 +1862,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.00072, 1)
+scale = Vector2(0.999456, 1.01234)
 theme_override_constants/margin_top = 60
 theme_override_constants/margin_bottom = 35
 

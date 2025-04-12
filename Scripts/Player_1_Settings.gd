@@ -9,6 +9,9 @@ signal player_entered_door_signal
 @onready var pause_menu = $"player1/2/CanvasLayer/GameUI/PopupMenu/PauseMenuScreenContainer"
 @onready var player_xp = get_node_or_null("/root/Map3/ui/XPPanel") 
 
+func _ready() -> void:
+	Global.ui_visible = true
+
 func entered_door():
 	emit_signal("player_entered_door_signal")
 
@@ -19,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 		PauseMenu()
 		
 	if Input.is_action_just_pressed("Space"):
-		player_xp.gain_xp(700)
+		player_xp.gain_xp(100)
 
 	## Détection d'un tile, si le joueur est sur un tile spécifique (l'id 3) alors print
 	if get_node_or_null("/root/Map3/TileMap/bush") != null:

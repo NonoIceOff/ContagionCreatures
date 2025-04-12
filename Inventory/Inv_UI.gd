@@ -77,7 +77,7 @@ func display_player_items():
 			var item = player_items[i]
 			title.text = item["name"]
 			#desc.text = item["description"]
-			quantity.text = str(item["quantity"])
+			quantity.text = str(int(item["quantity"]))
 			sprite.texture = load(item["texture"])
 			if item["quantity"] == 0:
 				sprite_no.visible = true

@@ -1,15 +1,42 @@
 [
 	{
-		"description": "A powerful witch that uses ice element.",
-		"element1": "ice",
-		"element2": "water",
-		"hp": 150.0,
-		"id": 10.0,
-		"is_infected": true,
-		"name": "Ice witch",
-		"speed": "1.40",
-		"texture": "demon_texture.png",
-		"texture_back": null,
-		"type": "witch"
+
+		"description": "Un primate doré à la puissance exceptionnel ",
+		"element1": "Feu",
+		"element2": "Combat",
+		"hp": 370,
+		"id": 75,
+		"is_infected": false,
+		"name": "Bambourin",
+		"speed": "2.7",
+		"texture": "bambourin_forward",
+		"texture_back": "bambourin_backward",
+		"type": "Totem"
+	},
+	{
+		"description": "Un boss",
+		"element1": "fire",
+		"element2": null,
+		"hp": 500,
+		"id": 11,
+		"is_infected": false,
+		"name": "Tipion",
+		"speed": "1.00",
+		"texture": "tipion_forward.png",
+		"texture_back": "tipion_backward.png",
+		"type": "boss"
+	},
+	{
+		"description": "A gelatinous creature that absorbs whatever it touches.",
+		"element1": "nature",
+		"element2": null,
+		"hp": 30,
+		"id": 6,
+		"is_infected": false,
+		"name": "Hypoclop",
+		"speed": "0.50",
+		"texture": "hypoclop_forward.png",
+		"texture_back": "hypoclop_backward.png",
+		"type": "slime"
 	}
 ]

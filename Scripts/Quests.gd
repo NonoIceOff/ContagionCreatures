@@ -24,10 +24,11 @@ class Quest:
 	var stade: int = 0
 	var finished: bool = false
 	var pnj_data: Array
+	var contafont_mode: bool = false
 	
 	var members_only: bool = false
 
-	func _init(id, title, long_description, descriptions, mini_descriptions, pin_positions, pnj_data, members_only = false, stade = 0):
+	func _init(id, title, long_description, descriptions, mini_descriptions, pin_positions, pnj_data, members_only = false, stade = 0, contafont_mode = false):
 		self.id = id
 		self.title = title
 		self.long_description = long_description
@@ -37,6 +38,7 @@ class Quest:
 		self.pnj_data = pnj_data
 		self.members_only = members_only
 		self.stade = 0
+		self.contafont_mode = contafont_mode
 
 var current_quest_id = -1
 
@@ -76,7 +78,8 @@ func add_quest(quest_data: Dictionary) -> void:
 				return [pnj, pnj_entry[1]],
 			),
 		quest_data.get("members_only", false),
-		quest_data.get("stade", 0)
+		quest_data.get("stade", 0),
+		quest_data.get("contafont_mode", false)
 	)
 	quests[new_quest.id] = new_quest
 

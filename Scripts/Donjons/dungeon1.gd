@@ -11,11 +11,11 @@ func intro():
 	var visible_text = 0
 	var intro_state = 0
 	get_node("CanvasLayer/DungeonTitle").visible = true
-	get_node("Player_One/player1/2").zoom = Vector2(.4,.4)
-	get_node("Player_One/player1/2").position = -get_node("Player_One").position+Vector2(700,350)
+	get_node("Control/TileMap/Player_One/player1/2").zoom = Vector2(.4,.4)
+	get_node("Control/TileMap/Player_One/player1/2").position = -get_node("Control/TileMap/Player_One").position+Vector2(700,350)
 	for i in 100:
 		visible_text += 0.05
-		get_node("Player_One/player1/2").zoom += Vector2(.001,.001)
+		get_node("Control/TileMap/Player_One/player1/2").zoom += Vector2(.001,.001)
 		get_node("CanvasLayer/DungeonTitle").modulate.a = visible_text
 		await get_tree().create_timer(0.1).timeout
 	intro_state = 1
@@ -25,27 +25,28 @@ func intro():
 		await get_tree().create_timer(0.1).timeout
 	intro_var = false
 	
-	get_node("Player_One/player1/2").zoom = Vector2(2,2)
-	get_node("Player_One/PointLight2D").texture_scale = 5
-	get_node("Player_One/PointLight2D").visible = true
-	get_node("Player_One/player1/2").position = Vector2(30,35)
+	get_node("Control/TileMap/Player_One/player1/2").zoom = Vector2(2,2)
+	get_node("Control/TileMap/Player_One/PointLight2D").texture_scale = 5
+	get_node("Control/TileMap/Player_One/PointLight2D").visible = true
+	get_node("Control/TileMap/Player_One/player1/2").position = Vector2(0,0)
+	
 	
 	
 func _ready() -> void:
+	MusicsPlayer.play_sound("res://Sounds/dungeon_sound.mp3","Musics")
 	Global.load_localisation()
 	intro()
 	
-	for x in range(0,64,16):
-		for y in range(0,64,16):
-			var random_type = randi_range(0,item_types.size()-1)
-			var random_item = 0
-			if random_type == 0:
-				random_item = randi_range(1,Global.items.size())
-			if random_type == 1:
-				random_item = randi_range(1,Global.attacks.size())
-			spawn_item(Vector2(x,y)*32+Vector2(8,8),item_types[random_type],random_item)
+	#for x in range(0,64,16):
+	#	for y in range(0,64,16):
+	#		var random_type = randi_range(0,item_types.size()-1)
+	#		var random_item = 0
+	#		if random_type == 0:
+	#			random_item = randi_range(1,Global.items.size())
+	#		if random_type == 1:
+	#			random_item = randi_range(1,Global.attacks.size())
+	#		spawn_item(Vector2(x,y)*32+Vector2(8,8),item_types[random_type],random_item)
 	get_node("/root/Dungeon1/CanvasLayer/Transition/AnimationPlayer").play("transition_to_screen")
-	await get_tree().create_timer(0.3).timeout
 	get_node("Control").visible = true
 
 #func on_fringe_changed():
@@ -53,18 +54,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if get_node("Player_One/PointLight2D").texture_scale > 1 and intro_var == false:
-		get_node("Player_One/PointLight2D").texture_scale -= 0.1
-	if Input.is_action_just_pressed("show_hud"):
-		hud_enabled = not hud_enabled
-		$"CanvasLayer".set_visible(hud_enabled)
-
-	if Input.is_action_just_pressed("reset"):
-		var new_maze = maze.instantiate()
-		var existing_maze = get_children().filter(func(x):
-			return "TileMap" in x.name)[0]
-		existing_maze.queue_free()
-		add_child(new_maze)
+	if get_node("Control/TileMap/Player_One/PointLight2D").texture_scale > 1 and intro_var == false:
+		get_node("Control/TileMap/Player_One/PointLight2D").texture_scale -= 0.1
 	
 	$CanvasLayer/spots_visited_column.text = "\n".join(Global.letters_to_show)
 	

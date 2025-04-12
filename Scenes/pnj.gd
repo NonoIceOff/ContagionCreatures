@@ -42,5 +42,6 @@ func _process(delta: float) -> void:
 		enemy_instance = dialogue_scene.instantiate()
 		enemy_instance.pnj_name = pnj_name
 		enemy_instance.dialogues = dialogue_data
+		enemy_instance.contafont_mode = Quests.quests.get(quest_id).contafont_mode
 		add_child(enemy_instance)
 		enemy_instance.start_dialogue(dialogue_data)
