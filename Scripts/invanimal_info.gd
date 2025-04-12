@@ -4,6 +4,7 @@ extends Control
 var selected_creature : Dictionary
 var selected_item_id : int = -1
 var selected_item_name: String = ""
+var inv_path = "res://Constantes/items.json"
 
 func _ready():
 	$CanvasLayer/itemEvolvedButton.connect("pressed", Callable(self, "_on_equip_item_pressed"))
@@ -18,8 +19,29 @@ func set_creature_data(creature_data: Dictionary):
 	$CanvasLayer/Speed.text = "Vitesse: " + str(creature_data["speed"])
 	$CanvasLayer/Element1.text = "Élément 1 : " + str(creature_data["element1"])
 	$CanvasLayer/Element2.text = "Élément 2 : " + str(creature_data["element2"])
+	
+	if FileAccess.file_exists(inv_path):
+		var file = FileAccess.open(inv_path, FileAccess.READ)
+		var inv_data = JSON.parse_string(file.get_as_text())
+		file.close()
+
+		if typeof(inv_data) == TYPE_ARRAY:
+			var owned = false
+			for c in inv_data:
+				if int(c["id"]) == int(creature_data["id"]):
+					owned = true
+					break
+
+			$CanvasLayer/itemEvolvedButton.visible = owned
+		else:
+			print(" Fichier d'inventaire mal formé.")
+			$CanvasLayer/itemEvolvedButton.visible = false
+	else:
+		print(" Aucun fichier d’inventaire trouvé.")
+		$CanvasLayer/itemEvolvedButton.visible = false
 
 func _on_equip_item_pressed():
+	$AudioStreamPlayer.play()
 	var item_popup = load("res://Scenes/itemEvoSelected.tscn").instantiate()
 	add_child(item_popup)
 	item_popup.set_items(get_player_items())
@@ -80,7 +102,7 @@ func get_evolution_id_for_creature(creature_id: int) -> int:
 		return -1
 
 func get_player_items() -> Array:
-	var inv_path = "res://Constantes/items.json"
+	
 	var file = FileAccess.open(inv_path, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
 	return data
@@ -158,4 +180,5 @@ func consume_item(item_name: String):
 	file_save.close()
 
 func _on_x_pressed() -> void:
+	$AudioStreamPlayerback.play()
 	queue_free()

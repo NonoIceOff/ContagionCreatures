@@ -1,26 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0lmtw3wy6og4"]
+[gd_scene load_steps=4 format=3 uid="uid://b0lmtw3wy6og4"]
 
 [ext_resource type="Script" uid="uid://ddursc06oooda" path="res://Scripts/item_evo_selected.gd" id="1_84dp8"]
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_xoems"]
+[ext_resource type="AudioStream" uid="uid://c47vm8xjkmqwi" path="res://Sounds/click_ui_sound.wav" id="3_hufl5"]
 
 [node name="ItemSelectPanel" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(1.1, 1.1)
 script = ExtResource("1_84dp8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 15
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+offset_left = 72.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 1024.0
+texture = ExtResource("2_xoems")
+region_rect = Rect2(292.991, 52.9683, 37.8839, 38.1161)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NinePatchRect/Panel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="ItemButtonsContainer" type="VBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="ItemButtonsContainer" type="VBoxContainer" parent="CanvasLayer/NinePatchRect/Panel/VBoxContainer"]
 layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hufl5")
