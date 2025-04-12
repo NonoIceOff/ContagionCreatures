@@ -3,6 +3,7 @@ extends Panel
 var data = {}
 
 func _on_click_pressed() -> void:
+	$AudioStreamPlayer.play()
 	print(" data de la créature :", data)
 	var placeable_scene = load("res://Inventory/invanimal_info.tscn").instantiate()
 	placeable_scene.get_node("CanvasLayer/Name").text = data["name"]
