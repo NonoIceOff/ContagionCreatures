@@ -26,8 +26,6 @@ func _on_item_pressed(item):
 	_fade_and_close()
 
 func _fade_and_close():
-	
-	
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color(1, 1, 1, 0), 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "scale", Vector2(0.8, 0.8), 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)

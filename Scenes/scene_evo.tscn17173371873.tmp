@@ -13,7 +13,7 @@ length = 8.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/creaturePreEvo:modulate")
+tracks/0/path = NodePath("creaturePreEvo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/creaturePostEvo:modulate")
+tracks/1/path = NodePath("creaturePostEvo:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,7 +37,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/creaturePostEvo:visible")
+tracks/2/path = NodePath("creaturePostEvo:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -49,7 +49,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/creaturePreEvo:scale")
+tracks/3/path = NodePath("creaturePreEvo:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -61,7 +61,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/creaturePostEvo:scale")
+tracks/4/path = NodePath("creaturePostEvo:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -76,7 +76,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/creaturePreEvo:modulate")
+tracks/0/path = NodePath("creaturePreEvo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,7 +88,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/creaturePostEvo:modulate")
+tracks/1/path = NodePath("creaturePostEvo:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -100,7 +100,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/creaturePostEvo:visible")
+tracks/2/path = NodePath("creaturePostEvo:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -112,7 +112,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/creaturePreEvo:scale")
+tracks/3/path = NodePath("creaturePreEvo:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -124,7 +124,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/creaturePostEvo:scale")
+tracks/4/path = NodePath("creaturePostEvo:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -143,32 +143,28 @@ _data = {
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_yqvj4")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 15
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 1.0
 offset_right = 1922.0
 offset_bottom = 1083.0
 texture = ExtResource("2_6da1u")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="CanvasLayer"]
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="creaturePreEvo" type="Sprite2D" parent="CanvasLayer"]
+[node name="creaturePreEvo" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_yqvj4")
-position = Vector2(963, 785)
+position = Vector2(944, 784)
 scale = Vector2(10.005, 10.005)
 texture = ExtResource("1_8t73b")
 
-[node name="creaturePostEvo" type="Sprite2D" parent="CanvasLayer"]
+[node name="creaturePostEvo" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
-position = Vector2(963, 785)
+position = Vector2(952, 776)
 scale = Vector2(10, 10)
 texture = ExtResource("1_0s15e")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_il4su")
 }
