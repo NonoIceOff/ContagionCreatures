@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjpvcxp6gaorf"]
+[gd_scene load_steps=8 format=3 uid="uid://bijxhhyax8imx"]
 
-[ext_resource type="Script" uid="uid://b2wusp5rg0gju" path="res://Scripts/saves_menu.gd" id="1_e5so3"]
+[ext_resource type="Script" path="res://Scripts/saves_menu.gd" id="1_e5so3"]
 [ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="3_0bhp7"]
 [ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="4_b8bb8"]
 [ext_resource type="Texture2D" uid="uid://d4lu3v3ps7bmv" path="res://Textures/Stats/BTN Exit.png" id="4_dkr6a"]
