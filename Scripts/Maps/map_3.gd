@@ -55,7 +55,8 @@ func _process(_delta: float) -> void:
 			load_instance.position = Vector2(0,0)
 			get_node("ui/Minimap").visible = false
 			get_node("ui").add_child(load_instance)
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			if joypads.size() >= 1:
+				Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
 			scene_load = true
 
