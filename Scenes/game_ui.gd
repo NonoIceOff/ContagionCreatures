@@ -7,9 +7,9 @@ extends MarginContainer
 @export var languages_settings = VBoxContainer
 @export var musicsandsounds_settings = VBoxContainer
 #@export var appearance_settings = VBoxContainer
-@export var save_confirmmation = ConfirmationDialog
+@export var save_confirmation = ConfirmationDialog
 
-
+# Fais apparaître / disparaitre les différents menus
 func toggle_visibility(object):
 	if object.visible:
 		object.visible = false
@@ -68,18 +68,17 @@ func _process(delta):
 
 # Pause menu
 
-
 func _on_resume_button_pressed() -> void:
 	pause_menu.visible = false
 	Engine.time_scale = 1
 
 
 func _on_save_button_pressed() -> void:
-	save_confirmmation.visible = true
+	save_confirmation.visible = true
 	
 	
 func _on_save_confirmed() -> void:
-	save_confirmmation.visible = false
+	save_confirmation.visible = false
 	SaveSystem.save()
 	print("Sauvegarde effectuée !")
 
