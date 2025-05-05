@@ -117,12 +117,8 @@ func set_all_text_variable(
 	max_shield_enemy_label.text   += " : " + str(max_shield_enemy)
 	succes_enemy.text             += " : " + str(echec_attaque_ennemye) + " | " + str(normal_attaque_ennemye) + " | " + str(critique_attaque_ennemye)
 	
-	# Mise à jour du label Drop avec un message selon l'issue du combat
-	if win == true:
-		drops.text = "Victoire ! vous allez recevoir ces drops : "
-	else:
-		drops.text = "Défaite ! vous avez perdu ces potentiel drops : "
-	
+	# Mise à jour du label Drop avec un message selon l'issue du combat (ternaire)
+	drops.text = "Victoire ! vous allez recevoir ces drops : " if win else "Défaite ! vous avez perdu ces potentiel drops : "
 	# Attente pour s'assurer que l'interface est mise à jour
 	await get_tree().create_timer(4.0).timeout
 	
