@@ -1,0 +1,251 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjpvcxp6gaorf"]
+
+[ext_resource type="Script" uid="uid://b2wusp5rg0gju" path="res://Scripts/saves_menu.gd" id="1_e5so3"]
+[ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="3_0bhp7"]
+[ext_resource type="FontFile" uid="uid://dbym6lblkox6c" path="res://Font/Inter-Medium.ttf" id="4_b8bb8"]
+[ext_resource type="Texture2D" uid="uid://d4lu3v3ps7bmv" path="res://Textures/Stats/BTN Exit.png" id="4_dkr6a"]
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="5_p3ys5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd6ce"]
+texture = ExtResource("5_p3ys5")
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xf341"]
+texture = ExtResource("5_p3ys5")
+region_rect = Rect2(275, 178, 90, 27)
+
+[node name="SavesMenu" type="Node2D"]
+script = ExtResource("1_e5so3")
+
+[node name="LeaveButton" type="Button" parent="."]
+custom_minimum_size = Vector2(250, 60)
+offset_left = 24.0
+offset_top = 1000.0
+offset_right = 274.0
+offset_bottom = 1060.0
+size_flags_horizontal = 2
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+action_mode = 0
+text = "RETOUR"
+
+[node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_right = 1920.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 50
+theme_override_fonts/font = ExtResource("3_0bhp7")
+theme_override_font_sizes/font_size = 75
+text = "choississez votre fichier"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 1728.0
+offset_bottom = 952.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Fichier1" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+action_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Fichier1"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 1480.0
+offset_bottom = 208.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave][color=black]FICHIER 1[/color][/wave]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fichier2" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+action_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Fichier2"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 1480.0
+offset_bottom = 208.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[color=black]FICHIER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fichier3" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+action_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Fichier3"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 1480.0
+offset_bottom = 208.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[color=black]FICHIER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveOptions" type="ColorRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.113725, 0.160784, 0.0823529, 0.941176)
+
+[node name="Title" type="Label" parent="SaveOptions"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 50
+theme_override_fonts/font = ExtResource("3_0bhp7")
+theme_override_font_sizes/font_size = 75
+text = "options de la sauvegarde"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="Label" type="Label" parent="SaveOptions"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 161.0
+offset_right = 847.0
+offset_bottom = 226.0
+theme_override_font_sizes/font_size = 64
+text = "Nom de la sauvegarde"
+
+[node name="LineEdit" type="LineEdit" parent="SaveOptions"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 225.0
+offset_right = 1600.0
+offset_bottom = 313.0
+theme_override_fonts/font = ExtResource("4_b8bb8")
+theme_override_font_sizes/font_size = 54
+placeholder_text = "Fichier"
+
+[node name="Exit" type="Button" parent="SaveOptions"]
+layout_mode = 0
+offset_left = 1832.0
+offset_top = 16.0
+offset_right = 1896.0
+offset_bottom = 80.0
+icon = ExtResource("4_dkr6a")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Create" type="Button" parent="SaveOptions"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 824.0
+offset_right = 1728.0
+offset_bottom = 964.0
+size_flags_horizontal = 2
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+action_mode = 0
+text = "CREER LE FICHIER"
+
+[node name="Label2" type="Label" parent="SaveOptions"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 360.0
+offset_right = 847.0
+offset_bottom = 425.0
+theme_override_font_sizes/font_size = 64
+text = "Sélection de quêtes"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SaveOptions"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 440.0
+offset_right = 960.0
+offset_bottom = 816.0
+
+[connection signal="pressed" from="LeaveButton" to="." method="_on_leave_button_pressed"]
+[connection signal="pressed" from="SaveOptions/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="SaveOptions/Create" to="." method="_on_create_pressed"]

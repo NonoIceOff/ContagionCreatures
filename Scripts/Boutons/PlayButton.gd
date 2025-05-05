@@ -18,7 +18,7 @@ func _on_pressed():
 	
 
 func load_next_scene():
-	Global.load()
+	SaveSystem.load()
 	print(Global.tutorial_stade)
 	if Global.tutorial_stade >= 9:
 		SceneLoader.load_scene("res://Scenes/map3.tscn")

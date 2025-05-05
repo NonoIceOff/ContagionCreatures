@@ -63,7 +63,7 @@ func _process(delta):
 	for i in TranslationServer.get_loaded_locales():
 		if get_node("LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/LanguagesSettingsButtonsContainer/"+str(i)).button_pressed == true:
 			TranslationServer.set_locale(i)
-			Global.save_localisation()
+			SaveSystem.save_localisation()
 
 
 # Pause menu
@@ -80,7 +80,7 @@ func _on_save_button_pressed() -> void:
 	
 func _on_save_confirmed() -> void:
 	save_confirmmation.visible = false
-	Global.save()
+	SaveSystem.save()
 	print("Sauvegarde effectuée !")
 
 

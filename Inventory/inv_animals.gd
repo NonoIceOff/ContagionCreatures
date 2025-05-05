@@ -71,6 +71,7 @@ func draw_inventory():
 			placeable_scene.self_modulate = Color(0.5, 1, 0.5)
 
 		placeable_scene.data = creature
+		print(creature)
 		hbox.add_child(placeable_scene)
 
 		

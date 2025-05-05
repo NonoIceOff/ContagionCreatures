@@ -19,8 +19,8 @@ var scene_load = false
 
 
 func _ready():
-	Global.load_localisation()
-	Global.load()
+	SaveSystem.load_localisation()
+	SaveSystem.load()
 	Global.current_map = "main_map"
 	if get_node_or_null("ui/CPUParticles2D") != null:
 		get_node("ui/CPUParticles2D").visible = false
@@ -33,7 +33,7 @@ func _ready():
 	area_torche.connect("saved_triggered", Callable(self, "_on_saved_triggered")) #se connecte au script dans area_saved envoie un signal au script ci-dessous
 	area_torche.connect("saved_outside_area", Callable(self, "_on_saved_outside_area"))
 	area_ennemy.connect("getNode", Callable(self, "_on_search_getNode"))
-	Global.load()
+	SaveSystem.load()
 	
 	
 func _on_search_getNode() -> void:
@@ -58,7 +58,7 @@ func _on_saved_outside_area() -> void:
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		get_tree().quit() # default behavior
-		Global.save()
+		SaveSystem.save()
 
 func zoom_dialogue():
 	if zoomed == false:

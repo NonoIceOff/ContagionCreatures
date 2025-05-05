@@ -25,7 +25,7 @@ func _Zone_Exit(body):
 func _process(delta):
 	if entered == true and Key == false:
 		if Input.is_action_just_pressed(Controllers.a_input):
-			Global.save()
+			SaveSystem.save()
 			Key = true
 			get_node("/root/Map3/ui/Transition/AnimationPlayer").play("screen_to_transition")
 			SceneLoader.load_scene("res://Scenes/home_of_hector.tscn")

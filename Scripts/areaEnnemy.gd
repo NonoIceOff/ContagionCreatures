@@ -10,7 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if entered_Ennemy == true:
 		if Input.is_action_just_pressed(Controllers.a_input):
-			Global.save()
+			SaveSystem.save()
 			#Tutorial.get_node(".").tutorials[4]["progress"] += 100
 			emit_signal("getNode")
 			await get_tree().create_timer(2).timeout

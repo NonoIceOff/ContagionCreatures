@@ -31,6 +31,7 @@ Notifications="*res://Scenes/notifications.tscn"
 Quests="*res://Scripts/Quests.gd"
 Controllers="*res://Scripts/Controllers.gd"
 MusicsPlayer="*res://Scenes/musics_player.tscn"
+SaveSystem="*res://Scripts/SaveSystem.gd"
 
 [debug]
 

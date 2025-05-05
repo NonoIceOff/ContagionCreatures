@@ -17,7 +17,7 @@ func _ready() -> void:
 	shineStar1.play()
 	soundEffect.play()
 	Global.current_map = self.name
-	Global.load_position()
+	SaveSystem.load_position()
 	
 	Quests.init_pnj("Map3")
 	
@@ -67,7 +67,7 @@ func _process(_delta: float) -> void:
 
 	if entered == true and Key == false:
 		if Input.is_action_just_pressed(Controllers.a_input):
-			Global.save()
+			SaveSystem.save()
 			Key = true
 			transition_scene.play("screen_to_transition")
 			await get_tree().create_timer(3).timeout

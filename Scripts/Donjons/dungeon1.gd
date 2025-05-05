@@ -34,7 +34,7 @@ func intro():
 	
 func _ready() -> void:
 	MusicsPlayer.play_sound("res://Sounds/dungeon_sound.mp3","Musics")
-	Global.load_localisation()
+	SaveSystem.load_localisation()
 	intro()
 	
 	#for x in range(0,64,16):

@@ -81,6 +81,7 @@ func add_quest(quest_data: Dictionary) -> void:
 		quest_data.get("stade", 0),
 		quest_data.get("contafont_mode", false)
 	)
+	print(new_quest.id)
 	quests[new_quest.id] = new_quest
 
 func load_quests_from_files() -> void:
