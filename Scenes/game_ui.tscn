@@ -923,7 +923,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.99728)
 
-[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings", "languages_settings", "musicsandsounds_settings")]
+[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings", "languages_settings", "musicsandsounds_settings", "save_confirmation")]
 z_index = 4096
 layout_mode = 1
 anchors_preset = 15
@@ -938,6 +938,7 @@ settings_menu = NodePath("SettingsMenuScreenContainer")
 controls_settings = NodePath("ControlsSettingsScreenContainer")
 languages_settings = NodePath("LanguagesSettingsScreenContainer")
 musicsandsounds_settings = NodePath("MusicsAndSoundsSettingsScreenContainer")
+save_confirmation = NodePath("SaveConfirm")
 
 [node name="PauseMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
 visible = false
