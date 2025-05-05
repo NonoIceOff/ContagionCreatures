@@ -27,7 +27,7 @@ func _process(delta):
 	for i in TranslationServer.get_loaded_locales():
 		if get_node("LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/LanguagesSettingsButtonsContainer/"+str(i)).button_pressed == true:
 			TranslationServer.set_locale(i)
-			Global.save_localisation()
+			SaveSystem.save_localisation()
 
 
 func _on_languages_back_button_pressed() -> void:

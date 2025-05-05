@@ -76,7 +76,7 @@ func intro():
 	
 	
 func _ready() -> void:
-	Global.load_localisation()
+	SaveSystem.load_localisation()
 	shuffle_orders()
 	Global.brazero_numbers = 0
 	intro()

@@ -1,7 +1,7 @@
 extends Node2D
 
 func _init() -> void:
-	Global.load_user()
+	SaveSystem.load_user()
 	if Global.user == null:
 		return
 	print(Global.user)
