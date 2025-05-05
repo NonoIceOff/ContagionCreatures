@@ -15,7 +15,7 @@ var camera = []
 
 func _ready() -> void:
 	shineStar1.play()
-	
+	soundEffect.play()
 	Global.current_map = self.name
 	SaveSystem.load_position()
 	
@@ -31,9 +31,6 @@ func _ready() -> void:
 var camera_id = 0
 func _process(_delta: float) -> void:
 	camera = get_tree().get_nodes_in_group("camera")
-
-	
-	
 	match Global.tutorial_stade:
 		6:
 			await get_tree().create_timer(2).timeout

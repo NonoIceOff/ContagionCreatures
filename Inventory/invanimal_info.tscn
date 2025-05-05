@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://chkbjvbmhr6p2"]
+[gd_scene load_steps=7 format=3 uid="uid://chkbjvbmhr6p2"]
 
 [ext_resource type="Script" uid="uid://1jgoxty0r1xg" path="res://Scripts/invanimal_info.gd" id="1_fqat5"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_3m01o"]
 [ext_resource type="Texture2D" uid="uid://bd16is5v8ma4p" path="res://Textures/Animals/dragon_texture.png" id="3_jhio5"]
+[ext_resource type="AudioStream" uid="uid://c47vm8xjkmqwi" path="res://Sounds/click_ui_sound.wav" id="4_3r01k"]
+[ext_resource type="AudioStream" uid="uid://qajwly81nyty" path="res://Sounds/button_click_back.wav" id="4_o4kcr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s7bj4"]
+texture = ExtResource("2_3m01o")
+region_rect = Rect2(274.954, 177.943, 90.2297, 26.9999)
+
 [node name="Inv_Animal_Info" type="Control"]
 layout_mode = 3
 anchor_right = 0.272
@@ -112,5 +119,27 @@ offset_right = 1544.0
 offset_bottom = 113.0
 theme_override_font_sizes/font_size = 64
 text = "X"
+
+[node name="itemEvolvedButton" type="Button" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 1119.0
+offset_top = 898.0
+offset_right = 1455.0
+offset_bottom = 1034.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxTexture_s7bj4")
+text = "Equip Item"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="AudioStreamPlayerback" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o4kcr")
+volume_db = -60.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3r01k")
 
 [connection signal="pressed" from="CanvasLayer/x" to="." method="_on_x_pressed"]

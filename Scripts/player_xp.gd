@@ -52,7 +52,7 @@ func level_up():
 	tween.finished.connect(func():
 		Global.level += 1
 		Global.current_xp = excess_xp
-		Global.xp_to_next_level = int(Global.xp_to_next_level * 1.5)
+		Global.xp_to_next_level = int(Global.xp_to_next_level * 1.1)
 
 		level_label.text = "Niveau : %d" % Global.level
 		xp_progress_bar.value = float(Global.current_xp) / Global.xp_to_next_level * 100
