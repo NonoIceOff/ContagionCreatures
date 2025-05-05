@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://ca1qdgkavxdj5"]
+[gd_scene load_steps=3 format=3 uid="uid://ca1qdgkavxdj5"]
 
-[ext_resource type="Script" path="res://Scripts/evolution.gd" id="1_0s15e"]
+[ext_resource type="Texture2D" uid="uid://bfg8iecprcvna" path="res://Textures/Animals/bambourin_forward.png" id="1_0s15e"]
+[ext_resource type="Texture2D" uid="uid://b0uuh5q88ixl" path="res://Textures/Animals/wudong_forward.png" id="1_8t73b"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_0s15e")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="creaturePreEvo" type="Sprite2D" parent="."]
+position = Vector2(963, 480)
+scale = Vector2(10, 10)
+texture = ExtResource("1_8t73b")
+
+[node name="creaturePostEvo" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(963, 480)
+scale = Vector2(10, 10)
+texture = ExtResource("1_0s15e")
