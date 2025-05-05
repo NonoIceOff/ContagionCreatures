@@ -212,7 +212,7 @@ func _on_item_selected(index: int) -> void:
 
 		for item in player_items:
 			if item["name"].to_lower() == ressource.to_lower():
-				quantity_available = item["quantity"]
+				quantity_available = int(item["quantity"])
 				if ResourceLoader.exists(item["texture"]):
 					texture = ResourceLoader.load(item["texture"])
 				break
