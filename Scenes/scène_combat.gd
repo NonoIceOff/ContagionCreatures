@@ -45,6 +45,9 @@ var echec_attaque_player = 0
 var echec_attaque_ennemye = 0
 var time_on_game = 0
 var ennemy_id = 0 
+var total_attaque_player = 0
+var total_attaque_ennemye = 0
+
 
 @onready var spell_1_sound: AudioStreamPlayer2D = $Spell1_sound
 @onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
@@ -82,6 +85,8 @@ var combat_started = false  # Indicateur de début de combat
 @onready var http_get_enemy_spells = $GetSpellsEnnemy
 @onready var ennemy_canAttack = false
 @onready var number_attack = 0
+@onready var StatsScene = preload("res://Scenes/Stats/Stats.tscn")
+
 
 const API_URL = "https://contagioncreaturesapi.vercel.app/api/creatures"  # Remplacez par votre URL d'API
 const CREATURES_FILE_PATH = "res://Constantes/creatures.json"  # Chemin vers le fichier JSON local
@@ -546,58 +551,34 @@ func _on_attack_bar_pressed():
 		# Optionnel : Jouer un son d'échec ou donner un feedback visuel
 func end_combat_and_show_stats(win):
 	print("==> Début de end_combat_and_show_stats()")
-	print("Valeurs des stats dans Combat :")
-	print("total_damage_player =", total_damage_player)
-	print("total_heal_player =", total_heal_player)
-	print("total_shield_player =", total_shield_player)
-	print("max_damage_player =", max_damage_player)
-	print("max_heal_player =", max_heal_player)
-	print("max_shield_player =", max_shield_player)
-	print("total_damage_ennemye =", total_damage_ennemye)
-	print("total_heal_ennemye =", total_heal_ennemye)
-	print("total_shield_ennemye =", total_shield_ennemye)
-	print("max_damage_ennemye =", max_damage_ennemye)
-	print("max_heal_ennemye =", max_heal_ennemye)  # attention, vérifie l'orthographe si besoin
-	print("max_shield_ennemye =", max_shield_ennemye)
-	print("critique_attaque_player =", critique_attaque_player)
-	print("critique_attaque_ennemye =", critique_attaque_ennemye)
-	print("normal_attaque_player =", normal_attaque_player)
-	print("normal_attaque_ennemye =", normal_attaque_ennemye)
-	print("echec_attaque_player =", echec_attaque_player)
-	print("echec_attaque_ennemye =", echec_attaque_ennemye)
-	
-	# Instancie la scène Stats
-	var stats_scene = preload("res://Scenes/Stats/Stats.tscn").instantiate()
-	print("Instance Stats instanciée :", stats_scene)
-	
-	# Ajoute la scène à l'arbre pour que son _ready() s'exécute
-	get_tree().root.add_child(stats_scene)
-	print("Stats Scene ajoutée à l'arbre")
-	
-	# Utilise call_deferred pour appeler set_all_text_variable après _ready()
-	stats_scene.call_deferred("set_all_text_variable",
-		win,
+	print(win)
+	var stats_instance = StatsScene.instantiate()
+	get_tree().get_current_scene().add_child(stats_instance)
+
+	# 3) Passer exactement les arguments attendus, dans le bon ordre
+	# Supposons que set_all_text_variable attend 19 arguments, sans le booléen winner
+	stats_instance.call_deferred("set_all_text_variable",
 		total_damage_player,
 		total_heal_player,
 		total_shield_player,
+		total_attaque_player,
+		echec_attaque_player,
+		normal_attaque_player,
+		critique_attaque_player,
 		max_damage_player,
 		max_heal_player,
 		max_shield_player,
 		total_damage_ennemye,
 		total_heal_ennemye,
 		total_shield_ennemye,
-		max_damage_ennemye,
-		max_heal_ennemye,  
-		max_shield_ennemye,
-		critique_attaque_player,
-		critique_attaque_ennemye,
-		normal_attaque_player,
-		normal_attaque_ennemye,
-		echec_attaque_player,
+		total_attaque_ennemye,
 		echec_attaque_ennemye,
-		ennemy_id
+		normal_attaque_ennemye,
+		critique_attaque_ennemye,
+		max_damage_ennemye,
+		max_heal_ennemye,
+		max_shield_ennemye
 	)
-	print("Appel deferred de set_all_text_variable effectué")
 
 
 func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> void:
