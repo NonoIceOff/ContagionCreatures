@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyofep22rmi33"]
+[gd_scene load_steps=15 format=3 uid="uid://cyofep22rmi33"]
 
 [ext_resource type="Script" uid="uid://jx52ry63qxrc" path="res://Scenes/main_menu.gd" id="1_bfu8w"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_pgg7n"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://crj8d71jcq7lc" path="res://Textures/Instagram.png" id="5_opfnp"]
 [ext_resource type="Texture2D" uid="uid://d1g423653v4tm" path="res://Textures/discord.png" id="6_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://w5m4hlt7dhrk" path="res://logo.png" id="8_yhxw7"]
+[ext_resource type="FontFile" uid="uid://s3pjimxs5hu3" path="res://Font/upheavtt.ttf" id="9_trj04"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ja6sr"]
 
@@ -41,6 +42,7 @@ region_rect = Rect2(0, 83, 400, 317)
 
 [node name="Menu" type="MarginContainer" parent="Background"]
 custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1083.0
 theme_override_constants/margin_left = 25
@@ -217,8 +219,8 @@ expand_icon = true
 
 [node name="ConnexionStatus" type="Label" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 text = "vOUS N'etes pas connecte"
 horizontal_alignment = 1
 uppercase = true
@@ -325,16 +327,17 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_cp0ys")
 [node name="Texte" type="Label" parent="Background/Menu/Right_part/VBoxContainer/Duck/Bubble"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 10.3197
 offset_right = 448.0
-offset_bottom = 121.32
+offset_bottom = 122.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_pgg7n")
-theme_override_font_sizes/font_size = 35
+theme_override_constants/line_spacing = -8
+theme_override_fonts/font = ExtResource("9_trj04")
+theme_override_font_sizes/font_size = 46
 text = "DO YOU WANT
 A MOJItO?"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 uppercase = true
 
 [connection signal="pressed" from="Background/Menu/Left_part/VBoxContainer/VBoxContainer2/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]

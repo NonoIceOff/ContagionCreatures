@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca1qdgkavxdj5"]
+
+[ext_resource type="Texture2D" uid="uid://bfg8iecprcvna" path="res://Textures/Animals/bambourin_forward.png" id="1_0s15e"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="creaturePreEvo" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(961, 480)
+scale = Vector2(10, 10)
+texture = ExtResource("1_0s15e")
+
+[node name="creaturePostEvo" type="Sprite2D" parent="."]
+position = Vector2(961, 480)

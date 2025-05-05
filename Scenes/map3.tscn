@@ -52,8 +52,6 @@ script = ExtResource("1_4748x")
 
 [node name="SoundEffectFx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_0tjfa")
-volume_db = -15.0
-pitch_scale = 0.01
 parameters/looping = true
 
 [node name="TileMap" type="Node2D" parent="."]
@@ -135,8 +133,6 @@ scale = Vector2(2.8, 2.8)
 
 [node name="CanvasJour_Nuit" type="CanvasModulate" parent="."]
 
-[node name="ui" parent="." instance=ExtResource("5_ve2ga")]
-
 [node name="AnimatedShineStar" type="AnimatedSprite2D" parent="."]
 z_index = 4
 texture_filter = 1
@@ -170,6 +166,9 @@ item_quantity = 2
 position = Vector2(-0.514986, -0.600003)
 shape = SubResource("RectangleShape2D_fc6d2")
 debug_color = Color(0, 0, 1, 0.419608)
+
+[node name="ui" parent="." instance=ExtResource("5_ve2ga")]
+layer = 10
 
 [connection signal="body_entered" from="TileMap/house/AreaHome" to="TileMap/house/AreaHome" method="_Zone_Entered"]
 [connection signal="body_exited" from="TileMap/house/AreaHome" to="TileMap/house/AreaHome" method="_Zone_Exit"]

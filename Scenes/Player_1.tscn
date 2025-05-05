@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cgeiuvmq46mhr"]
+[gd_scene load_steps=26 format=3 uid="uid://cgeiuvmq46mhr"]
 
 [ext_resource type="Script" uid="uid://c6lg3qad8k5pp" path="res://Scripts/Player_1_Settings.gd" id="1_ny7x7"]
 [ext_resource type="Script" uid="uid://dg6mmgooodt21" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_hy4pn"]
@@ -199,7 +199,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4feh"]
-size = Vector2(13.3333, 19.7708)
+size = Vector2(10.6667, 8)
 
 [node name="Player_One" type="CharacterBody2D" groups=["Player_One"]]
 script = ExtResource("1_ny7x7")
@@ -263,11 +263,12 @@ layer = 10
 [node name="GameUI" parent="player1/2/CanvasLayer" instance=ExtResource("6_13vdf")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, 16)
+position = Vector2(16, 18)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_d4feh")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(16, 16)
 scale = Vector2(0.413625, 0.390972)
 color = Color(0.950982, 1, 0.627932, 1)

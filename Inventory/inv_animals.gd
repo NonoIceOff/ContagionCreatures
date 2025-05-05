@@ -5,13 +5,22 @@ var colonnes = 4
 var creatures = []
 var creatures_captured = []
 
+var creatures_request := HTTPRequest.new()
+var evolutions_request := HTTPRequest.new()
+
 func _ready():
 	close()
+	
+	print(creatures)
 
-	var http_request = HTTPRequest.new()
-	add_child(http_request)
-	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
-	http_request.request("https://contagioncreaturesapi.vercel.app/api/creatures")
+	add_child(creatures_request)
+	creatures_request.connect("request_completed", Callable(self, "_on_creatures_request_completed"))
+	creatures_request.request("https://contagioncreaturesapi.vercel.app/api/creatures")
+
+	add_child(evolutions_request)
+	evolutions_request.connect("request_completed", Callable(self, "_on_evolutions_request_completed"))
+	evolutions_request.request("https://contagioncreaturesapi.vercel.app/api/evolutions")
+
 	_load_creatures_data()
 
 func _load_creatures_data():
@@ -25,14 +34,25 @@ func _load_creatures_data():
 	else:
 		print("Erreur : impossible d'ouvrir le fichier JSON.")
 
-func _on_request_completed(result, response_code, headers, body):
+func _on_creatures_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 		var response_text = body.get_string_from_utf8()
 		var parse_result = JSON.parse_string(response_text)
 		creatures = parse_result
+		print(creatures)
 		draw_inventory()
 	else:
 		print("Failed to fetch creatures: ", response_code)
+
+func _on_evolutions_request_completed(result, response_code, headers, body):
+	if response_code == 200:
+		var response_text = body.get_string_from_utf8()
+		var parse_result = JSON.parse_string(response_text)
+		creatures = parse_result
+		print(creatures)
+		print("Évolutions récupérées avec succès :", parse_result)
+	else:
+		print("Failed to fetch evolutions: ", response_code)
 
 func draw_inventory():
 	get_node("CanvasLayer/Loading").visible = false
@@ -42,14 +62,10 @@ func draw_inventory():
 		child.queue_free()
 
 	for creature in creatures:
-		print(creature)
 		var is_captured = false 
-		
-		print(creatures_captured)
+	
 
 		for captured in creatures_captured:
-			print("Captured :",creature)
-			print("aaaaaaaaaa")
 			if int(creature["id"]) == int(captured["id"]):
 				is_captured = true
 				break 

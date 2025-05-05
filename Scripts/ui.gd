@@ -17,6 +17,8 @@ func _ready() -> void:
 	
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
+	if Global.tutorial_stade < 10:
+		get_node("Informations").visible = true
 	get_node("Stats/CoinsLabel").text = str(PlayerStats.money)+" [img=32x32]res://Textures/COIN.png[/img]"
 
 	if Input.is_action_just_pressed("ui_p"):

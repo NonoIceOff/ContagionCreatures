@@ -13,7 +13,6 @@ var defense_player = 0
 var buttonP : Button
 var buttonE : Button
 var animalP : Sprite2D
-var animalE : Sprite2D
 var background_rect_info : ColorRect
 var buttons_active = false  # Drapeau pour contrôler l'activation des boutons et des touches
 var in_target_zone = false  # Indique si la barre est dans la zone cible
@@ -54,6 +53,7 @@ var ennemy_id = 0
 var combat_started = false  # Indicateur de début de combat
 @onready var start_overlay = ColorRect.new()
 @onready var start_message = Label.new()
+@onready var animalE = $ContainerMob/Sprite_animal_ennemy
 
 # Player bar
 @onready var player_creature_name = $ContainerPLAYER/Pseudo
@@ -175,18 +175,23 @@ func _ready():
 		player_progress_bar_hp.max_value = creatures_data[0].hp
 		player_progress_bar_hp.value = creatures_data[0].hp
 		
+
 func setup_enemy_animal():
 	for key in Global.animals_enemy:
 		if Global.animals_enemy[key] == Global.animals_enemy[PlayerStats.animal_id]:
-			var animalE = Sprite2D.new()
-			animalE.name = "Sprite_animal_enemy"
-			animalE.texture = load("res://Textures/Animals/Eagle_infected.png")
-			animalE.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-			animalE.position = Vector2(1102, 841)
-			animalE.z_index = 0
-			animalE.scale = Vector2(5.1, 5.1)
-			add_child(animalE)
+			# S'assurer que la texture est bien chargée, par exemple après le callback "on_get_creatures_request_completed"
+			if ennemye_texture != null and ennemye_texture != "":
+				var texture_path = ennemye_texture
+				# Si le chemin n'inclut pas déjà "res://", ajouter le préfixe
+				if not ennemye_texture.begins_with("res://"):
+					texture_path = "res://Textures/Animals/" + ennemye_texture
+				animalE.texture = load(texture_path)
 			
+			
+				print(texture_path)
+			else:
+				print("Texture non disponible, attendre le callback de chargement.")
+	
 # Callback pour les données de créature de l'ennemi
 func _on_get_creatures_request_completed(result: int, response_code: int, headers: Array, body: PackedByteArray) -> void:
 	if response_code == 200:
@@ -198,6 +203,7 @@ func _on_get_creatures_request_completed(result: int, response_code: int, header
 			ennemye_texture = enemy_creatures_data.texture
 			ennemy_id = enemy_creatures_data.id
 			print("ennemye id :", ennemy_id)
+			setup_enemy_animal()
 
 # Callback pour les sorts du joueur
 func _on_get_creatures_spells_request_completed(result: int, response_code: int, headers: Array, body: PackedByteArray) -> void:
@@ -363,6 +369,7 @@ func _load_local_json():
 		print("Type de données JSON correct pour le fichier local.")
 	print(parse_result[0].name)
 	player_creature_name.text = parse_result[0].name
+	$EaglePlayer.texture = load("res://Textures/Animals/" + parse_result[0].texture)
 	if parse_result == null:
 		print("Erreur lors du chargement du fichier JSON local.")
 		return []
@@ -643,7 +650,7 @@ func apply_damage_to_enemy(damage: int, success_level: int, mode: String) -> voi
 		total_damage_player += final_damage
 		if final_damage > max_damage_player:
 			max_damage_player = final_damage
-		$ContainerMob/EnnemyeSprite/AnimationPlayer.play("blink & knockback ennemye")
+		$ContainerMob/Sprite_animal_ennemy/AnimationPlayer.play("blink & knockback ennemye")
 	
 	# Mode "heal" : soin du joueur
 	if mode == "heal":
@@ -920,7 +927,7 @@ func apply_damage_to_player(damage: int, success_level: int, mode: String) -> vo
 		damage_label.modulate = Color(0.2, 0.2, 1.0, 0.0)
 		progress_bar_ennemye.get_node("VBoxContainer").add_child(damage_label)
 		tween.tween_property(damage_label, "modulate", Color(0.2, 0.2, 1.0, 1.0), 0.5).from(Color(0.2, 0.2, 1.0, 0.0))
-		$ContainerMob/EnnemyeSprite/AnimationPlayer.play("shield_ennemy")
+		$ContainerMob/Sprite_animal_ennemy/AnimationPlayer.play("shield_ennemy")
 	if mode == "att":
 		damage_label.text = "-" + str(final_damage)
 		# Couleur rouge pour les dégâts
@@ -935,7 +942,7 @@ func apply_damage_to_player(damage: int, success_level: int, mode: String) -> vo
 		damage_label.modulate = Color(0.2, 1.0, 0.2, 0.0)
 		progress_bar_ennemye.get_node("VBoxContainer").add_child(damage_label)
 		tween.tween_property(damage_label, "modulate", Color(0.2, 1.0, 0.2, 1.0), 0.5).from(Color(0.2, 1.0, 0.2, 0.0))
-		$ContainerMob/EnnemyeSprite/AnimationPlayer.play("particles_ennemy")
+		$ContainerMob/Sprite_animal_ennemy/AnimationPlayer.play("particles_ennemy")
 	
 	tween.tween_callback(Callable(self, "_do_nothing")).set_delay(3.0)
 	var new_color = damage_label.modulate
