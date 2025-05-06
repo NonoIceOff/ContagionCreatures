@@ -11,31 +11,5 @@
 		"texture": "tipion_forward.png",
 		"texture_back": "tipion_backward.png",
 		"type": "boss"
-	},
-	{
-		"description": "Un primate doré à la puissance exceptionnel ",
-		"element1": "Feu",
-		"element2": "Combat",
-		"hp": 370,
-		"id": 75,
-		"is_infected": false,
-		"name": "Bambourin",
-		"speed": "2.7",
-		"texture": "bambourin_forward.png",
-		"texture_back": "bambourin_backward.png",
-		"type": "Totem"
-	},
-	{
-		"description": "An elegant yet deadly creature of the night.",
-		"element1": "wind",
-		"element2": "fire",
-		"hp": 100.0,
-		"id": 5.0,
-		"is_infected": true,
-		"name": "Olymx",
-		"speed": "1.70",
-		"texture": "olymde_forward.png",
-		"texture_back": "olymde_backward.png",
-		"type": "olymde"
 	}
 ]

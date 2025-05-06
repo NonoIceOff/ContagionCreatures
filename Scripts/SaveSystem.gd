@@ -85,7 +85,7 @@ func load():
 	Global.pinr = load_file.get_value("Tags", "Red", Global.pinr)
 	Global.piny = load_file.get_value("Tags", "Yellow", Global.piny)
 	Global.ping = load_file.get_value("Tags", "Green", Global.ping)
-	Global.tutorial_stade = load_file.get_value("Tutorial", "Stade", Global.tutorial_stade)
+	Global.tutorial_stade = 20
 	Global.tutorial_validate = load_file.get_value("Tutorial", "Validate", Global.tutorial_validate)
 	Global.tutorial = load_file.get_value("Tutorial", "Tutorial", Global.tutorial)
 	
