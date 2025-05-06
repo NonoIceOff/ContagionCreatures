@@ -4,7 +4,7 @@
 		"element1": "fire",
 		"element2": null,
 		"hp": 500.0,
-		"id": 11.0,
+		"id": 10.0,
 		"is_infected": true,
 		"name": "Tipion",
 		"speed": "1.00",
