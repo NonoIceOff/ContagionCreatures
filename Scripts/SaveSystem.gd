@@ -1,7 +1,7 @@
 extends Node
 
 var file_id = 1
-var filename = "unkown"
+var filename = "unknown"
 
 func save_file_infos():
 	var save_file = ConfigFile.new()
@@ -68,14 +68,15 @@ func save():
 		dir.make_dir(file_folder)
 
 	# Sauvegarde
-	var save_path := "user://Saves/" + file_folder + "/save.txt"
+	var save_path: String = "user://Saves/" + file_folder + "/" + filename + ".txt"
 	save_file.save_encrypted_pass(save_path, "gentle_duck")
 	print("Sauvegarde terminée.")
 
 
 func load():
 	var load_file = ConfigFile.new()
-	var error = load_file.load_encrypted_pass("user://Saves/File"+str(file_id)+"/save.txt", "gentle_duck")
+	var save_path = "user://Saves/File" + str(file_id) + "/" + filename + ".txt"
+	var error = load_file.load_encrypted_pass(save_path, "gentle_duck")
 	if error != OK:
 		print("Erreur de chargement du fichier de sauvegarde :", error)
 		return
