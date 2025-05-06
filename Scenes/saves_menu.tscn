@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://wfbnxegl8s7d"]
+[gd_scene load_steps=8 format=3 uid="uid://bijxhhyax8imx"]
 
 [ext_resource type="Script" uid="uid://b2wusp5rg0gju" path="res://Scripts/saves_menu.gd" id="1_e5so3"]
 [ext_resource type="FontFile" uid="uid://dmlr6gj2b4n2n" path="res://Font/Jersey20-Regular.ttf" id="3_0bhp7"]
@@ -156,6 +156,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SaveOptions" type="ColorRect" parent="."]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.113725, 0.160784, 0.0823529, 0.941176)
