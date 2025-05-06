@@ -3,6 +3,7 @@ extends Control
 var is_open = false
 var colonnes = 4
 var creatures = []
+var evolutions = []
 var creatures_captured = []
 
 var creatures_request := HTTPRequest.new()
@@ -45,9 +46,8 @@ func _on_evolutions_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 		var response_text = body.get_string_from_utf8()
 		var parse_result = JSON.parse_string(response_text)
-		creatures = parse_result
-		print(creatures)
-		print("Évolutions récupérées avec succès :", parse_result)
+		evolutions = parse_result
+		draw_inventory()
 	else:
 		print("Failed to fetch evolutions: ", response_code)
 
@@ -58,10 +58,11 @@ func draw_inventory():
 	for child in grid_container.get_children():
 		child.queue_free()
 
-	for creature in creatures:
+	var all_creatures = evolutions + creatures 
+
+	for creature in all_creatures:
 		var is_captured = false 
 	
-
 		for captured in creatures_captured:
 			if int(creature["id"]) == int(captured["id"]):
 				is_captured = true
@@ -72,9 +73,11 @@ func draw_inventory():
 		grid_container.add_child(hbox)
 
 		var placeable_scene = load("res://Scenes/Placables/placeable_invanimal.tscn").instantiate()
+		placeable_scene.set_data(creature)
 		placeable_scene.get_node("Name").text = creature["name"]
 
 		var texture_path = "res://Textures/Animals/" + creature["texture"]
+		print(texture_path)
 		if ResourceLoader.exists(texture_path):
 			placeable_scene.get_node("Animal").texture = load(texture_path)
 		else:
@@ -86,9 +89,8 @@ func draw_inventory():
 			placeable_scene.modulate = Color(1,1,1,1)
 			placeable_scene.self_modulate = Color(0.5, 1, 0.5)
 
-		placeable_scene.data = creature
-		print(creature)
 		hbox.add_child(placeable_scene)
+		placeable_scene.set_data(creature)
 
 		
 func open():

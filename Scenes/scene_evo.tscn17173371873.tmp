@@ -1,0 +1,170 @@
+[gd_scene load_steps=9 format=3 uid="uid://ca1qdgkavxdj5"]
+
+[ext_resource type="Texture2D" uid="uid://bfg8iecprcvna" path="res://Textures/Animals/bambourin_forward.png" id="1_0s15e"]
+[ext_resource type="Texture2D" uid="uid://b0uuh5q88ixl" path="res://Textures/Animals/wudong_forward.png" id="1_8t73b"]
+[ext_resource type="Script" uid="uid://bk6y2splfmuip" path="res://Scripts/scene_evo.gd" id="1_yqvj4"]
+[ext_resource type="Texture2D" uid="uid://d1b1etkxtnxyq" path="res://Textures/Backgrounds/untitled_0002.png" id="2_6da1u"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yqvj4"]
+
+[sub_resource type="Animation" id="Animation_6da1u"]
+resource_name = "evolution"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("creaturePreEvo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.489563, 0.993739, 1.00835, 1.49792, 2.00209, 2.49165, 2.99583, 3.52923),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(100, 100, 100, 1), Color(100, 100, 100, 1), Color(1, 1, 1, 0), Color(100, 100, 100, 1), Color(1, 1, 1, 0), Color(100, 100, 100, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("creaturePostEvo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.54995, 4.11665, 4.56549, 5.07385, 5.50716, 6.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(100, 100, 100, 1), Color(1, 1, 1, 0), Color(100, 100, 100, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("creaturePostEvo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.53333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("creaturePreEvo:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.233821, 0.438414, 0.737997, 0.991667, 1.43843, 1.66667, 1.95894, 2.96416, 3.54184, 3.98756, 4.28714, 4.61595, 5.89466),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10.025, 10.025), Vector2(3.49, 3.49), Vector2(12.16, 12.16), Vector2(6.595, 6.595), Vector2(12.555, 12.555), Vector2(6.595, 6.595), Vector2(12.245, 12.245), Vector2(8.58, 8.58), Vector2(6.595, 6.595), Vector2(6.595, 6.595), Vector2(6.595, 6.595), Vector2(6.595, 6.595), Vector2(6.595, 6.595)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("creaturePostEvo:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.54184, 3.98756, 4.26667, 4.61595, 5.01783, 5.52931, 5.78506, 6.05541),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(6.595, 6.595), Vector2(11.13, 11.13), Vector2(8.615, 8.615), Vector2(11.2, 11.2), Vector2(9.475, 9.475), Vector2(10.265, 10.265), Vector2(9.74, 9.74), Vector2(10, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_xmu2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("creaturePreEvo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("creaturePostEvo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("creaturePostEvo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("creaturePreEvo:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10.005, 10.005)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("creaturePostEvo:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_il4su"]
+_data = {
+&"RESET": SubResource("Animation_xmu2a"),
+&"evolution": SubResource("Animation_6da1u")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_yqvj4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1.0
+offset_right = 1922.0
+offset_bottom = 1083.0
+texture = ExtResource("2_6da1u")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="creaturePreEvo" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_yqvj4")
+position = Vector2(944, 784)
+scale = Vector2(10.005, 10.005)
+texture = ExtResource("1_8t73b")
+
+[node name="creaturePostEvo" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(952, 776)
+scale = Vector2(10, 10)
+texture = ExtResource("1_0s15e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_il4su")
+}
