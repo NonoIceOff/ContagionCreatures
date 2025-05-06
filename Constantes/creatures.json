@@ -12,19 +12,19 @@
 		"texture_back": "tipion_backward.png",
 		"type": "boss"
 	},
-  {
-		"id": 13,
-		"name": "Wudong",
-		"description": "desc",
-		"texture": "wudong_forward.png",
+	{
+		"description": "Un primate doré à la puissance exceptionnel ",
+		"element1": "Feu",
+		"element2": "Combat",
+		"hp": 370,
+		"id": 75,
 		"is_infected": false,
-		"type": "type",
-		"hp": 75,
-		"speed": "1.80",
-		"element1": "ice",
-		"element2": null,
-		"texture_back": "wudong_backward.png"
-  },
+		"name": "Bambourin",
+		"speed": "2.7",
+		"texture": "bambourin_forward.png",
+		"texture_back": "bambourin_backward.png",
+		"type": "Totem"
+	},
 	{
 		"description": "An elegant yet deadly creature of the night.",
 		"element1": "wind",

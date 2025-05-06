@@ -52,7 +52,7 @@ func _on_item_selected(item_id: int):
 	selected_item_id = item_id
 	
 	for item in get_player_items():
-		if int(item["id"] == selected_item_id):
+		if int(item["id"]) == selected_item_id:
 			selected_item_name = item["name"]
 			break
 	
@@ -62,7 +62,7 @@ func _on_item_selected(item_id: int):
 	print("Request")
 
 # Fonction appelée lorsqu'une créature est sélectionnée et qu'un item est selectionné
-func _on_HTTPRequest_request_completed(response_code, body):
+func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 
 	# Si la requête HTTP échoue affiche un msg d'erreur
 	if response_code != 200:
@@ -102,12 +102,10 @@ func _on_HTTPRequest_request_completed(response_code, body):
 
 	# Afficher la scène d'évolution
 	var evo_scene = load("res://Scenes/scene_evo.tscn").instantiate()
-	get_tree().get_current_scene().add_child(evo_scene)
+	add_child(evo_scene)
 
 	var pre_texture = "res://Textures/Animals/" + selected_creature["texture"]
-	var post_texture = "res://Textures/Animals/" + matched_evolution["newCreature"]["texture"]
-	print(pre_texture)
-	print(post_texture)
+	var post_texture = "res://Textures/Animals/" + matched_evolution["texture"]
 	evo_scene.start_evolution(pre_texture, post_texture)
 
 
@@ -149,7 +147,7 @@ func updateCreaturesInventory(creature_data: Dictionary):
 	for i in range(creatures.size()):
 		if int(creatures[i]["id"]) == int(selected_creature["id"]):
 			creatures[i] = {
-				"id": int(creature_data["id"]),
+				"id": int(creature_data["id"]), 
 				"name": creature_data["name"],
 				"description": creature_data["description"],
 				"texture": creature_data["texture"],
@@ -174,7 +172,6 @@ func updateCreaturesInventory(creature_data: Dictionary):
 		save_file.close()
 
 		print("Inventaire mis à jour avec :", creature_data["name"])
-		queue_free()
 	else:
 		print("Aucune créature trouvée à remplacer.")
 
