@@ -26,7 +26,7 @@ func _on_sauvegarde_pressed():
 
 func _on_sauvegarde_confirmed():
 	# Sauvegarde des données
-	Global.save()
+	SaveSystem.save()
 	print("Sauvegarde effectuée !")
 
 	# Initialise la barre de progression

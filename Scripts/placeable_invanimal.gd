@@ -16,3 +16,6 @@ func _on_click_pressed() -> void:
 	placeable_scene.set_creature_data(data)
 	get_tree().get_current_scene().add_child(placeable_scene)
 	add_child(placeable_scene)
+
+func set_data(creature_data: Dictionary) -> void:
+	data = creature_data

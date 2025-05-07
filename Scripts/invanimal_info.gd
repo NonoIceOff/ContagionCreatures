@@ -9,7 +9,8 @@ var inv_path = "res://Constantes/items.json"
 func _ready():
 	$CanvasLayer/itemEvolvedButton.connect("pressed", Callable(self, "_on_equip_item_pressed"))
 	http.connect("request_completed", Callable(self, "_on_HTTPRequest_request_completed"))
-
+	$CanvasLayer/itemEvolvedButton.visible = true
+	
 func set_creature_data(creature_data: Dictionary):
 	selected_creature = creature_data
 	$CanvasLayer/Name.text = creature_data["name"]
@@ -51,7 +52,7 @@ func _on_item_selected(item_id: int):
 	selected_item_id = item_id
 	
 	for item in get_player_items():
-		if int(item["id"] == selected_item_id):
+		if int(item["id"]) == selected_item_id:
 			selected_item_name = item["name"]
 			break
 	
@@ -60,34 +61,53 @@ func _on_item_selected(item_id: int):
 	print(" Recherche d'évolution pour la créature :", selected_creature["name"])
 	print("Request")
 
+# Fonction appelée lorsqu'une créature est sélectionnée et qu'un item est selectionné
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+
+	# Si la requête HTTP échoue affiche un msg d'erreur
 	if response_code != 200:
 		print(" Erreur serveur :", response_code)
 		return
 
+	# Analyse le JSON pour obtenir la liste des évolutions possibles
 	var evolutions = JSON.parse_string(body.get_string_from_utf8())
 	if typeof(evolutions) != TYPE_ARRAY:
-		print(" Format d'évolution incorrect :", evolutions)
+		print("Format d'évolution incorrect =", evolutions)
 		return
 
+	# Recherche l’évolution correspondant à la créature sélectionnée
 	var matched_evolution = null
 	for evo in evolutions:
 		if int(evo["initial_creature_id"]) == int(selected_creature["id"]):
 			matched_evolution = evo
 			break
 
+	# Si aucune évolution n’est trouvée, affiche un message d’erreur
 	if matched_evolution == null:
-		print(" Aucune évolution trouvée pour :", selected_creature["name"])
+		print("Aucune évolution trouvée pour", selected_creature["name"])
 		return
 
+	# Vérifie que l'item requis correspond bien à l’item sélectionné
 	var required_item_name = matched_evolution["neededItem"]["name"]
 	print(" Item requis :", required_item_name, "| Item sélectionné :", selected_item_name)
 	if required_item_name != selected_item_name:
 		print(" Mauvais item sélectionné.")
 		return
 
+	# Mise à jour de l’inventaire avec la nouvelle créature évoluée
 	updateCreaturesInventory(matched_evolution)
+
+	# Ecrase  l’objet requis à l’évolution dans le fichier JSON des items
 	consume_item(selected_item_name)
+
+	# Afficher la scène d'évolution
+	var evo_scene = load("res://Scenes/scene_evo.tscn").instantiate()
+	add_child(evo_scene)
+
+	var pre_texture = "res://Textures/Animals/" + selected_creature["texture"]
+	var post_texture = "res://Textures/Animals/" + matched_evolution["texture"]
+	evo_scene.start_evolution(pre_texture, post_texture)
+
 
 func get_evolution_id_for_creature(creature_id: int) -> int:
 	if typeof(selected_creature) != TYPE_DICTIONARY:
@@ -127,7 +147,7 @@ func updateCreaturesInventory(creature_data: Dictionary):
 	for i in range(creatures.size()):
 		if int(creatures[i]["id"]) == int(selected_creature["id"]):
 			creatures[i] = {
-				"id": int(creature_data["id"]),
+				"id": int(creature_data["id"]), 
 				"name": creature_data["name"],
 				"description": creature_data["description"],
 				"texture": creature_data["texture"],
@@ -141,14 +161,17 @@ func updateCreaturesInventory(creature_data: Dictionary):
 			}
 			creature_updated = true
 			break
-
+			
+	if typeof(creatures) != TYPE_ARRAY or creatures.is_empty():
+		print("Erreur : creatures non valides")
+		return
+	
 	if creature_updated:
 		var save_file = FileAccess.open(path, FileAccess.WRITE)
 		save_file.store_string(JSON.stringify(creatures, "\t"))
 		save_file.close()
 
 		print("Inventaire mis à jour avec :", creature_data["name"])
-		queue_free()
 	else:
 		print("Aucune créature trouvée à remplacer.")
 
@@ -159,14 +182,18 @@ func consume_item(item_name: String):
 		print(" Impossible d'ouvrir l'inventaire d'items.")
 		return
 
-	var items_data = JSON.parse_string(file.get_as_text())
+	var inventory_items = JSON.parse_string(file.get_as_text())
 	file.close()
 
-	if typeof(items_data) != TYPE_ARRAY:
+	if typeof(inventory_items) != TYPE_ARRAY:
 		print(" Fichier items.json mal formé.")
 		return
+		
+	if typeof(inventory_items) != TYPE_ARRAY or inventory_items.is_empty():
+		print("Erreur : données d'items non valides")
+		return
 
-	for item in items_data:
+	for item in inventory_items:
 		if item["name"] == item_name:
 			if item.has("quantity") and item["quantity"] > 0:
 				item["quantity"] -= 1
@@ -176,7 +203,7 @@ func consume_item(item_name: String):
 			break
 
 	var file_save = FileAccess.open(path, FileAccess.WRITE)
-	file_save.store_string(JSON.stringify(items_data, "\t"))
+	file_save.store_string(JSON.stringify(inventory_items, "\t"))
 	file_save.close()
 
 func _on_x_pressed() -> void:

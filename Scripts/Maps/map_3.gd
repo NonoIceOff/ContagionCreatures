@@ -17,7 +17,7 @@ func _ready() -> void:
 	shineStar1.play()
 	soundEffect.play()
 	Global.current_map = self.name
-	Global.load_position()
+	SaveSystem.load_position()
 	
 	Quests.init_pnj("Map3")
 	
@@ -30,6 +30,7 @@ func _ready() -> void:
 
 var camera_id = 0
 func _process(_delta: float) -> void:
+	get_node("CanvasJour_Nuit").visible = !Global.is_eternal_day
 	camera = get_tree().get_nodes_in_group("camera")
 	match Global.tutorial_stade:
 		6:
@@ -55,7 +56,8 @@ func _process(_delta: float) -> void:
 			load_instance.position = Vector2(0,0)
 			get_node("ui/Minimap").visible = false
 			get_node("ui").add_child(load_instance)
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			if joypads.size() >= 1:
+				Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
 			scene_load = true
 
@@ -67,7 +69,7 @@ func _process(_delta: float) -> void:
 
 	if entered == true and Key == false:
 		if Input.is_action_just_pressed(Controllers.a_input):
-			Global.save()
+			SaveSystem.save()
 			Key = true
 			transition_scene.play("screen_to_transition")
 			await get_tree().create_timer(3).timeout

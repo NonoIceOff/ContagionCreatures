@@ -83,7 +83,7 @@ func _process(delta):
 			Global.quests[0]["stade"] = 2
 			if get_node_or_null("CanvasLayer/Transition/AnimationPlayer") != null:
 				get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
-			Global.save()
+			SaveSystem.save()
 			actual_text = 0
 			get_tree().change_scene_to_file("res://Scenes/loytan_enigme_1.tscn")
 			used = true
@@ -110,7 +110,7 @@ func _process(delta):
 			Global.quests[0]["stade"] = 5
 			if get_node_or_null("CanvasLayer/Transition/AnimationPlayer") != null:
 				get_node("CanvasLayer/Transition/AnimationPlayer").play("screen_to_transition")
-			Global.save()
+			SaveSystem.save()
 			actual_text = 0
 			get_tree().change_scene_to_file("res://Scenes/loytan_enigme_2.tscn")
 			used = true

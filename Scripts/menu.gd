@@ -3,7 +3,7 @@ extends Node2D
 
 
 func _init() -> void:
-	Global.load()
+	SaveSystem.load()
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():

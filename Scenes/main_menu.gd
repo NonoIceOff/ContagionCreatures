@@ -4,7 +4,8 @@ var menu_fade_out = false
 var text = ""
 
 func _init() -> void:
-	Global.load()
+	SaveSystem.load()
+	SaveSystem.load_other_parameters()
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,7 +39,7 @@ func _on_multiplayer_button_pressed() -> void:
 
 func _on_solo_button_pressed() -> void:
 	menu_fade_out = true
-	load_next_scene()
+	get_tree().change_scene_to_file("res://Scenes/saves_menu.tscn")
 
 func _physics_process(delta):
 	if menu_fade_out == true:

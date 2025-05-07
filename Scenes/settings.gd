@@ -13,7 +13,7 @@ func _on_language_button_pressed() -> void:
 
 
 func _on_appearance_button_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://Scenes/videosettings.tscn")
 
 
 func _on_music_and_sound_button_pressed() -> void:
