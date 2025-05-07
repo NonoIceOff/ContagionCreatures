@@ -39,6 +39,9 @@ func save():
 	save_file.set_value("Player", "level", PlayerStats.level)
 	save_file.set_value("Player", "monnaie", PlayerStats.money)
 
+	save_file.set_value("Stats", "Time Played", Global.party_timer_seconds)
+	print("Time saved: ", Global.party_timer_seconds)
+
 	var player_node = get_node_or_null("/root/"+Global.current_map+"/TileMap/Player_One")
 	if player_node:
 		save_file.set_value("Player", "position", player_node.position)
@@ -73,6 +76,7 @@ func save():
 	print("Sauvegarde terminée.")
 
 
+
 func load():
 	var load_file = ConfigFile.new()
 	var save_path = "user://Saves/File" + str(file_id) + "/" + filename + ".txt"
@@ -94,6 +98,7 @@ func load():
 	PlayerStats.skin = load_file.get_value("Player", "skin", PlayerStats.skin)
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
 	PlayerStats.money = load_file.get_value("Player", "money", PlayerStats.money)
+	Global.party_timer_seconds = load_file.get_value("Stats", "Time Played", 0)
 
 	var player_node = get_node_or_null("/root/"+Global.current_map+"/TileMap/Player_One")
 	if player_node:
@@ -121,6 +126,22 @@ func save_user():
 	var save_file = ConfigFile.new()
 	save_file.set_value("User","Data",Global.user)
 	save_file.save_encrypted_pass("user://user.txt", "user_key")
+
+func load_other_parameters():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://settings.txt", "settings_key")
+	Global.is_speedrun_timer = load_file.get_value("Accessibility","Speedrun Timer",Global.is_speedrun_timer)
+	Global.is_minimap = load_file.get_value("Accessibility","Minimap",Global.is_minimap)
+	Global.is_eternal_day = load_file.get_value("Accessibility","Eternal Day",Global.is_eternal_day)
+	Global.is_daycycle = load_file.get_value("Accessibility","Day Cycle",Global.is_daycycle)
+
+func save_other_parameters():
+	var save_file = ConfigFile.new()
+	save_file.set_value("Accessibility","Speedrun Timer",Global.is_speedrun_timer)
+	save_file.set_value("Accessibility","Minimap",Global.is_minimap)
+	save_file.set_value("Accessibility","Eternal Day",Global.is_eternal_day)
+	save_file.set_value("Accessibility","Day Cycle",Global.is_daycycle)
+	save_file.save_encrypted_pass("user://settings.txt", "settings_key")
 	
 func load_localisation():
 	var load_file = ConfigFile.new()

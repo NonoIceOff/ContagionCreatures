@@ -30,6 +30,7 @@ func _ready() -> void:
 
 var camera_id = 0
 func _process(_delta: float) -> void:
+	get_node("CanvasJour_Nuit").visible = !Global.is_eternal_day
 	camera = get_tree().get_nodes_in_group("camera")
 	match Global.tutorial_stade:
 		6:

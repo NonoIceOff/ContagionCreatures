@@ -269,7 +269,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_egi6e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_egi6e")
 theme_override_styles/normal = SubResource("StyleBoxTexture_0hj8s")
-text = "APPARENCE"
+text = "VIDEO"
 
 [node name="MusicAndSoundButton" type="Button" parent="NinePatchRect/MarginContainer/SettingsButtonsContainer"]
 custom_minimum_size = Vector2(0, 100)

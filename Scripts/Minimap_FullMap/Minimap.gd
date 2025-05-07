@@ -62,35 +62,36 @@ func change_map():
 		player = get_node("../../Control/Player_One")
 
 func _process(delta):
-	camera.position = player.position
+	if Global.is_minimap == true:
+		camera.position = player.position
 
-	var minimap_size = Vector2(180, 180) # Taille de la minimap
-	var minimap_center = minimap_size / 2
-	var map_scale = Vector2(0.2, 0.2) # Échelle de la caméra
+		var minimap_size = Vector2(180, 180) # Taille de la minimap
+		var minimap_center = minimap_size / 2
+		var map_scale = Vector2(0.2, 0.2) # Échelle de la caméra
 
-	# Liste des pins et de leurs positions globales respectives
-	var pins = {
-		"PinBlue": Global.pinb,
-		"PinPoint": Global.pin,
-		"PinRed": Global.pinr,
-		"PinYellow": Global.piny,
-		"PinGreen": Global.ping
-	}
+		# Liste des pins et de leurs positions globales respectives
+		var pins = {
+			"PinBlue": Global.pinb,
+			"PinPoint": Global.pin,
+			"PinRed": Global.pinr,
+			"PinYellow": Global.piny,
+			"PinGreen": Global.ping
+		}
 
-	for pin_name in pins.keys():
-		var pin_global = Vector2(pins[pin_name][0],pins[pin_name][1])/2
-		var pin_relative = (pin_global - camera.position) * map_scale
-		var pin_minimap_pos = pin_relative + minimap_center
+		for pin_name in pins.keys():
+			var pin_global = Vector2(pins[pin_name][0],pins[pin_name][1])/2
+			var pin_relative = (pin_global - camera.position) * map_scale
+			var pin_minimap_pos = pin_relative + minimap_center
 
-		var pin_node = get_node(pin_name)
-		pin_node.position = pin_minimap_pos
+			var pin_node = get_node(pin_name)
+			pin_node.position = pin_minimap_pos
 
-		# Garder les pins dans les limites de la minimap
-		pin_node.position.x = clamp(pin_node.position.x, 32, minimap_size.x+32)
-		pin_node.position.y = clamp(pin_node.position.y, 32, minimap_size.y+32)
+			# Garder les pins dans les limites de la minimap
+			pin_node.position.x = clamp(pin_node.position.x, 32, minimap_size.x+32)
+			pin_node.position.y = clamp(pin_node.position.y, 32, minimap_size.y+32)
 
-	# Mise à jour des coordonnées du joueur
-	get_node("Position").text = "X: " + str(int(player.position.x)) + " | Y: " + str(int(player.position.y))
+		# Mise à jour des coordonnées du joueur
+		get_node("Position").text = "X: " + str(int(player.position.x)) + " | Y: " + str(int(player.position.y))
 
 
 

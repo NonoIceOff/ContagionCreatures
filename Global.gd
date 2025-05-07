@@ -25,6 +25,11 @@ var piny = Vector2(0,0)
 var ping = Vector2(0,0)
 var pin_temp = Vector2(0,0)
 
+var is_speedrun_timer = false
+var is_minimap = true
+var is_eternal_day = FLAG_PROCESS_THREAD_MESSAGES_PHYSICS
+var is_daycycle = true
+
 var grid_size = 31
 var step_delay = 0
 var allow_loops = false
@@ -52,6 +57,8 @@ var pianos = [0,0,0,0]
 var current_map = ""
 
 var starters_id = [0,0,0]
+
+var party_timer_seconds = 0
 
 var start_cinematic = {
 	0: "START_CINEMATIC_TEXT_0",
