@@ -15,6 +15,9 @@ func _ready() -> void:
 func entered_door():
 	emit_signal("player_entered_door_signal")
 
+func _process(delta):
+	Global.party_timer_seconds += delta
+
 func _physics_process(_delta: float) -> void:
 	var input_velocity = Vector2.ZERO
 	

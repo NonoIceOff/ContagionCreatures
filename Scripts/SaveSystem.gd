@@ -39,6 +39,9 @@ func save():
 	save_file.set_value("Player", "level", PlayerStats.level)
 	save_file.set_value("Player", "monnaie", PlayerStats.money)
 
+	save_file.set_value("Stats", "Time Played", Global.party_timer_seconds)
+	print("Time saved: ", Global.party_timer_seconds)
+
 	var player_node = get_node_or_null("/root/"+Global.current_map+"/TileMap/Player_One")
 	if player_node:
 		save_file.set_value("Player", "position", player_node.position)
@@ -73,6 +76,7 @@ func save():
 	print("Sauvegarde terminée.")
 
 
+
 func load():
 	var load_file = ConfigFile.new()
 	var save_path = "user://Saves/File" + str(file_id) + "/" + filename + ".txt"
@@ -94,6 +98,7 @@ func load():
 	PlayerStats.skin = load_file.get_value("Player", "skin", PlayerStats.skin)
 	PlayerStats.level = load_file.get_value("Player", "level", PlayerStats.level)
 	PlayerStats.money = load_file.get_value("Player", "money", PlayerStats.money)
+	Global.party_timer_seconds = load_file.get_value("Stats", "Time Played", 0)
 
 	var player_node = get_node_or_null("/root/"+Global.current_map+"/TileMap/Player_One")
 	if player_node:

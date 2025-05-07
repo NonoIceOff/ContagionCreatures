@@ -53,6 +53,8 @@ var current_map = ""
 
 var starters_id = [0,0,0]
 
+var party_timer_seconds = 0
+
 var start_cinematic = {
 	0: "START_CINEMATIC_TEXT_0",
 	1: "START_CINEMATIC_TEXT_1",
