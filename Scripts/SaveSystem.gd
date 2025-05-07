@@ -126,6 +126,22 @@ func save_user():
 	var save_file = ConfigFile.new()
 	save_file.set_value("User","Data",Global.user)
 	save_file.save_encrypted_pass("user://user.txt", "user_key")
+
+func load_other_parameters():
+	var load_file = ConfigFile.new()
+	load_file.load_encrypted_pass("user://settings.txt", "settings_key")
+	Global.is_speedrun_timer = load_file.get_value("Accessibility","Speedrun Timer",Global.is_speedrun_timer)
+	Global.is_minimap = load_file.get_value("Accessibility","Minimap",Global.is_minimap)
+	Global.is_eternal_day = load_file.get_value("Accessibility","Eternal Day",Global.is_eternal_day)
+	Global.is_daycycle = load_file.get_value("Accessibility","Day Cycle",Global.is_daycycle)
+
+func save_other_parameters():
+	var save_file = ConfigFile.new()
+	save_file.set_value("Accessibility","Speedrun Timer",Global.is_speedrun_timer)
+	save_file.set_value("Accessibility","Minimap",Global.is_minimap)
+	save_file.set_value("Accessibility","Eternal Day",Global.is_eternal_day)
+	save_file.set_value("Accessibility","Day Cycle",Global.is_daycycle)
+	save_file.save_encrypted_pass("user://settings.txt", "settings_key")
 	
 func load_localisation():
 	var load_file = ConfigFile.new()
