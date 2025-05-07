@@ -18,7 +18,7 @@ func _ready():
 		get_node("Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer/ProfileButton").text = Global.user.username
 		get_node("Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer/ConnexionStatus").text = "Voir votre profil"
 
-	init_save_names()
+	init_saves_names()
 	init_quest_names()
 
 func init_quest_names():
@@ -55,7 +55,8 @@ func init_quest_names():
 			quest_file.close()
 	print(quest_names)
 	
-func init_save_names():	
+# Récupére et affiche les noms des sauvegardes sur leur bouton respectif
+func init_saves_names():	
 	var dir = DirAccess.open("user://")
 	
 	for i in range(1, 4):
@@ -66,23 +67,25 @@ func init_save_names():
 		
 		if dir.dir_exists(sub_dir): # Si le dossier "user://Saves/FileX" existe
 			var saves_dir = DirAccess.open("user://" + sub_dir) # Ouvre l'accès à ce dossier
-			while true:	
-				saves_dir.list_dir_begin() # On commence à lire son contenu
+			saves_dir.list_dir_begin() # On commence à lire son contenu
+			while true: 
 				var file_name = saves_dir.get_next()
+				print("Contenu de Saves/File" + str(i) + " : ", file_name)
 				if file_name == "":
 					break
 				if file_name.ends_with(".txt"):
 					save_name = file_name.substr(0, file_name.length() - 4)  # On enlève le .txt
 					break
-				saves_dir.list_dir_end()
+			saves_dir.list_dir_end() 
 
-		var node_label = get_node("VBoxContainer/Fichier" + str(i) + "/RichTextLabel")
+		var button_label = get_node("VBoxContainer/Fichier" + str(i) + "/RichTextLabel")
+		
 		if save_name != "": 
-			node_label.text = "[color=black]" + save_name + "[/color]" # On affiche le nom de la sauvegarde sur le bouton
+			button_label.text = "[color=black]" + save_name + "[/color]" # On affiche le nom de la sauvegarde sur le bouton
 		elif not dir.dir_exists(sub_dir):
-			node_label.text = "[color=red]SAUVEGARDE " + str(i) + " NON TROUVÉE[/color]" 
+			button_label.text = "[color=red]SAUVEGARDE " + str(i) + " NON TROUVÉE[/color]" 
 		else:
-			node_label.text = "[color=red]SAUVEGARDE " + str(i) + " VIDE[/color]"
+			button_label.text = "[color=red]SAUVEGARDE " + str(i) + " VIDE[/color]"
 
 
 func _physics_process(delta):
@@ -95,24 +98,25 @@ func _process(delta):
 	for i in range(1, 4):
 		if get_node("VBoxContainer/Fichier" + str(i)).is_pressed() == true:
 			var sub_dir = "Saves/File" + str(i)
-			print(sub_dir)
 		
-			if not dir.dir_exists(sub_dir) :  # Si pas de dossier sauvegarde
+			if not dir.dir_exists(sub_dir) :
 				show_save_options()
 				SaveSystem.file_id = i
 			else :
 				var saves_dir = DirAccess.open("user://" + sub_dir)
-				if saves_dir != null:
-					saves_dir.list_dir_begin()
-					var save = saves_dir.get_next()
-					saves_dir.list_dir_end()
-					if save == "":
-						show_save_options()
-						SaveSystem.file_id = i
-					else :
-						SaveSystem.file_id = i
-						SaveSystem.load()
-						get_tree().change_scene_to_file("res://Scenes/map3.tscn")
+				var button_label = get_node("VBoxContainer/Fichier" + str(i) + "/RichTextLabel")
+				
+				saves_dir.list_dir_begin()
+				var save = saves_dir.get_next()
+				saves_dir.list_dir_end()
+				if save == "":
+					show_save_options()
+					SaveSystem.file_id = i
+				else :
+					
+					SaveSystem.file_id = i
+					get_tree().change_scene_to_file("res://Scenes/map3.tscn")
+					SaveSystem.load()
 		
 	if float(get_modulate()[3]) <= 0.1:
 		get_tree().change_scene_to_file("res://Scenes/map3.tscn")
@@ -126,10 +130,16 @@ func _on_exit_pressed() -> void:
 
 
 func _on_create_pressed() -> void:
-	var custom_filename = get_node("SaveOptions/LineEdit").text
+	var line_edit = get_node("SaveOptions/LineEdit")
+	var custom_filename = line_edit.text.strip_edges()
+	
+	# Si l'utilisateur n'entre rien comme nom de sauvegarde, mets un nom par défaut
+	if custom_filename == "":
+		custom_filename = line_edit.placeholder_text
+		
 	SaveSystem.filename = custom_filename
-	get_tree().change_scene_to_file("res://Scenes/map3.tscn")
 	SaveSystem.save()
+	get_tree().change_scene_to_file("res://Scenes/map3.tscn")
 
 func show_save_options():
 	get_node("SaveOptions").visible = true
