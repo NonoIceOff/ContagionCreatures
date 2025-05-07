@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq1408px4oys1"]
+
+[ext_resource type="Texture2D" uid="uid://4lfpo8gykisg" path="res://Textures/Stats/BG.png" id="1_7lw2s"]
+[ext_resource type="Script" uid="uid://b7qe3q8sm4h8c" path="res://Scripts/SkillTree/skill_tree.gd" id="1_d2d8j"]
+[ext_resource type="Texture2D" uid="uid://bxuj628a04cbm" path="res://Scenes/SkillTree/ImageSkillTree/Grass.png" id="2_dg52f"]
+[ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="3_p4tlq"]
+
+[node name="SkillTree" type="Node2D"]
+script = ExtResource("1_d2d8j")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(959.5, 541)
+scale = Vector2(13.1438, 5.91257)
+texture = ExtResource("1_7lw2s")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 31.0
+offset_top = 48.0
+offset_right = 1891.0
+offset_bottom = 180.0
+theme_override_fonts/normal_font = ExtResource("3_p4tlq")
+theme_override_font_sizes/bold_italics_font_size = 701
+theme_override_font_sizes/mono_font_size = 226
+theme_override_font_sizes/normal_font_size = 111
+text = "Arbre de compétence
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skill1" type="Sprite2D" parent="."]
+position = Vector2(242, 587)
+scale = Vector2(3.0625, 3.0625)
+texture = ExtResource("2_dg52f")
+
+[node name="Button_Skill1" type="Button" parent="Skill1"]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 16.0
+mouse_default_cursor_shape = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Skill1"]
+offset_left = 16.9796
+offset_top = -61.0612
+offset_right = 112.98
+offset_bottom = 58.9388
+
+[node name="Top_label" type="Label" parent="Skill1/Panel"]
+layout_mode = 0
+offset_right = 97.0
+offset_bottom = 26.0
+text = "1"
+
+[node name="Bot_label" type="Label" parent="Skill1/Panel"]
+offset_left = 2.0
+offset_top = 44.0
+offset_right = 96.0
+offset_bottom = 117.0
+text = "1"

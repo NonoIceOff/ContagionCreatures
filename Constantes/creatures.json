@@ -4,13 +4,13 @@
 		"description": "Un primate doré à la puissance exceptionnel ",
 		"element1": "Feu",
 		"element2": "Combat",
-		"hp": 370,
-		"id": 75,
+		"hp": 3070,
+		"id": 10,
 		"is_infected": false,
 		"name": "Bambourin",
 		"speed": "2.7",
-		"texture": "bambourin_forward",
-		"texture_back": "bambourin_backward",
+		"texture": "bambourin_forward.png",
+		"texture_back": "bambourin_backward.png",
 		"type": "Totem"
 	},
 	{
