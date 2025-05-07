@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq1408px4oys1"]
+[gd_scene load_steps=7 format=3 uid="uid://bq1408px4oys1"]
 
 [ext_resource type="Texture2D" uid="uid://4lfpo8gykisg" path="res://Textures/Stats/BG.png" id="1_7lw2s"]
 [ext_resource type="Script" uid="uid://b7qe3q8sm4h8c" path="res://Scripts/SkillTree/skill_tree.gd" id="1_d2d8j"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://vee7l4wiavau" path="res://Scenes/SkillTree/Skill.tscn" id="4_p4tlq"]
 [ext_resource type="Texture2D" uid="uid://docmmrdp7p7ki" path="res://Textures/Animals/bambourin_backward.png" id="5_mdbuo"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mdbuo"]
+
 [node name="SkillTree" type="Node2D"]
 script = ExtResource("1_d2d8j")
+skill_points = null
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(959.5, 541)
@@ -74,21 +77,30 @@ offset_bottom = 494.0
 display_name = "Skill 6"
 tier = 3
 
-[node name="ErrorMessage" type="Label" parent="."]
-self_modulate = Color(0.836107, 0.0506029, 0.0288104, 1)
-offset_left = 26.0
-offset_top = 971.0
-offset_right = 1888.0
-offset_bottom = 1036.0
-theme_override_font_sizes/font_size = 46
-text = "Error"
+[node name="pointAvailable" type="RichTextLabel" parent="."]
+offset_left = 31.0
+offset_top = 196.0
+offset_right = 640.0
+offset_bottom = 275.0
+theme_override_fonts/normal_font = ExtResource("3_p4tlq")
+theme_override_font_sizes/bold_italics_font_size = 701
+theme_override_font_sizes/mono_font_size = 226
+theme_override_font_sizes/normal_font_size = 36
+text = "Points de compétence disponible : "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PointsAvailable" type="Label" parent="."]
-offset_left = 41.0
-offset_top = 205.0
-offset_right = 414.0
-offset_bottom = 275.0
-theme_override_font_sizes/font_size = 41
-text = "Points disponibles : "
+[node name="errorMessage" type="RichTextLabel" parent="."]
+self_modulate = Color(0.70759, 0.0323984, 0.0180174, 1)
+material = SubResource("CanvasItemMaterial_mdbuo")
+offset_left = 696.0
+offset_top = 936.0
+offset_right = 1305.0
+offset_bottom = 1015.0
+theme_override_fonts/normal_font = ExtResource("3_p4tlq")
+theme_override_font_sizes/bold_italics_font_size = 701
+theme_override_font_sizes/mono_font_size = 226
+theme_override_font_sizes/normal_font_size = 36
+text = "Message d'erreur "
+horizontal_alignment = 1
+vertical_alignment = 1

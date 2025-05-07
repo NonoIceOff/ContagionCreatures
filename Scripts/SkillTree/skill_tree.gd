@@ -1,62 +1,114 @@
 extends Node2D
+const CFG_PATH := "res://Scripts/SkillTree/skills.cfg"
 
-# Déclaration des variables des sprites
-@onready var Skill1 = $Skill1/Button_Skill1
-@onready var Skill1Panel = $Skill1/Panel
-var skill1_active = false
-var skill1_unlocked = false
-var skill1_cost = 1
-var skill1_description = "Skill 1 description"
+@export var skill_points : int = 3
+var skills : Array[Skill] = []
 
-func _ready():
-	_setting_all_panel_text() # Appel de la méthode pour initialiser le texte du panneau
-	# Connexion du signal "pressed" du bouton à la méthode _on_Button_Skill1_pressed
-	Skill1.connect("pressed", Callable(self, "_on_Button_Skill1_pressed"))
-	# Connexion du signal "mouse_entered"
-	Skill1.connect("mouse_entered", Callable(self, "_on_Button_Skill1_mouse_entered"))	
-	Skill1.connect("mouse_exited", Callable(self, "_on_Button_Skill1_mouse_exited"))
+@onready var lbl_points : Label = $PointsAvailable   # affiche les points restants
+@onready var lbl_error  : Label = $ErrorMessage      # message d’erreur (caché par défaut)
 
+# ------------------------------------------------------------------ #
+func _ready() -> void:
+	lbl_error.hide()                 # on démarre avec le message invisible
+	_collect_skills()
+	_load_state()
+	_update_points_label()
+	print("[Tree::_ready] start – pts =", skill_points)
 
+# ----------- COLLECTE RÉCURSIVE DES SKILLS ------------------------ #
+func _collect_skills() -> void:
+	print("[Tree::_collect_skills] look for skills …")
+	skills.clear()
+	_walk(self)
+	print(" » total :", skills.size())
 
-# Méthode appelée lorsque le bouton est pressé
-func _on_Button_Skill1_pressed():
-	# Vérification si le bouton est déjà sélectionné et modifie la couleur pour montrer actif ou inactif
-	if not skill1_unlocked:
-		print("Skill 1 is not unlocked yet!")
+func _walk(node) -> void:
+	for ch in node.get_children():
+		if ch is Skill:
+			print("  found :", ch.get_path(), "tier", ch.tier)
+			skills.append(ch)
+		_walk(ch)
+
+# -------------------- CLIC SUR UN SKILL --------------------------- #
+func _skill_pressed(s: Skill) -> void:
+	print("---[press]---------------------------------------------------------")
+	print("Before  pts=%d  %s (tier %d)  unlocked=%s active=%s"
+		  % [skill_points, s.name, s.tier, s.unlocked, s.active])
+
+	if !s.unlocked:
+		# Vérifie le palier précédent
+		if s.tier > 1 and !_has_unlocked_tier(s.tier - 1):
+			_show_error("Débloque d'abord une compétence de palier %d !" % (s.tier - 1))
+			return
+
+		# Vérifie les points
+		if skill_points < s.cost:
+			_show_error("Pas assez de points (il en faut %d)" % s.cost)
+			return
+
+		# Déverrouillage
+		skill_points -= s.cost
+		s.unlocked = true
+		print("  → %s déverrouillé, pts restants = %d" % [s.name, skill_points])
+	else:
+		# Toggle actif / inactif
+		s.active = !s.active
+		print("  → %s devient %s" % [s.name, "ACTIF" if s.active else "INACTIF"])
+
+	s._refresh()
+	_update_points_label()
+	_save_state()
+
+	print("After   pts=%d  %s  unlocked=%s active=%s"
+		  % [skill_points, s.name, s.unlocked, s.active])
+	print("------------------------------------------------------------------")
+
+func _has_unlocked_tier(t:int) -> bool:
+	for sk in skills:
+		if sk.tier == t and sk.unlocked:
+			return true
+	return false
+
+# --------------- LABEL DES POINTS DISPONIBLES --------------------- #
+func _update_points_label() -> void:
+	lbl_points.text = "Points disponibles : %d" % skill_points
+
+# -------------------- GESTION DES ERREURS ------------------------- #
+func _show_error(msg:String) -> void:
+	lbl_error.text = msg
+	lbl_error.show()
+	print("[ERROR]", msg)
+
+	# Attend 3 s puis cache le label si le texte n’a pas été changé entre-temps
+	await get_tree().create_timer(3.0).timeout
+	if lbl_error.text == msg:
+		lbl_error.hide()
+
+# ----------------------- SAUVEGARDE ------------------------------- #
+func _save_state() -> void:
+	print("[save] →", CFG_PATH)
+	var cfg := ConfigFile.new()
+	cfg.set_value("global", "skill_points", skill_points)
+	for s in skills:
+		var sec := s.name
+		cfg.set_value(sec, "unlocked", s.unlocked)
+		cfg.set_value(sec, "active",   s.active)
+	cfg.save(CFG_PATH)
+
+# ------------------------ CHARGEMENT ------------------------------ #
+func _load_state() -> void:
+	var cfg := ConfigFile.new()
+	if cfg.load(CFG_PATH) != OK:
+		print("[load] first run, no cfg.")
 		return
-	
-	if skill1_active:
-		Skill1.modulate = Color(1, 1, 1) # Couleur normale
-		skill1_active = false
-	else:
-		Skill1.modulate = Color(0.5, 0.5, 0.5) # Couleur grisée
-		skill1_active = true
-	
-func _on_Button_Skill1_mouse_entered():	
-	print("Mouse entered")
-	Skill1Panel.visible = true
 
+	skill_points = cfg.get_value("global", "skill_points", skill_points)
+	print("[load] cfg found – pts =", skill_points)
 
-
-func _on_Button_Skill1_mouse_exited():
-	print("Mouse exited")
-	Skill1Panel.visible = false
-	
-	
-func _setting_all_panel_text() -> void:
-	# Récupération des deux labels déjà présents dans la hiérarchie
-	var top_label    = $Skill1/Panel/Top_label
-	var bottom_label = $Skill1/Panel/Bot_label
-
-	# --- Propriétés communes ------------------------------------------
-	top_label.add_theme_font_size_override("font_size", 10)
-	bottom_label.add_theme_font_size_override("font_size", 10)
-
-	# --- Texte du label du haut ---------------------------------------
-	if skill1_unlocked:
-		top_label.text = "Skill 1 active" if skill1_active else "Skill 1 inactive"
-	else:
-		top_label.text = "Coût : %d " % skill1_cost
-
-	# --- Texte du label du bas ----------------------------------------
-	bottom_label.text = skill1_description
+	for s in skills:
+		var sec := s.name
+		s.unlocked = cfg.get_value(sec, "unlocked", false)
+		s.active   = cfg.get_value(sec, "active",   false)
+		s._refresh()
+		print("  %s tier%d  unlocked=%s active=%s"
+			  % [s.name, s.tier, s.unlocked, s.active])
