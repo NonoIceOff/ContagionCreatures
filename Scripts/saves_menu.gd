@@ -55,32 +55,31 @@ func init_quest_names():
 			quest_file.close()
 	print(quest_names)
 	
-func init_save_names():
-	var dir = DirAccess.open("user://")  # Ouvre l'accès au dossier "user://"
+func init_save_names():	
+	var dir = DirAccess.open("user://")
 	
 	for i in range(1, 4):
 		print(i)
-		var folder_path = "Saves/File" + str(i)
-		print(folder_path)
+		var sub_dir = "Saves/File" + str(i)
+		print(sub_dir)
 		var save_name = ""
 		
-		if dir.dir_exists(folder_path):  # Si le dossier existe
-			var saves_dir = DirAccess.open("user://" + folder_path)
-			if saves_dir != null:
-				saves_dir.list_dir_begin() # On commence à lire les fichiers du dossier de sauvegardes
-				while true: # On boucle tant qu'il y a des fichiers
-					var file_name = saves_dir.get_next()
-					if file_name == "":
-						break # On sort de la boucle quand il n'y en a plus
-					if file_name.ends_with(".txt"):
-						save_name = file_name.substr(0, file_name.length() - 4)  # On enlève le .txt
-						break
+		if dir.dir_exists(sub_dir): # Si le dossier "user://Saves/FileX" existe
+			var saves_dir = DirAccess.open("user://" + sub_dir) # Ouvre l'accès à ce dossier
+			while true:	
+				saves_dir.list_dir_begin() # On commence à lire son contenu
+				var file_name = saves_dir.get_next()
+				if file_name == "":
+					break
+				if file_name.ends_with(".txt"):
+					save_name = file_name.substr(0, file_name.length() - 4)  # On enlève le .txt
+					break
 				saves_dir.list_dir_end()
 
 		var node_label = get_node("VBoxContainer/Fichier" + str(i) + "/RichTextLabel")
 		if save_name != "": 
 			node_label.text = "[color=black]" + save_name + "[/color]" # On affiche le nom de la sauvegarde sur le bouton
-		elif not dir.dir_exists(folder_path):
+		elif not dir.dir_exists(sub_dir):
 			node_label.text = "[color=red]SAUVEGARDE " + str(i) + " NON TROUVÉE[/color]" 
 		else:
 			node_label.text = "[color=red]SAUVEGARDE " + str(i) + " VIDE[/color]"
@@ -91,26 +90,29 @@ func _physics_process(delta):
 		set_modulate(lerp(get_modulate(), Color(1,1,1,0), 0.02))
 
 func _process(delta):
+	var dir = DirAccess.open("user://")
+	
 	for i in range(1, 4):
 		if get_node("VBoxContainer/Fichier" + str(i)).is_pressed() == true:
-			var dir = DirAccess.open("user://")  # Ouvre l'accès au dossier "user://"
-			var folder_path = "Saves/File" + str(i)
-			print(folder_path)
-			var save_file_found = false
+			var sub_dir = "Saves/File" + str(i)
+			print(sub_dir)
 		
-			if dir.change_dir(folder_path) != OK:  # Si pas de save
-				get_node("SaveOptions").visible = true
-				var prefix_text = ["Kilo", "Mega", "Giga","Peta", "Tera", "Exa", "Zetta", "Yotta"]
-				var base_text = ["Red", "Green", "Blue", "Yellow", "Pink", "Purple"]
-				var suffix_text = ["House", "Car", "Boat", "Plane", "Train", "Rocket"]
-				var text = prefix_text[randi() % prefix_text.size()] + base_text[randi() % base_text.size()] + suffix_text[randi() % suffix_text.size()]
-				get_node("SaveOptions/LineEdit").placeholder_text = str(text)
-				get_node("SaveOptions/LineEdit").text = str(text)
+			if not dir.dir_exists(sub_dir) :  # Si pas de dossier sauvegarde
+				show_save_options()
 				SaveSystem.file_id = i
-			else: 
-				get_tree().change_scene_to_file("res://Scenes/map3.tscn")
-				SaveSystem.file_id = i
-				SaveSystem.load()
+			else :
+				var saves_dir = DirAccess.open("user://" + sub_dir)
+				if saves_dir != null:
+					saves_dir.list_dir_begin()
+					var save = saves_dir.get_next()
+					saves_dir.list_dir_end()
+					if save == "":
+						show_save_options()
+						SaveSystem.file_id = i
+					else :
+						SaveSystem.file_id = i
+						SaveSystem.load()
+						get_tree().change_scene_to_file("res://Scenes/map3.tscn")
 		
 	if float(get_modulate()[3]) <= 0.1:
 		get_tree().change_scene_to_file("res://Scenes/map3.tscn")
@@ -128,3 +130,12 @@ func _on_create_pressed() -> void:
 	SaveSystem.filename = custom_filename
 	get_tree().change_scene_to_file("res://Scenes/map3.tscn")
 	SaveSystem.save()
+
+func show_save_options():
+	get_node("SaveOptions").visible = true
+	var prefix_text = ["Kilo", "Mega", "Giga","Peta", "Tera", "Exa", "Zetta", "Yotta"]
+	var base_text = ["Red", "Green", "Blue", "Yellow", "Pink", "Purple"]
+	var suffix_text = ["House", "Car", "Boat", "Plane", "Train", "Rocket"]
+	var text = prefix_text[randi() % prefix_text.size()] + base_text[randi() % base_text.size()] + suffix_text[randi() % suffix_text.size()]
+	get_node("SaveOptions/LineEdit").placeholder_text = str(text)
+	get_node("SaveOptions/LineEdit").text = str(text)
