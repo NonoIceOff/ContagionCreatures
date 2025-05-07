@@ -19,7 +19,7 @@ offset_top = 64.0
 offset_right = 1856.0
 offset_bottom = 1024.0
 texture = ExtResource("2_xoems")
-region_rect = Rect2(274.986, 211.997, 90.1423, 24.9151)
+region_rect = Rect2(245, 101, 38, 38)
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
@@ -27,23 +27,27 @@ patch_margin_bottom = 5
 
 [node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_left = 0.117
+anchor_top = 0.161
+anchor_right = 0.117
+anchor_bottom = 0.161
+offset_left = -0.647995
+offset_top = 0.439987
+offset_right = -0.647995
+offset_bottom = 0.439987
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NinePatchRect/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/NinePatchRect/Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = -17.0
+offset_right = 1372.03
+offset_bottom = 668.0
+horizontal_scroll_mode = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect/Panel/VBoxContainer"]
-layout_mode = 2
-
-[node name="ItemButtonsContainer" type="VBoxContainer" parent="CanvasLayer/NinePatchRect/Panel/VBoxContainer"]
+[node name="FlowContainer" type="FlowContainer" parent="CanvasLayer/NinePatchRect/Panel/ScrollContainer"]
+custom_minimum_size = Vector2(1372.03, 650)
 layout_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

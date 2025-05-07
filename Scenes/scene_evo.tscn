@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca1qdgkavxdj5"]
+[gd_scene load_steps=10 format=3 uid="uid://ca1qdgkavxdj5"]
 
 [ext_resource type="Texture2D" uid="uid://bfg8iecprcvna" path="res://Textures/Animals/bambourin_forward.png" id="1_0s15e"]
 [ext_resource type="Texture2D" uid="uid://b0uuh5q88ixl" path="res://Textures/Animals/wudong_forward.png" id="1_8t73b"]
 [ext_resource type="Script" uid="uid://bk6y2splfmuip" path="res://Scripts/scene_evo.gd" id="1_yqvj4"]
 [ext_resource type="Texture2D" uid="uid://d1b1etkxtnxyq" path="res://Textures/Backgrounds/untitled_0002.png" id="2_6da1u"]
+[ext_resource type="PackedScene" uid="uid://cy7i05orx8usr" path="res://Scenes/dialogue.tscn" id="5_xmu2a"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yqvj4"]
 
@@ -156,14 +157,14 @@ texture = ExtResource("2_6da1u")
 
 [node name="creaturePreEvo" type="Sprite2D" parent="CanvasLayer"]
 material = SubResource("CanvasItemMaterial_yqvj4")
-position = Vector2(963, 785)
+position = Vector2(963, 550)
 scale = Vector2(10.005, 10.005)
 texture = ExtResource("1_8t73b")
 
 [node name="creaturePostEvo" type="Sprite2D" parent="CanvasLayer"]
 visible = false
 modulate = Color(1, 1, 1, 0)
-position = Vector2(963, 785)
+position = Vector2(963, 550)
 scale = Vector2(10, 10)
 texture = ExtResource("1_0s15e")
 
@@ -172,3 +173,7 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_il4su")
 }
+
+[node name="Dialogue" parent="CanvasLayer" instance=ExtResource("5_xmu2a")]
+offset = Vector2(47.04, 0)
+transform = Transform2D(1, 0, 0, 1, 47.04, 0)
