@@ -88,12 +88,45 @@ offset_top = 32.0
 offset_right = 1480.0
 offset_bottom = 208.0
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "[color=black]FICHIER 1
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Stats" type="RichTextLabel" parent="VBoxContainer/Fichier1"]
+offset_left = 76.0
+offset_top = 51.0
+offset_right = 276.0
+offset_bottom = 187.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+"
+vertical_alignment = 1
+
+[node name="Delete" type="ColorRect" parent="VBoxContainer/Fichier1"]
+visible = false
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 128.0
+offset_right = 1472.0
+offset_bottom = 192.0
+color = Color(1, 0, 0, 1)
+
+[node name="Button" type="Button" parent="VBoxContainer/Fichier1/Delete"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "🗑️"
+flat = true
 
 [node name="Fichier2" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(250, 60)
@@ -119,11 +152,43 @@ offset_top = 32.0
 offset_right = 1480.0
 offset_bottom = 208.0
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "[color=black]FICHIER 1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Stats" type="RichTextLabel" parent="VBoxContainer/Fichier2"]
+offset_left = 76.0
+offset_top = 51.0
+offset_right = 276.0
+offset_bottom = 187.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+"
+vertical_alignment = 1
+
+[node name="Delete" type="ColorRect" parent="VBoxContainer/Fichier2"]
+visible = false
+offset_left = 1408.0
+offset_top = 128.0
+offset_right = 1472.0
+offset_bottom = 192.0
+color = Color(1, 0, 0, 1)
+
+[node name="Button" type="Button" parent="VBoxContainer/Fichier2/Delete"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "🗑️"
+flat = true
 
 [node name="Fichier3" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(250, 60)
@@ -149,11 +214,43 @@ offset_top = 32.0
 offset_right = 1480.0
 offset_bottom = 208.0
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "[color=black]FICHIER 1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Stats" type="RichTextLabel" parent="VBoxContainer/Fichier3"]
+offset_left = 76.0
+offset_top = 51.0
+offset_right = 276.0
+offset_bottom = 187.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+"
+vertical_alignment = 1
+
+[node name="Delete" type="ColorRect" parent="VBoxContainer/Fichier3"]
+visible = false
+offset_left = 1408.0
+offset_top = 128.0
+offset_right = 1472.0
+offset_bottom = 192.0
+color = Color(1, 0, 0, 1)
+
+[node name="Button" type="Button" parent="VBoxContainer/Fichier3/Delete"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "🗑️"
+flat = true
 
 [node name="SaveOptions" type="ColorRect" parent="."]
 visible = false

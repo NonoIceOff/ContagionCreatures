@@ -12,11 +12,20 @@ var seconds_per_in_game_minute = 1.0
 
 
 func _ready() -> void:
-	print(Global.current_map)
-	advance_time()
+	if Global.is_daycycle == true:
+		advance_time()
 	
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
+	if Global.is_speedrun_timer == true:
+		get_node("SpeedrunTimer").visible = Global.is_speedrun_timer
+		var seconds = int(Global.party_timer_seconds)
+		var hours = int(seconds) / 3600
+		var minutes = (int(seconds) % 3600) / 60
+		var secs = int(seconds) % 60
+		get_node("SpeedrunTimer").text = str(hours).pad_zeros(2) + ":" + str(minutes).pad_zeros(2) + ":" + str(secs).pad_zeros(2)
+
+
 	if Global.tutorial_stade < 10:
 		get_node("Informations").visible = true
 	get_node("Stats/CoinsLabel").text = str(PlayerStats.money)+" [img=32x32]res://Textures/COIN.png[/img]"
@@ -38,7 +47,12 @@ func _process(delta: float) -> void:
 	var quest_particles = get_node_or_null("CPUParticles2D")
 
 	panel_date.visible = Global.ui_visible and Global.current_map != "HomeOfHector"
-	minimap.visible = Global.ui_visible and Global.current_map != "HomeOfHector"
+	if Global.is_minimap == true:
+		minimap.visible = Global.ui_visible and Global.current_map != "HomeOfHector"
+	else:
+		minimap.visible = false
+		get_node("XPPanel").position.y = 932
+		get_node("PanelDate").position.y = 932+96
 
 	if Quests.current_quest_id > -1 and quest_particles != null:
 		quest_particles.visible = true

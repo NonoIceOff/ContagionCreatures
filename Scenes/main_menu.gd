@@ -5,6 +5,7 @@ var text = ""
 
 func _init() -> void:
 	SaveSystem.load()
+	SaveSystem.load_other_parameters()
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
