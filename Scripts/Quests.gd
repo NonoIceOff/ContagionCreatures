@@ -60,6 +60,7 @@ var quests = {}
 
 
 func add_quest(quest_data: Dictionary) -> void:
+	## Création d'instances "Quest" et application des données
 	var new_quest = Quest.new(
 		quest_data.get("id"),
 		quest_data.get("title"),
@@ -81,23 +82,25 @@ func add_quest(quest_data: Dictionary) -> void:
 		quest_data.get("stade", 0),
 		quest_data.get("contafont_mode", false)
 	)
-	quests[new_quest.id] = new_quest
+	print(new_quest.id)
+	quests[new_quest.id] = new_quest ## Application de la quête à la liste des quêtes
 
 func load_quests_from_files() -> void:
-	var directories = ["res://Constantes/Quests/", "user://Quests/"]
+	var directories = ["res://Constantes/Quests/", "user://Quests/"] ## Dossiers à scanner pour les quêtes
 	
 	for dir_path in directories:
-		var dir = DirAccess.open(dir_path)
+		var dir = DirAccess.open(dir_path) ## Ouvrir le répertoire
 		
 		if dir:
-			dir.list_dir_begin()
-			var file_name = dir.get_next()
+			dir.list_dir_begin() ## Lister le contenu du répertoire
+			var file_name = dir.get_next() ## Obtenir le prochain fichier
 			while file_name != "":
 				if file_name.ends_with(".json"):
 					var file_path = dir_path + file_name
-					var file = FileAccess.open(file_path, FileAccess.READ)
+					var file = FileAccess.open(file_path, FileAccess.READ) ## Ouvrir le fichier
 					if file:
-						var json = JSON.new()
+						## Créer un objet JSON et parser le contenu du fichier
+						var json = JSON.new() 
 						var parse_result = json.parse(file.get_as_text())
 						if parse_result == OK:
 							add_quest(json.get_data())

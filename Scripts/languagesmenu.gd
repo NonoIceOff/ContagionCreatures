@@ -24,7 +24,7 @@ func _process(delta):
 	for i in TranslationServer.get_loaded_locales():
 		if get_node("ScrollContainer/VBoxContainer/"+str(i)).button_pressed == true:
 			TranslationServer.set_locale(i)
-			Global.save_localisation()
+			SaveSystem.save_localisation()
 
 
 func _on_tree_entered() -> void:

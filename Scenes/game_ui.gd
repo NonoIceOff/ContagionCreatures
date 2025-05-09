@@ -7,7 +7,10 @@ extends MarginContainer
 @export var languages_settings = VBoxContainer
 @export var musicsandsounds_settings = VBoxContainer
 #@export var appearance_settings = VBoxContainer
-@export var save_confirmmation = ConfirmationDialog
+
+@export var save_confirmation = ConfirmationDialog
+
+# Fais apparaître / disparaitre les différents menus
 func toggle_visibility(object):
 	if object.visible:
 		object.visible = false
@@ -61,11 +64,10 @@ func _process(delta):
 	for i in TranslationServer.get_loaded_locales():
 		if get_node("LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/LanguagesSettingsButtonsContainer/"+str(i)).button_pressed == true:
 			TranslationServer.set_locale(i)
-			Global.save_localisation()
+			SaveSystem.save_localisation()
 
 
 # Pause menu
-
 
 func _on_resume_button_pressed() -> void:
 	pause_menu.visible = false
@@ -73,12 +75,12 @@ func _on_resume_button_pressed() -> void:
 
 
 func _on_save_button_pressed() -> void:
-	save_confirmmation.visible = true
+	save_confirmation.visible = true
 	
 	
 func _on_save_confirmed() -> void:
-	save_confirmmation.visible = false
-	Global.save()
+	save_confirmation.visible = false
+	SaveSystem.save()
 	print("Sauvegarde effectuée !")
 
 

@@ -17,7 +17,7 @@ const REGISTER_URL = "https://contagioncreaturesapi.vercel.app/api/users/registe
 const LOGIN_URL = "https://contagioncreaturesapi.vercel.app/api/users/login"
 
 func _init() -> void:
-	Global.load_user()
+	SaveSystem.load_user()
 	
 	
 # Gestion de l'initialisation
@@ -138,7 +138,7 @@ func _on_get_user_request_completed(result: int, response_code: int, headers: Pa
 		get_node("BackgroundTiles/Panel/money").text = str(Global.user.money)+" coins"
 		get_node("BackgroundTiles/Panel/points").text = str(Global.user.points)+" points"
 		get_node("Waiting").visible = false
-		Global.save_user()
+		SaveSystem.save_user()
 		return
 	else:
 		print("fetching error")
@@ -152,7 +152,7 @@ func _on_disconnect_pressed() -> void:
 	get_node("BackgroundTiles/Panel/username").text = "Pas connecté"
 	get_node("BackgroundTiles/Panel/money").text = "-"
 	get_node("BackgroundTiles/Panel/points").text = "-"
-	Global.save_user()
+	SaveSystem.save_user()
 	get_node("BackgroundTiles/Login").visible = true
 	get_node("BackgroundTiles/Register").visible = true
 	get_node("Waiting").visible = false

@@ -12,7 +12,7 @@ var timer_tick = 60
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.load_localisation()
+	SaveSystem.load_localisation()
 	launch()
 	
 
@@ -157,7 +157,7 @@ func _input(event):
 				win()
 				winner = false
 				PlayerStats.monnaie += earn
-				Global.save()
+				SaveSystem.save()
 				get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 			elif looser == true:
 				earn -= 100/7
@@ -169,6 +169,6 @@ func _input(event):
 			elif looser_max == true:
 				Global.current_quest_id = 0
 				Global.quests[0]["stade"] = 4
-				Global.save()
+				SaveSystem.save()
 				get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
 				looser_max = false

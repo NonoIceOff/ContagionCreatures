@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://sxo002d04fdm" path="res://Scenes/musics.gd" id="7_3t1kc"]
 [ext_resource type="Script" path="res://Scenes/controls_settings_screen_container.gd" id="7_rxsu6"]
 
+
 [sub_resource type="FontFile" id="FontFile_kg5o7"]
 subpixel_positioning = 0
 msdf_pixel_range = 14
@@ -923,7 +924,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.99728)
 
-[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings", "languages_settings", "musicsandsounds_settings", "save_confirmmation")]
+[node name="PopupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("pause_menu", "craft_menu", "settings_menu", "controls_settings", "languages_settings", "musicsandsounds_settings", "save_confirmation")]
 z_index = 4096
 layout_mode = 1
 anchors_preset = 15
@@ -938,7 +939,7 @@ settings_menu = NodePath("SettingsMenuScreenContainer")
 controls_settings = NodePath("ControlsSettingsScreenContainer")
 languages_settings = NodePath("LanguagesSettingsScreenContainer")
 musicsandsounds_settings = NodePath("MusicsAndSoundsSettingsScreenContainer")
-save_confirmmation = NodePath("SaveConfirm")
+save_confirmation = NodePath("SaveConfirm")
 
 [node name="PauseMenuScreenContainer" type="VBoxContainer" parent="PopupMenu"]
 visible = false

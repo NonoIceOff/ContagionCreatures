@@ -365,3 +365,4 @@ text = "IMPOSSIBLE DE RECUPERER UNE CREATURE MAINTENANT"
 
 [node name="SkillTree" parent="." instance=ExtResource("20_fcexb")]
 visible = false
+

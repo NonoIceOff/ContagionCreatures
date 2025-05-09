@@ -32,6 +32,6 @@ func _on_torchBody_exited(body: Node2D) -> void:
 func _process(delta: float) -> void:
 	if entered:
 		if Input.is_action_just_pressed(Controllers.a_input):
-			Global.save()
+			SaveSystem.save()
 			if Global.save:
 				emit_signal("save_triggered")
