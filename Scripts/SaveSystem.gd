@@ -89,9 +89,12 @@ func load():
 	Global.pinr = load_file.get_value("Tags", "Red", Global.pinr)
 	Global.piny = load_file.get_value("Tags", "Yellow", Global.piny)
 	Global.ping = load_file.get_value("Tags", "Green", Global.ping)
-	Global.tutorial_stade = 20
+	Global.tutorial_stade = load_file.get_value("Tutorial", "Stade", Global.tutorial_stade)
 	Global.tutorial_validate = load_file.get_value("Tutorial", "Validate", Global.tutorial_validate)
 	Global.tutorial = load_file.get_value("Tutorial", "Tutorial", Global.tutorial)
+
+	if Global.is_tutorial == false:
+		Global.tutorial_stade = 20
 	
 	PlayerStats.pseudo = load_file.get_value("Player", "pseudo", PlayerStats.pseudo)
 	PlayerStats.health = load_file.get_value("Player", "health", PlayerStats.health)
@@ -134,6 +137,7 @@ func load_other_parameters():
 	Global.is_minimap = load_file.get_value("Accessibility","Minimap",Global.is_minimap)
 	Global.is_eternal_day = load_file.get_value("Accessibility","Eternal Day",Global.is_eternal_day)
 	Global.is_daycycle = load_file.get_value("Accessibility","Day Cycle",Global.is_daycycle)
+	Global.is_tutorial = load_file.get_value("Accessibility","Tutorial",Global.is_tutorial)
 
 func save_other_parameters():
 	var save_file = ConfigFile.new()
@@ -141,6 +145,7 @@ func save_other_parameters():
 	save_file.set_value("Accessibility","Minimap",Global.is_minimap)
 	save_file.set_value("Accessibility","Eternal Day",Global.is_eternal_day)
 	save_file.set_value("Accessibility","Day Cycle",Global.is_daycycle)
+	save_file.set_value("Accessibility","Tutorial",Global.is_tutorial)
 	save_file.save_encrypted_pass("user://settings.txt", "settings_key")
 	
 func load_localisation():

@@ -14,6 +14,8 @@ var scene_load = false
 var camera = []
 
 func _ready() -> void:
+	if Global.is_tutorial == false:
+		Global.tutorial_stade = 20
 	shineStar1.play()
 	soundEffect.play()
 	Global.current_map = self.name

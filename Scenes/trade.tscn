@@ -1,0 +1,117 @@
+[gd_scene load_steps=6 format=3 uid="uid://870tdrr534c8"]
+
+[ext_resource type="Script" uid="uid://bryn8xbgjofus" path="res://Scenes/trade.gd" id="1_7plnu"]
+[ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_70yfd"]
+[ext_resource type="FontFile" uid="uid://s3pjimxs5hu3" path="res://Font/upheavtt.ttf" id="2_uvydn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpc3i"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_70yfd")
+texture_margin_left = 1.0
+region_rect = Rect2(300, 110, 23, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opwbx"]
+texture = ExtResource("2_70yfd")
+region_rect = Rect2(388, 36, 24, 25)
+
+[node name="Trade" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7plnu")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 96.0
+offset_right = 1824.0
+offset_bottom = 992.0
+color = Color(0.571113, 0.538221, 0.517602, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 608.0
+offset_bottom = 864.0
+color = Color(0.766444, 0.740307, 0.723988, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/ColorRect"]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 768.0
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+offset_left = 704.0
+offset_top = 96.0
+offset_right = 1696.0
+offset_bottom = 864.0
+color = Color(0.766444, 0.740307, 0.723988, 1)
+
+[node name="ResourcesList" type="ItemList" parent="ColorRect/ColorRect2"]
+texture_filter = 1
+offset_right = 992.0
+offset_bottom = 768.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/v_separation = 64
+theme_override_font_sizes/font_size = 32
+theme_override_styles/panel = SubResource("StyleBoxTexture_xpc3i")
+theme_override_styles/selected_focus = SubResource("StyleBoxTexture_opwbx")
+max_text_lines = 3
+text_overrun_behavior = 0
+max_columns = 4
+fixed_column_width = 225
+fixed_icon_size = Vector2i(60, 60)
+
+[node name="Title" type="Label" parent="ColorRect"]
+offset_right = 640.0
+offset_bottom = 87.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_uvydn")
+theme_override_font_sizes/font_size = 96
+text = "échanges"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Title2" type="Label" parent="ColorRect"]
+offset_left = 672.0
+offset_right = 1728.0
+offset_bottom = 87.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_uvydn")
+theme_override_font_sizes/font_size = 96
+text = "votre inventaire"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1760.0
+offset_top = 96.0
+offset_right = 1824.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 64
+text = "x"
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

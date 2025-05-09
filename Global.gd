@@ -29,6 +29,7 @@ var is_speedrun_timer = false
 var is_minimap = true
 var is_eternal_day = FLAG_PROCESS_THREAD_MESSAGES_PHYSICS
 var is_daycycle = true
+var is_tutorial = false
 
 var grid_size = 31
 var step_delay = 0
