@@ -364,5 +364,3 @@ theme_override_font_sizes/font_size = 20
 text = "IMPOSSIBLE DE RECUPERER UNE CREATURE MAINTENANT"
 
 [node name="SkillTree" parent="." instance=ExtResource("20_fcexb")]
-visible = false
-
