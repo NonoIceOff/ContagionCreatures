@@ -60,6 +60,3 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 368.0
 offset_bottom = 240.0
-theme_override_font_sizes/font_size = 0
-vertical_alignment = 1
-autowrap_mode = 3

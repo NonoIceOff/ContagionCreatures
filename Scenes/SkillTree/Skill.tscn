@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://vee7l4wiavau"]
+
+[ext_resource type="Script" uid="uid://ct0kyqk3il20y" path="res://Scripts/SkillTree/skill.gd" id="1_x7uri"]
+[ext_resource type="Texture2D" uid="uid://bxuj628a04cbm" path="res://Scenes/SkillTree/ImageSkillTree/Grass.png" id="2_jnw3j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7uri"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_x7uri")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(53, 50)
+scale = Vector2(3.0625, 3.0625)
+texture = ExtResource("2_jnw3j")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_x7uri")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.65
+anchor_bottom = 1.625
+offset_left = 3.99997
+offset_top = 1.0
+offset_right = 35.0
+offset_bottom = 33.0
+mouse_default_cursor_shape = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Button"]
+visible = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.02062
+anchor_right = 1.83505
+anchor_bottom = 0.773196
+offset_right = 96.0
+offset_bottom = 120.0
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Top_label" type="Label" parent="Button/Panel"]
+clip_contents = true
+layout_mode = 1
+offset_right = 97.0
+offset_bottom = 26.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Bot_label" type="Label" parent="Button/Panel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0312499
+anchor_top = 0.383333
+anchor_right = 0.0312499
+anchor_bottom = 0.383333
+offset_right = 94.0
+offset_bottom = 73.0
+metadata/_edit_use_anchors_ = true

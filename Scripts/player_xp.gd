@@ -4,7 +4,6 @@ extends Node2D
 @onready var level_label = $Panel/VBoxContainer/LevelLabel
 @onready var xp_progress_bar = $Panel/VBoxContainer/XPProgressBar
 @onready var xp_details_label = $Panel/VBoxContainer/XPDetailsLabel
-
 var panel_visible = false
 var is_leveling_up = false
 
@@ -13,6 +12,7 @@ func _ready():
 	level_label.text = "Niveau : %d" % Global.level
 	xp_progress_bar.value = float(Global.current_xp) / Global.xp_to_next_level * 100
 	xp_details_label.text = "XP : %d / %d" % [Global.current_xp, Global.xp_to_next_level]
+
 
 func gain_xp(amount: int):
 	print("Gaining XP: %d" % amount)
@@ -40,7 +40,11 @@ func animate_xp_update():
 	tween.set_ease(Tween.EASE_IN_OUT)
 
 func level_up():
+
+	# écrit dans skill.cfg et ajoute + 1 point de compétence
+	Global.skill_points += 1
 	is_leveling_up = true
+	print(Global.skill_points)
 
 	var excess_xp = Global.current_xp - Global.xp_to_next_level
 

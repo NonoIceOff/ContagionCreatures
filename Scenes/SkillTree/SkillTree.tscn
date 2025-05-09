@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq1408px4oys1"]
+
+[ext_resource type="Texture2D" uid="uid://4lfpo8gykisg" path="res://Textures/Stats/BG.png" id="1_7lw2s"]
+[ext_resource type="Script" uid="uid://b7qe3q8sm4h8c" path="res://Scripts/SkillTree/skill_tree.gd" id="1_d2d8j"]
+[ext_resource type="FontFile" uid="uid://0tvkbhwqas0" path="res://Font/Jersey10-Regular.ttf" id="3_p4tlq"]
+[ext_resource type="PackedScene" uid="uid://vee7l4wiavau" path="res://Scenes/SkillTree/Skill.tscn" id="4_p4tlq"]
+[ext_resource type="Texture2D" uid="uid://docmmrdp7p7ki" path="res://Textures/Animals/bambourin_backward.png" id="5_mdbuo"]
+
+[node name="SkillTree" type="Node2D"]
+script = ExtResource("1_d2d8j")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bg" type="Sprite2D" parent="Panel"]
+position = Vector2(959.5, 541)
+scale = Vector2(13.1438, 5.91257)
+texture = ExtResource("1_7lw2s")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+offset_left = 31.0
+offset_top = 48.0
+offset_right = 1891.0
+offset_bottom = 180.0
+theme_override_fonts/normal_font = ExtResource("3_p4tlq")
+theme_override_font_sizes/bold_italics_font_size = 701
+theme_override_font_sizes/mono_font_size = 226
+theme_override_font_sizes/normal_font_size = 111
+text = "Arbre de compétence
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skill1" parent="Panel" instance=ExtResource("4_p4tlq")]
+offset_left = 265.0
+offset_top = 515.0
+offset_right = 304.0
+offset_bottom = 559.0
+icon_texture = ExtResource("5_mdbuo")
+
+[node name="Skill2" parent="Panel" instance=ExtResource("4_p4tlq")]
+offset_left = 462.0
+offset_top = 511.0
+offset_right = 501.0
+offset_bottom = 555.0
+tier = 2
+
+[node name="Skill3" parent="Panel" instance=ExtResource("4_p4tlq")]
+offset_left = 471.0
+offset_top = 339.0
+offset_right = 505.0
+offset_bottom = 379.0
+cost = 2
+tier = 2
+
+[node name="Skill4" parent="Panel" instance=ExtResource("4_p4tlq")]
+offset_left = 454.0
+offset_top = 670.0
+offset_right = 493.0
+offset_bottom = 714.0
+tier = 2
+
+[node name="Skill5" parent="Panel" instance=ExtResource("4_p4tlq")]
+offset_left = 723.0
+offset_top = 652.0
+offset_right = 762.0
+offset_bottom = 696.0
+display_name = "Skill 5"
+cost = 2
+tier = 3
+
+[node name="Skill6" parent="Panel" instance=ExtResource("4_p4tlq")]
+offset_left = 716.0
+offset_top = 450.0
+offset_right = 755.0
+offset_bottom = 494.0
+display_name = "Skill 6"
+tier = 3
+
+[node name="ErrorMessage" type="Label" parent="Panel"]
+self_modulate = Color(0.836107, 0.0506029, 0.0288104, 1)
+offset_left = 26.0
+offset_top = 971.0
+offset_right = 1888.0
+offset_bottom = 1036.0
+theme_override_font_sizes/font_size = 46
+text = "Error"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsAvailable" type="Label" parent="Panel"]
+offset_left = 41.0
+offset_top = 205.0
+offset_right = 414.0
+offset_bottom = 275.0
+theme_override_font_sizes/font_size = 41
+text = "Points disponibles : "

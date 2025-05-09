@@ -1,5 +1,18 @@
 [
 	{
+		"description": "Un primate doré à la puissance exceptionnel ",
+		"element1": "Feu",
+		"element2": "Combat",
+		"hp": 3070,
+		"id": 10,
+		"is_infected": false,
+		"name": "Bambourin",
+		"speed": "2.7",
+		"texture": "bambourin_forward.png",
+		"texture_back": "bambourin_backward.png",
+		"type": "Totem"
+	},
+	{
 		"description": "Un boss",
 		"element1": "fire",
 		"element2": null,
