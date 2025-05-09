@@ -59,7 +59,7 @@ func change_map():
 	if get_node_or_null("../../../Map3") != null:
 		player = get_node("../../TileMap/Player_One")
 	if get_node_or_null("../../../HomeOfHector") != null:
-		player = get_node("../../Control/Player_One")
+		player = get_node("../../Control/TileMap/Player_One")
 
 func _process(delta):
 	camera.position = player.position
