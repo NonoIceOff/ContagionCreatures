@@ -99,6 +99,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats" type="RichTextLabel" parent="VBoxContainer/Fichier1"]
+layout_mode = 0
 offset_left = 76.0
 offset_top = 51.0
 offset_right = 276.0
@@ -162,6 +163,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats" type="RichTextLabel" parent="VBoxContainer/Fichier2"]
+layout_mode = 0
 offset_left = 76.0
 offset_top = 51.0
 offset_right = 276.0
@@ -175,6 +177,7 @@ vertical_alignment = 1
 
 [node name="Delete" type="ColorRect" parent="VBoxContainer/Fichier2"]
 visible = false
+layout_mode = 0
 offset_left = 1408.0
 offset_top = 128.0
 offset_right = 1472.0
@@ -224,6 +227,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats" type="RichTextLabel" parent="VBoxContainer/Fichier3"]
+layout_mode = 0
 offset_left = 76.0
 offset_top = 51.0
 offset_right = 276.0
@@ -237,6 +241,7 @@ vertical_alignment = 1
 
 [node name="Delete" type="ColorRect" parent="VBoxContainer/Fichier3"]
 visible = false
+layout_mode = 0
 offset_left = 1408.0
 offset_top = 128.0
 offset_right = 1472.0
