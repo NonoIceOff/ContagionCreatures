@@ -115,8 +115,8 @@ func _process(delta):
 				else :
 					
 					SaveSystem.file_id = i
+					#SaveSystem.load()
 					get_tree().change_scene_to_file("res://Scenes/map3.tscn")
-					SaveSystem.load()
 		
 	if float(get_modulate()[3]) <= 0.1:
 		get_tree().change_scene_to_file("res://Scenes/map3.tscn")

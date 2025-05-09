@@ -312,7 +312,7 @@ func _apply_player_position():
 	var player_node = get_node_or_null("/root/"+current_map+"/TileMap/Player_One")
 	if player_node:
 		player_node.position = load_file.get_value("Player", "position", Vector2(32, 100))
-		print("Position joueur appliquée :", player_node.position)
+		print("Position joueur appliquée : ", player_node.position)
 	else:
 		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")
 

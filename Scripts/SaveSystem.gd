@@ -42,6 +42,7 @@ func save():
 	var player_node = get_node_or_null("/root/"+Global.current_map+"/TileMap/Player_One")
 	if player_node:
 		save_file.set_value("Player", "position", player_node.position)
+		print("Position joueur sauvegardée : ", player_node.position)
 	else:
 		print("Le joueur n'est pas disponible pour la sauvegarde de position.")
 
@@ -111,6 +112,7 @@ func load():
 func load_position():
 	# Appelle le chargement différé
 	call_deferred("_apply_player_position")
+	
 
 func load_user():
 	var load_file = ConfigFile.new()

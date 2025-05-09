@@ -17,7 +17,9 @@ func _ready() -> void:
 	shineStar1.play()
 	soundEffect.play()
 	Global.current_map = self.name
+	SaveSystem.load()
 	SaveSystem.load_position()
+	
 	
 	Quests.init_pnj("Map3")
 	
@@ -30,6 +32,7 @@ func _ready() -> void:
 
 var camera_id = 0
 func _process(_delta: float) -> void:
+	SaveSystem.save()
 	camera = get_tree().get_nodes_in_group("camera")
 	match Global.tutorial_stade:
 		6:
@@ -66,6 +69,8 @@ func _process(_delta: float) -> void:
 			scene_load = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+			
+			
 	if entered == true and Key == false:
 		if Input.is_action_just_pressed(Controllers.a_input):
 			SaveSystem.save()

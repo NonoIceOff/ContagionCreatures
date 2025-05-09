@@ -16,9 +16,9 @@ func _ready():
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
 	http_request.request("https://contagioncreaturesapi.vercel.app/api/creatures")
-	
 	Global.current_map = "HomeOfHector"
 	Quests.init_pnj("HomeOfHector")
+	#SaveSystem.save()
 	
 	
 	var joypads = Input.get_connected_joypads()
