@@ -34,6 +34,7 @@ git clone https://github.com/NonoIceOff/ContagionCreatures.git
 ### 3. Ouvrir le Projet avec Godot
 - Importez le projet lorsque vous lancez Godot.
 - Ouvrez le projet en sélectionnant le fichier project.godot situé dans le répertoire où vous avez cloné le projet.
+- Lancez le jeu avc le petit triangle en haut à droite !
 
 
 ## Trello du Projet
