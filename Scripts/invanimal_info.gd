@@ -108,7 +108,9 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var pre_name = selected_creature["name"]
 	var post_texture = "res://Textures/Animals/" + matched_evolution["texture"]
 	var post_name = matched_evolution["name"]
-	evo_scene.start_evolution(pre_texture, post_texture, pre_name, post_name)
+	var matched_item = "res://Textures/Items/" + matched_evolution["neededItem"]["texture"]
+	print(matched_item)
+	evo_scene.start_evolution(pre_texture, post_texture, pre_name, post_name, matched_item)
 
 
 func get_evolution_id_for_creature(creature_id: int) -> int:
