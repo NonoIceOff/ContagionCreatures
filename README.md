@@ -14,6 +14,9 @@
 - Fix de nombreux bugs
 - La position du joueur est sauvegardée en temps réel dans la map, et on revient à la même position après un combat ou en sortant de la maison
 - Villageois qui trade des items
+- Ajout d'un dialogue pendant la scène d'évolution
+- Nouvelle animation dans la scène d'évolution
+- Amélioration du visuel de l'inventaire avant d'évoluer une créature
 
 **Un jeu captivant mettant en scène des créatures énigmatiques.**
 
