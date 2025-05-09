@@ -195,6 +195,11 @@ func set_quest(i):
 			minimap.change_pin(quests[i].pin_positions[quests[i].stade])
 
 func advance_stade(quest_id = current_quest_id):
+	## si le stade n'existe pas
+	if quests.get(quest_id).stade >= quests.get(quest_id).descriptions.size():
+		quests.get(quest_id).finished = true
+		quest_finished(quest_id)
+
 	if quests.get(quest_id).stade < quests.get(int(quest_id)).descriptions.size():
 		quests.get(quest_id).stade += 1
 	else:

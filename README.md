@@ -1,12 +1,27 @@
 # ContagionCreatures
+
+## Ce qu'on a fait depuis Mardi soir :
+
+- Amélioration de l'interface des sauvegardes
+- Ajout du temps de jeu
+- Paramètres "Video" : 
+	- Chrono speedrun (visible ?), 
+	- Minimap (visible ?, déplace les niveaux & heure)
+	- Jour éternel
+	- Désactiver cycle jour/nuit
+- Modification des paramètres de controles
+- Arbre de compétences
+- Fix de nombreux bugs
+- Villageois qui trade des items
+
 **Un jeu captivant mettant en scène des créatures énigmatiques.**
 
 
 
 ## Instructions d'Installation pour contribution
 
-### 1. Télécharger Godot 4
-**Assurez-vous d'avoir Godot Engine 4 installé sur votre système en suivant les liens ci-dessous :**
+### 1. Télécharger Godot 4.4.1
+**Assurez-vous d'avoir Godot Engine 4.4.1 installé sur votre système en suivant les liens ci-dessous :**
 - [Téléchargement pour Windows](https://godotengine.org/download/windows/)
 - [Téléchargement pour macOS](https://godotengine.org/download/macos/)
 
@@ -21,18 +36,6 @@ git clone https://github.com/NonoIceOff/ContagionCreatures.git
 - Ouvrez le projet en sélectionnant le fichier project.godot situé dans le répertoire où vous avez cloné le projet.
 
 
-
-## Instructions d'Intallation pour jouer
-
-### Méthode 1. Télécharger le jeu
-- Allez sur l'onglet "Releases" sur le projet [github](https://github.com/NonoIceOff/ContagionCreatures)
-- Téléchargez le jeu : choississez un .exe pour Windows, .app pour MacOS
-- Jouez !
-
-### Méthode 2. Jouer directement sur navigateur
-- Allez sur [cette page itch.io](https://www.google.com)
-- Lancez le jeu directement en cliquant sur le bouton **play** !
-
-
 ## Trello du Projet
-**Suivez l'avancement du projet à l'aide du [tableau Trello](https://trello.com/b/1bYhk1i6)**
+**Suivez l'avancement du projet à l'aide du [tableau Trello 1](https://trello.com/b/1bYhk1i6)**
+**Suivez l'avancement du projet à l'aide du [tableau Trello 2](https://trello.com/b/zWZ8ErgG/contagion-creatures-2)**
