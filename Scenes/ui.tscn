@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4ftj14ld58if"]
+[gd_scene load_steps=24 format=3 uid="uid://b4ftj14ld58if"]
 
 [ext_resource type="PackedScene" uid="uid://by4khk4klqv27" path="res://Scenes/transition.tscn" id="1_88tsw"]
 [ext_resource type="Script" uid="uid://c00pkg3a1dyrk" path="res://Scripts/ui.gd" id="1_p3l0n"]
@@ -15,10 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://c0wv3un8wh42k" path="res://Textures/Buttons/joypads/joybar_r.png" id="14_6d7q7"]
 [ext_resource type="Texture2D" uid="uid://da8ubc6ik4rjv" path="res://Textures/Buttons/joypads/joybar_l.png" id="15_x3csd"]
 [ext_resource type="Texture2D" uid="uid://c7uvncushvljk" path="res://Textures/Buttons/joypads/joybar_-.png" id="16_8jrwf"]
+[ext_resource type="Texture2D" uid="uid://b2olbml3nklq3" path="res://Textures/Buttons/keyboard/keyboard_k.png" id="16_v4f2e"]
 [ext_resource type="Texture2D" uid="uid://b1tpqldiveuik" path="res://Textures/Buttons/keyboard/keyboard_p.png" id="17_de75t"]
-[ext_resource type="Script" uid="uid://cm4gesp4y5y2m" path="res://Scenes/slots_shown.gd" id="18_fcexb"]
+[ext_resource type="Script" path="res://Scenes/slots_shown.gd" id="18_fcexb"]
 [ext_resource type="Texture2D" uid="uid://b0svu776o5qoh" path="res://Textures/slot.png" id="18_lkjmk"]
 [ext_resource type="PackedScene" uid="uid://c65ywo6ftkvtc" path="res://Scenes/player_xp.tscn" id="18_mxn78"]
+[ext_resource type="PackedScene" uid="uid://bq1408px4oys1" path="res://Scenes/SkillTree/SkillTree.tscn" id="20_fcexb"]
 
 [sub_resource type="Curve" id="Curve_qti3j"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -246,16 +248,17 @@ mouse_filter = 2
 
 [node name="InfoTouches" type="Label" parent="." groups=["ui"]]
 texture_filter = 1
-offset_left = 64.0
-offset_top = 888.0
-offset_right = 246.0
-offset_bottom = 1065.0
+offset_left = 68.0
+offset_top = 848.0
+offset_right = 324.0
+offset_bottom = 1097.0
 theme_override_font_sizes/font_size = 32
 text = "Quêtes
 Pause
 Inventaire
 Carte
-Encyclopédie"
+Encyclopédie
+Arbre de compétence"
 script = ExtResource("12_7biym")
 
 [node name="Pause" type="Sprite2D" parent="InfoTouches"]
@@ -287,6 +290,12 @@ texture_filter = 1
 position = Vector2(-24, 162)
 scale = Vector2(2, 2)
 texture = ExtResource("17_de75t")
+
+[node name="SkillTree" type="Sprite2D" parent="InfoTouches"]
+texture_filter = 1
+position = Vector2(-23, 196)
+scale = Vector2(1.9375, 1.96875)
+texture = ExtResource("16_v4f2e")
 
 [node name="XPPanel" parent="." groups=["ui"] instance=ExtResource("18_mxn78")]
 position = Vector2(1693, 715)
@@ -353,3 +362,6 @@ offset_bottom = 41.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "IMPOSSIBLE DE RECUPERER UNE CREATURE MAINTENANT"
+
+[node name="SkillTree" parent="." instance=ExtResource("20_fcexb")]
+visible = false

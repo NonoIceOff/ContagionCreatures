@@ -8,8 +8,6 @@ extends MarginContainer
 @export var musicsandsounds_settings = VBoxContainer
 #@export var appearance_settings = VBoxContainer
 @export var save_confirmmation = ConfirmationDialog
-
-
 func toggle_visibility(object):
 	if object.visible:
 		object.visible = false
@@ -91,8 +89,6 @@ func _on_settings_button_pressed() -> void:
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-
-
 
 # Settings menu
 

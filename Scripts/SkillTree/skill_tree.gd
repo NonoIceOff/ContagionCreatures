@@ -1,11 +1,11 @@
 extends Node2D
-const CFG_PATH := "res://Scripts/SkillTree/skills.cfg"
+const CFG_PATH := "user://skill.cfg"  # chemin de la sauvegarde
 
-@export var skill_points : int = 3
+var skill_points = Global.skill_points
 var skills : Array[Skill] = []
 
-@onready var lbl_points : Label = $PointsAvailable   # affiche les points restants
-@onready var lbl_error  : Label = $ErrorMessage      # message d’erreur (caché par défaut)
+@onready var lbl_points : Label = $Panel/PointsAvailable   # affiche les points restants
+@onready var lbl_error  : Label = $Panel/ErrorMessage      # message d’erreur (caché par défaut)
 
 # ------------------------------------------------------------------ #
 func _ready() -> void:
@@ -14,6 +14,7 @@ func _ready() -> void:
 	_load_state()
 	_update_points_label()
 	print("[Tree::_ready] start – pts =", skill_points)
+	close()
 
 # ----------- COLLECTE RÉCURSIVE DES SKILLS ------------------------ #
 func _collect_skills() -> void:
@@ -47,9 +48,12 @@ func _skill_pressed(s: Skill) -> void:
 			return
 
 		# Déverrouillage
-		skill_points -= s.cost
+		Global.skill_points -= s.cost
+		#remettre le label à jour
+		skill_points = Global.skill_points
+		lbl_points.text = "Points disponibles : %d" % skill_points
 		s.unlocked = true
-		print("  → %s déverrouillé, pts restants = %d" % [s.name, skill_points])
+		print("  → %s déverrouillé, pts restants = %d" % [s.name, Global.skill_points])
 	else:
 		# Toggle actif / inactif
 		s.active = !s.active
@@ -71,7 +75,7 @@ func _has_unlocked_tier(t:int) -> bool:
 
 # --------------- LABEL DES POINTS DISPONIBLES --------------------- #
 func _update_points_label() -> void:
-	lbl_points.text = "Points disponibles : %d" % skill_points
+	lbl_points.text = "Points disponibles : %d" % Global.skill_points
 
 # -------------------- GESTION DES ERREURS ------------------------- #
 func _show_error(msg:String) -> void:
@@ -112,3 +116,27 @@ func _load_state() -> void:
 		s._refresh()
 		print("  %s tier%d  unlocked=%s active=%s"
 			  % [s.name, s.tier, s.unlocked, s.active])
+
+# crée une fonction qui rend la fenêtre invisible  
+func close():
+	$Panel.hide()
+	print("[close] skill tree closed")
+
+# crée une fonction qui rend la fenêtre visible
+func open():
+	# réinitiliser la variable skill_points
+	skill_points = Global.skill_points
+	# réinitialiser le label
+	lbl_points.text = "Points disponibles : %d" % skill_points
+	# réinitialiser le message d'erreur
+	
+	$Panel.show()
+	print("[open] skill tree opened")
+
+# écoute l'input pour ouvrir/fermer la fenêtre
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Skill_tree"):
+		if $Panel.visible:
+			close()
+		else:
+			open()

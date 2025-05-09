@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="5_ve2ga"]
 [ext_resource type="Texture2D" uid="uid://ftsqesla06t5" path="res://Textures/Buttons/keyboard/keyboard_e.png" id="6_dlhm5"]
 [ext_resource type="Texture2D" uid="uid://b8245ccbb11vh" path="res://Scenes/ShineStar.png" id="9_fc6d2"]
-[ext_resource type="Script" uid="uid://djr4u0emfjio4" path="res://Scripts/HiddenItem.gd" id="10_k0o66"]
+[ext_resource type="Script" path="res://Scripts/HiddenItem.gd" id="10_k0o66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30i3a"]
 size = Vector2(21.65, 18.6)

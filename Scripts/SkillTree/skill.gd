@@ -15,6 +15,8 @@ var active   : bool = false
 @onready var panel = $Button/Panel
 @onready var top   = $Button/Panel/Top_label
 @onready var bot   = $Button/Panel/Bot_label
+var skill_tree : Node = null          # référence vers le contrôleur
+
 
 func _ready():
 	print("[Skill::_ready] %s  tier=%d  cost=%d  unlocked=%s"
@@ -26,9 +28,19 @@ func _ready():
 	btn.mouse_entered.connect(_on_mouse_entered)
 	btn.mouse_exited.connect(_on_mouse_exited)
 
+ # --------- trouver le bon parent -----------------
+	var n := get_parent()
+	while n and not n.has_method("_skill_pressed"):
+		n = n.get_parent()
+	skill_tree = n
+	if skill_tree == null:
+		push_error("Skill.gd : aucun ancêtre n’implémente _skill_pressed()")
+	# -------------------------------------------------
+
 func _on_pressed():
 	print("[Skill::_on_pressed] clic sur", name)
-	get_parent()._skill_pressed(self)   # SkillTree décide
+	if skill_tree:
+		skill_tree._skill_pressed(self)
 
 func _refresh():
 	# ---------- Texte ----------
