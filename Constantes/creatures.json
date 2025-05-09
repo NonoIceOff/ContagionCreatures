@@ -11,5 +11,31 @@
 		"texture": "tipion_forward.png",
 		"texture_back": "tipion_backward.png",
 		"type": "boss"
-	}
+	},
+	{
+		"id": 13,
+		"name": "Wudong",
+		"description": "desc",
+		"texture": "wudong_forward.png",
+		"is_infected": false,
+		"type": "type",
+		"hp": 75,
+		"speed": "1.80",
+		"element1": "ice",
+		"element2": null,
+		"texture_back": "wudong_backward.png"
+  },
+  {
+		"id": 4,
+		"name": "Eldribur",
+		"description": "A fearsome beast with scales and fire breath.",
+		"texture": "eldribur_forward.png",
+		"is_infected": false,
+		"type": "dragon",
+		"hp": 300,
+		"speed": "2.00",
+		"element1": "fire",
+		"element2": null,
+		"texture_back": "eldribur_backward.png"
+  }
 ]

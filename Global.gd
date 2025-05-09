@@ -5,6 +5,7 @@ var level = 1  # Store the player's level globally
 var current_xp = 0  # Store the player's current XP globally
 var target_xp = 0   # Store the target XP globally
 var xp_to_next_level = 100  # Store the XP required for the next level globally
+var numberDialogue = 0
 
 # Matchmaking
 var user_enemy = {}
