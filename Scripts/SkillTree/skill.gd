@@ -19,7 +19,7 @@ var skill_tree : Node = null          # référence vers le contrôleur
 
 
 func _ready():
-	print("[Skill::_ready] %s  tier=%d  cost=%d  unlocked=%s"
+	print("skill ready %s  tier=%d  cost=%d  unlocked=%s"
 	% [name, tier, cost, unlocked])
 	if icon_texture:
 		icon.texture = icon_texture         
@@ -28,29 +28,25 @@ func _ready():
 	btn.mouse_entered.connect(_on_mouse_entered)
 	btn.mouse_exited.connect(_on_mouse_exited)
 
- # --------- trouver le bon parent -----------------
 	var n := get_parent()
 	while n and not n.has_method("_skill_pressed"):
 		n = n.get_parent()
 	skill_tree = n
 	if skill_tree == null:
-		push_error("Skill.gd : aucun ancêtre n’implémente _skill_pressed()")
-	# -------------------------------------------------
+		push_error("Skill.gd : aucun ancêtre n’implémente _skill_pressed() c'est pas cool")
 
 func _on_pressed():
-	print("[Skill::_on_pressed] clic sur", name)
+	print("clic sur", name)
 	if skill_tree:
 		skill_tree._skill_pressed(self)
 
 func _refresh():
-	# ---------- Texte ----------
 	top.text = "%s\n%s" % [
 		display_name,
 		"Active" if active else "Inactive" if unlocked else "Coût : %d" % cost
 	]
 	bot.text = "Palier %d – %s" % [tier, description]
 
-	# ---------- Couleur ----------
 	var col : Color
 	if unlocked:
 		col = Color(1,1,1) if active else Color(0.5,0.5,0.5)   # blanc ou gris
@@ -64,9 +60,9 @@ func _refresh():
 		  % [name, unlocked, active, col])
 
 func _on_mouse_entered():
-	print("[Skill::hover] → mouse_enter", name)
+	print(" mouse_enter", name)
 	panel.visible = true
 
 func _on_mouse_exited():
-	print("[Skill::hover] ← mouse_exit ", name)
+	print(" mouse_exit ", name)
 	panel.visible = false
