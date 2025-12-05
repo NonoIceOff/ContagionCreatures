@@ -214,7 +214,7 @@ Skill_tree={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.fr.translation", "res://translations.jp.translation", "res://translations.de.translation", "res://translations.es.translation", "res://translations.it.translation")
+locale/translations=PackedStringArray("res://Localization/translations.en.translation", "res://Localization/translations.fr.translation", "res://Localization/translations.jp.translation", "res://Localization/translations.de.translation", "res://Localization/translations.es.translation", "res://Localization/translations.it.translation")
 
 [rendering]
 

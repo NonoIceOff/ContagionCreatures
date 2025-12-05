@@ -59,7 +59,9 @@ func _hide_progress_panel():
 		timer = null
 
 func _on_menu_principal_pressed():
-		get_tree().change_scene_to_file("res://Scenes/Menus/menu.tscn")func _on_quitter_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Menus/menu.tscn")
+
+func _on_quitter_pressed():
 	get_tree().quit()
 
 

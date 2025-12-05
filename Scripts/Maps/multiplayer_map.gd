@@ -28,12 +28,12 @@ func add_player(peer_id: int, player_name: String):
 		spawn_index += 1
 	else:
 		player.position = Vector2(randf_range(250, 450), randf_range(250, 450))
-func remove_player(peer_id: int):
-	var player = players_container.get_node_or_null(str(peer_id))
-	if player:
-		player.queue_free()
-	update_players_list()
-	print("Joueur retiré de la map (ID: ", peer_id, ")")
+	
+	# Set authority to the peer that owns this player
+	player.set_multiplayer_authority(peer_id)
+	
+	# Add camera only for local player
+	if peer_id == multiplayer.get_unique_id():
 		var camera = Camera2D.new()
 		camera.enabled = true
 		player.add_child(camera)
@@ -47,7 +47,7 @@ func remove_player(peer_id: int):
 	if player:
 		player.queue_free()
 	update_players_list()
-		print("Joueur retiré de la map (ID: ", peer_id, ")")
+	print("Joueur retiré de la map (ID: ", peer_id, ")")
 
 func _on_player_connected(peer_id: int, player_info: Dictionary):
 	add_player(peer_id, player_info.name)
