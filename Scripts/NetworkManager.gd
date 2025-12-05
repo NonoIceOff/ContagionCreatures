@@ -1,11 +1,12 @@
 extends Node
 
 const PORT = 9999
-const MAX_PLAYERS = 8
+const MAX_PLAYERS = 4
 
 var enet_peer = ENetMultiplayerPeer.new()
 var players_info = {}
 var is_host = false
+var next_player_index = 0
 
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
@@ -48,35 +49,50 @@ func disconnect_from_game():
 	
 	players_info.clear()
 	is_host = false
+	next_player_index = 0
 	print("Déconnexion du jeu")
 
 @rpc("any_peer", "reliable")
 func register_player(peer_id: int, player_name: String):
 	if multiplayer.is_server():
+		var player_idx = next_player_index
+		next_player_index += 1
+		
 		players_info[peer_id] = {
 			"name": player_name,
-			"ready": false
+			"ready": false,
+			"player_index": player_idx
 		}
-		print("Joueur enregistré sur serveur: ", player_name, " (ID: ", peer_id, ")")
+		print("Joueur enregistré sur serveur: ", player_name, " (ID: ", peer_id, ", Index: ", player_idx, ")")
 		
-		add_player_to_clients.rpc(peer_id, player_name)
+		add_player_to_clients.rpc(peer_id, player_name, false, player_idx)
 		
 		for existing_peer_id in players_info:
 			if existing_peer_id != peer_id:
 				var existing_player = players_info[existing_peer_id]
-				add_player_to_clients.rpc_id(peer_id, existing_peer_id, existing_player.name, existing_player.ready)
+				add_player_to_clients.rpc_id(peer_id, existing_peer_id, existing_player.name, existing_player.ready, existing_player.player_index)
 
-func add_player_locally(peer_id: int, player_name: String, ready: bool = false):
-	players_info[peer_id] = {
-		"name": player_name,
-		"ready": ready
-	}
-	player_connected.emit(peer_id, players_info[peer_id])
-	print("Joueur ajouté localement: ", player_name, " (ID: ", peer_id, ")")
+func add_player_locally(peer_id: int, player_name: String, ready: bool = false, player_idx: int = 0):
+	# Si le joueur existe déjà, on met à jour ses infos (notamment l'index)
+	if players_info.has(peer_id):
+		print("Mise à jour du joueur existant: ", player_name, " (ID: ", peer_id, ", Ancien Index: ", players_info[peer_id].player_index, ", Nouvel Index: ", player_idx, ")")
+		players_info[peer_id].name = player_name
+		players_info[peer_id].ready = ready
+		if player_idx >= 0:  # Ne mettre à jour que si l'index est valide
+			players_info[peer_id].player_index = player_idx
+	else:
+		players_info[peer_id] = {
+			"name": player_name,
+			"ready": ready,
+			"player_index": player_idx
+		}
+		player_connected.emit(peer_id, players_info[peer_id])
+		print("Joueur ajouté localement: ", player_name, " (ID: ", peer_id, ", Index: ", player_idx, ")")
 
 @rpc("authority", "call_local", "reliable")
-func add_player_to_clients(peer_id: int, player_name: String, ready: bool = false):
-	add_player_locally(peer_id, player_name, ready)
+func add_player_to_clients(peer_id: int, player_name: String, ready: bool = false, player_idx: int = 0):
+	print("[RPC] add_player_to_clients appelé pour ", player_name, " (ID: ", peer_id, ", Index: ", player_idx, ")")
+	add_player_locally(peer_id, player_name, ready, player_idx)
 
 @rpc("any_peer", "call_local", "reliable")
 func set_player_ready(peer_id: int, ready: bool):

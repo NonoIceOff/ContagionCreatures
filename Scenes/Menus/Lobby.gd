@@ -1,5 +1,13 @@
 extends Control
 
+# Couleurs pour chaque joueur (même ordre que multiplayer_map)
+const PLAYER_COLORS = [
+	Color(0.2, 0.5, 1.0),    # 1: Bleu
+	Color(1.0, 0.2, 0.2),    # 2: Rouge
+	Color(0.2, 1.0, 0.3),    # 3: Vert
+	Color(1.0, 0.9, 0.2)     # 4: Jaune
+]
+
 @onready var players_list = $Panel/VBoxContainer/ScrollContainer/PlayersList
 @onready var ready_button = $Panel/VBoxContainer/ReadyButton
 @onready var start_button = $Panel/VBoxContainer/StartButton
@@ -35,7 +43,13 @@ func refresh_players_list():
 	for peer_id in NetworkManager.players_info:
 		var player_info = NetworkManager.players_info[peer_id]
 		var player_label = Label.new()
-		player_label.text = player_info.name
+		
+		# Assign color based on player_index (0=Bleu, 1=Rouge, 2=Vert, 3=Jaune)
+		var player_idx = player_info.player_index
+		if player_idx < PLAYER_COLORS.size():
+			player_label.add_theme_color_override("font_color", PLAYER_COLORS[player_idx])
+		
+		player_label.text = "Joueur " + str(player_idx + 1) + ": " + player_info.name
 		if player_info.ready:
 			player_label.text += " [PRÊT]"
 		if peer_id == multiplayer.get_unique_id():
