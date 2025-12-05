@@ -124,4 +124,4 @@ func _input(event):
 			change_key_state = false
 
 func _on_controls_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/settings.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/settings.tscn")

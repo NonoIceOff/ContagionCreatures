@@ -10,4 +10,4 @@ func _ready():
 	pass
 
 func _on_profile_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/profil.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/profil.tscn")

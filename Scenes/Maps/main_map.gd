@@ -458,7 +458,7 @@ func _process(delta):
 
 				get_node("ui/Transition/AnimationPlayer").play("screen_to_transition")
 				await get_tree().create_timer(2).timeout
-				get_tree().change_scene_to_file("res://Scenes/dungeon_inversed.tscn")
+				get_tree().change_scene_to_file("res://Scenes/Dungeons/dungeon_inversed.tscn")
 				interacted = false
 			
 

@@ -23,7 +23,7 @@ func _on_host_button_pressed():
 	
 	if NetworkManager.create_server():
 		NetworkManager.add_player_locally(multiplayer.get_unique_id(), player_name)
-		get_tree().change_scene_to_file("res://Scenes/Lobby.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Menus/Lobby.tscn")
 	else:
 		show_error("Impossible de créer le serveur")
 
@@ -46,7 +46,7 @@ func _on_join_confirm_pressed():
 	if NetworkManager.join_server(ip_address):
 		await get_tree().create_timer(0.5).timeout
 		NetworkManager.register_player.rpc_id(1, multiplayer.get_unique_id(), player_name)
-		get_tree().change_scene_to_file("res://Scenes/Lobby.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Menus/Lobby.tscn")
 	else:
 		show_error("Impossible de rejoindre le serveur")
 

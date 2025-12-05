@@ -39,7 +39,7 @@ func _on_leave_to_map_1_body_entered(body):
 		if transition_anim:
 			transition_anim.play("screen_to_transition")
 		await get_tree().create_timer(0.5).timeout
-		get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Maps/main_map.tscn")
 
 
 func _on_enter_home_map_2_body_entered(body):
@@ -57,7 +57,7 @@ func _on_enter_donjon_body_entered(body):
 		if random == 0:
 			get_tree().change_scene_to_file("res://Scenes/dungeon1.tscn")
 		else:
-			get_tree().change_scene_to_file("res://Scenes/dungeon_enigme.tscn")
+			get_tree().change_scene_to_file("res://Scenes/Dungeons/dungeon_enigme.tscn")
 	
 
 func _on_piano_3_body_entered(body):

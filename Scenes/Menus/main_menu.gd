@@ -24,12 +24,12 @@ func _on_request_completed(result, response_code, headers, body):
 		
 
 func _on_multiplayer_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/MultiplayerMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/MultiplayerMenu.tscn")
 
 
 func _on_solo_button_pressed() -> void:
 	menu_fade_out = true
-	get_tree().change_scene_to_file("res://Scenes/saves_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/saves_menu.tscn")
 
 func _physics_process(delta):
 	if menu_fade_out == true:
@@ -49,7 +49,7 @@ func load_next_scene():
 
 
 func _on_settings_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/settings.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/settings.tscn")
 
 
 func _on_ost_button_pressed() -> void:
@@ -61,7 +61,7 @@ func _on_credits_button_pressed() -> void:
 
 
 func _on_profile_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/profil.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/profil.tscn")
 
 
 func _on_instagram_button_pressed() -> void:

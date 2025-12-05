@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://cuvepu5toqc02"]
 
-[ext_resource type="Script" uid="uid://852ixppgjwjo" path="res://Scenes/scène_combat.gd" id="1_hd4pf"]
+[ext_resource type="Script" uid="uid://852ixppgjwjo" path="res://Scenes/Combat/scène_combat.gd" id="1_hd4pf"]
 [ext_resource type="Texture2D" uid="uid://djhvdem3grba" path="res://Textures/TileSet_344.png" id="2_dxowc"]
 [ext_resource type="Texture2D" uid="uid://c5hpjski8m20o" path="res://Textures/Player-1_Tile-Set.png" id="4_1fplo"]
 [ext_resource type="Texture2D" uid="uid://cefopnknlth3j" path="res://Textures/BARRE-PV-Combat.png" id="5_4uere"]

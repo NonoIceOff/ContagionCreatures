@@ -67,7 +67,7 @@ func _on_start_button_pressed():
 
 func _on_leave_button_pressed():
 	NetworkManager.disconnect_from_game()
-	get_tree().change_scene_to_file("res://Scenes/MultiplayerMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/MultiplayerMenu.tscn")
 
 func _on_server_disconnected():
-	get_tree().change_scene_to_file("res://Scenes/MultiplayerMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/MultiplayerMenu.tscn")

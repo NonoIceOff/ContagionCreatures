@@ -17,4 +17,4 @@ func _process(delta: float) -> void:
 
 func _on_musics_and_sounds_back_button_pressed() -> void:
 	SaveSystem.save_other_parameters()
-	get_tree().change_scene_to_file("res://Scenes/settings.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/settings.tscn")

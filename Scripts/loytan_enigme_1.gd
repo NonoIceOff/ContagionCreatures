@@ -158,7 +158,7 @@ func _input(event):
 				winner = false
 				PlayerStats.monnaie += earn
 				SaveSystem.save()
-				get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
+				get_tree().change_scene_to_file("res://Scenes/Maps/main_map.tscn")
 			elif looser == true:
 				earn -= 100/7
 				if looser_i > 0:
@@ -170,5 +170,5 @@ func _input(event):
 				Global.current_quest_id = 0
 				Global.quests[0]["stade"] = 4
 				SaveSystem.save()
-				get_tree().change_scene_to_file("res://Scenes/main_map.tscn")
+				get_tree().change_scene_to_file("res://Scenes/Maps/main_map.tscn")
 				looser_max = false

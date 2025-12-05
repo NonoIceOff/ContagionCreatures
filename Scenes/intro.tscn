@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ftsqesla06t5" path="res://Textures/Buttons/keyboard/keyboard_e.png" id="5_nn7w8"]
 [ext_resource type="Texture2D" uid="uid://hr8gwy6r0qyt" path="res://Textures/cross.png" id="6_b26wi"]
 [ext_resource type="Texture2D" uid="uid://bcoxlrv826kyq" path="res://Textures/Items/Pierre.png" id="7_edp2d"]
-[ext_resource type="Script" uid="uid://cs8ytmvbycml0" path="res://Scenes/timer.gd" id="10_ewknp"]
+[ext_resource type="Script" uid="uid://cs8ytmvbycml0" path="res://Scripts/timer.gd" id="10_ewknp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bmuq"]
 radius = 16.0

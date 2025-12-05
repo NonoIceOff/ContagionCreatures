@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://b48dtrtjrb7nv"]
 
 [ext_resource type="Texture2D" uid="uid://q22nnxcjjpgf" path="res://Textures/Backgrounds/boss.png" id="1_bp22d"]
-[ext_resource type="Script" uid="uid://bocrm3wyet7j" path="res://Scenes/boss_fight.gd" id="1_m0cq2"]
+[ext_resource type="Script" uid="uid://bocrm3wyet7j" path="res://Scenes/Combat/boss_fight.gd" id="1_m0cq2"]
 [ext_resource type="Texture2D" uid="uid://bd16is5v8ma4p" path="res://Textures/Animals/dragon_texture.png" id="4_nre7b"]
-[ext_resource type="Script" uid="uid://cs8ytmvbycml0" path="res://Scenes/timer.gd" id="4_wha5u"]
+[ext_resource type="Script" uid="uid://cs8ytmvbycml0" path="res://Scripts/timer.gd" id="4_wha5u"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="5_0qq8k"]
 [ext_resource type="Shader" uid="uid://c7r3th281ihh2" path="res://Inventory/inv_animals.gdshader" id="5_aq6fk"]
 [ext_resource type="Script" uid="uid://cs14o2mhg1qy6" path="res://Scripts/mob_choices_boss.gd" id="5_qwimq"]

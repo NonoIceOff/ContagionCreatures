@@ -5,15 +5,15 @@ func _on_tree_entered() -> void:
 
 
 func _on_controls_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/controls_settings.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/controls_settings.tscn")
 
 
 func _on_language_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/languages.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/languages.tscn")
 
 
 func _on_appearance_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/videosettings.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/videosettings.tscn")
 
 
 func _on_music_and_sound_button_pressed() -> void:
@@ -21,4 +21,4 @@ func _on_music_and_sound_button_pressed() -> void:
 
 
 func _on_settings_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/main_menu.tscn")

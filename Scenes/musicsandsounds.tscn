@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bscaoqqu1e06b" path="res://Scripts/musicsandsounds.gd" id="1_76qaw"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_pvcbm"]
 [ext_resource type="FontFile" uid="uid://s3pjimxs5hu3" path="res://Font/upheavtt.ttf" id="3_avdw0"]
-[ext_resource type="Script" uid="uid://sxo002d04fdm" path="res://Scenes/musics.gd" id="6_4vfut"]
+[ext_resource type="Script" uid="uid://sxo002d04fdm" path="res://Scripts/musics.gd" id="6_4vfut"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avdw0"]
 

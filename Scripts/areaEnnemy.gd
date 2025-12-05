@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 		SaveSystem.save()
 		emit_signal("getNode")
 		await get_tree().create_timer(2).timeout
-		SceneLoader.load_scene("res://Scenes/scène_combat.tscn")
+		SceneLoader.load_scene("res://Scenes/Combat/scène_combat.tscn")
 
 
 func _on_area_ennemy_entered(body):

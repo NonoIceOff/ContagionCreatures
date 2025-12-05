@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6uuw2aaivcfh"]
 
-[ext_resource type="Script" uid="uid://lin0dnu4l6it" path="res://Scenes/videosettings.gd" id="1_a5m6v"]
+[ext_resource type="Script" uid="uid://lin0dnu4l6it" path="res://Scripts/UI/videosettings.gd" id="1_a5m6v"]
 [ext_resource type="Texture2D" uid="uid://cnb65ac0kqje8" path="res://Textures/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_tlhkd"]
 [ext_resource type="FontFile" uid="uid://s3pjimxs5hu3" path="res://Font/upheavtt.ttf" id="3_tlhkd"]
 

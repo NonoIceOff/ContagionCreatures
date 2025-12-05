@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 		var tile_id = bush_tilemap.get_cell_source_id(position_player_centered)
 		var random = randi() % 100
 		if tile_id == 1 and random == 1 and Global.tutorial_stade > 9:
-			await _play_combat_transition("res://Scenes/scène_combat.tscn")
+			await _play_combat_transition("res://Scenes/Combat/scène_combat.tscn")
 
 	var can_move = full_screen_map_parent == null or full_screen_map_parent.get_node_or_null("ui/Full_Screen_map") == null
 	if can_move:
