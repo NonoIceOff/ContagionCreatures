@@ -50,19 +50,20 @@ func show_next_dialogue():
 		var dialogue = dialogues[current_dialogue]
 		current_dialogue += 1
 
-		if dialogue.has("choices"):
+		if typeof(dialogue) == TYPE_DICTIONARY and dialogue.has("choices"):
 			is_choice_dialogue = true
 			show_choices(dialogue["choices"])
 		else:
 			is_choice_dialogue = false
-			type_text(dialogue["text"])  # Effet d'affichage progressif
+			var text_to_display = dialogue["text"] if typeof(dialogue) == TYPE_DICTIONARY else str(dialogue)
+			type_text(text_to_display)
 
-			# Vérifier et exécuter l'action associée
-			if dialogue.has("action") and dialogue["action"] is String and has_method(dialogue["action"]):
-				if dialogue.has("params"):
-					callv(dialogue["action"], dialogue["params"])
-				else:
-					call(dialogue["action"])
+			if typeof(dialogue) == TYPE_DICTIONARY:
+				if dialogue.has("action") and dialogue["action"] is String and has_method(dialogue["action"]):
+					if dialogue.has("params"):
+						callv(dialogue["action"], dialogue["params"])
+					else:
+						call(dialogue["action"])
 
 	else:
 		end_dialogue()

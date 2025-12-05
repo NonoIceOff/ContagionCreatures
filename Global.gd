@@ -1,15 +1,11 @@
 extends Node
 
-var user = {}
-var level = 1  # Store the player's level globally
+var level = 1
 var skill_points = 0
 
-var current_xp = 0  # Store the player's current XP globally
-var target_xp = 0   # Store the target XP globally
-var xp_to_next_level = 100  # Store the XP required for the next level globally
-
-# Matchmaking
-var user_enemy = {}
+var current_xp = 0
+var target_xp = 0
+var xp_to_next_level = 100
 var interact = false
 var trigger = true
 var brazero_numbers = 0
@@ -283,29 +279,33 @@ func _ready():
 func _process(delta):
 	ui = get_tree().get_nodes_in_group("ui")
 	for i in range(ui.size()):
-		ui[i].visible = ui_visible
-
+		if ui[i].visible != ui_visible:
+			ui[i].visible = ui_visible
 
 	buttons = get_tree().get_nodes_in_group("buttons")
 	var joypads = Input.get_connected_joypads()
 	if joypads.size() >= 1 and buttons.size() > 0:
-		if Input.is_action_just_pressed("ui_down"):
+		var input_down = Input.is_action_just_pressed("ui_down")
+		var input_up = Input.is_action_just_pressed("ui_up")
+		
+		if input_down:
 			selected_index = (selected_index + 1) % buttons.size()
 			update_button_selection()
-		if Input.is_action_just_pressed("ui_up"):
+		elif input_up:
 			selected_index = (selected_index - 1 + buttons.size()) % buttons.size()
 			update_button_selection()
-		if Input.is_action_just_pressed(Controllers.a_input):
+		elif Input.is_action_just_pressed(Controllers.a_input):
 			pressed_button(buttons[selected_index])
+	
 	if tutorial == false:
 		tutorial_stade = -1
 
 func update_button_selection() -> void:
 	for i in range(buttons.size()):
 		if i == selected_index:
-			buttons[i].modulate = Color(1, 1, 1, 1)  # Highlight selected button
+			buttons[i].modulate = Color(1, 1, 1, 1)
 		else:
-			buttons[i].modulate = Color(0.5, 0.5, 0.5, 1)  # Dim non-selected buttons
+			buttons[i].modulate = Color(0.5, 0.5, 0.5, 1)
 
 
 func pressed_button(button):
@@ -327,11 +327,18 @@ func _apply_player_position():
 		print("Erreur : Le joueur n'a pas été trouvé dans la scène.")
 
 func smooth_zoom(_camera, zoom, _position_target, speed):
+	if not is_instance_valid(_camera):
+		return
+	
 	var zoom_target = Vector2(zoom, zoom)
-	while _camera.zoom.distance_to(zoom_target) > 0.01:
+	var max_iterations = 100
+	var iteration = 0
+	
+	while is_instance_valid(_camera) and _camera.zoom.distance_to(zoom_target) > 0.01 and iteration < max_iterations:
 		_camera.zoom = lerp(_camera.zoom, zoom_target, speed)
 		_camera.position = lerp(_camera.position, _position_target, speed)
 		await get_tree().create_timer(speed).timeout
+		iteration += 1
 
 func add_creature(id: int) -> void:
 	var url = "https://contagioncreaturesapi.vercel.app/api/creatures/%s" % id
@@ -339,7 +346,6 @@ func add_creature(id: int) -> void:
 	var http := HTTPRequest.new()
 	add_child(http)
 
-	# Connecte le signal à une méthode dédiée
 	http.request_completed.connect(_on_creature_request_completed.bind(http))
 
 	var error = http.request(url)
@@ -384,5 +390,4 @@ func _on_creature_request_completed(result: int, response_code: int, headers: Pa
 	else:
 		print("Erreur : impossible d'ouvrir le fichier en écriture.")
 
-	# Nettoie le noeud HTTP pour éviter des fuites mémoire
 	http.queue_free()

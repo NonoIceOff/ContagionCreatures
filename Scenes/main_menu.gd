@@ -13,16 +13,6 @@ func _ready():
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
 	http_request.request("https://contagioncreaturesapi.vercel.app/api/texts")
-	
-	var load_file = ConfigFile.new()
-	var error = load_file.load_encrypted_pass("user://save.txt", "gentle_duck")
-	if error != OK:
-		print("Erreur de chargement du fichier de sauvegarde :", error)
-		return
-		
-	if Global.user != {}:
-		get_node("Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer/ProfileButton").text = Global.user.username
-		get_node("Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer/ConnexionStatus").text = "Voir votre profil"
 
 func _on_request_completed(result, response_code, headers, body):
 	if response_code == 200:
@@ -34,7 +24,7 @@ func _on_request_completed(result, response_code, headers, body):
 		
 
 func _on_multiplayer_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/multiplayer/multiplayer.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MultiplayerMenu.tscn")
 
 
 func _on_solo_button_pressed() -> void:

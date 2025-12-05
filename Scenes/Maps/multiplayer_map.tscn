@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmulti5m8qr5vn"]
+
+[ext_resource type="Script" path="res://Scripts/Maps/multiplayer_map.gd" id="1_map_multi"]
+[ext_resource type="PackedScene" uid="uid://bw2xm8qr5vn" path="res://Scenes/Player_Multiplayer.tscn" id="2_player"]
+
+[node name="MultiplayerMap" type="Node2D"]
+script = ExtResource("1_map_multi")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.2, 0.5, 0.3, 1)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Spawn1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(400, 300)
+
+[node name="Spawn2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(600, 300)
+
+[node name="Spawn3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(800, 300)
+
+[node name="Spawn4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1000, 300)
+
+[node name="Spawn5" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(400, 500)
+
+[node name="Spawn6" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(600, 500)
+
+[node name="Spawn7" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(800, 500)
+
+[node name="Spawn8" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1000, 500)
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InfoLabel" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 24
+text = "Partie Multijoueur
+Déplacez-vous avec ZQSD/Flèches"
+
+[node name="PlayersList" type="VBoxContainer" parent="UI"]
+offset_left = 20.0
+offset_top = 120.0
+offset_right = 300.0
+offset_bottom = 400.0
+
+[node name="PlayersTitle" type="Label" parent="UI/PlayersList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Joueurs connectés:"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Player_Multiplayer.tscn")
+spawn_path = NodePath("../Players")

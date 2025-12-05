@@ -120,15 +120,7 @@ func load_position():
 	# Appelle le chargement différé
 	call_deferred("_apply_player_position")
 
-func load_user():
-	var load_file = ConfigFile.new()
-	load_file.load_encrypted_pass("user://user.txt", "user_key")
-	Global.user = load_file.get_value("User","Data",Global.user)
 
-func save_user():
-	var save_file = ConfigFile.new()
-	save_file.set_value("User","Data",Global.user)
-	save_file.save_encrypted_pass("user://user.txt", "user_key")
 
 func load_other_parameters():
 	var load_file = ConfigFile.new()

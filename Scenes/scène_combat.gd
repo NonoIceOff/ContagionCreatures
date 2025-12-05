@@ -14,14 +14,13 @@ var buttonP : Button
 var buttonE : Button
 var animalP : Sprite2D
 var background_rect_info : ColorRect
-var buttons_active = false  # Drapeau pour contrôler l'activation des boutons et des touches
-var in_target_zone = false  # Indique si la barre est dans la zone cible
-var space_pressed = false   # Indique si la barre espace a été pressée une fois
-var current_attack_value = 0  # Stocke la valeur de l'attaque actuelle
+var buttons_active = false
+var in_target_zone = false
+var space_pressed = false
+var current_attack_value = 0
 var current_mode = ""
 var current_difficulty= ""
 var win :bool = false
-# Création des variables pour stocker les infos du combat pour les enregistrer à l'écran de fin de combat
 var number_attack_player = 0
 var number_attack_ennemye = 0
 var total_damage_player = 0
@@ -36,7 +35,6 @@ var total_shield_player = 0
 var total_shield_ennemye = 0
 var max_shield_player = 0
 var max_shield_ennemye = 0
-# pourcentage de réussite de coup critique avec la barre espace
 var critique_attaque_player = 0
 var critique_attaque_ennemye = 0
 var normal_attaque_player = 0
@@ -53,12 +51,11 @@ var total_attaque_ennemye = 0
 @onready var spell_2_sound: AudioStreamPlayer2D = $Spell2_sound
 @onready var spell_3_sound: AudioStreamPlayer2D = $Spell3_sound
 @onready var spell_4_sound: AudioStreamPlayer2D = $Spell4_sound
-var combat_started = false  # Indicateur de début de combat
+var combat_started = false
 @onready var start_overlay = ColorRect.new()
 @onready var start_message = Label.new()
 @onready var animalE = $ContainerMob/Sprite_animal_ennemy
 
-# Player bar
 @onready var player_creature_name = $ContainerPLAYER/Pseudo
 @onready var progress_bar_joueur = $ProgressBar_Joueur
 @onready var zone_cible1 = $ProgressBar_Joueur/ZoneCible1
@@ -69,7 +66,6 @@ var combat_started = false  # Indicateur de début de combat
 @onready var player_percentage_shield  = $ContainerPLAYER/TextureProgressBar/Shield
 @onready var spell_name_player = $ProgressBar_Joueur/SpellName
 
-# Ennemy bar
 @onready var mob_progress_bar_hp  = $ContainerMob/TextureProgressBar
 @onready var progress_bar_ennemye = $ProgressBar_ennemye
 @onready var zone_cible1_ennemye = $ProgressBar_Joueur/ZoneCible1
@@ -88,21 +84,20 @@ var combat_started = false  # Indicateur de début de combat
 @onready var StatsScene = preload("res://Scenes/Stats/Stats.tscn")
 
 
-const API_URL = "https://contagioncreaturesapi.vercel.app/api/creatures"  # Remplacez par votre URL d'API
-const CREATURES_FILE_PATH = "res://Constantes/creatures.json"  # Chemin vers le fichier JSON local
+const API_URL = "https://contagioncreaturesapi.vercel.app/api/creatures"
+const CREATURES_FILE_PATH = "res://Constantes/creatures.json"
 var creatures_data = []
 var enemy_creatures_data = []
 var creatures_spells = []
 var enemy_creatures_spells = []
 
-# Définition des couleurs en fonction du type d'attaque
 var attack_colors = {
-	"fire": Color(1, 0, 0),          # Rouge pour Fire
-	"physical": Color(0.72, 0.53, 0.04),  # Marron clair pour Physical
-	"ice": Color(0, 0.5, 1),         # Bleu pour Ice
-	"magic": Color(0.7, 0.3, 1)      # Violet clair pour Magic
+	"fire": Color(1, 0, 0),
+	"physical": Color(0.72, 0.53, 0.04),
+	"ice": Color(0, 0.5, 1),
+	"magic": Color(0.7, 0.3, 1)
 }
-var success_count = 0  # Compte des succès accumulés pendant la barre de progression
+var success_count = 0
 var required_successes = {
 	"easy": 1,
 	"medium": 2,
@@ -110,17 +105,14 @@ var required_successes = {
 }
 
 func _ready():
-	# Connecter les signaux de HTTPRequest pour gérer les réponses dès leur arrivée
 	http_get_creatures.connect("request_completed", Callable(self, "_on_get_creatures_request_completed"))
 	http_get_creatures_spells.connect("request_completed", Callable(self, "_on_get_creatures_spells_request_completed"))
 	http_get_enemy_spells.connect("request_completed", Callable(self, "_on_get_enemy_spells_request_completed"))
 	
-	# Obtenir le mob de l'ennemi (en lançant les requêtes HTTP)
 	var enemy_mob_id = randi_range(1, 10)
 	http_get_creatures.request(API_URL + "/" + str(enemy_mob_id))
 	http_get_enemy_spells.request(API_URL + "/" + str(enemy_mob_id) + "/attacks")
 
-	# Initialiser l'affichage des sorts et masquer la zone cible
 	var zone_cible1 = $ProgressBar_Joueur/ZoneCible1
 	zone_cible1.visible = false
 	var zone_cible2 = $ProgressBar_Joueur/ZoneCible2
@@ -146,21 +138,27 @@ func _ready():
 
 	print("enter in ready of sceneCombat")
 	var precombat_instance = precombat_scene.instantiate()
-	# add_child(precombat_instance)
 	
-	# Configurer l'overlay de départ
-	start_overlay.color = Color(0, 0, 0, 0.7)  # Gris foncé semi-transparent
+	var fade_overlay = ColorRect.new()
+	fade_overlay.color = Color(0, 0, 0, 1)
+	fade_overlay.size = get_viewport_rect().size
+	fade_overlay.z_index = 200
+	add_child(fade_overlay)
+	
+	var fade_tween = create_tween()
+	fade_tween.tween_property(fade_overlay, "color:a", 0.0, 0.5)
+	fade_tween.tween_callback(fade_overlay.queue_free)
+	
+	start_overlay.color = Color(0, 0, 0, 0.7)
 	start_overlay.size = get_viewport_rect().size
 	add_child(start_overlay)
 
-# Configurer le message d'instructions
 	start_message.text = "Pour commencer le combat, appuyez sur Espace"
 	start_message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	start_message.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	start_message.size = Vector2(300, 50)  # Exemple de taille
+	start_message.size = Vector2(300, 50)
 	start_message.add_theme_font_override("font", load("res://Font/8-BIT_WONDER.TTF"))
 
-	# Configurer l'ancrage et le point pivot pour centrer correctement
 	start_message.anchor_left = 0.5
 	start_message.anchor_top = 0.5
 	start_message.anchor_right = 0.5
@@ -168,14 +166,11 @@ func _ready():
 	start_message.offset_left = -start_message.size.x / 2
 	start_message.offset_top = -start_message.size.y / 2
 
-	# Ajouter le label centré dans l'overlay
 	start_overlay.add_child(start_message)
 
-	# Obtenir les sorts du joueur si les données sont disponibles
 	if creatures_data.size() > 0:
 		http_get_creatures_spells.request(API_URL + "/" + str(creatures_data[0].id) + "/attacks")
 
-	# Initialiser la barre de points de vie du joueur
 	if creatures_data.size() > 0:
 		player_progress_bar_hp.max_value = creatures_data[0].hp
 		player_progress_bar_hp.value = creatures_data[0].hp
@@ -184,10 +179,8 @@ func _ready():
 func setup_enemy_animal():
 	for key in Global.animals_enemy:
 		if Global.animals_enemy[key] == Global.animals_enemy[PlayerStats.animal_id]:
-			# S'assurer que la texture est bien chargée, par exemple après le callback "on_get_creatures_request_completed"
 			if ennemye_texture != null and ennemye_texture != "":
 				var texture_path = ennemye_texture
-				# Si le chemin n'inclut pas déjà "res://", ajouter le préfixe
 				if not ennemye_texture.begins_with("res://"):
 					texture_path = "res://Textures/Animals/" + ennemye_texture
 				animalE.texture = load(texture_path)
@@ -197,7 +190,6 @@ func setup_enemy_animal():
 			else:
 				print("Texture non disponible, attendre le callback de chargement.")
 	
-# Callback pour les données de créature de l'ennemi
 func _on_get_creatures_request_completed(result: int, response_code: int, headers: Array, body: PackedByteArray) -> void:
 	if response_code == 200:
 		if enemy_creatures_data.size() > 1:
@@ -210,21 +202,17 @@ func _on_get_creatures_request_completed(result: int, response_code: int, header
 			print("ennemye id :", ennemy_id)
 			setup_enemy_animal()
 
-# Callback pour les sorts du joueur
 func _on_get_creatures_spells_request_completed(result: int, response_code: int, headers: Array, body: PackedByteArray) -> void:
 	if response_code == 200:
 		var response_text = body.get_string_from_utf8()
 		var parse_result = JSON.parse_string(response_text)
 
-			# Assurez-vous qu'il y a au moins 4 sorts
 		if creatures_spells.size() >= 4:
-			# Configuration pour chaque bouton de sort
 			configure_spell_button("Spell1", creatures_spells[0])
 			configure_spell_button("Spell2", creatures_spells[1])
 			configure_spell_button("Spell3", creatures_spells[2])
 			configure_spell_button("Spell4", creatures_spells[3])
 
-			# Affichage des informations supplémentaires pour chaque sort
 			var spell1_difficulty1 = get_node("Spell1/difficulty1")
 			spell1_difficulty1.text = str(creatures_spells[0].difficulty)
 			var spell2_difficulty2 = get_node("Spell2/difficulty2")
@@ -243,7 +231,6 @@ func _on_get_creatures_spells_request_completed(result: int, response_code: int,
 			var spell4_type4 = get_node("Spell4/type4")
 			spell4_type4.text = str(creatures_spells[3].mode)
 
-			# Connexion des boutons pour afficher les informations de débogage lors d'un clic
 			connect_spell_button_with_debug("Spell1", creatures_spells, 0)
 			connect_spell_button_with_debug("Spell2", creatures_spells, 1)
 			connect_spell_button_with_debug("Spell3", creatures_spells, 2)
@@ -253,7 +240,6 @@ func _on_get_creatures_spells_request_completed(result: int, response_code: int,
 	else:
 		print("Erreur de parsing JSON pour les sorts du joueur :")
 
-# Modification de `_input` pour vérifier si les boutons sont actifs
 func _input(event):
 	if event.is_action_pressed("ui_select"):
 		if not combat_started:
@@ -282,30 +268,25 @@ func _input(event):
 
 func start_combat():
 	combat_started = true
-	buttons_active = true  # Active les boutons de sorts après le démarrage du combat
-	start_overlay.hide()  # Masquer l'overlay de démarrage
+	buttons_active = true
+	start_overlay.hide()
 	print("Combat commencé")
-	# ajouter au time on game le temps actuel depuis le début du combat
 	time_on_game = Time.get_ticks_msec()
 	
-	# mettre de façon random une compétence entre 0 et 3 
-	var rand_attack = rng.randi_range(0,3)
-	_remplir_barre_ennemye(1.5,enemy_creatures_spells[rand_attack].difficulty,enemy_creatures_spells[rand_attack].value, enemy_creatures_spells[rand_attack].mode, rand_attack)
+	if enemy_creatures_spells.size() > 0:
+		var max_index = min(3, enemy_creatures_spells.size() - 1)
+		var rand_attack = rng.randi_range(0, max_index)
+		_remplir_barre_ennemye(1.5,enemy_creatures_spells[rand_attack].difficulty,enemy_creatures_spells[rand_attack].value, enemy_creatures_spells[rand_attack].mode, rand_attack)
 
-# Nouvelle fonction pour exécuter les actions de debug et de remplissage de la barre
 func _execute_spell_action(button_name: String, spells: Array, index: int):
 	if spells.size() > index:
 		var spell_data = spells[index]
-		# Appelle la fonction de debug pour afficher les informations du sort
 		_debug_spell_info(spell_data)
-		# Modifie le texte qui affiche la compétence en fonction du spell sélectionner 
 		spell_name_player.text = spell_data.name
 		spell_name_player.visible = true
-		# changer la couleur du text en fonction de son élément 
 		if attack_colors.has(spell_data.element):
 			spell_name_player.modulate = attack_colors[spell_data.element]
 		
-		# Joue le son associé en fonction du sort utilisé
 		match button_name:
 			"Spell_1":
 				spell_1_sound.play()
@@ -316,19 +297,16 @@ func _execute_spell_action(button_name: String, spells: Array, index: int):
 			"Spell_4":
 				spell_4_sound.play()
 		
-		# Appelle la fonction pour remplir la barre et appliquer les dégâts
 		_on_spell_button_pressed(spell_data)
 	else:
 		print("Erreur : Index de sort invalide pour ", button_name)
 
 
-# Fonction pour connecter le bouton avec les données de sort
 func connect_spell_button_with_debug(button_name: String, spells: Array, index: int):
 	if spells.size() > index:
 		var button = get_node(button_name)
 		if button != null:
 			var spell_data = spells[index]
-			# Connecte le bouton pour afficher les informations de debug et remplir la barre avec les données du sort
 			button.connect("pressed", Callable(self, "_debug_spell_info").bind(spell_data))
 			button.connect("pressed", Callable(self, "_on_spell_button_pressed").bind(spell_data))
 		else:
@@ -336,7 +314,6 @@ func connect_spell_button_with_debug(button_name: String, spells: Array, index: 
 	else:
 		print("Erreur : Index de sort invalide pour le bouton ", button_name)
 		
-# Fonction de débogage pour afficher les informations du sort lorsqu'un bouton est pressé
 func _debug_spell_info(spell_data: Dictionary):
 	print("---- Informations du Sort ----")
 	print("Nom du sort :", spell_data.name)
@@ -346,20 +323,16 @@ func _debug_spell_info(spell_data: Dictionary):
 	print("Difficulty :", spell_data.difficulty)
 	print("---- Fin ----")
 
-# Fonction pour configurer chaque bouton de sort
 func configure_spell_button(button_name: String, spell_data: Dictionary) -> void:
 	var button = get_node(button_name)
 	if button != null:
-		# Définir le texte du bouton avec le nom du sort et sa valeur
 		button.text = spell_data.name + " : " + str(spell_data.value)
 		
-		# Définir la couleur de fond du bouton en fonction du type d'attaque
 		var attack_type = spell_data.element
 		if attack_colors.has(attack_type):
 			button.modulate = attack_colors[attack_type]
 		
-		# Afficher la difficulté sous le bouton
-		var difficulty_label = button.get_node("difficulty" + button_name.substr(-1))  # Récupère difficulty1, difficulty2, etc.
+		var difficulty_label = button.get_node("difficulty" + button_name.substr(-1))
 		if difficulty_label != null:
 			difficulty_label.text = str(spell_data.difficulty)
 			
@@ -413,8 +386,8 @@ func _process(delta):
 	rng.randomize()
 
 func _on_spell_button_pressed(spell_data: Dictionary) -> void:
-	set_spell_buttons_enabled(false)  # Désactive les boutons pendant la progression
-	current_attack_value = spell_data.value  # Récupère la valeur de l'attaque actuelle
+	set_spell_buttons_enabled(false)
+	current_attack_value = spell_data.value
 	current_mode = spell_data.mode
 	current_difficulty = spell_data.difficulty
 	print("Démarrage de la barre de progression pour la compétence :", current_difficulty)
@@ -496,17 +469,16 @@ func _remplir_barre_automatiquement(duree: float, difficulty: String) -> void:
 	# Jouer le son associé au niveau de réussite
 	match success_level:
 		0:
-			spell_2_sound.play()  # Échec total
+			spell_2_sound.play()
 		1:
-			spell_2_sound.play()  # Échec partiel ou Réussite Normale ou Partielle selon la difficulté
+			spell_2_sound.play()
 		2:
-			spell_1_sound.play()  # Réussite normale ou Réussite Critique selon la difficulté
+			spell_1_sound.play()
 		3:
-			spell_1_sound.play()  # Réussite Critique
+			spell_1_sound.play()
 		_:
-			pass  # Aucun son pour les valeurs inconnues
+			pass
 	
-	# Réinitialiser la barre de progression et les zones cibles
 	progress_bar_joueur.value = 0
 	for i in range(num_zones):
 		var zone_cible = progress_bar_joueur.get_node("ZoneCible" + str(i + 1))
@@ -831,8 +803,10 @@ func _remplir_barre_ennemye(duree: float, difficulty: String,  ennemye_attack: i
 		zone_cible.visible = false
 	
 	print("Barre de progression réinitialisée.")
-	var random_number = rng.randi_range(0,3)
-	_remplir_barre_ennemye(1.5,enemy_creatures_spells[random_number].difficulty,enemy_creatures_spells[random_number].value, enemy_creatures_spells[random_number].mode, random_number)
+	if enemy_creatures_spells.size() > 0:
+		var max_index = min(3, enemy_creatures_spells.size() - 1)
+		var random_number = rng.randi_range(0, max_index)
+		_remplir_barre_ennemye(1.5,enemy_creatures_spells[random_number].difficulty,enemy_creatures_spells[random_number].value, enemy_creatures_spells[random_number].mode, random_number)
 
 
 func apply_damage_to_player(damage: int, success_level: int, mode: String) -> void:

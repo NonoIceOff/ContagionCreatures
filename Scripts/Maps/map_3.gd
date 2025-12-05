@@ -5,13 +5,17 @@ extends Node2D
 @onready var label_home = $TileMap/house/AreaHome/Label_E_Home
 @onready var player_light = $TileMap/Player_One/PointLight2D
 @onready var shineStar1 = $AnimatedShineStar
-
-
+@onready var canvas_jour_nuit = $CanvasJour_Nuit
+@onready var ui_minimap = $ui/Minimap
+@onready var ui_node = $ui
 
 var entered = false
 var Key = false
 var scene_load = false
 var camera = []
+var last_hour = -1
+var last_minute = -1
+var tutorial_timer_started = false
 
 func _ready() -> void:
 	if Global.is_tutorial == false:
@@ -32,40 +36,51 @@ func _ready() -> void:
 
 var camera_id = 0
 func _process(_delta: float) -> void:
-	get_node("CanvasJour_Nuit").visible = !Global.is_eternal_day
-	camera = get_tree().get_nodes_in_group("camera")
-	match Global.tutorial_stade:
-		6:
-			await get_tree().create_timer(2).timeout
-			Global.tutorial_stade = 7
-		7:
-			await get_tree().create_timer(2).timeout
-			Global.tutorial_stade = 8
-			
-				
-	if Global.current_hour == 20 and Global.current_minute == 0:
-		soundEffect.stream = load("res://Sounds/music/night_sound.mp3")
-		soundEffect.play()
-	if Global.current_hour == 6 and Global.current_minute == 0:
-		soundEffect.stream = load("res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3")
-		soundEffect.play()
+	if canvas_jour_nuit:
+		var should_be_visible = !Global.is_eternal_day
+		if canvas_jour_nuit.visible != should_be_visible:
+			canvas_jour_nuit.visible = should_be_visible
+	
+	if camera.is_empty():
+		camera = get_tree().get_nodes_in_group("camera")
+	
+	if Global.tutorial_stade == 6 and not tutorial_timer_started:
+		tutorial_timer_started = true
+		get_tree().create_timer(2).timeout.connect(func(): Global.tutorial_stade = 7)
+	elif Global.tutorial_stade == 7 and tutorial_timer_started:
+		tutorial_timer_started = false
+		get_tree().create_timer(2).timeout.connect(func(): Global.tutorial_stade = 8)
+	
+	if Global.current_hour != last_hour or Global.current_minute != last_minute:
+		if Global.current_hour == 20 and Global.current_minute == 0:
+			soundEffect.stream = load("res://Sounds/music/night_sound.mp3")
+			soundEffect.play()
+		elif Global.current_hour == 6 and Global.current_minute == 0:
+			soundEffect.stream = load("res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3")
+			soundEffect.play()
+		last_hour = Global.current_hour
+		last_minute = Global.current_minute
+	
 	var joypads = Input.get_connected_joypads()
-	# Interaction avec la maison
+	# Interaction avec la maison - optimisé avec cache
 	if Input.is_action_just_pressed("M"):
-		if scene_load == false:
+		if not scene_load:
 			var load_scene = preload("res://Scenes/Full_Screen_map.tscn")
 			var load_instance = load_scene.instantiate()
-			load_instance.position = Vector2(0,0)
-			get_node("ui/Minimap").visible = false
-			get_node("ui").add_child(load_instance)
+			load_instance.position = Vector2.ZERO
+			if ui_minimap:
+				ui_minimap.visible = false
+			if ui_node:
+				ui_node.add_child(load_instance)
 			if joypads.size() >= 1:
 				Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-			
 			scene_load = true
-
-		elif scene_load == true:
-			get_node("ui/Full_Screen_map").queue_free()
-			get_node("ui/Minimap").visible = true
+		else:
+			var fullscreen_map = ui_node.get_node_or_null("Full_Screen_map")
+			if fullscreen_map:
+				fullscreen_map.queue_free()
+			if ui_minimap:
+				ui_minimap.visible = true
 			scene_load = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

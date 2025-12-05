@@ -7,7 +7,10 @@ signal player_entered_door_signal
 
 @onready var animated_sprite: AnimatedSprite2D = $player1
 @onready var pause_menu = $"player1/2/CanvasLayer/GameUI/PopupMenu/PauseMenuScreenContainer"
-@onready var player_xp = get_node_or_null("/root/Map3/ui/XPPanel") 
+@onready var player_xp = get_node_or_null("/root/Map3/ui/XPPanel")
+
+@onready var bush_tilemap = get_node_or_null("/root/Map3/TileMap/bush")
+@onready var full_screen_map_parent = get_parent().get_parent()
 
 func _ready() -> void:
 	Global.ui_visible = true
@@ -27,23 +30,15 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Space"):
 		player_xp.gain_xp(100)
 
-	## Détection d'un tile, si le joueur est sur un tile spécifique (l'id 3) alors print
-	if get_node_or_null("/root/Map3/TileMap/bush") != null:
+	if bush_tilemap != null:
 		var position_player_centered = (position+ Vector2(8, 8))/(16*3)
-		var tile_id = get_node("/root/Map3/TileMap/bush").get_cell_source_id(position_player_centered)
+		var tile_id = bush_tilemap.get_cell_source_id(position_player_centered)
 		var random = randi() % 100
 		if tile_id == 1 and random == 1 and Global.tutorial_stade > 9:
-			Global.smooth_zoom(get_node("player1/2"), 4, Vector2(16,16), 0.1)
-			Global.ui_visible = false
-			await get_tree().create_timer(5).timeout
-			SceneLoader.load_scene("res://Scenes/scène_combat.tscn")
-			#if player_xp:
-				#print("Player XP node found, gaining XP.")
-				#player_xp.gain_xp(50)
-			#else:
-				#print("Error: player_xp node not found! Verify the path.")
+			await _play_combat_transition("res://Scenes/scène_combat.tscn")
 
-	if get_node_or_null("../../ui/Full_Screen_map") == null:
+	var can_move = full_screen_map_parent == null or full_screen_map_parent.get_node_or_null("ui/Full_Screen_map") == null
+	if can_move:
 		if Input.is_action_pressed("droite"):
 			input_velocity.x += 1
 			animated_sprite.play("EastWalk")
@@ -80,3 +75,65 @@ func PauseMenu():
 		Engine.time_scale = 1
 	
 	Global.game_paused = !Global.game_paused
+
+func _play_combat_transition(scene_path: String):
+	# Créer un overlay noir pour la transition
+	var overlay = ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0)
+	overlay.size = get_viewport_rect().size
+	overlay.z_index = 100
+	get_tree().root.add_child(overlay)
+	
+	# Animation de la caméra
+	var camera = get_node("player1/2")
+	Global.ui_visible = false
+	
+	# DÉMARRER LE CHARGEMENT IMMÉDIATEMENT en arrière-plan
+	ResourceLoader.load_threaded_request(scene_path)
+	
+	# Créer des effets visuels pendant que ça charge
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	# Zoom sur le joueur
+	if is_instance_valid(camera):
+		tween.tween_property(camera, "zoom", Vector2(4, 4), 0.8).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(camera, "position", Vector2(16, 16), 0.8).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	
+	# Shake effect
+	for i in range(6):
+		var shake_offset = Vector2(randf_range(-5, 5), randf_range(-5, 5))
+		tween.tween_property(camera, "offset", shake_offset, 0.1).set_delay(0.8 + i * 0.1)
+	
+	# Fade to black avec des flashes
+	tween.tween_property(overlay, "color", Color(1, 1, 1, 0.8), 0.15).set_delay(1.2)
+	tween.tween_property(overlay, "color", Color(0, 0, 0, 0), 0.1).set_delay(1.35)
+	tween.tween_property(overlay, "color", Color(1, 1, 1, 0.9), 0.15).set_delay(1.45)
+	tween.tween_property(overlay, "color", Color(0, 0, 0, 1), 0.3).set_delay(1.6)
+	
+	await tween.finished
+	
+	# Attendre que le chargement soit terminé (si ce n'est pas déjà fait)
+	var progress = []
+	while true:
+		var status = ResourceLoader.load_threaded_get_status(scene_path, progress)
+		if status == ResourceLoader.THREAD_LOAD_LOADED:
+			break
+		elif status == ResourceLoader.THREAD_LOAD_FAILED or status == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
+			push_error("Échec du chargement de la scène")
+			overlay.queue_free()
+			return
+		await get_tree().process_frame
+	
+	# Nettoyage de la caméra
+	if is_instance_valid(camera):
+		camera.offset = Vector2.ZERO
+	
+	# IMPORTANT : Supprimer l'overlay AVANT de changer de scène
+	overlay.queue_free()
+	await get_tree().process_frame
+	
+	# Récupérer la scène chargée et changer
+	var new_scene = ResourceLoader.load_threaded_get(scene_path)
+	if new_scene:
+		get_tree().change_scene_to_packed(new_scene)

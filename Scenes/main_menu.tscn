@@ -12,13 +12,13 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ja6sr"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d36id"]
-texture = ExtResource("3_tdjih")
-region_rect = Rect2(275, 212, 90, 25)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xf341"]
 texture = ExtResource("3_tdjih")
 region_rect = Rect2(275, 178, 90, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d36id"]
+texture = ExtResource("3_tdjih")
+region_rect = Rect2(275, 212, 90, 25)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd6ce"]
 texture = ExtResource("3_tdjih")
@@ -103,15 +103,15 @@ custom_minimum_size = Vector2(550, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-theme_override_styles/hover = SubResource("StyleBoxTexture_d36id")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d36id")
 text = "MULTIJOUEURS"
 
 [node name="SoloButton" type="Button" parent="Background/Menu/Left_part/VBoxContainer/VBoxContainer2"]
@@ -119,15 +119,15 @@ custom_minimum_size = Vector2(550, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-theme_override_styles/hover = SubResource("StyleBoxTexture_d36id")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d36id")
 text = "1 JOUEUR"
 
 [node name="HSeparator" type="HSeparator" parent="Background/Menu/Left_part/VBoxContainer/VBoxContainer2"]
@@ -140,15 +140,15 @@ custom_minimum_size = Vector2(550, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-theme_override_styles/hover = SubResource("StyleBoxTexture_d36id")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d36id")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d36id")
 text = "PARAMETRES"
 
 [node name="HSeparator2" type="HSeparator" parent="Background/Menu/Left_part/VBoxContainer/VBoxContainer2"]
@@ -166,15 +166,15 @@ custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
 size_flags_horizontal = 2
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
 action_mode = 0
 text = "QUITTER"
 
@@ -205,15 +205,15 @@ custom_minimum_size = Vector2(420, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
 text = "PROFIL"
 expand_icon = true
 
@@ -230,15 +230,15 @@ custom_minimum_size = Vector2(420, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
 text = "OST"
 
 [node name="CreditsButton" type="Button" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2"]
@@ -246,15 +246,15 @@ custom_minimum_size = Vector2(420, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
 text = "CREDITS"
 
 [node name="HSeparator" type="HSeparator" parent="Background/Menu/Right_part/VBoxContainer/VBoxContainer2"]
@@ -272,15 +272,15 @@ custom_minimum_size = Vector2(400, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
 action_mode = 0
 text = "INSTAGRAM
 "
@@ -292,15 +292,15 @@ custom_minimum_size = Vector2(400, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xf341")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd6ce")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gd6ce")
 action_mode = 0
 text = "DISCORD"
 icon = ExtResource("6_cp0ys")

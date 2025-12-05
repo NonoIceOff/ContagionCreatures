@@ -60,11 +60,18 @@ func _on_languages_back_button_pressed() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# Optimisation: utiliser des signaux plutôt que vérifier chaque frame
 func _process(delta):
-	for i in TranslationServer.get_loaded_locales():
-		if get_node("LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/LanguagesSettingsButtonsContainer/"+str(i)).button_pressed == true:
-			TranslationServer.set_locale(i)
-			SaveSystem.save_localisation()
+	# Note: Cette boucle est très coûteuse. Il serait mieux d'utiliser des signaux "pressed" sur les boutons
+	# Pour l'instant, on optimise en vérifiant seulement si la fenêtre est visible
+	if languages_settings and languages_settings.visible:
+		for i in TranslationServer.get_loaded_locales():
+			var button_path = "LanguagesSettingsScreenContainer/LanguagesSettingsScreen/NinePatchRect/MarginContainer/ScrollContainer/LanguagesSettingsButtonsContainer/"+str(i)
+			var button = get_node_or_null(button_path)
+			if button and button.button_pressed == true:
+				TranslationServer.set_locale(i)
+				SaveSystem.save_localisation()
+				break  # Sortir de la boucle dès qu'on trouve le bouton pressé
 
 
 # Pause menu

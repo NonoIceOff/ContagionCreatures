@@ -1,39 +1,7 @@
 extends Node2D
 
-# HTTPRequest node
-@onready var http_request: HTTPRequest = $BackgroundTiles/HTTPRequest
-@onready var http_request_get_user: HTTPRequest = $BackgroundTiles/GetUser
-
-# Email et password LineEdit fields (Remplacez par les chemins corrects vers vos champs dans la scène)
-@onready var l_email_field: LineEdit = get_node("BackgroundTiles/LoginPanel/EmailField")
-@onready var l_password_field: LineEdit = get_node("BackgroundTiles/LoginPanel/PasswordField")
-
-@onready var r_email_field: LineEdit = get_node("BackgroundTiles/RegisterPanel/EmailField")
-@onready var r_password_field: LineEdit = get_node("BackgroundTiles/RegisterPanel/PasswordField")
-@onready var r_username_field: LineEdit = get_node("BackgroundTiles/RegisterPanel/UsernameField")
-
-# API URLs
-const REGISTER_URL = "https://contagioncreaturesapi.vercel.app/api/users/register"
-const LOGIN_URL = "https://contagioncreaturesapi.vercel.app/api/users/login"
-
-func _init() -> void:
-	SaveSystem.load_user()
-	
-	
-# Gestion de l'initialisation
 func _ready() -> void:
-	if Global.user != {}:
-		get_node("BackgroundTiles/Panel/username").text = str(Global.user.username)
-		get_node("BackgroundTiles/Panel/money").text = str(Global.user.money)+" coins"
-		get_node("BackgroundTiles/Panel/points").text = str(Global.user.points)+" points"
-		get_node("BackgroundTiles/Login").visible = false
-		get_node("BackgroundTiles/Register").visible = false
-		get_node("BackgroundTiles/Disconnect").visible = true
-	else :
-		get_node("BackgroundTiles/Disconnect").visible = false
-		
-	# Connecte le signal de réponse de HTTPRequest
-	http_request.request_completed.connect(_on_request_completed)
+	pass
 
 
 func login():
