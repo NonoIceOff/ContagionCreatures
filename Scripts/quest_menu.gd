@@ -144,12 +144,7 @@ func _process(delta):
 			if desc_label and Quests.quests.has(Quests.current_quest_id):
 				desc_label.text = Quests.quests[Quests.current_quest_id]["descriptions"][Quests.quests[Quests.current_quest_id]["stade"]]
 	
-	# Ouverture/fermeture du menu
-	if Input.is_action_just_pressed("q"):
-		if is_open:
-			close()
-		else:
-			open()
+	# La touche "q" est maintenant gérée dans ui.gd de manière centralisée
 	
 	# Mise à jour visuelle des boutons
 	for i in Quests.quests.keys():

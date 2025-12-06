@@ -123,9 +123,10 @@ func open():
 	print("skill tree opened")
 
 # écoute l'input pour ouvrir/fermer la fenêtre
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Skill_tree"):
-		if $Panel.visible:
-			close()
-		else:
-			open()
+# NOTE: Ce code est maintenant géré par ui.gd pour une gestion centralisée des interfaces
+# func _input(event: InputEvent) -> void:
+# 	if event.is_action_pressed("Skill_tree"):
+# 		if $Panel.visible:
+# 			close()
+# 		else:
+# 			open()

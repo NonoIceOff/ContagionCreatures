@@ -27,52 +27,57 @@ var minimap_max = MINIMAP_SIZE + Vector2(32, 32)
 
 func _ready() -> void:
 	var maps_to_display = []
-	if get_node_or_null("../../../Map3") != null:
-		var map_to_display_grass = "../../TileMap/grass"
-		var map_to_display_ground = "../../TileMap/Ground"
-		var map_to_display_bush = "../../TileMap/bush"
-		var map_to_display_tree = "../../TileMap/tree"
-		var map_to_display_house = "../../TileMap/house"
-		# Liste des maps à afficher
-		maps_to_display = [
-			map_to_display_ground,
-			map_to_display_grass,
-			map_to_display_bush,
-			map_to_display_tree,
-			map_to_display_house
-		]
-		
-	if get_node_or_null("../../../HomeOfHector") != null:
-		var map_to_display = "../../Control/TileMap"
-		# Liste des maps à afficher
-		maps_to_display = [
-			map_to_display
-		]
-
-	# Parcourt chaque chemin de map et les ajoute au SubViewport
-	for map_path in maps_to_display:
-		if not map_path:
-			print("Erreur : chemin de map manquant.")
-			continue
-
-		var map_node = get_node(map_path)
-		if not map_node:
-			print("Erreur : chemin de map invalide pour :", map_path)
-			continue
-
-		# Duplique la map et l'ajoute au SubViewport
-		var map_copy = map_node.duplicate()
+	
+	# Utiliser get_tree().root pour accéder à la scène principale
+	var main_scene = get_tree().current_scene
+	
+	# Chercher le TileMap dans la scène principale
+	var tilemap = main_scene.get_node_or_null("TileMap")
+	if tilemap:
+		var map_copy = tilemap.duplicate()
 		sub_viewport.add_child(map_copy)
-		print("Carte ajoutée à la minimap :", map_copy.name)
+	else:
+		# Essayer l'ancienne méthode pour compatibilité
+		if get_node_or_null("../../../Map3") != null:
+			var map_to_display_grass = "../../TileMap/grass"
+			var map_to_display_ground = "../../TileMap/Ground"
+			var map_to_display_bush = "../../TileMap/bush"
+			var map_to_display_tree = "../../TileMap/tree"
+			var map_to_display_house = "../../TileMap/house"
+			maps_to_display = [
+				map_to_display_ground,
+				map_to_display_grass,
+				map_to_display_bush,
+				map_to_display_tree,
+				map_to_display_house
+			]
+		
+		if get_node_or_null("../../../HomeOfHector") != null:
+			var map_to_display = "../../Control/TileMap"
+			maps_to_display = [map_to_display]
+
+		# Parcourt chaque chemin de map et les ajoute au SubViewport
+		for map_path in maps_to_display:
+			if not map_path:
+				continue
+			var map_node = get_node_or_null(map_path)
+			if map_node:
+				var map_copy = map_node.duplicate()
+				sub_viewport.add_child(map_copy)
 
 	change_map()
 	
 func change_map():
 	pin = Vector2(0,0)
-	if get_node_or_null("../../../Map3") != null:
-		player = get_node("../../TileMap/Player_One")
-	if get_node_or_null("../../../HomeOfHector") != null:
-		player = get_node("../../Control/Player_One")
+	
+	var players = get_tree().get_nodes_in_group("Player_One")
+	if players.size() > 0:
+		player = players[0]
+	else:
+		if get_node_or_null("../../../Map3") != null:
+			player = get_node_or_null("../../TileMap/Player_One")
+		elif get_node_or_null("../../../HomeOfHector") != null:
+			player = get_node_or_null("../../Control/Player_One")
 
 func _process(delta):
 	if not Global.is_minimap or not player:

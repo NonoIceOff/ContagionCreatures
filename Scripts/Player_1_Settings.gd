@@ -24,8 +24,7 @@ func _process(delta):
 func _physics_process(_delta: float) -> void:
 	var input_velocity = Vector2.ZERO
 	
-	if Input.is_action_just_pressed("échap"):
-		PauseMenu()
+	# La touche ESC est maintenant gérée dans ui.gd de manière centralisée
 		
 	if Input.is_action_just_pressed("Space"):
 		if player_xp:
@@ -76,6 +75,19 @@ func PauseMenu():
 		Engine.time_scale = 1
 	
 	Global.game_paused = !Global.game_paused
+
+# Fonctions pour le système centralisé d'interfaces
+func open_pause():
+	if not Global.game_paused:
+		pause_menu.visible = true
+		Engine.time_scale = 0
+		Global.game_paused = true
+
+func close_pause():
+	if Global.game_paused:
+		pause_menu.visible = false
+		Engine.time_scale = 1
+		Global.game_paused = false
 
 func _play_combat_transition(scene_path: String):
 	# Créer un overlay noir pour la transition

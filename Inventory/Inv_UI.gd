@@ -114,13 +114,8 @@ func _ready():
 		get_node("CanvasLayer").add_child(colonne)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("i"):
-		if is_open:
-			close()
-			undraw_inventory()
-		else:
-			open()
-			draw_inventory()
+	# La touche "i" est maintenant gérée dans ui.gd de manière centralisée
+	pass
 
 func open():
 	get_node("CanvasLayer").visible = true

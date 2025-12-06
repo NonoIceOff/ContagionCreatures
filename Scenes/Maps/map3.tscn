@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://0qjki1r0x1os" path="res://TileSet/TileSetN1/tileset_TileSetN1.tres" id="2_24pqk"]
 [ext_resource type="AudioStream" uid="uid://b7fbr7kg0nmlw" path="res://Sounds/Kings_Castle_-_Fantasy_Music_Musique_Fantastique_Musique_Libre_de_Droit.mp3" id="3_0tjfa"]
 [ext_resource type="Script" uid="uid://v1g5c3bev6ye" path="res://Scripts/bush_creatures.gd" id="5_44u67"]
-[ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/ui.tscn" id="5_ve2ga"]
+[ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/UI/ui.tscn" id="5_ve2ga"]
 [ext_resource type="Texture2D" uid="uid://ftsqesla06t5" path="res://Textures/Buttons/keyboard/keyboard_e.png" id="6_dlhm5"]
 [ext_resource type="Texture2D" uid="uid://rhww26uforqm" path="res://Textures/trade_pnj_all.png" id="7_xxa6u"]
 [ext_resource type="Script" uid="uid://brbi0ae53jsxi" path="res://Scripts/area_trade.gd" id="8_u0j47"]

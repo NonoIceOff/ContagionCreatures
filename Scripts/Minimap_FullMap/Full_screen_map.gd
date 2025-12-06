@@ -35,21 +35,19 @@ var point_sprite = ColorRect.new()
 var point_pos
 var pin_menu = false
 var player_node = null
+var zoom_tween: Tween = null
 
-const CAMERA_LIMIT_RIGHT = 1000
-const CAMERA_LIMIT_LEFT = -200
-const CAMERA_LIMIT_TOP = 0
-const CAMERA_LIMIT_BOTTOM = 500
-const CAMERA_MOVE_SPEED = 5
-const CAMERA_MOVE_SPEED_FAST = 10  # Pour sprint
+# Pas de limites de déplacement - liberté totale
+const CAMERA_MOVE_SPEED = 15
+const CAMERA_MOVE_SPEED_FAST = 30
 const ZOOM_MIN = 0.3  # Permet de voir TOUTE la map
 const ZOOM_MAX = 4.0
 const ZOOM_DEFAULT = 1.0  # Démarre plus dézoomé
-const ZOOM_FACTOR_IN = 1.1
-const ZOOM_FACTOR_OUT = 0.9
+const ZOOM_FACTOR_IN = 1.2  # Augmenté de 1.1 à 1.2 (zoom plus rapide)
+const ZOOM_FACTOR_OUT = 0.8  # Diminué de 0.9 à 0.8 (dezoom plus rapide)
 const ZOOM_FACTOR_TRIGGER = 0.05  # Pour zoom progressif manette
-const SCALE_FACTOR_IN = 0.95
-const SCALE_FACTOR_OUT = 1.05
+const SCALE_FACTOR_IN = 0.9  # Augmenté de 0.95 à 0.9
+const SCALE_FACTOR_OUT = 1.1  # Augmenté de 1.05 à 1.1
 const DOUBLE_CLICK_TIME = 0.3
 const PIN_INACTIVE_COLOR = Color(0.2, 0.2, 0.2, 1)
 
@@ -67,6 +65,11 @@ func setup_pin(cam_pin, canvas_pin, canvas_particles, global_pos: Vector2) -> vo
 			canvas_particles.visible = false
 
 func _ready():
+	# Configure cette node pour qu'elle fonctionne pendant la pause
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	# Pause le jeu (mais pas l'UI)
+	get_tree().paused = true
+	
 	if camera:
 		camera.zoom = Vector2(ZOOM_DEFAULT, ZOOM_DEFAULT)
 		camera.offset = Vector2.ZERO
@@ -100,34 +103,37 @@ func _ready():
 	setup_pin(cam_pin_green, canvas_pin_green, canvas_pin_green_particles, Global.ping)
 
 
-	var map_to_display_grass = "../../TileMap/grass"
-	var map_to_display_ground = "../../TileMap/Ground"
-	var map_to_display_bush = "../../TileMap/bush"
-	var map_to_display_tree = "../../TileMap/tree"
-	var map_to_display_house = "../../TileMap/house"
-	var maps_to_display = [
-		map_to_display_ground,
-		map_to_display_grass,
-		map_to_display_bush,
-		map_to_display_tree,
-		map_to_display_house
-	]
-
+	# Utiliser get_tree().current_scene pour accéder à la scène principale
+	var main_scene = get_tree().current_scene
 	var sub_viewport = $SubViewportContainer/SubViewport/Camera2D/Map
 	
-	for map_path in maps_to_display:
-		if not map_path:
-			print("Erreur : chemin de map manquant.")
-			continue
-
-		var map_node = get_node(map_path)
-		if not map_node:
-			print("Erreur : chemin de map invalide pour :", map_path)
-			continue
-
-		var map_copy = map_node.duplicate()
+	# Chercher le TileMap dans la scène principale
+	var tilemap = main_scene.get_node_or_null("TileMap")
+	if tilemap:
+		var map_copy = tilemap.duplicate()
 		sub_viewport.add_child(map_copy)
-		print("Carte ajoutée à la minimap :", map_copy.name)
+	else:
+		# Ancienne méthode pour compatibilité
+		var map_to_display_grass = "../../TileMap/grass"
+		var map_to_display_ground = "../../TileMap/Ground"
+		var map_to_display_bush = "../../TileMap/bush"
+		var map_to_display_tree = "../../TileMap/tree"
+		var map_to_display_house = "../../TileMap/house"
+		var maps_to_display = [
+			map_to_display_ground,
+			map_to_display_grass,
+			map_to_display_bush,
+			map_to_display_tree,
+			map_to_display_house
+		]
+		
+		for map_path in maps_to_display:
+			if not map_path:
+				continue
+			var map_node = get_node_or_null(map_path)
+			if map_node:
+				var map_copy = map_node.duplicate()
+				sub_viewport.add_child(map_copy)
 	
 
 func scale_pins(scale_factor: float, particles_scale_factor: float) -> void:
@@ -152,25 +158,29 @@ func scale_pins(scale_factor: float, particles_scale_factor: float) -> void:
 	
 func _physics_process(delta):
 	if not player_node:
-		player_node = get_node_or_null("../../TileMap/Player_One")
+		var players = get_tree().get_nodes_in_group("Player_One")
+		if players.size() > 0:
+			player_node = players[0]
+		else:
+			player_node = get_node_or_null("../../TileMap/Player_One")
+		
 		if not player_node:
 			return
 	
 	if add_pin_menu and not add_pin_menu.visible:
-		var offset = camera.offset
-		
 		var move_speed = CAMERA_MOVE_SPEED
 		if Input.is_action_pressed("Sprint"):
 			move_speed = CAMERA_MOVE_SPEED_FAST
 		
 		var movement = Vector2.ZERO
-		if Input.is_action_pressed("droite") and offset.x < CAMERA_LIMIT_RIGHT:
+		# Déplacement sans limites
+		if Input.is_action_pressed("droite"):
 			movement.x += move_speed
-		if Input.is_action_pressed("gauche") and offset.x > CAMERA_LIMIT_LEFT:
+		if Input.is_action_pressed("gauche"):
 			movement.x -= move_speed
-		if Input.is_action_pressed("haut") and offset.y > CAMERA_LIMIT_TOP:
+		if Input.is_action_pressed("haut"):
 			movement.y -= move_speed
-		if Input.is_action_pressed("bas") and offset.y < CAMERA_LIMIT_BOTTOM:
+		if Input.is_action_pressed("bas"):
 			movement.y += move_speed
 		
 		if movement != Vector2.ZERO:
@@ -190,12 +200,27 @@ func _physics_process(delta):
 	camera.position = player_pos
 	point_pos = pin - player_pos
 	
-	if cam_map:
-		var map_pos = cam_map.position
-		if cam_pin_point:
-			cam_pin_point.position = pin * 2 + map_pos
-		if cam_player_point:
-			cam_player_point.position = player_pos * 2 + map_pos
+	# Le Map node a scale=2 et position=(250,250) dans la scène
+	# Pour convertir coordonnées monde -> coordonnées Map:
+	# map_local = (world_pos * map_scale) + map_offset
+	var map_scale = Vector2(2, 2)
+	var map_offset = Vector2(250, 250)
+	
+	# Mise à jour des positions des pins et du joueur dans la map
+	if cam_pin_point:
+		cam_pin_point.position = (pin * map_scale) + map_offset
+	if cam_player_point:
+		cam_player_point.position = (player_pos * map_scale) + map_offset
+	
+	# Mise à jour des pins colorés depuis Global
+	if cam_pin_blue and Global.pinb != Vector2.ZERO:
+		cam_pin_blue.position = (Global.pinb * map_scale) + map_offset
+	if cam_pin_red and Global.pinr != Vector2.ZERO:
+		cam_pin_red.position = (Global.pinr * map_scale) + map_offset
+	if cam_pin_yellow and Global.piny != Vector2.ZERO:
+		cam_pin_yellow.position = (Global.piny * map_scale) + map_offset
+	if cam_pin_green and Global.ping != Vector2.ZERO:
+		cam_pin_green.position = (Global.ping * map_scale) + map_offset
 func change_pin(position):
 	pin = position
 	Global.pin = pin
@@ -241,11 +266,21 @@ func _unhandled_input(event):
 		var current_zoom = camera.zoom.x
 		
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed and current_zoom < ZOOM_MAX:
-			camera.zoom *= ZOOM_FACTOR_IN
+			# Zoom smooth avec tween
+			if zoom_tween:
+				zoom_tween.kill()
+			var target_zoom = camera.zoom * ZOOM_FACTOR_IN
+			zoom_tween = create_tween()
+			zoom_tween.tween_property(camera, "zoom", target_zoom, 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			scale_pins(SCALE_FACTOR_IN, SCALE_FACTOR_IN)
 		
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed and current_zoom > ZOOM_MIN:
-			camera.zoom *= ZOOM_FACTOR_OUT
+			# Dezoom smooth avec tween
+			if zoom_tween:
+				zoom_tween.kill()
+			var target_zoom = camera.zoom * ZOOM_FACTOR_OUT
+			zoom_tween = create_tween()
+			zoom_tween.tween_property(camera, "zoom", target_zoom, 0.15).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			scale_pins(SCALE_FACTOR_OUT, SCALE_FACTOR_OUT)
 		
 		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -262,4 +297,15 @@ func _input(event):
 		if add_pin_menu:
 			pin_menu = not add_pin_menu.visible
 			add_pin_menu.visible = pin_menu
+			# Position du menu dans l'espace écran
 			add_pin_menu.position = event.position
+			
+			# Convertir la position souris en position monde pour placer le pin
+			if camera:
+				# Position souris dans le viewport
+				var viewport_pos = event.position
+				# Convertir en position monde en tenant compte du zoom et offset de la caméra
+				var world_pos = camera.position + (viewport_pos - get_viewport_rect().size / 2) / camera.zoom + camera.offset
+				# Stocker dans Global.pin_temp pour que add_pin.gd l'utilise
+				Global.pin_temp = world_pos
+				change_pin(world_pos)

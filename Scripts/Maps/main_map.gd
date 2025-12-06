@@ -493,21 +493,7 @@ func _process(delta):
 			
 
 	
-
-	if Input.is_action_just_pressed("M"):
-		if scene_load == false:
-			var load_scene = preload("res://Scenes/Full_screen_map.tscn")
-			var load_instance = load_scene.instantiate()
-			load_instance.position = Vector2(0,0)
-			get_node("ui/Minimap").visible = false
-			get_node("ui").add_child(load_instance)
-			
-			scene_load = true
-
-		elif scene_load == true:
-			get_node("ui/Full_Screen_map").queue_free()
-			get_node("ui/Minimap").visible = true
-			scene_load = false
+	# La gestion de la map (M) est maintenant dans ui.gd avec le système centralisé
 	
 	
 
