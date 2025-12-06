@@ -28,7 +28,8 @@ func _physics_process(_delta: float) -> void:
 		PauseMenu()
 		
 	if Input.is_action_just_pressed("Space"):
-		player_xp.gain_xp(100)
+		if player_xp:
+			player_xp.gain_xp(100)
 
 	if bush_tilemap != null:
 		var position_player_centered = (position+ Vector2(8, 8))/(16*3)

@@ -33,6 +33,10 @@ func _ready() -> void:
 	soundEffect.play()
 	camera = get_tree().get_nodes_in_group("camera")
 	#Global.smooth_zoom(camera[0], 1.5, Vector2(1150, 650),0.01)
+	
+	await get_tree().process_frame
+	if Global.party_timer_seconds == 0:
+		SaveSystem.save()
 
 var camera_id = 0
 func _process(_delta: float) -> void:

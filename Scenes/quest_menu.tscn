@@ -22,12 +22,14 @@ self_modulate = Color(1, 1, 1, 0.294118)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1072.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.784314)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.588235)
 
 [node name="Titre" type="Label" parent="."]
@@ -51,6 +53,7 @@ offset_top = 200.0
 offset_right = 1834.0
 offset_bottom = 1024.0
 rotation = -0.0349066
+mouse_filter = 2
 color = Color(0.619608, 0.615686, 0.435294, 1)
 
 [node name="QuestInfos" type="ColorRect" parent="."]

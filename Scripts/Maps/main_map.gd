@@ -16,7 +16,7 @@ extends Node2D
 @onready var ui_minimap = $ui/Minimap
 @onready var ui_stats = $ui/Stats
 @onready var ui_cinematic = $ui/Cinematic
-@onready var player_camera = $Player_One/2
+@onready var player_camera = $Player_One/Camera2D
 
 var paused = false
 var Key = false
@@ -32,6 +32,11 @@ func _ready():
 	SaveSystem.load_localisation()
 	SaveSystem.load()
 	Global.current_map = "main_map"
+	
+	# Première sauvegarde pour les nouvelles parties
+	await get_tree().process_frame
+	if Global.party_timer_seconds == 0:
+		SaveSystem.save()
 	
 	if ui_cpu_particles:
 		ui_cpu_particles.visible = false
@@ -176,7 +181,7 @@ func _process(delta):
 			
 		
 	if get_node_or_null("ui/Stats/Coins/Label") != null:
-		get_node_or_null("ui/Stats/Coins/Label").text = str(PlayerStats.monnaie)
+		get_node_or_null("ui/Stats/Coins/Label").text = str(PlayerStats.money)
 	
 	
 	
@@ -191,8 +196,8 @@ func _process(delta):
 			get_node("ui").add_child(instance)
 		
 		if get_node_or_null("InteractArea/Interact") != null and $InteractArea/Interact.visible == true:
-			if quest_id == 0 and Global.quests[0]["stade"] == 0:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 0:
+				Quests.current_quest_id = 0
 				var text_quest_0 = {
 					0: {
 						"text": "DIALOGUE_0_TEXT0",
@@ -239,8 +244,8 @@ func _process(delta):
 				interacted = false
 				
 		if get_node_or_null("Loytan/Interact") != null and get_node("Loytan/Interact").visible == true:
-			if quest_id == 0 and Global.quests[0]["stade"] == 1:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 1:
+				Quests.current_quest_id = 0
 				var text_quest_0_2 = {
 					0: {
 						"text": "DIALOGUE_0-2_TEXT0",
@@ -272,8 +277,8 @@ func _process(delta):
 				zoom_dialogue()
 				interacted = false
 				
-			if quest_id == 0 and Global.quests[0]["stade"] == 2:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 2:
+				Quests.current_quest_id = 0
 				var text_quest_0_3 = {
 					0: {
 						"text": "DIALOGUE_0-3_TEXT0",
@@ -298,8 +303,8 @@ func _process(delta):
 				zoom_dialogue()
 				interacted = false
 
-			if quest_id == 0 and Global.quests[0]["stade"] == 4:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 4:
+				Quests.current_quest_id = 0
 				var text_quest_0_4 = {
 					0: {
 						"text": "DIALOGUE_0-4_TEXT0",
@@ -332,8 +337,8 @@ func _process(delta):
 				interacted = false
 				
 		if get_node_or_null("InteractArea/Interact") != null and get_node("InteractArea/Interact").visible == true:
-			if quest_id == 0 and Global.quests[0]["stade"] == 3:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 3:
+				Quests.current_quest_id = 0
 				var text_quest_0_4 = {
 					0: {
 						"text": "DIALOGUE_0-5_TEXT0",
@@ -366,9 +371,9 @@ func _process(delta):
 				interacted = false
 				
 		if get_node_or_null("Bagird/Interact") != null and get_node("Bagird/Interact").visible == true:
-			if quest_id == 1 and Global.quests[1]["stade"] == 0:
-				Global.set_quest(1)
-				Global.quests[1]["stade"] = 1
+			if quest_id == 1 and Quests.quests.has(1) and Quests.quests[1].stade == 0:
+				Quests.current_quest_id = 1
+				Quests.quests[1].stade = 1
 				get_node("AudioStreamPlayer2D").stream = load("res://Sounds/bagrid_shlack.mp3")
 				get_node("AudioStreamPlayer2D").playing = true
 				var text_quest_1 = {
@@ -444,8 +449,8 @@ func _process(delta):
 				zoom_dialogue()
 				interacted = false
 				
-			if quest_id == 1 and Global.quests[1]["stade"] == 2:
-				Global.set_quest(1)
+			if quest_id == 1 and Quests.quests.has(1) and Quests.quests[1].stade == 2:
+				Quests.current_quest_id = 1
 				get_node("AudioStreamPlayer2D").stream = load("res://Sounds/bagrid_rire.mp3")
 				get_node("AudioStreamPlayer2D").playing = true
 				var text_quest_1_2 = {
@@ -478,8 +483,8 @@ func _process(delta):
 				Global.items[5]["quantity"] -= 1
 				quest_id = 0
 				
-				Global.quest_finished(1)
-				Global.quests[1]["finished"] = true
+				if Quests.quests.has(1):
+					Quests.quests[1].finished = true
 
 				get_node("ui/Transition/AnimationPlayer").play("screen_to_transition")
 				await get_tree().create_timer(2).timeout

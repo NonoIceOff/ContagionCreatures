@@ -4,10 +4,23 @@ var file_id = 1
 var filename = "unknown"
 
 func save_file_infos():
+	var dir := DirAccess.open("user://")
+	if dir == null:
+		push_error("Impossible d'ouvrir le répertoire user://")
+		return
+
+	if not dir.dir_exists("Saves"):
+		dir.make_dir("Saves")
+
+	dir.change_dir("Saves")
+
+	var file_folder := "File" + str(file_id)
+	if not dir.dir_exists(file_folder):
+		dir.make_dir(file_folder)
+	
 	var save_file = ConfigFile.new()
 	save_file.set_value("File", "Name", filename)
-	var file_folder = filename
-	var save_path := "user://Saves/" + str(file_folder) + "/settings.txt"
+	var save_path := "user://Saves/" + file_folder + "/settings.txt"
 	save_file.save(save_path)
 
 func save():
@@ -42,7 +55,10 @@ func save():
 	save_file.set_value("Stats", "Time Played", Global.party_timer_seconds)
 	print("Time saved: ", Global.party_timer_seconds)
 
-	var player_node = get_node_or_null("/root/"+Global.current_map+"/TileMap/Player_One")
+	var player_node = get_node_or_null("/root/"+Global.current_map+"/Player_One")
+	if not player_node:
+		player_node = get_node_or_null("/root/"+Global.current_map+"/TileMap/Player_One")
+	
 	if player_node:
 		save_file.set_value("Player", "position", player_node.position)
 	else:
@@ -78,6 +94,18 @@ func save():
 
 
 func load():
+	# D'abord charger le nom du fichier depuis settings.txt
+	var settings_file = ConfigFile.new()
+	var settings_path = "user://Saves/File" + str(file_id) + "/settings.txt"
+	var settings_error = settings_file.load(settings_path)
+	if settings_error == OK:
+		filename = settings_file.get_value("File", "Name", "unknown")
+		print("Nom de fichier chargé : ", filename)
+	else:
+		print("Impossible de charger settings.txt, utilisation de 'unknown'")
+		filename = "unknown"
+	
+	# Ensuite charger la sauvegarde
 	var load_file = ConfigFile.new()
 	var save_path = "user://Saves/File" + str(file_id) + "/" + filename + ".txt"
 	var error = load_file.load_encrypted_pass(save_path, "gentle_duck")
@@ -103,7 +131,10 @@ func load():
 	PlayerStats.money = load_file.get_value("Player", "money", PlayerStats.money)
 	Global.party_timer_seconds = load_file.get_value("Stats", "Time Played", 0)
 
-	var player_node = get_node_or_null("/root/"+Global.current_map+"/TileMap/Player_One")
+	var player_node = get_node_or_null("/root/"+Global.current_map+"/Player_One")
+	if not player_node:
+		player_node = get_node_or_null("/root/"+Global.current_map+"/TileMap/Player_One")
+	
 	if player_node:
 		player_node.position = load_file.get_value("Player", "position", Vector2(0, 0))
 		print("Position joueur chargée :", player_node.position)
