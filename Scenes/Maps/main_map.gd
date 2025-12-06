@@ -21,7 +21,7 @@ var scene_load = false
 func _ready():
 	SaveSystem.load_localisation()
 	SaveSystem.load()
-	Global.current_map = "main_map"
+	Global.current_map = "Map3"
 	if get_node_or_null("ui/CPUParticles2D") != null:
 		get_node("ui/CPUParticles2D").visible = false
 	get_node("ui/Transition/AnimationPlayer").play("transition_to_screen")
@@ -507,7 +507,7 @@ func _on_entered_transition_map(body):
 	var entered_area = false
 	if body.is_in_group("Player_One"):
 		entered_area = true
-		get_node("/root/main_map/ui/Transition/AnimationPlayer").play("screen_to_transition")
+		get_node("/root/Map3/ui/Transition/AnimationPlayer").play("screen_to_transition")
 		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://Scenes/map2.tscn")
 	

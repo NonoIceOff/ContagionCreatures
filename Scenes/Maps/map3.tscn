@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ftj14ld58if" path="res://Scenes/UI/ui.tscn" id="5_ve2ga"]
 [ext_resource type="Texture2D" uid="uid://ftsqesla06t5" path="res://Textures/Buttons/keyboard/keyboard_e.png" id="6_dlhm5"]
 [ext_resource type="Texture2D" uid="uid://rhww26uforqm" path="res://Textures/trade_pnj_all.png" id="7_xxa6u"]
-[ext_resource type="Script" path="res://Scripts/area_trade.gd" id="8_u0j47"]
+[ext_resource type="Script" uid="uid://brbi0ae53jsxi" path="res://Scripts/area_trade.gd" id="8_u0j47"]
 [ext_resource type="Texture2D" uid="uid://b8245ccbb11vh" path="res://Scenes/ShineStar.png" id="9_fc6d2"]
 [ext_resource type="Script" uid="uid://djr4u0emfjio4" path="res://Scripts/HiddenItem.gd" id="10_k0o66"]
 

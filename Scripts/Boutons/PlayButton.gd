@@ -8,7 +8,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	if float(get_modulate()[3]) <= 0.1:
-		get_tree().change_scene_to_file("res://Scenes/map3.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Maps/map3.tscn")
 
 func _on_pressed():
 	get_node("../Sounds").stream = load("res://Sounds/coinc.mp3")

@@ -39,9 +39,7 @@ func _on_leave_to_map_1_body_entered(body):
 		if transition_anim:
 			transition_anim.play("screen_to_transition")
 		await get_tree().create_timer(0.5).timeout
-		get_tree().change_scene_to_file("res://Scenes/Maps/main_map.tscn")
-
-
+		get_tree().change_scene_to_file("res://Scenes/Maps/map3.tscn")
 func _on_enter_home_map_2_body_entered(body):
 	pass # change scene to the house of the Map2
 

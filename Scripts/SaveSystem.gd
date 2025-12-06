@@ -39,8 +39,8 @@ func save():
 	
 	save_file.set_value("Quests", "infos", Quests.quests)
 	save_file.set_value("Quests", "current", Quests.current_quest_id)
-	if get_node_or_null("/root/main_map/CanvasLayer/Minimap") != null:
-		save_file.set_value("Quests", "radar_position", get_node("/root/main_map/CanvasLayer/Minimap").pin)
+	if get_node_or_null("/root/Map3/CanvasLayer/Minimap") != null:
+		save_file.set_value("Quests", "radar_position", get_node("/root/Map3/CanvasLayer/Minimap").pin)
 		save_file.set_value("Quests", "radar_enabled", true)
 	else:
 		save_file.set_value("Quests", "radar_position", Vector2(0, 0))

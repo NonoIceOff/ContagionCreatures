@@ -144,11 +144,11 @@ func delete_directory(folder_path):
 func _process(delta):
 	for i in range(1, 4):
 		if get_node("VBoxContainer/Fichier" + str(i) + "/Delete/Button").is_pressed() == true:
-			var dir = DirAccess.open("user://") # Ouvre l'accès au dossier "user://"
+			var dir = DirAccess.open("user://")
 			var folder_path = "Saves/File" + str(i)
 			print(folder_path)
-			if dir.change_dir(folder_path) == OK: # Si le dossier existe
-				delete_directory(folder_path + "/") # Supprime le dossier
+			if dir.change_dir(folder_path) == OK:
+				delete_directory(folder_path + "/")
 				print("Dossier supprimé :", folder_path)
 				get_node("VBoxContainer/Fichier" + str(i) + "/RichTextLabel").text = "[color=red]SAUVEGARDE " + str(i) + " VIDÉE[/color]"
 				get_node("VBoxContainer/Fichier" + str(i) + "/Stats").text = ""
@@ -156,14 +156,12 @@ func _process(delta):
 			else:
 				print("Erreur lors de la suppression du dossier :", folder_path)
 
-
 		if get_node("VBoxContainer/Fichier" + str(i)).is_pressed() == true:
-			var dir = DirAccess.open("user://") # Ouvre l'accès au dossier "user://"
+			var dir = DirAccess.open("user://")
 			var folder_path = "Saves/File" + str(i)
 			print(folder_path)
-			var save_file_found = false
-		
-			if dir.change_dir(folder_path) != OK: # Si pas de save
+			
+			if dir.change_dir(folder_path) != OK:
 				get_node("SaveOptions").visible = true
 				var prefix_text = ["Kilo", "Mega", "Giga", "Peta", "Tera", "Exa", "Zetta", "Yotta"]
 				var base_text = ["Red", "Green", "Blue", "Yellow", "Pink", "Purple"]
@@ -175,13 +173,13 @@ func _process(delta):
 			else:
 				SaveSystem.file_id = i
 				SaveSystem.load()
-				get_tree().change_scene_to_file("res://Scenes/Maps/main_map.tscn")
-		
+				menu_fade_out = true
+	
 	if float(get_modulate()[3]) <= 0.1:
-		get_tree().change_scene_to_file("res://Scenes/map3.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Maps/map3.tscn")
 
 func _on_leave_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Menus/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Maps/map3.tscn")
 
 
 func _on_exit_pressed() -> void:
@@ -192,4 +190,4 @@ func _on_create_pressed() -> void:
 	var custom_filename = get_node("SaveOptions/LineEdit").text
 	SaveSystem.filename = custom_filename
 	SaveSystem.save_file_infos()
-	get_tree().change_scene_to_file("res://Scenes/Maps/main_map.tscn")
+	menu_fade_out = true
