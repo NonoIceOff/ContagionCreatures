@@ -128,8 +128,7 @@ func add_quest(quest_data: Dictionary) -> void:
 		quest_data.get("stade", 0),
 		quest_data.get("contafont_mode", false)
 	)
-	print(new_quest.id)
-	quests[new_quest.id] = new_quest ## Application de la quête à la liste des quêtes
+	quests[new_quest.id] = new_quest
 
 func load_quests_from_files() -> void:
 	var directories = ["res://Constantes/Quests/", "user://Quests/"] ## Dossiers à scanner pour les quêtes
@@ -150,9 +149,6 @@ func load_quests_from_files() -> void:
 						var parse_result = json.parse(file.get_as_text())
 						if parse_result == OK:
 							add_quest(json.get_data())
-						else:
-							print("Error parsing JSON: ", parse_result)
-						
 						file.close()
 				file_name = dir.get_next()
 			dir.list_dir_end()
@@ -163,68 +159,110 @@ func _ready() -> void:
 
 func init_pnj(map):
 	for i in quests.size():
-		spawn_pnj(i)
+		if quests.has(i):
+			var quest = quests.get(i)
+			var quest_stade = quest.stade
+			if quest_stade < quest.pin_positions.size():
+				var pin_pos = quest.pin_positions[quest_stade]
+				var pnj_map = pin_pos["map"] if typeof(pin_pos) == TYPE_DICTIONARY else pin_pos[2]
+				if pnj_map == map:
+					spawn_pnj(i)
 
 func spawn_pnj(quest_id):
 	var i = quest_id
-	var quest_stade = quests.get(i).stade
-	var pnj_position = Vector2(quests.get(i).pin_positions[quests.get(i).stade][0], quests.get(i).pin_positions[quests.get(i).stade][1])
-	var map = quests.get(i).pin_positions[quests.get(i).stade][2]
-	print("Map sur pnj: " + map)
-	var dialogue_data = quests.get(i).pnj_data[quest_stade][1]
-	var pnj_data = quests.get(i).pnj_data[quest_stade][0]
+	var quest = quests.get(i)
+	if not quest:
+		return
+	
+	var quest_stade = quest.stade
+	if quest_stade >= quest.pnj_data.size():
+		return
+	
+	var pnj_stade_data = quest.pnj_data[quest_stade]
+	if pnj_stade_data.size() < 2:
+		return
+	
+	var pnj_name = pnj_stade_data[0]
+	var dialogue_data = pnj_stade_data[1]
+	var pnj_texture = pnj_stade_data[2] if pnj_stade_data.size() > 2 else ""
+	var pnj_position_data = pnj_stade_data[3] if pnj_stade_data.size() > 3 else {}
+	var pnj_sound = pnj_stade_data[4] if pnj_stade_data.size() > 4 else ""
+	
+	if quest_stade >= quest.pin_positions.size():
+		return
+	
+	var pin_pos = quest.pin_positions[quest_stade]
+	var pnj_position: Vector2
+	var map: String
+	
+	if pnj_position_data.has("x") and pnj_position_data.has("y"):
+		pnj_position = Vector2(pnj_position_data["x"], pnj_position_data["y"])
+	else:
+		if typeof(pin_pos) == TYPE_DICTIONARY:
+			pnj_position = Vector2(pin_pos.get("x", 0), pin_pos.get("y", 0))
+		elif typeof(pin_pos) == TYPE_ARRAY and pin_pos.size() >= 2:
+			pnj_position = Vector2(pin_pos[0], pin_pos[1])
+		else:
+			return
+	
+	if typeof(pin_pos) == TYPE_DICTIONARY:
+		map = pin_pos.get("map", "")
+	elif typeof(pin_pos) == TYPE_ARRAY and pin_pos.size() >= 3:
+		map = pin_pos[2]
+	else:
+		return
 
 	var instance = pnj_scene.instantiate()
-	instance.position = Vector2(pnj_position)
+	instance.position = pnj_position
 	instance.quest_id = i
 	instance.name = "Quest"+str(i)
-	instance.pnj_name = pnj_data.name
+	instance.pnj_name = pnj_name
 	instance.quest_stade = quest_stade
-	instance.dialogue_data = dialogue_data
-	instance.over_texture = pnj_data.over_texture
-	instance.under_texture = pnj_data.under_texture
+	instance.dialogue_data = dialogue_data  # Peut être Dict ou Array
+	instance.over_texture = pnj_texture
+	instance.under_texture = pnj_texture
+	instance.sound_file = pnj_sound
+	
 	if get_node_or_null("/root/" + map) == null:
-		print("Map not found: " + map)
 		return
 	else:
 		get_node("/root/" + map).add_child(instance)
 
 func delete_pnj(map, quest_id):
-	print("oui")
 	var node_name = "Quest" + str(quest_id)
 	var node = get_node_or_null("/root/" + map + "/" + node_name)
 	if node != null:
-		node.call_deferred("free")
+		node.queue_free()
 
 func respawn_pnj(map, quest_id):
 	delete_pnj(map, quest_id)
 	await get_tree().process_frame
+	await get_tree().process_frame  # Double frame pour s'assurer que le free() est terminé
 	spawn_pnj(quest_id)
 
 
 func quest_finished(i):
 	var quest = quests.get(i, null)
-	if quest and not quest.finished:
-		quest.finished = true
-		
-		# Stockage des nodes en cache pour éviter plusieurs `get_node()`
-		var current_map = "/root/" + Global.current_map
-		var sound_fx = get_node_or_null(current_map + "/SoundEffectFx")
-		var ui_terminated_quest = get_node_or_null(current_map + "/ui/TerminatedQuest")
-		var audio_player = get_node_or_null(current_map + "/AudioStreamPlayer2D")
+	if not quest:
+		return
+	
+	var current_map = "/root/" + Global.current_map
+	var sound_fx = get_node_or_null(current_map + "/SoundEffectFx")
+	var ui_terminated_quest = get_node_or_null(current_map + "/ui/TerminatedQuest")
+	var audio_player = get_node_or_null(current_map + "/AudioStreamPlayer2D")
 
-		if sound_fx:
-			sound_fx.playing = false
+	if sound_fx:
+		sound_fx.playing = false
 
-		if ui_terminated_quest:
-			if audio_player:
-				audio_player.stream = load("res://Sounds/victory.mp3")
-				audio_player.playing = true
+	if ui_terminated_quest:
+		if audio_player:
+			audio_player.stream = load("res://Sounds/victory.mp3")
+			audio_player.playing = true
 
-			ui_terminated_quest.visible = true
-			ui_terminated_quest.get_node("Name").text = quest.title
-			await get_tree().create_timer(5).timeout
-			ui_terminated_quest.visible = false
+		ui_terminated_quest.visible = true
+		ui_terminated_quest.get_node("Name").text = quest.title
+		await get_tree().create_timer(5).timeout
+		ui_terminated_quest.visible = false
 
 func set_quest(i):
 	var current_map = "/root/" + Global.current_map
@@ -238,15 +276,23 @@ func set_quest(i):
 		current_quest_id = i
 		if minimap and particles:
 			particles.visible = true
-			minimap.change_pin(quests[i].pin_positions[quests[i].stade])
+			var pin_pos = quests[i].pin_positions[quests[i].stade]
+			# Convertir [x, y, map] en Vector2(x, y)
+			minimap.change_pin(Vector2(pin_pos[0], pin_pos[1]))
 
 func advance_stade(quest_id = current_quest_id):
-	## si le stade n'existe pas
-	if quests.get(quest_id).stade >= quests.get(quest_id).descriptions.size():
-		quests.get(quest_id).finished = true
-		quest_finished(quest_id)
-
-	if quests.get(quest_id).stade < quests.get(int(quest_id)).descriptions.size():
-		quests.get(quest_id).stade += 1
+	var quest = quests.get(quest_id)
+	if not quest:
+		return
+	
+	# Avancer le stade
+	quest.stade += 1
+	
+	# Vérifier si la quête est terminée
+	if quest.stade >= quest.descriptions.size():
+		quest.finished = true
+		delete_pnj(Global.current_map, quest_id)
+		await quest_finished(quest_id)
 	else:
-		delete_pnj(Global.current_map,quest_id)
+		# Respawner le PNJ pour le nouveau stade
+		await respawn_pnj(Global.current_map, quest_id)
