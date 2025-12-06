@@ -1,7 +1,7 @@
 extends Node2D
 
 var speechbox =  preload("res://Scenes/speech_box_COMBAT.tscn")
-var precombat_scene = preload("res://Scenes/Precombat.tscn")
+var precombat_scene = preload("res://Scenes/Combat/Precombat.tscn")
 var rng = RandomNumberGenerator.new()
 var pv_player = 100
 var pv_enemy = 100

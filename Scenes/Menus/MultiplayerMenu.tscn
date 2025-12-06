@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpjwlkv0lkca7"]
+
+[ext_resource type="Script" uid="uid://cft2f2afqj4gh" path="res://Scenes/Menus/MultiplayerMenu.gd" id="1_multiplayermenu"]
+
+[node name="MultiplayerMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_multiplayermenu")
+
+[node name="MainPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="MainPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "MULTIJOUEUR"
+horizontal_alignment = 1
+
+[node name="PlayerNameInput" type="LineEdit" parent="MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Votre pseudo"
+alignment = 1
+
+[node name="HostButton" type="Button" parent="MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "CRÉER UN SERVEUR"
+
+[node name="JoinButton" type="Button" parent="MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "REJOINDRE UN SERVEUR"
+
+[node name="JoinPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="JoinPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="JoinPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "REJOINDRE"
+horizontal_alignment = 1
+
+[node name="IPInput" type="LineEdit" parent="JoinPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Adresse IP du serveur"
+alignment = 1
+
+[node name="JoinConfirmButton" type="Button" parent="JoinPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "REJOINDRE"
+
+[node name="BackButton" type="Button" parent="JoinPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "RETOUR"
+
+[node name="ErrorLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -100.0
+offset_right = 400.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MainPanel/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="MainPanel/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="JoinPanel/VBoxContainer/JoinConfirmButton" to="." method="_on_join_confirm_pressed"]
+[connection signal="pressed" from="JoinPanel/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

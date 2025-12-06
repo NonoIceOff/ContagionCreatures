@@ -13,10 +13,6 @@ func _ready():
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
 	http_request.request("https://contagioncreaturesapi.vercel.app/api/texts")
-		
-	if Global.user != {}:
-		get_node("Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer/ProfileButton").text = Global.user.username
-		get_node("Background/Menu/Right_part/VBoxContainer/VBoxContainer2/VBoxContainer/ConnexionStatus").text = "Voir votre profil"
 
 	init_save_text()
 	init_quest_names()
@@ -85,23 +81,26 @@ func init_save_text():
 						break
 				saves_dir.list_dir_end()
 
+		# Charger le vrai nom du fichier depuis settings.txt
+		var actual_filename = save_name if save_name != "" else "unknown"
+		
 		var load_file = ConfigFile.new()
-		var save_path = "user://Saves/File" + str(i) + "/" + "unknown.txt"
-		print(save_path)
+		var save_path = "user://Saves/File" + str(i) + "/" + actual_filename + ".txt"
+		print("Tentative de chargement: ", save_path)
 		var error = load_file.load_encrypted_pass(save_path, "gentle_duck")
 		var vies = 100
 		var monnaie = 0
 		var level = 0
 		var seconds = 0
 		if error != OK:
-			print("Erreur de chargement du fichier de sauvegarde :", error)
+			print("⚠️ Erreur de chargement du fichier de sauvegarde :", error)
 		else:
-			print("Sauvegarde chargée avec succès.")
-			vies = load_file.get_value("Player", "health", 0)
+			print("✅ Sauvegarde chargée avec succès.")
+			vies = load_file.get_value("Player", "health", 100)
 			monnaie = load_file.get_value("Player", "money", 0)
-			level = load_file.get_value("Player", "level", 0)
+			level = load_file.get_value("Player", "level", 1)
 			seconds = load_file.get_value("Stats", "Time Played", 0)
-			print("seconds", seconds)
+			print("⏱️ Temps de jeu: ", seconds, " secondes")
 
 		
 		if save_name != "":
@@ -174,15 +173,15 @@ func _process(delta):
 				get_node("SaveOptions/LineEdit").text = str(text)
 				SaveSystem.file_id = i
 			else:
-				get_tree().change_scene_to_file("res://Scenes/map3.tscn")
 				SaveSystem.file_id = i
 				SaveSystem.load()
+				get_tree().change_scene_to_file("res://Scenes/Maps/main_map.tscn")
 		
 	if float(get_modulate()[3]) <= 0.1:
 		get_tree().change_scene_to_file("res://Scenes/map3.tscn")
 
 func _on_leave_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/main_menu.tscn")
 
 
 func _on_exit_pressed() -> void:
@@ -192,5 +191,5 @@ func _on_exit_pressed() -> void:
 func _on_create_pressed() -> void:
 	var custom_filename = get_node("SaveOptions/LineEdit").text
 	SaveSystem.filename = custom_filename
-	get_tree().change_scene_to_file("res://Scenes/map3.tscn")
-	SaveSystem.save()
+	SaveSystem.save_file_infos()
+	get_tree().change_scene_to_file("res://Scenes/Maps/main_map.tscn")

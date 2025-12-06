@@ -17,7 +17,7 @@ warnings/check_angle_interpolation_type_conflicting=false
 
 config/name="Contagion Creatures"
 run/main_scene="uid://cyofep22rmi33"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Textures/pixil-frame-0_3.png"
 config/icon="res://cc.png"
@@ -32,6 +32,7 @@ Quests="*res://Scripts/Quests.gd"
 Controllers="*res://Scripts/Controllers.gd"
 MusicsPlayer="*res://Scenes/musics_player.tscn"
 SaveSystem="*res://Scripts/SaveSystem.gd"
+NetworkManager="*res://Scripts/NetworkManager.gd"
 
 [debug]
 
@@ -63,7 +64,7 @@ ui=""
 
 [gui]
 
-theme/custom_font="res://Font/Jersey20-Regular.ttf"
+theme/custom_font="uid://0tvkbhwqas0"
 
 [input]
 
@@ -213,7 +214,7 @@ Skill_tree={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.fr.translation", "res://translations.jp.translation", "res://translations.de.translation", "res://translations.es.translation", "res://translations.it.translation")
+locale/translations=PackedStringArray("res://Localization/translations.en.translation", "res://Localization/translations.fr.translation", "res://Localization/translations.jp.translation", "res://Localization/translations.de.translation", "res://Localization/translations.es.translation", "res://Localization/translations.it.translation")
 
 [rendering]
 

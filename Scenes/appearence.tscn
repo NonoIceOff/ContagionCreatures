@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dybmipi48rk27"]
 
-[ext_resource type="Script" uid="uid://d1yf04df6bt04" path="res://Scenes/appearence.gd" id="1_0u55x"]
+[ext_resource type="Script" uid="uid://d1yf04df6bt04" path="res://Scripts/UI/appearence.gd" id="1_0u55x"]
 [ext_resource type="FontFile" uid="uid://dwlaoeqs2oqod" path="res://Font/8-BIT_WONDER.TTF" id="2_d0nrk"]
 [ext_resource type="Shader" uid="uid://c7r3th281ihh2" path="res://Inventory/inv_animals.gdshader" id="2_u85q8"]
 [ext_resource type="Texture2D" uid="uid://b12y342v323gw" path="res://Textures/Inventaire/grey_pressed.png" id="3_f636h"]

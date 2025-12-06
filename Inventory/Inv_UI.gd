@@ -2,29 +2,36 @@ extends Control
 
 var is_open = false
 var colonnes = 4
-var player_items = []  # Liste pour stocker les données des items du joueur
+var player_items = []
 const ITEMS_FILE_PATH = "res://Constantes/items.json"
+var items_loaded = false
+var item_slots = []
 
 func load_player_items():
+	if items_loaded:
+		return
+		
 	if not FileAccess.file_exists(ITEMS_FILE_PATH):
-		print("Erreur : Fichier items.json introuvable !")
+		push_error("Erreur : Fichier items.json introuvable !")
 		return
 	
 	var file = FileAccess.open(ITEMS_FILE_PATH, FileAccess.READ)
 	if file:
 		var content = file.get_as_text()
+		file.close()
 		var parse_result = JSON.parse_string(content)
 		
 		if parse_result is Array:
 			player_items = parse_result
+			items_loaded = true
 		else:
-			print("Erreur : JSON invalide")
+			push_error("Erreur : JSON invalide")
 	else:
-		print("Impossible d'ouvrir le fichier !")
+		push_error("Impossible d'ouvrir le fichier !")
 
 func display_player_items():
-	load_player_items()  # Charger les données des items
-	var total_slots = 16  # Nombre total de slots dans l'inventaire
+	load_player_items()
+	var total_slots = 16
 	var size_items = player_items.size()
 	
 	for i in total_slots:
@@ -72,31 +79,30 @@ func display_player_items():
 		quantity.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		color.add_child(quantity)
 		
-		# Remplir les données des items
 		if i < size_items:
 			var item = player_items[i]
 			title.text = item["name"]
-			#desc.text = item["description"]
 			quantity.text = str(int(item["quantity"]))
 			sprite.texture = load(item["texture"])
 			if item["quantity"] == 0:
 				sprite_no.visible = true
 				color.modulate = Color(1, 1, 1, 0.5)
 		else:
-			# Cases vides
 			sprite_no.visible = true
 			color.modulate = Color(1, 1, 1, 0.2)
 
 func draw_inventory():
-	undraw_inventory()  # Nettoyer l'inventaire existant
-	display_player_items()  # Afficher les items du joueur
+	undraw_inventory()
+	display_player_items()
 
 func undraw_inventory():
 	for j in colonnes:
-		for obj in get_node("CanvasLayer/VBoxContainer" + str(j)).get_children():
+		var container = get_node("CanvasLayer/VBoxContainer" + str(j))
+		for obj in container.get_children():
 			obj.queue_free()
 
 func _ready():
+	load_player_items()
 	close()
 	
 	for j in colonnes:

@@ -6,9 +6,18 @@ extends CanvasLayer
 @onready var particules_neige = $Neige
 @onready var aurora_particles = $Aurore_boreales
 
+# Cache des nodes
+@onready var speedrun_timer = $SpeedrunTimer
+@onready var informations = $Informations
+@onready var coins_label = $Stats/CoinsLabel
+@onready var panel_date = $PanelDate
+@onready var minimap = $Minimap
+@onready var xp_panel = $XPPanel
+
 var is_open = false
 var time_speed = 0.1
 var seconds_per_in_game_minute = 1.0
+var inv_animal_instance = null
 
 
 func _ready() -> void:
@@ -18,32 +27,31 @@ func _ready() -> void:
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	if Global.is_speedrun_timer == true:
-		get_node("SpeedrunTimer").visible = Global.is_speedrun_timer
+		speedrun_timer.visible = true
 		var seconds = int(Global.party_timer_seconds)
 		var hours = int(seconds) / 3600
 		var minutes = (int(seconds) % 3600) / 60
 		var secs = int(seconds) % 60
-		get_node("SpeedrunTimer").text = str(hours).pad_zeros(2) + ":" + str(minutes).pad_zeros(2) + ":" + str(secs).pad_zeros(2)
+		speedrun_timer.text = str(hours).pad_zeros(2) + ":" + str(minutes).pad_zeros(2) + ":" + str(secs).pad_zeros(2)
 
 
 	if Global.tutorial_stade < 10:
-		get_node("Informations").visible = true
-	get_node("Stats/CoinsLabel").text = str(PlayerStats.money)+" [img=32x32]res://Textures/COIN.png[/img]"
+		informations.visible = true
+	coins_label.text = str(PlayerStats.money)+" [img=32x32]res://Textures/COIN.png[/img]"
 
 	if Input.is_action_just_pressed("ui_p"):
 		if is_open:
-			get_node("inv_animal").queue_free()
+			if inv_animal_instance:
+				inv_animal_instance.queue_free()
+				inv_animal_instance = null
 		else:
 			var load_scene = preload("res://Inventory/inv_animals.tscn")
-			var load_instance = load_scene.instantiate()
-			load_instance.position = Vector2(0,0)
-			load_instance.name = "inv_animal"
-			add_child(load_instance)
-			load_instance.get_node("CanvasLayer").visible = true
+			inv_animal_instance = load_scene.instantiate()
+			inv_animal_instance.position = Vector2(0,0)
+			inv_animal_instance.name = "inv_animal"
+			add_child(inv_animal_instance)
+			inv_animal_instance.get_node("CanvasLayer").visible = true
 		is_open = !is_open
-
-	var panel_date = get_node("PanelDate")
-	var minimap = get_node("Minimap")
 	var quest_particles = get_node_or_null("CPUParticles2D")
 
 	panel_date.visible = Global.ui_visible and Global.current_map != "HomeOfHector"
@@ -51,8 +59,8 @@ func _process(delta: float) -> void:
 		minimap.visible = Global.ui_visible and Global.current_map != "HomeOfHector"
 	else:
 		minimap.visible = false
-		get_node("XPPanel").position.y = 932
-		get_node("PanelDate").position.y = 932+96
+		xp_panel.position.y = 932
+		panel_date.position.y = 932+96
 
 	if Quests.current_quest_id > -1 and quest_particles != null:
 		quest_particles.visible = true

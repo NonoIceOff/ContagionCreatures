@@ -1,12 +1,27 @@
 
 extends Control
 
-@onready var camera = get_node("SubViewportContainer/SubViewport/Camera2D")
+# Cache des nodes pour performance
+@onready var camera = $SubViewportContainer/SubViewport/Camera2D
+@onready var sub_viewport = $SubViewportContainer/SubViewport
+@onready var pin_blue = $PinBlue
+@onready var pin_point = $PinPoint
+@onready var pin_red = $PinRed
+@onready var pin_yellow = $PinYellow
+@onready var pin_green = $PinGreen
+@onready var position_label = $Position
 
-#Point jaune dans la miniMap
+# Point jaune dans la miniMap
 var pin
 var map = 4
 var player
+
+# Constantes pour optimiser les calculs
+const MINIMAP_SIZE = Vector2(180, 180)
+const MINIMAP_CENTER = MINIMAP_SIZE / 2
+const MAP_SCALE = Vector2(0.2, 0.2)
+const MINIMAP_MIN = Vector2(32, 32)
+var minimap_max = MINIMAP_SIZE + Vector2(32, 32)
 
 
 
@@ -34,8 +49,6 @@ func _ready() -> void:
 			map_to_display
 		]
 
-	var sub_viewport = $SubViewportContainer/SubViewport  # Référence au SubViewport dans Minimap
-
 	# Parcourt chaque chemin de map et les ajoute au SubViewport
 	for map_path in maps_to_display:
 		if not map_path:
@@ -62,44 +75,36 @@ func change_map():
 		player = get_node("../../Control/Player_One")
 
 func _process(delta):
-	if Global.is_minimap == true:
-		camera.position = player.position
+	if not Global.is_minimap or not player:
+		return
+	
+	# Optimisation : une seule référence à player.position
+	var player_pos = player.position
+	camera.position = player_pos
 
-		var minimap_size = Vector2(180, 180) # Taille de la minimap
-		var minimap_center = minimap_size / 2
-		var map_scale = Vector2(0.2, 0.2) # Échelle de la caméra
+	# Optimisation : utilise un dictionnaire avec les nodes cachés
+	var pins_data = [
+		{"node": pin_blue, "pos": Global.pinb},
+		{"node": pin_point, "pos": Global.pin},
+		{"node": pin_red, "pos": Global.pinr},
+		{"node": pin_yellow, "pos": Global.piny},
+		{"node": pin_green, "pos": Global.ping}
+	]
 
-		# Liste des pins et de leurs positions globales respectives
-		var pins = {
-			"PinBlue": Global.pinb,
-			"PinPoint": Global.pin,
-			"PinRed": Global.pinr,
-			"PinYellow": Global.piny,
-			"PinGreen": Global.ping
-		}
+	# Optimisation : boucle optimisée avec calculs réduits
+	for pin_data in pins_data:
+		if pin_data.node:
+			var pin_global = Vector2(pin_data.pos.x, pin_data.pos.y) * 0.5
+			var pin_relative = (pin_global - player_pos) * MAP_SCALE
+			var pin_pos = pin_relative + MINIMAP_CENTER
+			
+			# Clamp en une seule ligne
+			pin_data.node.position = pin_pos.clamp(MINIMAP_MIN, minimap_max)
 
-		for pin_name in pins.keys():
-			var pin_global = Vector2(pins[pin_name][0],pins[pin_name][1])/2
-			var pin_relative = (pin_global - camera.position) * map_scale
-			var pin_minimap_pos = pin_relative + minimap_center
+	# Optimisation : mise à jour texte seulement si label existe
+	if position_label:
+		position_label.text = "X: %d | Y: %d" % [int(player_pos.x), int(player_pos.y)]
 
-			var pin_node = get_node(pin_name)
-			pin_node.position = pin_minimap_pos
-
-			# Garder les pins dans les limites de la minimap
-			pin_node.position.x = clamp(pin_node.position.x, 32, minimap_size.x+32)
-			pin_node.position.y = clamp(pin_node.position.y, 32, minimap_size.y+32)
-
-		# Mise à jour des coordonnées du joueur
-		get_node("Position").text = "X: " + str(int(player.position.x)) + " | Y: " + str(int(player.position.y))
-
-
-
-
-
-func clamp_to_minimap(pin_node, minimap_size):
-	pin_node.position.x = clamp(pin_node.position.x, 0, minimap_size.x)
-	pin_node.position.y = clamp(pin_node.position.y, 0, minimap_size.y)
 
 
 func change_pin(position):

@@ -1,0 +1,156 @@
+[gd_scene load_steps=27 format=3 uid="uid://bw2xm8qr5vn"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMultiplayer.gd" id="1_player_multi"]
+[ext_resource type="Texture2D" uid="uid://droj4wt6rug7e" path="res://Textures/spritePlayer/output/CharacterGame.png" id="2_texture"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_east1"]
+atlas = ExtResource("2_texture")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_east2"]
+atlas = ExtResource("2_texture")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_east3"]
+atlas = ExtResource("2_texture")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_east4"]
+atlas = ExtResource("2_texture")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_north1"]
+atlas = ExtResource("2_texture")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_north2"]
+atlas = ExtResource("2_texture")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_south1"]
+atlas = ExtResource("2_texture")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_south2"]
+atlas = ExtResource("2_texture")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_south3"]
+atlas = ExtResource("2_texture")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_west1"]
+atlas = ExtResource("2_texture")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_west2"]
+atlas = ExtResource("2_texture")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_west3"]
+atlas = ExtResource("2_texture")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_player"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_east1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_east2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_east3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_east4")
+}],
+"loop": true,
+"name": &"EastWalk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_north1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_north2")
+}],
+"loop": true,
+"name": &"NorthWalk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_south1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_south2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_south3")
+}],
+"loop": true,
+"name": &"SouthWalk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_west1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_west2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_west3")
+}],
+"loop": true,
+"name": &"WestWalk",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_collision"]
+radius = 8.0
+height = 24.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_sync"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:velocity")
+properties/1/spawn = false
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:current_animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:animation_speed")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:player_color")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+
+[node name="PlayerMultiplayer" type="CharacterBody2D"]
+script = ExtResource("1_player_multi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_player")
+animation = &"SouthWalk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_collision")
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -60.0
+offset_right = 50.0
+offset_bottom = -40.0
+theme_override_font_sizes/font_size = 16
+text = "Player"
+horizontal_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_sync")

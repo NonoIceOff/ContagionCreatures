@@ -56,6 +56,41 @@ var bagird_pnj = PNJ.new(
 	"Bagird"
 )
 
+var loytan_pnj = PNJ.new(
+	2,
+	"res://Textures/PNJ/Loytan/loytan_full.png",
+	"res://Textures/PNJ/Loytan/tete_loytan.png",
+	"Loytan"
+)
+
+var prisme_gardien_pnj = PNJ.new(
+	3,
+	"res://Textures/PNJ/Bagird/bagird_full.png",
+	"res://Textures/PNJ/Bagird/tete_bagird.png",
+	"Gardien Prisme"
+)
+
+var echo_chercheur_pnj = PNJ.new(
+	4,
+	"res://Textures/PNJ/Bagird/bagird_full.png",
+	"res://Textures/PNJ/Bagird/tete_bagird.png",
+	"Chercheur Echo"
+)
+
+var essence_alchimiste_pnj = PNJ.new(
+	5,
+	"res://Textures/Old_guy_who_lost_is_crampté_REAL.png",
+	"res://Textures/Head-old-Guy-REAL.png",
+	"Alchimiste Essence"
+)
+
+var relique_historien_pnj = PNJ.new(
+	6,
+	"res://Textures/PNJ/Loytan/loytan_full.png",
+	"res://Textures/PNJ/Loytan/tete_loytan.png",
+	"Historien Relique"
+)
+
 var quests = {}
 
 
@@ -70,12 +105,23 @@ func add_quest(quest_data: Dictionary) -> void:
 		quest_data.get("pin_positions").map(func(pos):return [pos.x, pos.y, pos.map]),
 		quest_data.get("pnj_data").map(func(pnj_entry):
 				var pnj
-				if pnj_entry[0] == "bagird_pnj":
-					pnj = bagird_pnj
-				elif pnj_entry[0] == "sage_pnj":
-					pnj = sage_pnj
-				else:
-					pnj = bagird_pnj
+				match pnj_entry[0]:
+					"bagird_pnj":
+						pnj = bagird_pnj
+					"sage_pnj":
+						pnj = sage_pnj
+					"loytan_pnj":
+						pnj = loytan_pnj
+					"prisme_gardien_pnj":
+						pnj = prisme_gardien_pnj
+					"echo_chercheur_pnj":
+						pnj = echo_chercheur_pnj
+					"essence_alchimiste_pnj":
+						pnj = essence_alchimiste_pnj
+					"relique_historien_pnj":
+						pnj = relique_historien_pnj
+					_:
+						pnj = bagird_pnj
 				return [pnj, pnj_entry[1]],
 			),
 		quest_data.get("members_only", false),

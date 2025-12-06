@@ -1,0 +1,227 @@
+# Configuration recommandée pour project.godot
+# Contagion Creatures - Optimisations
+
+# IMPORTANT: Ces paramètres doivent être ajoutés manuellement dans project.godot
+# ou via l'éditeur Godot (Projet > Paramètres du projet)
+
+## ========================================
+## RENDU (Rendering)
+## ========================================
+
+[rendering]
+# Pour pixel art - utiliser le filtrage nearest
+textures/canvas_textures/default_texture_filter=0
+
+# Méthode de rendu (Forward+ recommandé pour Godot 4.x)
+renderer/rendering_method="forward_plus"
+renderer/rendering_method.mobile="mobile"
+
+# Anti-aliasing (désactiver pour pixel art)
+anti_aliasing/quality/msaa_2d=0
+anti_aliasing/quality/msaa_3d=0
+
+# Qualité des ombres
+lights_and_shadows/directional_shadow/size=2048
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=2
+
+# V-Sync
+rendering/driver/vsync/vsync_mode=1  # Enabled
+
+# Optimisations environnementales
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+
+# Occlusion culling
+occlusion_culling/use_occlusion_culling=true
+
+
+## ========================================
+## PHYSIQUE (Physics)
+## ========================================
+
+[physics]
+# Optimisations 2D
+2d/physics_engine="GodotPhysics2D"
+2d/sleep_threshold_linear=2.0
+2d/sleep_threshold_angular=0.140
+2d/time_before_sleep=0.5
+2d/solver/solver_iterations=8
+2d/solver/contact_recycle_radius=1.0
+2d/solver/contact_max_separation=1.5
+
+# Optimisations 3D (si vous en avez besoin)
+3d/physics_engine="GodotPhysics3D"
+3d/sleep_threshold_linear=0.1
+3d/sleep_threshold_angular=0.139626
+3d/time_before_sleep=0.5
+
+
+## ========================================
+## MÉMOIRE (Memory)
+## ========================================
+
+[memory]
+# Limites de la file de messages
+limits/message_queue/max_size_mb=32
+
+# Multithreading
+limits/multithreaded_server/rid_pool_prealloc=60
+
+
+## ========================================
+## COMPRESSION ET IMPORTS
+## ========================================
+
+[compression]
+formats/zstd/compression_level=3
+formats/zlib/compression_level=6
+formats/gzip/compression_level=6
+
+# Import par défaut
+[importer_defaults]
+
+# Pour les textures pixel art
+texture={
+"compress/mode": 0,  # Lossless ou Uncompressed
+"mipmaps/generate": false,
+"process/fix_alpha_border": false,
+"process/premult_alpha": false
+}
+
+
+## ========================================
+## AUDIO
+## ========================================
+
+[audio]
+# Mixer
+buses/default_bus_layout="res://default_bus_layout.tres"
+
+# Optimisations
+driver/enable_input=false
+driver/output_latency=15
+
+
+## ========================================
+## RÉSEAU (si multiplayer)
+## ========================================
+
+[network]
+limits/packet_peer_stream/max_buffer_po2=16
+limits/tcp/connect_timeout_seconds=30
+limits/websocket_client/max_in_buffer_kb=64
+limits/websocket_client/max_in_packets=1024
+
+
+## ========================================
+## THREADING
+## ========================================
+
+[threading]
+worker_pool/max_threads=8
+worker_pool/use_system_threads_for_low_priority_tasks=true
+
+
+## ========================================
+## DEBUG (À DÉSACTIVER EN PRODUCTION)
+## ========================================
+
+[debug]
+# Désactiver en production
+settings/stdout/print_fps=false
+settings/stdout/verbose_stdout=false
+
+# Optimisations
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
+gdscript/warnings/unsafe_cast=1
+
+# Interpolation physique
+settings/physics_interpolation/enable_warnings=false
+
+
+## ========================================
+## FILE SYSTEM
+## ========================================
+
+[filesystem]
+import/blender/enabled=false
+import/fbx/enabled=false
+
+
+## ========================================
+## AUTOLOADS RECOMMANDÉS
+## ========================================
+
+# Ajouter PerformanceOptimizer comme autoload
+[autoload]
+# ... vos autoloads existants ...
+PerformanceOptimizer="*res://Scripts/PerformanceOptimizer.gd"
+
+
+## ========================================
+## NOTES D'UTILISATION
+## ========================================
+
+# Pour ajouter ces paramètres:
+# 1. Ouvrir Godot
+# 2. Projet > Paramètres du projet
+# 3. Activer "Paramètres avancés" en haut à droite
+# 4. Naviguer vers chaque section et ajuster les valeurs
+# 5. Redémarrer Godot après les changements majeurs
+
+# Pour PerformanceOptimizer:
+# 1. Projet > Paramètres du projet > Autoload
+# 2. Ajouter: Path = "res://Scripts/PerformanceOptimizer.gd"
+# 3. Node Name = "PerformanceOptimizer"
+# 4. Cocher "Enable" (singleton global)
+
+## ========================================
+## OPTIMISATIONS SCÈNE PAR SCÈNE
+## ========================================
+
+# TileMap:
+# - Utiliser des layers séparés pour collisions
+# - Activer "Cell Quadrant Size" approprié (16 pour tiles 16x16)
+# - Utiliser Y-sort pour les objets qui passent derrière/devant
+
+# Camera2D:
+# - Activer "Smoothing" avec valeur 5-10
+# - Ajuster "Zoom" au lieu de changer la résolution
+# - Utiliser "Limit" pour éviter de voir hors de la map
+
+# AnimatedSprite2D:
+# - Mettre "Speed Scale" à 1.0 par défaut
+# - Utiliser des sprite sheets au lieu de frames individuelles
+# - Activer "Centered" pour simplifier les calculs
+
+# CharacterBody2D:
+# - Utiliser "Motion Mode: Grounded" pour personnages au sol
+# - Ajuster "Max Slides" (par défaut 4, essayer 6 pour mouvements fluides)
+# - Activer "Floor Snap Length" pour meilleure adhérence au sol
+
+# ParticleProcessMaterial:
+# - Limiter "Amount" à 32-64 pour effets courants
+# - Réduire "Lifetime" au minimum nécessaire
+# - Utiliser "One Shot" quand possible au lieu de "Emitting" continu
+
+## ========================================
+## EXPORT ET DISTRIBUTION
+## ========================================
+
+# Pour l'export final:
+# - Activer "Embed PCK" dans les options d'export
+# - Désactiver toutes les options de debug
+# - Activer "Optimize" dans l'export
+# - Utiliser "LZMA" pour la compression maximale
+
+# Windows:
+[export_presets.Windows]
+# texture_format/bptc=true
+# texture_format/s3tc=true
+# binary_format/embed_pck=true
+
+# Limiter la taille:
+# - Compresser les textures non-pixel-art
+# - Utiliser OGG pour les sons (meilleure compression que WAV)
+# - Retirer les assets non utilisés avant l'export

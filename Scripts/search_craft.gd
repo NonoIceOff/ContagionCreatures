@@ -36,7 +36,6 @@ func _ready():
 	connect("text_changed", Callable(self, "_on_text_changed"))
 
 func _on_text_changed(new_text: String):
-	
 	craft_search.clear()
 	
 	if new_text.length() == 0:

@@ -5,12 +5,14 @@ var entered = false
 var Key = false
 
 func _ready():
-	get_node("Label_E_Home").visible = false
-	var joypads = Input.get_connected_joypads()
-	if joypads.size() < 1:
-		get_node("Label_E_Home").texture = load("res://Textures/Buttons/keyboard/keyboard_e.png")
-	else:
-		get_node("Label_E_Home").texture = load(Controllers.a_texture)
+	if get_node_or_null("Label_E_Home"):
+		get_node("Label_E_Home").visible = false
+		if get_node("Label_E_Home") is Sprite2D or get_node("Label_E_Home") is TextureRect:
+			var joypads = Input.get_connected_joypads()
+			if joypads.size() < 1:
+				get_node("Label_E_Home").texture = load("res://Textures/Buttons/keyboard/keyboard_e.png")
+			else:
+				get_node("Label_E_Home").texture = load(Controllers.a_texture)
 
 func _Zone_Entered(body):
 	if body.is_in_group("Player_One"):

@@ -10,8 +10,10 @@
 script = ExtResource("1_d2d8j")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Bg" type="Sprite2D" parent="Panel"]
 position = Vector2(959.5, 541)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fsx5pkk05nk5"]
+[gd_scene load_steps=13 format=3 uid="uid://bjd2bn4bip2pc"]
 
 [ext_resource type="Script" uid="uid://bxl4ljhcdkw7x" path="res://Scripts/intro.gd" id="1_i6aya"]
 [ext_resource type="TileSet" uid="uid://cvco2att3na4q" path="res://TileSet/dungeons.tres" id="2_ewknp"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ftsqesla06t5" path="res://Textures/Buttons/keyboard/keyboard_e.png" id="5_nn7w8"]
 [ext_resource type="Texture2D" uid="uid://hr8gwy6r0qyt" path="res://Textures/cross.png" id="6_b26wi"]
 [ext_resource type="Texture2D" uid="uid://bcoxlrv826kyq" path="res://Textures/Items/Pierre.png" id="7_edp2d"]
-[ext_resource type="Script" uid="uid://cs8ytmvbycml0" path="res://Scenes/timer.gd" id="10_ewknp"]
+[ext_resource type="Script" uid="uid://cs8ytmvbycml0" path="res://Scripts/timer.gd" id="10_ewknp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bmuq"]
 radius = 16.0
@@ -228,15 +228,15 @@ offset_bottom = 110.0
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 10
 theme_override_constants/line_separation = -8
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/normal_font_size = 46
+theme_override_font_sizes/bold_font_size = 48
 theme_override_font_sizes/bold_italics_font_size = 46
 theme_override_font_sizes/italics_font_size = 28
 theme_override_font_sizes/mono_font_size = 46
-theme_override_font_sizes/normal_font_size = 46
-theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "RESOLVEZ CE DONJON"
 scroll_active = false

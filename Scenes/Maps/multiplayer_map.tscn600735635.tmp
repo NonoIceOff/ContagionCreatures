@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://crrlfiyxdwrwh"]
+
+[ext_resource type="Script" uid="uid://xxdvgs5jdmnq" path="res://Scripts/Maps/multiplayer_map.gd" id="1_map_multi"]
+[ext_resource type="TileSet" uid="uid://cfw1qrmqi8ulr" path="res://Resources/main_map_2.tres" id="2_tileset"]
+
+[node name="MultiplayerMap" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_map_multi")
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-1, 0)
+scale = Vector2(4, 4)
+tile_set = ExtResource("2_tileset")
+format = 2
+layer_0/name = "Z 0"
+layer_0/tile_data = PackedInt32Array(786450, 1245189, 2, 786451, 1310725, 2, 786452, 1376261, 2, 720902, 1245189, 2, 720903, 1310725, 2, 720904, 1376261, 2, 65546, 1245189, 2, 65547, 1310725, 2, 65548, 1376261, 2, 196614, 1245189, 2, 196615, 1310725, 2, 196616, 1376261, 2, 655383, 1245189, 2, 655384, 1310725, 2, 655385, 1376261, 2, 458755, 1245189, 2, 458756, 1310725, 2, 458757, 1376261, 2)
+layer_1/name = "Z -1"
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array(-65500, 4194305, 2, -65499, 4259841, 2, -65498, 4325377, 2, -65497, 4194305, 2, -65496, 4259841, 2, -65495, 4325377, 2, -65494, 4194305, 2, -65493, 4259841, 2, -65492, 4325377, 2, -65491, 4194305, 2, -65490, 4259841, 2, -65489, 4325377, 2, -65488, 4194305, 2, -65487, 4259841, 2, -65486, 4325377, 2, 65572, 4194305, 2, 65573, 4259841, 2, 65574, 4325377, 2, 65575, 4194305, 2, 65576, 4259841, 2, 65577, 4325377, 2, 65578, 4194305, 2, 65579, 4259841, 2, 65580, 4325377, 2, 65581, 4194305, 2, 65582, 4259841, 2, 65583, 4325377, 2, 65584, 4194305, 2, 65585, 4259841, 2, 65586, 4325377, 2, 196644, 4194305, 2, 196645, 4259841, 2, 196646, 4325377, 2, 196647, 4194305, 2, 196648, 4259841, 2, 196649, 4325377, 2, 196650, 4194305, 2, 196651, 4259841, 2, 196652, 4325377, 2, 196653, 4194305, 2, 196654, 4259841, 2, 196655, 4325377, 2, 196656, 4194305, 2, 196657, 4259841, 2, 196658, 4325377, 2, 327716, 4194305, 2, 327717, 4259841, 2, 327718, 4325377, 2, 327719, 4194305, 2, 327720, 4259841, 2, 327721, 4325377, 2, 327722, 4194305, 2, 327723, 4259841, 2, 327724, 4325377, 2, 327725, 4194305, 2, 327726, 4259841, 2, 327727, 4325377, 2, 327728, 4194305, 2, 327729, 4259841, 2, 327730, 4325377, 2, 458788, 4194305, 2, 458789, 4259841, 2, 458790, 4325377, 2, 458791, 4194305, 2, 458792, 4259841, 2, 458793, 4325377, 2, 458794, 4194305, 2, 458795, 4259841, 2, 458796, 4325377, 2, 458797, 4194305, 2, 458798, 4259841, 2, 458799, 4325377, 2, 458800, 4194305, 2, 458801, 4259841, 2, 458802, 4325377, 2, 589860, 4194305, 2, 589861, 4259841, 2, 589862, 4325377, 2, 589863, 4194305, 2, 589864, 4259841, 2, 589865, 4325377, 2, 589866, 4194305, 2, 589867, 4259841, 2, 589868, 4325377, 2, 589869, 4194305, 2, 589870, 4259841, 2, 589871, 4325377, 2, 589872, 4194305, 2, 589873, 4259841, 2, 589874, 4325377, 2)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Spawn1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(400, 300)
+
+[node name="Spawn2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(800, 300)
+
+[node name="Spawn3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(400, 500)
+
+[node name="Spawn4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(800, 500)
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InfoLabel" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 24
+text = "Partie Multijoueur (Max 4 joueurs)
+Déplacez-vous avec ZQSD/Flèches
+Bleu • Rouge • Vert • Jaune"
+
+[node name="PlayersList" type="VBoxContainer" parent="UI"]
+offset_left = 20.0
+offset_top = 120.0
+offset_right = 300.0
+offset_bottom = 400.0
+
+[node name="PlayersTitle" type="Label" parent="UI/PlayersList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Joueurs connectés:"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bw2xm8qr5vn")
+spawn_path = NodePath("../Players")

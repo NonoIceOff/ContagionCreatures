@@ -1,9 +1,23 @@
 extends Node2D
 
-
 @onready var pause_menu = $Player_One/Camera2D/CanvasLayer/PauseMenu
 @onready var moulin_sprite = $AnimatedSprite2D
 @onready var global_vars = get_node("/root/Global")
+@onready var label_sauvegarde = $Player_One/Camera2D/CanvasLayer/LabelSauvegarde
+@onready var label_sauvegarder = $Player_One/Camera2D/CanvasLayer/LabelSauvegarder
+@onready var area_torche = $areaTorche
+@onready var area_ennemy = $MobPNJ/AreaEnnemy1
+@onready var ui_node = $ui
+@onready var ui_cpu_particles = $ui/CPUParticles2D
+@onready var ui_transition = $ui/Transition/AnimationPlayer
+@onready var sound_effect = $SoundEffectFx
+@onready var interact_area_trigger = $InteractArea/Trigger
+@onready var interact_area_interact = $InteractArea/Interact
+@onready var ui_minimap = $ui/Minimap
+@onready var ui_stats = $ui/Stats
+@onready var ui_cinematic = $ui/Cinematic
+@onready var player_camera = $Player_One/Camera2D
+
 var paused = false
 var Key = false
 var item_scene = preload("res://Scenes/item.tscn")
@@ -12,48 +26,56 @@ var interacted = false
 var quest_id = 0
 var zoomed = false
 var scene_load = false
-@onready var label_sauvegarde = get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarde")
-@onready var label_sauvegarder = get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarder")
-@onready var area_torche = get_node("areaTorche")
-@onready var area_ennemy = get_node("MobPNJ/AreaEnnemy1")
 
 
 func _ready():
 	SaveSystem.load_localisation()
 	SaveSystem.load()
 	Global.current_map = "main_map"
-	if get_node_or_null("ui/CPUParticles2D") != null:
-		get_node("ui/CPUParticles2D").visible = false
-	get_node("ui/Transition/AnimationPlayer").play("transition_to_screen")
+	
+	# Première sauvegarde pour les nouvelles parties
+	await get_tree().process_frame
+	if Global.party_timer_seconds == 0:
+		SaveSystem.save()
+	
+	if ui_cpu_particles:
+		ui_cpu_particles.visible = false
+	if ui_transition:
+		ui_transition.play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
-	get_node("SoundEffectFx").play()
-	$InteractArea/Trigger.visible = true
-	$InteractArea/Interact.visible = Global.interact
-	area_torche.connect("save_triggered", Callable(self, "_on_save_triggered")) #se connecte au script dans area_saved envoie un signal au script ci-dessous
-	area_torche.connect("saved_triggered", Callable(self, "_on_saved_triggered")) #se connecte au script dans area_saved envoie un signal au script ci-dessous
-	area_torche.connect("saved_outside_area", Callable(self, "_on_saved_outside_area"))
-	area_ennemy.connect("getNode", Callable(self, "_on_search_getNode"))
-	SaveSystem.load()
+	if sound_effect:
+		sound_effect.play()
+	if interact_area_trigger:
+		interact_area_trigger.visible = true
+	if interact_area_interact:
+		interact_area_interact.visible = Global.interact
+	
+	if area_torche:
+		area_torche.connect("save_triggered", Callable(self, "_on_save_triggered"))
+		area_torche.connect("saved_triggered", Callable(self, "_on_saved_triggered"))
+		area_torche.connect("saved_outside_area", Callable(self, "_on_saved_outside_area"))
+	if area_ennemy:
+		area_ennemy.connect("getNode", Callable(self, "_on_search_getNode"))
 	
 	
 func _on_search_getNode() -> void:
-	get_node("ui/Transition/AnimationPlayer").play("screen_to_transition")
+	if ui_transition:
+		ui_transition.play("screen_to_transition")
 	
 func _on_save_triggered() -> void:
-	if label_sauvegarde:
-		get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarder").visible = false
+	if label_sauvegarde and label_sauvegarder:
+		label_sauvegarder.visible = false
 		label_sauvegarde.visible = true
 		await get_tree().create_timer(5).timeout
 		label_sauvegarde.visible = false
-	else:
-		print("LabelSauvegarde not found at the specified path")
 
 func _on_saved_triggered() -> void:
-	get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarder").visible = true
-	
+	if label_sauvegarder:
+		label_sauvegarder.visible = true
 	
 func _on_saved_outside_area() -> void:
-	get_node("Player_One/Camera2D/CanvasLayer/LabelSauvegarder").visible = false
+	if label_sauvegarder:
+		label_sauvegarder.visible = false
 	
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -61,33 +83,41 @@ func _notification(what):
 		SaveSystem.save()
 
 func zoom_dialogue():
-	if zoomed == false:
-		get_node("SoundEffectFx").stream_paused = true
+	if not zoomed:
+		if sound_effect:
+			sound_effect.stream_paused = true
 		zoomed = true
-		if get_node_or_null("ui/Minimap") != null:
-			get_node("ui/Minimap").visible = false
-		if get_node_or_null("ui/Stats") != null:
-			get_node("ui/Stats").visible = false
-		get_node("ui/Cinematic").modulate = Color(0,0,0,0)
-		get_node("ui/Cinematic").visible = true
+		if ui_minimap:
+			ui_minimap.visible = false
+		if ui_stats:
+			ui_stats.visible = false
+		if ui_cinematic:
+			ui_cinematic.modulate = Color(0,0,0,0)
+			ui_cinematic.visible = true
 		for i in 10:
 			await get_tree().create_timer(0.001).timeout 
-			get_node("Player_One/2").zoom *= 1.05
-			get_node("ui/Cinematic").modulate.a += 0.1
+			if player_camera:
+				player_camera.zoom *= 1.05
+			if ui_cinematic:
+				ui_cinematic.modulate.a += 0.1
 		
 func unzoom_dialogue():
-	if zoomed == true:
-		get_node("SoundEffectFx").stream_paused = false
+	if zoomed:
+		if sound_effect:
+			sound_effect.stream_paused = false
 		zoomed = false
-		if get_node_or_null("ui/Minimap") != null:
-			get_node("ui/Minimap").visible = true
-		if get_node_or_null("ui/Stats") != null:
-			get_node("ui/Stats").visible = true
+		if ui_minimap:
+			ui_minimap.visible = true
+		if ui_stats:
+			ui_stats.visible = true
 		for i in 10:
 			await get_tree().create_timer(0.001).timeout 
-			get_node("Player_One/2").zoom /= 1.05
-			get_node("ui/Cinematic").modulate.a -= 0.1
-		get_node("ui/Cinematic").visible = false
+			if player_camera:
+				player_camera.zoom /= 1.05
+			if ui_cinematic:
+				ui_cinematic.modulate.a -= 0.1
+		if ui_cinematic:
+			ui_cinematic.visible = false
 
 
 func _process(delta):
@@ -151,7 +181,7 @@ func _process(delta):
 			
 		
 	if get_node_or_null("ui/Stats/Coins/Label") != null:
-		get_node_or_null("ui/Stats/Coins/Label").text = str(PlayerStats.monnaie)
+		get_node_or_null("ui/Stats/Coins/Label").text = str(PlayerStats.money)
 	
 	
 	
@@ -166,8 +196,8 @@ func _process(delta):
 			get_node("ui").add_child(instance)
 		
 		if get_node_or_null("InteractArea/Interact") != null and $InteractArea/Interact.visible == true:
-			if quest_id == 0 and Global.quests[0]["stade"] == 0:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 0:
+				Quests.current_quest_id = 0
 				var text_quest_0 = {
 					0: {
 						"text": "DIALOGUE_0_TEXT0",
@@ -214,8 +244,8 @@ func _process(delta):
 				interacted = false
 				
 		if get_node_or_null("Loytan/Interact") != null and get_node("Loytan/Interact").visible == true:
-			if quest_id == 0 and Global.quests[0]["stade"] == 1:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 1:
+				Quests.current_quest_id = 0
 				var text_quest_0_2 = {
 					0: {
 						"text": "DIALOGUE_0-2_TEXT0",
@@ -247,8 +277,8 @@ func _process(delta):
 				zoom_dialogue()
 				interacted = false
 				
-			if quest_id == 0 and Global.quests[0]["stade"] == 2:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 2:
+				Quests.current_quest_id = 0
 				var text_quest_0_3 = {
 					0: {
 						"text": "DIALOGUE_0-3_TEXT0",
@@ -273,8 +303,8 @@ func _process(delta):
 				zoom_dialogue()
 				interacted = false
 
-			if quest_id == 0 and Global.quests[0]["stade"] == 4:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 4:
+				Quests.current_quest_id = 0
 				var text_quest_0_4 = {
 					0: {
 						"text": "DIALOGUE_0-4_TEXT0",
@@ -307,8 +337,8 @@ func _process(delta):
 				interacted = false
 				
 		if get_node_or_null("InteractArea/Interact") != null and get_node("InteractArea/Interact").visible == true:
-			if quest_id == 0 and Global.quests[0]["stade"] == 3:
-				Global.set_quest(0)
+			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 3:
+				Quests.current_quest_id = 0
 				var text_quest_0_4 = {
 					0: {
 						"text": "DIALOGUE_0-5_TEXT0",
@@ -341,9 +371,9 @@ func _process(delta):
 				interacted = false
 				
 		if get_node_or_null("Bagird/Interact") != null and get_node("Bagird/Interact").visible == true:
-			if quest_id == 1 and Global.quests[1]["stade"] == 0:
-				Global.set_quest(1)
-				Global.quests[1]["stade"] = 1
+			if quest_id == 1 and Quests.quests.has(1) and Quests.quests[1].stade == 0:
+				Quests.current_quest_id = 1
+				Quests.quests[1].stade = 1
 				get_node("AudioStreamPlayer2D").stream = load("res://Sounds/bagrid_shlack.mp3")
 				get_node("AudioStreamPlayer2D").playing = true
 				var text_quest_1 = {
@@ -419,8 +449,8 @@ func _process(delta):
 				zoom_dialogue()
 				interacted = false
 				
-			if quest_id == 1 and Global.quests[1]["stade"] == 2:
-				Global.set_quest(1)
+			if quest_id == 1 and Quests.quests.has(1) and Quests.quests[1].stade == 2:
+				Quests.current_quest_id = 1
 				get_node("AudioStreamPlayer2D").stream = load("res://Sounds/bagrid_rire.mp3")
 				get_node("AudioStreamPlayer2D").playing = true
 				var text_quest_1_2 = {
@@ -453,12 +483,12 @@ func _process(delta):
 				Global.items[5]["quantity"] -= 1
 				quest_id = 0
 				
-				Global.quest_finished(1)
-				Global.quests[1]["finished"] = true
+				if Quests.quests.has(1):
+					Quests.quests[1].finished = true
 
 				get_node("ui/Transition/AnimationPlayer").play("screen_to_transition")
 				await get_tree().create_timer(2).timeout
-				get_tree().change_scene_to_file("res://Scenes/dungeon_inversed.tscn")
+				get_tree().change_scene_to_file("res://Scenes/Dungeons/dungeon_inversed.tscn")
 				interacted = false
 			
 
