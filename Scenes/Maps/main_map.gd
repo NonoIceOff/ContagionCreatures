@@ -27,8 +27,9 @@ func _ready():
 	get_node("ui/Transition/AnimationPlayer").play("transition_to_screen")
 	await get_tree().create_timer(0.05).timeout
 	get_node("SoundEffectFx").play()
-	$InteractArea/Trigger.visible = true
-	$InteractArea/Interact.visible = Global.interact
+	# InteractArea supprimé - géré par le système de quêtes
+	# $InteractArea/Trigger.visible = true
+	# $InteractArea/Interact.visible = Global.interact
 	area_torche.connect("save_triggered", Callable(self, "_on_save_triggered")) #se connecte au script dans area_saved envoie un signal au script ci-dessous
 	area_torche.connect("saved_triggered", Callable(self, "_on_saved_triggered")) #se connecte au script dans area_saved envoie un signal au script ci-dessous
 	area_torche.connect("saved_outside_area", Callable(self, "_on_saved_outside_area"))

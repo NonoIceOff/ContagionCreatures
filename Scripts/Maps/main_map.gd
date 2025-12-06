@@ -11,8 +11,7 @@ extends Node2D
 @onready var ui_cpu_particles = $ui/CPUParticles2D
 @onready var ui_transition = $ui/Transition/AnimationPlayer
 @onready var sound_effect = $SoundEffectFx
-@onready var interact_area_trigger = $InteractArea/Trigger
-@onready var interact_area_interact = $InteractArea/Interact
+# Les nodes InteractArea et Loytan ont été supprimés - gérés par le système de quêtes
 @onready var ui_minimap = $ui/Minimap
 @onready var ui_stats = $ui/Stats
 @onready var ui_cinematic = $ui/Cinematic
@@ -33,6 +32,9 @@ func _ready():
 	SaveSystem.load()
 	Global.current_map = "main_map"
 	
+	# Initialiser les PNJ des quêtes
+	Quests.init_pnj("main_map")
+	
 	# Première sauvegarde pour les nouvelles parties
 	await get_tree().process_frame
 	if Global.party_timer_seconds == 0:
@@ -45,10 +47,6 @@ func _ready():
 	await get_tree().create_timer(0.05).timeout
 	if sound_effect:
 		sound_effect.play()
-	if interact_area_trigger:
-		interact_area_trigger.visible = true
-	if interact_area_interact:
-		interact_area_interact.visible = Global.interact
 	
 	if area_torche:
 		area_torche.connect("save_triggered", Callable(self, "_on_save_triggered"))
@@ -195,181 +193,12 @@ func _process(delta):
 			instance.piano_id = 1
 			get_node("ui").add_child(instance)
 		
-		if get_node_or_null("InteractArea/Interact") != null and $InteractArea/Interact.visible == true:
-			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 0:
-				Quests.current_quest_id = 0
-				var text_quest_0 = {
-					0: {
-						"text": "DIALOGUE_0_TEXT0",
-						"has_choices": true,
-						"text_choices": ["DIALOGUE_YES", "DIALOGUE_NO"],
-						"has_suite": false,
-						"choices_jump_to": [1, 4]
-					},
-					1: {
-						"text": "DIALOGUE_0_TEXT1",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [2, 0]
-					},
-					2: {
-						"text": "DIALOGUE_0_TEXT2",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [3, 0]
-					},
-					3: {
-						"text": "DIALOGUE_0_TEXT3",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [4, 0]
-					},
-					4: {
-						"text": "DIALOGUE_0_TEXT4",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": false,
-						"choices_jump_to": [0, 0]
-					}
-				}
-				scene_instance.texts = text_quest_0
-				scene_instance.icon = load("res://Textures/Old_guy_who_lost_is_crampté_REAL.png")
-				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
-				scene_instance.name_icon = "Hector"
-				get_node("ui").add_child(scene_instance)
-				zoom_dialogue()
-				interacted = false
-				
-		if get_node_or_null("Loytan/Interact") != null and get_node("Loytan/Interact").visible == true:
-			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 1:
-				Quests.current_quest_id = 0
-				var text_quest_0_2 = {
-					0: {
-						"text": "DIALOGUE_0-2_TEXT0",
-						"has_choices": false,
-						"text_choices": ["DIALOGUE_YES", "DIALOGUE_NO"],
-						"has_suite": true,
-						"choices_jump_to": [1, 0]
-					},
-					1: {
-						"text": "DIALOGUE_0-2_TEXT1",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [2, 0]
-					},
-					2: {
-						"text": "",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [0, 0]
-					}
-				}
-				scene_instance.texts = text_quest_0_2
-				scene_instance.icon = load("res://Textures/PNJ/Loytan/loytan_full.png")
-				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
-				scene_instance.name_icon = "Loytan"
-				get_node("ui").add_child(scene_instance)
-				zoom_dialogue()
-				interacted = false
-				
-			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 2:
-				Quests.current_quest_id = 0
-				var text_quest_0_3 = {
-					0: {
-						"text": "DIALOGUE_0-3_TEXT0",
-						"has_choices": false,
-						"text_choices": ["DIALOGUE_YES", "DIALOGUE_NO"],
-						"has_suite": true,
-						"choices_jump_to": [1, 0]
-					},
-					1: {
-						"text": "DIALOGUE_0-3_TEXT1",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [2, 0]
-					}
-				}
-				scene_instance.texts = text_quest_0_3
-				scene_instance.icon = load("res://Textures/PNJ/Loytan/loytan_full.png")
-				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
-				scene_instance.name_icon = "Loytan"
-				get_node("ui").add_child(scene_instance)
-				zoom_dialogue()
-				interacted = false
-
-			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 4:
-				Quests.current_quest_id = 0
-				var text_quest_0_4 = {
-					0: {
-						"text": "DIALOGUE_0-4_TEXT0",
-						"has_choices": false,
-						"text_choices": ["DIALOGUE_YES", "DIALOGUE_NO"],
-						"has_suite": true,
-						"choices_jump_to": [1, 0]
-					},
-					1: {
-						"text": "DIALOGUE_0-4_TEXT1",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [2, 0]
-					},
-					2: {
-						"text": "",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [0, 0]
-					}
-				}
-				scene_instance.texts = text_quest_0_4
-				scene_instance.icon = load("res://Textures/PNJ/Loytan/loytan_full.png")
-				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
-				scene_instance.name_icon = "Loytan"
-				get_node("ui").add_child(scene_instance)
-				zoom_dialogue()
-				interacted = false
-				
-		if get_node_or_null("InteractArea/Interact") != null and get_node("InteractArea/Interact").visible == true:
-			if quest_id == 0 and Quests.quests.has(0) and Quests.quests[0].stade == 3:
-				Quests.current_quest_id = 0
-				var text_quest_0_4 = {
-					0: {
-						"text": "DIALOGUE_0-5_TEXT0",
-						"has_choices": false,
-						"text_choices": ["DIALOGUE_YES", "DIALOGUE_NO"],
-						"has_suite": true,
-						"choices_jump_to": [1, 0]
-					},
-					1: {
-						"text": "DIALOGUE_0-5_TEXT1",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [2, 0]
-					},
-					2: {
-						"text": "DIALOGUE_0-5_TEXT2",
-						"has_choices": false,
-						"text_choices": [],
-						"has_suite": true,
-						"choices_jump_to": [3, 0]
-					}
-				}
-				scene_instance.texts = text_quest_0_4
-				scene_instance.icon = load("res://Textures/Old_guy_who_lost_is_crampté_REAL.png")
-				scene_instance.get_node("IconSpeecher/Sprite2D").region_rect = Rect2(8,0,16,16)
-				scene_instance.name_icon = "Hector"
-				get_node("ui").add_child(scene_instance)
-				zoom_dialogue()
-				interacted = false
-				
+		# Ancien système de dialogues supprimé
+		# Les dialogues sont maintenant gérés automatiquement par le système de quêtes
+		# via Quests.gd et les fichiers JSON dans Constantes/Quests/
+		# Les PNJ Loytan et InteractArea doivent être supprimés de la scène et seront
+		# créés automatiquement par Quests.init_pnj() selon les données dans quest_0_tutorial.json
+		
 		if get_node_or_null("Bagird/Interact") != null and get_node("Bagird/Interact").visible == true:
 			if quest_id == 1 and Quests.quests.has(1) and Quests.quests[1].stade == 0:
 				Quests.current_quest_id = 1
@@ -499,13 +328,12 @@ func _process(delta):
 
 	
 
+# Supprimé - géré par le système de quêtes
 func _on_interact_area_entered(body):
-	if body.is_in_group("Player_One"):
-		$InteractArea/Interact.visible = true
+	pass
 
 func _on_interact_area_exited(body):
-	if body.is_in_group("Player_One"):
-		$InteractArea/Interact.visible = false
+	pass
 
 func spawn_item(pos,type,id):
 	var item_instance = item_scene.instantiate()
@@ -528,15 +356,13 @@ func _on_entered_transition_map(body):
 	
 
 
+# Supprimé - géré par le système de quêtes
 func _on_interact_area_body_entered(body):
-	if body.is_in_group("Player_One"):
-		quest_id = 0
-		$InteractArea/Interact.visible = true
+	pass
 
 
 func _on_interact_area_body_exited(body):
-	if body.is_in_group("Player_One"):
-		$InteractArea/Interact.visible = false
+	pass
 
 
 func _on_bagird_body_entered(body):
@@ -561,15 +387,16 @@ func _on_inversed_dungeon_body_exited(body):
 		get_node("InversedDungeon/Interact").visible = false
 
 
+# Ces fonctions ne sont plus nécessaires - le système de quêtes gère les PNJ automatiquement
+# Les PNJ "Loytan" et autres doivent être supprimés de la scène main_map.tscn
+# et seront créés automatiquement par Quests.init_pnj() selon les fichiers JSON
+
 func _on_loytan_body_entered(body):
-	if body.is_in_group("Player_One"):
-		quest_id = 0
-		get_node("Loytan/Interact").visible = true
+	pass  # Désactivé - géré par le système de quêtes
 
 
 func _on_loytan_body_exited(body):
-	if body.is_in_group("Player_One"):
-		get_node("Loytan/Interact").visible = false
+	pass  # Désactivé - géré par le système de quêtes
 
 
 func _on_piano_2_body_entered(body):

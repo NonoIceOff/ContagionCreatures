@@ -12,12 +12,8 @@ size = Vector2(46, 45)
 [sub_resource type="CircleShape2D" id="CircleShape2D_kocle"]
 radius = 85.21
 
-[node name="PNJ" type="Control"]
-z_index = 4096
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PNJ" type="Node2D"]
+z_index = 10
 script = ExtResource("1_h3nvd")
 
 [node name="Area2D" type="Area2D" parent="."]

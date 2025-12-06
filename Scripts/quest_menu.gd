@@ -17,15 +17,12 @@ func _ready():
 	var quest_container = get_node_or_null("ScrollContainer/VBoxContainer")
 	if quest_container:
 		quest_container.mouse_filter = Control.MOUSE_FILTER_PASS
-		print("✅ VBoxContainer configuré")
 
 	if quest_container == null:
-		print("❌ Erreur : 'ScrollContainer/VBoxContainer' introuvable !")
 		return
 
 	for i in Quests.quests.keys():
 		if not Quests.quests.has(i):
-			print("⚠️ Quête " + str(i) + " introuvable, ignorée.")
 			continue
 
 		var quest = Quests.quests[i]
@@ -38,7 +35,7 @@ func _ready():
 		button.pressed.connect(_on_quest_selected.bind(i))
 		
 		var title = Label.new()
-		title.text = str(quest["title"]).to_upper()
+		title.text = str(quest.title).to_upper()
 		title.name = "Title"
 		title.position = Vector2(16, 0)
 		title.add_theme_font_size_override("font_size", 64)
@@ -48,7 +45,10 @@ func _ready():
 
 		var description = Label.new()
 		description.name = "Description"
-		description.text = quest["descriptions"][quest["stade"]]
+		if quest.stade < quest.descriptions.size():
+			description.text = quest.descriptions[quest.stade]
+		else:
+			description.text = "Quest terminée"
 		description.custom_minimum_size = Vector2(800, 100)
 		description.position = Vector2(32, 54)
 		description.add_theme_font_size_override("font_size", 32)
@@ -56,8 +56,6 @@ func _ready():
 		description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		description.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		button.add_child(description)
-		
-		print("✅ Bouton créé pour quête " + str(i))
 
 		var finished_label = Label.new()
 		finished_label.text = "QUEST_FINISHED"
@@ -65,7 +63,7 @@ func _ready():
 		finished_label.scale = Vector2(3, 3)
 		finished_label.position = Vector2(232, 0)
 		finished_label.rotation = 0.25
-		finished_label.visible = quest["finished"]
+		finished_label.visible = quest.finished
 		finished_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		finished_label.set("theme_override_colors/font_outline_color", Color(1, 0.5, 0))
 		finished_label.set("theme_override_constants/outline_size", 10)
@@ -74,7 +72,6 @@ func _ready():
 		quest_container.add_child(button)
 
 func _on_quest_selected(quest_id):
-	print("Quête sélectionnée : " + str(quest_id))
 	Quests.set_quest(quest_id)
 	update_quest_display(quest_id)
 
@@ -83,17 +80,22 @@ func update_quest_display(quest_id):
 		return
 		
 	var quest = Quests.quests[quest_id]
-	var descriptions = quest["mini_descriptions"]
-	var current_stade = quest["stade"]
+	var descriptions = quest.mini_descriptions
+	var current_stade = quest.stade
 	
 	get_node("AudioStreamPlayer").stream = load("res://Sounds/click.mp3")
 	get_node("AudioStreamPlayer").playing = true
 	
 	# Mise à jour du titre
-	get_node("QuestInfos/TitreQuete").text = quest["title"]
+	get_node("QuestInfos/TitreQuete").text = quest.title
 	
 	# Mise à jour de la description longue + description courante
-	get_node("QuestInfos/DescriptionQuete").text = "[color=black]" + tr(quest["long_description"]) + "[/color]\n\n[color=orange][i][font_size=46]" + tr(quest["mini_descriptions"][current_stade]) + "[/font_size][/i][/color]"
+	var current_desc = ""
+	if current_stade < quest.mini_descriptions.size():
+		current_desc = tr(quest.mini_descriptions[current_stade])
+	else:
+		current_desc = "Quest terminée"
+	get_node("QuestInfos/DescriptionQuete").text = "[color=black]" + tr(quest.long_description) + "[/color]\n\n[color=orange][i][font_size=46]" + current_desc + "[/font_size][/i][/color]"
 	
 	# Mise à jour de la barre de progression
 	get_node("QuestInfos/ProgressBar").max_value = descriptions.size()
@@ -129,7 +131,6 @@ func text_to_contafont(char):
 func open():
 	visible = true
 	is_open = true
-	print("🔓 Menu des quêtes ouvert")
 
 func close():
 	visible = false
@@ -142,7 +143,11 @@ func _process(delta):
 		if panel:
 			var desc_label = panel.get_node_or_null("Description")
 			if desc_label and Quests.quests.has(Quests.current_quest_id):
-				desc_label.text = Quests.quests[Quests.current_quest_id]["descriptions"][Quests.quests[Quests.current_quest_id]["stade"]]
+				var quest = Quests.quests[Quests.current_quest_id]
+				if quest.stade < quest.descriptions.size():
+					desc_label.text = quest.descriptions[quest.stade]
+				else:
+					desc_label.text = "Quest terminée"
 	
 	# La touche "q" est maintenant gérée dans ui.gd de manière centralisée
 	
@@ -150,6 +155,7 @@ func _process(delta):
 	for i in Quests.quests.keys():
 		var button = get_node_or_null("ScrollContainer/VBoxContainer/Panel" + str(i))
 		if button:
+			var quest = Quests.quests[i]
 			# Coloration selon sélection
 			if i != Quests.current_quest_id:
 				button.self_modulate = Color(0.5, 0.5, 0.5)
@@ -157,7 +163,7 @@ func _process(delta):
 				button.self_modulate = Color(1, 1, 0, 1)
 
 			# Affichage des quêtes terminées
-			if Quests.quests[i]["finished"]:
+			if quest.finished:
 				button.self_modulate = Color(0, 0, 0, 0.5)
 				button.get_node("Title").self_modulate = Color(0, 0, 0, 0.5)
 				button.get_node("Description").self_modulate = Color(0, 0, 0, 0.5)
