@@ -53,7 +53,7 @@ func _on_evolutions_request_completed(result, response_code, headers, body):
 
 func draw_inventory():
 	get_node("CanvasLayer/Loading").visible = false
-	var grid_container = get_node("CanvasLayer/GridContainer")
+	var grid_container = get_node("CanvasLayer/ScrollContainer/GridContainer")
 
 	for child in grid_container.get_children():
 		child.queue_free()

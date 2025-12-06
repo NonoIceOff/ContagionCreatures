@@ -96,7 +96,6 @@ func _on_get_item_request_completed(response_code, body):
 func _on_exit_button_pressed() -> void:
 	visible = false
 	Engine.time_scale = 1
-	Global.can_move = true
 	
 func _on_craft_filter_pressed(type: String) -> void:
 	filter_crafts_by_type(type)

@@ -29,7 +29,8 @@ func _process(delta):
 		if Input.is_action_just_pressed(Controllers.a_input):
 			SaveSystem.save()
 			Key = true
-			get_node("/root/Map3/ui/Transition/AnimationPlayer").play("screen_to_transition")
+			var transition_anim = get_node_or_null("/root/Map3/ui/Transition/AnimationPlayer")
+			if transition_anim:
+				transition_anim.play("screen_to_transition")
 			SceneLoader.load_scene("res://Scenes/home_of_hector.tscn")
-			#get_tree().change_scene_to_file("res://Scenes/home_of_hector.tscn")
 			Key = false

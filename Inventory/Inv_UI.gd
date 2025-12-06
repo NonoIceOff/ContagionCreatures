@@ -36,19 +36,19 @@ func display_player_items():
 	
 	for i in total_slots:
 		var color = ColorRect.new()
-		color.color = Color(0.1, 0.1, 0.1)
-		color.custom_minimum_size = Vector2(332, 128)
-		get_node("CanvasLayer/VBoxContainer" + str(i % colonnes)).add_child(color)
+		color.color = Color(0.15, 0.15, 0.2, 0.95)
+		color.custom_minimum_size = Vector2(384, 160)
+		get_node("CanvasLayer/ScrollContainer/HBoxContainer/VBoxContainer" + str(i % colonnes)).add_child(color)
 		
 		var sprite = Sprite2D.new()
-		sprite.scale = Vector2(2, 2)
-		sprite.position = Vector2(32, 96)
+		sprite.scale = Vector2(2.5, 2.5)
+		sprite.position = Vector2(48, 112)
+		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		color.add_child(sprite)
 		
 		var sprite_no = Sprite2D.new()
-		sprite_no.scale = Vector2(0.2, 0.2)
-		sprite_no.position = Vector2(164, 100)
-		sprite_no.scale = Vector2(2, 2)
+		sprite_no.position = Vector2(192, 112)
+		sprite_no.scale = Vector2(2.5, 2.5)
 		sprite_no.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		sprite_no.texture = load("res://Textures/WHATTT.png")
 		sprite_no.visible = false
@@ -56,8 +56,11 @@ func display_player_items():
 		
 		var title = Label.new()
 		title.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		title.set("theme_override_font_sizes/font_size", 64)
-		title.custom_minimum_size = Vector2(332, 64)
+		title.set("theme_override_font_sizes/font_size", 32)
+		title.set("theme_override_colors/font_color", Color(1, 1, 1, 1))
+		title.set("theme_override_colors/font_outline_color", Color(0, 0, 0, 1))
+		title.set("theme_override_constants/outline_size", 2)
+		title.custom_minimum_size = Vector2(384, 48)
 		title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		color.add_child(title)
@@ -71,10 +74,13 @@ func display_player_items():
 		# color.add_child(desc)
 		
 		var quantity = Label.new()
-		quantity.position.y = 32
+		quantity.position = Vector2(8, 48)
 		quantity.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		quantity.set("theme_override_font_sizes/font_size", 32)
-		quantity.custom_minimum_size = Vector2(332, 96)
+		quantity.set("theme_override_font_sizes/font_size", 40)
+		quantity.set("theme_override_colors/font_color", Color(1, 0.9, 0.3, 1))
+		quantity.set("theme_override_colors/font_outline_color", Color(0, 0, 0, 1))
+		quantity.set("theme_override_constants/outline_size", 3)
+		quantity.custom_minimum_size = Vector2(368, 112)
 		quantity.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 		quantity.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		color.add_child(quantity)

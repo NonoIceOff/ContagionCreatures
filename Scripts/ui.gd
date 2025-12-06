@@ -53,10 +53,14 @@ func toggle_inventory() -> void:
 			inv_animal_instance.queue_free()
 			inv_animal_instance = null
 		current_interface = InterfaceType.NONE
-	elif current_interface == InterfaceType.NONE:
+	else:
+		if current_interface != InterfaceType.NONE:
+			close_current_interface()
 		var load_scene = preload("res://Inventory/inv_animals.tscn")
 		inv_animal_instance = load_scene.instantiate()
 		add_child(inv_animal_instance)
+		if inv_animal_instance.has_method("open"):
+			inv_animal_instance.open()
 		current_interface = InterfaceType.INVENTORY
 
 
