@@ -178,7 +178,7 @@ func close_current_interface() -> void:
 			toggle_pause()
 	
 func _process(delta: float) -> void:
-	if Global.is_speedrun_timer == true:
+	if Global.is_speedrun_timer == true and speedrun_timer:
 		speedrun_timer.visible = true
 		var seconds = int(Global.party_timer_seconds)
 		var hours = int(seconds) / 3600
@@ -186,10 +186,12 @@ func _process(delta: float) -> void:
 		var secs = int(seconds) % 60
 		speedrun_timer.text = str(hours).pad_zeros(2) + ":" + str(minutes).pad_zeros(2) + ":" + str(secs).pad_zeros(2)
 
-
-	if Global.tutorial_stade < 10:
-		informations.visible = true
-	coins_label.text = str(PlayerStats.money)+" [img=32x32]res://Textures/COIN.png[/img]"
+	if informations:
+		if Global.tutorial_stade < 10:
+			informations.visible = true
+	
+	if coins_label:
+		coins_label.text = str(PlayerStats.money)+" [img=32x32]res://Textures/COIN.png[/img]"
 
 	# Gestion des touches pour ouvrir/fermer les interfaces
 	if Input.is_action_just_pressed("ui_p"):
