@@ -29,5 +29,5 @@ func _process(delta):
 		if Input.is_action_just_pressed(Controllers.a_input):
 			Key = true
 			var instance = trade_scene.instantiate()
-			get_node("../../ui").add_child(instance)
+			get_tree().get_node("/root/Map3/ui").add_child(instance)
 			Key = false

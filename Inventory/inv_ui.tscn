@@ -5,6 +5,7 @@
 
 [node name="Inv_UI" type="Control"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -12,7 +13,12 @@ grow_vertical = 2
 script = ExtResource("1_6vqhs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+layer = 999999999
+
+[node name="Back" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.5882353)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = 96.0
@@ -21,17 +27,16 @@ offset_right = 1824.0
 offset_bottom = 984.0
 color = Color(0.1, 0.1, 0.15, 0.9)
 
-[node name="Titre" type="Label" parent="CanvasLayer"]
-custom_minimum_size = Vector2(2.08165e-12, 80)
-anchor_right = 1.0
-offset_top = 96.0
-offset_bottom = 176.0
-theme_override_colors/font_color = Color(0.3, 0.8, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
+[node name="Titre2" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+offset_top = 128.0
+offset_right = 1920.0
+offset_bottom = 184.0
+theme_override_colors/font_outline_color = Color(0.568627, 0, 0.760784, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_16ut7")
-theme_override_font_sizes/font_size = 64
-text = "INVENTAIRE"
+theme_override_font_sizes/font_size = 32
+text = "INVENTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -64,6 +69,16 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="CanvasLayer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="CanvasLayer/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8

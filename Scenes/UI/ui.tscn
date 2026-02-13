@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c7uvncushvljk" path="res://Textures/Buttons/joypads/joybar_-.png" id="16_8jrwf"]
 [ext_resource type="Texture2D" uid="uid://b2olbml3nklq3" path="res://Textures/Buttons/keyboard/keyboard_k.png" id="16_v4f2e"]
 [ext_resource type="Texture2D" uid="uid://b1tpqldiveuik" path="res://Textures/Buttons/keyboard/keyboard_p.png" id="17_de75t"]
-[ext_resource type="Script" path="res://Scripts/slots_shown.gd" id="18_fcexb"]
+[ext_resource type="Script" uid="uid://cm4gesp4y5y2m" path="res://Scripts/slots_shown.gd" id="18_fcexb"]
 [ext_resource type="Texture2D" uid="uid://b0svu776o5qoh" path="res://Textures/slot.png" id="18_lkjmk"]
 [ext_resource type="PackedScene" uid="uid://c65ywo6ftkvtc" path="res://Scenes/player_xp.tscn" id="18_mxn78"]
 [ext_resource type="PackedScene" uid="uid://bq1408px4oys1" path="res://Scenes/SkillTree/SkillTree.tscn" id="20_fcexb"]

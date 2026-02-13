@@ -68,18 +68,15 @@ func init_save_text():
 		node_label.text = "[color=red]SAUVEGARDE " + str(i) + " VIDE[/color]"
 		
 		if dir.dir_exists(folder_path): # Si le dossier existe
-			var saves_dir = DirAccess.open("user://" + folder_path)
-			if saves_dir != null:
-				saves_dir.list_dir_begin() # On commence à lire les fichiers du dossier de sauvegardes
-				while true: # On boucle tant qu'il y a des fichiers
-					var file_name = saves_dir.get_next()
-					print(file_name)
-					if file_name == "":
-						break # On sort de la boucle quand il n'y en a plus
-					if file_name.ends_with(".txt"):
-						save_name = file_name.substr(0, file_name.length() - 4) # On enlève le .txt
-						break
-				saves_dir.list_dir_end()
+			# Charger le nom depuis settings.txt
+			var settings_file = ConfigFile.new()
+			var settings_path = "user://Saves/File" + str(i) + "/settings.txt"
+			var settings_error = settings_file.load(settings_path)
+			if settings_error == OK:
+				save_name = settings_file.get_value("File", "Name", "")
+				print("Nom chargé depuis settings.txt : ", save_name)
+			else:
+				print("⚠️ Impossible de charger settings.txt pour File" + str(i))
 
 		# Charger le vrai nom du fichier depuis settings.txt
 		var actual_filename = save_name if save_name != "" else "unknown"
@@ -118,43 +115,47 @@ func _physics_process(delta):
 
 
 func delete_directory(folder_path):
-	var dir = DirAccess.open("user://") # Ouvre l'accès au dossier "user://"
-	if dir.change_dir(folder_path) == OK: # Si le dossier existe
-		dir.list_dir_begin() # Commence à lister les fichiers et dossiers
-		while true:
-			var file_name = dir.get_next()
-			if file_name == "":
-				break # Fin de la liste
-			if file_name != "." and file_name != "..": # Ignore les entrées spéciales
-				if dir.current_is_dir():
-					# Appel récursif pour supprimer les sous-dossiers
-					delete_directory(folder_path + "/" + file_name)
+	var dir = DirAccess.open("user://" + folder_path)
+	if dir == null:
+		print("Erreur : Impossible d'ouvrir le dossier :", folder_path)
+		return
+	
+	# Supprimer tous les fichiers dans le dossier
+	dir.list_dir_begin()
+	while true:
+		var file_name = dir.get_next()
+		if file_name == "":
+			break
+		if file_name != "." and file_name != "..":
+			if dir.current_is_dir():
+				# Appel récursif pour supprimer les sous-dossiers
+				delete_directory(folder_path + "/" + file_name)
+			else:
+				# Supprime les fichiers
+				var full_path = "user://" + folder_path + "/" + file_name
+				if DirAccess.remove_absolute(full_path) == OK:
+					print("Fichier supprimé :", full_path)
 				else:
-					# Supprime les fichiers
-					dir.remove(file_name)
-					print("Fichier supprimé :", file_name)
-		dir.list_dir_end()
-		dir.change_dir("..")
-		var folder_name = folder_path.get_file()
-		dir.remove(folder_name)
-		print("Dossier supprimé :", folder_name)
+					print("Erreur lors de la suppression du fichier :", full_path)
+	dir.list_dir_end()
+	
+	# Supprimer le dossier lui-même
+	var full_folder_path = "user://" + folder_path
+	if DirAccess.remove_absolute(full_folder_path) == OK:
+		print("Dossier supprimé :", full_folder_path)
 	else:
-		print("Erreur lors de la suppression du dossier :", folder_path)
+		print("Erreur lors de la suppression du dossier :", full_folder_path)
 
 func _process(delta):
 	for i in range(1, 4):
 		if get_node("VBoxContainer/Fichier" + str(i) + "/Delete/Button").is_pressed() == true:
-			var dir = DirAccess.open("user://")
 			var folder_path = "Saves/File" + str(i)
-			print(folder_path)
-			if dir.change_dir(folder_path) == OK:
-				delete_directory(folder_path + "/")
-				print("Dossier supprimé :", folder_path)
-				get_node("VBoxContainer/Fichier" + str(i) + "/RichTextLabel").text = "[color=red]SAUVEGARDE " + str(i) + " VIDÉE[/color]"
-				get_node("VBoxContainer/Fichier" + str(i) + "/Stats").text = ""
-				get_node("SaveOptions").visible = false
-			else:
-				print("Erreur lors de la suppression du dossier :", folder_path)
+			print("Suppression du dossier :", folder_path)
+			delete_directory(folder_path)
+			get_node("VBoxContainer/Fichier" + str(i) + "/RichTextLabel").text = "[color=red]SAUVEGARDE " + str(i) + " VIDE[/color]"
+			get_node("VBoxContainer/Fichier" + str(i) + "/Stats").text = ""
+			get_node("VBoxContainer/Fichier" + str(i) + "/Delete").visible = false
+			get_node("SaveOptions").visible = false
 
 		if get_node("VBoxContainer/Fichier" + str(i)).is_pressed() == true:
 			var dir = DirAccess.open("user://")
